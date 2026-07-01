@@ -234,29 +234,31 @@
             position: absolute;																				
             top: 140px;																				
             left: 195px;																				
-            z-index: 8;																				
+            z-index: 99;																				
             cursor: pointer;																				
-            transition: transform 0.15s linear;																				
+            transition: transform 0.15s linear;
+            padding: 20px;
+            margin-left: -20px;
         }																				
 																				
         .beaded-wire {																				
-            width: 3px;																				
-            height: 150px;																				
-            background: repeating-linear-gradient(to bottom, #475569, #475569 3px, #0f172a 3px, #0f172a 6px);																				
+            width: 4px;																				
+            height: 160px;																				
+            background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px);																				
         }																				
 																				
         .luminescent-node {																				
-            width: 18px;																				
-            height: 18px;																				
-            background: radial-gradient(circle, #64748b, #1e293b);																				
+            width: 24px;																				
+            height: 24px;																				
+            background: radial-gradient(circle, #fff, #f1c40f);																				
             border-radius: 50%;																				
-            margin-left: -7px;																				
-            box-shadow: 0 5px 10px rgba(0,0,0,0.6);																				
+            margin-left: -10px;																				
+            box-shadow: 0 0 15px #f1c40f, 0 5px 10px rgba(0,0,0,0.6);																				
         }																				
 																				
         .cinema-stage.activated .luminescent-node {																				
             background: var(--lamp-color);																				
-            box-shadow: 0 0 15px var(--lamp-color), 0 0 30px var(--lamp-glow);																				
+            box-shadow: 0 0 25px var(--lamp-color), 0 0 40px var(--lamp-glow);																				
         }																				
 																				
         /* --- AUDIO ACCESSIBILITY INTERFACE --- */
@@ -335,7 +337,7 @@
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 12px #f1c40f; }																				
 																				
         .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
-        .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241,196,15,0.7); transform: translateY(-2px); }																				
+        .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241, 196, 15, 0.7); transform: translateY(-2px); }																				
 																				
         /* Ambient weapon overlays */																				
         .muzzle-flash-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0; transition: opacity 0.05s ease; }																				
@@ -548,7 +550,7 @@
     <div class="muzzle-flash-overlay flash-top" id="topFlashNode"></div>																				
 																				
     <div class="cinema-stage" id="mainStage">																				
-        <div class="cyber-lamp-core" id="lampDevice">																				
+        <div class="cyber-lamp-core" id="lampDevice" onclick="triggerLampActivationOverride()" style="cursor: pointer;">																				
             <div class="glowing-hologram-brand">Made By SHASHI</div>																				
             																				
             <div class="metallic-shutter-head">																				
@@ -566,10 +568,6 @@
                 <div class="beaded-wire"></div>																				
                 <div class="luminescent-node"></div>																				
             </div>																				
-
-            <button onclick="triggerLampActivationOverride()" style="margin-top: 35px; padding: 12px 24px; background: rgba(241, 196, 15, 0.15); border: 2px dashed #f1c40f; color: #f1c40f; border-radius: 8px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; z-index: 999; position: relative;">
-                🚨 BYPASS & OPEN LAMP GATE
-            </button>
         </div>																				
 																				
         <div class="hud-glass-terminal hidden" id="loginTerminal">																				
@@ -654,7 +652,7 @@
     
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="textarea" id="notes" placeholder=" " style="display:none;"></input>																				
-                        <textarea id="notesReal" placeholder=" "></textarea>																				
+                        <textarea id="notesReal" placeholder=""></textarea>																				
                         <label>Additional System Notes (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
@@ -767,14 +765,6 @@
                 renderActiveChatConversationLogs();
             }
         });
-
-        // Pull Cord Interactive Physics Logic
-        const triggerCord = document.getElementById('triggerCord');
-        if(triggerCord) {
-            triggerCord.addEventListener('click', () => {
-                triggerLampActivationOverride();
-            });
-        }
 
         window.triggerLampActivationOverride = function() {
             const mainStage = document.getElementById('mainStage');
