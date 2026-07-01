@@ -12,7 +12,8 @@
             --lamp-glow: rgba(241, 196, 15, 0.8);
             --lamp-shadow: rgba(241, 196, 15, 0.3);
             --neon-cyan: #00f2fe;
-            --whatsapp-green: #2ecc71;
+            --whatsapp-green: #00a884;
+            --admin-purple: #9b59b6;
         }
 
         * {																				
@@ -22,7 +23,7 @@
         }																				
 																				
         body {																				
-            background: #040814;																				
+            background: #02050e;																				
             height: 100vh;																				
             display: flex;																				
             justify-content: center;																				
@@ -30,9 +31,8 @@
             overflow: hidden;																				
             font-family: 'Rajdhani', sans-serif;																				
             user-select: none;																				
-            transition: background 0.3s;
-            position: relative;
-            width: 100vw;
+            position: relative;																				
+            width: 100vw;																				
         }																				
 																				
         /* --- SIDE COLORFUL SMOKE EFFECT --- */
@@ -52,7 +52,7 @@
             width: 50vw;
             height: 200vh;
             filter: blur(140px);
-            opacity: 0.15;
+            opacity: 0.16;
             border-radius: 50%;
             animation: smokeDrift 15s infinite alternate ease-in-out;
         }
@@ -258,13 +258,13 @@
             transform: translateX(-50%) scale(0.9);																				
             width: 90%;
             max-width: 440px;																				
-            background: rgba(3, 7, 20, 0.8);																				
+            background: rgba(4, 9, 22, 0.85);																				
             border: 1px solid rgba(255, 255, 255, 0.1);																				
             border-left: 5px solid #f1c40f;																				
-            padding: 30px 20px;																				
+            padding: 35px 25px;																				
             border-radius: 24px;																				
             backdrop-filter: blur(40px);																				
-            box-shadow: 0 40px 80px rgba(0,0,0,0.85);																				
+            box-shadow: 0 40px 90px rgba(0,0,0,0.9);																				
             opacity: 0;																				
             transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);																				
             z-index: 20;																				
@@ -279,7 +279,7 @@
         .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #f1c40f; background: rgba(241,196,15,0.06); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(241,196,15,0.25); letter-spacing: 1px; }																				
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.06); border-color: rgba(0,242,254,0.25); }																				
 																				
-        .hud-logo { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 2.2rem; text-align: center; margin-bottom: 25px; font-weight: 900; }																				
+        .hud-logo { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 2.4rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; }																				
 																				
         .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 4px; border-radius: 12px; margin-bottom: 25px; }																				
         .hud-tab { flex: 1; padding: 12px; background: transparent; border: none; color: #475569; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap;}																				
@@ -294,7 +294,7 @@
         .hud-input-cluster textarea ~ label { top: 20px; transform: none; }																				
 																				
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,																				
-        .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -12px; left: 10px; background: #020408; padding: 0 6px; font-size: 0.75rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; }																				
+        .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -12px; left: 10px; background: #040916; padding: 0 6px; font-size: 0.75rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; }																				
 																				
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }																				
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 12px #f1c40f; }																				
@@ -407,13 +407,13 @@
         .text-left { text-align: left; }																				
 																				
         .admin-category-navbar { display: flex; gap: 8px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 12px; margin-bottom: 25px; }																				
-        .admin-nav-tab { flex: 1; padding: 12px 6px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }																				
+        .admin-nav-tab { flex: 1; padding: 12px 4px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }																				
         .admin-nav-tab.active { background: rgba(241,196,15,0.12); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }																				
 																				
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; }
         .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- WHATSAPP APP MODEL SYSTEM STYLE --- */
+        /* --- WHATSAPP ENGINE ARCHITECTURE --- */
         .chat-io-grid-matrix {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -477,7 +477,6 @@
             background: #222e35;
             position: relative;
         }
-        /* Whatsapp Doodle Ambient Effect override */
         .chat-stream-message-container::before {
             content: '';
             position: absolute;
@@ -545,7 +544,7 @@
         }
         .whatsapp-circle-btn:hover { color: #d1d7db; }
 
-        /* --- EMOJI DASHBOARD DRAWER POPUP --- */
+        /* --- EMOJI DASHBOARD WINDOW DRAWER --- */
         .emoji-matrix-drawer {
             position: absolute;
             bottom: 65px;
@@ -571,7 +570,6 @@
         }
         .emoji-node-item:hover { transform: scale(1.2); }
 
-        /* Profile Uploader UI on Customer space */
         .avatar-upload-mini-pane {
             display: flex;
             align-items: center;
@@ -581,6 +579,17 @@
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
             margin-bottom: 20px;
+        }
+
+        /* Spy Admin Whatsapp Cross-Intercept Layout */
+        .spy-intercept-banner {
+            padding: 6px 12px;
+            background: #e74c3c;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            font-family: 'Orbitron';
         }
     </style>																				
 </head>																				
@@ -665,7 +674,7 @@
 
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn active" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board (WhatsApp Model)</button>
+                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
             </div>
 
             <div id="customerUploadInterfaceBlock">
@@ -720,33 +729,26 @@
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
                     <div class="chat-target-userlist-pane">
-                        <div class="whatsapp-search-box">
-                            <input type="text" placeholder="Search or start new chat...">
-                        </div>
+                        <div class="whatsapp-search-box"><input type="text" placeholder="Search contact..."></div>
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
                             <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
-                            <div class="whatsapp-user-info">
-                                <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Target Node...</div>
-                            </div>
+                            <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Contact Pipeline...</div></div>
                         </div>
-                        
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
-                        
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
-
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
-                            <button onclick="dispatchMatrixChatMessage()" style="padding:10px 18px; background:#00a884; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer; font-size:0.8rem;">SEND</button>
+                            <button onclick="dispatchMatrixChatMessage()" style="padding:10px 18px; background:#00a884; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">SEND</button>
                         </div>
                     </div>
                 </div>
-                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; font-family:monospace; padding-left:15px;"></div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; padding-left:15px;"></div>
             </div>
 
             <div class="ai-helper-banner">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
@@ -765,10 +767,10 @@
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>																				
+                <button class="admin-nav-tab" id="tabBtnSpyChat" onclick="switchAdminSubSection('spychat')">💬 Admin WhatsApp</button>																				
             </div>																				
 																				
-            <div id="customerCardsContainer">																				
-            </div>																				
+            <div id="customerCardsContainer"></div>																				
         </div>																				
     </div>																				
 																				
@@ -796,6 +798,9 @@
         let activeCustomerWorkspaceChannel = "upload";
         let activeSelectedChatTargetUserId = "";
         let globalLiveChatBinaryStreamBase64 = "";
+        
+        let spySelectedUserContextSender = "";
+        let spySelectedUserContextReceiver = "";
 
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
@@ -803,20 +808,15 @@
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
 
-        // Initialize Emoji Drawer Grid
+        // Setup Emojis Panel
         setTimeout(() => {
             const box = document.getElementById('systemEmojiMatrixBoxNode');
-            if(box) {
-                box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
-            }
+            if(box) box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
         }, 1000);
 
         window.insertEmojiIntoChatField = function(emoji) {
             const chatInput = document.getElementById('chatCoreMessageTextInput');
-            if(chatInput) {
-                chatInput.value += emoji;
-                chatInput.focus();
-            }
+            if(chatInput) { chatInput.value += emoji; chatInput.focus(); }
         };
 
         window.toggleEmojiDrawerOverlayPanel = function(event) {
@@ -830,40 +830,38 @@
             if(box) box.classList.add('hidden');
         });
 
-        // Realtime Users Synchronizer
+        // Realtime Data Event Streams
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalUsersArr = data ? Object.values(data) : [];
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
                 renderUserControlPanel();
+                if(activeAdminSubSection === 'spychat') renderAdminSpyUserList();
             }
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 initializeCrossLinkChatPanel();
             }
             if(loggedInCustomerID) {
                 const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
-                if(myProfile && myProfile.avatar) {
-                    document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                }
+                if(myProfile && myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
             }
         });
 
-        // Realtime Policies Synchronizer
         onValue(ref(db, 'policies'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalPolicyArr = data ? Object.values(data) : [];
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
                 renderPolicyCardsBlock();
             }
-            if(loggedInCustomerID) {
-                renderCustomerLiveTracker();
-            }
+            if(loggedInCustomerID) renderCustomerLiveTracker();
         });
 
-        // Realtime Chats Stream Update Listener
         onValue(ref(db, 'chats'), () => {
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 renderActiveChatConversationLogs();
+            }
+            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
+                renderAdminSpyChatConsoleLogs();
             }
         });
 
@@ -875,7 +873,7 @@
                     const base64Avatar = e.target.result;
                     set(ref(db, `users/${loggedInCustomerID}/avatar`), base64Avatar).then(() => {
                         document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
-                        speakNaturalHuman("Profile avatar sync complete.");
+                        speakNaturalHuman("Avatar synchronized.");
                     });
                 };
                 reader.readAsDataURL(file);
@@ -889,7 +887,7 @@
                 playSynthesizedSound(520, 'sine', 0.3);
                 mainStage.classList.add('activated');
                 loginTerminal.classList.remove('hidden');
-                speakNaturalHuman("System mainframe interface active.");
+                speakNaturalHuman("System authorization mainframe active.");
             }
         };
 
@@ -899,7 +897,7 @@
             if(isSystemAudioEnabled) {
                 audioBtn.classList.remove('audio-disabled');
                 audioBtn.innerHTML = `<span>🔊 SOUND: ON</span>`;
-                speakNaturalHuman("Audio system live.");
+                speakNaturalHuman("Audio system operational.");
             } else {
                 audioBtn.classList.add('audio-disabled');
                 audioBtn.innerHTML = `<span>🔇 SOUND: OFF</span>`;
@@ -954,16 +952,11 @@
         window.verifyInputIdentityProgress = function() {
             const u = document.getElementById('accessNodeUser').value.trim();
             if(!u) return;
-
             if(currentMode === 'admin') {
-                if(u === "Shashi2004") {
-                    document.getElementById('accessNodePass').focus();
-                }
+                if(u === "Shashi2004") document.getElementById('accessNodePass').focus();
             } else {
                 let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
-                if(userMatch) {
-                    document.getElementById('accessNodePass').focus();
-                }
+                if(userMatch) document.getElementById('accessNodePass').focus();
             }
         };
 
@@ -973,14 +966,10 @@
             if(!u || !p) return;																				
 																				
             if(currentMode === 'admin') {																				
-                if(u === "Shashi2004" && p === "Tolu@Molu") {																				
-                    executeClusterLogin(null);																				
-                }																				
+                if(u === "Shashi2004" && p === "Tolu@Molu") executeClusterLogin(null);																				
             } else {																				
                 let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());																				
-                if(userMatch && String(userMatch.pass) === String(p)) {																				
-                    executeClusterLogin(null);																				
-                }																				
+                if(userMatch && String(userMatch.pass) === String(p)) executeClusterLogin(null);																				
             }																				
         };
 
@@ -1044,7 +1033,6 @@
                         speakNaturalHuman("Security lock active.");																				
                         userMatch.status = 'attack_locked';																				
                         set(ref(db, 'users/' + userMatch.id), userMatch);
-                        																				
                         document.body.classList.add('screen-shake');																				
                         playSynthesizedSound(100, 'triangle', 0.4);																				
                         const flashNode = document.getElementById('topFlashNode');																				
@@ -1065,7 +1053,7 @@
                     } else if (type === 'chat') {
                         globalLiveChatBinaryStreamBase64 = e.target.result;
                         const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-                        if(statusBox) statusBox.innerText = `📎 File payload attached: ${fileInput.files[0].name}`;
+                        if(statusBox) statusBox.innerText = `📎 Attached asset stream: ${fileInput.files[0].name}`;
                     }
                 };
                 reader.readAsDataURL(fileInput.files[0]);
@@ -1091,7 +1079,6 @@
             }).then(() => {
                 speakNaturalHuman("Transmitted successfully.");																				
                 alert("✔ Form Submitted Successfully!");																				
-                
                 document.getElementById('regNo').value = "";																				
                 document.getElementById('insurerName').value = "";																				
                 document.getElementById('policyNo').value = "";																				
@@ -1145,20 +1132,17 @@
         window.postTrackerComment = function(policyId) {
             const txtNode = document.getElementById(`trackerCommentInput_${policyId}`);
             if(!txtNode || !txtNode.value.trim()) return;
-            
             const targetCommentRef = push(ref(db, `policies/${policyId}/customerComments`));
             set(targetCommentRef, {
                 text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                txtNode.value = ""; speakNaturalHuman("Message log deployed.");
-            });
+            }).then(() => { txtNode.value = ""; speakNaturalHuman("Timeline logged."); });
         };
 
         window.updateCustomerCaseAction = function(policyId, newStatus) {																				
             const commentStr = newStatus === 'closed' ? "Log close requested." : "Hold queued down.";
             set(ref(db, `policies/${policyId}/status`), newStatus);
             set(ref(db, `policies/${policyId}/adminComment`), commentStr);
-            speakNaturalHuman("Updated.");
+            speakNaturalHuman("State updated.");
         };
 
         window.switchCustomerChannel = function(channelId) {
@@ -1182,11 +1166,8 @@
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
-            
             const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            
-            // Auto add Shashi Support Node inside Whatsapp contact panel
-            const masterAdminPseudoUser = { id: "Shashi2004", clientName: "Mainframe Admin (Support)", avatar: "" };
+            const masterAdminPseudoUser = { id: "Shashi2004", clientName: "Mainframe Admin Shashi", avatar: "" };
             const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
             
             targetContainer.innerHTML = fullTargetList.map(user => {
@@ -1216,7 +1197,7 @@
             const headerAvatar = document.getElementById('chatActiveHeaderAvatarNode');
             
             if(userId === "Shashi2004") {
-                if(titleNode) titleNode.innerText = "Shashi Mainframe Admin (Support)";
+                if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
                 if(headerAvatar) headerAvatar.src = defaultAvatarSvg;
             } else {
                 const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
@@ -1234,41 +1215,22 @@
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper) return;
-            
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 const masterLogs = data ? Object.values(data) : [];
-                
                 const contextConvos = masterLogs.filter(msg => 
                     (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
                     (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
                 );
-                
                 if(contextConvos.length === 0) {
-                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:#182229; padding:6px 12px; border-radius:6px;">🔒 Messages are end-to-end encrypted.</div>`;
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:#182229; padding:6px 12px; border-radius:6px;">🔒 System matrix secure encryption verified.</div>`;
                     return;
                 }
-                
                 wrapper.innerHTML = contextConvos.map(msg => {
                     const isMyMessage = (msg.sender === loggedInCustomerID);
                     const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
-                    
-                    let mediaElementHTML = "";
-                    if(msg.mediaPayload) {
-                        if(msg.mediaPayload.startsWith("data:image")) {
-                            mediaElementHTML = `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">`;
-                        } else {
-                            mediaElementHTML = `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`;
-                        }
-                    }
-                    
-                    return `
-                        <div class="bubble-msg-wrapper ${directionalCss}">
-                            <div>${msg.textBody}</div>
-                            ${mediaElementHTML}
-                            <div class="whatsapp-time">${msg.timestamp}</div>
-                        </div>
-                    `;
+                    let mediaElementHTML = msg.mediaPayload ? (msg.mediaPayload.startsWith("data:image") ? `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">` : `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`) : "";
+                    return `<div class="bubble-msg-wrapper ${directionalCss}"><div>${msg.textBody}</div>${mediaElementHTML}<div class="whatsapp-time">${msg.timestamp}</div></div>`;
                 }).join('');
                 wrapper.scrollTop = wrapper.scrollHeight;
             });
@@ -1277,7 +1239,6 @@
         window.dispatchMatrixChatMessage = function() {
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
-            
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
             if(!activeSelectedChatTargetUserId) return;
@@ -1285,7 +1246,7 @@
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document File Attachment Payload", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Document Attachment Stream Node", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
@@ -1298,55 +1259,60 @@
 
         window.switchAdminSubSection = function(sectionId) {																				
             activeAdminSubSection = sectionId;																				
-            const tabs = ["creation", "credentials", "workspace"];																				
+            const tabs = ["creation", "credentials", "workspace", "spychat"];																				
             tabs.forEach(t => {																				
                 const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);																				
                 if(btn) btn.classList.remove('active');																				
             });																				
-            const activeBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);																				
-            if(activeBtn) activeBtn.classList.add('active');																				
+            document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`).classList.add('active');																				
 																				
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';																				
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';																				
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';																				
+            document.getElementById('adminSpyChatBlock') ? document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none') : null;
         };
 
         window.loadAdminSubmissions = function(){																				
             let container = document.getElementById('customerCardsContainer');																				
             if(!container) return;																				
-            																				
-            let htmlContent = `																				
-                <div id="idCreationBlock" style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 20px;">																				
-                    <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 15px; font-size: 1.1rem;">⚡ ACCOUNT COMPILER</h3>																				
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 15px;">																				
-                        <input type="text" id="newClientName" placeholder="Client Name" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
-                        <input type="date" id="newClientDOB" style="padding: 14px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
-                        <input type="text" id="newClientContact" inputmode="tel" maxlength="10" placeholder="Contact No" oninput="this.value=this.value.replace(/[^0-9]/g,'');" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
-                        <input type="text" id="newUserPass" placeholder="Set Access Password" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
-                    </div>																				
-                    <button onclick="createNewCustomerNode()" style="width:100%; padding: 14px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 8px; font-weight: bold; font-family:'Orbitron'; font-size:0.9rem; cursor:pointer;">COMPILE USER</button>																				
-                </div>																				
-                                																				
-                <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 20px;">																				
-                    <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">																				
-                        <h4 style="color: #00f2fe; font-size: 0.95rem; margin-bottom: 10px; font-family:'Orbitron';">⚙️ MASTER ADMIN VECTOR</h4>																				
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">																				
-                            <input type="text" value="Shashi2004" disabled style="padding: 10px; background: #050914; border: 1px solid #334155; color: white; border-radius: 8px; font-family:'Orbitron'; font-size:0.85rem; width:120px;">																				
-                            <input type="text" value="Tolu@Molu" disabled style="padding: 10px; background: #050914; border: 1px solid #334155; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size:0.85rem; width:120px;">																				
+            container.innerHTML = `																				
+                <div id="idCreationBlock">																				
+                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 20px;">																				
+                        <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 15px; font-size: 1.1rem;">⚡ ACCOUNT COMPILER</h3>																				
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 15px;">																				
+                            <input type="text" id="newClientName" placeholder="Client Name">																				
+                            <input type="date" id="newClientDOB">																				
+                            <input type="text" id="newClientContact" inputmode="tel" maxlength="10" placeholder="Contact No" oninput="this.value=this.value.replace(/[^0-9]/g,'');">																				
+                            <input type="text" id="newUserPass" placeholder="Set Access Password">																				
                         </div>																				
+                        <button onclick="createNewCustomerNode()" class="hud-engage-btn" style="background:linear-gradient(135deg, #1abc9c, #16a085);">COMPILE USER</button>																				
                     </div>																				
-                    <h4 style="color: #64748b; font-size: 0.9rem; margin-bottom: 12px; font-family:'Orbitron';">REGISTERED SYSTEM CLIENTS:</h4>																				
-                    <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 12px;"></div>																				
                 </div>																				
-																				
-                <div id="policyWorkspaceBlock" style="display:none; width: 100%;">																				
-                    <div style="margin-bottom: 20px;">																				
-                        <input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan records..." oninput="filterCardsEngine()">																				
+                <div id="credentialsBlock" style="display:none;">																				
+                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 20px;">																				
+                        <h4 style="color: #64748b; font-size: 0.9rem; margin-bottom: 12px; font-family:'Orbitron';">REGISTERED SYSTEM CLIENTS & FULL CONFIGURATION SYSTEM:</h4>																				
+                        <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 12px;"></div>																				
                     </div>																				
+                </div>																				
+                <div id="policyWorkspaceBlock" style="display:none; width: 100%;">																				
+                    <div style="margin-bottom: 20px;"><input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan records..." oninput="filterCardsEngine()"></div>																				
                     <div id="policyCardsStack"></div>																				
                 </div>																				
+                <div id="adminSpyChatBlock" style="display:none; width:100%;">
+                    <div class="chat-io-grid-matrix">
+                        <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
+                        <div class="chat-stream-message-container" style="background:#0b141a;">
+                            <div class="spy-intercept-banner">🚨 LIVE INTERACTION MONITOR OVERRIDE MODE</div>
+                            <div class="chat-stream-header-bar" id="spyActiveHeaderTitle">Select User Conversation Core...</div>
+                            <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
+                            <div class="chat-interface-footer-inputs">
+                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type intercept payload response..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
+                                <button onclick="dispatchAdminSpyInterceptionMsg()" style="padding:10px 18px; background:#9b59b6; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">REPLY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;																				
-            container.innerHTML = htmlContent;																				
             renderUserControlPanel();																				
             renderPolicyCardsBlock();																				
             switchAdminSubSection(activeAdminSubSection);																				
@@ -1357,91 +1323,144 @@
             const dob = document.getElementById('newClientDOB').value;																				
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
-            																				
             if(!clientName || !contact || !userPass) { alert("⚠️ Metrics missing."); return; }																				
-            if(contact.length !== 10) { alert("⚠️ Contact must be exactly 10 digits."); return; }
-
+            
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
-																				
             if(cachedGlobalUsersArr.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ Duplicated."); return; }																				
             
-            set(ref(db, 'users/' + userId), {
-                id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", adminAlert: false
-            }).then(() => {
-                speakNaturalHuman("Customer configured.");																				
-                loadAdminSubmissions();
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "" }).then(() => {
+                speakNaturalHuman("Customer profile configured down."); loadAdminSubmissions();
             });																				
         };
 
-        window.updateClientPasswordDirect = function(index) {																				
-            let newPass = document.getElementById(`userPasswordInputInline_${index}`).value.trim();																				
-            if(!newPass) return;																				
-            let userObj = cachedGlobalUsersArr[index];
-            set(ref(db, `users/${userObj.id}/pass`), newPass).then(() => {
-                speakNaturalHuman("Sync absolute.");																				
-                alert("✔ Password Sync absolute.");
-                renderUserControlPanel();
-            });																				
+        // ALTER ANY CUSTOMER SYSTEM ID AND PASSWORD DIRECTLY
+        window.alterClientCredentialsOverrideData = function(oldId, index) {
+            const targetNewId = document.getElementById(`userInlineIdInput_${index}`).value.trim();
+            const targetNewPass = document.getElementById(`userPasswordInputInline_${index}`).value.trim();
+            if(!targetNewId || !targetNewPass) return;
+            
+            get(ref(db, `users/${oldId}`)).then((snapshot) => {
+                let currentProfileData = snapshot.val() || {};
+                currentProfileData.id = targetNewId;
+                currentProfileData.pass = targetNewPass;
+                
+                if(oldId !== targetNewId) {
+                    remove(ref(db, `users/${oldId}`)).then(() => {
+                        set(ref(db, `users/${targetNewId}`), currentProfileData).then(() => {
+                            speakNaturalHuman("Identity credentials updated."); alert("✔ Identity and passkey updated successfully!");
+                        });
+                    });
+                } else {
+                    set(ref(db, `users/${oldId}`), currentProfileData).then(() => {
+                        speakNaturalHuman("Passkey updated."); alert("✔ Password configuration update active!");
+                    });
+                }
+            });
         };
 
         window.renderUserControlPanel = function() {																				
-            const listWrapper = document.getElementById('adminUserControlList');																				
-            if(!listWrapper) return;																				
-            if(cachedGlobalUsersArr.length === 0) {																				
-                listWrapper.innerHTML = `<p style="color: #475569; font-size: 0.85rem;">No customer active.</p>`;																				
-                return;																				
-            }																				
+            const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;																				
+            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color: #475569; font-size: 0.85rem;">No customer active.</p>`; return; }																				
+            
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
                 return `																				
-                    <div style="background: rgba(255,255,255,0.01); padding: 14px; border-radius: 10px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:10px; overflow:hidden;">																				
+                    <div style="background: rgba(255,255,255,0.01); padding: 15px; border-radius: 10px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:10px; overflow:hidden;">																				
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
-                            <div><span style="color: white; font-size: 0.9rem;">ID: <b style="color: #1abc9c;">${user.id}</b></span></div>																				
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <span style="color:#8696a0; font-size:0.85rem;">Edit System ID:</span>
+                                <input type="text" id="userInlineIdInput_${index}" value="${user.id}" style="background:#020408; border:1px solid #222; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.85rem; width:140px; font-weight:bold;">
+                            </div>																				
                             <div style="display: flex; gap: 8px;">																				
                                 <button onclick="toggleUserNodeSwitch(${index})" style="padding: 6px 12px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 6px; font-size: 0.75rem; cursor:pointer;">${live ? 'LOCK' : 'OPEN'}</button>																				
                                 <button onclick="wipeUserPermanently(${index})" style="color: #475569; background:none; border:none; text-decoration: underline; font-size: 0.8rem; cursor:pointer;">Wipe</button>																				
                             </div>																				
                         </div>																				
                         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">																				
-                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:140px;">																				
-                            <button onclick="updateClientPasswordDirect(${index})" style="padding:6px 12px; background:rgba(241,196,15,0.15); border:1px solid #f1c40f; color:#f1c40f; border-radius:6px; font-size:0.75rem; cursor:pointer;">SAVE</button>																				
+                            <span style="color:#8696a0; font-size:0.85rem;">Passkey:</span>
+                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:120px;">																				
+                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:6px 12px; background:rgba(46,204,113,0.2); border:1px solid #2ecc71; color:#2ecc71; border-radius:6px; font-size:0.75rem; cursor:pointer; font-weight:bold;">APPLY OVERRIDE SAVE</button>																				
                         </div>																				
                     </div>																				
                 `;																				
             }).join('');																				
         };
 
-        window.renderPolicyCardsBlock = function() {																				
-            const targetStack = document.getElementById('policyCardsStack');																				
-            if(!targetStack) return;																				
-            if(cachedGlobalPolicyArr.length === 0) {																				
-                targetStack.innerHTML = "<p style='text-align:center; color:#475569; padding: 20px 0;'>No active packages.</p>";																				
-                return;																				
-            }																				
-            targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
-                let docPreviewHTML = `<span>None</span>`;
-                if(d.attachment) {
-                    if(d.attachment.startsWith("data:image")) {
-                        docPreviewHTML = `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px; display:block;">`;
-                    } else {
-                        docPreviewHTML = `<a href="${d.attachment}" download="File" class="file-preview-anchor">📥 Asset File</a>`;
-                    }
+        // ADMIN SPY WHATSAPP COMPONENT OVERRIDE LOGIC
+        window.renderAdminSpyUserList = function() {
+            const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
+            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="color:#475569; padding:15px; font-size:0.8rem;">Void Logs.</div>`; return; }
+            
+            listPane.innerHTML = cachedGlobalUsersArr.map(user => {
+                const isSelected = (spySelectedUserContextSender === user.id || spySelectedUserContextReceiver === user.id);
+                return `
+                    <div class="chat-user-item-node ${isSelected?'active-chat-target':''}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
+                        <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
+                        <div class="whatsapp-user-info">
+                            <div class="whatsapp-user-name">${user.clientName}</div>
+                            <div class="whatsapp-user-id">@${user.id}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        };
+
+        window.setAdminSpyTargetConversationTrack = function(userId) {
+            spySelectedUserContextSender = userId;
+            spySelectedUserContextReceiver = "Shashi2004"; // Intercept profile tracking
+            const headerTitle = document.getElementById('spyActiveHeaderTitle');
+            if(headerTitle) headerTitle.innerText = `监控 PIPELINE PROFILE TARGET: ${userId.toUpperCase()}`;
+            renderAdminSpyChatConsoleLogs();
+            renderAdminSpyUserList();
+        };
+
+        window.renderAdminSpyChatConsoleLogs = function() {
+            const stack = document.getElementById('adminSpyChatLogsStack'); if(!stack || !spySelectedUserContextSender) return;
+            get(ref(db, 'chats')).then((snapshot) => {
+                const data = snapshot.val();
+                const chats = data ? Object.values(data) : [];
+                const trackingConvo = chats.filter(m => 
+                    (m.sender === spySelectedUserContextSender) || (m.receiver === spySelectedUserContextSender)
+                );
+                if(trackingConvo.length === 0) {
+                    stack.innerHTML = `<div style="color:#8696a0; font-size:0.8rem; margin:auto;">No active trace records logged on this sequence channel.</div>`;
+                    return;
                 }
+                stack.innerHTML = trackingConvo.map(m => {
+                    const isAdminOutgoing = (m.sender === "Shashi2004");
+                    return `<div class="bubble-msg-wrapper ${isAdminOutgoing?'bubble-outgoing':'bubble-incoming'}" style="${isAdminOutgoing?'background:#5c007a; color:#fff;':''}"><div><small style="color:#00f2fe; display:block; font-size:0.7rem; font-family:monospace;">Source: ${m.sender} -> ${m.receiver}</small>${m.textBody}</div><div class="whatsapp-time">${m.timestamp}</div></div>`;
+                }).join('');
+                stack.scrollTop = stack.scrollHeight;
+            });
+        };
+
+        window.dispatchAdminSpyInterceptionMsg = function() {
+            const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spySelectedUserContextSender) return;
+            const newChatRef = push(ref(db, 'chats'));
+            set(newChatRef, {
+                sender: "Shashi2004", receiver: spySelectedUserContextSender,
+                textBody: input.value.trim(), mediaPayload: "",
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => { input.value = ""; playSynthesizedSound(900, 'sine', 0.04); renderAdminSpyChatConsoleLogs(); });
+        };
+
+        window.renderPolicyCardsBlock = function() {																				
+            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
+            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p style='text-align:center; color:#475569; padding: 20px 0;'>No active packages.</p>"; return; }																				
+            
+            targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
+                let docPreviewHTML = d.attachment ? (d.attachment.startsWith("data:image") ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px; display:block;">` : `<a href="${d.attachment}" download="File" class="file-preview-anchor">📥 Asset File</a>`) : "<span>None</span>";
                 let clientNotesArray = d.customerComments ? Object.values(d.customerComments) : [];
                 let clientNotesHTML = clientNotesArray.map(c => `<div style="font-size:0.75rem; color:#00f2fe; background:#020408; padding:2px 4px; margin-top:2px; border-radius:4px;">${c.text}</div>`).join('');
 
                 return `																				
                     <div class="hud-data-card">																				
-                      <div style="display:flex; justify-content:space-between; align-items:center;">																				
-                         <p><b>User ID:</b> <span>${d.ownerNodeID}</span></p>																				
-                      </div>																				
+                      <p><b>User ID:</b> <span>${d.ownerNodeID}</span></p>																				
                       <p><b>Insurer:</b> <span>${d.insure}</span></p>																				
                       <p><b>Contact:</b> <span>${d.phone}</span></p>																				
                       <p><b>File:</b> ${docPreviewHTML}</p>
-                      <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;">
-                         ${clientNotesHTML ? clientNotesHTML : '<div style="font-size:0.75rem; color:#475569;">No replies.</div>'}
-                      </div>
+                      <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;">${clientNotesHTML ? clientNotesHTML : '<div style="font-size:0.75rem; color:#475569;">No replies.</div>'}</div>
                       <div style="margin-top: 10px; padding: 8px; background: rgba(0,0,0,0.4); border-radius: 6px;">																				
                          <select id="updateStatusSelect_${i}" onchange="transmitAdminResponse(${i})" style="padding:6px; font-size:0.75rem; width:100%; margin-bottom:8px;">																				
                                <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option>																				
@@ -1465,21 +1484,21 @@
             let targetPol = cachedGlobalPolicyArr[index];
             set(ref(db, `policies/${targetPol.id}/status`), statusSelect.value);
             set(ref(db, `policies/${targetPol.id}/adminComment`), commentInput.value.trim() || "Status saved.");
-            speakNaturalHuman("Response logged."); alert("⚡ Feedback Transmitted!");
+            speakNaturalHuman("Response deployed."); alert("⚡ Feedback Transmitted!");
         };																				
 																				
         window.toggleUserNodeSwitch = function(index) {																				
             let userObj = cachedGlobalUsersArr[index];
             const nextStatus = userObj.status === 'active' ? 'deactivated' : 'active';
             set(ref(db, `users/${userObj.id}/status`), nextStatus);
-            speakNaturalHuman("Status updated.");
+            speakNaturalHuman("Node toggled.");
         };																				
 																				
         window.wipeUserPermanently = function(index) {																				
             if(confirm("Purge account entirely?")) { 
                 let userObj = cachedGlobalUsersArr[index];
                 remove(ref(db, 'users/' + userObj.id));
-                speakNaturalHuman("Wiped."); 
+                speakNaturalHuman("Wiped completely."); 
             }																				
         };
 
@@ -1502,6 +1521,7 @@
             if(document.getElementById('accessNodePass')) document.getElementById('accessNodePass').value = "";																				
             document.getElementById('customerDashboard').classList.add('hidden'); document.getElementById('adminDashboard').classList.add('hidden');																				
             loggedInCustomerID = ""; failedAttemptsCount = 0; currentTrackingUserAttempt = ""; activeSelectedChatTargetUserId = ""; globalLiveChatBinaryStreamBase64 = "";
+            spySelectedUserContextSender = ""; spySelectedUserContextReceiver = "";
             const stage = document.getElementById('mainStage'); if(stage) { stage.style.display = 'flex'; stage.classList.remove('activated'); }																				
             if(document.getElementById('loginTerminal')) document.getElementById('loginTerminal').classList.add('hidden');																				
         };
