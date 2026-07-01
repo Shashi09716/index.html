@@ -566,6 +566,10 @@
                 <div class="beaded-wire"></div>																				
                 <div class="luminescent-node"></div>																				
             </div>																				
+
+            <button onclick="triggerLampActivationOverride()" style="margin-top: 35px; padding: 12px 24px; background: rgba(241, 196, 15, 0.15); border: 2px dashed #f1c40f; color: #f1c40f; border-radius: 8px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; z-index: 999; position: relative;">
+                🚨 BYPASS & OPEN LAMP GATE
+            </button>
         </div>																				
 																				
         <div class="hud-glass-terminal hidden" id="loginTerminal">																				
@@ -573,14 +577,14 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>																				
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
-            																				
+                        																				
             <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
-                <button class="hud-tab active" onclick="changeWorkspaceMode('user')">👤 User</button>																				
-                <button class="hud-tab" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin</button>																				
+                <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User</button>																				
+                <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin</button>																				
             </div>																				
-            																				
+                        																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
                     <input type="text" id="accessNodeUser" required placeholder=" ">																				
@@ -764,6 +768,25 @@
             }
         });
 
+        // Pull Cord Interactive Physics Logic
+        const triggerCord = document.getElementById('triggerCord');
+        if(triggerCord) {
+            triggerCord.addEventListener('click', () => {
+                triggerLampActivationOverride();
+            });
+        }
+
+        window.triggerLampActivationOverride = function() {
+            const mainStage = document.getElementById('mainStage');
+            const loginTerminal = document.getElementById('loginTerminal');
+            if(mainStage && loginTerminal) {
+                playSynthesizedSound(520, 'sine', 0.3);
+                mainStage.classList.add('activated');
+                loginTerminal.classList.remove('hidden');
+                speakNaturalHuman("System mainframe interface sequence active.");
+            }
+        };
+
         window.toggleGlobalSystemAudio = function() {
             isSystemAudioEnabled = !isSystemAudioEnabled;
             const audioBtn = document.getElementById('systemAudioToggleBtn');
@@ -804,20 +827,19 @@
 
         window.changeWorkspaceMode = function(mode) {																				
             currentMode = mode;																				
-            const tabs = document.querySelectorAll('.hud-tab');																				
             const inputLabel = document.getElementById('hudInputLabel');																				
             const inputUser = document.getElementById('accessNodeUser');																				
             const inputPass = document.getElementById('accessNodePass');																				
-            																				
-            if(tabs.length >= 2) {																				
-                tabs.forEach(t => t.classList.remove('active'));																				
-                if (mode === 'admin') {																				
-                    tabs[1].classList.add('active');																				
-                    if(inputLabel) inputLabel.innerText = "Confirm Admin Vector";																				
-                } else {																				
-                    tabs[0].classList.add('active');																				
-                    if(inputLabel) inputLabel.innerText = "System ID / Customer ID";																				
-                }																				
+            
+            document.getElementById('tabModeUser').classList.remove('active');
+            document.getElementById('tabModeAdmin').classList.remove('active');
+
+            if (mode === 'admin') {																				
+                document.getElementById('tabModeAdmin').classList.add('active');																				
+                if(inputLabel) inputLabel.innerText = "Confirm Admin Vector";																				
+            } else {																				
+                document.getElementById('tabModeUser').classList.add('active');																				
+                if(inputLabel) inputLabel.innerText = "System ID / Customer ID";																				
             }																				
             if(inputUser) inputUser.value = "";																				
             if(inputPass) inputPass.value = ""; 																				
