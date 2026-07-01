@@ -6,7 +6,7 @@
     <title>Made By SHASHI TIWARI - Pikachu Ultimate Nexus Matrix ⚡</title>																				
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">																				
     <style>																				
-        /* --- DYNAMIC COSMIC GRAPHICS ROOT & INTERFACE CONFIG --- */																				
+        /* --- DYNAMIC BRIGHT CINEMATIC GRAPHICS CSS --- */																				
         :root {
             --lamp-color: #f1c40f;
             --lamp-glow: rgba(241, 196, 15, 0.8);
@@ -23,7 +23,7 @@
             --chat-bg: #222e35;
         }
 
-        /* Light Theme Dynamic Modifiers override toggle classes */
+        /* Light Theme Dynamic Modifiers */
         body.light-theme-active {
             --bg-prime: #e2e8f0;
             --panel-glass: rgba(255, 255, 255, 0.9);
@@ -300,7 +300,7 @@
             box-shadow: 0 0 15px #f1c40f;																				
         }																				
 																				
-        /* --- AUDIO ACCESSIBILITY SWITCH --- */
+        /* --- AUDIO ACCESSIBILITY INTERFACE --- */
         .audio-toggle-switch {
             position: fixed;
             top: 15px;
@@ -805,7 +805,7 @@
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
                     <div class="chat-target-userlist-pane">
-                        <div class="whatsapp-search-box"><input type="text" placeholder="Search contact pipeline..."></div>
+                        <div class="whatsapp-search-box"><input type="text" placeholder="Search contact..."></div>
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
@@ -876,6 +876,7 @@
         let globalLiveChatBinaryStreamBase64 = "";
         
         let spyActiveTargetUserContext = "";
+        let previousChatsLength = 0;
 
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
@@ -949,12 +950,29 @@
             if(loggedInCustomerID) renderCustomerLiveTracker();
         });
 
-        onValue(ref(db, 'chats'), () => {
+        // RE-OPTIMIZED CHAT LISTENER WITH SOUND NOTIFICATION OVERRIDE TRIGGER
+        onValue(ref(db, 'chats'), (snapshot) => {
+            const data = snapshot.val();
+            const allChats = data ? Object.values(data) : [];
+            
+            // Sound and Speech Notification Alert Trigger Logic
+            if(previousChatsLength > 0 && allChats.length > previousChatsLength) {
+                const latestMsg = allChats[allChats.length - 1];
+                // Agar message admin ko bheja gaya hai ya admin dashboard active hai
+                if(latestMsg.sender !== "Shashi2004") {
+                    playSynthesizedSound(587.33, 'sine', 0.15); // Ring tone beep
+                    setTimeout(() => { playSynthesizedSound(880, 'sine', 0.1); }, 100);
+                    speakNaturalHuman("New notification! Database message stream updated.");
+                }
+            }
+            previousChatsLength = allChats.length;
+
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 renderActiveChatConversationLogs();
             }
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
                 renderAdminSpyChatConsoleLogs();
+                renderAdminSpyUserList();
             }
         });
 
@@ -1316,7 +1334,7 @@
                     (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
                 );
                 if(contextConvos.length === 0) {
-                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 Messages end-to-end cloud verified.</div>`;
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 System matrix secure encryption verified.</div>`;
                     return;
                 }
                 wrapper.innerHTML = contextConvos.map(msg => {
@@ -1339,7 +1357,7 @@
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document Stream File Packet", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Document Attachment Stream Node", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
@@ -1363,6 +1381,9 @@
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';																				
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';																				
             document.getElementById('adminSpyChatBlock') ? document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none') : null;
+            if(sectionId === 'spychat') {
+                renderAdminSpyUserList();
+            }
         };
 
         window.loadAdminSubmissions = function(){																				
@@ -1396,7 +1417,10 @@
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
                         <div class="chat-stream-message-container">
                             <div class="spy-intercept-banner">🚨 GLOBAL MONITOR OVERRIDE LAYER ACTIVE</div>
-                            <div class="chat-stream-header-bar" id="spyActiveHeaderTitle">Select Identity Intercept Stream...</div>
+                            <div class="chat-stream-header-bar">
+                                <img id="spyActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
+                                <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle">Select Identity Intercept Stream...</div></div>
+                            </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             <div class="chat-interface-footer-inputs">
                                 <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type encrypted interception transmission string..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
@@ -1471,7 +1495,7 @@
                         </div>																				
                         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">																				
                             <span style="color:var(--text-sub); font-size:0.85rem;">Passkey:</span>
-                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:rgba(0,0,0,0.3); border:1px solid var(--border-glass); color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:120px;">																				
+                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:rgba(0,0,0,0.3); border:1px solid #334155; color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:120px;">																				
                             <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:6px 12px; background:rgba(46,204,113,0.2); border:1px solid #2ecc71; color:#2ecc71; border-radius:6px; font-size:0.75rem; cursor:pointer; font-weight:bold;">APPLY ENFORCED CHANGE</button>																				
                         </div>																				
                     </div>																				
@@ -1479,29 +1503,48 @@
             }).join('');																				
         };
 
-        // SPY INTERCEPT USER PROFILE SYNCHRONIZER
+        // SPY INTERCEPT USER PROFILE LIST GENERATION LOGIC WITH "NEW" NOTIFICATION LABEL
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
-            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="color:var(--text-sub); padding:15px; font-size:0.8rem;">No active user signatures trace logs.</div>`; return; }
+            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="color:var(--text-sub); padding:15px; font-size:0.8rem;">No active user signatures.</div>`; return; }
             
-            listPane.innerHTML = cachedGlobalUsersArr.map(user => {
-                const isSelected = (spyActiveTargetUserContext === user.id);
-                return `
-                    <div class="chat-user-item-node ${isSelected?'active-chat-target':''}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
-                        <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name">${user.clientName}</div>
-                            <div class="whatsapp-user-id">@${user.id}</div>
+            get(ref(db, 'chats')).then((snapshot) => {
+                const data = snapshot.val();
+                const chats = data ? Object.values(data) : [];
+
+                listPane.innerHTML = cachedGlobalUsersArr.map(user => {
+                    const isSelected = (spyActiveTargetUserContext === user.id);
+                    
+                    // Check if latest message in database from this user is unread by admin
+                    const userMessages = chats.filter(m => m.sender === user.id);
+                    const hasNewMessage = userMessages.length > 0;
+                    const notificationBadge = (hasNewMessage && !isSelected) ? `<span style="background:#00a884; color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:20px; font-family:'Orbitron'; font-weight:bold; margin-left:auto;">NEW</span>` : "";
+
+                    return `
+                        <div class="chat-user-item-node ${isSelected?'active-chat-target':''}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
+                            <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
+                            <div class="whatsapp-user-info" style="display:flex; align-items:center; width:100%;">
+                                <div>
+                                    <div class="whatsapp-user-name">${user.clientName}</div>
+                                    <div class="whatsapp-user-id">@${user.id}</div>
+                                </div>
+                                ${notificationBadge}
+                            </div>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    `;
+                }).join('');
+            });
         };
 
         window.setAdminSpyTargetConversationTrack = function(userId) {
             spyActiveTargetUserContext = userId;
             const headerTitle = document.getElementById('spyActiveHeaderTitle');
-            if(headerTitle) headerTitle.innerText = `监控 TOTAL PIPELINE ACCESS STREAM TARGET: ${userId.toUpperCase()}`;
+            const spyHeaderAvatar = document.getElementById('spyActiveHeaderAvatarNode');
+            
+            if(headerTitle) headerTitle.innerText = userId;
+            const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
+            if(spyHeaderAvatar) spyHeaderAvatar.src = (matchingProfile && matchingProfile.avatar) ? matchingProfile.avatar : defaultAvatarSvg;
+            
             renderAdminSpyChatConsoleLogs();
             renderAdminSpyUserList();
         };
@@ -1512,29 +1555,48 @@
                 const data = snapshot.val();
                 const chats = data ? Object.values(data) : [];
                 
-                // CRITICAL CORRECTION: Intercept all message packets where this specific targeted user is involved!
+                // Intercept all tracking messages involving this targeted user
                 const trackingConvo = chats.filter(m => 
+                    (m.sender === spyActiveTargetUserContext && m.receiver === "Shashi2004") || 
+                    (m.sender === "Shashi2004" && m.receiver === spyActiveTargetUserContext) ||
                     (m.sender === spyActiveTargetUserContext) || (m.receiver === spyActiveTargetUserContext)
                 );
                 
                 if(trackingConvo.length === 0) {
-                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">Void network intercept packet log stream.</div>`;
+                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 No dynamic chat strings intercepted.</div>`;
                     return;
                 }
                 stack.innerHTML = trackingConvo.map(m => {
                     const isMyResponse = (m.sender === "Shashi2004");
+                    const directionalCss = isMyResponse ? 'bubble-outgoing' : 'bubble-incoming';
+                    
+                    // Style optimization to make it look exactly like customer's WhatsApp interface
+                    let customStyle = "";
+                    if(isMyMessageFromAdminGlobal(m.sender)) {
+                        customStyle = "background: #005c4b; color: #e9edef; align-self: flex-end; border-top-right-radius: 0;";
+                    } else {
+                        customStyle = "background: #202c33; color: #e9edef; align-self: flex-start; border-top-left-radius: 0;";
+                    }
+
+                    let mediaElementHTML = m.mediaPayload ? (m.mediaPayload.startsWith("data:image") ? `<img src="${m.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">` : `<div style="margin-top:6px;"><a href="${m.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`) : "";
+                    
                     return `
-                        <div class="bubble-msg-wrapper ${isMyResponse?'bubble-outgoing':'bubble-incoming'}" style="${isMyResponse?'background:#5c007a; color:#fff;':''}">
+                        <div class="bubble-msg-wrapper" style="${customStyle}">
                             <div>
-                                <small style="color:#00f2fe; display:block; font-size:0.7rem; font-family:monospace; margin-bottom:2px;">Node: ${m.sender} ➔ ${m.receiver}</small>
+                                <small style="color:#00f2fe; display:block; font-size:0.65rem; font-family:monospace; margin-bottom:2px;">From: ${m.sender}</small>
                                 ${m.textBody}
                             </div>
+                            ${mediaElementHTML}
                             <div class="whatsapp-time">${m.timestamp}</div>
                         </div>`;
                 }).join('');
                 stack.scrollTop = stack.scrollHeight;
             });
         };
+
+        function isMyMessageFromAdminGlobal(senderId) {
+            return senderId.toLowerCase() === "shashi2004";
+        }
 
         window.dispatchAdminSpyInterceptionMsg = function() {
             const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
@@ -1592,7 +1654,7 @@
             let userObj = cachedGlobalUsersArr[index];
             const nextStatus = userObj.status === 'active' ? 'deactivated' : 'active';
             set(ref(db, `users/${userObj.id}/status`), nextStatus);
-            speakNaturalHuman("Profile sequence locked.");
+            speakNaturalHuman("Node toggled.");
         };																				
 																				
         window.wipeUserPermanently = function(index) {																				
