@@ -363,7 +363,7 @@
             align-items: flex-start;																				
             background: rgba(1, 3, 8, 0.98);																				
             z-index: 100;																				
-            padding: 10px;																				
+            padding: 20px;																				
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -373,25 +373,25 @@
             background: rgba(5, 11, 22, 0.85);																				
             border: 1px solid rgba(0, 242, 254, 0.2);																				
             border-top: 4px solid #00f2fe;																				
-            padding: 20px 15px;																				
-            border-radius: 16px;																				
+            padding: 30px 25px;																				
+            border-radius: 20px;																				
             width: 100%;																				
-            max-width: 1000px;																				
+            max-width: 1100px;																				
             box-shadow: 0 40px 100px rgba(0, 242, 254, 0.08);																				
             backdrop-filter: blur(40px);
-            margin-top: 40px;
+            margin-top: 20px;
             margin-bottom: 20px;																				
         }																				
 																				
-        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; gap: 10px; }																				
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.3rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
-        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.3rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
+        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; gap: 10px; }																				
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.6rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.6rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
 																				
         /* --- MODULE SHIFT CONTROLLER TABS --- */
         .workspace-channel-selector {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
             background: rgba(0,0,0,0.4);
             padding: 6px;
             border-radius: 12px;
@@ -399,12 +399,12 @@
         }
         .channel-tab-btn {
             flex: 1;
-            padding: 12px 8px;
+            padding: 14px 10px;
             background: transparent;
             border: none;
             color: #64748b;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: bold;
             cursor: pointer;
             border-radius: 8px;
@@ -412,7 +412,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         .channel-tab-btn.active {
             background: rgba(0, 242, 254, 0.12);
@@ -420,67 +420,72 @@
             border: 1px solid rgba(0, 242, 254, 0.25);
         }
 
-        .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }																				
+        .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }																				
         .full-width-field { grid-column: span 2; }																				
 																				
-        .abort-btn { padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 6px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.75rem; transition: 0.3s; }																				
+        .abort-btn { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }																				
+        .abort-btn:hover { background: #c0392b; box-shadow: 0 0 15px rgba(231,76,60,0.5); }
         
-        .ai-helper-banner { padding: 12px; margin-top: 15px; border-radius: 10px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.85rem; }																				
-        .helpline-trigger-btn { width: 100%; padding: 14px; background: #0b1528; border: 1px solid rgba(0,242,254,0.3); border-radius: 10px; color: #00f2fe; font-weight: bold; margin-top: 12px; cursor: pointer; font-size: 0.95rem; font-family: 'Orbitron'; }																				
+        .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
+        .helpline-trigger-btn { width: 100%; padding: 16px; background: #0b1528; border: 1px solid rgba(0,242,254,0.3); border-radius: 12px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1rem; font-family: 'Orbitron'; transition: 0.3s; }																				
+        .helpline-trigger-btn:hover { background: #12223f; box-shadow: 0 0 20px rgba(0,242,254,0.3); }
+
+        .search-terminal-input { width: 100%; padding: 16px; background: #050914; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: #fff; font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
-        .search-terminal-input { width: 100%; padding: 14px; background: #050914; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; color: #fff; font-size: 0.95rem; font-family: 'Orbitron'; outline: none; }																				
+        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
 																				
-        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }																				
-        
-        .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 15px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; text-align: left; overflow: hidden; word-break: break-all;}																				
-        .hud-data-card p { color: #94a3b8; font-size: 0.85rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
+        .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; overflow: hidden; word-break: break-all;}																				
+        .hud-data-card p { color: #94a3b8; font-size: 0.9rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
         .hud-data-card b { color: white; display: inline-block; width: 90px; flex-shrink: 0;}																				
-        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }																				
+        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; }																				
 																				
-        .status-badge { font-family: 'Orbitron'; font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; font-weight: bold; display: inline-block; }																				
+        .status-badge { font-family: 'Orbitron'; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; font-weight: bold; display: inline-block; }																				
 																				
-        .wipe-card-btn { width: 100%; padding: 9px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.75rem; border-radius: 6px; cursor: pointer; margin-top: 5px; }																				
-																				
+        .wipe-card-btn { width: 100%; padding: 10px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; }																				
+        .wipe-card-btn:hover { background: rgba(231,76,60,0.25); color: #fff; }
+
         .hidden { display: none !important; }																				
         .text-left { text-align: left; }																				
 																				
-        .admin-category-navbar { display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 12px; margin-bottom: 20px; }																				
-        .admin-nav-tab { flex: 1; padding: 10px 4px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-radius: 6px; transition: 0.3s; text-align: center; }																				
+        .admin-category-navbar { display: flex; gap: 8px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 12px; margin-bottom: 25px; }																				
+        .admin-nav-tab { flex: 1; padding: 12px 6px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }																				
         .admin-nav-tab.active { background: rgba(241,196,15,0.12); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }																				
 																				
-        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 12px; padding: 15px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; }
-        .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.85rem; }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; }
+        .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
         /* --- UPGRADED CHAT APPLICATION SYSTEM --- */
         .chat-io-grid-matrix {
             display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 15px;
-            height: 480px;
+            grid-template-columns: 260px 1fr;
+            gap: 20px;
+            height: 520px;
             background: rgba(1, 4, 10, 0.6);
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid rgba(0, 242, 254, 0.15);
-            padding: 10px;
+            padding: 15px;
         }
         .chat-target-userlist-pane {
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            padding: 8px;
+            gap: 8px;
+            padding: 10px;
             overflow-y: auto;
         }
         .chat-user-item-node {
-            padding: 10px;
+            padding: 12px;
             background: rgba(255,255,255,0.02);
-            border-radius: 6px;
+            border-radius: 8px;
             color: #94a3b8;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             word-break: break-all;
+            transition: 0.3s;
         }
+        .chat-user-item-node:hover { background: rgba(255,255,255,0.05); }
         .chat-user-item-node.active-chat-target {
             background: rgba(0, 242, 254, 0.12);
             color: #00f2fe;
@@ -490,48 +495,50 @@
             display: flex;
             flex-direction: column;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
         }
         .chat-stream-header-bar {
             background: rgba(0, 242, 254, 0.05);
-            padding: 10px 15px;
+            padding: 14px 20px;
             border-bottom: 1px solid rgba(0, 242, 254, 0.15);
             color: #00f2fe;
             font-family: 'Orbitron';
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             word-break: break-all;
         }
         .chat-messages-scroll-stack {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         .bubble-msg-wrapper {
-            max-width: 85%;
-            padding: 10px 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 0.9rem;
             color: white;
             word-break: break-word;
         }
         .bubble-outgoing { background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
         .bubble-incoming { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.05); align-self: flex-start; border-bottom-left-radius: 2px; }
-        .chat-media-attachment-box { max-width: 100%; max-height: 120px; border-radius: 6px; margin-top: 6px; display: block; }
-        .chat-interface-footer-inputs { padding: 8px; background: rgba(0,0,0,0.5); display: flex; gap: 6px; align-items: center; }
+        .chat-media-attachment-box { max-width: 100%; max-height: 150px; border-radius: 8px; margin-top: 8px; display: block; }
+        .chat-interface-footer-inputs { padding: 10px; background: rgba(0,0,0,0.5); display: flex; gap: 8px; align-items: center; }
 
         /* --- MOBILE SCREEN OVERRIDES --- */
         @media (max-width: 768px) { 
             .form-grid-layout, #policyCardsStack, .chat-io-grid-matrix { grid-template-columns: 1fr !important; } 
             .full-width-field { grid-column: span 1; } 
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.75); }
-            .chat-io-grid-matrix { height: 540px; }
+            .chat-io-grid-matrix { height: 580px; }
             .chat-target-userlist-pane { max-height: 110px; flex-direction: row; overflow-x: auto; overflow-y: hidden; }
-            .chat-user-item-node { white-space: nowrap; padding: 8px 12px; }
+            .chat-user-item-node { white-space: nowrap; padding: 10px 14px; }
             .audio-toggle-switch { top: 10px; right: 10px; padding: 6px 10px; font-size: 0.7rem; }
+            .dashboard-panel-core { padding: 10px; }
+            .hud-container-panel { padding: 20px 15px; margin-top: 40px; }
         }																				
     </style>																				
 </head>																				
@@ -575,17 +582,17 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>																				
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
-                        																				
+                																				
             <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User</button>																				
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin</button>																				
             </div>																				
-                        																				
+                																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
-                    <input type="text" id="accessNodeUser" required placeholder=" ">																				
+                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">																				
                     <label id="hudInputLabel">System ID / Customer ID</label>																				
                     <div class="neon-glow-underline"></div>																				
                 </div>																				
@@ -605,7 +612,7 @@
                 <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
-            
+            																				
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn active" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
                 <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
@@ -614,7 +621,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid rgba(0,242,254,0.15);">																				
                 </div>																				
-                                                                                                
+                                                                                                                
                 <div class="form-grid-layout">																				
                     <div class="hud-input-cluster">																				
                         <input type="text" id="regNo" placeholder=" ">																				
@@ -632,24 +639,24 @@
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
                     <div class="hud-input-cluster">																				
-                        <input type="text" id="contactNo" required placeholder=" ">																				
+                        <input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');">																				
                         <label>Contact Number *</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                                                                                                    
+                                                                                                                    
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="email" id="email" placeholder=" ">																				
                         <label>Email Address (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-    
+                                    
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-    
+                                    
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="textarea" id="notes" placeholder=" " style="display:none;"></input>																				
                         <textarea id="notesReal" placeholder=""></textarea>																				
@@ -657,7 +664,7 @@
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
                 </div>																				
-                                                                                                
+                                                                                                                
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>																				
             </div>
 
@@ -691,7 +698,7 @@
                 <h2 class="neon-green-text">Shashi Mainframe</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>																				
             </div>																				
-                        																				
+                                                                        
             <div class="admin-category-navbar">																				
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
@@ -820,7 +827,7 @@
             const inputLabel = document.getElementById('hudInputLabel');																				
             const inputUser = document.getElementById('accessNodeUser');																				
             const inputPass = document.getElementById('accessNodePass');																				
-            
+            																				
             document.getElementById('tabModeUser').classList.remove('active');
             document.getElementById('tabModeAdmin').classList.remove('active');
 
@@ -833,6 +840,23 @@
             }																				
             if(inputUser) inputUser.value = "";																				
             if(inputPass) inputPass.value = ""; 																				
+        };
+
+        // Automatic focus routing logic upon valid identity signature detection
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            if(!u) return;
+
+            if(currentMode === 'admin') {
+                if(u === "Shashi2004") {
+                    document.getElementById('accessNodePass').focus();
+                }
+            } else {
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch) {
+                    document.getElementById('accessNodePass').focus();
+                }
+            }
         };
 
         window.checkAutoLogin = function() {																				
@@ -950,7 +974,8 @@
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
             if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
-            
+            if(contact.length !== 10) { alert("⚠️ Contact must be exactly 10 digits."); return; }
+
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
                 id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
@@ -960,7 +985,7 @@
             }).then(() => {
                 speakNaturalHuman("Transmitted successfully.");																				
                 alert("✔ Form Submitted Successfully!");																				
-                
+                																				
                 document.getElementById('regNo').value = "";																				
                 document.getElementById('insurerName').value = "";																				
                 document.getElementById('policyNo').value = "";																				
@@ -1014,7 +1039,7 @@
         window.postTrackerComment = function(policyId) {
             const txtNode = document.getElementById(`trackerCommentInput_${policyId}`);
             if(!txtNode || !txtNode.value.trim()) return;
-            
+            																				
             const targetCommentRef = push(ref(db, `policies/${policyId}/customerComments`));
             set(targetCommentRef, {
                 text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
@@ -1036,7 +1061,7 @@
             const btnChat = document.getElementById('btnChannelChat');
             const viewUpload = document.getElementById('customerUploadInterfaceBlock');
             const viewChat = document.getElementById('customerChatInterfaceBlock');
-            
+            																				
             if(channelId === 'upload') {
                 btnUpload.classList.add('active'); btnChat.classList.remove('active');
                 viewUpload.classList.remove('hidden'); viewChat.classList.add('hidden');
@@ -1051,14 +1076,14 @@
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
-            
+            																				
             const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            
+            																				
             if(prospectiveTargets.length === 0) {
                 targetContainer.innerHTML = `<div style="color:#475569; font-size:0.75rem; padding:5px; text-align:center;">Void Matrix logs.</div>`;
                 return;
             }
-            
+            																				
             targetContainer.innerHTML = prospectiveTargets.map(user => {
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
                 return `
@@ -1067,7 +1092,7 @@
                     </div>
                 `;
             }).join('');
-            
+            																				
             if(!activeSelectedChatTargetUserId && prospectiveTargets.length > 0) {
                 setOperationalChatTargetId(prospectiveTargets[0].id);
             } else {
@@ -1082,7 +1107,7 @@
             if(titleNode && matchingProfile) {
                 titleNode.innerText = `💬 SECURE PIPELINE: ${matchingProfile.clientName.toUpperCase()}`;
             }
-            
+            																				
             document.querySelectorAll('.chat-user-item-node').forEach(node => {
                 if(node.innerText.includes(`[${userId}]`)) node.classList.add('active-chat-target');
                 else node.classList.remove('active-chat-target');
@@ -1093,25 +1118,25 @@
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper) return;
-            
+            																				
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 const masterLogs = data ? Object.values(data) : [];
-                
+                																				
                 const contextConvos = masterLogs.filter(msg => 
                     (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
                     (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
                 );
-                
+                																				
                 if(contextConvos.length === 0) {
                     wrapper.innerHTML = `<div style="color:#475569; font-size:0.8rem; margin:auto; font-family:'Orbitron';">Pipeline clear.</div>`;
                     return;
                 }
-                
+                																				
                 wrapper.innerHTML = contextConvos.map(msg => {
                     const isMyMessage = (msg.sender === loggedInCustomerID);
                     const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
-                    
+                    																				
                     let mediaElementHTML = "";
                     if(msg.mediaPayload) {
                         if(msg.mediaPayload.startsWith("data:image")) {
@@ -1120,7 +1145,7 @@
                             mediaElementHTML = `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:${isMyMessage?'#000':'#00f2fe'};">📥 Download Data Asset</a></div>`;
                         }
                     }
-                    
+                    																				
                     return `
                         <div class="bubble-msg-wrapper ${directionalCss}">
                             <div>${msg.textBody}</div>
@@ -1135,11 +1160,11 @@
         window.dispatchMatrixChatMessage = function() {
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
-            
+            																				
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
             if(!activeSelectedChatTargetUserId) return;
-            
+            																				
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
@@ -1174,31 +1199,31 @@
             if(!container) return;																				
             																				
             let htmlContent = `																				
-                <div id="idCreationBlock" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 15px;">																				
-                    <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 12px; font-size: 1rem;">⚡ ACCOUNT COMPILER</h3>																				
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px;">																				
-                        <input type="text" id="newClientName" placeholder="Client Name" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
-                        <input type="date" id="newClientDOB" placeholder="DOB" style="padding: 12px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
-                        <input type="text" id="newClientContact" placeholder="Contact No" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
-                        <input type="text" id="newUserPass" placeholder="Set Access Password" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
+                <div id="idCreationBlock" style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 20px;">																				
+                    <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 15px; font-size: 1.1rem;">⚡ ACCOUNT COMPILER</h3>																				
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 15px;">																				
+                        <input type="text" id="newClientName" placeholder="Client Name" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
+                        <input type="date" id="newClientDOB" placeholder="DOB" style="padding: 14px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
+                        <input type="text" id="newClientContact" inputmode="tel" maxlength="10" placeholder="Contact No" oninput="this.value=this.value.replace(/[^0-9]/g,'');" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
+                        <input type="text" id="newUserPass" placeholder="Set Access Password" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
                     </div>																				
-                    <button onclick="createNewCustomerNode()" style="width:100%; padding: 12px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 6px; font-weight: bold; font-family:'Orbitron'; font-size:0.85rem;">COMPILE USER</button>																				
+                    <button onclick="createNewCustomerNode()" style="width:100%; padding: 14px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 8px; font-weight: bold; font-family:'Orbitron'; font-size:0.9rem; cursor:pointer;">COMPILE USER</button>																				
                 </div>																				
-                                																				
-                <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 15px;">																				
-                    <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">																				
-                        <h4 style="color: #00f2fe; font-size: 0.85rem; margin-bottom: 8px; font-family:'Orbitron';">⚙️ MASTER ADMIN VECTOR</h4>																				
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">																				
-                            <input type="text" value="Shashi2004" disabled style="padding: 8px; background: #050914; border: 1px solid #334155; color: white; border-radius: 6px; font-family:'Orbitron'; font-size:0.8rem; width:100px;">																				
-                            <input type="text" value="Tolu@Molu" disabled style="padding: 8px; background: #050914; border: 1px solid #334155; color: #f1c40f; border-radius: 6px; font-family:'Orbitron'; font-size:0.8rem; width:100px;">																				
+                                                                                                
+                <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 20px;">																				
+                    <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">																				
+                        <h4 style="color: #00f2fe; font-size: 0.95rem; margin-bottom: 10px; font-family:'Orbitron';">⚙️ MASTER ADMIN VECTOR</h4>																				
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">																				
+                            <input type="text" value="Shashi2004" disabled style="padding: 10px; background: #050914; border: 1px solid #334155; color: white; border-radius: 8px; font-family:'Orbitron'; font-size:0.85rem; width:120px;">																				
+                            <input type="text" value="Tolu@Molu" disabled style="padding: 10px; background: #050914; border: 1px solid #334155; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size:0.85rem; width:120px;">																				
                         </div>																				
                     </div>																				
-                    <h4 style="color: #64748b; font-size: 0.8rem; margin-bottom: 10px; font-family:'Orbitron';">REGISTERED SYSTEM CLIENTS:</h4>																				
-                    <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 10px;"></div>																				
+                    <h4 style="color: #64748b; font-size: 0.9rem; margin-bottom: 12px; font-family:'Orbitron';">REGISTERED SYSTEM CLIENTS:</h4>																				
+                    <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 12px;"></div>																				
                 </div>																				
 																				
                 <div id="policyWorkspaceBlock" style="display:none; width: 100%;">																				
-                    <div style="margin-bottom: 15px;">																				
+                    <div style="margin-bottom: 20px;">																				
                         <input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan records..." oninput="filterCardsEngine()">																				
                     </div>																				
                     <div id="policyCardsStack"></div>																				
@@ -1217,11 +1242,13 @@
             const userPass = document.getElementById('newUserPass').value.trim();																				
             																				
             if(!clientName || !contact || !userPass) { alert("⚠️ Metrics missing."); return; }																				
+            if(contact.length !== 10) { alert("⚠️ Contact must be exactly 10 digits."); return; }
+
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
 																				
             if(cachedGlobalUsersArr.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ Duplicated."); return; }																				
-            
+            																				
             set(ref(db, 'users/' + userId), {
                 id: userId, pass: userPass, status: 'active', clientName, dob, contact, adminAlert: false
             }).then(() => {
@@ -1251,17 +1278,17 @@
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
                 return `																				
-                    <div style="background: rgba(255,255,255,0.01); padding: 12px; border-radius: 8px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:8px; overflow:hidden;">																				
+                    <div style="background: rgba(255,255,255,0.01); padding: 14px; border-radius: 10px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:10px; overflow:hidden;">																				
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
-                            <div><span style="color: white; font-size: 0.85rem;">ID: <b style="color: #1abc9c;">${user.id}</b></span></div>																				
+                            <div><span style="color: white; font-size: 0.9rem;">ID: <b style="color: #1abc9c;">${user.id}</b></span></div>																				
                             <div style="display: flex; gap: 8px;">																				
-                                <button onclick="toggleUserNodeSwitch(${index})" style="padding: 4px 8px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 4px; font-size: 0.7rem;">${live ? 'LOCK' : 'OPEN'}</button>																				
-                                <button onclick="wipeUserPermanently(${index})" style="color: #475569; background:none; border:none; text-decoration: underline; font-size: 0.75rem;">Wipe</button>																				
+                                <button onclick="toggleUserNodeSwitch(${index})" style="padding: 6px 12px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 6px; font-size: 0.75rem; cursor:pointer;">${live ? 'LOCK' : 'OPEN'}</button>																				
+                                <button onclick="wipeUserPermanently(${index})" style="color: #475569; background:none; border:none; text-decoration: underline; font-size: 0.8rem; cursor:pointer;">Wipe</button>																				
                             </div>																				
                         </div>																				
                         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">																				
-                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:4px 8px; border-radius:4px; font-size:0.8rem; width:120px;">																				
-                            <button onclick="updateClientPasswordDirect(${index})" style="padding:4px 8px; background:rgba(241,196,15,0.15); border:1px solid #f1c40f; color:#f1c40f; border-radius:4px; font-size:0.7rem;">SAVE</button>																				
+                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:140px;">																				
+                            <button onclick="updateClientPasswordDirect(${index})" style="padding:6px 12px; background:rgba(241,196,15,0.15); border:1px solid #f1c40f; color:#f1c40f; border-radius:6px; font-size:0.75rem; cursor:pointer;">SAVE</button>																				
                         </div>																				
                     </div>																				
                 `;																				
@@ -1307,7 +1334,7 @@
                                <option value="waiting" ${d.status === 'waiting' ? 'selected' : ''}>⏸ Waiting</option>																				
                          </select>																				
                          <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Feedback..." style="padding:6px; font-size:0.8rem; background:#020408; width:100%; margin-bottom:8px; color:#fff; border:1px solid #334155; border-radius:4px; outline:none;">																				
-                         <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold; font-size:0.75rem;">TRANSMIT</button>																				
+                         <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold; font-size:0.75rem; cursor:pointer;">TRANSMIT</button>																				
                       </div>																				
                       <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge</button>																				
                     </div>																				
