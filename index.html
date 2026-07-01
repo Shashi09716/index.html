@@ -3,7 +3,7 @@
 <head>																				
     <meta charset="UTF-8">																				
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">																				
-    <title>Made By SHASHI - Pikachu Ultimate Nexus ⚡</title>																				
+    <title>Made By SHASHI - Pikachu Ultimate Nexus Matrix ⚡</title>																				
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">																				
     <style>																				
         /* --- DYNAMIC BRIGHT CINEMATIC GRAPHICS CSS --- */																				
@@ -11,6 +11,8 @@
             --lamp-color: #f1c40f;
             --lamp-glow: rgba(241, 196, 15, 0.8);
             --lamp-shadow: rgba(241, 196, 15, 0.3);
+            --neon-cyan: #00f2fe;
+            --whatsapp-green: #2ecc71;
         }
 
         * {																				
@@ -20,7 +22,7 @@
         }																				
 																				
         body {																				
-            background: #020408;																				
+            background: #040814;																				
             height: 100vh;																				
             display: flex;																				
             justify-content: center;																				
@@ -50,7 +52,7 @@
             width: 50vw;
             height: 200vh;
             filter: blur(140px);
-            opacity: 0.18;
+            opacity: 0.15;
             border-radius: 50%;
             animation: smokeDrift 15s infinite alternate ease-in-out;
         }
@@ -78,21 +80,19 @@
             display: flex;																				
             justify-content: center;																				
             align-items: center;																				
-            transition: all 1.4s cubic-bezier(0.19, 1, 0.22, 1);																				
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);																				
             z-index: 2;
             overflow: hidden;
         }																				
 																				
         @keyframes dynamicColorCycle {
             0%, 100% { --lamp-color: #f1c40f; --lamp-glow: rgba(241, 196, 15, 0.8); --lamp-shadow: rgba(241, 196, 15, 0.3); }
-            20% { --lamp-color: #00f2fe; --lamp-glow: rgba(0, 242, 254, 0.8); --lamp-shadow: rgba(0, 242, 254, 0.3); }
-            40% { --lamp-color: #e74c3c; --lamp-glow: rgba(231, 76, 60, 0.8); --lamp-shadow: rgba(231, 76, 60, 0.3); }
-            60% { --lamp-color: #2ecc71; --lamp-glow: rgba(46, 204, 113, 0.8); --lamp-shadow: rgba(46, 204, 113, 0.3); }
-            80% { --lamp-color: #9b59b6; --lamp-glow: rgba(155, 89, 182, 0.8); --lamp-shadow: rgba(155, 89, 182, 0.3); }
+            33% { --lamp-color: #00f2fe; --lamp-glow: rgba(0, 242, 254, 0.8); --lamp-shadow: rgba(0, 242, 254, 0.3); }
+            66% { --lamp-color: #2ecc71; --lamp-glow: rgba(46, 204, 113, 0.8); --lamp-shadow: rgba(46, 204, 113, 0.3); }
         }
 
         .cinema-stage.activated {
-            animation: dynamicColorCycle 3s infinite linear;
+            animation: dynamicColorCycle 4s infinite linear;
         }
 
         /* --- THE SHUTTER ROBOTIC LAMP --- */																				
@@ -103,11 +103,11 @@
             align-items: center;																				
             z-index: 10;																				
             transform: translateX(0) scale(1.05);																				
-            transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1);																				
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);																				
         }																				
 																				
         .cinema-stage.activated .cyber-lamp-core {																				
-            transform: translateX(380px) scale(0.95);																				
+            transform: translateX(360px) scale(0.9);																				
         }																				
 																				
         .glowing-hologram-brand {																				
@@ -122,7 +122,7 @@
 																				
         .cinema-stage.activated .glowing-hologram-brand {																				
             color: var(--lamp-color);																				
-            text-shadow: 0 0 20px var(--lamp-glow), 0 0 40px rgba(255,255,255,0.2);																				
+            text-shadow: 0 0 20px var(--lamp-glow);																				
         }																				
 																				
         .metallic-shutter-head {																				
@@ -132,14 +132,14 @@
             border-radius: 100px 100px 40px 40px;																				
             position: relative;																				
             border: 3px solid #243147;																				
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8), inset 0 4px 15px rgba(255,255,255,0.05);																				
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);																				
             z-index: 5;																				
             overflow: hidden;																				
         }																				
 																				
         .cinema-stage.activated .metallic-shutter-head {																				
             border-color: var(--lamp-color);																				
-            box-shadow: 0 0 50px var(--lamp-shadow), inset 0 0 20px rgba(255,255,255,0.1);																				
+            box-shadow: 0 0 40px var(--lamp-shadow);																				
         }																				
 																				
         .mechanical-gate {																				
@@ -151,16 +151,13 @@
             border: 2px solid #2c3b54;																				
             transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;																				
             z-index: 6;																				
-            display: flex;																				
-            justify-content: center;																				
-            align-items: center;																				
         }																				
 																				
         .gate-left { left: 45px; border-radius: 12px 0 0 12px; }																				
         .gate-right { right: 45px; border-radius: 0 12px 12px 0; }																				
 																				
-        .cinema-stage.activated .gate-left { transform: translateX(-45px); opacity: 0.1; }																				
-        .cinema-stage.activated .gate-right { transform: translateX(45px); opacity: 0.1; }																				
+        .cinema-stage.activated .gate-left { transform: translateX(-55px); opacity: 0.1; }																				
+        .cinema-stage.activated .gate-right { transform: translateX(55px); opacity: 0.1; }																				
 																				
         .blinding-core-light {																				
             position: absolute;																				
@@ -207,7 +204,6 @@
             border-radius: 50% / 25%;																				
             border: 2px solid #334155;																				
             z-index: 4;																				
-            box-shadow: 0 15px 35px rgba(0,0,0,0.9);																				
         }																				
 																				
         .volumetric-beam {																				
@@ -215,7 +211,7 @@
             top: 120px;																				
             width: 100px;																				
             height: 0;																				
-            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.15) 45%, transparent 100%);																				
+            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.1) 45%, transparent 100%);																				
             clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);																				
             z-index: 2;																				
             pointer-events: none;																				
@@ -224,10 +220,9 @@
         }																				
 																				
         .cinema-stage.activated .volumetric-beam {																				
-            opacity: 0.25;																				
-            height: 420px;																				
-            width: 650px;																				
-            filter: drop-shadow(0 0 40px var(--lamp-glow));																				
+            opacity: 0.22;																				
+            height: 450px;																				
+            width: 700px;																				
         }																				
 																				
         .quantum-cord {																				
@@ -253,41 +248,9 @@
             background: radial-gradient(circle, #fff, #f1c40f);																				
             border-radius: 50%;																				
             margin-left: -10px;																				
-            box-shadow: 0 0 15px #f1c40f, 0 5px 10px rgba(0,0,0,0.6);																				
+            box-shadow: 0 0 15px #f1c40f;																				
         }																				
 																				
-        .cinema-stage.activated .luminescent-node {																				
-            background: var(--lamp-color);																				
-            box-shadow: 0 0 25px var(--lamp-color), 0 0 40px var(--lamp-glow);																				
-        }																				
-																				
-        /* --- AUDIO ACCESSIBILITY INTERFACE --- */
-        .audio-toggle-switch {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 9999;
-            background: rgba(3, 7, 14, 0.85);
-            border: 1px solid rgba(241, 196, 15, 0.3);
-            border-radius: 12px;
-            padding: 8px 14px;
-            color: #f1c40f;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(241, 196, 15, 0.1);
-            transition: all 0.3s ease;
-        }
-        .audio-toggle-switch.audio-disabled {
-            color: #64748b;
-            border-color: rgba(255,255,255,0.08);
-            box-shadow: none;
-        }
-
         /* --- HUD GLASS TERMINAL BOX --- */																				
         .hud-glass-terminal {																				
             position: absolute;																				
@@ -295,8 +258,8 @@
             transform: translateX(-50%) scale(0.9);																				
             width: 90%;
             max-width: 440px;																				
-            background: rgba(3, 7, 14, 0.75);																				
-            border: 1px solid rgba(255, 255, 255, 0.12);																				
+            background: rgba(3, 7, 20, 0.8);																				
+            border: 1px solid rgba(255, 255, 255, 0.1);																				
             border-left: 5px solid #f1c40f;																				
             padding: 30px 20px;																				
             border-radius: 24px;																				
@@ -325,7 +288,7 @@
         .hud-input-cluster { position: relative; margin-bottom: 25px; width: 100%; }																				
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 16px 14px; background: rgba(1,3,7,0.5); border: 1px solid rgba(255,255,255,0.03); border-radius: 10px; color: white; font-size: 1rem; outline: none; transition: 0.3s; }																				
         .hud-input-cluster textarea { height: 90px; resize: none; }																				
-        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: #050914; border: 1px solid rgba(241,196,15,0.2); cursor: pointer; }																				
+        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: #050914; border: 1px solid rgba(241,196,15,0.2); }																				
 																				
         .hud-input-cluster label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #475569; pointer-events: none; transition: 0.3s; font-size: 0.9rem; }																				
         .hud-input-cluster textarea ~ label { top: 20px; transform: none; }																				
@@ -339,10 +302,9 @@
         .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
         .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241, 196, 15, 0.7); transform: translateY(-2px); }																				
 																				
-        /* Ambient weapon overlays */																				
         .muzzle-flash-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0; transition: opacity 0.05s ease; }																				
-        .flash-gun { background: rgba(231, 76, 60, 0.5); box-shadow: inset 0 0 80px red; }																				
-        .flash-top { background: rgba(243, 156, 18, 0.65); box-shadow: inset 0 0 120px rgba(231,76,60,1); }																				
+        .flash-gun { background: rgba(231, 76, 60, 0.4); box-shadow: inset 0 0 80px red; }																				
+        .flash-top { background: rgba(243, 156, 18, 0.5); box-shadow: inset 0 0 120px rgba(231,76,60,1); }																				
 																				
         .screen-shake { animation: heavyShake 0.4s infinite; }																				
         @keyframes heavyShake {																				
@@ -387,7 +349,6 @@
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.6rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.6rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
 																				
-        /* --- MODULE SHIFT CONTROLLER TABS --- */
         .workspace-channel-selector {
             display: flex;
             gap: 12px;
@@ -424,16 +385,15 @@
         .full-width-field { grid-column: span 2; }																				
 																				
         .abort-btn { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }																				
-        .abort-btn:hover { background: #c0392b; box-shadow: 0 0 15px rgba(231,76,60,0.5); }
+        .abort-btn:hover { background: #c0392b; }
         
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         .helpline-trigger-btn { width: 100%; padding: 16px; background: #0b1528; border: 1px solid rgba(0,242,254,0.3); border-radius: 12px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1rem; font-family: 'Orbitron'; transition: 0.3s; }																				
-        .helpline-trigger-btn:hover { background: #12223f; box-shadow: 0 0 20px rgba(0,242,254,0.3); }
 
         .search-terminal-input { width: 100%; padding: 16px; background: #050914; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: #fff; font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
-																				
+        
         .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; overflow: hidden; word-break: break-all;}																				
         .hud-data-card p { color: #94a3b8; font-size: 0.9rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
         .hud-data-card b { color: white; display: inline-block; width: 90px; flex-shrink: 0;}																				
@@ -441,9 +401,8 @@
 																				
         .status-badge { font-family: 'Orbitron'; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; font-weight: bold; display: inline-block; }																				
 																				
-        .wipe-card-btn { width: 100%; padding: 10px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; }																				
-        .wipe-card-btn:hover { background: rgba(231,76,60,0.25); color: #fff; }
-
+        .wipe-card-btn { width: 100%; padding: 10px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; border-radius: 8px; cursor: pointer; margin-top: 5px; }																				
+																				
         .hidden { display: none !important; }																				
         .text-left { text-align: left; }																				
 																				
@@ -454,58 +413,90 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; }
         .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- UPGRADED CHAT APPLICATION SYSTEM --- */
+        /* --- WHATSAPP APP MODEL SYSTEM STYLE --- */
         .chat-io-grid-matrix {
             display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 20px;
-            height: 520px;
-            background: rgba(1, 4, 10, 0.6);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            padding: 15px;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            height: 550px;
+            background: #0b141a;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
         }
         .chat-target-userlist-pane {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 14px;
+            background: #111b21;
+            border-right: 1px solid rgba(255,255,255,0.1);
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding: 10px;
             overflow-y: auto;
         }
-        .chat-user-item-node {
-            padding: 12px;
-            background: rgba(255,255,255,0.02);
+        .whatsapp-search-box {
+            padding: 10px;
+            background: #111b21;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .whatsapp-search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            background: #202c33;
+            border: none;
             border-radius: 8px;
-            color: #94a3b8;
+            color: #fff;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .chat-user-item-node {
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: #e9edef;
             cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            word-break: break-all;
-            transition: 0.3s;
+            transition: background 0.2s;
         }
-        .chat-user-item-node:hover { background: rgba(255,255,255,0.05); }
-        .chat-user-item-node.active-chat-target {
-            background: rgba(0, 242, 254, 0.12);
-            color: #00f2fe;
-            border: 1px solid rgba(0, 242, 254, 0.3);
+        .chat-user-item-node:hover { background: #202c33; }
+        .chat-user-item-node.active-chat-target { background: #2a3942; }
+        
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #64748b;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
         }
+        .whatsapp-user-info { flex: 1; overflow: hidden; }
+        .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: ellipsis; }
+        .whatsapp-user-id { font-size: 0.75rem; color: #8696a0; font-family: monospace; }
+
         .chat-stream-message-container {
             display: flex;
             flex-direction: column;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 14px;
-            overflow: hidden;
+            background: #222e35;
+            position: relative;
+        }
+        /* Whatsapp Doodle Ambient Effect override */
+        .chat-stream-message-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image: radial-gradient(#fff 1px, transparent 1px), radial-gradient(#fff 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            pointer-events: none;
         }
         .chat-stream-header-bar {
-            background: rgba(0, 242, 254, 0.05);
-            padding: 14px 20px;
-            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
-            color: #00f2fe;
-            font-family: 'Orbitron';
-            font-size: 0.9rem;
-            word-break: break-all;
+            background: #202c33;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
         }
         .chat-messages-scroll-stack {
             flex: 1;
@@ -513,33 +504,84 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
+            z-index: 2;
         }
         .bubble-msg-wrapper {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 14px;
+            max-width: 65%;
+            padding: 8px 12px;
+            border-radius: 8px;
             font-size: 0.9rem;
-            color: white;
-            word-break: break-word;
+            line-height: 1.3;
+            position: relative;
+            box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
         }
-        .bubble-outgoing { background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
-        .bubble-incoming { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.05); align-self: flex-start; border-bottom-left-radius: 2px; }
-        .chat-media-attachment-box { max-width: 100%; max-height: 150px; border-radius: 8px; margin-top: 8px; display: block; }
-        .chat-interface-footer-inputs { padding: 10px; background: rgba(0,0,0,0.5); display: flex; gap: 8px; align-items: center; }
+        .bubble-outgoing { background: #005c4b; color: #e9edef; align-self: flex-end; border-top-right-radius: 0; }
+        .bubble-incoming { background: #202c33; color: #e9edef; align-self: flex-start; border-top-left-radius: 0; }
+        
+        .whatsapp-time {
+            font-size: 0.7rem;
+            color: #8696a0;
+            text-align: right;
+            margin-top: 4px;
+            display: block;
+        }
 
-        /* --- MOBILE SCREEN OVERRIDES --- */
-        @media (max-width: 768px) { 
-            .form-grid-layout, #policyCardsStack, .chat-io-grid-matrix { grid-template-columns: 1fr !important; } 
-            .full-width-field { grid-column: span 1; } 
-            .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.75); }
-            .chat-io-grid-matrix { height: 580px; }
-            .chat-target-userlist-pane { max-height: 110px; flex-direction: row; overflow-x: auto; overflow-y: hidden; }
-            .chat-user-item-node { white-space: nowrap; padding: 10px 14px; }
-            .audio-toggle-switch { top: 10px; right: 10px; padding: 6px 10px; font-size: 0.7rem; }
-            .dashboard-panel-core { padding: 10px; }
-            .hud-container-panel { padding: 20px 15px; margin-top: 40px; }
-        }																				
+        .chat-interface-footer-inputs { padding: 10px 15px; background: #202c33; display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
+        .whatsapp-input-field { flex: 1; padding: 10px 15px; background: #2a3942; border: none; border-radius: 8px; color: #fff; outline: none; font-size: 0.9rem; }
+        
+        .whatsapp-circle-btn {
+            width: 38px;
+            height: 48px;
+            background: transparent;
+            border: none;
+            color: #8696a0;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .whatsapp-circle-btn:hover { color: #d1d7db; }
+
+        /* --- EMOJI DASHBOARD DRAWER POPUP --- */
+        .emoji-matrix-drawer {
+            position: absolute;
+            bottom: 65px;
+            left: 15px;
+            background: #233138;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px;
+            width: 280px;
+            height: 200px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            z-index: 999;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        .emoji-node-item {
+            font-size: 1.4rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .emoji-node-item:hover { transform: scale(1.2); }
+
+        /* Profile Uploader UI on Customer space */
+        .avatar-upload-mini-pane {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.02);
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+        }
     </style>																				
 </head>																				
 <body oncontextmenu="return false">																				
@@ -556,14 +598,14 @@
     <div class="muzzle-flash-overlay flash-gun" id="gunFlashNode"></div>																				
     <div class="muzzle-flash-overlay flash-top" id="topFlashNode"></div>																				
 																				
-    <div class="cinema-stage" id="mainStage">																				
-        <div class="cyber-lamp-core" id="lampDevice" onclick="triggerLampActivationOverride()" style="cursor: pointer;">																				
+    <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">																				
+        <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">																				
             <div class="glowing-hologram-brand">Made By SHASHI</div>																				
             																				
             <div class="metallic-shutter-head">																				
                 <div class="blinding-core-light"></div>																				
-                <div class="mechanical-gate gate-left"><div class="internal-gear"></div></div>																				
-                <div class="mechanical-gate gate-right"><div class="internal-gear"></div></div>																				
+                <div class="mechanical-gate gate-left"></div>																				
+                <div class="mechanical-gate gate-right"></div>																				
             </div>																				
             																				
             <div class="hydraulic-stem"><div class="laser-conduit"></div></div>																				
@@ -577,19 +619,19 @@
             </div>																				
         </div>																				
 																				
-        <div class="hud-glass-terminal hidden" id="loginTerminal">																				
+        <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">																				
             <div class="hud-top-bar">																				
                 <div class="hud-status-chip">AI CORE: LIVE</div>																				
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
-                																				
+                        																				
             <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
-                <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User</button>																				
-                <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin</button>																				
+                <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>																				
+                <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>																				
             </div>																				
-                																				
+                        																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">																				
@@ -612,16 +654,24 @@
                 <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
-            																				
+            
+            <div class="avatar-upload-mini-pane">
+                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
+                <div>
+                    <label style="color:#00f2fe; font-size:0.85rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;">📷 Set Profile Photo Layout</label>
+                    <input type="file" accept="image/*" onchange="uploadUserProfileAvatarEngine(event)" style="font-size:0.75rem; color:#8696a0; background:transparent; border:none;">
+                </div>
+            </div>
+
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn active" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
+                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board (WhatsApp Model)</button>
             </div>
 
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid rgba(0,242,254,0.15);">																				
                 </div>																				
-                                                                                                                
+                                                                                                
                 <div class="form-grid-layout">																				
                     <div class="hud-input-cluster">																				
                         <input type="text" id="regNo" placeholder=" ">																				
@@ -643,48 +693,60 @@
                         <label>Contact Number *</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                                                                                                                    
+                                                                                                    
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="email" id="email" placeholder=" ">																				
                         <label>Email Address (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                                    
+    
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                                    
+    
                     <div class="hud-input-cluster full-width-field">																				
-                        <input type="textarea" id="notes" placeholder=" " style="display:none;"></input>																				
-                        <textarea id="notesReal" placeholder=""></textarea>																				
+                        <textarea id="notesReal" placeholder=" "></textarea>																				
                         <label>Additional System Notes (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
                 </div>																				
-                                                                                                                
+                                                                                                
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>																				
             </div>
 
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
-                    <div class="chat-target-userlist-pane" id="chatTargetContainerView">
+                    <div class="chat-target-userlist-pane">
+                        <div class="whatsapp-search-box">
+                            <input type="text" placeholder="Search or start new chat...">
+                        </div>
+                        <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
-                        <div class="chat-stream-header-bar" id="chatActiveUserHeaderNode">Select Target Identity...</div>
-                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
+                        <div class="chat-stream-header-bar">
+                            <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
+                            <div class="whatsapp-user-info">
+                                <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Target Node...</div>
+                            </div>
                         </div>
+                        
+                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
+                        
+                        <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
+
                         <div class="chat-interface-footer-inputs">
+                            <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
-                            <button onclick="document.getElementById('chatMediaFileInput').click()" style="padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(0, 242, 254, 0.3); color:#00f2fe; border-radius:8px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">📎 File</button>
-                            <input type="text" id="chatCoreMessageTextInput" placeholder="Type message..." style="flex:1; padding:10px; background:#02050b; border:1px solid #1a2c47; border-radius:8px; color:#fff; outline:none; font-size:0.85rem;" onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
-                            <button onclick="dispatchMatrixChatMessage()" style="padding:10px 16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; border-radius:8px; color:#000; font-family:'Orbitron'; font-weight:bold; cursor:pointer; font-size:0.8rem;">SEND</button>
+                            <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
+                            <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
+                            <button onclick="dispatchMatrixChatMessage()" style="padding:10px 18px; background:#00a884; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer; font-size:0.8rem;">SEND</button>
                         </div>
                     </div>
                 </div>
-                <div id="chatAttachmentStatusFeedback" style="margin-top:6px; font-size:0.8rem; color:#f1c40f;"></div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; font-family:monospace; padding-left:15px;"></div>
             </div>
 
             <div class="ai-helper-banner">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
@@ -695,10 +757,10 @@
     <div class="dashboard-panel-core hidden" id="adminDashboard">																				
         <div class="hud-container-panel" style="text-align: left;">																				
             <div class="panel-header-flex">																				
-                <h2 class="neon-green-text">Shashi Mainframe</h2>																				
+                <h2 class="neon-green-text">Shashi Mainframe Core</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>																				
             </div>																				
-                                                                        
+                        																				
             <div class="admin-category-navbar">																				
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
@@ -718,10 +780,6 @@
             apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
             authDomain: "pikachu-nexus.firebaseapp.com",
             projectId: "pikachu-nexus",
-            storageBucket: "pikachu-nexus.firebasestorage.app",
-            messagingSenderId: "973998699980",
-            appId: "1:973998699980:web:56aee182c0f07613e69969",
-            measurementId: "G-HB72261M8V",
             databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
         };
 
@@ -742,7 +800,37 @@
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
 
-        // Realtime Users Synchronization
+        const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
+        const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
+
+        // Initialize Emoji Drawer Grid
+        setTimeout(() => {
+            const box = document.getElementById('systemEmojiMatrixBoxNode');
+            if(box) {
+                box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
+            }
+        }, 1000);
+
+        window.insertEmojiIntoChatField = function(emoji) {
+            const chatInput = document.getElementById('chatCoreMessageTextInput');
+            if(chatInput) {
+                chatInput.value += emoji;
+                chatInput.focus();
+            }
+        };
+
+        window.toggleEmojiDrawerOverlayPanel = function(event) {
+            event.stopPropagation();
+            const box = document.getElementById('systemEmojiMatrixBoxNode');
+            if(box) box.classList.toggle('hidden');
+        };
+
+        document.addEventListener('click', () => {
+            const box = document.getElementById('systemEmojiMatrixBoxNode');
+            if(box) box.classList.add('hidden');
+        });
+
+        // Realtime Users Synchronizer
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalUsersArr = data ? Object.values(data) : [];
@@ -752,9 +840,15 @@
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 initializeCrossLinkChatPanel();
             }
+            if(loggedInCustomerID) {
+                const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
+                if(myProfile && myProfile.avatar) {
+                    document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                }
+            }
         });
 
-        // Realtime Policies Synchronization
+        // Realtime Policies Synchronizer
         onValue(ref(db, 'policies'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalPolicyArr = data ? Object.values(data) : [];
@@ -773,14 +867,29 @@
             }
         });
 
+        window.uploadUserProfileAvatarEngine = function(event) {
+            const file = event.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Avatar = e.target.result;
+                    set(ref(db, `users/${loggedInCustomerID}/avatar`), base64Avatar).then(() => {
+                        document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
+                        speakNaturalHuman("Profile avatar sync complete.");
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
         window.triggerLampActivationOverride = function() {
             const mainStage = document.getElementById('mainStage');
             const loginTerminal = document.getElementById('loginTerminal');
-            if(mainStage && loginTerminal) {
+            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
                 playSynthesizedSound(520, 'sine', 0.3);
                 mainStage.classList.add('activated');
                 loginTerminal.classList.remove('hidden');
-                speakNaturalHuman("System mainframe interface sequence active.");
+                speakNaturalHuman("System mainframe interface active.");
             }
         };
 
@@ -827,7 +936,7 @@
             const inputLabel = document.getElementById('hudInputLabel');																				
             const inputUser = document.getElementById('accessNodeUser');																				
             const inputPass = document.getElementById('accessNodePass');																				
-            																				
+            
             document.getElementById('tabModeUser').classList.remove('active');
             document.getElementById('tabModeAdmin').classList.remove('active');
 
@@ -842,7 +951,6 @@
             if(inputPass) inputPass.value = ""; 																				
         };
 
-        // Automatic focus routing logic upon valid identity signature detection
         window.verifyInputIdentityProgress = function() {
             const u = document.getElementById('accessNodeUser').value.trim();
             if(!u) return;
@@ -935,7 +1043,6 @@
                     } else if (failedAttemptsCount >= 3) {																				
                         speakNaturalHuman("Security lock active.");																				
                         userMatch.status = 'attack_locked';																				
-                        userMatch.adminAlert = true;
                         set(ref(db, 'users/' + userMatch.id), userMatch);
                         																				
                         document.body.classList.add('screen-shake');																				
@@ -958,7 +1065,7 @@
                     } else if (type === 'chat') {
                         globalLiveChatBinaryStreamBase64 = e.target.result;
                         const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-                        if(statusBox) statusBox.innerText = `📎 Attached: ${fileInput.files[0].name}`;
+                        if(statusBox) statusBox.innerText = `📎 File payload attached: ${fileInput.files[0].name}`;
                     }
                 };
                 reader.readAsDataURL(fileInput.files[0]);
@@ -974,8 +1081,7 @@
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
             if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
-            if(contact.length !== 10) { alert("⚠️ Contact must be exactly 10 digits."); return; }
-
+            
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
                 id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
@@ -985,7 +1091,7 @@
             }).then(() => {
                 speakNaturalHuman("Transmitted successfully.");																				
                 alert("✔ Form Submitted Successfully!");																				
-                																				
+                
                 document.getElementById('regNo').value = "";																				
                 document.getElementById('insurerName').value = "";																				
                 document.getElementById('policyNo').value = "";																				
@@ -1039,7 +1145,7 @@
         window.postTrackerComment = function(policyId) {
             const txtNode = document.getElementById(`trackerCommentInput_${policyId}`);
             if(!txtNode || !txtNode.value.trim()) return;
-            																				
+            
             const targetCommentRef = push(ref(db, `policies/${policyId}/customerComments`));
             set(targetCommentRef, {
                 text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
@@ -1061,7 +1167,7 @@
             const btnChat = document.getElementById('btnChannelChat');
             const viewUpload = document.getElementById('customerUploadInterfaceBlock');
             const viewChat = document.getElementById('customerChatInterfaceBlock');
-            																				
+            
             if(channelId === 'upload') {
                 btnUpload.classList.add('active'); btnChat.classList.remove('active');
                 viewUpload.classList.remove('hidden'); viewChat.classList.add('hidden');
@@ -1076,25 +1182,29 @@
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
-            																				
+            
             const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            																				
-            if(prospectiveTargets.length === 0) {
-                targetContainer.innerHTML = `<div style="color:#475569; font-size:0.75rem; padding:5px; text-align:center;">Void Matrix logs.</div>`;
-                return;
-            }
-            																				
-            targetContainer.innerHTML = prospectiveTargets.map(user => {
+            
+            // Auto add Shashi Support Node inside Whatsapp contact panel
+            const masterAdminPseudoUser = { id: "Shashi2004", clientName: "Mainframe Admin (Support)", avatar: "" };
+            const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
+            
+            targetContainer.innerHTML = fullTargetList.map(user => {
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
+                const userPhoto = user.avatar ? user.avatar : defaultAvatarSvg;
                 return `
                     <div class="chat-user-item-node ${isActiveCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        🟢 ${user.clientName} [${user.id}]
+                        <img class="whatsapp-avatar" src="${userPhoto}">
+                        <div class="whatsapp-user-info">
+                            <div class="whatsapp-user-name">${user.clientName}</div>
+                            <div class="whatsapp-user-id">@${user.id}</div>
+                        </div>
                     </div>
                 `;
             }).join('');
-            																				
-            if(!activeSelectedChatTargetUserId && prospectiveTargets.length > 0) {
-                setOperationalChatTargetId(prospectiveTargets[0].id);
+            
+            if(!activeSelectedChatTargetUserId && fullTargetList.length > 0) {
+                setOperationalChatTargetId(fullTargetList[0].id);
             } else {
                 renderActiveChatConversationLogs();
             }
@@ -1102,14 +1212,20 @@
 
         window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId;
-            const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
             const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            if(titleNode && matchingProfile) {
-                titleNode.innerText = `💬 SECURE PIPELINE: ${matchingProfile.clientName.toUpperCase()}`;
+            const headerAvatar = document.getElementById('chatActiveHeaderAvatarNode');
+            
+            if(userId === "Shashi2004") {
+                if(titleNode) titleNode.innerText = "Shashi Mainframe Admin (Support)";
+                if(headerAvatar) headerAvatar.src = defaultAvatarSvg;
+            } else {
+                const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
+                if(titleNode && matchingProfile) titleNode.innerText = matchingProfile.clientName;
+                if(headerAvatar && matchingProfile) headerAvatar.src = matchingProfile.avatar ? matchingProfile.avatar : defaultAvatarSvg;
             }
-            																				
+            
             document.querySelectorAll('.chat-user-item-node').forEach(node => {
-                if(node.innerText.includes(`[${userId}]`)) node.classList.add('active-chat-target');
+                if(node.innerHTML.includes(`@${userId}`)) node.classList.add('active-chat-target');
                 else node.classList.remove('active-chat-target');
             });
             renderActiveChatConversationLogs();
@@ -1118,38 +1234,39 @@
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper) return;
-            																				
+            
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 const masterLogs = data ? Object.values(data) : [];
-                																				
+                
                 const contextConvos = masterLogs.filter(msg => 
                     (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
                     (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
                 );
-                																				
+                
                 if(contextConvos.length === 0) {
-                    wrapper.innerHTML = `<div style="color:#475569; font-size:0.8rem; margin:auto; font-family:'Orbitron';">Pipeline clear.</div>`;
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:#182229; padding:6px 12px; border-radius:6px;">🔒 Messages are end-to-end encrypted.</div>`;
                     return;
                 }
-                																				
+                
                 wrapper.innerHTML = contextConvos.map(msg => {
                     const isMyMessage = (msg.sender === loggedInCustomerID);
                     const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
-                    																				
+                    
                     let mediaElementHTML = "";
                     if(msg.mediaPayload) {
                         if(msg.mediaPayload.startsWith("data:image")) {
                             mediaElementHTML = `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">`;
                         } else {
-                            mediaElementHTML = `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:${isMyMessage?'#000':'#00f2fe'};">📥 Download Data Asset</a></div>`;
+                            mediaElementHTML = `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`;
                         }
                     }
-                    																				
+                    
                     return `
                         <div class="bubble-msg-wrapper ${directionalCss}">
                             <div>${msg.textBody}</div>
                             ${mediaElementHTML}
+                            <div class="whatsapp-time">${msg.timestamp}</div>
                         </div>
                     `;
                 }).join('');
@@ -1160,21 +1277,21 @@
         window.dispatchMatrixChatMessage = function() {
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
-            																				
+            
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
             if(!activeSelectedChatTargetUserId) return;
-            																				
+            
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "Sent file layout payload stream.", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Document File Attachment Payload", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
                 const statusBox = document.getElementById('chatAttachmentStatusFeedback');
                 if(statusBox) statusBox.innerText = "";
-                playSynthesizedSound(880, 'sine', 0.08);
+                playSynthesizedSound(880, 'sine', 0.05);
                 renderActiveChatConversationLogs();
             });
         };
@@ -1203,13 +1320,13 @@
                     <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 15px; font-size: 1.1rem;">⚡ ACCOUNT COMPILER</h3>																				
                     <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 15px;">																				
                         <input type="text" id="newClientName" placeholder="Client Name" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
-                        <input type="date" id="newClientDOB" placeholder="DOB" style="padding: 14px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
+                        <input type="date" id="newClientDOB" style="padding: 14px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
                         <input type="text" id="newClientContact" inputmode="tel" maxlength="10" placeholder="Contact No" oninput="this.value=this.value.replace(/[^0-9]/g,'');" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
                         <input type="text" id="newUserPass" placeholder="Set Access Password" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; font-family:'Orbitron'; font-size: 0.95rem;">																				
                     </div>																				
                     <button onclick="createNewCustomerNode()" style="width:100%; padding: 14px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 8px; font-weight: bold; font-family:'Orbitron'; font-size:0.9rem; cursor:pointer;">COMPILE USER</button>																				
                 </div>																				
-                                                                                                
+                                																				
                 <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 14px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 20px;">																				
                     <div style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">																				
                         <h4 style="color: #00f2fe; font-size: 0.95rem; margin-bottom: 10px; font-family:'Orbitron';">⚙️ MASTER ADMIN VECTOR</h4>																				
@@ -1248,9 +1365,9 @@
             const userId = clientName + lastFourDigits;																				
 																				
             if(cachedGlobalUsersArr.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ Duplicated."); return; }																				
-            																				
+            
             set(ref(db, 'users/' + userId), {
-                id: userId, pass: userPass, status: 'active', clientName, dob, contact, adminAlert: false
+                id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", adminAlert: false
             }).then(() => {
                 speakNaturalHuman("Customer configured.");																				
                 loadAdminSubmissions();
