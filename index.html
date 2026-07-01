@@ -24,11 +24,11 @@
             --input-bg: rgba(1, 3, 7, 0.5);
         }
 
-        /* Light Theme Dynamic Modifiers - High Visibility Fix */
+        /* Light Theme Dynamic Modifiers - Ultra Clear Contrast Fix */
         body.light-theme-active {
-            --bg-prime: #f1f5f9;
-            --panel-glass: rgba(255, 255, 255, 0.95);
-            --border-glass: rgba(15, 23, 42, 0.2);
+            --bg-prime: #f8fafc;
+            --panel-glass: rgba(255, 255, 255, 0.98);
+            --border-glass: rgba(15, 23, 42, 0.25);
             --text-main: #0f172a;
             --text-sub: #334155;
             --chat-bg: #efeae2;
@@ -100,6 +100,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
+        /* --- SMOKE ANIMATION DELAY CONTROL FOR SLOW MOVEMENT --- */
         .smoke-container {
             position: fixed;
             inset: 0;
@@ -116,9 +117,9 @@
             width: 50vw;
             height: 200vh;
             filter: blur(140px);
-            opacity: 0.12;
+            opacity: 0.13;
             border-radius: 50%;
-            animation: smokeDrift 25s infinite alternate ease-in-out; /* Smooth Movement Fix */
+            animation: smokeDrift 25s infinite alternate ease-in-out;
         }
 
         .smoke-left {
@@ -156,9 +157,10 @@
         }
 
         .cinema-stage.activated {
-            animation: dynamicColorCycle 8s infinite linear; /* Controlled Motion Frame */
+            animation: dynamicColorCycle 7s infinite linear;
         }
 
+        /* --- THE SHUTTER LAMP CONFIG --- */																				
         .cyber-lamp-core {																				
             position: relative;																				
             display: flex;																				
@@ -321,6 +323,7 @@
             color: #0f172a;
             border-color: #0f172a;
         }
+        .audio-toggle-switch.audio-disabled { color: #64748b; border-color: rgba(255,255,255,0.08); box-shadow: none; }
 
         /* --- HUD GLASS TERMINAL BOX --- */																				
         .hud-glass-terminal {																				
@@ -373,7 +376,7 @@
         .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
         .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241, 196, 15, 0.7); transform: translateY(-2px); }																				
 																				
-        /* --- DASHBOARDS PACKED COMPILER ENGINES --- */																				
+        /* --- DASHBOARD SYSTEM SCALE UPGRADE (FULL SCREEN LOOK) --- */																				
         .dashboard-panel-core {																				
             position: fixed;																				
             inset: 0;																				
@@ -395,7 +398,7 @@
             padding: 30px 25px;																				
             border-radius: 20px;																				
             width: 100%;																				
-            max-width: 1200px; /* Pura dashboard bhara hua dikhane ke liye scale badhaya */																				
+            max-width: 1200px; /* Dashboard structural space full screen look */																				
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);																				
             backdrop-filter: blur(40px);
             margin-top: 10px;
@@ -469,7 +472,7 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.4); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.2); text-align: center; cursor: pointer; }
         .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- WHATSAPP MODEL MATRIX --- */
+        /* --- MODERN GRAPHIC MATRIX CHAT LAYOUT --- */
         .chat-io-grid-matrix {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -595,7 +598,22 @@
         .avatar-upload-mini-pane { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--border-glass); margin-bottom: 20px; }
         .spy-intercept-banner { padding: 8px 12px; background: #e74c3c; color: white; font-weight: bold; font-size: 0.85rem; text-align: center; font-family: 'Orbitron'; display: flex; justify-content: space-between; align-items: center;}
         
-        /* --- GIANT COMPILER BLOCK --- */
+        /* --- DYNAMIC CLEAR CHAT WIPE OPTION --- */
+        .clear-chat-btn {
+            background: rgba(231, 76, 60, 0.25);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .clear-chat-btn:hover { background: #e74c3c; color: #fff; }
+
+        /* --- GIANT COMPILER LAYOUT BLOCK --- */
         .giant-compiler-layout {
             background: rgba(0,0,0,0.25); 
             padding: 30px 25px; 
@@ -630,27 +648,8 @@
             outline: none;
             transition: border-color 0.3s;
         }
-        .giant-compiler-input:focus {
-            border-color: #1abc9c;
-        }
-        body.light-theme-active .giant-compiler-input {
-            background: #ffffff;
-            color: #0f172a;
-        }
-
-        .clear-chat-btn {
-            background: rgba(231, 76, 60, 0.2);
-            border: 1px solid #e74c3c;
-            color: #e74c3c;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            font-family: 'Orbitron';
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .clear-chat-btn:hover { background: #e74c3c; color: #fff; }
+        .giant-compiler-input:focus { border-color: #1abc9c; }
+        body.light-theme-active .giant-compiler-input { background: #ffffff; color: #0f172a; }
 
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
@@ -714,12 +713,13 @@
                                         																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
-                    <input type="text" id="accessNodeUser" required placeholder=" ">																				
+                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">																				
                     <label id="hudInputLabel">System ID / Customer ID</label>																				
                     <div class="neon-glow-underline"></div>																				
                 </div>																				
                 <div class="hud-input-cluster">																				
-                    <input type="password" id="accessNodePass" required placeholder=" ">																				
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">																				
+                    <label>Secure Access Password Key</label>																				
                     <div class="neon-glow-underline"></div>																				
                 </div>																				
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>																				
@@ -803,7 +803,7 @@
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
-                        <div class="spy-intercept-banner" style="background:#00a884;">
+                        <div class="spy-intercept-banner" style="background: #00a884;">
                             <span id="chatActiveUserHeaderNode">Select Contact Pipeline...</span>
                             <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Wipe Chat</button>
                         </div>
@@ -868,7 +868,7 @@
         let activeCustomerWorkspaceChannel = "upload";
         let activeSelectedChatTargetUserId = "";
         let globalLiveChatBinaryStreamBase64 = "";
-                
+        
         let spyActiveTargetUserContext = "";
         let previousChatsLength = 0;
 
@@ -880,6 +880,7 @@
 
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
 
+        // Toggle Theme Dynamic Color Architecture
         window.executeCosmicThemeToggle = function() {
             const bodyNode = document.body;
             const toggleLabel = document.getElementById('themeToggleBtnLabel');
@@ -915,6 +916,7 @@
             if(box) box.classList.add('hidden');
         });
 
+        // Dynamic Realtime Firebase Streams Tracking Loops
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalUsersArr = data ? Object.values(data) : [];
@@ -970,7 +972,7 @@
                     const base64Avatar = e.target.result;
                     set(ref(db, `users/${loggedInCustomerID}/avatar`), base64Avatar).then(() => {
                         document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
-                        speakNaturalHuman("Avatar synchronized successfully.");
+                        speakNaturalHuman("Avatar synchronized.");
                     });
                 };
                 reader.readAsDataURL(file);
@@ -992,9 +994,11 @@
             isSystemAudioEnabled = !isSystemAudioEnabled;
             const audioBtn = document.getElementById('systemAudioToggleBtn');
             if(isSystemAudioEnabled) {
+                audioBtn.classList.remove('audio-disabled');
                 audioBtn.innerHTML = `<span>🔊 SOUND: ON</span>`;
                 speakNaturalHuman("Audio tracking initialized.");
             } else {
+                audioBtn.classList.add('audio-disabled');
                 audioBtn.innerHTML = `<span>🔇 SOUND: OFF</span>`;
                 if('speechSynthesis' in window) window.speechSynthesis.cancel();
             }
@@ -1042,6 +1046,30 @@
             }																				
             if(inputUser) inputUser.value = "";																				
             if(inputPass) inputPass.value = ""; 																				
+        };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            if(!u) return;
+            if(currentMode === 'admin') {
+                if(u === "Shashi2004") document.getElementById('accessNodePass').focus();
+            } else {
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch) document.getElementById('accessNodePass').focus();
+            }
+        };
+
+        window.checkAutoLogin = function() {																				
+            const u = document.getElementById('accessNodeUser').value.trim();																				
+            const p = document.getElementById('accessNodePass').value.trim();																				
+            if(!u || !p) return;																				
+																				
+            if(currentMode === 'admin') {																				
+                if(u === "Shashi2004" && p === "Tolu@Molu") executeClusterLogin(null);																				
+            } else {																				
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());																				
+                if(userMatch && String(userMatch.pass) === String(p)) executeClusterLogin(null);																				
+            }																				
         };
 
         window.executeClusterLogin = function(event) {																				
@@ -1121,7 +1149,7 @@
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
             if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
-                        
+            
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
                 id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
@@ -1267,7 +1295,7 @@
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document Stream", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Document Stream Packet Node", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
@@ -1276,10 +1304,11 @@
             });
         };
 
+        // Powerful Clear Chat Matrix Method
         window.clearAllConversationsLogs = function() {
-            if(confirm("Structural Wipe: Pure Chat aur history clear karein?")) {
+            if(confirm("Structural Wipe: Pure Chat aur records database se permanent clear karein?")) {
                 remove(ref(db, 'chats')).then(() => {
-                    alert("🗑 Chats successfully deleted from Firebase Mainframe!");
+                    alert("🗑 Chats cleared successfully from Mainframe!");
                     renderActiveChatConversationLogs();
                 });
             }
@@ -1332,12 +1361,12 @@
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
                         <div class="chat-stream-message-container">
                             <div class="spy-intercept-banner">
-                                <span>🚨 INTERCEPT STREAM: <b id="spyActiveHeaderTitle">Select Target</b></span>
+                                <span>🚨 MONITOR CHAT LAYER: <b id="spyActiveHeaderTitle">Select Identity</b></span>
                                 <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Purge Storage</button>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             <div class="chat-interface-footer-inputs">
-                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Reply as System Administration..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
+                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type transmission response..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
                                 <button onclick="dispatchAdminSpyInterceptionMsg()" style="padding:10px 18px; background:#9b59b6; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">REPLY</button>
                             </div>
                         </div>
@@ -1360,7 +1389,7 @@
             const userId = clientName + lastFourDigits;																				
             
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "" }).then(() => {
-                alert("Identity nodes structured."); loadAdminSubmissions();
+                alert("Identity nodes compiled."); loadAdminSubmissions();
             });																				
         };
 
@@ -1377,12 +1406,12 @@
                 if(oldId !== targetNewId) {
                     remove(ref(db, `users/${oldId}`)).then(() => {
                         set(ref(db, `users/${targetNewId}`), currentProfileData).then(() => {
-                            alert("✔ Identity details fully customized!");
+                            alert("✔ Credentials Updated Successfully!");
                         });
                     });
                 } else {
                     set(ref(db, `users/${oldId}`), currentProfileData).then(() => {
-                        alert("✔ Password update synchronized!");
+                        alert("✔ Passkey Structure Updated!");
                     });
                 }
             });
@@ -1390,7 +1419,7 @@
 
         window.renderUserControlPanel = function() {																				
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;																				
-            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">No accounts found.</p>`; return; }																				
+            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">No blocks found.</p>`; return; }																				
             
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
@@ -1398,7 +1427,7 @@
                     <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:10px; display:flex; flex-direction:column; border:1px solid var(--border-glass); gap:10px;">																				
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
                             <div>
-                                <span style="color:var(--text-sub); font-size:0.85rem; display:block;">System ID</span>
+                                <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Customer System ID</span>
                                 <input type="text" id="userInlineIdInput_${index}" value="${user.id}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:var(--text-main); padding:6px 10px; border-radius:6px; font-weight:bold;">
                             </div>																				
                             <div style="display:flex; gap:8px; align-items:center; margin-top:15px;">																				
@@ -1407,9 +1436,9 @@
                             </div>																				
                         </div>																				
                         <div>																				
-                            <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Secure Passkey</span>
+                            <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Secure Password Access Key</span>
                             <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#00f2fe; padding:6px 10px; border-radius:6px; font-weight:bold; width:100%; margin-bottom:6px;">																				
-                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; border-radius:6px; cursor:pointer; font-weight:bold; font-family:'Orbitron'; font-size:0.75rem; width:100%;">APPLY CHANGES</button>																				
+                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; border-radius:6px; cursor:pointer; font-weight:bold; font-family:'Orbitron'; font-size:0.75rem; width:100%;">APPLY ENFORCED CHANGE</button>																				
                         </div>																				
                     </div>																				
                 `;																				
@@ -1418,7 +1447,7 @@
 
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
-            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div>No signatures.</div>`; return; }
+            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div>No signatures active.</div>`; return; }
             
             listPane.innerHTML = cachedGlobalUsersArr.map(user => {
                 const isSelected = (spyActiveTargetUserContext === user.id);
@@ -1449,7 +1478,7 @@
                 const trackingConvo = chats.filter(m => m.sender === spyActiveTargetUserContext || m.receiver === spyActiveTargetUserContext);
                 
                 if(trackingConvo.length === 0) {
-                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 No conversations logged.</div>`;
+                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 No dynamic strings intercepted.</div>`;
                     return;
                 }
                 stack.innerHTML = trackingConvo.map(m => {
