@@ -9,26 +9,26 @@
         /* --- DYNAMIC BRIGHT CINEMATIC GRAPHICS CSS --- */																				
         :root {
             --lamp-color: #f1c40f;
-            --lamp-glow: rgba(241, 196, 15, 0.8);
-            --lamp-shadow: rgba(241, 196, 15, 0.3);
+            --lamp-glow: #f1c40f;
+            --lamp-shadow: rgba(241, 196, 15, 0.65);
             --neon-cyan: #00f2fe;
             --whatsapp-green: #00a884;
             --admin-purple: #9b59b6;
             /* Dark Theme Parameters default */
             --bg-prime: #02050e;
-            --panel-glass: rgba(4, 9, 22, 0.9);
-            --border-glass: rgba(255, 255, 255, 0.12);
+            --panel-glass: rgba(4, 9, 22, 0.92);
+            --border-glass: rgba(0, 242, 254, 0.25);
             --text-main: #ffffff;
             --text-sub: #94a3b8;
-            --chat-bg: #111b21;
-            --input-bg: rgba(1, 3, 7, 0.5);
+            --chat-bg: #0b141a;
+            --input-bg: rgba(1, 3, 7, 0.6);
         }
 
-        /* Light Theme Dynamic Modifiers - Ultra Clear Contrast Fix */
+        /* Light Theme Dynamic Modifiers - Classic High Visibility Contrast */
         body.light-theme-active {
             --bg-prime: #f8fafc;
             --panel-glass: rgba(255, 255, 255, 0.98);
-            --border-glass: rgba(15, 23, 42, 0.25);
+            --border-glass: rgba(15, 23, 42, 0.3);
             --text-main: #0f172a;
             --text-sub: #334155;
             --chat-bg: #efeae2;
@@ -55,7 +55,6 @@
             transition: background 0.4s ease, color 0.4s ease;
         }																				
 																				
-        /* --- BRANDING BLOCK --- */
         .shashi-header-brand-block {
             position: fixed;
             top: 20px;
@@ -66,7 +65,7 @@
             font-size: 1.5rem;
             letter-spacing: 2px;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(241, 196, 15, 0.6);
+            text-shadow: 0 0 15px rgba(241, 196, 15, 0.85);
             pointer-events: none;
             transition: color 0.3s;
         }
@@ -81,14 +80,14 @@
             right: 140px;
             z-index: 9999;
             background: rgba(4, 9, 22, 0.85);
-            border: 1px solid rgba(241, 196, 15, 0.3);
+            border: 1px solid rgba(241, 196, 15, 0.5);
             border-radius: 12px;
             padding: 8px 14px;
             color: #f1c40f;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(241, 196, 15, 0.1);
+            box-shadow: 0 0 15px rgba(241, 196, 15, 0.3);
             font-weight: bold;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -100,7 +99,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* --- SMOKE ANIMATION DELAY CONTROL FOR SLOW MOVEMENT --- */
         .smoke-container {
             position: fixed;
             inset: 0;
@@ -117,9 +115,9 @@
             width: 50vw;
             height: 200vh;
             filter: blur(140px);
-            opacity: 0.13;
+            opacity: 0.15;
             border-radius: 50%;
-            animation: smokeDrift 25s infinite alternate ease-in-out;
+            animation: smokeDrift 20s infinite alternate ease-in-out;
         }
 
         .smoke-left {
@@ -130,12 +128,12 @@
         .smoke-right {
             right: -20vw;
             background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%);
-            animation-delay: -12s;
+            animation-delay: -10s;
         }
 
         @keyframes smokeDrift {
-            0% { transform: translateY(-3%) scale(1) rotate(0deg); }
-            100% { transform: translateY(3%) scale(1.05) rotate(10deg); }
+            0% { transform: translateY(-2%) scale(1) rotate(0deg); }
+            100% { transform: translateY(2%) scale(1.08) rotate(8deg); }
         }
 
         .cinema-stage {																				
@@ -151,16 +149,16 @@
         }																				
 																				
         @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-glow: rgba(241, 196, 15, 0.8); --lamp-shadow: rgba(241, 196, 15, 0.3); }
-            33% { --lamp-color: #00f2fe; --lamp-glow: rgba(0, 242, 254, 0.8); --lamp-shadow: rgba(0, 242, 254, 0.3); }
-            66% { --lamp-color: #2ecc71; --lamp-glow: rgba(46, 204, 113, 0.8); --lamp-shadow: rgba(46, 204, 113, 0.3); }
+            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.7); }
+            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.7); }
+            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.7); }
         }
 
         .cinema-stage.activated {
-            animation: dynamicColorCycle 7s infinite linear;
+            animation: dynamicColorCycle 6s infinite linear;
         }
 
-        /* --- THE SHUTTER LAMP CONFIG --- */																				
+        /* --- THE SHUTTER HIGH ULTRA GLOW LAMP --- */																				
         .cyber-lamp-core {																				
             position: relative;																				
             display: flex;																				
@@ -178,18 +176,18 @@
         .metallic-shutter-head {																				
             width: 240px;																				
             height: 150px;																				
-            background: linear-gradient(145deg, #141a24, #080b10);																				
+            background: linear-gradient(145deg, #182232, #05070a);																				
             border-radius: 100px 100px 40px 40px;																				
             position: relative;																				
-            border: 3px solid #243147;																				
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8);																				
+            border: 3px solid #00f2fe;																				
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);																				
             z-index: 5;																				
             overflow: hidden;																				
         }																				
 																				
         .cinema-stage.activated .metallic-shutter-head {																				
             border-color: var(--lamp-color);																				
-            box-shadow: 0 0 40px var(--lamp-shadow);																				
+            box-shadow: 0 0 60px var(--lamp-shadow);																				
         }																				
 																				
         .mechanical-gate {																				
@@ -211,16 +209,17 @@
 																				
         .blinding-core-light {																				
             position: absolute;																				
-            width: 70px;																				
-            height: 70px;																				
+            width: 80px;																				
+            height: 80px;																				
             background: #ffffff;																				
             border-radius: 50%;																				
             left: 50%;																				
-            top: 35px;																				
+            top: 30px;																				
             transform: translateX(-50%);																				
-            filter: blur(12px);																				
+            filter: blur(8px);																				
             opacity: 0;																				
             transition: opacity 0.4s ease;																				
+            box-shadow: 0 0 40px #ffffff;
         }																				
         .cinema-stage.activated .blinding-core-light { opacity: 1; }																				
 																				
@@ -244,7 +243,7 @@
 																				
         .cinema-stage.activated .laser-conduit {																				
             background: var(--lamp-color);																				
-            box-shadow: 0 0 15px var(--lamp-color);																				
+            box-shadow: 0 0 20px var(--lamp-color);																				
         }																				
 																				
         .brushed-heavy-base {																				
@@ -261,7 +260,7 @@
             top: 120px;																				
             width: 100px;																				
             height: 0;																				
-            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.1) 45%, transparent 100%);																				
+            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.25) 30%, transparent 100%);																				
             clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);																				
             z-index: 2;																				
             pointer-events: none;																				
@@ -270,9 +269,9 @@
         }																				
 																				
         .cinema-stage.activated .volumetric-beam {																				
-            opacity: 0.18;																				
-            height: 450px;																				
-            width: 700px;																				
+            opacity: 0.35; /* Blinding high brightness override logic */																				
+            height: 480px;																				
+            width: 750px;																				
         }																				
 																				
         .quantum-cord {																				
@@ -298,7 +297,7 @@
             background: radial-gradient(circle, #fff, #f1c40f);																				
             border-radius: 50%;																				
             margin-left: -10px;																				
-            box-shadow: 0 0 15px #f1c40f;																				
+            box-shadow: 0 0 25px #f1c40f;																				
         }																				
 																				
         .audio-toggle-switch {
@@ -323,9 +322,8 @@
             color: #0f172a;
             border-color: #0f172a;
         }
-        .audio-toggle-switch.audio-disabled { color: #64748b; border-color: rgba(255,255,255,0.08); box-shadow: none; }
 
-        /* --- HUD GLASS TERMINAL BOX --- */																				
+        /* --- HUD GLASS LOGIN MAIN PANEL --- */																				
         .hud-glass-terminal {																				
             position: absolute;																				
             left: 50%;
@@ -333,7 +331,7 @@
             width: 90%;
             max-width: 440px;																				
             background: var(--panel-glass);																				
-            border: 1px solid var(--border-glass);																				
+            border: 2px solid var(--border-glass);																				
             border-left: 5px solid #f1c40f;																				
             padding: 35px 25px;																				
             border-radius: 24px;																				
@@ -376,7 +374,7 @@
         .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
         .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241, 196, 15, 0.7); transform: translateY(-2px); }																				
 																				
-        /* --- DASHBOARD SYSTEM SCALE UPGRADE (FULL SCREEN LOOK) --- */																				
+        /* --- DASHBOARDS PACKED COMPILER ENGINES --- */																				
         .dashboard-panel-core {																				
             position: fixed;																				
             inset: 0;																				
@@ -398,7 +396,7 @@
             padding: 30px 25px;																				
             border-radius: 20px;																				
             width: 100%;																				
-            max-width: 1200px; /* Dashboard structural space full screen look */																				
+            max-width: 1250px; /* Dashboard space highly full-scale load dynamic architecture */																				
             box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);																				
             backdrop-filter: blur(40px);
             margin-top: 10px;
@@ -453,7 +451,7 @@
 																				
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
         
-        .hud-data-card { background: rgba(255,255,255,0.02); border: 2px solid rgba(241,196,15,0.2); border-left: 6px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; word-break: break-all;}																				
+        .hud-data-card { background: rgba(255,255,255,0.02); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; word-break: break-all;}																				
         .hud-data-card p { color: var(--text-sub); font-size: 0.95rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 90px; flex-shrink: 0;}																				
         .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; }																				
@@ -472,12 +470,12 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.4); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.2); text-align: center; cursor: pointer; }
         .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- MODERN GRAPHIC MATRIX CHAT LAYOUT --- */
+        /* --- GRAPHIC LAYOUT WHATSAPP PANEL MODEL --- */
         .chat-io-grid-matrix {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 290px 1fr;
             gap: 0;
-            height: 550px;
+            height: 570px;
             background: var(--chat-bg);
             border-radius: 16px;
             border: 2px solid var(--border-glass);
@@ -485,7 +483,7 @@
             backdrop-filter: blur(20px);
         }
         .chat-target-userlist-pane {
-            background: rgba(17, 27, 33, 0.4);
+            background: rgba(17, 27, 33, 0.5);
             border-right: 2px solid var(--border-glass);
             display: flex;
             flex-direction: column;
@@ -540,6 +538,18 @@
             position: relative;
             transition: background 0.3s;
         }
+        .chat-stream-header-bar {
+            background: rgba(32, 44, 51, 0.95);
+            padding: 10px 20px;
+            border-bottom: 2px solid var(--border-glass);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+        }
+        body.light-theme-active .chat-stream-header-bar { background: #f0f2f5; color: #000; }
+
         .chat-messages-scroll-stack {
             flex: 1;
             padding: 20px;
@@ -573,6 +583,23 @@
             display: block;
         }
 
+        /* --- COMPATIBLE BUBBLE ACTION DELETE CSS --- */
+        .bubble-msg-wrapper .msg-bin-node {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(231,76,60,0.8);
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.2s opacity;
+            font-family: 'Orbitron';
+        }
+        .bubble-msg-wrapper:hover .msg-bin-node { opacity: 1; }
+
         .chat-interface-footer-inputs { padding: 10px 15px; background: rgba(0,0,0,0.2); border-top: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
         .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--input-bg); border: 1px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; font-size: 0.95rem; }
         .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: var(--text-sub); font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
@@ -596,24 +623,8 @@
         .emoji-node-item { font-size: 1.4rem; text-align: center; cursor: pointer; }
 
         .avatar-upload-mini-pane { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--border-glass); margin-bottom: 20px; }
-        .spy-intercept-banner { padding: 8px 12px; background: #e74c3c; color: white; font-weight: bold; font-size: 0.85rem; text-align: center; font-family: 'Orbitron'; display: flex; justify-content: space-between; align-items: center;}
         
-        /* --- DYNAMIC CLEAR CHAT WIPE OPTION --- */
-        .clear-chat-btn {
-            background: rgba(231, 76, 60, 0.25);
-            border: 1px solid #e74c3c;
-            color: #e74c3c;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            font-family: 'Orbitron';
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .clear-chat-btn:hover { background: #e74c3c; color: #fff; }
-
-        /* --- GIANT COMPILER LAYOUT BLOCK --- */
+        /* --- GIANT REGISTER IDENTITY ENGINE COMPILER --- */
         .giant-compiler-layout {
             background: rgba(0,0,0,0.25); 
             padding: 30px 25px; 
@@ -803,9 +814,9 @@
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
-                        <div class="spy-intercept-banner" style="background: #00a884;">
-                            <span id="chatActiveUserHeaderNode">Select Contact Pipeline...</span>
-                            <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Wipe Chat</button>
+                        <div class="chat-stream-header-bar">
+                            <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
+                            <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div></div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
@@ -874,13 +885,14 @@
 
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
+        let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
+        document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
 
-        // Toggle Theme Dynamic Color Architecture
         window.executeCosmicThemeToggle = function() {
             const bodyNode = document.body;
             const toggleLabel = document.getElementById('themeToggleBtnLabel');
@@ -916,7 +928,15 @@
             if(box) box.classList.add('hidden');
         });
 
-        // Dynamic Realtime Firebase Streams Tracking Loops
+        // Main Meta Dynamic Sync Hooks
+        onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
+            const rootData = snapshot.val();
+            if(rootData) {
+                cachedAdminMainframeRoute.masterId = rootData.id || "Shashi2004";
+                cachedAdminMainframeRoute.masterPass = rootData.pass || "Tolu@Molu";
+            }
+        });
+
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalUsersArr = data ? Object.values(data) : [];
@@ -948,9 +968,9 @@
             
             if(previousChatsLength > 0 && allChats.length > previousChatsLength) {
                 const latestMsg = allChats[allChats.length - 1];
-                if(latestMsg.sender !== "Shashi2004") {
+                if(latestMsg.sender !== cachedAdminMainframeRoute.masterId) {
                     playSynthesizedSound(587.33, 'sine', 0.15);
-                    speakNaturalHuman("New database message stream updated.");
+                    speakNaturalHuman("Incoming matrix message synchronization active.");
                 }
             }
             previousChatsLength = allChats.length;
@@ -972,7 +992,7 @@
                     const base64Avatar = e.target.result;
                     set(ref(db, `users/${loggedInCustomerID}/avatar`), base64Avatar).then(() => {
                         document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
-                        speakNaturalHuman("Avatar synchronized.");
+                        speakNaturalHuman("Avatar synced.");
                     });
                 };
                 reader.readAsDataURL(file);
@@ -986,7 +1006,7 @@
                 playSynthesizedSound(520, 'sine', 0.3);
                 mainStage.classList.add('activated');
                 loginTerminal.classList.remove('hidden');
-                speakNaturalHuman("Mainframe portal initialized.");
+                speakNaturalHuman("Mainframe infrastructure portal live.");
             }
         };
 
@@ -996,7 +1016,7 @@
             if(isSystemAudioEnabled) {
                 audioBtn.classList.remove('audio-disabled');
                 audioBtn.innerHTML = `<span>🔊 SOUND: ON</span>`;
-                speakNaturalHuman("Audio tracking initialized.");
+                speakNaturalHuman("Audio initialized.");
             } else {
                 audioBtn.classList.add('audio-disabled');
                 audioBtn.innerHTML = `<span>🔇 SOUND: OFF</span>`;
@@ -1052,7 +1072,7 @@
             const u = document.getElementById('accessNodeUser').value.trim();
             if(!u) return;
             if(currentMode === 'admin') {
-                if(u === "Shashi2004") document.getElementById('accessNodePass').focus();
+                if(u === cachedAdminMainframeRoute.masterId) document.getElementById('accessNodePass').focus();
             } else {
                 let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
                 if(userMatch) document.getElementById('accessNodePass').focus();
@@ -1065,7 +1085,7 @@
             if(!u || !p) return;																				
 																				
             if(currentMode === 'admin') {																				
-                if(u === "Shashi2004" && p === "Tolu@Molu") executeClusterLogin(null);																				
+                if(u === cachedAdminMainframeRoute.masterId && p === cachedAdminMainframeRoute.masterPass) executeClusterLogin(null);																				
             } else {																				
                 let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());																				
                 if(userMatch && String(userMatch.pass) === String(p)) executeClusterLogin(null);																				
@@ -1078,13 +1098,13 @@
             const p = document.getElementById('accessNodePass').value.trim();																				
 																				
             if (currentMode === 'admin') {																				
-                if (u !== "Shashi2004" || p !== "Tolu@Molu") {
+                if (u !== cachedAdminMainframeRoute.masterId || p !== cachedAdminMainframeRoute.masterPass) {
                     speakNaturalHuman("Access parameters invalid.");
                     alert("❌ Warning: Incorrect Credentials!");
                     return;
                 }
                 failedAttemptsCount = 0;																				
-                speakNaturalHuman("Access granted.");																				
+                speakNaturalHuman("Mainframe authorized.");																				
                 document.getElementById('mainStage').style.display = 'none';																				
                 document.getElementById('adminDashboard').classList.remove('hidden');																				
                 loadAdminSubmissions();																				
@@ -1093,20 +1113,17 @@
                 const userMatch = userIdx !== -1 ? cachedGlobalUsersArr[userIdx] : null;																				
 																				
                 if (!userMatch) {
-                    speakNaturalHuman("Incorrect parameters.");
                     alert("❌ Warning: Incorrect Customer System ID!");
                     return;
                 }
 
                 if (String(userMatch.pass) === String(p)) {																				
                     if (userMatch.status === 'deactivated' || userMatch.status === 'attack_locked') {																				
-                        speakNaturalHuman("Profile locked down.");																				
-                        alert("🔒 Access Denied! Your account has been Deactivated.");																				
+                        alert("🔒 Access Locked!");																				
                         return;																				
                     }																				
                     failedAttemptsCount = 0;																				
                     loggedInCustomerID = userMatch.id;																				
-                    speakNaturalHuman("Access authorized.");																				
                     document.getElementById('mainStage').style.display = 'none';																				
                     document.getElementById('customerDashboard').classList.remove('hidden');																				
                     switchCustomerChannel('upload');
@@ -1115,9 +1132,9 @@
                     if (failedAttemptsCount >= 3) {																				
                         userMatch.status = 'attack_locked';																				
                         set(ref(db, 'users/' + userMatch.id), userMatch);
-                        alert("🚨 3 Failure Detections! Profile deactivated.");																				
+                        alert("🚨 Account protection lock triggered!");																				
                     } else {
-                        alert("❌ Warning: Incorrect Structural Passkey!");
+                        alert("❌ Warning: Passkey mismatch.");
                     }																				
                 }																				
             }																				
@@ -1132,8 +1149,7 @@
                         loadedAttachmentB64 = e.target.result;
                     } else if (type === 'chat') {
                         globalLiveChatBinaryStreamBase64 = e.target.result;
-                        const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-                        if(statusBox) statusBox.innerText = `📎 Attached asset stream: ${fileInput.files[0].name}`;
+                        document.getElementById('chatAttachmentStatusFeedback').innerText = `📎 Attached: ${fileInput.files[0].name}`;
                     }
                 };
                 reader.readAsDataURL(fileInput.files[0]);
@@ -1157,15 +1173,13 @@
                 attachment: loadedAttachmentB64, customerComments: [], status: 'pending', 
                 adminComment: "Awaiting administration overview logic verification.", time: new Date().toLocaleString()
             }).then(() => {
-                speakNaturalHuman("Transmitted successfully.");																				
-                alert("✔ Form Submitted Successfully!");																				
+                alert("✔ Form Transmitted Successfully!");																				
                 document.getElementById('regNo').value = "";																				
                 document.getElementById('insurerName').value = "";																				
                 document.getElementById('policyNo').value = "";																				
                 document.getElementById('contactNo').value = "";																				
                 document.getElementById('email').value = "";																				
                 document.getElementById('notesReal').value = "";																				
-                if(document.getElementById('clientAttachment')) document.getElementById('clientAttachment').value = "";
                 loadedAttachmentB64 = "";
                 renderCustomerLiveTracker();
             });
@@ -1174,12 +1188,12 @@
         window.renderCustomerLiveTracker = function() {																				
             const trackerBox = document.getElementById('customerLiveTrackerSection'); if(!trackerBox) return;																				
             let userCases = cachedGlobalPolicyArr.filter(item => item.ownerNodeID === loggedInCustomerID);																				
-            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color:#00f2fe; font-family:'Orbitron'; font-size:0.95rem;">📊 LIVE STATUS TRACKER</h4><p style="color:var(--text-sub); font-size:0.85rem;">No active data stacks.</p>`; return; }																				
+            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color:#00f2fe; font-family:'Orbitron'; font-size:0.95rem;">📊 LIVE STATUS TRACKER</h4><p style="color:var(--text-sub); font-size:0.85rem;">No active logs.</p>`; return; }																				
             																				
             let casesHtml = userCases.map((item) => {																				
                 let badgeClass = item.status === 'uploaded' ? 'status-uploaded' : item.status === 'error' ? 'status-error' : item.status === 'closed' ? 'status-closed' : item.status === 'waiting' ? 'status-waiting' : 'status-pending';																				
                 let commentStack = item.customerComments ? Object.values(item.customerComments) : [];
-                let commentLogHTML = commentStack.map(c => `<div style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:4px 8px; margin-top:3px; border-radius:4px; color:var(--text-main);"><b>Customer:</b> ${c.text}</div>`).join('');
+                let commentLogHTML = commentStack.map(c => `<div style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:4px 8px; margin-top:3px; border-radius:4px;"><b>Customer:</b> ${c.text}</div>`).join('');
 
                 return `																				
                     <div style="background: rgba(255,255,255,0.02); padding: 18px; border-radius: 12px; border: 1px solid var(--border-glass); display: flex; flex-direction:column; margin-top: 10px; text-align: left; gap: 12px;">																				
@@ -1234,7 +1248,7 @@
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
             const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            const masterAdminPseudoUser = { id: "Shashi2004", clientName: "Mainframe Admin Shashi", avatar: "" };
+            const masterAdminPseudoUser = { id: cachedAdminMainframeRoute.masterId, clientName: "Mainframe Admin Shashi", avatar: "" };
             const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
             
             targetContainer.innerHTML = fullTargetList.map(user => {
@@ -1259,29 +1273,57 @@
 
         window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId;
+            const titleNode = document.getElementById('chatActiveUserHeaderNode');
+            if(userId === cachedAdminMainframeRoute.masterId) {
+                if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
+            } else {
+                const match = cachedGlobalUsersArr.find(u => u.id === userId);
+                if(titleNode && match) titleNode.innerText = match.clientName;
+            }
             renderActiveChatConversationLogs();
         };
 
+        // Render Active Chats Log Matrix with Individual Message Delete Ability
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper) return;
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
-                const masterLogs = data ? Object.values(data) : [];
-                const contextConvos = masterLogs.filter(msg => 
-                    (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
-                    (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
-                );
-                if(contextConvos.length === 0) {
-                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 System matrix encryption active.</div>`;
+                if(!data) {
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto;">🔒 Secure connection logs empty.</div>`;
                     return;
                 }
-                wrapper.innerHTML = contextConvos.map(msg => {
-                    const isMyMessage = (msg.sender === loggedInCustomerID);
-                    const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
-                    let mediaElementHTML = msg.mediaPayload ? `<br><img src="${msg.mediaPayload}" style="max-width:150px; border-radius:8px; margin-top:5px;">` : "";
-                    return `<div class="bubble-msg-wrapper ${directionalCss}"><div>${msg.textBody}</div>${mediaElementHTML}<div class="whatsapp-time">${msg.timestamp}</div></div>`;
-                }).join('');
+                const masterKeys = Object.keys(data);
+                const masterLogs = Object.values(data);
+                
+                let combinedConvosHTML = "";
+                let logsCount = 0;
+
+                masterLogs.forEach((msg, idx) => {
+                    if((msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
+                       (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)) {
+                        
+                        logsCount++;
+                        const packetKey = masterKeys[idx];
+                        const isMyMessage = (msg.sender === loggedInCustomerID);
+                        const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
+                        let mediaElementHTML = msg.mediaPayload ? `<br><img src="${msg.mediaPayload}" style="max-width:150px; border-radius:8px; margin-top:5px;">` : "";
+                        
+                        combinedConvosHTML += `
+                            <div class="bubble-msg-wrapper ${directionalCss}">
+                                <div class="msg-bin-node" onclick="removeSingleMessagePacket('${packetKey}')">❌ Delete</div>
+                                <div>${msg.textBody}</div>
+                                ${mediaElementHTML}
+                                <div class="whatsapp-time">${msg.timestamp}</div>
+                            </div>`;
+                    }
+                });
+
+                if(logsCount === 0) {
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto;">🔒 Matrix verification active. Empty pipeline.</div>`;
+                } else {
+                    wrapper.innerHTML = combinedConvosHTML;
+                }
                 wrapper.scrollTop = wrapper.scrollHeight;
             });
         };
@@ -1291,11 +1333,12 @@
             if(!inputField) return;
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
+            if(!activeSelectedChatTargetUserId) return;
             
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document Stream Packet Node", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Shared asset data container stream", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
@@ -1304,12 +1347,12 @@
             });
         };
 
-        // Powerful Clear Chat Matrix Method
-        window.clearAllConversationsLogs = function() {
-            if(confirm("Structural Wipe: Pure Chat aur records database se permanent clear karein?")) {
-                remove(ref(db, 'chats')).then(() => {
-                    alert("🗑 Chats cleared successfully from Mainframe!");
+        // Single Dynamic Bubble Data Packet Removal
+        window.removeSingleMessagePacket = function(packetKey) {
+            if(confirm("Delete this single message string?")) {
+                remove(ref(db, `chats/${packetKey}`)).then(() => {
                     renderActiveChatConversationLogs();
+                    if(activeAdminSubSection === 'spychat') renderAdminSpyChatConsoleLogs();
                 });
             }
         };
@@ -1347,8 +1390,23 @@
                     </div>																				
                 </div>																				
                 <div id="credentialsBlock" style="display:none;">																				
+                    <div style="background: linear-gradient(135deg, rgba(241,196,15,0.1), rgba(0,0,0,0.5)); padding: 25px; border-radius: 14px; border: 2px solid #f1c40f; margin-bottom: 25px;">
+                        <h4 style="color: #f1c40f; font-size: 1.2rem; margin-bottom: 15px; font-family:'Orbitron';">👑 MAINFRAME ADMIN ROOT CONFIGURATION</h4>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                            <div>
+                                <span style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:4px;">Master Admin ID</span>
+                                <input type="text" id="mainframeAdminIdInput" value="${cachedAdminMainframeRoute.masterId}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#fff; padding:10px; border-radius:6px; font-weight:bold; width:100%;">
+                            </div>
+                            <div>
+                                <span style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:4px;">Master Admin Secure Pass</span>
+                                <input type="text" id="mainframeAdminPassInput" value="${cachedAdminMainframeRoute.masterPass}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#00f2fe; padding:10px; border-radius:6px; font-weight:bold; width:100%;">
+                            </div>
+                        </div>
+                        <button onclick="executeMainframeAdminSyncRoute()" style="padding:12px; background:#f1c40f; border:none; color:#000; border-radius:8px; width:100%; font-family:'Orbitron'; font-weight:900; font-size:0.9rem; cursor:pointer; letter-spacing:1px;">OVERRIDE ROOT SYSTEM KEYS</button>
+                    </div>
+
                     <div style="background: rgba(0,0,0,0.2); padding: 25px; border-radius: 14px; border: 2px solid var(--border-glass); margin-bottom: 20px;">																				
-                        <h4 style="color: #00f2fe; font-size: 1.1rem; margin-bottom: 20px; font-family:'Orbitron';">🛠 EDIT / ALTER CLIENT REGISTRY CREDENTIALS:</h4>																				
+                        <h4 style="color: #00f2fe; font-size: 1.1rem; margin-bottom: 20px; font-family:'Orbitron';">🛠 ALTER CUSTOMER CLIENT REGISTRY PARAMETERS:</h4>																				
                         <div id="adminUserControlList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;"></div>																				
                     </div>																				
                 </div>																				
@@ -1361,12 +1419,11 @@
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
                         <div class="chat-stream-message-container">
                             <div class="spy-intercept-banner">
-                                <span>🚨 MONITOR CHAT LAYER: <b id="spyActiveHeaderTitle">Select Identity</b></span>
-                                <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Purge Storage</button>
+                                <span>🚨 MONITOR ENGINE: <b id="spyActiveHeaderTitle">Select Identity</b></span>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             <div class="chat-interface-footer-inputs">
-                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type transmission response..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
+                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type transmission text..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
                                 <button onclick="dispatchAdminSpyInterceptionMsg()" style="padding:10px 18px; background:#9b59b6; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">REPLY</button>
                             </div>
                         </div>
@@ -1378,18 +1435,27 @@
             switchAdminSubSection(activeAdminSubSection);																				
         };
 
+        window.executeMainframeAdminSyncRoute = function() {
+            const nextId = document.getElementById('mainframeAdminIdInput').value.trim();
+            const nextPass = document.getElementById('mainframeAdminPassInput').value.trim();
+            if(!nextId || !nextPass) { alert("⚠️ Parameters clear matrix cannot be blank."); return; }
+            set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => {
+                alert("✔ Mainframe Root Administration credentials changed successfully!");
+            });
+        };
+
         window.createNewCustomerNode = function() {																				
             const clientName = document.getElementById('newClientName').value.trim();																				
             const dob = document.getElementById('newClientDOB').value;																				
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
-            if(!clientName || !contact || !userPass) { alert("⚠️ Mandatory parameters missing."); return; }																				
+            if(!clientName || !contact || !userPass) { alert("⚠️ Parameters string empty."); return; }																				
             
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
             
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "" }).then(() => {
-                alert("Identity nodes compiled."); loadAdminSubmissions();
+                alert("Identity signature integrated."); loadAdminSubmissions();
             });																				
         };
 
@@ -1406,12 +1472,12 @@
                 if(oldId !== targetNewId) {
                     remove(ref(db, `users/${oldId}`)).then(() => {
                         set(ref(db, `users/${targetNewId}`), currentProfileData).then(() => {
-                            alert("✔ Credentials Updated Successfully!");
+                            alert("✔ Credentials Customized!");
                         });
                     });
                 } else {
                     set(ref(db, `users/${oldId}`), currentProfileData).then(() => {
-                        alert("✔ Passkey Structure Updated!");
+                        alert("✔ Customer Passkey Matrix Updated!");
                     });
                 }
             });
@@ -1419,7 +1485,7 @@
 
         window.renderUserControlPanel = function() {																				
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;																				
-            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">No blocks found.</p>`; return; }																				
+            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">No matrices active.</p>`; return; }																				
             
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
@@ -1427,7 +1493,7 @@
                     <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:10px; display:flex; flex-direction:column; border:1px solid var(--border-glass); gap:10px;">																				
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
                             <div>
-                                <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Customer System ID</span>
+                                <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Customer ID</span>
                                 <input type="text" id="userInlineIdInput_${index}" value="${user.id}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:var(--text-main); padding:6px 10px; border-radius:6px; font-weight:bold;">
                             </div>																				
                             <div style="display:flex; gap:8px; align-items:center; margin-top:15px;">																				
@@ -1436,9 +1502,9 @@
                             </div>																				
                         </div>																				
                         <div>																				
-                            <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Secure Password Access Key</span>
+                            <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Password</span>
                             <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#00f2fe; padding:6px 10px; border-radius:6px; font-weight:bold; width:100%; margin-bottom:6px;">																				
-                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; border-radius:6px; cursor:pointer; font-weight:bold; font-family:'Orbitron'; font-size:0.75rem; width:100%;">APPLY ENFORCED CHANGE</button>																				
+                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; border-radius:6px; cursor:pointer; font-weight:bold; font-family:'Orbitron'; font-size:0.75rem; width:100%;">APPLY STRUCTURAL RESET</button>																				
                         </div>																				
                     </div>																				
                 `;																				
@@ -1447,7 +1513,7 @@
 
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
-            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div>No signatures active.</div>`; return; }
+            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div>No signatures found.</div>`; return; }
             
             listPane.innerHTML = cachedGlobalUsersArr.map(user => {
                 const isSelected = (spyActiveTargetUserContext === user.id);
@@ -1470,22 +1536,36 @@
             renderAdminSpyUserList();
         };
 
+        // Realtime Admin Monitoring WhatsApp Terminal
         window.renderAdminSpyChatConsoleLogs = function() {
             const stack = document.getElementById('adminSpyChatLogsStack'); if(!stack || !spyActiveTargetUserContext) return;
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
-                const chats = data ? Object.values(data) : [];
-                const trackingConvo = chats.filter(m => m.sender === spyActiveTargetUserContext || m.receiver === spyActiveTargetUserContext);
-                
-                if(trackingConvo.length === 0) {
-                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 No dynamic strings intercepted.</div>`;
+                if(!data) {
+                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 No conversations logged.</div>`;
                     return;
                 }
-                stack.innerHTML = trackingConvo.map(m => {
-                    const isMyResponse = (m.sender === "Shashi2004");
-                    let customStyle = isMyResponse ? "background:#005c4b; color:#fff; align-self:flex-end; border-top-right-radius:0;" : "background:#202c33; color:#fff; align-self:flex-start; border-top-left-radius:0;";
-                    return `<div class="bubble-msg-wrapper" style="${customStyle}"><small style="color:#00f2fe; display:block; font-size:0.65rem;">From: ${m.sender}</small>${m.textBody}<div class="whatsapp-time">${m.timestamp}</div></div>`;
-                }).join('');
+                const masterKeys = Object.keys(data);
+                const chats = Object.values(data);
+                
+                let htmlCollector = "";
+                chats.forEach((m, idx) => {
+                    if(m.sender === spyActiveTargetUserContext || m.receiver === spyActiveTargetUserContext) {
+                        const packetKey = masterKeys[idx];
+                        const isMyResponse = (m.sender === cachedAdminMainframeRoute.masterId);
+                        let customStyle = isMyResponse ? "background:#005c4b; color:#fff; align-self:flex-end; border-top-right-radius:0;" : "background:#202c33; color:#fff; align-self:flex-start; border-top-left-radius:0;";
+                        
+                        htmlCollector += `
+                            <div class="bubble-msg-wrapper" style="${customStyle}">
+                                <div class="msg-bin-node" onclick="removeSingleMessagePacket('${packetKey}')">❌ Delete</div>
+                                <small style="color:#00f2fe; display:block; font-size:0.65rem;">From: ${m.sender}</small>
+                                ${m.textBody}
+                                <div class="whatsapp-time">${m.timestamp}</div>
+                            </div>`;
+                    }
+                });
+                
+                stack.innerHTML = htmlCollector || `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 Secure array data empty.</div>`;
                 stack.scrollTop = stack.scrollHeight;
             });
         };
@@ -1494,7 +1574,7 @@
             const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
             const newChatRef = push(ref(db, 'chats'));
             set(newChatRef, {
-                sender: "Shashi2004", receiver: spyActiveTargetUserContext,
+                sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
                 textBody: input.value.trim(), mediaPayload: "",
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
@@ -1502,7 +1582,7 @@
 
         window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
-            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No entries found.</p>"; return; }																				
+            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No active registry sheets.</p>"; return; }																				
             
             targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
                 let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px;">` : "<span>None</span>";
@@ -1522,7 +1602,7 @@
                          <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Feedback..." style="padding:6px; font-size:0.8rem; background:#020408; width:100%; margin-bottom:8px; color:#fff;">																				
                          <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold;">TRANSMIT</button>																				
                       </div>																				
-                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge Record</button>																				
+                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge Data Node</button>																				
                     </div>																				
                 `;
             }).join("");																				
@@ -1534,7 +1614,7 @@
             let targetPol = cachedGlobalPolicyArr[index];
             set(ref(db, `policies/${targetPol.id}/status`), statusSelect.value);
             set(ref(db, `policies/${targetPol.id}/adminComment`), commentInput.value.trim() || "Status saved.");
-            alert("⚡ Feedback Transmitted!");
+            alert("⚡ Status Transmitted!");
         };																				
 																				
         window.toggleUserNodeSwitch = function(index) {																				
