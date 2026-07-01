@@ -16,21 +16,23 @@
             --admin-purple: #9b59b6;
             /* Dark Theme Parameters default */
             --bg-prime: #02050e;
-            --panel-glass: rgba(4, 9, 22, 0.85);
-            --border-glass: rgba(255, 255, 255, 0.1);
+            --panel-glass: rgba(4, 9, 22, 0.9);
+            --border-glass: rgba(255, 255, 255, 0.12);
             --text-main: #ffffff;
             --text-sub: #94a3b8;
-            --chat-bg: #222e35;
+            --chat-bg: #111b21;
+            --input-bg: rgba(1, 3, 7, 0.5);
         }
 
-        /* Light Theme Dynamic Modifiers */
+        /* Light Theme Dynamic Modifiers - High Visibility Fix */
         body.light-theme-active {
-            --bg-prime: #e2e8f0;
-            --panel-glass: rgba(255, 255, 255, 0.9);
-            --border-glass: rgba(15, 23, 42, 0.15);
+            --bg-prime: #f1f5f9;
+            --panel-glass: rgba(255, 255, 255, 0.95);
+            --border-glass: rgba(15, 23, 42, 0.2);
             --text-main: #0f172a;
-            --text-sub: #475569;
+            --text-sub: #334155;
             --chat-bg: #efeae2;
+            --input-bg: #ffffff;
         }
 
         * {																				
@@ -53,7 +55,7 @@
             transition: background 0.4s ease, color 0.4s ease;
         }																				
 																				
-        /* --- STATIC BRANDING INTEGRATION BLOCK (TOP LEFT) --- */
+        /* --- BRANDING BLOCK --- */
         .shashi-header-brand-block {
             position: fixed;
             top: 20px;
@@ -73,7 +75,6 @@
             text-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
-        /* --- COSMIC DYNAMIC LIGHT CONFIG DRAWER SWITCH --- */
         .cosmic-theme-toggle-switch {
             position: fixed;
             top: 15px;
@@ -99,7 +100,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* --- SIDE COLORFUL SMOKE EFFECT --- */
         .smoke-container {
             position: fixed;
             inset: 0;
@@ -116,9 +116,9 @@
             width: 50vw;
             height: 200vh;
             filter: blur(140px);
-            opacity: 0.16;
+            opacity: 0.12;
             border-radius: 50%;
-            animation: smokeDrift 15s infinite alternate ease-in-out;
+            animation: smokeDrift 25s infinite alternate ease-in-out; /* Smooth Movement Fix */
         }
 
         .smoke-left {
@@ -129,12 +129,12 @@
         .smoke-right {
             right: -20vw;
             background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%);
-            animation-delay: -7.5s;
+            animation-delay: -12s;
         }
 
         @keyframes smokeDrift {
-            0% { transform: translateY(-5%) scale(1) rotate(0deg); }
-            100% { transform: translateY(5%) scale(1.1) rotate(15deg); }
+            0% { transform: translateY(-3%) scale(1) rotate(0deg); }
+            100% { transform: translateY(3%) scale(1.05) rotate(10deg); }
         }
 
         .cinema-stage {																				
@@ -156,10 +156,9 @@
         }
 
         .cinema-stage.activated {
-            animation: dynamicColorCycle 4s infinite linear;
+            animation: dynamicColorCycle 8s infinite linear; /* Controlled Motion Frame */
         }
 
-        /* --- THE SHUTTER ROBOTIC LAMP --- */																				
         .cyber-lamp-core {																				
             position: relative;																				
             display: flex;																				
@@ -269,7 +268,7 @@
         }																				
 																				
         .cinema-stage.activated .volumetric-beam {																				
-            opacity: 0.22;																				
+            opacity: 0.18;																				
             height: 450px;																				
             width: 700px;																				
         }																				
@@ -300,7 +299,6 @@
             box-shadow: 0 0 15px #f1c40f;																				
         }																				
 																				
-        /* --- AUDIO ACCESSIBILITY INTERFACE --- */
         .audio-toggle-switch {
             position: fixed;
             top: 15px;
@@ -323,7 +321,6 @@
             color: #0f172a;
             border-color: #0f172a;
         }
-        .audio-toggle-switch.audio-disabled { color: #64748b; border-color: rgba(255,255,255,0.08); box-shadow: none; }
 
         /* --- HUD GLASS TERMINAL BOX --- */																				
         .hud-glass-terminal {																				
@@ -360,11 +357,11 @@
         .hud-tab.active { background: rgba(241,196,15,0.15); color: #f1c40f; border: 1px solid rgba(241,196,15,0.25); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; }																				
 																				
         .hud-input-cluster { position: relative; margin-bottom: 25px; width: 100%; }																				
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 16px 14px; background: rgba(1,3,7,0.3); border: 1px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1rem; outline: none; transition: 0.3s; }																				
+        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 16px 14px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1rem; outline: none; transition: 0.3s; }																				
         .hud-input-cluster textarea { height: 90px; resize: none; }																				
-        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: rgba(1,3,7,0.8); border: 1px solid rgba(241,196,15,0.2); }																				
+        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: var(--input-bg); }																				
 																				
-        .hud-input-cluster label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 0.9rem; }																				
+        .hud-input-cluster label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 0.9rem; font-weight: 600; }																				
         .hud-input-cluster textarea ~ label { top: 20px; transform: none; }																				
 																				
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,																				
@@ -376,7 +373,7 @@
         .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
         .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241, 196, 15, 0.7); transform: translateY(-2px); }																				
 																				
-        /* --- DASHBOARDS FULL ARCHITECTURE ENGINE --- */																				
+        /* --- DASHBOARDS PACKED COMPILER ENGINES --- */																				
         .dashboard-panel-core {																				
             position: fixed;																				
             inset: 0;																				
@@ -388,33 +385,32 @@
             padding: 20px;																				
             overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
             transition: background 0.4s ease;
         }																				
 																				
         .hud-container-panel {																				
             background: var(--panel-glass);																				
-            border: 1px solid var(--border-glass);																				
-            border-top: 4px solid #00f2fe;																				
+            border: 2px solid var(--border-glass);																				
+            border-top: 5px solid #00f2fe;																				
             padding: 30px 25px;																				
             border-radius: 20px;																				
             width: 100%;																				
-            max-width: 1100px;																				
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);																				
+            max-width: 1200px; /* Pura dashboard bhara hua dikhane ke liye scale badhaya */																				
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);																				
             backdrop-filter: blur(40px);
-            margin-top: 20px;
+            margin-top: 10px;
             margin-bottom: 20px;																				
         }																				
 																				
-        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-glass); padding-bottom: 15px; gap: 10px; }																				
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.6rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
-        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.6rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
+        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid var(--border-glass); padding-bottom: 15px; gap: 10px; }																				
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.8rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.8rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
 																				
         .workspace-channel-selector {
             display: flex;
             gap: 12px;
             margin-bottom: 25px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             padding: 6px;
             border-radius: 12px;
             border: 1px solid var(--border-glass);
@@ -437,9 +433,9 @@
             gap: 8px;
         }
         .channel-tab-btn.active {
-            background: rgba(0, 242, 254, 0.12);
+            background: rgba(0, 242, 254, 0.15);
             color: #00f2fe;
-            border: 1px solid rgba(0, 242, 254, 0.25);
+            border: 1px solid rgba(0, 242, 254, 0.3);
         }
 
         .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }																				
@@ -450,59 +446,62 @@
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         .helpline-trigger-btn { width: 100%; padding: 16px; background: rgba(11,21,40,0.6); border: 1px solid rgba(0,242,254,0.3); border-radius: 12px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1rem; font-family: 'Orbitron'; }																				
 
-        .search-terminal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
+        .search-terminal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
         
-        .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; overflow: hidden; word-break: break-all;}																				
-        .hud-data-card p { color: var(--text-sub); font-size: 0.9rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
+        .hud-data-card { background: rgba(255,255,255,0.02); border: 2px solid rgba(241,196,15,0.2); border-left: 6px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; word-break: break-all;}																				
+        .hud-data-card p { color: var(--text-sub); font-size: 0.95rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 90px; flex-shrink: 0;}																				
-        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; }																				
-																				
+        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; }																				
+        body.light-theme-active .hud-data-card span { color: #0f172a; background: #cbd5e1; }
+
         .status-badge { font-family: 'Orbitron'; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; font-weight: bold; display: inline-block; }																				
         .wipe-card-btn { width: 100%; padding: 10px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; border-radius: 8px; cursor: pointer; margin-top: 5px; }																				
 																				
         .hidden { display: none !important; }																				
         .text-left { text-align: left; }																				
 																				
-        .admin-category-navbar { display: flex; gap: 8px; background: rgba(0,0,0,0.2); padding: 6px; border-radius: 12px; margin-bottom: 25px; }																				
-        .admin-nav-tab { flex: 1; padding: 12px 4px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }																				
-        .admin-nav-tab.active { background: rgba(241,196,15,0.12); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }																				
+        .admin-category-navbar { display: flex; gap: 8px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 12px; margin-bottom: 25px; border: 1px solid var(--border-glass); }																				
+        .admin-nav-tab { flex: 1; padding: 14px 4px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }																				
+        .admin-nav-tab.active { background: rgba(241,196,15,0.15); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }																				
 																				
-        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.2); text-align: center; cursor: pointer; }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.4); border-radius: 14px; padding: 20px; background: rgba(0,0,0,0.2); text-align: center; cursor: pointer; }
         .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.9rem; }
 
-        /* --- WHATSAPP LOGIC ARCHITECTURE MODEL PANEL --- */
+        /* --- WHATSAPP MODEL MATRIX --- */
         .chat-io-grid-matrix {
             display: grid;
             grid-template-columns: 280px 1fr;
             gap: 0;
             height: 550px;
-            background: rgba(11, 27, 33, 0.7);
+            background: var(--chat-bg);
             border-radius: 16px;
-            border: 1px solid var(--border-glass);
+            border: 2px solid var(--border-glass);
             overflow: hidden;
             backdrop-filter: blur(20px);
         }
         .chat-target-userlist-pane {
-            background: rgba(17, 27, 33, 0.95);
-            border-right: 1px solid var(--border-glass);
+            background: rgba(17, 27, 33, 0.4);
+            border-right: 2px solid var(--border-glass);
             display: flex;
             flex-direction: column;
             overflow-y: auto;
         }
+        body.light-theme-active .chat-target-userlist-pane { background: #e2e8f0; }
+
         .whatsapp-search-box {
             padding: 10px;
-            background: rgba(17, 27, 33, 0.5);
+            background: rgba(17, 27, 33, 0.2);
             border-bottom: 1px solid var(--border-glass);
         }
         .whatsapp-search-box input {
             width: 100%;
             padding: 8px 12px;
-            background: #202c33;
-            border: none;
+            background: var(--bg-prime);
+            border: 1px solid var(--border-glass);
             border-radius: 8px;
-            color: #fff;
+            color: var(--text-main);
             font-size: 0.85rem;
             outline: none;
         }
@@ -511,13 +510,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-            color: #e9edef;
+            border-bottom: 1px solid var(--border-glass);
+            color: var(--text-main);
             cursor: pointer;
             transition: background 0.2s;
         }
-        .chat-user-item-node:hover { background: #202c33; }
-        .chat-user-item-node.active-chat-target { background: #2a3942; }
+        .chat-user-item-node:hover { background: rgba(255,255,255,0.05); }
+        .chat-user-item-node.active-chat-target { background: rgba(0, 242, 254, 0.15); border-left: 4px solid #00f2fe; }
         
         .whatsapp-avatar {
             width: 40px;
@@ -525,11 +524,11 @@
             border-radius: 50%;
             background: #64748b;
             object-fit: cover;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--border-glass);
         }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left;}
-        .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color:#ffffff; }
-        .whatsapp-user-id { font-size: 0.75rem; color: #8696a0; font-family: monospace; }
+        .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); }
+        .whatsapp-user-id { font-size: 0.75rem; color: var(--text-sub); font-family: monospace; }
 
         .chat-stream-message-container {
             display: flex;
@@ -537,25 +536,6 @@
             background: var(--chat-bg);
             position: relative;
             transition: background 0.3s;
-        }
-        .chat-stream-message-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.04;
-            background-image: radial-gradient(var(--text-main) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
-        }
-        .chat-stream-header-bar {
-            background: rgba(32, 44, 51, 0.95);
-            padding: 10px 20px;
-            border-bottom: 1px solid var(--border-glass);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 2;
         }
         .chat-messages-scroll-stack {
             flex: 1;
@@ -570,36 +550,36 @@
             max-width: 65%;
             padding: 8px 12px;
             border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.3;
+            font-size: 0.95rem;
+            line-height: 1.4;
             position: relative;
-            box-shadow: 0 1px 0.5px rgba(0,0,0,0.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 500;
         }
         .bubble-outgoing { background: #005c4b; color: #e9edef; align-self: flex-end; border-top-right-radius: 0; }
         .bubble-incoming { background: #202c33; color: #e9edef; align-self: flex-start; border-top-left-radius: 0; }
         
-        /* Light mode bubbles contrast */
-        body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; }
-        body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; }
+        body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 
         .whatsapp-time {
             font-size: 0.7rem;
-            color: #8696a0;
+            color: var(--text-sub);
             text-align: right;
             margin-top: 4px;
             display: block;
         }
 
-        .chat-interface-footer-inputs { padding: 10px 15px; background: #202c33; display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
-        .whatsapp-input-field { flex: 1; padding: 10px 15px; background: #2a3942; border: none; border-radius: 8px; color: #fff; outline: none; font-size: 0.9rem; }
-        .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: #8696a0; font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .chat-interface-footer-inputs { padding: 10px 15px; background: rgba(0,0,0,0.2); border-top: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
+        .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--input-bg); border: 1px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; font-size: 0.95rem; }
+        .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: var(--text-sub); font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
 
         .emoji-matrix-drawer {
             position: absolute;
             bottom: 65px;
             left: 15px;
-            background: #233138;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--panel-glass);
+            border: 2px solid var(--border-glass);
             border-radius: 12px;
             padding: 10px;
             width: 280px;
@@ -613,9 +593,9 @@
         .emoji-node-item { font-size: 1.4rem; text-align: center; cursor: pointer; }
 
         .avatar-upload-mini-pane { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--border-glass); margin-bottom: 20px; }
-        .spy-intercept-banner { padding: 6px 12px; background: #e74c3c; color: white; font-weight: bold; font-size: 0.8rem; text-align: center; font-family: 'Orbitron'; }
-    
-        /* --- HUGE ACCOUNT COMPILER ADJUSTMENT BLOCK --- */
+        .spy-intercept-banner { padding: 8px 12px; background: #e74c3c; color: white; font-weight: bold; font-size: 0.85rem; text-align: center; font-family: 'Orbitron'; display: flex; justify-content: space-between; align-items: center;}
+        
+        /* --- GIANT COMPILER BLOCK --- */
         .giant-compiler-layout {
             background: rgba(0,0,0,0.25); 
             padding: 30px 25px; 
@@ -642,8 +622,8 @@
             width: 100%;
             padding: 16px; 
             background: rgba(5, 9, 20, 0.7); 
-            border: 1px solid var(--border-glass); 
-            color: #ffffff; 
+            border: 2px solid var(--border-glass); 
+            color: var(--text-main); 
             border-radius: 10px; 
             font-family: 'Orbitron'; 
             font-size: 1.05rem;
@@ -657,6 +637,21 @@
             background: #ffffff;
             color: #0f172a;
         }
+
+        .clear-chat-btn {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .clear-chat-btn:hover { background: #e74c3c; color: #fff; }
+
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.75); }
@@ -709,23 +704,22 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>																				
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
-                        																				
+                                        																				
             <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>																				
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>																				
             </div>																				
-                        																				
+                                        																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
-                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">																				
+                    <input type="text" id="accessNodeUser" required placeholder=" ">																				
                     <label id="hudInputLabel">System ID / Customer ID</label>																				
                     <div class="neon-glow-underline"></div>																				
                 </div>																				
                 <div class="hud-input-cluster">																				
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">																				
-                    <label>Secure Access Password Key</label>																				
+                    <input type="password" id="accessNodePass" required placeholder=" ">																				
                     <div class="neon-glow-underline"></div>																				
                 </div>																				
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>																				
@@ -739,7 +733,7 @@
                 <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
-            
+                        
             <div class="avatar-upload-mini-pane">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" src="">
                 <div>
@@ -756,7 +750,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid rgba(0,242,254,0.15);">																				
                 </div>																				
-                                                                                                
+                                                                                                  
                 <div class="form-grid-layout">																				
                     <div class="hud-input-cluster">																				
                         <input type="text" id="regNo" placeholder=" ">																				
@@ -778,27 +772,27 @@
                         <label>Contact Number *</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                                                                                                    
+                                                                                                          
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="email" id="email" placeholder=" ">																				
                         <label>Email Address (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-    
+                        
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-    
+                        
                     <div class="hud-input-cluster full-width-field">																				
                         <textarea id="notesReal" placeholder=" "></textarea>																				
                         <label>Additional System Notes (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
                 </div>																				
-                                                                                                
+                                                                                                  
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>																				
             </div>
 
@@ -809,9 +803,9 @@
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
-                        <div class="chat-stream-header-bar">
-                            <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
-                            <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Contact Pipeline...</div></div>
+                        <div class="spy-intercept-banner" style="background:#00a884;">
+                            <span id="chatActiveUserHeaderNode">Select Contact Pipeline...</span>
+                            <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Wipe Chat</button>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
@@ -838,7 +832,7 @@
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>																				
             </div>																				
-                        																				
+                                        																				
             <div class="admin-category-navbar">																				
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
@@ -874,7 +868,7 @@
         let activeCustomerWorkspaceChannel = "upload";
         let activeSelectedChatTargetUserId = "";
         let globalLiveChatBinaryStreamBase64 = "";
-        
+                
         let spyActiveTargetUserContext = "";
         let previousChatsLength = 0;
 
@@ -883,11 +877,9 @@
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
-        document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
 
-        // Toggle Cosmic Light & Dark Mode Functions
         window.executeCosmicThemeToggle = function() {
             const bodyNode = document.body;
             const toggleLabel = document.getElementById('themeToggleBtnLabel');
@@ -902,7 +894,6 @@
             }
         };
 
-        // Initialize Emoji Elements Matrix
         setTimeout(() => {
             const box = document.getElementById('systemEmojiMatrixBoxNode');
             if(box) box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
@@ -924,7 +915,6 @@
             if(box) box.classList.add('hidden');
         });
 
-        // Firebase Cloud Realtime Data Streams Listener Pipeline
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             cachedGlobalUsersArr = data ? Object.values(data) : [];
@@ -950,19 +940,15 @@
             if(loggedInCustomerID) renderCustomerLiveTracker();
         });
 
-        // RE-OPTIMIZED CHAT LISTENER WITH SOUND NOTIFICATION OVERRIDE TRIGGER
         onValue(ref(db, 'chats'), (snapshot) => {
             const data = snapshot.val();
             const allChats = data ? Object.values(data) : [];
             
-            // Sound and Speech Notification Alert Trigger Logic
             if(previousChatsLength > 0 && allChats.length > previousChatsLength) {
                 const latestMsg = allChats[allChats.length - 1];
-                // Agar message admin ko bheja gaya hai ya admin dashboard active hai
                 if(latestMsg.sender !== "Shashi2004") {
-                    playSynthesizedSound(587.33, 'sine', 0.15); // Ring tone beep
-                    setTimeout(() => { playSynthesizedSound(880, 'sine', 0.1); }, 100);
-                    speakNaturalHuman("New notification! Database message stream updated.");
+                    playSynthesizedSound(587.33, 'sine', 0.15);
+                    speakNaturalHuman("New database message stream updated.");
                 }
             }
             previousChatsLength = allChats.length;
@@ -998,7 +984,7 @@
                 playSynthesizedSound(520, 'sine', 0.3);
                 mainStage.classList.add('activated');
                 loginTerminal.classList.remove('hidden');
-                speakNaturalHuman("Mainframe infrastructure portal initialized.");
+                speakNaturalHuman("Mainframe portal initialized.");
             }
         };
 
@@ -1006,11 +992,9 @@
             isSystemAudioEnabled = !isSystemAudioEnabled;
             const audioBtn = document.getElementById('systemAudioToggleBtn');
             if(isSystemAudioEnabled) {
-                audioBtn.classList.remove('audio-disabled');
                 audioBtn.innerHTML = `<span>🔊 SOUND: ON</span>`;
                 speakNaturalHuman("Audio tracking initialized.");
             } else {
-                audioBtn.classList.add('audio-disabled');
                 audioBtn.innerHTML = `<span>🔇 SOUND: OFF</span>`;
                 if('speechSynthesis' in window) window.speechSynthesis.cancel();
             }
@@ -1060,30 +1044,6 @@
             if(inputPass) inputPass.value = ""; 																				
         };
 
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim();
-            if(!u) return;
-            if(currentMode === 'admin') {
-                if(u === "Shashi2004") document.getElementById('accessNodePass').focus();
-            } else {
-                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
-                if(userMatch) document.getElementById('accessNodePass').focus();
-            }
-        };
-
-        window.checkAutoLogin = function() {																				
-            const u = document.getElementById('accessNodeUser').value.trim();																				
-            const p = document.getElementById('accessNodePass').value.trim();																				
-            if(!u || !p) return;																				
-																				
-            if(currentMode === 'admin') {																				
-                if(u === "Shashi2004" && p === "Tolu@Molu") executeClusterLogin(null);																				
-            } else {																				
-                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());																				
-                if(userMatch && String(userMatch.pass) === String(p)) executeClusterLogin(null);																				
-            }																				
-        };
-
         window.executeClusterLogin = function(event) {																				
             if(event) event.preventDefault();																				
             const u = document.getElementById('accessNodeUser').value.trim();																				
@@ -1092,7 +1052,6 @@
             if (currentMode === 'admin') {																				
                 if (u !== "Shashi2004" || p !== "Tolu@Molu") {
                     speakNaturalHuman("Access parameters invalid.");
-                    playSynthesizedSound(180, 'sawtooth', 0.25);
                     alert("❌ Warning: Incorrect Credentials!");
                     return;
                 }
@@ -1124,31 +1083,13 @@
                     document.getElementById('customerDashboard').classList.remove('hidden');																				
                     switchCustomerChannel('upload');
                 } else {																				
-                    if (currentTrackingUserAttempt !== u.toLowerCase()) {																				
-                        failedAttemptsCount = 1;																				
-                        currentTrackingUserAttempt = u.toLowerCase();																				
-                    } else {																				
-                        failedAttemptsCount++;																				
-                    }																				
-																				
-                    if (failedAttemptsCount === 1) {																				
-                        speakNaturalHuman("Wrong security access key.");																				
-                        alert("❌ Warning: Incorrect Security Passkey! Remaining attempts: 2");																				
-                    } else if (failedAttemptsCount === 2) {																				
-                        speakNaturalHuman("Wrong secure access key.");																				
-                        playSynthesizedSound(220, 'sawtooth', 0.15);																				
-                        const flashNode = document.getElementById('gunFlashNode');																				
-                        if(flashNode) { flashNode.style.opacity = '1'; setTimeout(() => { flashNode.style.opacity = '0'; }, 80); }																				
-                        alert("❌ Warning: Incorrect Security Passkey! Remaining attempts: 1");																				
-                    } else if (failedAttemptsCount >= 3) {																				
-                        speakNaturalHuman("Security terminal protection lock triggered.");																				
+                    failedAttemptsCount++;																				
+                    if (failedAttemptsCount >= 3) {																				
                         userMatch.status = 'attack_locked';																				
                         set(ref(db, 'users/' + userMatch.id), userMatch);
-                        document.body.classList.add('screen-shake');																				
-                        playSynthesizedSound(100, 'triangle', 0.4);																				
-                        const flashNode = document.getElementById('topFlashNode');																				
-                        if(flashNode) { flashNode.style.opacity = '1'; setTimeout(() => { flashNode.style.opacity = '0'; document.body.classList.remove('screen-shake'); }, 400); }																				
                         alert("🚨 3 Failure Detections! Profile deactivated.");																				
+                    } else {
+                        alert("❌ Warning: Incorrect Structural Passkey!");
                     }																				
                 }																				
             }																				
@@ -1180,7 +1121,7 @@
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
             if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
-            
+                        
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
                 id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
@@ -1205,39 +1146,33 @@
         window.renderCustomerLiveTracker = function() {																				
             const trackerBox = document.getElementById('customerLiveTrackerSection'); if(!trackerBox) return;																				
             let userCases = cachedGlobalPolicyArr.filter(item => item.ownerNodeID === loggedInCustomerID);																				
-            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 0.95rem; margin-bottom: 5px;">📊 LIVE STATUS TRACKER</h4><p style="color: var(--text-sub); font-size: 0.85rem;">No active data stacks.</p>`; return; }																				
+            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color:#00f2fe; font-family:'Orbitron'; font-size:0.95rem;">📊 LIVE STATUS TRACKER</h4><p style="color:var(--text-sub); font-size:0.85rem;">No active data stacks.</p>`; return; }																				
             																				
             let casesHtml = userCases.map((item) => {																				
                 let badgeClass = item.status === 'uploaded' ? 'status-uploaded' : item.status === 'error' ? 'status-error' : item.status === 'closed' ? 'status-closed' : item.status === 'waiting' ? 'status-waiting' : 'status-pending';																				
                 let commentStack = item.customerComments ? Object.values(item.customerComments) : [];
-                let commentLogHTML = commentStack.map(c => `<div style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:4px 8px; margin-top:3px; border-radius:4px; color:var(--text-main);"><b>[${c.timestamp}] Customer:</b> ${c.text}</div>`).join('');
+                let commentLogHTML = commentStack.map(c => `<div style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:4px 8px; margin-top:3px; border-radius:4px; color:var(--text-main);"><b>Customer:</b> ${c.text}</div>`).join('');
 
                 return `																				
                     <div style="background: rgba(255,255,255,0.02); padding: 18px; border-radius: 12px; border: 1px solid var(--border-glass); display: flex; flex-direction:column; margin-top: 10px; text-align: left; gap: 12px;">																				
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
-                            <div>																				
-                                <strong style="color: var(--text-main); font-size: 0.9rem; display: block;">Insurer: <span style="color: #00f2fe;">${item.insure}</span></strong>																				
-                            </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div><strong style="color: var(--text-main); font-size: 0.95rem;">Insurer: <span style="color: #00f2fe;">${item.insure}</span></strong></div>
                             <div><span class="status-badge ${badgeClass}">${item.status.toUpperCase()}</span></div>
                         </div>
                         <div style="font-size: 0.85rem; color: var(--text-sub); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border-left: 3px solid #f1c40f;">
-                            <b>Comment:</b> ${item.adminComment}
+                            <b>Feedback:</b> ${item.adminComment}
                         </div>																				
                         <div style="background: rgba(0,0,0,0.2); padding: 8px; border-radius: 8px;">
                             <div id="commentHistoryStack_${item.id}">${commentLogHTML}</div>
                             <div style="display:flex; gap:6px; margin-top:6px;">
-                                <input type="text" id="trackerCommentInput_${item.id}" placeholder="Type timeline message..." style="flex:1; padding:8px; background:rgba(0,0,0,0.4); border:1px solid var(--border-glass); color:var(--text-main); border-radius:6px; font-size:0.8rem; outline:none;">
-                                <button onclick="postTrackerComment('${item.id}')" style="padding:8px 12px; background:#00f2fe; color:#000; border:none; font-family:'Orbitron'; font-weight:bold; border-radius:6px; font-size:0.75rem;">SEND</button>
+                                <input type="text" id="trackerCommentInput_${item.id}" placeholder="Type message..." style="flex:1; padding:8px; background:rgba(0,0,0,0.4); border:1px solid var(--border-glass); color:var(--text-main); border-radius:6px;">
+                                <button onclick="postTrackerComment('${item.id}')" style="padding:8px 12px; background:#00f2fe; color:#000; border:none; font-family:'Orbitron'; font-weight:bold; border-radius:6px;">SEND</button>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; justify-content:flex-end; gap: 8px;">																				
-                            <button onclick="updateCustomerCaseAction('${item.id}', 'closed')" style="padding: 6px 12px; background: #e74c3c; color: white; border: none; border-radius: 6px; font-size: 0.75rem; font-family:'Orbitron'; font-weight: bold;">CLOSE</button>																				
-                            <button onclick="updateCustomerCaseAction('${item.id}', 'waiting')" style="padding: 6px 12px; background: #9b59b6; color: white; border: none; border-radius: 6px; font-size: 0.75rem; font-family:'Orbitron'; font-weight: bold;">HOLD</button>																				
-                        </div>																				
                     </div>																				
                 `;																				
             }).join('');																				
-            trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 0.95rem; margin-bottom: 8px;">📊 LIVE STATUS TRACKER</h4><div style="display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto;">${casesHtml}</div>`;																				
+            trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size:0.95rem; margin-bottom:8px;">📊 LIVE STATUS TRACKER</h4><div style="display:flex; flex-direction:column; gap:8px; max-height:260px; overflow-y:auto;">${casesHtml}</div>`;																				
         };
 
         window.postTrackerComment = function(policyId) {
@@ -1245,15 +1180,8 @@
             if(!txtNode || !txtNode.value.trim()) return;
             const targetCommentRef = push(ref(db, `policies/${policyId}/customerComments`));
             set(targetCommentRef, {
-                text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => { txtNode.value = ""; speakNaturalHuman("Timeline updated."); });
-        };
-
-        window.updateCustomerCaseAction = function(policyId, newStatus) {																				
-            const commentStr = newStatus === 'closed' ? "Log close requested." : "Hold queued down.";
-            set(ref(db, `policies/${policyId}/status`), newStatus);
-            set(ref(db, `policies/${policyId}/adminComment`), commentStr);
-            speakNaturalHuman("State shift recorded.");
+                text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString()
+            }).then(() => { txtNode.value = ""; renderCustomerLiveTracker(); });
         };
 
         window.switchCustomerChannel = function(channelId) {
@@ -1283,10 +1211,9 @@
             
             targetContainer.innerHTML = fullTargetList.map(user => {
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
-                const userPhoto = user.avatar ? user.avatar : defaultAvatarSvg;
                 return `
                     <div class="chat-user-item-node ${isActiveCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        <img class="whatsapp-avatar" src="${userPhoto}">
+                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}">
                         <div class="whatsapp-user-info">
                             <div class="whatsapp-user-name">${user.clientName}</div>
                             <div class="whatsapp-user-id">@${user.id}</div>
@@ -1304,22 +1231,6 @@
 
         window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId;
-            const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            const headerAvatar = document.getElementById('chatActiveHeaderAvatarNode');
-            
-            if(userId === "Shashi2004") {
-                if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
-                if(headerAvatar) headerAvatar.src = defaultAvatarSvg;
-            } else {
-                const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
-                if(titleNode && matchingProfile) titleNode.innerText = matchingProfile.clientName;
-                if(headerAvatar && matchingProfile) headerAvatar.src = matchingProfile.avatar ? matchingProfile.avatar : defaultAvatarSvg;
-            }
-            
-            document.querySelectorAll('.chat-user-item-node').forEach(node => {
-                if(node.innerHTML.includes(`@${userId}`)) node.classList.add('active-chat-target');
-                else node.classList.remove('active-chat-target');
-            });
             renderActiveChatConversationLogs();
         };
 
@@ -1334,13 +1245,13 @@
                     (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
                 );
                 if(contextConvos.length === 0) {
-                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 System matrix secure encryption verified.</div>`;
+                    wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 System matrix encryption active.</div>`;
                     return;
                 }
                 wrapper.innerHTML = contextConvos.map(msg => {
                     const isMyMessage = (msg.sender === loggedInCustomerID);
                     const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
-                    let mediaElementHTML = msg.mediaPayload ? (msg.mediaPayload.startsWith("data:image") ? `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">` : `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`) : "";
+                    let mediaElementHTML = msg.mediaPayload ? `<br><img src="${msg.mediaPayload}" style="max-width:150px; border-radius:8px; margin-top:5px;">` : "";
                     return `<div class="bubble-msg-wrapper ${directionalCss}"><div>${msg.textBody}</div>${mediaElementHTML}<div class="whatsapp-time">${msg.timestamp}</div></div>`;
                 }).join('');
                 wrapper.scrollTop = wrapper.scrollHeight;
@@ -1352,20 +1263,26 @@
             if(!inputField) return;
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
-            if(!activeSelectedChatTargetUserId) return;
             
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document Attachment Stream Node", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: textBody || "📎 Document Stream", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
-                const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-                if(statusBox) statusBox.innerText = "";
-                playSynthesizedSound(880, 'sine', 0.05);
+                document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 renderActiveChatConversationLogs();
             });
+        };
+
+        window.clearAllConversationsLogs = function() {
+            if(confirm("Structural Wipe: Pure Chat aur history clear karein?")) {
+                remove(ref(db, 'chats')).then(() => {
+                    alert("🗑 Chats successfully deleted from Firebase Mainframe!");
+                    renderActiveChatConversationLogs();
+                });
+            }
         };
 
         window.switchAdminSubSection = function(sectionId) {																				
@@ -1380,10 +1297,8 @@
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';																				
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';																				
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';																				
-            document.getElementById('adminSpyChatBlock') ? document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none') : null;
-            if(sectionId === 'spychat') {
-                renderAdminSpyUserList();
-            }
+            document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none');
+            if(sectionId === 'spychat') renderAdminSpyUserList();
         };
 
         window.loadAdminSubmissions = function(){																				
@@ -1403,9 +1318,9 @@
                     </div>																				
                 </div>																				
                 <div id="credentialsBlock" style="display:none;">																				
-                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 14px; border: 1px solid var(--border-glass); margin-bottom: 20px;">																				
-                        <h4 style="color: #64748b; font-size: 0.9rem; margin-bottom: 12px; font-family:'Orbitron';">ACTIVE NETWORK SYSTEM IDENTITY CREDENTIALS:</h4>																				
-                        <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 12px;"></div>																				
+                    <div style="background: rgba(0,0,0,0.2); padding: 25px; border-radius: 14px; border: 2px solid var(--border-glass); margin-bottom: 20px;">																				
+                        <h4 style="color: #00f2fe; font-size: 1.1rem; margin-bottom: 20px; font-family:'Orbitron';">🛠 EDIT / ALTER CLIENT REGISTRY CREDENTIALS:</h4>																				
+                        <div id="adminUserControlList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;"></div>																				
                     </div>																				
                 </div>																				
                 <div id="policyWorkspaceBlock" style="display:none; width: 100%;">																				
@@ -1416,14 +1331,13 @@
                     <div class="chat-io-grid-matrix">
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
                         <div class="chat-stream-message-container">
-                            <div class="spy-intercept-banner">🚨 GLOBAL MONITOR OVERRIDE LAYER ACTIVE</div>
-                            <div class="chat-stream-header-bar">
-                                <img id="spyActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
-                                <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle">Select Identity Intercept Stream...</div></div>
+                            <div class="spy-intercept-banner">
+                                <span>🚨 INTERCEPT STREAM: <b id="spyActiveHeaderTitle">Select Target</b></span>
+                                <button class="clear-chat-btn" onclick="clearAllConversationsLogs()">Purge Storage</button>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             <div class="chat-interface-footer-inputs">
-                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type encrypted interception transmission string..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
+                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Reply as System Administration..." onkeydown="if(event.key==='Enter') dispatchAdminSpyInterceptionMsg()">
                                 <button onclick="dispatchAdminSpyInterceptionMsg()" style="padding:10px 18px; background:#9b59b6; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">REPLY</button>
                             </div>
                         </div>
@@ -1440,14 +1354,13 @@
             const dob = document.getElementById('newClientDOB').value;																				
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
-            if(!clientName || !contact || !userPass) { alert("⚠️ Mandatory parameter strings missing."); return; }																				
+            if(!clientName || !contact || !userPass) { alert("⚠️ Mandatory parameters missing."); return; }																				
             
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
-            if(cachedGlobalUsersArr.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ Duplicated identity signature."); return; }																				
             
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "" }).then(() => {
-                speakNaturalHuman("Customer identity signature compiled down."); loadAdminSubmissions();
+                alert("Identity nodes structured."); loadAdminSubmissions();
             });																				
         };
 
@@ -1464,12 +1377,12 @@
                 if(oldId !== targetNewId) {
                     remove(ref(db, `users/${oldId}`)).then(() => {
                         set(ref(db, `users/${targetNewId}`), currentProfileData).then(() => {
-                            speakNaturalHuman("Identity variables synchronized."); alert("✔ Identity updated successfully!");
+                            alert("✔ Identity details fully customized!");
                         });
                     });
                 } else {
                     set(ref(db, `users/${oldId}`), currentProfileData).then(() => {
-                        speakNaturalHuman("Security key entry structuralized."); alert("✔ Password parameter update synchronized!");
+                        alert("✔ Password update synchronized!");
                     });
                 }
             });
@@ -1477,74 +1390,53 @@
 
         window.renderUserControlPanel = function() {																				
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;																				
-            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color: #475569; font-size: 0.85rem;">No identity blocks discovered.</p>`; return; }																				
+            if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">No accounts found.</p>`; return; }																				
             
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
                 return `																				
-                    <div style="background: rgba(255,255,255,0.01); padding: 15px; border-radius: 10px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid var(--border-glass); gap:10px; overflow:hidden;">																				
+                    <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:10px; display:flex; flex-direction:column; border:1px solid var(--border-glass); gap:10px;">																				
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <span style="color:var(--text-sub); font-size:0.85rem;">System ID:</span>
-                                <input type="text" id="userInlineIdInput_${index}" value="${user.id}" style="background:rgba(0,0,0,0.3); border:1px solid var(--border-glass); color:var(--text-main); padding:4px 8px; border-radius:4px; font-size:0.85rem; width:140px; font-weight:bold;">
+                            <div>
+                                <span style="color:var(--text-sub); font-size:0.85rem; display:block;">System ID</span>
+                                <input type="text" id="userInlineIdInput_${index}" value="${user.id}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:var(--text-main); padding:6px 10px; border-radius:6px; font-weight:bold;">
                             </div>																				
-                            <div style="display: flex; gap: 8px;">																				
-                                <button onclick="toggleUserNodeSwitch(${index})" style="padding: 6px 12px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 6px; font-size: 0.75rem; cursor:pointer;">${live ? 'LOCK' : 'OPEN'}</button>																				
-                                <button onclick="wipeUserPermanently(${index})" style="color: #475569; background:none; border:none; text-decoration: underline; font-size: 0.8rem; cursor:pointer;">Wipe</button>																				
+                            <div style="display:flex; gap:8px; align-items:center; margin-top:15px;">																				
+                                <button onclick="toggleUserNodeSwitch(${index})" style="padding:6px 12px; background:${live ? '#e74c3c' : '#1abc9c'}; color:white; border:none; border-radius:6px; cursor:pointer;">${live ? 'LOCK' : 'OPEN'}</button>																				
+                                <button onclick="wipeUserPermanently(${index})" style="color:#e74c3c; background:none; border:none; text-decoration:underline; cursor:pointer;">Wipe</button>																				
                             </div>																				
                         </div>																				
-                        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">																				
-                            <span style="color:var(--text-sub); font-size:0.85rem;">Passkey:</span>
-                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:rgba(0,0,0,0.3); border:1px solid #334155; color:#00f2fe; padding:6px 10px; border-radius:6px; font-size:0.85rem; width:120px;">																				
-                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:6px 12px; background:rgba(46,204,113,0.2); border:1px solid #2ecc71; color:#2ecc71; border-radius:6px; font-size:0.75rem; cursor:pointer; font-weight:bold;">APPLY ENFORCED CHANGE</button>																				
+                        <div>																				
+                            <span style="color:var(--text-sub); font-size:0.85rem; display:block;">Secure Passkey</span>
+                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#00f2fe; padding:6px 10px; border-radius:6px; font-weight:bold; width:100%; margin-bottom:6px;">																				
+                            <button onclick="alterClientCredentialsOverrideData('${user.id}', ${index})" style="padding:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; border-radius:6px; cursor:pointer; font-weight:bold; font-family:'Orbitron'; font-size:0.75rem; width:100%;">APPLY CHANGES</button>																				
                         </div>																				
                     </div>																				
                 `;																				
             }).join('');																				
         };
 
-        // SPY INTERCEPT USER PROFILE LIST GENERATION LOGIC WITH "NEW" NOTIFICATION LABEL
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
-            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="color:var(--text-sub); padding:15px; font-size:0.8rem;">No active user signatures.</div>`; return; }
+            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div>No signatures.</div>`; return; }
             
-            get(ref(db, 'chats')).then((snapshot) => {
-                const data = snapshot.val();
-                const chats = data ? Object.values(data) : [];
-
-                listPane.innerHTML = cachedGlobalUsersArr.map(user => {
-                    const isSelected = (spyActiveTargetUserContext === user.id);
-                    
-                    // Check if latest message in database from this user is unread by admin
-                    const userMessages = chats.filter(m => m.sender === user.id);
-                    const hasNewMessage = userMessages.length > 0;
-                    const notificationBadge = (hasNewMessage && !isSelected) ? `<span style="background:#00a884; color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:20px; font-family:'Orbitron'; font-weight:bold; margin-left:auto;">NEW</span>` : "";
-
-                    return `
-                        <div class="chat-user-item-node ${isSelected?'active-chat-target':''}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
-                            <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
-                            <div class="whatsapp-user-info" style="display:flex; align-items:center; width:100%;">
-                                <div>
-                                    <div class="whatsapp-user-name">${user.clientName}</div>
-                                    <div class="whatsapp-user-id">@${user.id}</div>
-                                </div>
-                                ${notificationBadge}
-                            </div>
+            listPane.innerHTML = cachedGlobalUsersArr.map(user => {
+                const isSelected = (spyActiveTargetUserContext === user.id);
+                return `
+                    <div class="chat-user-item-node ${isSelected?'active-chat-target':''}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
+                        <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
+                        <div class="whatsapp-user-info">
+                            <div class="whatsapp-user-name">${user.clientName}</div>
+                            <div class="whatsapp-user-id">@${user.id}</div>
                         </div>
-                    `;
-                }).join('');
-            });
+                    </div>
+                `;
+            }).join('');
         };
 
         window.setAdminSpyTargetConversationTrack = function(userId) {
             spyActiveTargetUserContext = userId;
-            const headerTitle = document.getElementById('spyActiveHeaderTitle');
-            const spyHeaderAvatar = document.getElementById('spyActiveHeaderAvatarNode');
-            
-            if(headerTitle) headerTitle.innerText = userId;
-            const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
-            if(spyHeaderAvatar) spyHeaderAvatar.src = (matchingProfile && matchingProfile.avatar) ? matchingProfile.avatar : defaultAvatarSvg;
-            
+            document.getElementById('spyActiveHeaderTitle').innerText = userId;
             renderAdminSpyChatConsoleLogs();
             renderAdminSpyUserList();
         };
@@ -1554,49 +1446,20 @@
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 const chats = data ? Object.values(data) : [];
-                
-                // Intercept all tracking messages involving this targeted user
-                const trackingConvo = chats.filter(m => 
-                    (m.sender === spyActiveTargetUserContext && m.receiver === "Shashi2004") || 
-                    (m.sender === "Shashi2004" && m.receiver === spyActiveTargetUserContext) ||
-                    (m.sender === spyActiveTargetUserContext) || (m.receiver === spyActiveTargetUserContext)
-                );
+                const trackingConvo = chats.filter(m => m.sender === spyActiveTargetUserContext || m.receiver === spyActiveTargetUserContext);
                 
                 if(trackingConvo.length === 0) {
-                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto; background:rgba(0,0,0,0.3); padding:6px 12px; border-radius:6px;">🔒 No dynamic chat strings intercepted.</div>`;
+                    stack.innerHTML = `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 No conversations logged.</div>`;
                     return;
                 }
                 stack.innerHTML = trackingConvo.map(m => {
                     const isMyResponse = (m.sender === "Shashi2004");
-                    const directionalCss = isMyResponse ? 'bubble-outgoing' : 'bubble-incoming';
-                    
-                    // Style optimization to make it look exactly like customer's WhatsApp interface
-                    let customStyle = "";
-                    if(isMyMessageFromAdminGlobal(m.sender)) {
-                        customStyle = "background: #005c4b; color: #e9edef; align-self: flex-end; border-top-right-radius: 0;";
-                    } else {
-                        customStyle = "background: #202c33; color: #e9edef; align-self: flex-start; border-top-left-radius: 0;";
-                    }
-
-                    let mediaElementHTML = m.mediaPayload ? (m.mediaPayload.startsWith("data:image") ? `<img src="${m.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">` : `<div style="margin-top:6px;"><a href="${m.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:#00f2fe;">📥 Download Data Asset</a></div>`) : "";
-                    
-                    return `
-                        <div class="bubble-msg-wrapper" style="${customStyle}">
-                            <div>
-                                <small style="color:#00f2fe; display:block; font-size:0.65rem; font-family:monospace; margin-bottom:2px;">From: ${m.sender}</small>
-                                ${m.textBody}
-                            </div>
-                            ${mediaElementHTML}
-                            <div class="whatsapp-time">${m.timestamp}</div>
-                        </div>`;
+                    let customStyle = isMyResponse ? "background:#005c4b; color:#fff; align-self:flex-end; border-top-right-radius:0;" : "background:#202c33; color:#fff; align-self:flex-start; border-top-left-radius:0;";
+                    return `<div class="bubble-msg-wrapper" style="${customStyle}"><small style="color:#00f2fe; display:block; font-size:0.65rem;">From: ${m.sender}</small>${m.textBody}<div class="whatsapp-time">${m.timestamp}</div></div>`;
                 }).join('');
                 stack.scrollTop = stack.scrollHeight;
             });
         };
-
-        function isMyMessageFromAdminGlobal(senderId) {
-            return senderId.toLowerCase() === "shashi2004";
-        }
 
         window.dispatchAdminSpyInterceptionMsg = function() {
             const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
@@ -1605,37 +1468,32 @@
                 sender: "Shashi2004", receiver: spyActiveTargetUserContext,
                 textBody: input.value.trim(), mediaPayload: "",
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => { input.value = ""; playSynthesizedSound(900, 'sine', 0.04); renderAdminSpyChatConsoleLogs(); });
+            }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
         };
 
         window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
-            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p style='text-align:center; color:#475569; padding: 20px 0;'>No structural profiles recorded.</p>"; return; }																				
+            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No entries found.</p>"; return; }																				
             
             targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
-                let docPreviewHTML = d.attachment ? (d.attachment.startsWith("data:image") ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px; display:block;">` : `<a href="${d.attachment}" download="File" class="file-preview-anchor">📥 Asset File</a>`) : "<span>None</span>";
-                let clientNotesArray = d.customerComments ? Object.values(d.customerComments) : [];
-                let clientNotesHTML = clientNotesArray.map(c => `<div style="font-size:0.75rem; color:#00f2fe; background:#020408; padding:2px 4px; margin-top:2px; border-radius:4px;">${c.text}</div>`).join('');
-
+                let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px;">` : "<span>None</span>";
                 return `																				
                     <div class="hud-data-card">																				
                       <p><b>User ID:</b> <span>${d.ownerNodeID}</span></p>																				
                       <p><b>Insurer:</b> <span>${d.insure}</span></p>																				
                       <p><b>Contact:</b> <span>${d.phone}</span></p>																				
                       <p><b>File:</b> ${docPreviewHTML}</p>
-                      <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;">${clientNotesHTML ? clientNotesHTML : '<div style="font-size:0.75rem; color:#475569;">No timeline responses.</div>'}</div>
                       <div style="margin-top: 10px; padding: 8px; background: rgba(0,0,0,0.4); border-radius: 6px;">																				
-                         <select id="updateStatusSelect_${i}" onchange="transmitAdminResponse(${i})" style="padding:6px; font-size:0.75rem; width:100%; margin-bottom:8px;">																				
+                         <select id="updateStatusSelect_${i}" style="padding:6px; font-size:0.75rem; width:100%; margin-bottom:8px;">																				
                                <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option>																				
                                <option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option>																				
                                <option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option>																				
                                <option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option>																				
-                               <option value="waiting" ${d.status === 'waiting' ? 'selected' : ''}>⏸ Waiting</option>																				
                          </select>																				
-                         <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Feedback..." style="padding:6px; font-size:0.8rem; background:#020408; width:100%; margin-bottom:8px; color:#fff; border:1px solid #334155; border-radius:4px; outline:none;">																				
-                         <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold; font-size:0.75rem; cursor:pointer;">TRANSMIT</button>																				
+                         <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Feedback..." style="padding:6px; font-size:0.8rem; background:#020408; width:100%; margin-bottom:8px; color:#fff;">																				
+                         <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold;">TRANSMIT</button>																				
                       </div>																				
-                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge</button>																				
+                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge Record</button>																				
                     </div>																				
                 `;
             }).join("");																				
@@ -1647,21 +1505,19 @@
             let targetPol = cachedGlobalPolicyArr[index];
             set(ref(db, `policies/${targetPol.id}/status`), statusSelect.value);
             set(ref(db, `policies/${targetPol.id}/adminComment`), commentInput.value.trim() || "Status saved.");
-            speakNaturalHuman("Response deployed."); alert("⚡ Feedback Transmitted!");
+            alert("⚡ Feedback Transmitted!");
         };																				
 																				
         window.toggleUserNodeSwitch = function(index) {																				
             let userObj = cachedGlobalUsersArr[index];
             const nextStatus = userObj.status === 'active' ? 'deactivated' : 'active';
             set(ref(db, `users/${userObj.id}/status`), nextStatus);
-            speakNaturalHuman("Node toggled.");
         };																				
 																				
         window.wipeUserPermanently = function(index) {																				
             if(confirm("Purge account entirely?")) { 
                 let userObj = cachedGlobalUsersArr[index];
                 remove(ref(db, 'users/' + userObj.id));
-                speakNaturalHuman("Wiped complete."); 
             }																				
         };
 
@@ -1669,7 +1525,6 @@
             if(confirm("Wipe structure completely?")){ 
                 let targetPol = cachedGlobalPolicyArr[index];
                 remove(ref(db, 'policies/' + targetPol.id));
-                speakNaturalHuman("Log matrix purged."); 
             } 
         };
 
@@ -1680,11 +1535,8 @@
         };																				
 																				
         window.logoutEngine = function() {																				
-            if(document.getElementById('accessNodeUser')) document.getElementById('accessNodeUser').value = ""; 																				
-            if(document.getElementById('accessNodePass')) document.getElementById('accessNodePass').value = "";																				
             document.getElementById('customerDashboard').classList.add('hidden'); document.getElementById('adminDashboard').classList.add('hidden');																				
-            loggedInCustomerID = ""; failedAttemptsCount = 0; currentTrackingUserAttempt = ""; activeSelectedChatTargetUserId = ""; globalLiveChatBinaryStreamBase64 = "";
-            spyActiveTargetUserContext = "";
+            loggedInCustomerID = ""; failedAttemptsCount = 0;
             const stage = document.getElementById('mainStage'); if(stage) { stage.style.display = 'flex'; stage.classList.remove('activated'); }																				
             if(document.getElementById('loginTerminal')) document.getElementById('loginTerminal').classList.add('hidden');																				
         };
