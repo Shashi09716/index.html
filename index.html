@@ -2,7 +2,7 @@
 <html lang="en">																				
 <head>																				
     <meta charset="UTF-8">																				
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">																				
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">																				
     <title>Made By SHASHI - Pikachu Ultimate Nexus ⚡</title>																				
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">																				
     <style>																				
@@ -28,7 +28,9 @@
             overflow: hidden;																				
             font-family: 'Rajdhani', sans-serif;																				
             user-select: none;																				
-            transition: background 0.3s;																				
+            transition: background 0.3s;
+            position: relative;
+            width: 100vw;
         }																				
 																				
         /* --- SIDE COLORFUL SMOKE EFFECT --- */
@@ -78,9 +80,9 @@
             align-items: center;																				
             transition: all 1.4s cubic-bezier(0.19, 1, 0.22, 1);																				
             z-index: 2;
+            overflow: hidden;
         }																				
 																				
-        /* --- MULTI-COLOR LAMP CYCLE TIMING ANIMATION (3 Seconds) --- */
         @keyframes dynamicColorCycle {
             0%, 100% { --lamp-color: #f1c40f; --lamp-glow: rgba(241, 196, 15, 0.8); --lamp-shadow: rgba(241, 196, 15, 0.3); }
             20% { --lamp-color: #00f2fe; --lamp-glow: rgba(0, 242, 254, 0.8); --lamp-shadow: rgba(0, 242, 254, 0.3); }
@@ -257,23 +259,23 @@
             box-shadow: 0 0 15px var(--lamp-color), 0 0 30px var(--lamp-glow);																				
         }																				
 																				
-        /* --- AUDIO ACCESSIBILITY INTERFACE CAPABILITIES --- */
+        /* --- AUDIO ACCESSIBILITY INTERFACE --- */
         .audio-toggle-switch {
             position: fixed;
-            top: 25px;
-            right: 25px;
+            top: 15px;
+            right: 15px;
             z-index: 9999;
             background: rgba(3, 7, 14, 0.85);
             border: 1px solid rgba(241, 196, 15, 0.3);
             border-radius: 12px;
-            padding: 10px 18px;
+            padding: 8px 14px;
             color: #f1c40f;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             letter-spacing: 1px;
             box-shadow: 0 0 15px rgba(241, 196, 15, 0.1);
             transition: all 0.3s ease;
@@ -287,51 +289,52 @@
         /* --- HUD GLASS TERMINAL BOX --- */																				
         .hud-glass-terminal {																				
             position: absolute;																				
-            left: 8%;																				
-            width: 480px;																				
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);																				
+            width: 90%;
+            max-width: 440px;																				
             background: rgba(3, 7, 14, 0.75);																				
             border: 1px solid rgba(255, 255, 255, 0.12);																				
             border-left: 5px solid #f1c40f;																				
-            padding: 45px 35px;																				
+            padding: 30px 20px;																				
             border-radius: 24px;																				
             backdrop-filter: blur(40px);																				
             box-shadow: 0 40px 80px rgba(0,0,0,0.85);																				
-            transform: translateX(-150px) scale(0.9);																				
             opacity: 0;																				
-            transition: transform 1.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 1s ease;																				
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);																				
             z-index: 20;																				
         }																				
 																				
         .cinema-stage.activated .hud-glass-terminal {																				
-            transform: translateX(0) scale(1);																				
+            transform: translateX(-50%) scale(1);																				
             opacity: 1;																				
         }																				
 																				
-        .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 30px; }																				
-        .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #f1c40f; background: rgba(241,196,15,0.06); padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(241,196,15,0.25); letter-spacing: 1px; }																				
+        .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }																				
+        .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: #f1c40f; background: rgba(241,196,15,0.06); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(241,196,15,0.25); letter-spacing: 1px; }																				
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.06); border-color: rgba(0,242,254,0.25); }																				
 																				
-        .hud-logo { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 2.6rem; text-align: center; margin-bottom: 35px; font-weight: 900; }																				
+        .hud-logo { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 2.2rem; text-align: center; margin-bottom: 25px; font-weight: 900; }																				
 																				
-        .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 35px; }																				
-        .hud-tab { flex: 1; padding: 15px; background: transparent; border: none; color: #475569; font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; }																				
-        .hud-tab.active { background: rgba(241,196,15,0.1); color: #f1c40f; border: 1px solid rgba(241,196,15,0.25); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; }																				
+        .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 4px; border-radius: 12px; margin-bottom: 25px; }																				
+        .hud-tab { flex: 1; padding: 12px; background: transparent; border: none; color: #475569; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap;}																				
+        .hud-tab.active { background: rgba(241,196,15,0.1); color: #f1c40f; border: 1px solid rgba(241,196,15,0.25); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; }																				
 																				
         .hud-input-cluster { position: relative; margin-bottom: 25px; width: 100%; }																				
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: rgba(1,3,7,0.5); border: 1px solid rgba(255,255,255,0.03); border-radius: 10px; color: white; font-size: 1.05rem; outline: none; transition: 0.3s; }																				
-        .hud-input-cluster textarea { height: 110px; resize: none; }																				
+        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 16px 14px; background: rgba(1,3,7,0.5); border: 1px solid rgba(255,255,255,0.03); border-radius: 10px; color: white; font-size: 1rem; outline: none; transition: 0.3s; }																				
+        .hud-input-cluster textarea { height: 90px; resize: none; }																				
         .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: #050914; border: 1px solid rgba(241,196,15,0.2); cursor: pointer; }																				
 																				
-        .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #475569; pointer-events: none; transition: 0.3s; font-size: 0.95rem; }																				
-        .hud-input-cluster textarea ~ label { top: 25px; transform: none; }																				
+        .hud-input-cluster label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #475569; pointer-events: none; transition: 0.3s; font-size: 0.9rem; }																				
+        .hud-input-cluster textarea ~ label { top: 20px; transform: none; }																				
 																				
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,																				
-        .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -12px; left: 12px; background: #020408; padding: 0 8px; font-size: 0.8rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; }																				
+        .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -12px; left: 10px; background: #020408; padding: 0 6px; font-size: 0.75rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; }																				
 																				
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }																				
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 12px #f1c40f; }																				
 																				
-        .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
+        .hud-engage-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.95rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }																				
         .hud-engage-btn:hover { box-shadow: 0 0 35px rgba(241,196,15,0.7); transform: translateY(-2px); }																				
 																				
         /* Ambient weapon overlays */																				
@@ -349,171 +352,137 @@
             100% { transform: translate(1px, -3px) rotate(-1deg); }																				
         }																				
 																				
-        /* --- DASHBOARDS --- */																				
+        /* --- DASHBOARDS FIXED OVERFLOW CONTROLS --- */																				
         .dashboard-panel-core {																				
             position: fixed;																				
             inset: 0;																				
             display: flex;																				
             justify-content: center;																				
-            align-items: center;																				
+            align-items: flex-start;																				
             background: rgba(1, 3, 8, 0.98);																				
             z-index: 100;																				
-            padding: 20px;																				
-            overflow-y: auto;																				
+            padding: 10px;																				
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }																				
 																				
         .hud-container-panel {																				
             background: rgba(5, 11, 22, 0.85);																				
             border: 1px solid rgba(0, 242, 254, 0.2);																				
             border-top: 4px solid #00f2fe;																				
-            padding: 40px;																				
-            border-radius: 24px;																				
+            padding: 20px 15px;																				
+            border-radius: 16px;																				
             width: 100%;																				
             max-width: 1000px;																				
             box-shadow: 0 40px 100px rgba(0, 242, 254, 0.08);																				
-            backdrop-filter: blur(40px);																				
-            max-height: 95vh;																				
-            overflow-y: auto;																				
+            backdrop-filter: blur(40px);
+            margin-top: 40px;
+            margin-bottom: 20px;																				
         }																				
 																				
-        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }																				
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.6rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
-        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.6rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
+        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; gap: 10px; }																				
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.3rem; text-shadow: 0 0 15px rgba(0,242,254,0.4); }																				
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.3rem; text-shadow: 0 0 15px rgba(46,204,113,0.4); }																				
 																				
         /* --- MODULE SHIFT CONTROLLER TABS --- */
         .workspace-channel-selector {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 10px;
+            margin-bottom: 20px;
             background: rgba(0,0,0,0.4);
-            padding: 8px;
-            border-radius: 14px;
+            padding: 6px;
+            border-radius: 12px;
             border: 1px solid rgba(0, 242, 254, 0.1);
         }
         .channel-tab-btn {
             flex: 1;
-            padding: 16px;
+            padding: 12px 8px;
             background: transparent;
             border: none;
             color: #64748b;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: bold;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
         .channel-tab-btn.active {
             background: rgba(0, 242, 254, 0.12);
             color: #00f2fe;
             border: 1px solid rgba(0, 242, 254, 0.25);
-            text-shadow: 0 0 10px rgba(0,242,254,0.3);
         }
 
-        .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }																				
+        .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }																				
         .full-width-field { grid-column: span 2; }																				
 																				
-        .abort-btn { padding: 12px 26px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.85rem; box-shadow: 0 0 15px rgba(231,76,60,0.3); transition: 0.3s; }																				
-        .abort-btn:hover { background: #ff4c3c; transform: scale(1.05); }
-
-        .ai-helper-banner { padding: 16px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 1rem; letter-spacing: 0.5px; }																				
-        .helpline-trigger-btn { width: 100%; padding: 16px; background: #0b1528; border: 1px solid rgba(0,242,254,0.3); border-radius: 10px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1.05rem; font-family: 'Orbitron'; text-shadow: 0 0 10px rgba(0,242,254,0.5); }																				
+        .abort-btn { padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 6px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.75rem; transition: 0.3s; }																				
+        
+        .ai-helper-banner { padding: 12px; margin-top: 15px; border-radius: 10px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.85rem; }																				
+        .helpline-trigger-btn { width: 100%; padding: 14px; background: #0b1528; border: 1px solid rgba(0,242,254,0.3); border-radius: 10px; color: #00f2fe; font-weight: bold; margin-top: 12px; cursor: pointer; font-size: 0.95rem; font-family: 'Orbitron'; }																				
 																				
-        .search-terminal-input { width: 100%; padding: 18px; background: #050914; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: #fff; font-size: 1rem; font-family: 'Orbitron'; outline: none; transition: 0.3s; }																				
-        .search-terminal-input:focus { border-color: #f1c40f; box-shadow: 0 0 15px rgba(241,196,15,0.2); }																				
+        .search-terminal-input { width: 100%; padding: 14px; background: #050914; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; color: #fff; font-size: 0.95rem; font-family: 'Orbitron'; outline: none; }																				
 																				
-        .database-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }																				
-        @media (max-width: 768px) { .form-grid-layout, .database-cards-grid, .chat-io-grid-matrix { grid-template-columns: 1fr !important; } .full-width-field { grid-column: span 1; } }																				
+        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }																				
+        
+        .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 15px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; text-align: left; overflow: hidden; word-break: break-all;}																				
+        .hud-data-card p { color: #94a3b8; font-size: 0.85rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
+        .hud-data-card b { color: white; display: inline-block; width: 90px; flex-shrink: 0;}																				
+        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }																				
 																				
-        .hud-data-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(241,196,15,0.15); border-left: 5px solid #f1c40f; padding: 22px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; }																				
-        .hud-data-card p { color: #94a3b8; font-size: 0.95rem; }																				
-        .hud-data-card b { color: white; display: inline-block; width: 120px; }																				
-        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 6px; font-family: monospace; font-size: 0.9rem; user-select: text; }																				
+        .status-badge { font-family: 'Orbitron'; font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; font-weight: bold; display: inline-block; }																				
 																				
-        .status-badge { font-family: 'Orbitron'; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; font-weight: bold; display: inline-block; }																				
-        .status-pending { background: rgba(243, 156, 18, 0.1); color: #f39c12; border: 1px solid rgba(243, 156, 18, 0.3); }																				
-        .status-uploaded { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }																				
-        .status-error { background: rgba(231, 76, 60, 0.1); color: #e74c3c; border: 1px solid rgba(231, 76, 60, 0.3); }																				
-        .status-closed { background: rgba(149, 165, 166, 0.1); color: #95a5a6; border: 1px solid rgba(149, 165, 166, 0.3); }																				
-        .status-waiting { background: rgba(155, 89, 182, 0.1); color: #9b59b6; border: 1px solid rgba(155, 89, 182, 0.3); }																				
-																				
-        .wipe-card-btn { width: 100%; padding: 11px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; border-radius: 6px; cursor: pointer; margin-top: 5px; transition: 0.3s; }																				
-        .wipe-card-btn:hover { background: #e74c3c; color: white; }																				
+        .wipe-card-btn { width: 100%; padding: 9px; background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); color: #e74c3c; font-family: 'Orbitron'; font-weight: bold; font-size: 0.75rem; border-radius: 6px; cursor: pointer; margin-top: 5px; }																				
 																				
         .hidden { display: none !important; }																				
         .text-left { text-align: left; }																				
 																				
-        /* Categorization Tabs for Admin Mainframe Panel */																				
-        .admin-category-navbar { display: flex; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 14px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.03); }																				
-        .admin-nav-tab { flex: 1; padding: 12px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px; }																				
+        .admin-category-navbar { display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 12px; margin-bottom: 20px; }																				
+        .admin-nav-tab { flex: 1; padding: 10px 4px; background: transparent; border: none; color: #64748b; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-radius: 6px; transition: 0.3s; text-align: center; }																				
         .admin-nav-tab.active { background: rgba(241,196,15,0.12); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }																				
 																				
-        /* Modern Matrix Custom Inputs for Vault Files */
-        .cyber-upload-node {
-            border: 2px dashed rgba(0, 242, 254, 0.3);
-            border-radius: 12px;
-            padding: 18px;
-            background: rgba(0,0,0,0.4);
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .cyber-upload-node:hover {
-            border-color: #00f2fe;
-            background: rgba(0, 242, 254, 0.04);
-        }
-        .file-preview-anchor {
-            color: #00f2fe;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.3); border-radius: 12px; padding: 15px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; }
+        .file-preview-anchor { color: #00f2fe; text-decoration: underline; font-weight: bold; font-size: 0.85rem; }
 
-        /* --- UPGRADED CHAT APPLICATION SYSTEM ENVIRONMENT --- */
+        /* --- UPGRADED CHAT APPLICATION SYSTEM --- */
         .chat-io-grid-matrix {
             display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 20px;
-            height: 520px;
+            grid-template-columns: 220px 1fr;
+            gap: 15px;
+            height: 480px;
             background: rgba(1, 4, 10, 0.6);
             border-radius: 16px;
             border: 1px solid rgba(0, 242, 254, 0.15);
-            padding: 15px;
+            padding: 10px;
         }
         .chat-target-userlist-pane {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding: 10px;
+            gap: 6px;
+            padding: 8px;
             overflow-y: auto;
         }
         .chat-user-item-node {
-            padding: 12px;
+            padding: 10px;
             background: rgba(255,255,255,0.02);
-            border: 1px solid transparent;
-            border-radius: 8px;
+            border-radius: 6px;
             color: #94a3b8;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            transition: 0.25s;
-            text-align: left;
-        }
-        .chat-user-item-node:hover {
-            background: rgba(0, 242, 254, 0.05);
-            color: white;
+            font-size: 0.75rem;
+            word-break: break-all;
         }
         .chat-user-item-node.active-chat-target {
             background: rgba(0, 242, 254, 0.12);
             color: #00f2fe;
-            border-color: rgba(0, 242, 254, 0.3);
+            border: 1px solid rgba(0, 242, 254, 0.3);
         }
         .chat-stream-message-container {
             display: flex;
@@ -524,59 +493,44 @@
         }
         .chat-stream-header-bar {
             background: rgba(0, 242, 254, 0.05);
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-bottom: 1px solid rgba(0, 242, 254, 0.15);
             color: #00f2fe;
             font-family: 'Orbitron';
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 0.8rem;
+            word-break: break-all;
         }
         .chat-messages-scroll-stack {
             flex: 1;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         .bubble-msg-wrapper {
-            max-width: 75%;
-            padding: 12px 16px;
+            max-width: 85%;
+            padding: 10px 12px;
             border-radius: 12px;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            font-size: 0.85rem;
             color: white;
             word-break: break-word;
         }
-        .bubble-outgoing {
-            background: linear-gradient(135deg, #00f2fe, #4facfe);
-            color: #000;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-            font-weight: 500;
-        }
-        .bubble-incoming {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
-        .chat-media-attachment-box {
-            max-width: 200px;
-            max-height: 150px;
-            border-radius: 8px;
-            margin-top: 8px;
-            display: block;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .chat-interface-footer-inputs {
-            padding: 12px;
-            background: rgba(0,0,0,0.5);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+        .bubble-outgoing { background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .bubble-incoming { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.05); align-self: flex-start; border-bottom-left-radius: 2px; }
+        .chat-media-attachment-box { max-width: 100%; max-height: 120px; border-radius: 6px; margin-top: 6px; display: block; }
+        .chat-interface-footer-inputs { padding: 8px; background: rgba(0,0,0,0.5); display: flex; gap: 6px; align-items: center; }
+
+        /* --- MOBILE SCREEN OVERRIDES --- */
+        @media (max-width: 768px) { 
+            .form-grid-layout, #policyCardsStack, .chat-io-grid-matrix { grid-template-columns: 1fr !important; } 
+            .full-width-field { grid-column: span 1; } 
+            .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.75); }
+            .chat-io-grid-matrix { height: 540px; }
+            .chat-target-userlist-pane { max-height: 110px; flex-direction: row; overflow-x: auto; overflow-y: hidden; }
+            .chat-user-item-node { white-space: nowrap; padding: 8px 12px; }
+            .audio-toggle-switch { top: 10px; right: 10px; padding: 6px 10px; font-size: 0.7rem; }
+        }																				
     </style>																				
 </head>																				
 <body oncontextmenu="return false">																				
@@ -587,7 +541,7 @@
     </div>
 
     <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
-        <span>🔊 SYSTEM SOUND: ON</span>
+        <span>🔊 SOUND: ON</span>
     </button>
 
     <div class="muzzle-flash-overlay flash-gun" id="gunFlashNode"></div>																				
@@ -620,11 +574,11 @@
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
             																				
-            <h1 class="hud-logo">Welcome Back</h1>																				
+            <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
-                <button class="hud-tab active" onclick="changeWorkspaceMode('user')">👤 Customer Space</button>																				
-                <button class="hud-tab" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Mode</button>																				
+                <button class="hud-tab active" onclick="changeWorkspaceMode('user')">👤 User</button>																				
+                <button class="hud-tab" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin</button>																				
             </div>																				
             																				
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
@@ -646,17 +600,17 @@
     <div class="dashboard-panel-core hidden" id="customerDashboard">																				
         <div class="hud-container-panel text-left">																				
             <div class="panel-header-flex">																				
-                <h2 class="neon-cyan-text">Customer Workspace Terminal</h2>																				
+                <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
             
             <div class="workspace-channel-selector">
-                <button class="channel-tab-btn active" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Upload Column</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross-Link Message Board</button>
+                <button class="channel-tab-btn active" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
+                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
             </div>
 
             <div id="customerUploadInterfaceBlock">
-                <div id="customerLiveTrackerSection" style="margin-bottom: 30px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 14px; border: 1px solid rgba(0,242,254,0.15);">																				
+                <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid rgba(0,242,254,0.15);">																				
                 </div>																				
                                                                                                 
                 <div class="form-grid-layout">																				
@@ -689,8 +643,8 @@
     
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
-                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.9rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / STORAGE PHOTO DIRECTORY</label>
-                            <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:auto; display:inline-block;" onchange="processBinaryAttachment(event, 'policy')">
+                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / PHOTO</label>
+                            <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
     
@@ -708,38 +662,38 @@
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
                     <div class="chat-target-userlist-pane" id="chatTargetContainerView">
-                        </div>
+                    </div>
                     <div class="chat-stream-message-container">
-                        <div class="chat-stream-header-bar" id="chatActiveUserHeaderNode">Select Target Dynamic Identity Node...</div>
+                        <div class="chat-stream-header-bar" id="chatActiveUserHeaderNode">Select Target Identity...</div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
-                            </div>
+                        </div>
                         <div class="chat-interface-footer-inputs">
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
-                            <button onclick="document.getElementById('chatMediaFileInput').click()" style="padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(0,242,254,0.3); color:#00f2fe; border-radius:8px; cursor:pointer; font-family:'Orbitron'; font-size:0.85rem;">📎 File/Image</button>
-                            <input type="text" id="chatCoreMessageTextInput" placeholder="Type data stream narrative message here..." style="flex:1; padding:14px; background:#02050b; border:1px solid #1a2c47; border-radius:8px; color:#fff; outline:none; font-size:0.95rem;" onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
-                            <button onclick="dispatchMatrixChatMessage()" style="padding:14px 24px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; border-radius:8px; color:#000; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">DISPATCH</button>
+                            <button onclick="document.getElementById('chatMediaFileInput').click()" style="padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(0, 242, 254, 0.3); color:#00f2fe; border-radius:8px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">📎 File</button>
+                            <input type="text" id="chatCoreMessageTextInput" placeholder="Type message..." style="flex:1; padding:10px; background:#02050b; border:1px solid #1a2c47; border-radius:8px; color:#fff; outline:none; font-size:0.85rem;" onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
+                            <button onclick="dispatchMatrixChatMessage()" style="padding:10px 16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; border-radius:8px; color:#000; font-family:'Orbitron'; font-weight:bold; cursor:pointer; font-size:0.8rem;">SEND</button>
                         </div>
                     </div>
                 </div>
-                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; padding-left:10px;"></div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:6px; font-size:0.8rem; color:#f1c40f;"></div>
             </div>
 
-            <div class="ai-helper-banner">💡 AI Status: Encryption tunnels established. Local database active.</div>																				
+            <div class="ai-helper-banner">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
             <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn"> Emergency Helpline: 9355768176</button>																				
         </div>																				
     </div>																				
 																				
     <div class="dashboard-panel-core hidden" id="adminDashboard">																				
-        <div class="hud-container-panel" style="max-width: 1100px; text-align: left;">																				
+        <div class="hud-container-panel" style="text-align: left;">																				
             <div class="panel-header-flex">																				
-                <h2 class="neon-green-text">Shashi Mainframe Console</h2>																				
+                <h2 class="neon-green-text">Shashi Mainframe</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>																				
             </div>																				
                         																				
             <div class="admin-category-navbar">																				
-                <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Creation</button>																				
-                <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Section</button>																				
-                <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Policy Workspace</button>																				
+                <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
+                <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
+                <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>																				
             </div>																				
 																				
             <div id="customerCardsContainer">																				
@@ -747,53 +701,94 @@
         </div>																				
     </div>																				
 																				
-    <script>																				
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child, onValue, remove, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
+            authDomain: "pikachu-nexus.firebaseapp.com",
+            projectId: "pikachu-nexus",
+            storageBucket: "pikachu-nexus.firebasestorage.app",
+            messagingSenderId: "973998699980",
+            appId: "1:973998699980:web:56aee182c0f07613e69969",
+            measurementId: "G-HB72261M8V",
+            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
         let currentMode = 'user';																				
         let loggedInCustomerID = "";																				
         let failedAttemptsCount = 0;																				
         let currentTrackingUserAttempt = "";																				
         let activeAdminSubSection = "creation";																				
         let loadedAttachmentB64 = "";
-        
-        // Dynamic Upgraded System Variables Mapped
         let isSystemAudioEnabled = true;
-        let activeCustomerWorkspaceChannel = "upload"; // 'upload' or 'chat'
+        let activeCustomerWorkspaceChannel = "upload";
         let activeSelectedChatTargetUserId = "";
         let globalLiveChatBinaryStreamBase64 = "";
 
-        const triggerCord = document.getElementById('triggerCord');																				
-        const mainStage = document.getElementById('mainStage');																				
-        const loginTerminal = document.getElementById('loginTerminal');																				
-																				
-        function toggleGlobalSystemAudio() {
+        let cachedGlobalUsersArr = [];
+        let cachedGlobalPolicyArr = [];
+
+        // Realtime Users Synchronization
+        onValue(ref(db, 'users'), (snapshot) => {
+            const data = snapshot.val();
+            cachedGlobalUsersArr = data ? Object.values(data) : [];
+            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
+                renderUserControlPanel();
+            }
+            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
+                initializeCrossLinkChatPanel();
+            }
+        });
+
+        // Realtime Policies Synchronization
+        onValue(ref(db, 'policies'), (snapshot) => {
+            const data = snapshot.val();
+            cachedGlobalPolicyArr = data ? Object.values(data) : [];
+            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
+                renderPolicyCardsBlock();
+            }
+            if(loggedInCustomerID) {
+                renderCustomerLiveTracker();
+            }
+        });
+
+        // Realtime Chats Stream Update Listener
+        onValue(ref(db, 'chats'), () => {
+            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
+                renderActiveChatConversationLogs();
+            }
+        });
+
+        window.toggleGlobalSystemAudio = function() {
             isSystemAudioEnabled = !isSystemAudioEnabled;
             const audioBtn = document.getElementById('systemAudioToggleBtn');
             if(isSystemAudioEnabled) {
                 audioBtn.classList.remove('audio-disabled');
-                audioBtn.innerHTML = `<span>🔊 SYSTEM SOUND: ON</span>`;
-                speakNaturalHuman("Audio engines synthesized online.");
+                audioBtn.innerHTML = `<span>🔊 SOUND: ON</span>`;
+                speakNaturalHuman("Audio system live.");
             } else {
                 audioBtn.classList.add('audio-disabled');
-                audioBtn.innerHTML = `<span>🔇 SYSTEM SOUND: OFF</span>`;
+                audioBtn.innerHTML = `<span>🔇 SOUND: OFF</span>`;
                 if('speechSynthesis' in window) window.speechSynthesis.cancel();
             }
-        }
+        };
 
-        function speakNaturalHuman(textMessage) {																				
+        window.speakNaturalHuman = function(textMessage) {																				
             if (!isSystemAudioEnabled) return;
             if ('speechSynthesis' in window) {																				
                 window.speechSynthesis.cancel(); 																				
                 const syntax = new SpeechSynthesisUtterance(textMessage);																				
-                const voiceCluster = window.speechSynthesis.getVoices();																				
-                const idealVoice = voiceCluster.find(v => v.name.includes('Natural') || v.name.includes('Google US English') || v.lang === 'en-US');																				
-                if(idealVoice) syntax.voice = idealVoice;																				
-                syntax.pitch = 1.05; 																				
-                syntax.rate = 0.95; 																				
+                syntax.pitch = 1.05; syntax.rate = 0.95; 																				
                 window.speechSynthesis.speak(syntax);																				
             }																				
-        }																				
+        };																				
 																				
-        function playSynthesizedSound(frequency, type, duration) {																				
+        window.playSynthesizedSound = function(frequency, type, duration) {																				
             if (!isSystemAudioEnabled) return;
             try {																				
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();																				
@@ -805,26 +800,9 @@
                 oscillator.connect(gainNode); gainNode.connect(audioCtx.destination);																				
                 oscillator.start(); oscillator.stop(audioCtx.currentTime + duration);																				
             } catch(e) {}																				
-        }																				
-																				
-        if(triggerCord) {																				
-            triggerCord.addEventListener('mousedown', () => {																				
-                triggerCord.style.transform = 'translateY(35px)';																				
-                																				
-                setTimeout(() => {																				
-                    triggerCord.style.transform = 'translateY(0)';																				
-                    mainStage.classList.add('activated');																				
-                    																				
-                    speakNaturalHuman("Welcome back. Please select Workspace Mode.");																				
-                    																				
-                    setTimeout(() => {																				
-                        if(loginTerminal) loginTerminal.classList.remove('hidden');																				
-                    }, 350);																				
-                }, 180);																				
-            });																				
-        }																				
-																				
-        function changeWorkspaceMode(mode) {																				
+        };
+
+        window.changeWorkspaceMode = function(mode) {																				
             currentMode = mode;																				
             const tabs = document.querySelectorAll('.hud-tab');																				
             const inputLabel = document.getElementById('hudInputLabel');																				
@@ -835,7 +813,7 @@
                 tabs.forEach(t => t.classList.remove('active'));																				
                 if (mode === 'admin') {																				
                     tabs[1].classList.add('active');																				
-                    if(inputLabel) inputLabel.innerText = "Confirm Master Admin Vector";																				
+                    if(inputLabel) inputLabel.innerText = "Confirm Admin Vector";																				
                 } else {																				
                     tabs[0].classList.add('active');																				
                     if(inputLabel) inputLabel.innerText = "System ID / Customer ID";																				
@@ -843,96 +821,61 @@
             }																				
             if(inputUser) inputUser.value = "";																				
             if(inputPass) inputPass.value = ""; 																				
-        }																				
-																				
-        function getMasterAdminCredentials() {																				
-            let creds = localStorage.getItem('shashi_master_admin_creds');																				
-            if(!creds) {																				
-                let defaultCreds = { id: "Shashi2004", pass: "Tolu@Molu" };																				
-                localStorage.setItem('shashi_master_admin_creds', JSON.stringify(defaultCreds));																				
-                return defaultCreds;																				
-            }																				
-            return JSON.parse(creds);																				
-        }																				
-        function saveMasterAdminCredentials(id, pass) {																				
-            localStorage.setItem('shashi_master_admin_creds', JSON.stringify({ id, pass }));																				
-        }																				
-																				
-        function getCreatedUsers() { return JSON.parse(localStorage.getItem('shashi_created_users') || "[]"); }																				
-        function saveCreatedUsers(arr) { localStorage.setItem('shashi_created_users', JSON.stringify(arr)); }																				
-        function getPolicyDB() { return JSON.parse(localStorage.getItem("DB") || "[]"); }																				
-        function savePolicyDB(arr) { localStorage.setItem("DB", JSON.stringify(arr)); }																				
-        
-        // Upgraded Communication Cache Engine Methods
-        function getMatrixChatCache() { return JSON.parse(localStorage.getItem("shashi_matrix_chat_logs") || "[]"); }
-        function saveMatrixChatCache(arr) { localStorage.setItem("shashi_matrix_chat_logs", JSON.stringify(arr)); }
+        };
 
-        function checkAutoLogin() {																				
+        window.checkAutoLogin = function() {																				
             const u = document.getElementById('accessNodeUser').value.trim();																				
             const p = document.getElementById('accessNodePass').value.trim();																				
             if(!u || !p) return;																				
 																				
-            let master = getMasterAdminCredentials();																				
             if(currentMode === 'admin') {																				
-                if(u === master.id && p === master.pass) {																				
+                if(u === "Shashi2004" && p === "Tolu@Molu") {																				
                     executeClusterLogin(null);																				
                 }																				
             } else {																				
-                let allUsers = getCreatedUsers();																				
-                let userMatch = allUsers.find(user => user.id.toLowerCase() === u.toLowerCase());																				
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());																				
                 if(userMatch && String(userMatch.pass) === String(p)) {																				
                     executeClusterLogin(null);																				
                 }																				
             }																				
-        }																				
-																				
-        function executeClusterLogin(event) {																				
+        };
+
+        window.executeClusterLogin = function(event) {																				
             if(event) event.preventDefault();																				
             const u = document.getElementById('accessNodeUser').value.trim();																				
             const p = document.getElementById('accessNodePass').value.trim();																				
 																				
-            let master = getMasterAdminCredentials();																				
-																				
             if (currentMode === 'admin') {																				
-                if (u !== master.id) {
-                    speakNaturalHuman("Wrong identification parameters.");
+                if (u !== "Shashi2004" || p !== "Tolu@Molu") {
+                    speakNaturalHuman("Wrong parameters.");
                     playSynthesizedSound(180, 'sawtooth', 0.25);
-                    alert("❌ Warning: Incorrect Admin ID Vector Matrix!");
+                    alert("❌ Warning: Incorrect Credentials!");
                     return;
                 }
-                if (p !== master.pass) {																				
-                    speakNaturalHuman("Wrong secure access code keyed.");																				
-                    playSynthesizedSound(180, 'sawtooth', 0.25);
-                    alert("❌ Warning: Incorrect Admin Access Password Key!");																				
-                    return;
-                }																				
-                																				
                 failedAttemptsCount = 0;																				
-                speakNaturalHuman("Access granted. Launching Shashi Admin Console.");																				
+                speakNaturalHuman("Access granted.");																				
                 document.getElementById('mainStage').style.display = 'none';																				
                 document.getElementById('adminDashboard').classList.remove('hidden');																				
                 loadAdminSubmissions();																				
             } else {																				
-                let allUsers = getCreatedUsers();																				
-                const userIdx = allUsers.findIndex(user => user.id.toLowerCase() === u.toLowerCase());																				
-                const userMatch = userIdx !== -1 ? allUsers[userIdx] : null;																				
+                const userIdx = cachedGlobalUsersArr.findIndex(user => user.id.toLowerCase() === u.toLowerCase());																				
+                const userMatch = userIdx !== -1 ? cachedGlobalUsersArr[userIdx] : null;																				
 																				
                 if (!userMatch) {
-                    speakNaturalHuman("Wrong identification parameters.");
+                    speakNaturalHuman("Wrong parameter.");
                     alert("❌ Warning: Incorrect Customer System ID!");
                     return;
                 }
 
                 if (String(userMatch.pass) === String(p)) {																				
                     if (userMatch.status === 'deactivated' || userMatch.status === 'attack_locked') {																				
-                        speakNaturalHuman("Profile deactivated. Matrix gateway closed.");																				
-                        alert("🔒 Access Denied! Your account has been Deactivated by Shashi Admin.");																				
+                        speakNaturalHuman("Profile deactivated.");																				
+                        alert("🔒 Access Denied! Your account has been Deactivated.");																				
                         return;																				
                     }																				
-                    																				
                     failedAttemptsCount = 0;																				
                     loggedInCustomerID = userMatch.id;																				
-                    speakNaturalHuman("Access authorized. Launching Customer Registry Console.");																				
+                    speakNaturalHuman("Access authorized.");																				
                     document.getElementById('mainStage').style.display = 'none';																				
                     document.getElementById('customerDashboard').classList.remove('hidden');																				
                     switchCustomerChannel('upload');
@@ -945,34 +888,31 @@
                     }																				
 																				
                     if (failedAttemptsCount === 1) {																				
-                        speakNaturalHuman("Wrong secure access code keyed.");																				
+                        speakNaturalHuman("Wrong security access key.");																				
                         alert("❌ Warning: Incorrect Security Passkey! Remaining attempts: 2");																				
-                    }																				
-                    else if (failedAttemptsCount === 2) {																				
-                        speakNaturalHuman("Wrong secure access code keyed.");																				
+                    } else if (failedAttemptsCount === 2) {																				
+                        speakNaturalHuman("Wrong secure access key.");																				
                         playSynthesizedSound(220, 'sawtooth', 0.15);																				
                         const flashNode = document.getElementById('gunFlashNode');																				
                         if(flashNode) { flashNode.style.opacity = '1'; setTimeout(() => { flashNode.style.opacity = '0'; }, 80); }																				
                         alert("❌ Warning: Incorrect Security Passkey! Remaining attempts: 1");																				
-                    }																				
-                    else if (failedAttemptsCount >= 3) {																				
-                        speakNaturalHuman("Security countermeasure triggered. Profile locked.");																				
-                        																				
-                        allUsers[userIdx].status = 'attack_locked';																				
-                        allUsers[userIdx].adminAlert = true;																				
-                        saveCreatedUsers(allUsers);																				
+                    } else if (failedAttemptsCount >= 3) {																				
+                        speakNaturalHuman("Security lock active.");																				
+                        userMatch.status = 'attack_locked';																				
+                        userMatch.adminAlert = true;
+                        set(ref(db, 'users/' + userMatch.id), userMatch);
                         																				
                         document.body.classList.add('screen-shake');																				
                         playSynthesizedSound(100, 'triangle', 0.4);																				
                         const flashNode = document.getElementById('topFlashNode');																				
                         if(flashNode) { flashNode.style.opacity = '1'; setTimeout(() => { flashNode.style.opacity = '0'; document.body.classList.remove('screen-shake'); }, 400); }																				
-                        alert("🚨 3 Failure Detections! Your Profile ID has been auto deactivated. Connect with Admin.");																				
+                        alert("🚨 3 Failure Detections! Profile deactivated.");																				
                     }																				
                 }																				
             }																				
-        }																				
-																				
-        function processBinaryAttachment(event, type) {
+        };
+
+        window.processBinaryAttachment = function(event, type) {
             const fileInput = event.target;
             if(fileInput && fileInput.files.length > 0) {
                 const reader = new FileReader();
@@ -982,17 +922,14 @@
                     } else if (type === 'chat') {
                         globalLiveChatBinaryStreamBase64 = e.target.result;
                         const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-                        if(statusBox) statusBox.innerText = `📎 Attached asset queued file target: ${fileInput.files[0].name}`;
+                        if(statusBox) statusBox.innerText = `📎 Attached: ${fileInput.files[0].name}`;
                     }
-                };
-                reader.onloadend = function() {
-                    playSynthesizedSound(600, 'sine', 0.1);
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             }
-        }
+        };
 
-        function submitPolicyForm(){																				
+        window.submitPolicyForm = function(){																				
             let reg = document.getElementById('regNo').value.trim();																				
             let ins = document.getElementById('insurerName').value.trim();																				
             let pol = document.getElementById('policyNo').value.trim();																				
@@ -1000,150 +937,113 @@
             let emailVal = document.getElementById('email').value.trim();																				
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
-            if(!ins || !contact){ alert("⚠️ Insurer Name and Contact Number are mandatory fields."); return; }																				
-            																				
-            let DB = getPolicyDB();																				
-            DB.unshift({ 
-                ownerNodeID: loggedInCustomerID, 
-                reg, 
-                insure: ins, 
-                pol, 
-                phone: contact, 
-                email: emailVal, 
-                notes: noteVal, 
-                attachment: loadedAttachmentB64,
-                customerComments: [],
-                status: 'pending', 
-                adminComment: "Awaiting administrative file overview verification strategy.", 
-                time: new Date().toLocaleString() 
-            });																				
-            savePolicyDB(DB);																				
-            																				
-            speakNaturalHuman("Data log compiled and permanently transmitted.");																				
-            alert("✔ Form Submitted Successfully!");																				
-            																				
-            document.getElementById('regNo').value = "";																				
-            document.getElementById('insurerName').value = "";																				
-            document.getElementById('policyNo').value = "";																				
-            document.getElementById('contactNo').value = "";																				
-            document.getElementById('email').value = "";																				
-            document.getElementById('notesReal').value = "";																				
-            if(document.getElementById('clientAttachment')) document.getElementById('clientAttachment').value = "";
-            loadedAttachmentB64 = "";
+            if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
+            
+            const generatedPolicyId = "POL_" + Date.now();
+            set(ref(db, 'policies/' + generatedPolicyId), {
+                id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
+                reg, insure: ins, pol, phone: contact, email: emailVal, notes: noteVal, 
+                attachment: loadedAttachmentB64, customerComments: [], status: 'pending', 
+                adminComment: "Awaiting administration overview logic verification.", time: new Date().toLocaleString()
+            }).then(() => {
+                speakNaturalHuman("Transmitted successfully.");																				
+                alert("✔ Form Submitted Successfully!");																				
+                
+                document.getElementById('regNo').value = "";																				
+                document.getElementById('insurerName').value = "";																				
+                document.getElementById('policyNo').value = "";																				
+                document.getElementById('contactNo').value = "";																				
+                document.getElementById('email').value = "";																				
+                document.getElementById('notesReal').value = "";																				
+                if(document.getElementById('clientAttachment')) document.getElementById('clientAttachment').value = "";
+                loadedAttachmentB64 = "";
+                renderCustomerLiveTracker();
+            });
+        };
 
-            renderCustomerLiveTracker();																				
-        }																				
-																				
-        function renderCustomerLiveTracker() {																				
+        window.renderCustomerLiveTracker = function() {																				
             const trackerBox = document.getElementById('customerLiveTrackerSection'); if(!trackerBox) return;																				
-            let DB = getPolicyDB(); let userCases = DB.filter(item => item.ownerNodeID === loggedInCustomerID);																				
-            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 0.95rem; margin-bottom: 5px;">📊 LIVE SUBMISSION STATUS TRACKER</h4><p style="color: #475569; font-size: 0.9rem;">No active configuration request directories found in tracking node stacks.</p>`; return; }																				
+            let userCases = cachedGlobalPolicyArr.filter(item => item.ownerNodeID === loggedInCustomerID);																				
+            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 0.95rem; margin-bottom: 5px;">📊 LIVE STATUS TRACKER</h4><p style="color: #475569; font-size: 0.85rem;">No active data stacks.</p>`; return; }																				
             																				
             let casesHtml = userCases.map((item) => {																				
-                let actualIndex = DB.findIndex(x => x.time === item.time && x.ownerNodeID === item.ownerNodeID);																				
                 let badgeClass = item.status === 'uploaded' ? 'status-uploaded' : item.status === 'error' ? 'status-error' : item.status === 'closed' ? 'status-closed' : item.status === 'waiting' ? 'status-waiting' : 'status-pending';																				
-                 
-                let commentStack = item.customerComments || [];
+                let commentStack = item.customerComments ? Object.values(item.customerComments) : [];
                 let commentLogHTML = commentStack.map(c => `<div style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:4px 8px; margin-top:3px; border-radius:4px; color:#fff;"><b>[${c.timestamp}] Customer:</b> ${c.text}</div>`).join('');
 
                 return `																				
                     <div style="background: rgba(255,255,255,0.02); padding: 18px; border-radius: 12px; border: 1px solid rgba(0,242,254,0.1); display: flex; flex-direction:column; margin-top: 10px; text-align: left; gap: 12px;">																				
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
                             <div>																				
-                                <strong style="color: white; font-size: 1rem; display: block;">Insurer Name: <span style="color: #00f2fe;">${item.insure}</span></strong>																				
-                                <div style="color: #64748b; font-size: 0.85rem; margin-top: 2px;">Submitted on: ${item.time}</div>																				
+                                <strong style="color: white; font-size: 0.9rem; display: block;">Insurer: <span style="color: #00f2fe;">${item.insure}</span></strong>																				
                             </div>
-                            <div>
-                                <span style="color:#64748b; font-size:0.75rem; display:block; text-align:right; margin-bottom:4px; font-family:'Orbitron';">CURRENT STATUS:</span>
-                                <span class="status-badge ${badgeClass}">${item.status.toUpperCase()}</span>
-                            </div>
+                            <div><span class="status-badge ${badgeClass}">${item.status.toUpperCase()}</span></div>
                         </div>
-
-                        <div style="margin-top: 4px; font-size: 0.9rem; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #f1c40f;">
-                            <b>Shashi Admin Comment:</b> ${item.adminComment}
+                        <div style="font-size: 0.85rem; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border-left: 3px solid #f1c40f;">
+                            <b>Comment:</b> ${item.adminComment}
                         </div>																				
-                         
-                        <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                            <label style="color:#00f2fe; font-family:'Orbitron'; font-size:0.75rem; display:block; margin-bottom:6px;">💬 SYSTEM TIMELINE CHAT / CONNECT WITH ADMIN:</label>
-                            <div id="commentHistoryStack_${actualIndex}">${commentLogHTML}</div>
-                            <div style="display:flex; gap:10px; margin-top:8px;">
-                                <input type="text" id="trackerCommentInput_${actualIndex}" placeholder="Ask admin regarding your status update..." style="flex:1; padding:10px; background:#020408; border:1px solid #222; color:#fff; border-radius:6px; font-size:0.85rem; outline:none;">
-                                <button onclick="postTrackerComment(${actualIndex})" style="padding:10px 16px; background:#00f2fe; color:#000; border:none; font-family:'Orbitron'; font-weight:bold; border-radius:6px; cursor:pointer; font-size:0.8rem;">SEND</button>
+                        <div style="background: rgba(0,0,0,0.2); padding: 8px; border-radius: 8px;">
+                            <div id="commentHistoryStack_${item.id}">${commentLogHTML}</div>
+                            <div style="display:flex; gap:6px; margin-top:6px;">
+                                <input type="text" id="trackerCommentInput_${item.id}" placeholder="Type timeline message..." style="flex:1; padding:8px; background:#020408; border:1px solid #222; color:#fff; border-radius:6px; font-size:0.8rem; outline:none;">
+                                <button onclick="postTrackerComment('${item.id}')" style="padding:8px 12px; background:#00f2fe; color:#000; border:none; font-family:'Orbitron'; font-weight:bold; border-radius:6px; font-size:0.75rem;">SEND</button>
                             </div>
                         </div>
-
-                        <div style="display: flex; align-items: center; justify-content:flex-end; gap: 10px;">																				
-                            <button onclick="updateCustomerCaseAction(${actualIndex}, 'closed')" style="padding: 8px 14px; background: #e74c3c; color: white; border: none; border-radius: 6px; font-size: 0.8rem; font-family:'Orbitron'; font-weight: bold; cursor: pointer;">CLOSE CASE</button>																				
-                            <button onclick="updateCustomerCaseAction(${actualIndex}, 'waiting')" style="padding: 8px 14px; background: #9b59b6; color: white; border: none; border-radius: 6px; font-size: 0.8rem; font-family:'Orbitron'; font-weight: bold; cursor: pointer;">PUT WAITING</button>																				
+                        <div style="display: flex; align-items: center; justify-content:flex-end; gap: 8px;">																				
+                            <button onclick="updateCustomerCaseAction('${item.id}', 'closed')" style="padding: 6px 12px; background: #e74c3c; color: white; border: none; border-radius: 6px; font-size: 0.75rem; font-family:'Orbitron'; font-weight: bold;">CLOSE</button>																				
+                            <button onclick="updateCustomerCaseAction('${item.id}', 'waiting')" style="padding: 6px 12px; background: #9b59b6; color: white; border: none; border-radius: 6px; font-size: 0.75rem; font-family:'Orbitron'; font-weight: bold;">HOLD</button>																				
                         </div>																				
                     </div>																				
                 `;																				
             }).join('');																				
-            trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 1rem; margin-bottom: 10px; letter-spacing: 0.5px;">📊 LIVE SUBMISSION STATUS TRACKER</h4><div style="display: flex; flex-direction: column; gap: 12px; max-height: 380px; overflow-y: auto;">${casesHtml}</div>`;																				
-        }																				
-																				
-        function postTrackerComment(universalIndex) {
-            const txtNode = document.getElementById(`trackerCommentInput_${universalIndex}`);
+            trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size: 0.95rem; margin-bottom: 8px;">📊 LIVE STATUS TRACKER</h4><div style="display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto;">${casesHtml}</div>`;																				
+        };
+
+        window.postTrackerComment = function(policyId) {
+            const txtNode = document.getElementById(`trackerCommentInput_${policyId}`);
             if(!txtNode || !txtNode.value.trim()) return;
             
-            let DB = getPolicyDB();
-            if(!DB[universalIndex].customerComments) DB[universalIndex].customerComments = [];
-             
-            DB[universalIndex].customerComments.push({
-                text: txtNode.value.trim(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            const targetCommentRef = push(ref(db, `policies/${policyId}/customerComments`));
+            set(targetCommentRef, {
+                text: txtNode.value.trim(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => {
+                txtNode.value = ""; speakNaturalHuman("Message log deployed.");
             });
-             
-            savePolicyDB(DB);
-            txtNode.value = "";
-            speakNaturalHuman("Message posted to matrix terminal.");
-            renderCustomerLiveTracker();
-        }
+        };
 
-        function updateCustomerCaseAction(universalIndex, newStatus) {																				
-            let DB = getPolicyDB(); DB[universalIndex].status = newStatus;																				
-            DB[universalIndex].adminComment = newStatus === 'closed' ? "This processing vector log directory has been closed out manually by Customer terminal action parameter." : "Customer marked case context on WAITING hold sequence layer queue parameters.";																				
-            savePolicyDB(DB); speakNaturalHuman("Status updated successfully."); renderCustomerLiveTracker();																				
-        }																				
-																				
-        /* --- CUSTOMER WORKSPACE SUB-CHANNEL NAVIGATION MANAGER --- */
-        function switchCustomerChannel(channelId) {
+        window.updateCustomerCaseAction = function(policyId, newStatus) {																				
+            const commentStr = newStatus === 'closed' ? "Log close requested." : "Hold queued down.";
+            set(ref(db, `policies/${policyId}/status`), newStatus);
+            set(ref(db, `policies/${policyId}/adminComment`), commentStr);
+            speakNaturalHuman("Updated.");
+        };
+
+        window.switchCustomerChannel = function(channelId) {
             activeCustomerWorkspaceChannel = channelId;
             const btnUpload = document.getElementById('btnChannelUpload');
             const btnChat = document.getElementById('btnChannelChat');
-            
             const viewUpload = document.getElementById('customerUploadInterfaceBlock');
             const viewChat = document.getElementById('customerChatInterfaceBlock');
             
             if(channelId === 'upload') {
-                btnUpload.classList.add('active');
-                btnChat.classList.remove('active');
-                viewUpload.classList.remove('hidden');
-                viewChat.classList.add('hidden');
+                btnUpload.classList.add('active'); btnChat.classList.remove('active');
+                viewUpload.classList.remove('hidden'); viewChat.classList.add('hidden');
                 renderCustomerLiveTracker();
             } else {
-                btnUpload.classList.remove('active');
-                btnChat.classList.add('active');
-                viewUpload.classList.add('hidden');
-                viewChat.classList.remove('hidden');
-                speakNaturalHuman("Communication matrix linked.");
+                btnUpload.classList.remove('active'); btnChat.classList.add('active');
+                viewUpload.classList.add('hidden'); viewChat.classList.remove('hidden');
                 initializeCrossLinkChatPanel();
             }
-        }
+        };
 
-        /* --- MATRIX MULTI-USER DYNAMIC CHAT APPLICATION CONTROLLERS --- */
-        function initializeCrossLinkChatPanel() {
+        window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
             
-            const allUsers = getCreatedUsers();
-            // Filter targets down to alternative identities that exist or are activated inside local storage
-            const prospectiveTargets = allUsers.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
+            const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
             
             if(prospectiveTargets.length === 0) {
-                targetContainer.innerHTML = `<div style="color:#475569; font-size:0.85rem; padding:10px; text-align:center;">No other active operational matrix logs found.</div>`;
-                document.getElementById('chatActiveUserHeaderNode').innerText = "Channels: Absolute Void";
-                document.getElementById('chatMessagesScrollWrapper').innerHTML = "";
+                targetContainer.innerHTML = `<div style="color:#475569; font-size:0.75rem; padding:5px; text-align:center;">Void Matrix logs.</div>`;
                 return;
             }
             
@@ -1151,8 +1051,7 @@
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
                 return `
                     <div class="chat-user-item-node ${isActiveCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        🟢 Node: ${user.clientName} <br>
-                        <span style="font-size:0.7rem; color:#475569; font-family:monospace;">[ID: ${user.id}]</span>
+                        🟢 ${user.clientName} [${user.id}]
                     </div>
                 `;
             }).join('');
@@ -1162,111 +1061,88 @@
             } else {
                 renderActiveChatConversationLogs();
             }
-        }
+        };
 
-        function setOperationalChatTargetId(userId) {
+        window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId;
-            const allUsers = getCreatedUsers();
-            const matchingProfile = allUsers.find(u => u.id === userId);
-            
+            const matchingProfile = cachedGlobalUsersArr.find(u => u.id === userId);
             const titleNode = document.getElementById('chatActiveUserHeaderNode');
             if(titleNode && matchingProfile) {
-                titleNode.innerText = `💬 SECURE PIPELINE: ${matchingProfile.clientName.toUpperCase()} [${matchingProfile.id}]`;
+                titleNode.innerText = `💬 SECURE PIPELINE: ${matchingProfile.clientName.toUpperCase()}`;
             }
             
-            // Repaint lists for highlighting shifts
-            const targetContainer = document.getElementById('chatTargetContainerView');
-            if(targetContainer) {
-                document.querySelectorAll('.chat-user-item-node').forEach(node => {
-                    if(node.innerText.includes(`[ID: ${userId}]`)) {
-                        node.classList.add('active-chat-target');
-                    } else {
-                        node.classList.remove('active-chat-target');
-                    }
-                });
-            }
-            
+            document.querySelectorAll('.chat-user-item-node').forEach(node => {
+                if(node.innerText.includes(`[${userId}]`)) node.classList.add('active-chat-target');
+                else node.classList.remove('active-chat-target');
+            });
             renderActiveChatConversationLogs();
-        }
+        };
 
-        function renderActiveChatConversationLogs() {
+        window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper) return;
             
-            if(!activeSelectedChatTargetUserId) {
-                wrapper.innerHTML = "";
-                return;
-            }
-            
-            const masterLogs = getMatrixChatCache();
-            // Extract messages matching the user's secure token
-            const contextConvos = masterLogs.filter(msg => 
-                (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
-                (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
-            );
-            
-            if(contextConvos.length === 0) {
-                wrapper.innerHTML = `<div style="color:#475569; font-size:0.9rem; margin:auto; font-family:'Orbitron';">Pipeline clear. Dispatch first terminal payload packet.</div>`;
-                return;
-            }
-            
-            wrapper.innerHTML = contextConvos.map(msg => {
-                const isMyMessage = (msg.sender === loggedInCustomerID);
-                const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
+            get(ref(db, 'chats')).then((snapshot) => {
+                const data = snapshot.val();
+                const masterLogs = data ? Object.values(data) : [];
                 
-                let mediaElementHTML = "";
-                if(msg.mediaPayload) {
-                    if(msg.mediaPayload.startsWith("data:image")) {
-                        mediaElementHTML = `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">`;
-                    } else {
-                        mediaElementHTML = `<div style="margin-top:8px;"><a href="${msg.mediaPayload}" download="MatrixSharedAsset" class="file-preview-anchor" style="color:${isMyMessage?'#000':'#00f2fe'}; text-decoration:underline;">📥 Download Binary Payload</a></div>`;
-                    }
+                const contextConvos = masterLogs.filter(msg => 
+                    (msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
+                    (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)
+                );
+                
+                if(contextConvos.length === 0) {
+                    wrapper.innerHTML = `<div style="color:#475569; font-size:0.8rem; margin:auto; font-family:'Orbitron';">Pipeline clear.</div>`;
+                    return;
                 }
                 
-                return `
-                    <div class="bubble-msg-wrapper ${directionalCss}">
-                        <div style="font-size:0.7rem; opacity:0.6; margin-bottom:4px; font-family:monospace;">[${msg.timestamp}] ${isMyMessage ? 'YOU' : 'REMOTE NODE'}</div>
-                        <div>${msg.textBody}</div>
-                        ${mediaElementHTML}
-                    </div>
-                `;
-            }).join('');
-            
-            // Snap container pane view to bottom row matrix position
-            wrapper.scrollTop = wrapper.scrollHeight;
-        }
+                wrapper.innerHTML = contextConvos.map(msg => {
+                    const isMyMessage = (msg.sender === loggedInCustomerID);
+                    const directionalCss = isMyMessage ? 'bubble-outgoing' : 'bubble-incoming';
+                    
+                    let mediaElementHTML = "";
+                    if(msg.mediaPayload) {
+                        if(msg.mediaPayload.startsWith("data:image")) {
+                            mediaElementHTML = `<img src="${msg.mediaPayload}" class="chat-media-attachment-box" onclick="window.open(this.src)">`;
+                        } else {
+                            mediaElementHTML = `<div style="margin-top:6px;"><a href="${msg.mediaPayload}" download="AssetData" class="file-preview-anchor" style="color:${isMyMessage?'#000':'#00f2fe'};">📥 Download Data Asset</a></div>`;
+                        }
+                    }
+                    
+                    return `
+                        <div class="bubble-msg-wrapper ${directionalCss}">
+                            <div>${msg.textBody}</div>
+                            ${mediaElementHTML}
+                        </div>
+                    `;
+                }).join('');
+                wrapper.scrollTop = wrapper.scrollHeight;
+            });
+        };
 
-        function dispatchMatrixChatMessage() {
+        window.dispatchMatrixChatMessage = function() {
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
             
             const textBody = inputField.value.trim();
-            if(!textBody && !globalLiveChatBinaryStreamBase64) return; 
-            if(!activeSelectedChatTargetUserId) { alert("⚠️ Terminal error: Missing target active user vector destination."); return; }
+            if(!textBody && !globalLiveChatBinaryStreamBase64) return;
+            if(!activeSelectedChatTargetUserId) return;
             
-            let logs = getMatrixChatCache();
-            logs.push({
-                sender: loggedInCustomerID,
-                receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "Sent file payload data packets safely.",
-                mediaPayload: globalLiveChatBinaryStreamBase64,
+            const newChatPacketRef = push(ref(db, 'chats'));
+            set(newChatPacketRef, {
+                sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
+                textBody: textBody || "Sent file layout payload stream.", mediaPayload: globalLiveChatBinaryStreamBase64,
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => {
+                inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
+                const statusBox = document.getElementById('chatAttachmentStatusFeedback');
+                if(statusBox) statusBox.innerText = "";
+                playSynthesizedSound(880, 'sine', 0.08);
+                renderActiveChatConversationLogs();
             });
-            
-            saveMatrixChatCache(logs);
-            inputField.value = "";
-            globalLiveChatBinaryStreamBase64 = "";
-            
-            const statusBox = document.getElementById('chatAttachmentStatusFeedback');
-            if(statusBox) statusBox.innerText = "";
-            if(document.getElementById('chatMediaFileInput')) document.getElementById('chatMediaFileInput').value = "";
-            
-            playSynthesizedSound(880, 'sine', 0.08);
-            renderActiveChatConversationLogs();
-        }
+        };
 
-        /* --- ADMIN CONSOLE ROUTINES --- */
-        function switchAdminSubSection(sectionId) {																				
+        window.switchAdminSubSection = function(sectionId) {																				
             activeAdminSubSection = sectionId;																				
             const tabs = ["creation", "credentials", "workspace"];																				
             tabs.forEach(t => {																				
@@ -1279,244 +1155,200 @@
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';																				
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';																				
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';																				
-        }																				
-																				
-        function loadAdminSubmissions(){																				
+        };
+
+        window.loadAdminSubmissions = function(){																				
             let container = document.getElementById('customerCardsContainer');																				
             if(!container) return;																				
             																				
-            let masterAdmin = getMasterAdminCredentials();																				
-            																				
             let htmlContent = `																				
-                <div id="idCreationBlock" style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 16px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 20px;">																				
-                    <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 15px; font-size: 1.1rem;">⚡ DYNAMIC ACCOUNT COMPILER</h3>																				
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">																				
-                        <input type="text" id="newClientName" placeholder="Client Name" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; outline: none; font-family:'Orbitron';">																				
-                        <input type="date" id="newClientDOB" placeholder="DOB" style="padding: 14px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 8px; outline: none; font-family:'Orbitron';">																				
-                        <input type="text" id="newClientContact" placeholder="Contact No" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; outline: none; font-family:'Orbitron';">																				
-                        <input type="text" id="newUserPass" placeholder="Set Access Password Key" style="padding: 14px; background: #050914; border: 1px solid #222; color: white; border-radius: 8px; outline: none; font-family:'Orbitron';">																				
+                <div id="idCreationBlock" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(26,188,156,0.2); margin-bottom: 15px;">																				
+                    <h3 style="color: #00f2fe; font-family:'Orbitron'; margin-bottom: 12px; font-size: 1rem;">⚡ ACCOUNT COMPILER</h3>																				
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px;">																				
+                        <input type="text" id="newClientName" placeholder="Client Name" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
+                        <input type="date" id="newClientDOB" placeholder="DOB" style="padding: 12px; background: #050914; border: 1px solid #222; color: #f1c40f; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
+                        <input type="text" id="newClientContact" placeholder="Contact No" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
+                        <input type="text" id="newUserPass" placeholder="Set Access Password" style="padding: 12px; background: #050914; border: 1px solid #222; color: white; border-radius: 6px; font-family:'Orbitron'; font-size: 0.9rem;">																				
                     </div>																				
-                    <button onclick="createNewCustomerNode()" style="width:100%; padding: 14px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 8px; font-weight: bold; font-family:'Orbitron'; cursor: pointer; letter-spacing:1px;">GENERATE AND COMPILE USER</button>																				
+                    <button onclick="createNewCustomerNode()" style="width:100%; padding: 12px; background: linear-gradient(135deg, #1abc9c, #16a085); color: white; border: none; border-radius: 6px; font-weight: bold; font-family:'Orbitron'; font-size:0.85rem;">COMPILE USER</button>																				
                 </div>																				
                                 																				
-                <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 25px; border-radius: 16px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 20px;">																				
-                    <div style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">																				
-                        <h4 style="color: #00f2fe; font-size: 0.95rem; margin-bottom: 10px; font-family:'Orbitron';">⚙️ MASTER ADMIN SECURITY VECTOR</h4>																				
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">																				
-                            <input type="text" id="masterAdminIdInput" value="${masterAdmin.id}" style="padding: 10px; background: #050914; border: 1px solid #334155; color: white; border-radius: 6px; font-family:'Orbitron'; font-size:0.85rem;">																				
-                            <input type="text" id="masterAdminPassInput" value="${masterAdmin.pass}" style="padding: 10px; background: #050914; border: 1px solid #334155; color: #f1c40f; border-radius: 6px; font-family:'Orbitron'; font-size:0.85rem;">																				
-                            <button onclick="changeMasterAdminCredentials()" style="padding: 10px 20px; background: #f1c40f; color: black; border: none; border-radius: 6px; font-weight: bold; font-family:'Orbitron'; cursor: pointer; font-size:0.8rem;">UPDATE MASTER CREDENTIALS</button>																				
+                <div id="credentialsBlock" style="display:none; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(241,196,15,0.15); margin-bottom: 15px;">																				
+                    <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">																				
+                        <h4 style="color: #00f2fe; font-size: 0.85rem; margin-bottom: 8px; font-family:'Orbitron';">⚙️ MASTER ADMIN VECTOR</h4>																				
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">																				
+                            <input type="text" value="Shashi2004" disabled style="padding: 8px; background: #050914; border: 1px solid #334155; color: white; border-radius: 6px; font-family:'Orbitron'; font-size:0.8rem; width:100px;">																				
+                            <input type="text" value="Tolu@Molu" disabled style="padding: 8px; background: #050914; border: 1px solid #334155; color: #f1c40f; border-radius: 6px; font-family:'Orbitron'; font-size:0.8rem; width:100px;">																				
                         </div>																				
                     </div>																				
-                                        																				
-                    <h4 style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px; font-family:'Orbitron'; letter-spacing:1px;">ACTIVE REGISTERED USERS SYSTEM CORE:</h4>																				
-                    <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 12px;"></div>																				
+                    <h4 style="color: #64748b; font-size: 0.8rem; margin-bottom: 10px; font-family:'Orbitron';">REGISTERED SYSTEM CLIENTS:</h4>																				
+                    <div id="adminUserControlList" style="display: flex; flex-direction: column; gap: 10px;"></div>																				
                 </div>																				
 																				
                 <div id="policyWorkspaceBlock" style="display:none; width: 100%;">																				
-                    <div style="margin-bottom: 20px;">																				
-                        <input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan persistent insurance log directories..." oninput="filterCardsEngine()">																				
+                    <div style="margin-bottom: 15px;">																				
+                        <input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan records..." oninput="filterCardsEngine()">																				
                     </div>																				
-                                        																				
-                    <h3 style="color: #fff; font-family:'Orbitron'; margin-top: 10px; text-align: left; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 15px;">📋 REGISTERED REGISTRY MANAGEMENT LOGS:</h3>																				
-                    <div id="policyCardsStack" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;"></div>																				
+                    <div id="policyCardsStack"></div>																				
                 </div>																				
             `;																				
-																				
             container.innerHTML = htmlContent;																				
             renderUserControlPanel();																				
             renderPolicyCardsBlock();																				
             switchAdminSubSection(activeAdminSubSection);																				
-        }																				
-																				
-        function createNewCustomerNode() {																				
+        };
+
+        window.createNewCustomerNode = function() {																				
             const clientName = document.getElementById('newClientName').value.trim();																				
             const dob = document.getElementById('newClientDOB').value;																				
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
             																				
-            if(!clientName || !contact || !userPass) { alert("⚠️ Configuration components missing. Client Name, Contact, and Password are required."); return; }																				
-            if(contact.length < 4) { alert("⚠️ Contact number must be at least 4 digits long."); return; }																				
-																				
+            if(!clientName || !contact || !userPass) { alert("⚠️ Metrics missing."); return; }																				
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
-            																				
-            let activeUsers = getCreatedUsers();																				
-            if(activeUsers.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ System node profile target duplicated."); return; }																				
-            																				
-            activeUsers.push({ id: userId, pass: userPass, status: 'active', clientName, dob, contact, adminAlert: false });																				
-            saveCreatedUsers(activeUsers);																				
-            																				
-            speakNaturalHuman("Customer profile configured successfully.");																				
-            document.getElementById('newClientName').value = "";																				
-            document.getElementById('newClientDOB').value = "";																				
-            document.getElementById('newClientContact').value = "";																				
-            document.getElementById('newUserPass').value = "";																				
-            																				
-            renderUserControlPanel();																				
-        }																				
 																				
-        function changeMasterAdminCredentials() {																				
-            let nid = document.getElementById('masterAdminIdInput').value.trim();																				
-            let npass = document.getElementById('masterAdminPassInput').value.trim();																				
-            if(!nid || !npass) { alert("⚠️ Credentials cannot be blank."); return; }																				
-            saveMasterAdminCredentials(nid, npass);																				
-            speakNaturalHuman("Master credentials updated.");																				
-            alert("✔ Master Admin security profile updated permanently.");																				
-        }																				
-																				
-        function updateClientPasswordDirect(index) {																				
+            if(cachedGlobalUsersArr.some(u => u.id.toLowerCase() === userId.toLowerCase())) { alert("⚠️ Duplicated."); return; }																				
+            
+            set(ref(db, 'users/' + userId), {
+                id: userId, pass: userPass, status: 'active', clientName, dob, contact, adminAlert: false
+            }).then(() => {
+                speakNaturalHuman("Customer configured.");																				
+                loadAdminSubmissions();
+            });																				
+        };
+
+        window.updateClientPasswordDirect = function(index) {																				
             let newPass = document.getElementById(`userPasswordInputInline_${index}`).value.trim();																				
-            if(!newPass) { alert("⚠️ Password string value cannot be empty."); return; }																				
-            let allUsers = getCreatedUsers();																				
-            allUsers[index].pass = newPass;																				
-            saveCreatedUsers(allUsers);																				
-            speakNaturalHuman("Password override finalized.");																				
-            alert("✔ User Password overridden successfully.");																				
-            renderUserControlPanel();																				
-        }																				
-																				
-        function renderUserControlPanel() {																				
+            if(!newPass) return;																				
+            let userObj = cachedGlobalUsersArr[index];
+            set(ref(db, `users/${userObj.id}/pass`), newPass).then(() => {
+                speakNaturalHuman("Sync absolute.");																				
+                alert("✔ Password Sync absolute.");
+                renderUserControlPanel();
+            });																				
+        };
+
+        window.renderUserControlPanel = function() {																				
             const listWrapper = document.getElementById('adminUserControlList');																				
             if(!listWrapper) return;																				
-            																				
-            const activeUsers = getCreatedUsers();																				
-            if(activeUsers.length === 0) {																				
-                listWrapper.innerHTML = `<p style="color: #475569; font-size: 0.95rem;">No active customer account footprints saved in memory cache.</p>`;																				
+            if(cachedGlobalUsersArr.length === 0) {																				
+                listWrapper.innerHTML = `<p style="color: #475569; font-size: 0.85rem;">No customer active.</p>`;																				
                 return;																				
             }																				
-            																				
-            listWrapper.innerHTML = activeUsers.map((user, index) => {																				
+            listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
-                const isAttackLocked = user.status === 'attack_locked';																				
                 return `																				
-                    <div style="background: rgba(255,255,255,0.01); padding: 16px 20px; border-radius: 8px; display: flex; flex-direction: column; border-left: 4px solid ${isAttackLocked ? '#e74c3c' : live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:10px;">																				
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">																				
-                            <div>																				
-                                <span style="color: white; font-weight: bold; font-size: 1rem;">ID ARRAY: <b style="color: #1abc9c; font-family:'Orbitron'; font-size:0.95rem;">${user.id}</b></span>																				
-                                ${user.adminAlert ? `<span style="margin-left: 15px; font-size:0.75rem; color:#e74c3c; font-family:'Orbitron'; font-weight:bold; background:rgba(231,76,60,0.1); padding:3px 8px; border-radius:4px; border:1px solid rgba(231,76,60,0.3);">⚠️ WRONG PASSWORD LOCKOUT ALERT</span>` : ''}																				
-                            </div>																				
-                            <div style="display: flex; align-items: center; gap: 15px;">																				
-                                ${isAttackLocked ? `<span style="font-size: 0.8rem; font-family:'Orbitron'; font-weight: bold; color: #e74c3c; animation: blinkNotification 1s infinite; margin-right:5px;">🚨 ATTACK LOCK</span>` : `<span style="font-size: 0.75rem; font-family:'Orbitron'; font-weight: bold; color: ${live ? '#1abc9c' : '#e74c3c'}">${live ? 'ACTIVE' : 'BLOCKED'}</span>`}																				
-                                <button onclick="toggleUserNodeSwitch(${index})" style="padding: 8px 16px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 6px; font-weight: bold; font-family:'Orbitron'; cursor: pointer; font-size: 0.75rem; min-width: 120px;">																				
-                                    ${live ? 'DEACTIVATE' : 'ACTIVATE'}																				
-                                </button>																				
-                                <button onclick="wipeUserPermanently(${index})" style="background: transparent; border: none; color: #475569; text-decoration: underline; cursor: pointer; font-size: 0.85rem;">Wipe</button>																				
+                    <div style="background: rgba(255,255,255,0.01); padding: 12px; border-radius: 8px; display: flex; flex-direction: column; border-left: 4px solid ${live ? '#1abc9c' : '#7f8c8d'}; border: 1px solid rgba(255,255,255,0.02); gap:8px; overflow:hidden;">																				
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">																				
+                            <div><span style="color: white; font-size: 0.85rem;">ID: <b style="color: #1abc9c;">${user.id}</b></span></div>																				
+                            <div style="display: flex; gap: 8px;">																				
+                                <button onclick="toggleUserNodeSwitch(${index})" style="padding: 4px 8px; background: ${live ? '#e74c3c' : '#1abc9c'}; color: white; border: none; border-radius: 4px; font-size: 0.7rem;">${live ? 'LOCK' : 'OPEN'}</button>																				
+                                <button onclick="wipeUserPermanently(${index})" style="color: #475569; background:none; border:none; text-decoration: underline; font-size: 0.75rem;">Wipe</button>																				
                             </div>																				
                         </div>																				
-                        <div style="display:flex; align-items:center; gap:15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:6px; width:100%; flex-wrap:wrap;">																				
-                            <span style="color: #94a3b8; font-size: 0.85rem;">SECURE PASSKEY:</span>																				
-                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:6px 12px; border-radius:4px; font-family:monospace; font-size:0.9rem; outline:none; width:180px;">																				
-                            <button onclick="updateClientPasswordDirect(${index})" style="padding:6px 12px; background:rgba(241,196,15,0.15); border:1px solid #f1c40f; color:#f1c40f; border-radius:4px; font-size:0.75rem; font-family:'Orbitron'; cursor:pointer; font-weight:bold;">SAVE NEW PASSWORD</button>																				
+                        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">																				
+                            <input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" style="background:#020408; border:1px solid #334155; color:#00f2fe; padding:4px 8px; border-radius:4px; font-size:0.8rem; width:120px;">																				
+                            <button onclick="updateClientPasswordDirect(${index})" style="padding:4px 8px; background:rgba(241,196,15,0.15); border:1px solid #f1c40f; color:#f1c40f; border-radius:4px; font-size:0.7rem;">SAVE</button>																				
                         </div>																				
                     </div>																				
                 `;																				
             }).join('');																				
-        }																				
-																				
-        if(!document.getElementById('dynamicBlinkStyle')) {																				
-            const style = document.createElement('style'); style.id = 'dynamicBlinkStyle';																				
-            style.innerHTML = `@keyframes blinkNotification { 0%, 100% { opacity: 0.3; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }`;																				
-            document.head.appendChild(style);																				
-        }																				
-																				
-        function renderPolicyCardsBlock() {																				
+        };
+
+        window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack');																				
             if(!targetStack) return;																				
-            																				
-            let DB = getPolicyDB();																				
-            if(DB.length === 0) {																				
-                targetStack.innerHTML = "<p style='text-align:center; grid-column: span 2; color:#475569; padding: 40px 0;'>No active directory submission packages mapped.</p>";																				
+            if(cachedGlobalPolicyArr.length === 0) {																				
+                targetStack.innerHTML = "<p style='text-align:center; color:#475569; padding: 20px 0;'>No active packages.</p>";																				
                 return;																				
             }																				
-																				
-            targetStack.innerHTML = DB.map((d, i) => {
-                let docPreviewHTML = `<span>None Attached</span>`;
+            targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
+                let docPreviewHTML = `<span>None</span>`;
                 if(d.attachment) {
                     if(d.attachment.startsWith("data:image")) {
-                        docPreviewHTML = `<br><img src="${d.attachment}" style="max-width:180px; max-height:120px; border:2px solid #f1c40f; border-radius:6px; margin-top:6px; display:block;">`;
+                        docPreviewHTML = `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px; display:block;">`;
                     } else {
-                        docPreviewHTML = `<a href="${d.attachment}" download="AttachedDocument_${d.ownerNodeID}" class="file-preview-anchor">📥 Download Vault File</a>`;
+                        docPreviewHTML = `<a href="${d.attachment}" download="File" class="file-preview-anchor">📥 Asset File</a>`;
                     }
                 }
-
-                let clientNotesArray = d.customerComments || [];
-                let clientNotesHTML = clientNotesArray.map(c => `<div style="font-size:0.8rem; color:#00f2fe; background:#020408; padding:3px 6px; margin-top:2px; border-radius:4px;"><b>[${c.timestamp}]:</b> ${c.text}</div>`).join('');
+                let clientNotesArray = d.customerComments ? Object.values(d.customerComments) : [];
+                let clientNotesHTML = clientNotesArray.map(c => `<div style="font-size:0.75rem; color:#00f2fe; background:#020408; padding:2px 4px; margin-top:2px; border-radius:4px;">${c.text}</div>`).join('');
 
                 return `																				
-                    <div class="hud-data-card" style="border-top: 3px solid #f1c40f;">																				
+                    <div class="hud-data-card">																				
                       <div style="display:flex; justify-content:space-between; align-items:center;">																				
-                         <p><b>User ID:</b> <span style="font-family:'Orbitron'; font-size:0.8rem; color:#00f2fe; background:rgba(0,242,254,0.05);">${d.ownerNodeID}</span></p>																				
-                         <span class="status-badge ${d.status === 'uploaded' ? 'status-uploaded' : d.status === 'error' ? 'status-error' : d.status === 'closed' ? 'status-closed' : d.status === 'waiting' ? 'status-waiting' : 'status-pending'}">${d.status ? d.status.toUpperCase() : 'PENDING'}</span>																				
+                         <p><b>User ID:</b> <span>${d.ownerNodeID}</span></p>																				
                       </div>																				
-                      <p><b>Time Vector:</b> <span>${d.time}</span></p>																				
-                      <p><b>Reg Array:</b> <span>${d.reg || "Empty"}</span></p>																				
                       <p><b>Insurer:</b> <span>${d.insure}</span></p>																				
-                      <p><b>Policy Segment:</b> <span>${d.pol || "Empty"}</span></p>																				
-                      <p><b>Contact Node:</b> <span>${d.phone}</span></p>																				
-                      <p><b>Email Target:</b> <span>${d.email || "Empty"}</span></p>																				
-                      <p><b>System Notes:</b> <span>${d.notes || "Empty"}</span></p>																				
-                       
-                      <p><b>Attached File:</b> ${docPreviewHTML}</p>
-
-                      <div style="background:rgba(0,0,0,0.3); padding:8px; border-radius:6px; margin-top:4px;">
-                         <label style="font-size:0.75rem; color:#94a3b8; font-family:'Orbitron'; display:block;">📥 CLIENT REACTION MATRIX NOTES:</label>
-                         ${clientNotesHTML ? clientNotesHTML : '<div style="font-size:0.8rem; color:#475569;">No client notes posted yet.</div>'}
+                      <p><b>Contact:</b> <span>${d.phone}</span></p>																				
+                      <p><b>File:</b> ${docPreviewHTML}</p>
+                      <div style="background:rgba(0,0,0,0.3); padding:6px; border-radius:6px;">
+                         ${clientNotesHTML ? clientNotesHTML : '<div style="font-size:0.75rem; color:#475569;">No replies.</div>'}
                       </div>
-
-                      <div style="margin-top: 15px; padding: 12px; background: rgba(0,0,0,0.4); border-radius: 8px; border: 1px dashed rgba(241,196,15,0.25);">																				
-                         <label style="color:#00f2fe; font-family:'Orbitron'; font-size:0.75rem; display:block; margin-bottom:6px;">⚡ CORE STATUS ACTION RESPONSE:</label>																				
-                         <div class="hud-input-cluster" style="margin-bottom:10px;">																				
-                            <select id="updateStatusSelect_${i}" onchange="transmitAdminResponse(${i})" style="padding:10px; font-size:0.85rem;">																				
-                               <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Case Status: Pending</option>																				
-                               <option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Case Status: Policy Uploaded</option>																				
-                               <option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Case Status: Error Found</option>																				
-                               <option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Case Status: Closed Vector</option>																				
-                               <option value="waiting" ${d.status === 'waiting' ? 'selected' : ''}>⏸ Case Status: Waiting Hold</option>																				
-                            </select>																				
-                         </div>																				
-                         <div class="hud-input-cluster" style="margin-bottom:10px;"><input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Type secure feedback comment here..." style="padding:10px; font-size:0.9rem; background:#020408;"></div>																				
-                         <button onclick="transmitAdminResponse(${i})" style="padding:10px; background:#f1c40f; color:black; border:none; font-family:'Orbitron'; font-size:0.8rem; border-radius:6px; cursor:pointer; width:100%; font-weight:bold; letter-spacing:0.5px;">TRANSMIT FEEDBACK COMMENT</button>																				
+                      <div style="margin-top: 10px; padding: 8px; background: rgba(0,0,0,0.4); border-radius: 6px;">																				
+                         <select id="updateStatusSelect_${i}" onchange="transmitAdminResponse(${i})" style="padding:6px; font-size:0.75rem; width:100%; margin-bottom:8px;">																				
+                               <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option>																				
+                               <option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option>																				
+                               <option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option>																				
+                               <option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option>																				
+                               <option value="waiting" ${d.status === 'waiting' ? 'selected' : ''}>⏸ Waiting</option>																				
+                         </select>																				
+                         <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Feedback..." style="padding:6px; font-size:0.8rem; background:#020408; width:100%; margin-bottom:8px; color:#fff; border:1px solid #334155; border-radius:4px; outline:none;">																				
+                         <button onclick="transmitAdminResponse(${i})" style="padding:6px; background:#f1c40f; color:black; border:none; width:100%; font-weight:bold; font-size:0.75rem;">TRANSMIT</button>																				
                       </div>																				
-                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">🗑 PURGE ENTRY</button>																				
+                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge</button>																				
                     </div>																				
                 `;
             }).join("");																				
-        }																				
+        };
+
+        window.transmitAdminResponse = function(index) {																				
+            const statusSelect = document.getElementById(`updateStatusSelect_${index}`); 
+            const commentInput = document.getElementById(`adminCommentInput_${index}`);																				
+            let targetPol = cachedGlobalPolicyArr[index];
+            set(ref(db, `policies/${targetPol.id}/status`), statusSelect.value);
+            set(ref(db, `policies/${targetPol.id}/adminComment`), commentInput.value.trim() || "Status saved.");
+            speakNaturalHuman("Response logged."); alert("⚡ Feedback Transmitted!");
+        };																				
 																				
-        function transmitAdminResponse(index) {																				
-            const statusSelect = document.getElementById(`updateStatusSelect_${index}`); const commentInput = document.getElementById(`adminCommentInput_${index}`);																				
-            if(!statusSelect || !commentInput) return;																				
-            let DB = getPolicyDB(); DB[index].status = statusSelect.value; DB[index].adminComment = commentInput.value.trim() || "Status compiled by Shashi Admin operations.";																				
-            savePolicyDB(DB); speakNaturalHuman("Response configuration logged successfully."); alert("⚡ Status & Feedback Transmitted into Customer Matrix Tracker Panel!"); loadAdminSubmissions();																				
-        }																				
+        window.toggleUserNodeSwitch = function(index) {																				
+            let userObj = cachedGlobalUsersArr[index];
+            const nextStatus = userObj.status === 'active' ? 'deactivated' : 'active';
+            set(ref(db, `users/${userObj.id}/status`), nextStatus);
+            speakNaturalHuman("Status updated.");
+        };																				
 																				
-        function toggleUserNodeSwitch(index) {																				
-            let allUsers = getCreatedUsers();																				
-            if(allUsers[index].status === 'active') { allUsers[index].status = 'deactivated'; speakNaturalHuman("Account parameter configuration blocked."); } 																				
-            else { allUsers[index].status = 'active'; allUsers[index].adminAlert = false; speakNaturalHuman("Account configurations fully restored."); }																				
-            saveCreatedUsers(allUsers); renderUserControlPanel();																				
-        }																				
+        window.wipeUserPermanently = function(index) {																				
+            if(confirm("Purge account entirely?")) { 
+                let userObj = cachedGlobalUsersArr[index];
+                remove(ref(db, 'users/' + userObj.id));
+                speakNaturalHuman("Wiped."); 
+            }																				
+        };
+
+        window.purgeRegistryLog = function(index){ 
+            if(confirm("Wipe policy structure completely?")){ 
+                let targetPol = cachedGlobalPolicyArr[index];
+                remove(ref(db, 'policies/' + targetPol.id));
+                speakNaturalHuman("Log purged."); 
+            } 
+        };
+
+        window.filterCardsEngine = function(){ 
+            const searchInputNode = document.getElementById('searchInput'); if(!searchInputNode) return; 
+            let q = searchInputNode.value.toLowerCase(); 
+            document.querySelectorAll('.hud-data-card').forEach(c => { c.style.display = c.innerText.toLowerCase().includes(q) ? "" : "none"; }); 
+        };																				
 																				
-        function wipeUserPermanently(index) {																				
-            if(confirm("Completely delete this account log component parameter from database storage?")) { let allUsers = getCreatedUsers(); allUsers.splice(index, 1); saveCreatedUsers(allUsers); speakNaturalHuman("Profile wiped successfully."); renderUserControlPanel(); }																				
-        }																				
-        function purgeRegistryLog(i){ if(confirm("Wipe this policy structure data node completely?")){ let DB = getPolicyDB(); DB.splice(i, 1); savePolicyDB(DB); speakNaturalHuman("Log vector purged."); loadAdminSubmissions(); } }																				
-        function filterCardsEngine(){ const searchInputNode = document.getElementById('searchInput'); if(!searchInputNode) return; let q = searchInputNode.value.toLowerCase(); document.querySelectorAll('.hud-data-card').forEach(c => { c.style.display = c.innerText.toLowerCase().includes(q) ? "" : "none"; }); }																				
-																				
-        function logoutEngine() {																				
+        window.logoutEngine = function() {																				
             if(document.getElementById('accessNodeUser')) document.getElementById('accessNodeUser').value = ""; 																				
             if(document.getElementById('accessNodePass')) document.getElementById('accessNodePass').value = "";																				
             document.getElementById('customerDashboard').classList.add('hidden'); document.getElementById('adminDashboard').classList.add('hidden');																				
-            loggedInCustomerID = ""; 																				
-            failedAttemptsCount = 0;																				
-            currentTrackingUserAttempt = "";																				
-            activeSelectedChatTargetUserId = "";
-            globalLiveChatBinaryStreamBase64 = "";
-            
+            loggedInCustomerID = ""; failedAttemptsCount = 0; currentTrackingUserAttempt = ""; activeSelectedChatTargetUserId = ""; globalLiveChatBinaryStreamBase64 = "";
             const stage = document.getElementById('mainStage'); if(stage) { stage.style.display = 'flex'; stage.classList.remove('activated'); }																				
             if(document.getElementById('loginTerminal')) document.getElementById('loginTerminal').classList.add('hidden');																				
-        }																				
+        };
     </script>																				
 </body>																				
 </html>
