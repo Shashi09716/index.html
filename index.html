@@ -272,7 +272,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 0.8rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.2);
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
             transition: all 0.3s ease;
             font-weight: bold;
             width: 140px;
@@ -382,7 +382,12 @@
         .hud-data-card { background: rgba(4, 14, 33, 0.7); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: #ffffff; display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
-        .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); }
+        
+        /* --- ADMIN INTERACTIVE COPY SYSTEM ELEMENTS --- */
+        .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; }
+        .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.03); box-shadow: 0 0 10px #f1c40f; }
+        .admin-clickable-badge::after { content: 'Click to Copy'; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background: #000; color: #fff; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; opacity: 0; pointer-events: none; transition: opacity 0.2s; white-space: nowrap; font-family: 'Orbitron', sans-serif; border: 1px solid #00f2fe; }
+        .admin-clickable-badge:hover::after { opacity: 1; }
          
         .hud-data-card .owner-name-tag-right {
             position: absolute;
@@ -418,10 +423,10 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
-        .cred-sync-card { background: rgba(4, 14, 33, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* --- WHATSAPP SYSTEM GRID LAYOUT WITH DRAWERS --- */
+        /* --- WHATSAPP UTILITY LAYOUT WITH EXPANDED PLUGINS --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.7); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
@@ -458,31 +463,14 @@
 
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
 
-        /* --- INTERACTIVE DRAWER SUB-COMPONENTS (EMOJI / GIF) --- */
-        .emoji-matrix-drawer { background: #233138; border-top: 2px solid var(--border-glass); padding: 12px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; max-height: 150px; overflow-y: auto; z-index: 5; }
-        .emoji-item-node { font-size: 1.6rem; text-align: center; cursor: pointer; transition: transform 0.15s; }
-        .emoji-item-node:hover { transform: scale(1.2); }
+        /* --- HIGH PERFORMANCE EXPANDED STORAGE DRAWERS --- */
+        .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; }
+        .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
+        .emoji-item-node:hover { transform: scale(1.3); }
 
-        .mainframe-gif-drawer { background: #233138; border-top: 2px solid var(--border-glass); padding: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-height: 160px; overflow-y: auto; z-index: 5; }
-        .gif-thumb-item { width: 100%; height: 75px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
-        .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.03); }
-
-        .msg-interactive-dropdown-menu { position: absolute; background: #233138; border: 2px solid var(--border-glass); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.7); z-index: 9999; width: 170px; overflow: hidden; display: flex; flex-direction: column; padding: 4px 0; }
-        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; }
-        .dropdown-action-row-btn { padding: 12px 18px; font-size: 0.95rem; background: transparent; border: none; color: #fff; cursor: pointer; text-align: left; font-family: 'Rajdhani', sans-serif; font-weight: 700; transition: background 0.2s; }
-        body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
-        .dropdown-action-row-btn:hover { background: rgba(255,255,255,0.15); }
-        .dropdown-action-row-btn.delete-color { color: #e74c3c; border-top: 1px solid var(--border-glass); }
-
-        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); display: flex; justify-content: center; align-items: center; z-index: 11000; }
-        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); border-radius: 16px; padding: 30px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-        .nexus-popup-card-box h4 { color: var(--text-main); font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin-bottom: 18px; font-weight: 900; }
-        .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--bg-prime); border: 2px solid var(--border-glass); color: var(--text-main); border-radius: 8px; outline: none; margin-bottom: 20px; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; }
-
-        .nexus-popup-flex-btns { display: flex; gap: 12px; justify-content: center; }
-        .nexus-popup-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900; cursor: pointer; transition: 0.2s; letter-spacing: 0.5px; }
-        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
-        .nexus-popup-btn.cancel-btn { background: #e74c3c; color: #fff; }
+        .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; }
+        .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
+        .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
 
         .chat-interface-footer-inputs { padding: 14px 20px; background: rgba(32, 44, 51, 0.98); border-top: 2px solid var(--border-glass); display: flex; gap: 14px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
         body.light-theme-active .chat-interface-footer-inputs { background: #efeae2; }
@@ -492,6 +480,25 @@
         .whatsapp-circle-btn { width: 44px; height: 44px; background: transparent; border: none; color: #00f2fe; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.2s, color 0.2s; }
         .whatsapp-circle-btn:hover { transform: scale(1.15); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
+
+        /* --- ADMINISTRATIVE USER CONTROL PANEL EXPANSIONS --- */
+        .admin-status-toggle-select {
+            padding: 6px 10px;
+            background: #02050e;
+            color: #2ecc71;
+            border: 2px solid var(--border-glass);
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            width: auto;
+        }
+        .admin-status-toggle-select.state-deactivated {
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
 
         @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
 
@@ -511,6 +518,8 @@
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 600px; }
             .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
+            .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
+            .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -738,6 +747,7 @@
 
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
+        
         let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
 
         let nativeAudioMediaRecorderInstance = null;
@@ -747,17 +757,40 @@
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
-        // GIF Array Pack
+        // --- 50+ EXTENDED STRUCTURAL GIPHY STREAM MATRIX LIST ---
         const structuralGifMatrixList = [
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdtcmM2b29vYnp3Ym95b2tzZ3Z0ZHpudmZxd3Y2M204eWpxN3R4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tX68Mc6nc9gNq/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmt0ZHp0b2wxaGsyYmI4Y2M1N2FwYW94MnF4NDl0b2R0Z3kwd3Z3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ntq5FxUvS84U/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHcyeHhkbW1oMnd5ZHhtOHc2eHh0YmFsODBhbW8wMXA3Mzd4N2M2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ju7l5y9osyymQ/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3pjdW1oNm84ZHhhdnd2YndpM3hwdmIxNndxOHBwb3p1ZXR6Mnh6dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2p1M2xpaXFpeXNpdms4czZ4M291YTYwc3M3M2I3bmR0djBtczd0ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5ftsmI67WxheqA7RSU/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmsxbDFnM2R2dndmbzJvYnBtZzEwa3g1bTJnYm1jYndnaHFtNmsxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/t3sZwc69UBFIY/giphy.gif"
+            "https://media.giphy.com/media/tX68Mc6nc9gNq/giphy.gif", "https://media.giphy.com/media/3ntq5FxUvS84U/giphy.gif",
+            "https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif", "https://media.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif",
+            "https://media.giphy.com/media/5ftsmI67WxheqA7RSU/giphy.gif", "https://media.giphy.com/media/t3sZwc69UBFIY/giphy.gif",
+            "https://media.giphy.com/media/111ebonMs9xYfC/giphy.gif", "https://media.giphy.com/media/26AHAw0aMMWwLEB68/giphy.gif",
+            "https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif", "https://media.giphy.com/media/HTe36hKbaE73a/giphy.gif",
+            "https://media.giphy.com/media/eOXMUp5WZfnp6/giphy.gif", "https://media.giphy.com/media/yr7n0u3qzO9nG/giphy.gif",
+            "https://media.giphy.com/media/3o72F8t9TDi2xVnxOE/giphy.gif", "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif",
+            "https://media.giphy.com/media/l0HlUxcWRsqROfXyM/giphy.gif", "https://media.giphy.com/media/X38toIoZ6TYvC/giphy.gif",
+            "https://media.giphy.com/media/XIqCQx02E1U9W/giphy.gif", "https://media.giphy.com/media/chzz1FQgqhytWRWbp3/giphy.gif",
+            "https://media.giphy.com/media/PPi5c8l8WDY7if1L8z/giphy.gif", "https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif",
+            "https://media.giphy.com/media/v0eHX3n28wvoQ/giphy.gif", "https://media.giphy.com/media/wkW0maGDN1eSc/giphy.gif",
+            "https://media.giphy.com/media/g96QRNjqyQNgc/giphy.gif", "https://media.giphy.com/media/Initial9UnRMAwK38Cg/giphy.gif",
+            "https://media.giphy.com/media/CaiVJu559MBwI/giphy.gif", "https://media.giphy.com/media/87hmScXLJJks0/giphy.gif",
+            "https://media.giphy.com/media/unQ3IJU2RG7DO/giphy.gif", "https://media.giphy.com/media/l4GOM8uEisC0cr4zM/giphy.gif",
+            "https://media.giphy.com/media/Z9X40e90p62U02W8u7/giphy.gif", "https://media.giphy.com/media/S6TEoUBJuGfQc/giphy.gif",
+            "https://media.giphy.com/media/B2vBunhgt9Pc4/giphy.gif", "https://media.giphy.com/media/gREYvGfbcSPh6/giphy.gif",
+            "https://media.giphy.com/media/26ufcVAp3AiJJsrIs/giphy.gif", "https://media.giphy.com/media/l2Jejt7O0s2qAohPO/giphy.gif",
+            "https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif", "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
+            "https://media.giphy.com/media/V8PO3o4IIPgCiIMHXT/giphy.gif", "https://media.giphy.com/media/F9JEZCy9wDSq4/giphy.gif",
+            "https://media.giphy.com/media/3xz2BCe5jn2j4OM9ZS/giphy.gif", "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+            "https://media.giphy.com/media/12m6YBQBV9PpsA/giphy.gif", "https://media.giphy.com/media/9w47bI6VunLwY/giphy.gif",
+            "https://media.giphy.com/media/G1fM40BFthvP2/giphy.gif", "https://media.giphy.com/media/BY8ORoRpkyp1K/giphy.gif",
+            "https://media.giphy.com/media/scuMhnMRAMoA8/giphy.gif", "https://media.giphy.com/media/7NoNw4pMNTvgc/giphy.gif",
+            "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif", "https://media.giphy.com/media/A8NkSPltAl6De/giphy.gif",
+            "https://media.giphy.com/media/O9x0VpYgMAtfG/giphy.gif", "https://media.giphy.com/media/9AIelkWMW6eqc/giphy.gif",
+            "https://media.giphy.com/media/F3gn6g3fIulTq/giphy.gif", "https://media.giphy.com/media/XZHeMrc4D8Hni/giphy.gif"
         ];
 
-        const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒","🎈","🚀","👑","💀","🎵","🤖"];
+        // --- 150+ CATEGORIZED SYSTEM EMOJIS ---
+        const systemEmojisList = [
+            "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","💀","☠","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐","✋","🖖","👌","🤏","✌","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍","💅","🤳","💪","🦾","🧠","🧡","💛","💚","💙","💜","🖤","🤍","🤎","💔","🔥","✨","🎉","💯","✔","❌","🚨","⏳","🔒","🎈","🚀","👑"
+        ];
 
         window.triggerCustomInlinePopupEngine = function(titleText, inputPlaceholder, submitCallback) {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -917,9 +950,9 @@
 
         onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
             const rootData = snapshot.val();
-            if(rootData) {
-                cachedAdminMainframeRoute.masterId = rootData.id || "Shashi2004";
-                cachedAdminMainframeRoute.masterPass = rootData.pass || "Tolu@Molu";
+            if(rootData && rootData.id && rootData.pass) {
+                cachedAdminMainframeRoute.masterId = rootData.id;
+                cachedAdminMainframeRoute.masterPass = rootData.pass;
             }
         });
 
@@ -1123,7 +1156,6 @@
             });
         };
 
-        // --- EXTANDED DRAWERS MATRIX MANAGEMENT ENGINE ---
         function renderInteractiveDrawersContent() {
             const emojiBox = document.getElementById('systemEmojiMatrixBoxNode');
             if(emojiBox) {
@@ -1163,7 +1195,6 @@
             document.getElementById('mainframeGifContainerBox').classList.toggle('hidden');
         };
 
-        // --- AUDIO RECORDING STREAM TRANSLATOR ENGINE ---
         window.toggleVoiceAudioRecordingEngine = function() {
             const recBtn = document.getElementById('voiceRecordingCoreTriggerBtn');
             if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
@@ -1259,8 +1290,8 @@
                     </div>
                 </div>`;
             
-            document.getElementById('mainframeAdminIdInput').value = cachedAdminMainframeRoute.masterId;
-            document.getElementById('mainframeAdminPassInput').value = cachedAdminMainframeRoute.masterPass;
+            document.getElementById('mainframeAdminIdInput').value = cachedAdminMainframeRoute.masterId || "";
+            document.getElementById('mainframeAdminPassInput').value = cachedAdminMainframeRoute.masterPass || "";
             
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(activeAdminSubSection);
         };
@@ -1272,14 +1303,41 @@
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false }).then(() => { loadAdminSubmissions(); });
         };
 
+        // --- UPGRADED ADMIN USER MANAGEMENT PANEL WITH ACTIVATION CONTROLS ---
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {
-                return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:10px; border:2px solid var(--border-glass); display:flex; flex-direction:column; gap:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-weight:bold; font-size:1.05rem; color:#fff;">ID: <span style="color:#00f2fe;">${user.id}</span></span><button onclick="wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer; text-decoration:underline; font-weight:900; font-family:'Orbitron'; font-size:0.85rem;">Wipe</button></div>
+                const isDeactivated = user.status === 'deactivated';
+                return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:10px; border:2px solid ${isDeactivated ? '#e74c3c' : 'var(--border-glass)'}; display:flex; flex-direction:column; gap:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-weight:bold; font-size:1.05rem; color:#fff;">ID: <span style="color:#00f2fe;">${user.id}</span></span>
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <select class="admin-status-toggle-select ${isDeactivated ? 'state-deactivated' : ''}" onchange="toggleUserNodeActivationState('${user.id}', this.value)">
+                                    <option value="active" ${!isDeactivated ? 'selected' : ''}>🟢 Active</option>
+                                    <option value="deactivated" ${isDeactivated ? 'selected' : ''}>🔴 Deactive</option>
+                                </select>
+                                <button onclick="wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer; text-decoration:underline; font-weight:900; font-family:'Orbitron'; font-size:0.85rem;">Wipe</button>
+                            </div>
+                        </div>
                         <div><input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" onchange="alterClientCredentialsOverrideData('${user.id}', ${index})" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; border-radius:6px; width:100%; font-weight:bold; font-size:1.05rem;"></div>
                     </div>`;
             }).join('');
+        };
+
+        window.toggleUserNodeActivationState = function(uid, selectValue) {
+            update(ref(db, `users/${uid}`), { status: selectValue }).then(() => {
+                playSynthesizedSound(600, 'sine', 0.2);
+            });
+        };
+
+        window.executeAdminContextClipboardCopy = function(element, extractionValue) {
+            if(!extractionValue) return;
+            navigator.clipboard.writeText(extractionValue).then(() => {
+                playSynthesizedSound(880, 'sine', 0.15);
+                const originalText = element.innerText;
+                element.innerText = "COPIED ✔";
+                setTimeout(() => { element.innerText = originalText; }, 1200);
+            }).catch(() => {});
         };
 
         window.wipeUserPermanently = function(uid) { remove(ref(db, 'users/' + uid)); };
@@ -1296,12 +1354,12 @@
                 return `
                     <div class="hud-data-card">
                       <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
-                      <p style="margin-top:25px;"><b>Owner ID:</b> <span>${d.ownerNodeID || 'N/A'}</span></p>
-                      <p><b>Insurer:</b> <span>${d.insure || 'N/A'}</span></p>
-                      <p><b>Policy No:</b> <span>${d.pol || 'Optional'}</span></p>
-                      <p><b>Reg No:</b> <span>${d.reg || 'Optional'}</span></p>
-                      <p><b>Contact:</b> <span>${d.phone || 'N/A'}</span></p>
-                      <p><b>Email:</b> <span>${d.email || 'Optional'}</span></p>
+                      <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID || 'N/A'}</span></p>
+                      <p><b>Insurer:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.insure}')">${d.insure || 'N/A'}</span></p>
+                      <p><b>Policy No:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.pol}')">${d.pol || 'Optional'}</span></p>
+                      <p><b>Reg No:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.reg}')">${d.reg || 'Optional'}</span></p>
+                      <p><b>Contact:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.phone}')">${d.phone || 'N/A'}</span></p>
+                      <p><b>Email:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.email}')">${d.email || 'Optional'}</span></p>
                       <p><b>System Notes:</b> <span style="background:none; color:var(--text-main); padding:0; font-family:inherit; border:none;">${d.notes || 'None'}</span></p>
                       <p><b>File Node:</b> ${docPreviewHTML}</p>
                       <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5); border-radius: 8px; border: 2px solid var(--border-glass);">
@@ -1325,6 +1383,8 @@
             const nextPass = document.getElementById('mainframeAdminPassInput').value.trim();
             if(!nextId || !nextPass) return;
             set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => {
+                cachedAdminMainframeRoute.masterId = nextId;
+                cachedAdminMainframeRoute.masterPass = nextPass;
                 triggerCustomInlinePopupEngine("System Synced", "Credentials updated completely.", () => {});
             });
         };
@@ -1359,7 +1419,7 @@
             if(!u) return;
             
             if(currentMode === 'admin') {
-                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase()) {
+                if(cachedAdminMainframeRoute.masterId && u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase()) {
                     document.getElementById('accessNodePass').focus();
                 }
             } else {
@@ -1376,7 +1436,7 @@
             if(!u || !p) return;
             
             if(currentMode === 'admin') {
-                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+                if(cachedAdminMainframeRoute.masterId && u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
                     executeClusterLogin(null);
                 }
             } else {
@@ -1461,21 +1521,61 @@
             document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
         };
 
+        // --- UPGRADED ASYNC AUTH SYSTEM WITH INTERCEPT OVERRIDES ---
         window.executeClusterLogin = function(event) {
             if(event) event.preventDefault();
             const u = document.getElementById('accessNodeUser').value.trim(); 
             const p = document.getElementById('accessNodePass').value.trim();
+            
             if (currentMode === 'admin') {
-                if (u.toLowerCase() !== cachedAdminMainframeRoute.masterId.toLowerCase() || p !== cachedAdminMainframeRoute.masterPass) return;
-                document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden');
-                localStorage.setItem('nexus_logged_in_uid', cachedAdminMainframeRoute.masterId); localStorage.setItem('nexus_system_session_mode', 'admin');
-                loadAdminSubmissions();
+                get(ref(db, 'mainframeAdmin')).then((snapshot) => {
+                    const freshData = snapshot.val();
+                    const targetAdminID = (freshData && freshData.id) ? freshData.id : cachedAdminMainframeRoute.masterId;
+                    const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : cachedAdminMainframeRoute.masterPass;
+                    
+                    if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
+                        document.getElementById('mainStage').style.display = 'none'; 
+                        document.getElementById('adminDashboard').classList.remove('hidden');
+                        localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
+                        localStorage.setItem('nexus_system_session_mode', 'admin');
+                        loadAdminSubmissions();
+                    } else {
+                        playSynthesizedSound(150, 'sawtooth', 0.4);
+                        alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
+                    }
+                }).catch(() => {
+                    if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+                        document.getElementById('mainStage').style.display = 'none'; 
+                        document.getElementById('adminDashboard').classList.remove('hidden');
+                        localStorage.setItem('nexus_logged_in_uid', u); 
+                        localStorage.setItem('nexus_system_session_mode', 'admin');
+                        loadAdminSubmissions();
+                    } else {
+                        playSynthesizedSound(150, 'sawtooth', 0.4);
+                    }
+                });
             } else {
                 const userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
-                if (!userMatch || String(userMatch.pass) !== String(p) || userMatch.status !== 'active') return;
-                loggedInCustomerID = userMatch.id; update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
-                localStorage.setItem('nexus_logged_in_uid', userMatch.id); localStorage.setItem('nexus_system_session_mode', 'user'); localStorage.setItem('nexus_active_chan_route', 'upload');
-                document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden');
+                if (!userMatch || String(userMatch.pass) !== String(p)) {
+                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    alert("Access Rejected: Invalid User Signatures.");
+                    return;
+                }
+                
+                // CRITICAL STATUS PROTECTION VECTOR CHECK
+                if (userMatch.status === 'deactivated') {
+                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    alert("Mainframe Blocked: Your account key has been deactivated by Shashi Admin Mainframe Core.");
+                    return;
+                }
+                
+                loggedInCustomerID = userMatch.id; 
+                update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
+                localStorage.setItem('nexus_logged_in_uid', userMatch.id); 
+                localStorage.setItem('nexus_system_session_mode', 'user'); 
+                localStorage.setItem('nexus_active_chan_route', 'upload');
+                document.getElementById('mainStage').style.display = 'none'; 
+                document.getElementById('customerDashboard').classList.remove('hidden');
                 switchCustomerChannel('upload');
             }
         };
