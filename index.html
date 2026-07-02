@@ -444,19 +444,19 @@
         .full-width-field { grid-column: span 2; }																				
 																				
         .abort-btn { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }																				
-        
+         																				
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         .helpline-trigger-btn { width: 100%; padding: 16px; background: rgba(11,21,40,0.6); border: 1px solid rgba(0,242,254,0.3); border-radius: 12px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1rem; font-family: 'Orbitron'; }																				
 
         .search-terminal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
-        
+         																				
         .hud-data-card { background: rgba(255,255,255,0.02); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; word-break: break-all; position: relative;}																				
         .hud-data-card p { color: var(--text-sub); font-size: 0.95rem; display: flex; flex-flow: row wrap; gap: 5px;}																				
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 90px; flex-shrink: 0;}																				
         .hud-data-card span { color: #f1c40f; background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; }																				
-        
+         																				
         /* Right Side Owner Name Integration */
         .hud-data-card .owner-name-tag-right {
             position: absolute;
@@ -535,11 +535,12 @@
             position: relative;
         }
         .chat-user-item-node.online-chamak-active {
-            animation: userChamakGlow 2.5s infinite ease-in-out;
+            animation: userChamakGlow 2s infinite ease-in-out;
+            border-right: 4px solid #2ecc71;
         }
         @keyframes userChamakGlow {
-            0%, 100% { box-shadow: inset 0 0 1px rgba(0, 242, 254, 0.1); background: rgba(0, 242, 254, 0.02); }
-            50% { box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.25); background: rgba(0, 242, 254, 0.08); }
+            0%, 100% { box-shadow: inset 0 0 5px rgba(46, 204, 113, 0.2); background: rgba(46, 204, 113, 0.03); }
+            50% { box-shadow: inset 0 0 20px rgba(46, 204, 113, 0.4); background: rgba(46, 204, 113, 0.12); }
         }
 
         .chat-user-item-node:hover { background: rgba(255,255,255,0.05); }
@@ -553,9 +554,17 @@
             object-fit: cover;
             border: 1px solid var(--border-glass);
         }
-        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left;}
-        .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); }
+        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative;}
+        .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.75rem; color: var(--text-sub); font-family: monospace; }
+
+        /* Nickname Styling elements */
+        .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 1px 5px; border-radius: 4px; font-weight: normal; margin-left: 4px; max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
+        .nickname-edit-pencil-btn { background: transparent; border: none; color: var(--text-sub); cursor: pointer; font-size: 0.8rem; margin-left: 6px; padding: 2px; transition: color 0.2s; }
+        .nickname-edit-pencil-btn:hover { color: #00f2fe; }
+
+        /* Unread Badge */
+        .whatsapp-unread-counter-pill { background: #00a884; color: #fff; font-size: 0.75rem; font-weight: bold; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
 
         .chat-stream-message-container {
             display: flex;
@@ -598,6 +607,7 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.3);
             font-weight: 500;
             transition: transform 0.2s;
+            cursor: pointer;
         }
         .bubble-outgoing { background: #005c4b; color: #e9edef; align-self: flex-end; border-top-right-radius: 0; }
         .bubble-incoming { background: #202c33; color: #e9edef; align-self: flex-start; border-top-left-radius: 0; }
@@ -613,29 +623,47 @@
             display: block;
         }
 
-        /* --- BUBBLE OVERLAY DELETE TRIGGER --- */
-        .bubble-msg-wrapper .individual-msg-bin {
+        /* --- SMART CONTEXTUAL DROPDOWN OVERLAY PANEL --- */
+        .msg-interactive-dropdown-menu {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #e74c3c;
-            color: #fff;
-            font-size: 0.65rem;
-            padding: 3px 6px;
-            border-radius: 4px;
-            cursor: pointer;
-            opacity: 0;
-            transition: 0.2s opacity;
-            font-family: 'Orbitron';
-            font-weight: bold;
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            background: #233138;
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            z-index: 999;
+            width: 110px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .bubble-msg-wrapper:hover .individual-msg-bin { opacity: 1; }
+        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .dropdown-action-row-btn {
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
+        .dropdown-action-row-btn:hover { background: rgba(255,255,255,0.08); }
+        body.light-theme-active .dropdown-action-row-btn:hover { background: rgba(0,0,0,0.05); }
+        .dropdown-action-row-btn.delete-color { color: #e74c3c; }
 
         .chat-interface-footer-inputs { padding: 10px 15px; background: rgba(0,0,0,0.2); border-top: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
         .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--input-bg); border: 1px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; font-size: 0.95rem; }
-        .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: var(--text-sub); font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: var(--text-sub); font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: color 0.2s; }
+        .whatsapp-circle-btn:hover { color: #00f2fe; }
+        .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recordingPulse 1s infinite alternate; }
+        
+        @keyframes recordingPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.15); opacity: 0.7; }
+        }
 
         /* GIF Selector Dropdown Interface CSS */
         .gif-selector-matrix-node {
@@ -759,14 +787,14 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>																				
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>																				
             </div>																				
-                                        																				
+                                                                                
             <h1 class="hud-logo">Welcome</h1>																				
 																				
             <div class="portal-matrix-tabs">																				
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>																				
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>																				
             </div>																				
-                                        																				
+                                                                                
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">																				
                 <div class="hud-input-cluster">																				
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">																				
@@ -789,8 +817,8 @@
                 <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
-                        
-            <div class="avatar-upload-mini-pane">
+                                
+            <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" src="">
                 <div>
                     <label style="color:#00f2fe; font-size:0.85rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;">📷 Set Profile Photo Layout</label>
@@ -806,7 +834,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; border: 1px solid rgba(0,242,254,0.15);">																				
                 </div>																				
-                                                                                                  
+                                                                                                                                                                                                            
                 <div class="form-grid-layout">																				
                     <div class="hud-input-cluster">																				
                         <input type="text" id="regNo" placeholder=" ">																				
@@ -828,27 +856,27 @@
                         <label>Contact Number *</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                                                                                                          
+                                                                                                                                                                                                                                    
                     <div class="hud-input-cluster full-width-field">																				
                         <input type="email" id="email" placeholder=" ">																				
                         <label>Email Address (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
-                        
+                                        
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:8px;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                        
+                                        
                     <div class="hud-input-cluster full-width-field">																				
                         <textarea id="notesReal" placeholder=" "></textarea>																				
                         <label>Additional System Notes (Optional)</label>																				
                         <div class="neon-glow-underline"></div>																				
                     </div>																				
                 </div>																				
-                                                                                                  
+                                                                                                                                                                                                            
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>																				
             </div>
 
@@ -871,6 +899,9 @@
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
+                            
+                            <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="toggleVoiceAudioRecordingEngine()">🎙️</button>
+
                             <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
                             
                             <div class="gif-selector-matrix-node">
@@ -896,7 +927,7 @@
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>																				
             </div>																				
-                                        																				
+                                                                                
             <div class="admin-category-navbar">																				
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>																				
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>																				
@@ -940,11 +971,14 @@
         let cachedGlobalPolicyArr = [];
         let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
 
+        // WebRTC Audio Recording Variables Nodes
+        let nativeAudioMediaRecorderInstance = null;
+        let compiledAudioChunksCollectorArr = [];
+
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
-        // Million standard Giphy/WhatsApp styled elements matrix arrays
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdtcmM2b29vYnp3Ym95b2tzZ3Z0ZHpudmZxd3Y2M204eWpxN3R4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tX68Mc6nc9gNq/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmt0ZHp0b2wxaGsyYmI4Y2M1N2FwYW94MnF4NDl0b2R0Z3kwd3Z3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ntq5FxUvS84U/giphy.gif",
@@ -980,7 +1014,9 @@
 
         window.toggleGifMatrixDropdownPanel = function(event) {
             event.stopPropagation();
-            document.getElementById('mainframeGifContainerBox').classList.toggle('hidden');
+            const targetBoxId = (currentMode === 'admin') ? 'mainframeGifContainerBoxAdmin' : 'mainframeGifContainerBox';
+            const targetElement = document.getElementById(targetBoxId);
+            if(targetElement) targetElement.classList.toggle('hidden');
         };
 
         window.dispatchDirectGifMatrixMessage = function(url) {
@@ -991,17 +1027,19 @@
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: currentSender, receiver: userTarget,
-                textBody: "🖼️ Sent a GIF Vector Element", mediaPayload: url,
+                textBody: "🖼️ Sent a GIF Vector Element", mediaPayload: url, read: false, epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
-                document.getElementById('mainframeGifContainerBox').classList.add('hidden');
+                const targetBoxId = (currentMode === 'admin') ? 'mainframeGifContainerBoxAdmin' : 'mainframeGifContainerBox';
+                const box = document.getElementById(targetBoxId);
+                if(box) box.classList.add('hidden');
                 if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
             });
         };
 
         setTimeout(() => {
             const box = document.getElementById('systemEmojiMatrixBoxNode');
-            if(box) box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
+            if(box) box.innerHTML = systemEmojisList.map(e => `<div class="emoji-node-item" style="cursor:pointer; padding:6px; font-size:1.2rem; display:inline-block;" onclick="insertEmojiIntoChatField('${e}')">${e}</div>`).join('');
         }, 1000);
 
         window.insertEmojiIntoChatField = function(emoji) {
@@ -1018,7 +1056,27 @@
         document.addEventListener('click', () => {
             if(document.getElementById('systemEmojiMatrixBoxNode')) document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
             if(document.getElementById('mainframeGifContainerBox')) document.getElementById('mainframeGifContainerBox').classList.add('hidden');
+            removeContextDropdownMenuNode();
         });
+
+        // --- EXPLICIT 8-DAYS AUTO MESSAGE DELETION LOGIC ROUTE ---
+        function executeAutoPurgeEightDaysOldChats(chatsSnapshotObj) {
+            if(!chatsSnapshotObj) return;
+            const thresholdLifespanLimit = 8 * 24 * 60 * 60 * 1000; // 8 Days parsed in milliseconds
+            const rightNowTimeEpoch = Date.now();
+
+            Object.keys(chatsSnapshotObj).forEach(key => {
+                const packet = chatsSnapshotObj[key];
+                if(packet.epochTimeNode) {
+                    if((rightNowTimeEpoch - packet.epochTimeNode) > thresholdLifespanLimit) {
+                        remove(ref(db, `chats/${key}`));
+                    }
+                } else if(packet.timestamp && !packet.epochTimeNode) {
+                    // Fallback injection for integrity
+                    update(ref(db, `chats/${key}`), { epochTimeNode: Date.now() });
+                }
+            });
+        }
 
         // Realtime Mainframe Listener Modules
         onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
@@ -1058,9 +1116,12 @@
             const data = snapshot.val();
             const allChats = data ? Object.values(data) : [];
             
+            // Invoke the 8 days cron retention scanner sequence
+            if(data) executeAutoPurgeEightDaysOldChats(data);
+
             if(previousChatsLength > 0 && allChats.length > previousChatsLength) {
                 const latestMsg = allChats[allChats.length - 1];
-                if(latestMsg.sender !== cachedAdminMainframeRoute.masterId) {
+                if(latestMsg.sender !== cachedAdminMainframeRoute.masterId && latestMsg.sender !== loggedInCustomerID) {
                     playSynthesizedSound(587.33, 'sine', 0.15);
                 }
             }
@@ -1068,12 +1129,50 @@
 
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 renderActiveChatConversationLogs();
+                // Mark loaded chat elements seen dynamically
+                markIncomingMessagesAsReadSequence(data);
             }
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
                 renderAdminSpyChatConsoleLogs();
                 renderAdminSpyUserList();
             }
+            if(loggedInCustomerID && activeCustomerWorkspaceChannel === 'chat') {
+                calculateUnreadBadgeCountersTrack(data);
+            }
         });
+
+        function markIncomingMessagesAsReadSequence(chatsSnap) {
+            if(!chatsSnap || !loggedInCustomerID || !activeSelectedChatTargetUserId) return;
+            Object.keys(chatsSnap).forEach(key => {
+                const m = chatsSnap[key];
+                if(m.sender === activeSelectedChatTargetUserId && m.receiver === loggedInCustomerID && m.read === false) {
+                    update(ref(db, `chats/${key}`), { read: true });
+                }
+            });
+        }
+
+        function calculateUnreadBadgeCountersTrack(chatsSnap) {
+            if(!chatsSnap || !loggedInCustomerID) return;
+            const targetNodesArr = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID);
+            
+            targetNodesArr.forEach(user => {
+                let unreadCount = 0;
+                Object.values(chatsSnap).forEach(msg => {
+                    if(msg.sender === user.id && msg.receiver === loggedInCustomerID && msg.read === false) {
+                        unreadCount++;
+                    }
+                });
+                const elementBadgeNode = document.getElementById(`unreadCounterBadge_${user.id}`);
+                if(elementBadgeNode) {
+                    if(unreadCount > 0) {
+                        elementBadgeNode.innerText = unreadCount;
+                        elementBadgeNode.classList.remove('hidden');
+                    } else {
+                        elementBadgeNode.classList.add('hidden');
+                    }
+                }
+            });
+        }
 
         window.uploadUserProfileAvatarEngine = function(event) {
             const file = event.target.files[0];
@@ -1208,7 +1307,7 @@
                     failedAttemptsCount = 0;																				
                     loggedInCustomerID = userMatch.id;																				
                     
-                    // Trigger Online Glow Status to true inside Firebase loop
+                    // Set Online status matrix parameter
                     update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
 
                     document.getElementById('mainStage').style.display = 'none';																				
@@ -1252,7 +1351,7 @@
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
             if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
-            
+            																				
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
                 id: generatedPolicyId, ownerNodeID: loggedInCustomerID, 
@@ -1331,6 +1430,25 @@
             }
         };
 
+        // --- LOCAL NICKNAME STORAGE PROTOCOLS ---
+        window.promptConfigureUserNickname = function(event, targetUserId) {
+            event.stopPropagation();
+            const storageKey = `nicknames_map_${loggedInCustomerID}`;
+            let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
+            const standardOldVal = currentLocalNicknamesObj[targetUserId] || "";
+            
+            const promptNewValue = prompt("Enter custom local nickname configuration parameter:", standardOldVal);
+            if(promptNewValue !== null) {
+                if(promptNewValue.trim()) {
+                    currentLocalNicknamesObj[targetUserId] = promptNewValue.trim();
+                } else {
+                    delete currentLocalNicknamesObj[targetUserId];
+                }
+                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
+                initializeCrossLinkChatPanel();
+            }
+        };
+
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
@@ -1338,16 +1456,27 @@
             const masterAdminPseudoUser = { id: cachedAdminMainframeRoute.masterId, clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
             const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
             
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+
             targetContainer.innerHTML = fullTargetList.map(user => {
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
-                // Add online glowing class selectively if user node tracking flag is active
                 const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
+                
+                const trackingCustomNickname = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">${localNicknamesObj[user.id]}</span>` : "";
+                const editPencilHTML = (user.id !== cachedAdminMainframeRoute.masterId) ? `<button class="nickname-edit-pencil-btn" onclick="promptConfigureUserNickname(event, '${user.id}')">✏️</button>` : "";
+
                 return `
                     <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}">
                         <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}">
-                        <div class="whatsapp-user-info" onclick="setOperationalChatTargetId('${user.id}')">
-                            <div class="whatsapp-user-name">${user.clientName}</div>
-                            <div class="whatsapp-user-id">@${user.id}</div>
+                        <div class="whatsapp-user-info">
+                            <div class="whatsapp-user-name" onclick="setOperationalChatTargetId('${user.id}')">
+                               <span>${user.clientName} ${trackingCustomNickname}</span>
+                               ${editPencilHTML}
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;" onclick="setOperationalChatTargetId('${user.id}')">
+                                <span class="whatsapp-user-id">@${user.id}</span>
+                                <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1370,6 +1499,88 @@
                 if(titleNode && match) titleNode.innerText = match.clientName;
             }
             renderActiveChatConversationLogs();
+            
+            // Clear unread indicator instantly on dynamic partition click view switch
+            const badgeElement = document.getElementById(`unreadCounterBadge_${userId}`);
+            if(badgeElement) badgeElement.classList.add('hidden');
+        };
+
+        // --- WEB INTERACTIVE DOWNLOAD / DISPATCH DROPDOWN SYSTEM ENGINE ---
+        window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl) {
+            event.stopPropagation();
+            removeContextDropdownMenuNode();
+
+            const dropdownContainer = document.createElement('div');
+            dropdownContainer.className = "msg-interactive-dropdown-menu";
+            dropdownContainer.id = "dynamicMsgContextNodeOverlay";
+            
+            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
+
+            dropdownContainer.innerHTML = `
+                ${downloadBtnHTML}
+                <button class="dropdown-action-row-btn delete-color" onclick="removeSingleMessagePacket('${messageKey}')">❌ Delete</button>
+            `;
+
+            document.body.appendChild(dropdownContainer);
+            
+            // Layout Positioning configurations logic
+            dropdownContainer.style.left = `${event.clientX}px`;
+            dropdownContainer.style.top = `${event.clientY}px`;
+        };
+
+        function removeContextDropdownMenuNode() {
+            const staticOverlay = document.getElementById('dynamicMsgContextNodeOverlay');
+            if(staticOverlay) staticOverlay.remove();
+        }
+
+        window.executePhysicalAssetDownloadEngine = function(payloadData, isPlainText = false) {
+            const anchor = document.createElement('a');
+            if(isPlainText) {
+                anchor.href = "data:text/plain;charset=utf-8," + encodeURIComponent(payloadData);
+                anchor.download = `Nexus_String_Payload_${Date.now()}.txt`;
+            } else {
+                anchor.href = payloadData;
+                anchor.download = `Nexus_Media_Resource_${Date.now()}.webm`;
+            }
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+            removeContextDropdownMenuNode();
+        };
+
+        // --- EXPLICIT WEBRTC AUDIO INTERFACE PIPELINE FUNCTION MODULES ---
+        window.toggleVoiceAudioRecordingEngine = function() {
+            const recordBtn = document.getElementById('voiceRecordingCoreTriggerBtn');
+            if(!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    nativeAudioMediaRecorderInstance = new MediaRecorder(stream);
+                    compiledAudioChunksCollectorArr = [];
+                    
+                    nativeAudioMediaRecorderInstance.ondataavailable = (e) => {
+                        if(e.data.size > 0) compiledAudioChunksCollectorArr.push(e.data);
+                    };
+
+                    nativeAudioMediaRecorderInstance.onstop = () => {
+                        const audioRawBlob = new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' });
+                        const baseConverterReader = new FileReader();
+                        baseConverterReader.onloadend = () => {
+                            globalLiveChatBinaryStreamBase64 = baseConverterReader.result;
+                            document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Voice Audio recording synchronized stream map ready. Press send.";
+                        };
+                        baseConverterReader.readAsDataURL(audioRawBlob);
+                        
+                        // Terminate audio hardware streams node hook
+                        stream.getTracks().forEach(track => track.stop());
+                    };
+
+                    nativeAudioMediaRecorderInstance.start();
+                    recordBtn.classList.add('recording-active-pulse');
+                    document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Broadcasting audio recording tracking loop core...";
+                }).catch(() => alert("Permission to use voice microphone stream arrays was rejected."));
+            } else {
+                nativeAudioMediaRecorderInstance.stop();
+                recordBtn.classList.remove('recording-active-pulse');
+            }
         };
 
         window.renderActiveChatConversationLogs = function() {
@@ -1398,16 +1609,15 @@
                         
                         let assetElementHTML = "";
                         if(msg.mediaPayload) {
-                            if(msg.mediaPayload.startsWith("http")) {
+                            if(msg.mediaPayload.startsWith("data:audio")) {
+                                assetElementHTML = `<br><audio controls src="${msg.mediaPayload}" style="max-width:220px; height:40px; margin-top:5px;"></audio>`;
+                            } else if(msg.mediaPayload.startsWith("http") || msg.mediaPayload.startsWith("data:image")) {
                                 assetElementHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
-                            } else {
-                                assetElementHTML = `<br><img src="${msg.mediaPayload}" style="max-width:150px; border-radius:8px; margin-top:5px; display:block;">`;
                             }
                         }
                         
                         combinedHTML += `
-                            <div class="bubble-msg-wrapper ${directionalCss}">
-                                <div class="individual-msg-bin" onclick="removeSingleMessagePacket('${key}')">❌ Delete</div>
+                            <div class="bubble-msg-wrapper ${directionalCss}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}')">
                                 <div>${msg.textBody}</div>
                                 ${assetElementHTML}
                                 <div class="whatsapp-time">${msg.timestamp}</div>
@@ -1415,7 +1625,7 @@
                     }
                 });
 
-                wrapper.innerHTML = (count === 0) ? `<div style="color:#8696a0; font-size:0.85rem; margin:auto;">🔒 Secure framework verified.</div>` : combinedHTML;
+                wrapper.innerHTML = (count === 0) ? `<div style="color:#8696a0; font-size:0.85rem; margin:auto;">🔒 Framework online.</div>` : combinedHTML;
                 wrapper.scrollTop = wrapper.scrollHeight;
             });
         };
@@ -1426,10 +1636,16 @@
             const textBody = inputField.value.trim();
             if(!textBody && !globalLiveChatBinaryStreamBase64) return;
             
+            let descriptiveText = textBody;
+            if(!descriptiveText && globalLiveChatBinaryStreamBase64.startsWith("data:audio")) {
+                descriptiveText = "🎙️ Voice Audio Broadcast Stream";
+            }
+
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
                 sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: textBody || "📎 Document Asset Node", mediaPayload: globalLiveChatBinaryStreamBase64,
+                textBody: descriptiveText || "📎 Document Asset Node", mediaPayload: globalLiveChatBinaryStreamBase64,
+                read: false, epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
@@ -1439,11 +1655,10 @@
         };
 
         window.removeSingleMessagePacket = function(packetKey) {
-            if(confirm("Wipe this individual single message string?")) {
-                remove(ref(db, `chats/${packetKey}`)).then(() => {
-                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-                });
-            }
+            remove(ref(db, `chats/${packetKey}`)).then(() => {
+                removeContextDropdownMenuNode();
+                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+            });
         };
 
         window.switchAdminSubSection = function(sectionId) {																				
@@ -1503,7 +1718,7 @@
                     <div style="margin-bottom: 20px;"><input type="text" id="searchInput" class="search-terminal-input" placeholder="Scan records..." oninput="filterCardsEngine()"></div>																				
                     <div id="policyCardsStack"></div>																				
                 </div>																				
-                
+                                                                                
                 <div id="adminSpyChatBlock" style="display:none; width:100%;">
                     <div class="chat-io-grid-matrix">
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
@@ -1553,10 +1768,10 @@
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
             if(!clientName || !contact || !userPass) { alert("⚠️ Fields empty."); return; }																				
-            
+            																				
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
-            
+            																				
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false }).then(() => {
                 alert("Identity compiled."); loadAdminSubmissions();
             });																				
@@ -1589,7 +1804,7 @@
         window.renderUserControlPanel = function() {																				
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;																				
             if(cachedGlobalUsersArr.length === 0) { listWrapper.innerHTML = `<p style="color:#475569;">Empty cluster.</p>`; return; }																				
-            
+            																				
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {																				
                 const live = user.status === 'active';																				
                 return `																				
@@ -1662,12 +1877,15 @@
                         
                         let assetHTML = "";
                         if(m.mediaPayload) {
-                            assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
+                            if(m.mediaPayload.startsWith("data:audio")) {
+                                assetHTML = `<br><audio controls src="${m.mediaPayload}" style="max-width:220px; height:40px; margin-top:5px;"></audio>`;
+                            } else {
+                                assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
+                            }
                         }
                         
                         htmlCollector += `
-                            <div class="bubble-msg-wrapper" style="${customStyle}">
-                                <div class="individual-msg-bin" onclick="removeSingleMessagePacket('${key}')">❌ Delete</div>
+                            <div class="bubble-msg-wrapper" style="${customStyle}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}')">
                                 ${m.textBody}
                                 ${assetHTML}
                                 <div class="whatsapp-time">${m.timestamp}</div>
@@ -1685,7 +1903,7 @@
             const newChatRef = push(ref(db, 'chats'));
             set(newChatRef, {
                 sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
-                textBody: input.value.trim(), mediaPayload: "",
+                textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
         };
@@ -1693,11 +1911,10 @@
         window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
             if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No files loaded.</p>"; return; }																				
-            
+            																				
             targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
                 let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:100px; border-radius:6px; margin-top:4px;">` : "<span>None</span>";
                 
-                // Track Nickname/Owner profile string logic array safely
                 let clientProfileMatch = cachedGlobalUsersArr.find(u => u.id === d.ownerNodeID);
                 let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown Profile";
 
@@ -1760,7 +1977,6 @@
         };																				
 																				
         window.logoutEngine = function() {																				
-            // Clear credentials values immediately from login screen fields on exit event
             if(loggedInCustomerID) {
                 update(ref(db, `users/${loggedInCustomerID}`), { isOnlineNode: false });
             }
