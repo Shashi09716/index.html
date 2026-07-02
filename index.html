@@ -416,8 +416,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             transition: background 0.4s ease;
-            padding-bottom: 120px;
-            padding-top: 100px;
+            padding-bottom: 30px;
         }																				
 																				
         .hud-container-panel {																				
@@ -478,30 +477,6 @@
          																				
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         
-        /* FIXED FROZEN HELPLINE TRIGGER DOCK STRICTLY FOR THE INSIDE INTERFACE */
-        .helpline-trigger-btn { 
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 320px; 
-            padding: 14px; 
-            background: linear-gradient(135deg, #e74c3c, #c0392b); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            border-radius: 12px; 
-            color: #ffffff; 
-            font-weight: bold; 
-            cursor: pointer; 
-            font-size: 0.95rem; 
-            font-family: 'Orbitron'; 
-            z-index: 10000;
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }																				
-        .helpline-trigger-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(231, 76, 60, 0.6);
-        }
-
         .search-terminal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }																				
@@ -1036,8 +1011,6 @@
 
             <div class="ai-helper-banner" style="margin-bottom: 40px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
         </div>																				
-        
-        <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn">Emergency Helpline: 9355768176</button>
     </div>																				
 																				
     <div class="dashboard-panel-core hidden" id="adminDashboard">																				
@@ -1314,6 +1287,42 @@
             });
         }
 
+        // --- SESSION STATE CHECK RETENTION ON REFRESH LAUNCH ---
+        function checkActiveStateSessionRetentionOnLaunch() {
+            const savedUserToken = localStorage.getItem('nexus_logged_in_uid');
+            const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload';
+            const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
+            
+            if(savedUserToken) {
+                loggedInCustomerID = savedUserToken;
+                currentMode = savedMode;
+                activeCustomerWorkspaceChannel = savedWorkspaceChan;
+
+                document.getElementById('mainStage').style.display = 'none';
+                if(savedMode === 'admin') {
+                    document.getElementById('adminDashboard').classList.remove('hidden');
+                    loadAdminSubmissions();
+                } else {
+                    document.getElementById('customerDashboard').classList.remove('hidden');
+                    switchCustomerChannel(savedWorkspaceChan);
+                    
+                    // Trigger asynchronous recovery labels
+                    setTimeout(() => {
+                        const targetProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
+                        if(targetProfile) {
+                            const badge = document.getElementById('liveOnlineIdentityNodeBadge');
+                            if(badge) {
+                                badge.innerText = `User ID: ${targetProfile.clientName} (@${targetProfile.id})`;
+                                badge.classList.remove('hidden');
+                            }
+                            const headNode = document.getElementById('dashboardIdentityHeadingNode');
+                            if(headNode) headNode.innerText = `Welcome, ${targetProfile.clientName}`;
+                        }
+                    }, 1500);
+                }
+            }
+        }
+
         // Realtime Mainframe Listener Modules
         onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
             const rootData = snapshot.val();
@@ -1341,7 +1350,23 @@
                     document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
                 }
             }
+            // Execute runtime safe token initialization checks
+            staticSessionTokenLabelSync();
         });
+
+        function staticSessionTokenLabelSync() {
+            if(!loggedInCustomerID || cachedGlobalUsersArr.length === 0) return;
+            const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
+            if(myProfile) {
+                const badge = document.getElementById('liveOnlineIdentityNodeBadge');
+                if(badge) {
+                    badge.innerText = `User ID: ${myProfile.clientName} (@${myProfile.id})`;
+                    badge.classList.remove('hidden');
+                }
+                const headNode = document.getElementById('dashboardIdentityHeadingNode');
+                if(headNode) headNode.innerText = `Welcome, ${myProfile.clientName}`;
+            }
+        }
 
         onValue(ref(db, 'policies'), (snapshot) => {
             const data = snapshot.val();
@@ -1378,6 +1403,11 @@
                 calculateUnreadBadgeCountersTrack(data);
             }
         });
+
+        // Fire initialization retention sequences
+        setTimeout(() => {
+            checkActiveStateSessionRetentionOnLaunch();
+        }, 600);
 
         function markIncomingMessagesAsReadSequence(chatsSnap) {
             if(!chatsSnap || !loggedInCustomerID || !activeSelectedChatTargetUserId) return;
@@ -1528,6 +1558,11 @@
                 failedAttemptsCount = 0;																				
                 document.getElementById('mainStage').style.display = 'none';																				
                 document.getElementById('adminDashboard').classList.remove('hidden');																				
+                
+                // Write session persistent indicators
+                localStorage.setItem('nexus_logged_in_uid', cachedAdminMainframeRoute.masterId);
+                localStorage.setItem('nexus_system_session_mode', 'admin');
+
                 loadAdminSubmissions();																				
             } else {																				
                 const userIdx = cachedGlobalUsersArr.findIndex(user => user.id.toLowerCase() === u.toLowerCase());																				
@@ -1545,6 +1580,11 @@
                     loggedInCustomerID = userMatch.id;																				
                     
                     update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
+
+                    // Set storage indicators completely
+                    localStorage.setItem('nexus_logged_in_uid', userMatch.id);
+                    localStorage.setItem('nexus_system_session_mode', 'user');
+                    localStorage.setItem('nexus_active_chan_route', 'upload');
 
                     const badge = document.getElementById('liveOnlineIdentityNodeBadge');
                     if(badge) {
@@ -1655,6 +1695,8 @@
 
         window.switchCustomerChannel = function(channelId) {
             activeCustomerWorkspaceChannel = channelId;
+            localStorage.setItem('nexus_active_chan_route', channelId);
+
             const btnUpload = document.getElementById('btnChannelUpload');
             const btnChat = document.getElementById('btnChannelChat');
             const viewUpload = document.getElementById('customerUploadInterfaceBlock');
@@ -1919,7 +1961,6 @@
                 const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);																				
                 if(btn) btn.classList.remove('active');																				
             });																				
-            document.getElementById(`tabBtn覆${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
             const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
             if(actBtn) actBtn.classList.add('active');																				
 																				
@@ -2147,16 +2188,6 @@
             });
         };
 
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
-            const newChatRef = push(ref(db, 'chats'));
-            set(newChatRef, {
-                sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
-                textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
-        };
-
         window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
             if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No files loaded.</p>"; return; }																				
@@ -2227,6 +2258,11 @@
             document.getElementById('accessNodeUser').value = "";
             document.getElementById('accessNodePass').value = "";
             
+            // Clear cache structures entirely
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            localStorage.removeItem('nexus_active_chan_route');
+
             const badge = document.getElementById('liveOnlineIdentityNodeBadge');
             if(badge) badge.classList.add('hidden');
 
