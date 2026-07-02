@@ -66,7 +66,7 @@
             text-align: center;
             pointer-events: none;
             width: auto;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s ease;
         }
         
         .brand-main-title {
@@ -1653,7 +1653,7 @@
                     if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
-                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
+                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                         localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -1665,7 +1665,7 @@
                     if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
-                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
+                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                         localStorage.setItem('nexus_logged_in_uid', u); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -1694,7 +1694,7 @@
                 localStorage.setItem('nexus_active_chan_route', 'upload');
                 document.getElementById('mainStage').style.display = 'none'; 
                 document.getElementById('customerDashboard').classList.remove('hidden');
-                document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
+                document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                 switchCustomerChannel('upload');
             }
         };
@@ -1769,7 +1769,7 @@
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
-            document.getElementById('shashiBrandingHeader').style.opacity = '1'; // Show Branding Shashi
+            document.getElementById('shashiBrandingHeader').style.opacity = '1'; 
             loggedInCustomerID = ""; 
             const stage = document.getElementById('mainStage'); 
             stage.style.display = 'flex'; 
@@ -1822,7 +1822,7 @@
                         let assetHTML = "";
                         if(m.mediaPayload) {
                             if(m.mediaPayload.startsWith("data:audio")) {
-                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block("></audio>`;
+                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
                             } else {
                                 assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
                             }
