@@ -55,26 +55,45 @@
             transition: background 0.4s ease, color 0.4s ease;
         }																				
 																				
+        /* TOP CENTER HORIZON RESTRUCTURED BRAND BLOCK */
         .shashi-header-brand-block {
             position: fixed;
-            bottom: 30px;
-            left: 20px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 9999;
             font-family: 'Orbitron', sans-serif;
-            text-align: left;
-            pointer-events: none; /* Never blocks clicks */
+            text-align: center;
+            pointer-events: none;
+            width: auto;
         }
         .brand-main-title {
             font-weight: 900;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(241, 196, 15, 0.85);
+            text-shadow: 0 0 20px rgba(241, 196, 15, 0.9);
             transition: color 0.3s;
         }
         body.light-theme-active .brand-main-title {
             color: #0f172a;
             text-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        /* LIVE ONLINE SIGNATURE IDENTITY GAUGE HUD */
+        .live-session-user-identity-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.12);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
+            margin-top: 6px;
+            display: inline-block;
         }
 
         .cosmic-theme-toggle-switch {
@@ -159,8 +178,10 @@
             66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.7); }
         }
 
+        /* AMBIENT SCREEN GLOW SPECTRUM DRIVER */
         .cinema-stage.activated {
             animation: dynamicColorCycle 7s infinite linear;
+            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.15) 0%, rgba(2, 5, 14, 1) 70%);
         }
 
         /* --- THE SHUTTER HIGH ULTRA GLOW LAMP --- */																				
@@ -395,6 +416,7 @@
             overflow-x: hidden;
             transition: background 0.4s ease;
             padding-bottom: 120px;
+            padding-top: 100px;
         }																				
 																				
         .hud-container-panel {																				
@@ -455,20 +477,7 @@
          																				
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         
-        /* DYNAMIC INSIDE TERMINAL HEADERS */
-        .dashboard-internal-subtitle-tag {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #00f2fe;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: -15px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
-        }
-
-        /* FREEZING HELPLINE NODE STYLES */
+        /* FIXED FROZEN HELPLINE TRIGGER DOCK */
         .helpline-trigger-btn { 
             position: fixed;
             bottom: 20px;
@@ -602,10 +611,8 @@
         .whatsapp-user-name { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.75rem; color: var(--text-sub); font-family: monospace; }
 
-        /* Nickname Styling elements */
+        /* Nickname badge */
         .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 1px 5px; border-radius: 4px; font-weight: normal; margin-left: 4px; max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
-        .nickname-edit-pencil-btn { background: transparent; border: none; color: var(--text-sub); cursor: pointer; font-size: 0.8rem; margin-left: 6px; padding: 2px; transition: color 0.2s; }
-        .nickname-edit-pencil-btn:hover { color: #00f2fe; }
 
         /* Unread Badge */
         .whatsapp-unread-counter-pill { background: #00a884; color: #fff; font-size: 0.75rem; font-weight: bold; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
@@ -620,7 +627,7 @@
             z-index: 2;
         }
         
-        /* Individual Message Bubble Actions Setup */
+        /* Message Layouts Elements Setup */
         .bubble-msg-wrapper {
             max-width: 65%;
             padding: 10px 14px;
@@ -679,7 +686,7 @@
         body.light-theme-active .dropdown-action-row-btn:hover { background: rgba(0,0,0,0.05); }
         .dropdown-action-row-btn.delete-color { color: #e74c3c; border-top: 1px solid var(--border-glass); }
 
-        /* INLINE COMPONENT MODAL SYSTEM OVERRIDES GENERIC POPUPS */
+        /* INLINE SYSTEM POPUP CONTAINER OVERRAIDS */
         .nexus-custom-popup-overlay {
             position: fixed;
             inset: 0;
@@ -738,9 +745,32 @@
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #e74c3c; color: #fff; }
 
-        .chat-interface-footer-inputs { padding: 10px 15px; background: rgba(0,0,0,0.2); border-top: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
-        .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--input-bg); border: 1px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; font-size: 0.95rem; }
-        .whatsapp-circle-btn { width: 38px; height: 38px; background: transparent; border: none; color: var(--text-sub); font-size: 1.3rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: color 0.2s; }
+        /* FIXED RESTORED CLASSIC TYPING BAR LAYOUT ROUTE */
+        .chat-interface-footer-inputs { 
+            padding: 12px 15px; 
+            background: rgba(32, 44, 51, 0.95); 
+            border-top: 1px solid var(--border-glass); 
+            display: flex; 
+            gap: 12px; 
+            align-items: center; 
+            z-index: 2; 
+            position: relative; 
+        }
+        body.light-theme-active .chat-interface-footer-inputs { background: #f0f2f5; }
+        .whatsapp-input-field { 
+            flex: 1; 
+            padding: 12px 18px; 
+            background: rgba(42, 57, 66, 0.8); 
+            border: none; 
+            border-radius: 8px; 
+            color: #fff; 
+            outline: none; 
+            font-size: 0.95rem; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+        }
+        body.light-theme-active .whatsapp-input-field { background: #ffffff; color: #000; }
+        .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: #8696a0; font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: color 0.2s; }
         .whatsapp-circle-btn:hover { color: #00f2fe; }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recordingPulse 1s infinite alternate; }
         
@@ -831,6 +861,7 @@
 																				
     <div class="shashi-header-brand-block">
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
+        <div id="liveOnlineIdentityNodeBadge" class="live-session-user-identity-badge hidden">Session ID: Offline Node</div>
     </div>
 
     <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
@@ -899,17 +930,15 @@
     <div class="dashboard-panel-core hidden" id="customerDashboard">																				
         <div class="hud-container-panel text-left">																				
             <div class="panel-header-flex">																				
-                <h2 class="neon-cyan-text">Customer Terminal</h2>																				
+                <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
-            
-            <div class="dashboard-internal-subtitle-tag">Customer Terminal Dashboard Subspace</div>
                                 
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" src="">
+                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
-                    <label style="color:#00f2fe; font-size:0.85rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;">📷 Set Profile Photo Layout</label>
-                    <input type="file" accept="image/*" onchange="uploadUserProfileAvatarEngine(event)" style="font-size:0.75rem; color:var(--text-sub); background:transparent; border:none;">
+                    <label style="color:#00f2fe; font-size:0.85rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo Layout</label>
+                    <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="uploadUserProfileAvatarEngine(event)">
                 </div>
             </div>
 
@@ -982,17 +1011,17 @@
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
+                        
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
-                            
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="toggleVoiceAudioRecordingEngine()">🎙️</button>
 
                             <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
                             
                             <div class="gif-selector-matrix-node">
-                                <button class="whatsapp-circle-btn" onclick="toggleGifMatrixDropdownPanel(event)">🖼️ GIF</button>
+                                <button class="whatsapp-circle-btn" style="font-size:0.85rem; font-weight:bold;" onclick="toggleGifMatrixDropdownPanel(event)">🖼️ GIF</button>
                                 <div class="gif-dropdown-box hidden" id="mainframeGifContainerBox"></div>
                             </div>
 
@@ -1061,7 +1090,6 @@
         let cachedGlobalPolicyArr = [];
         let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
 
-        // WebRTC Audio Recording Variables Nodes
         let nativeAudioMediaRecorderInstance = null;
         let compiledAudioChunksCollectorArr = [];
 
@@ -1108,6 +1136,89 @@
         window.closeCustomInlinePopupEngine = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(wrapper) wrapper.classList.add('hidden');
+        };
+
+        // --- PROFILE CONTROL CLICK MODAL INTERFACE DRIVER ---
+        window.triggerTargetUserContactProfileModal = function(targetUserId, standardClientName) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            const activeLocalNickname = localNicknamesObj[targetUserId] || "";
+
+            // Fetch current runtime avatar path
+            let targetAvatarPath = defaultAvatarSvg;
+            if(targetUserId === cachedAdminMainframeRoute.masterId) {
+                targetAvatarPath = defaultAvatarSvg;
+            } else {
+                const userMatch = cachedGlobalUsersArr.find(u => u.id === targetUserId);
+                if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
+            }
+
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width: 420px;">
+                    <h4 style="font-size:1.3rem; margin-bottom:8px;">${standardClientName}</h4>
+                    <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px; font-family:monospace;">ID Signature: @${targetUserId}</p>
+                    
+                    <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:1px solid var(--border-glass);">
+                        <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid #00f2fe; display:block; margin:0 auto 10px auto;">
+                    </div>
+
+                    <div style="margin-bottom:20px; text-align:left;">
+                        <label style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:5px; font-weight:bold;">Local Nickname Attribute</label>
+                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${activeLocalNickname}" placeholder="Set local nickname text..." style="margin-bottom:0;">
+                    </div>
+
+                    <div class="nexus-popup-flex-btns">
+                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE PARAMETERS</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE VIEW</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+
+            document.getElementById('commitProfileModalChangesBtn').onclick = () => {
+                const inputVal = document.getElementById('popupInlineNicknameModifierField').value.trim();
+                const storageKey = `nicknames_map_${loggedInCustomerID}`;
+                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
+                
+                if(inputVal) {
+                    currentLocalNicknamesObj[targetUserId] = inputVal;
+                } else {
+                    delete currentLocalNicknamesObj[targetUserId];
+                }
+                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
+                closeCustomInlinePopupEngine();
+                initializeCrossLinkChatPanel();
+            };
+        };
+
+        // --- SEPARATE BLANK OR GALLERY PROFILE AVATAR DROPDOWN OVERLAY SYSTEM ---
+        window.triggerUserProfileAvatarDropdownEngine = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>Profile Layout Option</h4>
+                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:20px;">Configure personal avatar node identity:</p>
+                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
+                        <button onclick="commitAvatarClearBlankNode()" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px; background:#f1c40f;">Clear / Set Blank Avatar</button>
+                        <button onclick="document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px;">Upload from Gallery</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%; padding:12px;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitAvatarClearBlankNode = function() {
+            closeCustomInlinePopupEngine();
+            if(loggedInCustomerID) {
+                set(ref(db, `users/${loggedInCustomerID}/avatar`), "").then(() => {
+                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
+                });
+            }
         };
 
         window.executeCosmicThemeToggle = function() {
@@ -1220,7 +1331,11 @@
             }
             if(loggedInCustomerID) {
                 const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
-                if(myProfile && myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                if(myProfile && myProfile.avatar) {
+                    document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                } else {
+                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
+                }
             }
         });
 
@@ -1427,6 +1542,16 @@
                     
                     update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
 
+                    // Set real-time center session identity string label description
+                    const badge = document.getElementById('liveOnlineIdentityNodeBadge');
+                    if(badge) {
+                        badge.innerText = `User ID: ${userMatch.clientName} (@${userMatch.id})`;
+                        badge.classList.remove('hidden');
+                    }
+                    
+                    const headNode = document.getElementById('dashboardIdentityHeadingNode');
+                    if(headNode) headNode.innerText = `Welcome, ${userMatch.clientName}`;
+
                     document.getElementById('mainStage').style.display = 'none';																				
                     document.getElementById('customerDashboard').classList.remove('hidden');																				
                     switchCustomerChannel('upload');
@@ -1543,23 +1668,6 @@
             }
         };
 
-        // --- LOCAL NICKNAME STORAGE DYNAMIC POPUP MODAL ROUTE ---
-        window.promptConfigureUserNickname = function(event, targetUserId) {
-            event.stopPropagation();
-            const storageKey = `nicknames_map_${loggedInCustomerID}`;
-            let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-            
-            triggerCustomInlinePopupEngine("Configure Nickname", "Type custom name parameter...", (inputVal) => {
-                if(inputVal) {
-                    currentLocalNicknamesObj[targetUserId] = inputVal;
-                } else {
-                    delete currentLocalNicknamesObj[targetUserId];
-                }
-                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                initializeCrossLinkChatPanel();
-            });
-        };
-
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
@@ -1573,18 +1681,17 @@
                 const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
                 const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
                 
-                const trackingCustomNickname = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">${localNicknamesObj[user.id]}</span>` : "";
-                const editPencilHTML = (user.id !== cachedAdminMainframeRoute.masterId) ? `<button class="nickname-edit-pencil-btn" onclick="promptConfigureUserNickname(event, '${user.id}')">✏️</button>` : "";
+                const activeNameString = localNicknamesObj[user.id] || user.clientName;
+                const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
 
                 return `
-                    <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}">
+                    <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="triggerTargetUserContactProfileModal('${user.id}', '${user.clientName}')">
                         <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}">
                         <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name" onclick="setOperationalChatTargetId('${user.id}')">
-                               <span>${user.clientName} ${trackingCustomNickname}</span>
-                               ${editPencilHTML}
+                            <div class="whatsapp-user-name">
+                               <span>${activeNameString} ${trackingCustomNicknameTag}</span>
                             </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;" onclick="setOperationalChatTargetId('${user.id}')">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
                                 <span class="whatsapp-user-id">@${user.id}</span>
                                 <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
                             </div>
@@ -1595,19 +1702,21 @@
             
             if(!activeSelectedChatTargetUserId && fullTargetList.length > 0) {
                 setOperationalChatTargetId(fullTargetList[0].id);
-            } else {
-                renderActiveChatConversationLogs();
             }
         };
 
         window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId;
             const titleNode = document.getElementById('chatActiveUserHeaderNode');
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+
             if(userId === cachedAdminMainframeRoute.masterId) {
                 if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
             } else {
                 const match = cachedGlobalUsersArr.find(u => u.id === userId);
-                if(titleNode && match) titleNode.innerText = match.clientName;
+                if(titleNode && match) {
+                    titleNode.innerText = localNicknamesObj[userId] || match.clientName;
+                }
             }
             renderActiveChatConversationLogs();
             
@@ -2033,16 +2142,6 @@
             });
         };
 
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
-            const newChatRef = push(ref(db, 'chats'));
-            set(newChatRef, {
-                sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
-                textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
-        };
-
         window.renderPolicyCardsBlock = function() {																				
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;																				
             if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p>No files loaded.</p>"; return; }																				
@@ -2113,6 +2212,9 @@
             document.getElementById('accessNodeUser').value = "";
             document.getElementById('accessNodePass').value = "";
             
+            const badge = document.getElementById('liveOnlineIdentityNodeBadge');
+            if(badge) badge.classList.add('hidden');
+
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');																				
             loggedInCustomerID = ""; failedAttemptsCount = 0;
