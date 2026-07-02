@@ -22,6 +22,7 @@
             --chat-bg: #090f14;
             --input-bg: #010610;
             --accent-yellow: #f1c40f;
+            --cyber-glow: 0 0 20px rgba(0, 242, 254, 0.6);
         }
 
         body.light-theme-active {
@@ -33,6 +34,7 @@
             --chat-bg: #efeae2;
             --input-bg: #ffffff;
             --accent-yellow: #d97706;
+            --cyber-glow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -335,32 +337,33 @@
         .hud-container-panel {
             background: var(--panel-glass);
             border: 3px solid var(--border-glass);
-            border-top: 6px solid #00f2fe;
+            border-top: 6px solid var(--neon-cyan);
             padding: 35px 25px;
             border-radius: 20px;
             width: 100%;
             max-width: 1280px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 80px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05);
             backdrop-filter: blur(40px);
             margin-top: 10px;
             margin-bottom: 20px;
         }
 
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 3px solid var(--border-glass); padding-bottom: 18px; gap: 10px; }
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2rem; text-shadow: 0 0 20px rgba(0,242,254,0.6); font-weight: 900; }
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
+        .neon-cyan-text span { font-size: 1.6rem; color: #ffffff; font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
 
-        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); }
-        .channel-tab-btn { flex: 1; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s ease; display: flex; center; align-items: center; justify-content: center; gap: 8px; }
-        .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
+        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
+        .channel-tab-btn { flex: 1; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; center; align-items: center; justify-content: center; gap: 8px; }
+        .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: var(--cyber-glow); }
 
         .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .full-width-field { grid-column: span 2; }
 
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(231,76,60,0.3); letter-spacing: 1px; }
-        .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); }
+        .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
          
-        .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; }
+        .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1); }
         
         .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; }
 
@@ -644,7 +647,7 @@
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div class="panel-header-flex">
-                <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal</h2>
+                <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
             </div>
                                                                                                     
@@ -1087,7 +1090,11 @@
             }
             if(loggedInCustomerID && currentMode === 'user') {
                 const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
-                if(myProfile && myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                if(myProfile) {
+                    if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                    // Dynamic Client Name Rendering Block
+                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:#ffffff;">${myProfile.clientName}</span>`;
+                }
             }
         });
 
@@ -1692,6 +1699,10 @@
                 localStorage.setItem('nexus_logged_in_uid', userMatch.id); 
                 localStorage.setItem('nexus_system_session_mode', 'user'); 
                 localStorage.setItem('nexus_active_chan_route', 'upload');
+                
+                // Dynamic clean text replacement binding logic
+                document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:#ffffff;">${userMatch.clientName}</span>`;
+                
                 document.getElementById('mainStage').style.display = 'none'; 
                 document.getElementById('customerDashboard').classList.remove('hidden');
                 document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
@@ -1770,6 +1781,7 @@
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
             document.getElementById('shashiBrandingHeader').style.opacity = '1'; 
+            document.getElementById('clientDisplayLabel').innerText = "";
             loggedInCustomerID = ""; 
             const stage = document.getElementById('mainStage'); 
             stage.style.display = 'flex'; 
@@ -1897,4 +1909,3 @@
     </script>
 </body>
 </html>
-
