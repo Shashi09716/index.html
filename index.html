@@ -178,10 +178,11 @@
             66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.7); }
         }
 
-        /* AMBIENT SCREEN GLOW SPECTRUM DRIVER */
+        /* HYPER-PREMIUM AMBIENT SCREEN GLOW SPECTRUM ANIMATIONS */
         .cinema-stage.activated {
-            animation: dynamicColorCycle 7s infinite linear;
-            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.15) 0%, rgba(2, 5, 14, 1) 70%);
+            animation: dynamicColorCycle 5s infinite linear;
+            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 75%);
+            box-shadow: inset 0 0 100px rgba(0, 242, 254, 0.15);
         }
 
         /* --- THE SHUTTER HIGH ULTRA GLOW LAMP --- */																				
@@ -477,7 +478,7 @@
          																				
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
         
-        /* FIXED FROZEN HELPLINE TRIGGER DOCK */
+        /* FIXED FROZEN HELPLINE TRIGGER DOCK STRICTLY FOR THE INSIDE INTERFACE */
         .helpline-trigger-btn { 
             position: fixed;
             bottom: 20px;
@@ -686,7 +687,7 @@
         body.light-theme-active .dropdown-action-row-btn:hover { background: rgba(0,0,0,0.05); }
         .dropdown-action-row-btn.delete-color { color: #e74c3c; border-top: 1px solid var(--border-glass); }
 
-        /* INLINE SYSTEM POPUP CONTAINER OVERRAIDS */
+        /* INLINE SYSTEM POPUP CONTAINER OVERRIDES */
         .nexus-custom-popup-overlay {
             position: fixed;
             inset: 0;
@@ -745,7 +746,7 @@
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #e74c3c; color: #fff; }
 
-        /* FIXED RESTORED CLASSIC TYPING BAR LAYOUT ROUTE */
+        /* FIXED RESTORED CLASSIC TYPING BAR LAYOUT AT THE VERY BOTTOM */
         .chat-interface-footer-inputs { 
             padding: 12px 15px; 
             background: rgba(32, 44, 51, 0.95); 
@@ -755,6 +756,7 @@
             align-items: center; 
             z-index: 2; 
             position: relative; 
+            margin-top: auto; /* Drives it perfectly to base */
         }
         body.light-theme-active .chat-interface-footer-inputs { background: #f0f2f5; }
         .whatsapp-input-field { 
@@ -1034,6 +1036,8 @@
 
             <div class="ai-helper-banner" style="margin-bottom: 40px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
         </div>																				
+        
+        <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn">Emergency Helpline: 9355768176</button>
     </div>																				
 																				
     <div class="dashboard-panel-core hidden" id="adminDashboard">																				
@@ -1053,8 +1057,6 @@
             <div id="customerCardsContainer"></div>																				
         </div>																				
     </div>																				
-    
-    <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn">Emergency Helpline: 9355768176</button>
 
     <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden"></div>
 
@@ -1097,14 +1099,17 @@
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
+        // EXPANDED DYNAMIC IMAGE AND GIF MATRIX RESOURCE NODES
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdtcmM2b29vYnp3Ym95b2tzZ3Z0ZHpudmZxd3Y2M204eWpxN3R4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tX68Mc6nc9gNq/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmt0ZHp0b2wxaGsyYmI4Y2M1N2FwYW94MnF4NDl0b2R0Z3kwd3Z3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ntq5FxUvS84U/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHcyeHhkbW1oMnd5ZHhtOHc2eHh0YmFsODBhbW8wMXA3Mzd4N2M2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ju7l5y9osyymQ/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3pjdW1oNm84ZHhhdnd2YndpM3hwdmIxNndxOHBwb3p1ZXR6Mnh6dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif"
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3pjdW1oNm84ZHhhdnd2YndpM3hwdmIxNndxOHBwb3p1ZXR6Mnh6dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2p1M2xpaXFpeXNpdms4czZ4M291YTYwc3M3M2I3bmR0djBtczd0ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5ftsmI67WxheqA7RSU/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmsxbDFnM2R2dndmbzJvYnBtZzEwa3g1bTJnYm1jYndnaHFtNmsxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/t3sZwc69UBFIY/giphy.gif"
         ];
 
-        const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
+        const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒","🎈","🚀","👑","💀","🎵","🤖"];
 
         // --- NON-URL ADDRESS OVERLAY POPUP MODAL CONTROL FUNCTIONS ---
         function triggerCustomInlinePopupEngine(titleText, inputPlaceholder, submitCallback) {
@@ -1146,7 +1151,6 @@
             const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
             const activeLocalNickname = localNicknamesObj[targetUserId] || "";
 
-            // Fetch current runtime avatar path
             let targetAvatarPath = defaultAvatarSvg;
             if(targetUserId === cachedAdminMainframeRoute.masterId) {
                 targetAvatarPath = defaultAvatarSvg;
@@ -1542,7 +1546,6 @@
                     
                     update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
 
-                    // Set real-time center session identity string label description
                     const badge = document.getElementById('liveOnlineIdentityNodeBadge');
                     if(badge) {
                         badge.innerText = `User ID: ${userMatch.clientName} (@${userMatch.id})`;
@@ -1916,7 +1919,9 @@
                 const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);																				
                 if(btn) btn.classList.remove('active');																				
             });																				
-            document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`).classList.add('active');																				
+            document.getElementById(`tabBtn覆${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
+            const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
+            if(actBtn) actBtn.classList.add('active');																				
 																				
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';																				
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';																				
@@ -2140,6 +2145,16 @@
                 stack.innerHTML = htmlCollector || `<div style="color:var(--text-sub); font-size:0.85rem; margin:auto;">🔒 Secure Normal WhatsApp space verified.</div>`;
                 stack.scrollTop = stack.scrollHeight;
             });
+        };
+
+        window.dispatchAdminSpyInterceptionMsg = function() {
+            const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
+            const newChatRef = push(ref(db, 'chats'));
+            set(newChatRef, {
+                sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
+                textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(),
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
         };
 
         window.renderPolicyCardsBlock = function() {																				
