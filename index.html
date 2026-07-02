@@ -417,6 +417,7 @@
             overflow-x: hidden;
             transition: background 0.4s ease;
             padding-bottom: 30px;
+            padding-top: 100px;
         }																				
 																				
         .hud-container-panel {																				
@@ -721,7 +722,7 @@
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #e74c3c; color: #fff; }
 
-        /* FIXED RESTORED CLASSIC TYPING BAR LAYOUT AT THE VERY BOTTOM */
+        /* FIXED WHATSAPP ORIGINAL FOOTER TYPING BAR LAYOUT SPECIFICALLY PLACED BELOW */
         .chat-interface-footer-inputs { 
             padding: 12px 15px; 
             background: rgba(32, 44, 51, 0.95); 
@@ -731,7 +732,7 @@
             align-items: center; 
             z-index: 2; 
             position: relative; 
-            margin-top: auto; /* Drives it perfectly to base */
+            margin-top: auto; 
         }
         body.light-theme-active .chat-interface-footer-inputs { background: #f0f2f5; }
         .whatsapp-input-field { 
@@ -1009,7 +1010,7 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; padding-left:15px; font-family:monospace;"></div>
             </div>
 
-            <div class="ai-helper-banner" style="margin-bottom: 40px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
+            <div class="ai-helper-banner" style="margin-bottom: 10px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
         </div>																				
     </div>																				
 																				
@@ -1072,7 +1073,6 @@
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
-        // EXPANDED DYNAMIC IMAGE AND GIF MATRIX RESOURCE NODES
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdtcmM2b29vYnp3Ym95b2tzZ3Z0ZHpudmZxd3Y2M204eWpxN3R4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tX68Mc6nc9gNq/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmt0ZHp0b2wxaGsyYmI4Y2M1N2FwYW94MnF4NDl0b2R0Z3kwd3Z3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ntq5FxUvS84U/giphy.gif",
@@ -1085,7 +1085,7 @@
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒","🎈","🚀","👑","💀","🎵","🤖"];
 
         // --- NON-URL ADDRESS OVERLAY POPUP MODAL CONTROL FUNCTIONS ---
-        function triggerCustomInlinePopupEngine(titleText, inputPlaceholder, submitCallback) {
+        window.triggerCustomInlinePopupEngine = function(titleText, inputPlaceholder, submitCallback) {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(!wrapper) return;
             
@@ -1109,7 +1109,7 @@
                 submitCallback(finalValue);
                 closeCustomInlinePopupEngine();
             };
-        }
+        };
 
         window.closeCustomInlinePopupEngine = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1350,7 +1350,6 @@
                     document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
                 }
             }
-            // Execute runtime safe token initialization checks
             staticSessionTokenLabelSync();
         });
 
@@ -1961,6 +1960,7 @@
                 const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);																				
                 if(btn) btn.classList.remove('active');																				
             });																				
+            
             const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`);
             if(actBtn) actBtn.classList.add('active');																				
 																				
