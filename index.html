@@ -6,31 +6,31 @@
     <title>Made By SHASHI TIWARI - Pikachu Ultimate Nexus Matrix ⚡</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">
     <style>
-        /* --- HIGH-VISIBILITY CYBERPUNK GRAPHICS CORE --- */
+        /* --- HIGH-VISIBILITY ULTRA-CONTRAST CYBERPUNK ENGINE --- */
         :root {
             --lamp-color: #f1c40f;
             --lamp-glow: #f1c40f;
-            --lamp-shadow: rgba(241, 196, 15, 0.85);
+            --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe;
             --whatsapp-green: #2ecc71;
             --admin-purple: #af7ac5;
             --bg-prime: #02050e;
-            --panel-glass: rgba(6, 15, 33, 0.98);
-            --border-glass: rgba(0, 242, 254, 0.6);
+            --panel-glass: rgba(6, 17, 38, 0.99);
+            --border-glass: rgba(0, 242, 254, 0.7);
             --text-main: #ffffff;
-            --text-sub: #e2e8f0;
-            --chat-bg: #0b141a;
-            --input-bg: rgba(1, 4, 12, 0.9);
+            --text-sub: #f8fafc;
+            --chat-bg: #090f14;
+            --input-bg: #010610;
             --accent-yellow: #f1c40f;
         }
 
         body.light-theme-active {
-            --bg-prime: #f1f5f9;
+            --bg-prime: #f8fafc;
             --panel-glass: #ffffff;
             --border-glass: #0f172a;
             --text-main: #0f172a;
-            --text-sub: #334155;
-            --chat-bg: #e2e8f0;
+            --text-sub: #1e293b;
+            --chat-bg: #efeae2;
             --input-bg: #ffffff;
             --accent-yellow: #d97706;
         }
@@ -55,6 +55,7 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
+        /* --- FIXED BRANDING HEADER VECTOR --- */
         .shashi-header-brand-block {
             position: fixed;
             top: 20px;
@@ -69,51 +70,36 @@
         
         .brand-main-title {
             font-weight: 900;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
+            font-size: 2rem;
+            letter-spacing: 5px;
             color: #ffffff;
-            text-shadow: 0 0 25px rgba(241, 196, 15, 1);
+            text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6);
             transition: color 0.3s;
         }
         
         body.light-theme-active .brand-main-title {
             color: #0f172a;
-            text-shadow: 0 0 8px rgba(0,0,0,0.2);
-        }
-
-        .live-session-user-identity-badge {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #00f2fe;
-            background: rgba(2, 5, 14, 0.95);
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 2px solid rgba(0, 242, 254, 0.95);
-            text-shadow: 0 0 10px rgba(0, 242, 254, 1);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
-            margin-top: 8px;
-            display: inline-block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
         .cosmic-theme-toggle-switch {
             position: fixed;
-            top: 58px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             z-index: 9999;
-            background: rgba(6, 15, 33, 0.95);
-            border: 2px solid rgba(241, 196, 15, 0.5);
+            background: rgba(6, 17, 38, 0.95);
+            border: 2px solid rgba(241, 196, 15, 0.6);
             border-radius: 12px;
-            padding: 10px 16px;
+            padding: 12px 18px;
             color: #f1c40f;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+            box-shadow: 0 0 25px rgba(241, 196, 15, 0.3);
             font-weight: bold;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            width: 140px;
+            width: 145px;
             text-align: center;
         }
         
@@ -121,7 +107,7 @@
             background: #ffffff;
             color: #0f172a;
             border-color: #0f172a;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
         }
 
         .smoke-container {
@@ -166,9 +152,9 @@
         }
 
         @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.8); }
-            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.8); }
-            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.8); }
+            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.85); }
+            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.85); }
+            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.85); }
         }
 
         .cinema-stage.activated {
@@ -261,26 +247,26 @@
 
         .audio-toggle-switch {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            left: 20px;
             z-index: 9999;
-            background: rgba(6, 15, 33, 0.95);
+            background: rgba(6, 17, 38, 0.95);
             border: 2px solid rgba(241, 196, 15, 0.5);
             border-radius: 12px;
-            padding: 10px 16px;
+            padding: 12px 18px;
             color: #f1c40f;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.2);
             transition: all 0.3s ease;
             font-weight: bold;
-            width: 140px;
+            width: 145px;
             text-align: center;
         }
         body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; }
 
-        /* --- HUD TERMINAL CORE OVERHAUL --- */
+        /* --- HUD GLASS CONTROL MAIN --- */
         .hud-glass-terminal {
             position: absolute;
             left: 50%;
@@ -328,7 +314,7 @@
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 4px 15px rgba(241,196,15,0.3); }
         .hud-engage-btn:hover { box-shadow: 0 0 40px rgba(241, 196, 15, 0.8); transform: translateY(-2px); }
 
-        /* --- DASHBOARD CORE OVERHAUL --- */
+        /* --- DASHBOARD STYLING MATRIX --- */
         .dashboard-panel-core {
             position: fixed;
             inset: 0;
@@ -383,11 +369,8 @@
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: #ffffff; display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
-        /* --- ADMIN INTERACTIVE COPY SYSTEM ELEMENTS --- */
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.03); box-shadow: 0 0 10px #f1c40f; }
-        .admin-clickable-badge::after { content: 'Click to Copy'; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background: #000; color: #fff; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; opacity: 0; pointer-events: none; transition: opacity 0.2s; white-space: nowrap; font-family: 'Orbitron', sans-serif; border: 1px solid #00f2fe; }
-        .admin-clickable-badge:hover::after { opacity: 1; }
          
         .hud-data-card .owner-name-tag-right {
             position: absolute;
@@ -426,7 +409,7 @@
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* --- WHATSAPP UTILITY LAYOUT WITH EXPANDED PLUGINS --- */
+        /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.7); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
@@ -440,7 +423,8 @@
         .chat-user-item-node:hover { background: rgba(255,255,255,0.08); }
         .chat-user-item-node.active-chat-target { background: rgba(0, 242, 254, 0.25) !important; border-left: 6px solid #00f2fe; }
         
-        .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; }
+        .whatsapp-avatar { width: 46px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
+        .whatsapp-avatar:hover { transform: scale(1.08); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; }
         .whatsapp-user-name { font-weight: bold; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.8rem; color: #00f2fe; font-family: monospace; font-weight: bold; }
@@ -481,7 +465,7 @@
         .whatsapp-circle-btn:hover { transform: scale(1.15); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
-        /* --- ADMINISTRATIVE USER CONTROL PANEL EXPANSIONS --- */
+        /* --- ADMIN USER PROFILE LOGIC EXTENSION DRAWERS --- */
         .admin-status-toggle-select {
             padding: 6px 10px;
             background: #02050e;
@@ -495,10 +479,7 @@
             outline: none;
             width: auto;
         }
-        .admin-status-toggle-select.state-deactivated {
-            color: #e74c3c;
-            border-color: #e74c3c;
-        }
+        .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
 
         @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
 
@@ -527,7 +508,6 @@
     
     <div class="shashi-header-brand-block">
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
-        <div id="liveOnlineIdentityNodeBadge" class="live-session-user-identity-badge hidden">Session ID: Offline Node</div>
     </div>
 
     <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
@@ -668,7 +648,7 @@
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
-                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
+                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" oncontextmenu="triggerUserProfileAvatarDropdownEngine(); return false;">
                                 <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode" style="font-weight: 900; color: #00f2fe;">Select Pipeline...</div></div>
                             </div>
                         </div>
@@ -787,9 +767,9 @@
             "https://media.giphy.com/media/F3gn6g3fIulTq/giphy.gif", "https://media.giphy.com/media/XZHeMrc4D8Hni/giphy.gif"
         ];
 
-        // --- 150+ CATEGORIZED SYSTEM EMOJIS ---
+        // --- 150+ SYSTEM EMOJIS ---
         const systemEmojisList = [
-            "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","💀","☠","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐","✋","🖖","👌","🤏","✌","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍","💅","🤳","💪","🦾","🧠","🧡","💛","💚","💙","💜","🖤","🤍","🤎","💔","🔥","✨","🎉","💯","✔","❌","🚨","⏳","🔒","🎈","🚀","👑"
+            "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","💀","☠","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐","✋","🖖","👌","🤏","✌","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍","💅","🤳","💪","🦾","🧠","🧡","💛","💚","💙","💜","🖤","🤍","🤎","💔","🔥","✨","🎉","💯","✔","❌","🚨","⏳","🔒","🎈","🚀","👑"
         ];
 
         window.triggerCustomInlinePopupEngine = function(titleText, inputPlaceholder, submitCallback) {
@@ -848,7 +828,7 @@
 
                     <div style="margin-bottom:20px; text-align:left;">
                         <label style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:5px; font-weight:bold;">Local Nickname Attribute</label>
-                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${activeLocalNickname}" placeholder="Set local nickname text..." style="margin-bottom:0;">
+                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${activeLocalNickname}" placeholder="Set local nickname text...">
                     </div>
 
                     <div class="nexus-popup-flex-btns">
@@ -970,8 +950,6 @@
                 const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
                 if(myProfile && myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
                 if(myProfile) {
-                    document.getElementById('liveOnlineIdentityNodeBadge').innerText = `User ID: ${myProfile.clientName} (@${myProfile.id})`;
-                    document.getElementById('liveOnlineIdentityNodeBadge').classList.remove('hidden');
                     document.getElementById('dashboardIdentityHeadingNode').innerText = `Welcome, ${myProfile.clientName}`;
                 }
             }
@@ -1062,7 +1040,7 @@
 
                 return `
                     <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')">
+                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="triggerUserProfileAvatarDropdownEngine(); return false;">
                         <div class="whatsapp-user-info">
                             <div class="whatsapp-user-name">
                                <span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span>
@@ -1303,7 +1281,6 @@
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false }).then(() => { loadAdminSubmissions(); });
         };
 
-        // --- UPGRADED ADMIN USER MANAGEMENT PANEL WITH ACTIVATION CONTROLS ---
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
             listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {
@@ -1521,7 +1498,6 @@
             document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
         };
 
-        // --- UPGRADED ASYNC AUTH SYSTEM WITH INTERCEPT OVERRIDES ---
         window.executeClusterLogin = function(event) {
             if(event) event.preventDefault();
             const u = document.getElementById('accessNodeUser').value.trim(); 
@@ -1562,7 +1538,6 @@
                     return;
                 }
                 
-                // CRITICAL STATUS PROTECTION VECTOR CHECK
                 if (userMatch.status === 'deactivated') {
                     playSynthesizedSound(150, 'sawtooth', 0.4);
                     alert("Mainframe Blocked: Your account key has been deactivated by Shashi Admin Mainframe Core.");
@@ -1647,12 +1622,6 @@
             if(adminPassInput) adminPassInput.value = "";
 
             localStorage.clear(); 
-            
-            const sessionBadge = document.getElementById('liveOnlineIdentityNodeBadge');
-            if(sessionBadge) {
-                sessionBadge.innerText = "Session ID: Offline Node";
-                sessionBadge.classList.add('hidden');
-            }
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
