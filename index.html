@@ -57,27 +57,30 @@
 																				
         .shashi-header-brand-block {
             position: fixed;
-            top: 20px;
+            bottom: 30px;
             left: 20px;
             z-index: 9999;
             font-family: 'Orbitron', sans-serif;
+            text-align: left;
+            pointer-events: none; /* Never blocks clicks */
+        }
+        .brand-main-title {
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
             color: #ffffff;
             text-shadow: 0 0 15px rgba(241, 196, 15, 0.85);
-            pointer-events: none;
             transition: color 0.3s;
         }
-        body.light-theme-active .shashi-header-brand-block {
+        body.light-theme-active .brand-main-title {
             color: #0f172a;
             text-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
 
         .cosmic-theme-toggle-switch {
             position: fixed;
-            top: 15px;
-            right: 140px;
+            top: 58px;
+            right: 15px;
             z-index: 9999;
             background: rgba(4, 9, 22, 0.85);
             border: 1px solid rgba(241, 196, 15, 0.5);
@@ -91,6 +94,8 @@
             font-weight: bold;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            width: 130px;
+            text-align: center;
         }
         body.light-theme-active .cosmic-theme-toggle-switch {
             background: #ffffff;
@@ -316,6 +321,8 @@
             box-shadow: 0 0 15px rgba(241, 196, 15, 0.1);
             transition: all 0.3s ease;
             font-weight: bold;
+            width: 130px;
+            text-align: center;
         }
         body.light-theme-active .audio-toggle-switch {
             background: #ffffff;
@@ -387,6 +394,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             transition: background 0.4s ease;
+            padding-bottom: 120px;
         }																				
 																				
         .hud-container-panel {																				
@@ -446,7 +454,43 @@
         .abort-btn { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 700; cursor: pointer; font-size: 0.8rem; transition: 0.3s; }																				
          																				
         .ai-helper-banner { padding: 14px; margin-top: 20px; border-radius: 12px; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.15); color: #00f2fe; text-align: center; font-size: 0.9rem; }																				
-        .helpline-trigger-btn { width: 100%; padding: 16px; background: rgba(11,21,40,0.6); border: 1px solid rgba(0,242,254,0.3); border-radius: 12px; color: #00f2fe; font-weight: bold; margin-top: 15px; cursor: pointer; font-size: 1rem; font-family: 'Orbitron'; }																				
+        
+        /* DYNAMIC INSIDE TERMINAL HEADERS */
+        .dashboard-internal-subtitle-tag {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00f2fe;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+        }
+
+        /* FREEZING HELPLINE NODE STYLES */
+        .helpline-trigger-btn { 
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #e74c3c, #c0392b); 
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 12px; 
+            color: #ffffff; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 0.95rem; 
+            font-family: 'Orbitron'; 
+            z-index: 10000;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }																				
+        .helpline-trigger-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(231, 76, 60, 0.6);
+        }
 
         .search-terminal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.2); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; }																				
 																				
@@ -566,26 +610,6 @@
         /* Unread Badge */
         .whatsapp-unread-counter-pill { background: #00a884; color: #fff; font-size: 0.75rem; font-weight: bold; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
 
-        .chat-stream-message-container {
-            display: flex;
-            flex-direction: column;
-            background: var(--chat-bg);
-            position: relative;
-            transition: background 0.3s;
-        }
-        .chat-stream-header-bar {
-            background: rgba(32, 44, 51, 0.95);
-            padding: 12px 20px;
-            border-bottom: 2px solid var(--border-glass);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            z-index: 2;
-        }
-        body.light-theme-active .chat-stream-header-bar { background: #f0f2f5; color: #000; }
-
         .chat-messages-scroll-stack {
             flex: 1;
             padding: 20px;
@@ -623,36 +647,96 @@
             display: block;
         }
 
-        /* --- SMART CONTEXTUAL DROPDOWN OVERLAY PANEL --- */
+        /* --- SMART ADVANCED CONTEXT DROPDOWN SYSTEM --- */
         .msg-interactive-dropdown-menu {
             position: absolute;
             background: #233138;
             border: 1px solid var(--border-glass);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            z-index: 999;
-            width: 110px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+            z-index: 9999;
+            width: 165px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            padding: 4px 0;
         }
-        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
         .dropdown-action-row-btn {
-            padding: 10px 12px;
-            font-size: 0.85rem;
+            padding: 10px 16px;
+            font-size: 0.88rem;
             background: transparent;
             border: none;
             color: #fff;
             cursor: pointer;
             text-align: left;
             font-family: 'Rajdhani', sans-serif;
-            font-weight: bold;
+            font-weight: 700;
             transition: background 0.2s;
         }
         body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
         .dropdown-action-row-btn:hover { background: rgba(255,255,255,0.08); }
         body.light-theme-active .dropdown-action-row-btn:hover { background: rgba(0,0,0,0.05); }
-        .dropdown-action-row-btn.delete-color { color: #e74c3c; }
+        .dropdown-action-row-btn.delete-color { color: #e74c3c; border-top: 1px solid var(--border-glass); }
+
+        /* INLINE COMPONENT MODAL SYSTEM OVERRIDES GENERIC POPUPS */
+        .nexus-custom-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 11000;
+        }
+        .nexus-popup-card-box {
+            background: var(--panel-glass);
+            border: 2px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .nexus-popup-card-box h4 {
+            color: var(--text-main);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .nexus-popup-input-field {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-prime);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 18px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .nexus-popup-flex-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .nexus-popup-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
+        .nexus-popup-btn.cancel-btn { background: #e74c3c; color: #fff; }
 
         .chat-interface-footer-inputs { padding: 10px 15px; background: rgba(0,0,0,0.2); border-top: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; z-index: 2; position:relative; }
         .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--input-bg); border: 1px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; font-size: 0.95rem; }
@@ -745,8 +829,13 @@
 </head>																				
 <body oncontextmenu="return false">																				
 																				
-    <div class="shashi-header-brand-block">Made By SHASHI TIWARI</div>
+    <div class="shashi-header-brand-block">
+        <div class="brand-main-title">Made By SHASHI TIWARI</div>
+    </div>
 
+    <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
+        <span>🔊 SOUND: ON</span>
+    </button>
     <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()">
         <span id="themeToggleBtnLabel">🌓 LIGHT MODE</span>
     </button>
@@ -755,10 +844,6 @@
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-
-    <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
-        <span>🔊 SOUND: ON</span>
-    </button>
 
     <div class="muzzle-flash-overlay flash-gun" id="gunFlashNode"></div>																				
     <div class="muzzle-flash-overlay flash-top" id="topFlashNode"></div>																				
@@ -817,6 +902,8 @@
                 <h2 class="neon-cyan-text">Customer Terminal</h2>																				
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>																				
             </div>																				
+            
+            <div class="dashboard-internal-subtitle-tag">Customer Terminal Dashboard Subspace</div>
                                 
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" src="">
@@ -916,8 +1003,7 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.85rem; color:#f1c40f; padding-left:15px; font-family:monospace;"></div>
             </div>
 
-            <div class="ai-helper-banner">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
-            <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn"> Emergency Helpline: 9355768176</button>																				
+            <div class="ai-helper-banner" style="margin-bottom: 40px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>																				
         </div>																				
     </div>																				
 																				
@@ -938,7 +1024,11 @@
             <div id="customerCardsContainer"></div>																				
         </div>																				
     </div>																				
-																				
+    
+    <button onclick="window.location.href='tel:9355768176'" class="helpline-trigger-btn">Emergency Helpline: 9355768176</button>
+
+    <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden"></div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -987,6 +1077,38 @@
         ];
 
         const systemEmojisList = ["😀","😂","🤣","😍","👍","🙏","🔥","✨","🎉","👏","💯","💔","✔","❌","🤝","🚨","⏳","🔒"];
+
+        // --- NON-URL ADDRESS OVERLAY POPUP MODAL CONTROL FUNCTIONS ---
+        function triggerCustomInlinePopupEngine(titleText, inputPlaceholder, submitCallback) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>${titleText}</h4>
+                    <input type="text" id="nexusPopupInlineInputFieldNode" class="nexus-popup-input-field" placeholder="${inputPlaceholder}">
+                    <div class="nexus-popup-flex-btns">
+                        <button id="nexusPopupSubmitBtnNode" class="nexus-popup-btn primary-btn">CONFIRM</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+            
+            const fieldNode = document.getElementById('nexusPopupInlineInputFieldNode');
+            if(fieldNode) fieldNode.focus();
+
+            document.getElementById('nexusPopupSubmitBtnNode').onclick = () => {
+                const finalValue = fieldNode.value.trim();
+                submitCallback(finalValue);
+                closeCustomInlinePopupEngine();
+            };
+        }
+
+        window.closeCustomInlinePopupEngine = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(wrapper) wrapper.classList.add('hidden');
+        };
 
         window.executeCosmicThemeToggle = function() {
             const bodyNode = document.body;
@@ -1062,7 +1184,7 @@
         // --- EXPLICIT 8-DAYS AUTO MESSAGE DELETION LOGIC ROUTE ---
         function executeAutoPurgeEightDaysOldChats(chatsSnapshotObj) {
             if(!chatsSnapshotObj) return;
-            const thresholdLifespanLimit = 8 * 24 * 60 * 60 * 1000; // 8 Days parsed in milliseconds
+            const thresholdLifespanLimit = 8 * 24 * 60 * 60 * 1000; 
             const rightNowTimeEpoch = Date.now();
 
             Object.keys(chatsSnapshotObj).forEach(key => {
@@ -1072,7 +1194,6 @@
                         remove(ref(db, `chats/${key}`));
                     }
                 } else if(packet.timestamp && !packet.epochTimeNode) {
-                    // Fallback injection for integrity
                     update(ref(db, `chats/${key}`), { epochTimeNode: Date.now() });
                 }
             });
@@ -1116,7 +1237,6 @@
             const data = snapshot.val();
             const allChats = data ? Object.values(data) : [];
             
-            // Invoke the 8 days cron retention scanner sequence
             if(data) executeAutoPurgeEightDaysOldChats(data);
 
             if(previousChatsLength > 0 && allChats.length > previousChatsLength) {
@@ -1129,7 +1249,6 @@
 
             if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
                 renderActiveChatConversationLogs();
-                // Mark loaded chat elements seen dynamically
                 markIncomingMessagesAsReadSequence(data);
             }
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
@@ -1159,7 +1278,9 @@
                 let unreadCount = 0;
                 Object.values(chatsSnap).forEach(msg => {
                     if(msg.sender === user.id && msg.receiver === loggedInCustomerID && msg.read === false) {
-                        unreadCount++;
+                        const targetIdentityMap = loggedInCustomerID;
+                        const localStorageFlag = localStorage.getItem(`deleted_chat_node_${targetIdentityMap}_${msg.epochTimeNode}`);
+                        if(!localStorageFlag) unreadCount++;
                     }
                 });
                 const elementBadgeNode = document.getElementById(`unreadCounterBadge_${user.id}`);
@@ -1283,7 +1404,6 @@
 																				
             if (currentMode === 'admin') {																				
                 if (u !== cachedAdminMainframeRoute.masterId || p !== cachedAdminMainframeRoute.masterPass) {
-                    alert("❌ Warning: Incorrect Credentials!");
                     return;
                 }
                 failedAttemptsCount = 0;																				
@@ -1295,19 +1415,16 @@
                 const userMatch = userIdx !== -1 ? cachedGlobalUsersArr[userIdx] : null;																				
 																				
                 if (!userMatch) {
-                    alert("❌ Warning: Incorrect Customer ID!");
                     return;
                 }
 
                 if (String(userMatch.pass) === String(p)) {																				
                     if (userMatch.status === 'deactivated' || userMatch.status === 'attack_locked') {																				
-                        alert("🔒 Access Denied!");																				
                         return;																				
                     }																				
                     failedAttemptsCount = 0;																				
                     loggedInCustomerID = userMatch.id;																				
                     
-                    // Set Online status matrix parameter
                     update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
 
                     document.getElementById('mainStage').style.display = 'none';																				
@@ -1317,10 +1434,7 @@
                     failedAttemptsCount++;																				
                     if (failedAttemptsCount >= 3) {																				
                         userMatch.status = 'attack_locked';																				
-                        set(ref(db, 'users/' + userMatch.id), userMatch);
-                        alert("🚨 Profile lock down triggered!");																				
-                    } else {
-                        alert("❌ Warning: Mismatched Passkey Matrix.");
+                        set(ref(db, 'users/' + userMatch.id), userMatch);																				
                     }																				
                 }																				
             }																				
@@ -1350,7 +1464,7 @@
             let emailVal = document.getElementById('email').value.trim();																				
             let noteVal = document.getElementById('notesReal').value.trim();																				
             																				
-            if(!ins || !contact){ alert("⚠️ Mandatory fields missing."); return; }																				
+            if(!ins || !contact){ return; }																				
             																				
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
@@ -1359,7 +1473,6 @@
                 attachment: loadedAttachmentB64, customerComments: [], status: 'pending', 
                 adminComment: "Awaiting overview verification logic.", time: new Date().toLocaleString()
             }).then(() => {
-                alert("✔ Data Matrix Transmitted Successfully!");																				
                 document.getElementById('regNo').value = "";																				
                 document.getElementById('insurerName').value = "";																				
                 document.getElementById('policyNo').value = "";																				
@@ -1430,23 +1543,21 @@
             }
         };
 
-        // --- LOCAL NICKNAME STORAGE PROTOCOLS ---
+        // --- LOCAL NICKNAME STORAGE DYNAMIC POPUP MODAL ROUTE ---
         window.promptConfigureUserNickname = function(event, targetUserId) {
             event.stopPropagation();
             const storageKey = `nicknames_map_${loggedInCustomerID}`;
             let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-            const standardOldVal = currentLocalNicknamesObj[targetUserId] || "";
             
-            const promptNewValue = prompt("Enter custom local nickname configuration parameter:", standardOldVal);
-            if(promptNewValue !== null) {
-                if(promptNewValue.trim()) {
-                    currentLocalNicknamesObj[targetUserId] = promptNewValue.trim();
+            triggerCustomInlinePopupEngine("Configure Nickname", "Type custom name parameter...", (inputVal) => {
+                if(inputVal) {
+                    currentLocalNicknamesObj[targetUserId] = inputVal;
                 } else {
                     delete currentLocalNicknamesObj[targetUserId];
                 }
                 localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
                 initializeCrossLinkChatPanel();
-            }
+            });
         };
 
         window.initializeCrossLinkChatPanel = function() {
@@ -1500,13 +1611,47 @@
             }
             renderActiveChatConversationLogs();
             
-            // Clear unread indicator instantly on dynamic partition click view switch
             const badgeElement = document.getElementById(`unreadCounterBadge_${userId}`);
             if(badgeElement) badgeElement.classList.add('hidden');
         };
 
+        // --- EXPLICIT CHAT DELETION HANDLING ENGINE SUB-ROUTES ---
+        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) {
+            removeContextDropdownMenuNode();
+            
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>Delete Message String</h4>
+                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:18px;">Select parameters for string erasure trace:</p>
+                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:8px;">
+                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'everyone')" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px;">Delete for Everyone</button>
+                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'me', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px; background:#f1c40f;">Delete for Me</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%; padding:12px;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
+            closeCustomInlinePopupEngine();
+            if(purgeMode === 'everyone') {
+                remove(ref(db, `chats/${packetKey}`)).then(() => {
+                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+                });
+            } else if(purgeMode === 'me') {
+                const targetIdentityMap = loggedInCustomerID;
+                const localPurgeTrackerKey = `deleted_chat_node_${targetIdentityMap}_${epochTimeNodeVal}`;
+                localStorage.setItem(localPurgeTrackerKey, "purged");
+                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+            }
+        };
+
         // --- WEB INTERACTIVE DOWNLOAD / DISPATCH DROPDOWN SYSTEM ENGINE ---
-        window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl) {
+        window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl, epochTimeNodeVal) {
             event.stopPropagation();
             removeContextDropdownMenuNode();
 
@@ -1514,16 +1659,14 @@
             dropdownContainer.className = "msg-interactive-dropdown-menu";
             dropdownContainer.id = "dynamicMsgContextNodeOverlay";
             
-            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
+            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
 
             dropdownContainer.innerHTML = `
                 ${downloadBtnHTML}
-                <button class="dropdown-action-row-btn delete-color" onclick="removeSingleMessagePacket('${messageKey}')">❌ Delete</button>
+                <button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete</button>
             `;
 
             document.body.appendChild(dropdownContainer);
-            
-            // Layout Positioning configurations logic
             dropdownContainer.style.left = `${event.clientX}px`;
             dropdownContainer.style.top = `${event.clientY}px`;
         };
@@ -1568,15 +1711,13 @@
                             document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Voice Audio recording synchronized stream map ready. Press send.";
                         };
                         baseConverterReader.readAsDataURL(audioRawBlob);
-                        
-                        // Terminate audio hardware streams node hook
                         stream.getTracks().forEach(track => track.stop());
                     };
 
                     nativeAudioMediaRecorderInstance.start();
                     recordBtn.classList.add('recording-active-pulse');
                     document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Broadcasting audio recording tracking loop core...";
-                }).catch(() => alert("Permission to use voice microphone stream arrays was rejected."));
+                }).catch(() => {});
             } else {
                 nativeAudioMediaRecorderInstance.stop();
                 recordBtn.classList.remove('recording-active-pulse');
@@ -1602,6 +1743,11 @@
                     if((msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
                        (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)) {
                         
+                        const clientPurgeVerificationKey = `deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`;
+                        if(localStorage.getItem(clientPurgeVerificationKey)) {
+                            return; 
+                        }
+
                         count++;
                         const key = masterKeys[idx];
                         const isMyMessage = (msg.sender === loggedInCustomerID);
@@ -1617,7 +1763,7 @@
                         }
                         
                         combinedHTML += `
-                            <div class="bubble-msg-wrapper ${directionalCss}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}')">
+                            <div class="bubble-msg-wrapper ${directionalCss}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})">
                                 <div>${msg.textBody}</div>
                                 ${assetElementHTML}
                                 <div class="whatsapp-time">${msg.timestamp}</div>
@@ -1651,13 +1797,6 @@
                 inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
                 document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 renderActiveChatConversationLogs();
-            });
-        };
-
-        window.removeSingleMessagePacket = function(packetKey) {
-            remove(ref(db, `chats/${packetKey}`)).then(() => {
-                removeContextDropdownMenuNode();
-                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
             });
         };
 
@@ -1756,9 +1895,9 @@
         window.executeMainframeAdminSyncRoute = function() {
             const nextId = document.getElementById('mainframeAdminIdInput').value.trim();
             const nextPass = document.getElementById('mainframeAdminPassInput').value.trim();
-            if(!nextId || !nextPass) { alert("⚠️ Params missing."); return; }
+            if(!nextId || !nextPass) { return; }
             set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => {
-                alert("✔ Mainframe Root Admin structural credentials updated!");
+                triggerCustomInlinePopupEngine("System Synced", "Credentials updated completely.", () => {});
             });
         };
 
@@ -1767,13 +1906,13 @@
             const dob = document.getElementById('newClientDOB').value;																				
             const contact = document.getElementById('newClientContact').value.trim();																				
             const userPass = document.getElementById('newUserPass').value.trim();																				
-            if(!clientName || !contact || !userPass) { alert("⚠️ Fields empty."); return; }																				
+            if(!clientName || !contact || !userPass) { return; }																				
             																				
             const lastFourDigits = contact.slice(-4);																				
             const userId = clientName + lastFourDigits;																				
             																				
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false }).then(() => {
-                alert("Identity compiled."); loadAdminSubmissions();
+                loadAdminSubmissions();
             });																				
         };
 
@@ -1789,14 +1928,10 @@
                 
                 if(oldId !== targetNewId) {
                     remove(ref(db, `users/${oldId}`)).then(() => {
-                        set(ref(db, `users/${targetNewId}`), currentProfileData).then(() => {
-                            alert("✔ Credentials Changed!");
-                        });
+                        set(ref(db, `users/${targetNewId}`), currentProfileData);
                     });
                 } else {
-                    set(ref(db, `users/${oldId}`), currentProfileData).then(() => {
-                        alert("✔ Reset Complete!");
-                    });
+                    set(ref(db, `users/${oldId}`), currentProfileData);
                 }
             });
         };
@@ -1885,7 +2020,7 @@
                         }
                         
                         htmlCollector += `
-                            <div class="bubble-msg-wrapper" style="${customStyle}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}')">
+                            <div class="bubble-msg-wrapper" style="${customStyle}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})">
                                 ${m.textBody}
                                 ${assetHTML}
                                 <div class="whatsapp-time">${m.timestamp}</div>
@@ -1947,7 +2082,6 @@
             let targetPol = cachedGlobalPolicyArr[index];
             set(ref(db, `policies/${targetPol.id}/status`), statusSelect.value);
             set(ref(db, `policies/${targetPol.id}/adminComment`), commentInput.value.trim() || "Status saved.");
-            alert("⚡ Status Saved!");
         };																				
 																				
         window.toggleUserNodeSwitch = function(index) {																				
@@ -1957,17 +2091,13 @@
         };																				
 																				
         window.wipeUserPermanently = function(index) {																				
-            if(confirm("Purge account entirely?")) { 
-                let userObj = cachedGlobalUsersArr[index];
-                remove(ref(db, 'users/' + userObj.id));
-            }																				
+            let userObj = cachedGlobalUsersArr[index];
+            remove(ref(db, 'users/' + userObj.id));
         };
 
         window.purgeRegistryLog = function(index){ 
-            if(confirm("Wipe structure completely?")){ 
-                let targetPol = cachedGlobalPolicyArr[index];
-                remove(ref(db, 'policies/' + targetPol.id));
-            } 
+            let targetPol = cachedGlobalPolicyArr[index];
+            remove(ref(db, 'policies/' + targetPol.id));
         };
 
         window.filterCardsEngine = function(){ 
