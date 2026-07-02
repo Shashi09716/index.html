@@ -66,6 +66,7 @@
             text-align: center;
             pointer-events: none;
             width: auto;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
         .brand-main-title {
@@ -482,21 +483,23 @@
         .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
 
         /* --- NATIVE SYSTEM POPUP CONTEXT DROPDOWN OVERLAYS --- */
-        .whatsapp-avatar-context-dropdown {
+        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu {
             position: absolute;
             background: #1f2c34;
             border: 2px solid var(--border-glass);
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            z-index: 100000;
+            z-index: 100005;
             width: 210px;
             display: flex;
             flex-direction: column;
             padding: 6px 0;
             overflow: hidden;
         }
-        body.light-theme-active .whatsapp-avatar-context-dropdown { background: #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        .avatar-dropdown-action-row {
+        body.light-theme-active .whatsapp-avatar-context-dropdown, 
+        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        .avatar-dropdown-action-row, .dropdown-action-row-btn {
             padding: 12px 16px;
             background: transparent;
             border: none;
@@ -507,9 +510,47 @@
             text-align: left;
             cursor: pointer;
             transition: background 0.2s;
+            width: 100%;
         }
-        body.light-theme-active .avatar-dropdown-action-row { color: #0f172a; }
-        .avatar-dropdown-action-row:hover { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
+        body.light-theme-active .avatar-dropdown-action-row,
+        body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
+        .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
+        .delete-color { color: #e74c3c !important; }
+        .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
+
+        /* --- INLINE POPUP STYLES --- */
+        .nexus-custom-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(1, 3, 10, 0.85);
+            z-index: 200000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(15px);
+        }
+        .nexus-popup-card-box {
+            background: var(--panel-glass);
+            border: 3px solid var(--border-glass);
+            padding: 30px;
+            border-radius: 18px;
+            width: 90%;
+            max-width: 440px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+        }
+        .nexus-popup-card-box h4 { font-family: 'Orbitron'; color: #00f2fe; margin-bottom: 12px; font-size: 1.25rem; }
+        .nexus-popup-input-field {
+            width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass);
+            border-radius: 8px; color: #fff; font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px;
+        }
+        .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 20px; }
+        .nexus-popup-btn {
+            flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s;
+        }
+        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
+        .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
 
         @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
 
@@ -536,7 +577,7 @@
 </head>
 <body>
     
-    <div class="shashi-header-brand-block">
+    <div class="shashi-header-brand-block" id="shashiBrandingHeader">
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
     </div>
 
@@ -551,7 +592,7 @@
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                
+                                                                                                                                                    
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -564,26 +605,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                
+                                                                                                                                                    
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                
+                                                                                                                                                    
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                    
+                                                                                                                                                                                    
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                
+                                                                                                                                                    
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                    
+                                                                                                                                                                                    
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -599,14 +640,14 @@
             </form>
         </div>
     </div>
-                                                                                                                
+                                                                                                                                                    
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal</h2>
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
             </div>
-                                                                                    
+                                                                                                    
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -623,7 +664,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -645,27 +686,27 @@
                         <label>Contact Number *</label>
                         <div class="neon-glow-underline"></div>
                     </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                     <div class="hud-input-cluster full-width-field">
                         <input type="email" id="email" placeholder=" ">
                         <label>Email Address (Optional)</label>
                         <div class="neon-glow-underline"></div>
                     </div>
-                                                                                    
+                                                                                                                                                    
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                                                                                    
+                                                                                                                                                    
                     <div class="hud-input-cluster full-width-field">
                         <textarea id="notesReal" placeholder=" "></textarea>
                         <label>Additional System Notes (Optional)</label>
                         <div class="neon-glow-underline"></div>
                     </div>
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>
             </div>
 
@@ -709,26 +750,26 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>
         </div>
     </div>
-                                                                                                                
+                                                                                                                                                    
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             <div class="panel-header-flex">
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
-                                                                                                                                    
+                                                                                                                                                                                    
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
-                <button class="admin-nav-tab" id="tabBtnSpyChat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
+                <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
             </div>
-                                                                                                                
+                                                                                                                                                    
             <div id="customerCardsContainer"></div>
         </div>
     </div>
 
-    <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden"></div>
+    <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="closeCustomInlinePopupEngine()"></div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -767,7 +808,6 @@
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
-        // --- 50+ EXTENDED STRUCTURAL GIPHY STREAM MATRIX LIST ---
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/tX68Mc6nc9gNq/giphy.gif", "https://media.giphy.com/media/3ntq5FxUvS84U/giphy.gif",
             "https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif", "https://media.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif",
@@ -797,10 +837,14 @@
             "https://media.giphy.com/media/F3gn6g3fIulTq/giphy.gif", "https://media.giphy.com/media/XZHeMrc4D8Hni/giphy.gif"
         ];
 
-        // --- 150+ CATEGORIZED SYSTEM EMOJIS ---
         const systemEmojisList = [
             "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","💀","☠","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐","✋","🖖","👌","🤏","✌","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍","💅","🤳","💪","🦾","🧠","🧡","💛","💚","💙","💜","🖤","🤍","🤎","💔","🔥","✨","🎉","💯","✔","❌","🚨","⏳","🔒","🎈","🚀","👑"
         ];
+
+        window.closeCustomInlinePopupEngine = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(wrapper) wrapper.classList.add('hidden');
+        };
 
         window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
             if (event) event.stopPropagation();
@@ -818,7 +862,7 @@
 
             wrapper.innerHTML = `
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width: 420px;">
-                    <h4 style="font-size:1.3rem; margin-bottom:8px;">${standardClientName} Profile</h4>
+                    <h4>${standardClientName} Profile</h4>
                     <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px; font-family:monospace;">ID Signature: @${targetUserId}</p>
                     
                     <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:2px solid var(--border-glass);">
@@ -850,7 +894,7 @@
                 }
                 localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
                 closeCustomInlinePopupEngine();
-                initializeCrossLinkChatPanel();
+                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
             };
         };
 
@@ -872,7 +916,7 @@
             wrapper.classList.remove('hidden');
         };
 
-        // --- NEW EXPERT RIGHT-CLICK DROPDOWN CONTEXT OVERLAY GENERATOR ---
+        // --- TRUE DUAL-PLATFORM RIGHT-CLICK OVERLAY TRIGGERED REGISTRY ---
         window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) {
             event.preventDefault();
             event.stopPropagation();
@@ -891,7 +935,6 @@
             contextDropdown.style.left = `${event.clientX}px`;
             contextDropdown.style.top = `${event.clientY}px`;
 
-            // Global tap auto dismiss listener
             document.addEventListener('click', removeAvatarRightClickDropdownNode, { once: true });
         };
 
@@ -902,16 +945,57 @@
 
         window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) {
             removeAvatarRightClickDropdownNode();
-            if(targetUserId === cachedAdminMainframeRoute.masterId) {
-                triggerUserProfileAvatarDropdownEngine();
+            if(targetUserId === loggedInCustomerID || currentMode === 'admin') {
+                const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+                if(!wrapper) return;
+                wrapper.innerHTML = `
+                    <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                        <h4>Modify Photo Node for @${targetUserId}</h4>
+                        <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
+                            <button onclick="commitTargetedAvatarClear('${targetUserId}')" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px; background:#f1c40f;">Set Blank Default Icon</button>
+                            <button onclick="document.getElementById('hiddenAvatarFileInputNode').setAttribute('data-target-uid', '${targetUserId}'); document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px;">Upload from Gallery</button>
+                            <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%; padding:12px;">Cancel</button>
+                        </div>
+                    </div>
+                `;
+                wrapper.classList.remove('hidden');
             } else {
-                alert("Photo overwrite modification restricted to active personal matrix node configuration.");
+                alert("Photo overwrite modification restricted to active personal configuration matrix.");
             }
+        };
+
+        window.commitTargetedAvatarClear = function(uid) {
+            closeCustomInlinePopupEngine();
+            set(ref(db, `users/${uid}/avatar`), "").then(() => {
+                if(uid === loggedInCustomerID) {
+                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
+                    document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
+                }
+                playSynthesizedSound(880, 'sine', 0.1);
+            });
         };
 
         window.executeTriggeredContextNicknameChange = function(targetUserId, clientRealName) {
             removeAvatarRightClickDropdownNode();
-            triggerCustomInlinePopupEngine(`Set Nickname for ${clientRealName}`, "Type custom nickname layout text...", (newNick) => {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            const activeNick = localNicknamesObj[targetUserId] || "";
+
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>Set Nickname for ${clientRealName}</h4>
+                    <input type="text" id="contextNicknameInputField" class="nexus-popup-input-field" value="${activeNick}" placeholder="Type custom nickname layout...">
+                    <div class="nexus-popup-flex-btns">
+                        <button id="saveContextNickBtn" class="nexus-popup-btn primary-btn">SAVE</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+
+            document.getElementById('saveContextNickBtn').onclick = () => {
+                const newNick = document.getElementById('contextNicknameInputField').value.trim();
                 const storageKey = `nicknames_map_${loggedInCustomerID}`;
                 let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
                 if(newNick) {
@@ -920,9 +1004,10 @@
                     delete currentLocalNicknamesObj[targetUserId];
                 }
                 localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                initializeCrossLinkChatPanel();
+                closeCustomInlinePopupEngine();
+                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
                 playSynthesizedSound(880, 'sine', 0.15);
-            });
+            };
         };
 
         window.commitAvatarClearBlankNode = function() {
@@ -971,6 +1056,7 @@
                 currentMode = savedMode;
                 activeCustomerWorkspaceChannel = savedWorkspaceChan;
                 document.getElementById('mainStage').style.display = 'none';
+                document.getElementById('shashiBrandingHeader').style.opacity = '0';
                 if(savedMode === 'admin') {
                     document.getElementById('adminDashboard').classList.remove('hidden');
                     loadAdminSubmissions();
@@ -1088,7 +1174,6 @@
                 const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
                 const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
 
-                // RIGHT CLICK TRIGGER INTEGRATION BINDED TO AVATAR NODE ELEMENT BELOW
                 return `
                     <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="setOperationalChatTargetId('${user.id}')">
                         <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')">
@@ -1413,7 +1498,7 @@
             set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => {
                 cachedAdminMainframeRoute.masterId = nextId;
                 cachedAdminMainframeRoute.masterPass = nextPass;
-                triggerCustomInlinePopupEngine("System Synced", "Credentials updated completely.", () => {});
+                alert("Credentials updated completely inside Mainframe Core.");
             });
         };
 
@@ -1430,13 +1515,17 @@
 
         window.uploadUserProfileAvatarEngine = function(event) {
             const file = event.target.files[0];
+            const targetUid = event.target.getAttribute('data-target-uid') || loggedInCustomerID;
             if(file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64Avatar = e.target.result;
-                    set(ref(db, `users/${loggedInCustomerID}/avatar`), base64Avatar).then(() => {
-                        document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
-                        document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar;
+                    set(ref(db, `users/${targetUid}/avatar`), base64Avatar).then(() => {
+                        if(targetUid === loggedInCustomerID) {
+                            document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
+                            document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar;
+                        }
+                        event.target.removeAttribute('data-target-uid');
                     });
                 };
                 reader.readAsDataURL(file);
@@ -1564,6 +1653,7 @@
                     if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
+                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
                         localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -1575,6 +1665,7 @@
                     if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
+                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
                         localStorage.setItem('nexus_logged_in_uid', u); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -1603,6 +1694,7 @@
                 localStorage.setItem('nexus_active_chan_route', 'upload');
                 document.getElementById('mainStage').style.display = 'none'; 
                 document.getElementById('customerDashboard').classList.remove('hidden');
+                document.getElementById('shashiBrandingHeader').style.opacity = '0'; // Hide Branding Shashi
                 switchCustomerChannel('upload');
             }
         };
@@ -1641,7 +1733,7 @@
         };
 
         window.transmitAdminResponse = function(index) {
-            const statusSelect = document.getElementById Levant updateStatusSelect_${index}`); 
+            const statusSelect = document.getElementById(`updateStatusSelect_${index}`); 
             const commentInput = document.getElementById(`adminCommentInput_${index}`);
             let targetPol = cachedGlobalPolicyArr[index];
             if(!targetPol) return;
@@ -1677,6 +1769,7 @@
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('shashiBrandingHeader').style.opacity = '1'; // Show Branding Shashi
             loggedInCustomerID = ""; 
             const stage = document.getElementById('mainStage'); 
             stage.style.display = 'flex'; 
@@ -1687,14 +1780,19 @@
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
             if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="padding:15px; color:#fff; font-weight:bold;">No signatures tracked.</div>`; return; }
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+
             listPane.innerHTML = cachedGlobalUsersArr.map(user => {
                 const isSelected = (spyActiveTargetUserContext === user.id);
                 const chamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
+                const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
+                const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
+
                 return `
                     <div class="chat-user-item-node ${isSelected?'active-chat-target':''} ${chamakCss}" onclick="setAdminSpyTargetConversationTrack('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}">
+                        <img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}" oncontextmenu="spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')">
                         <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name" style="font-weight:bold;">${user.clientName}</div>
+                            <div class="whatsapp-user-name" style="font-weight:bold;">${activeDisplayTitle} ${trackingCustomNicknameTag}</div>
                             <div class="whatsapp-user-id">@${user.id}</div>
                         </div>
                     </div>
@@ -1724,7 +1822,7 @@
                         let assetHTML = "";
                         if(m.mediaPayload) {
                             if(m.mediaPayload.startsWith("data:audio")) {
-                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
+                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block("></audio>`;
                             } else {
                                 assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
                             }
@@ -1758,6 +1856,7 @@
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
             menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
             document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
+            document.addEventListener('click', removeContextDropdownMenuNode, { once: true });
         };
 
         function removeContextDropdownMenuNode() { const overlay = document.getElementById('dynamicMsgContextNodeOverlay'); if(overlay) overlay.remove(); }
