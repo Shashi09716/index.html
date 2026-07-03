@@ -3,49 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHASHI TIWARI | NEXUS 3D MAINFRAME</title>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, set, get, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-        
-        // --- APKA FIREBASE CONFIG YAHAN DALEN ---
-        const firebaseConfig = {
-            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
-            authDomain: "pikachu-nexus.firebaseapp.com",
-            projectId: "pikachu-nexus",
-            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        window.db = db; // Global access
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>SHASHI TIWARI | NEXUS 3D MAINFRAME PRO</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap');
-        body { margin: 0; background: #02050e; color: white; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
+        :root { --zap: #f1c40f; --neon: #00f2fe; --bg: #02050e; --panel: rgba(4, 10, 24, 0.9); }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Orbitron', sans-serif; overflow: hidden; }
         
-        #canvas3d { position: fixed; top: 0; left: 0; z-index: 0; }
+        #canvas3d { position: fixed; top:0; left:0; z-index: 1; }
+        .ui-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
         
-        /* Dashboard Container */
-        .wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-top: 50px; }
+        /* Interactive 3D Lamp */
+        .lamp-3d { width: 180px; height: 180px; background: radial-gradient(circle, var(--zap), transparent); border-radius: 50%; box-shadow: 0 0 80px var(--zap); cursor: pointer; transition: all 0.5s; }
+        .lamp-3d.bright { box-shadow: 0 0 300px var(--zap); transform: scale(1.2); }
         
-        /* Lamp */
-        .lamp-3d { 
-            width: 120px; height: 120px; background: radial-gradient(circle, #f1c40f, transparent);
-            border-radius: 50%; cursor: pointer; box-shadow: 0 0 40px #f1c40f;
-            transition: all 0.3s;
-        }
-        .lamp-3d.glow { box-shadow: 0 0 150px #f1c40f; transform: scale(1.1); }
-
-        /* Lightning */
+        /* Lightning Engine */
         #lightning { position: fixed; top:0; left:0; width:100%; height:100%; background: white; z-index: 999; opacity: 0; pointer-events: none; }
-        .zap { animation: flash 0.2s; }
-        @keyframes flash { 0% { opacity: 0; } 50% { opacity: 0.6; } 100% { opacity: 0; } }
+        .zap-anim { animation: flash 0.1s; }
+        @keyframes flash { 0% { opacity: 0; } 50% { opacity: 0.9; } 100% { opacity: 0; } }
 
-        /* Panel Styling */
-        .card { background: rgba(0,20,40,0.8); border: 2px solid #00f2fe; padding: 25px; border-radius: 20px; width: 90%; max-width: 500px; margin-top: 20px; backdrop-filter: blur(10px); }
-        input { width: 100%; padding: 12px; margin: 8px 0; background: #051020; border: 1px solid #00f2fe; color: white; border-radius: 5px; }
-        button { width: 100%; padding: 15px; background: #f1c40f; border: none; cursor: pointer; font-weight: 900; margin-top: 10px; border-radius: 5px; }
+        /* Panels */
+        .panel { background: var(--panel); border: 2px solid var(--neon); padding: 30px; border-radius: 20px; width: 400px; backdrop-filter: blur(15px); }
+        input { width: 100%; padding: 15px; margin: 10px 0; background: #01040a; border: 1px solid var(--neon); color: white; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: var(--zap); border: none; cursor: pointer; font-weight: 900; border-radius: 8px; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -53,71 +32,88 @@
     <div id="lightning"></div>
     <canvas id="canvas3d"></canvas>
 
-    <div class="wrapper">
-        <div class="lamp-3d" id="lamp" onclick="engage()"></div>
+    <div class="ui-wrapper">
+        <div class="lamp-3d" id="lamp" onclick="activateSystem()"></div>
         
-        <div id="panel" class="card">
-            <h2 id="title">SYSTEM ACCESS</h2>
-            <input id="userId" type="text" placeholder="USER ID">
-            <input id="userPass" type="password" placeholder="PASSWORD">
-            <button onclick="login()">LOGIN</button>
+        <div id="login-panel" class="panel">
+            <h2 style="color:var(--neon); text-align:center;">MAIN TERMINAL</h2>
+            <input id="uId" type="text" placeholder="ID VECTOR">
+            <input id="uPass" type="password" placeholder="SECURITY KEY">
+            <button onclick="login()">ENGAGE MAINFRAME</button>
+        </div>
+
+        <div id="dashboard" class="panel hidden">
+            <h2 style="color:var(--neon)">SYSTEM ACCESS GRANTED</h2>
+            <button onclick="logout()" class="abort-btn">DISCONNECT NODE</button>
         </div>
     </div>
 
-    <script>
-        // 1. SOUND ENGINE
+    <script type="module">
+        // Import Firebase & 3D Libs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
+            authDomain: "pikachu-nexus.firebaseapp.com",
+            projectId: "pikachu-nexus",
+            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
+        };
+        const db = getDatabase(initializeApp(firebaseConfig));
+
+        // Lightning & Audio Engine
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         function playZap() {
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
-            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + 0.2);
         }
 
-        // 2. LIGHTNING & SYNC
-        function triggerZap() {
-            const l = document.getElementById('lightning');
-            l.classList.add('zap');
-            playZap();
-            setTimeout(() => l.classList.remove('zap'), 200);
-        }
+        window.activateSystem = () => {
+            document.getElementById('lamp').classList.add('bright');
+            setInterval(() => {
+                const l = document.getElementById('lightning');
+                l.classList.add('zap-anim');
+                playZap();
+                setTimeout(() => l.classList.remove('zap-anim'), 100);
+            }, 2000);
+        };
 
-        function engage() {
-            document.getElementById('lamp').classList.add('glow');
-            setInterval(triggerZap, 2000);
-        }
-
-        // 3. 3D BACKGROUND
+        // 3D Background Render Engine
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        const geom = new THREE.OctahedronGeometry(15, 0);
-        const mat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true });
-        const mesh = new THREE.Mesh(geom, mat);
+        const geometry = new THREE.IcosahedronGeometry(20, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true });
+        const mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
-        camera.position.z = 50;
+        camera.position.z = 60;
 
         function render() {
             requestAnimationFrame(render);
-            mesh.rotation.y += 0.005;
+            mesh.rotation.y += 0.002;
             renderer.render(scene, camera);
         }
         render();
 
-        // 4. LOGIN LOGIC (Admin/User Check)
-        async function login() {
-            const id = document.getElementById('userId').value;
-            const pass = document.getElementById('userPass').value;
-            
-            // Yahan wahi purani firebase get logic aayegi
-            // Dashboard yahan display hoga...
-            alert("Logging in to Shashi Mainframe...");
-        }
+        // Login System
+        window.login = async () => {
+            const id = document.getElementById('uId').value;
+            const pass = document.getElementById('uPass').value;
+            // Add Firebase auth logic here...
+            alert("SYSTEM INITIALIZING: Loading modules...");
+            document.getElementById('login-panel').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+        };
+
+        window.logout = () => { location.reload(); };
     </script>
 </body>
 </html>
