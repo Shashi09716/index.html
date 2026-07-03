@@ -24,20 +24,25 @@
             --input-bg: #010610;
             --accent-yellow: #f1c40f;
             --cyber-glow: 0 0 20px rgba(0, 242, 254, 0.6);
-            --note-card-bg: rgba(4, 14, 33, 0.85);
+            --card-surface: rgba(4, 14, 33, 0.7);
         }
 
-        /* FIXING LIGHT THEME CONTRAST AND VISIBILITY PROBLEMS Completely */
+        /* LIGHT THEME CONSTRAST AND VISIBILITY COMPLETED OVERHAUL */
         body.light-theme-active {
-            --bg-prime: #f1f5f9;
+            --bg-prime: #f8fafc;
             --panel-glass: #ffffff;
             --border-glass: #0f172a;
             --text-main: #0f172a;
-            --text-sub: #334155;
-            --chat-bg: #e2e8f0;
+            --text-sub: #1e293b;
+            --chat-bg: #efeae2;
             --input-bg: #ffffff;
-            --accent-yellow: #b45309;
-            --cyber-glow: 0 4px 20px rgba(15, 23, 42, 0.15);
+            --accent-yellow: #d97706;
+            --cyber-glow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --card-node-bg: #ffffff;
+            --card-text-fix: #0f172a;
+            --card-sub-fix: #334155;
+            --card-border-fix: #0f172a;
+            --card-badge-fix: #1e293b;
             --note-card-bg: #ffffff;
         }
 
@@ -308,7 +313,7 @@
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; }
         .hud-input-cluster textarea { height: 100px; resize: none; }
-        .hud-input-cluster select { color: var(--accent-yellow); font-weight: bold; background: var(--input-bg); }
+        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: var(--input-bg); }
 
         .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
         .hud-input-cluster textarea ~ label { top: -14px; left: 10px; }
@@ -359,7 +364,7 @@
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
 
         .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); flex-wrap: wrap; }
-        .channel-tab-btn { flex: 1; min-width: 140px; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .channel-tab-btn { flex: 1; min-width: 130px; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; }
         .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: var(--cyber-glow); }
 
         .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -374,7 +379,7 @@
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
          
-        .hud-data-card { background: var(--note-card-bg); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.7)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
@@ -418,21 +423,21 @@
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* --- THE RICH HIGHLIGHTER & QUANTUM NOTES ENGINE SUITE --- */
-        .notes-engine-block-layout { background: var(--note-card-bg); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
+        /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
+        .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 10px; border: 2px solid var(--border-glass); overflow: hidden; }
-        .notes-text-rich-editable { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
-        .notes-toolbar-ribbon { background: rgba(0,0,0,0.2); padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; }
+        .notes-pad-rich-area { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
+        .notes-toolbar-ribbon { background: rgba(0,0,0,0.4); padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; }
         body.light-theme-active .notes-toolbar-ribbon { background: rgba(0,0,0,0.05); }
         .note-tool-btn { background: rgba(4,15,36,0.1); border: 2px solid var(--border-glass); color: var(--text-main); padding: 8px 14px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
-        .note-tool-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 10px #00f2fe; }
-        
-        .notes-logs-stack-container { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 380px; overflow-y: auto; }
-        .note-realtime-card { background: var(--input-bg); border-left: 6px solid var(--neon-pink); padding: 18px; border-radius: 10px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; }
-        .note-realtime-meta-row { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
+        .note-tool-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 12px #00f2fe; }
 
-        /* --- THE FUTURE DISPATCH GAMING ENGINE MATRIX --- */
-        .gaming-nexus-bar-layout { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; }
+        .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
+        .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 10px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; }
+        .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
+
+        /* --- THE FUTURE SANDBOX GAMING PIPELINE --- */
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(255,0,127,0.15); }
         .gaming-empty-sandbox-container { border: 2px solid rgba(255,0,127,0.3); background: rgba(0,0,0,0.4); border-radius: 12px; padding: 60px 20px; font-family: 'Orbitron'; color: var(--text-main); font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-pink); margin-top: 20px; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
@@ -474,7 +479,7 @@
 
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
 
-        /* --- HIGH PERFORMANCE EXPANDED DRAWERS MATRIX --- */
+        /* --- THE DRAWERS LAYOUT ENGINE --- */
         .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
         .emoji-item-node:hover { transform: scale(1.3); }
@@ -492,7 +497,6 @@
         .whatsapp-circle-btn:hover { transform: scale(1.15); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
-        /* --- ADMIN USER PROFILE ACTION OPTIONS DRAWERS --- */
         .admin-status-toggle-select {
             padding: 6px 10px;
             background: #02050e;
@@ -508,7 +512,6 @@
         }
         .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
 
-        /* --- NATIVE SYSTEM POPUP CONTEXT DROPDOWN OVERLAYS --- */
         .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu {
             position: absolute;
             background: #1f2c34;
@@ -544,7 +547,6 @@
         .delete-color { color: #e74c3c !important; }
         .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
 
-        /* --- INLINE POPUP STYLES --- */
         .nexus-custom-popup-overlay {
             position: fixed;
             inset: 0;
@@ -742,7 +744,7 @@
             </div>
 
             <div id="customerNotesInterfaceBlock" class="hidden">
-                <div class="notes-engine-block-layout">
+                <div class="notes-engine-card-surface">
                     <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px; text-align: left;">🧠 SHASHI ULTRA RICH NOTES MATRIX</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
@@ -773,7 +775,7 @@
                     </div>
 
                     <div class="notes-editor-container-shell">
-                        <div id="richNoteWritingPadEditable" class="notes-text-rich-editable" contenteditable="true" placeholder="Type structural metadata framework layout note here..."></div>
+                        <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Type structural metadata framework layout note here..."></div>
                     </div>
 
                     <div style="display:flex; gap:15px; margin-top:20px;">
@@ -781,12 +783,12 @@
                         <button class="abort-btn" style="flex:1; padding:18px; font-family:'Orbitron';" onclick="wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE (BLANK)</button>
                     </div>
 
-                    <div class="notes-logs-stack-container" id="realtimeCloudNotesViewStack"></div>
+                    <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
                 </div>
             </div>
 
             <div id="customerGamingInterfaceBlock" class="hidden">
-                <div class="gaming-nexus-bar-layout">
+                <div class="gaming-bar-nexus-wrapper">
                     <h2 class="neon-cyan-text" style="font-size: 1.8rem;">⚡ FUTURE NEXUS GAMING COLD REPOSITORY BAR</h2>
                     <p style="color:var(--text-sub); font-weight:700; margin-top:4px;">Operational Matrix Sandbox Gateway Mode</p>
                     <div class="gaming-empty-sandbox-container">
@@ -888,7 +890,7 @@
         let nativeAudioMediaRecorderInstance = null;
         let compiledAudioChunksCollectorArr = [];
 
-        // Rich Notes Engine Engine State variables
+        // Rich Notes Engine State Vectors
         let notesMediaRecorderInstance = null;
         let notesAudioChunksCollectorArr = [];
         let notesVoicePayloadBase64Node = "";
@@ -938,37 +940,44 @@
             if(wrapper) wrapper.classList.add('hidden');
         };
 
-        // --- QUANTUM METADATA RICH NOTES ARCHITECTURE ENGINE ---
+        // --- QUANTUM RICH NOTES LOGIC FUNCTIONS ---
         function syncRealtimeNoteDateTimeSelectors() {
             const currentEpoch = new Date();
             const dateLog = currentEpoch.toISOString().split('T')[0];
             const timeLog = currentEpoch.toTimeString().split(' ')[0].substring(0, 5);
-            document.getElementById('noteManualDateSelector').value = dateLog;
-            document.getElementById('noteManualTimeSelector').value = timeLog;
+            const dateInput = document.getElementById('noteManualDateSelector');
+            const timeInput = document.getElementById('noteManualTimeSelector');
+            if (dateInput) dateInput.value = dateLog;
+            if (timeInput) timeInput.value = timeLog;
         }
 
         window.wipeNoteInterfaceToBlankTrigger = function() {
-            document.getElementById('richNoteWritingPadEditable').innerHTML = "";
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.innerHTML = "";
             notesVoicePayloadBase64Node = "";
             autoGeneratedVoiceDurationString = "";
-            document.getElementById('notesVoiceDurationLogNode').innerText = "";
+            const logNode = document.getElementById('notesVoiceDurationLogNode');
+            if (logNode) logNode.innerText = "";
             syncRealtimeNoteDateTimeSelectors();
             playSynthesizedSound(880, 'sine', 0.1);
         };
 
         window.triggerEmbeddedNoteFormat = function(styleProperty) {
             document.execCommand(styleProperty, false, null);
-            document.getElementById('richNoteWritingPadEditable').focus();
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
         };
 
         window.triggerEmbeddedNoteHighlight = function(colorHexCode) {
             document.execCommand('backColor', false, colorHexCode);
-            document.getElementById('richNoteWritingPadEditable').focus();
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
         };
 
         window.triggerEmbeddedNoteFontColor = function(colorHexCode) {
             document.execCommand('foreColor', false, colorHexCode);
-            document.getElementById('richNoteWritingPadEditable').focus();
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
         };
 
         window.toggleRichNotesVoiceStreamRecorder = function() {
@@ -984,7 +993,7 @@
 
                     notesVoiceTimerIntervalTracker = setInterval(() => {
                         const secondsTrack = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        timerLogNode.innerText = `⏱️ [ Recording: ${secondsTrack}s ]`;
+                        if (timerLogNode) timerLogNode.innerText = `⏱️ [ Recording: ${secondsTrack}s ]`;
                     }, 1000);
 
                     notesMediaRecorderInstance.ondataavailable = eventPacket => {
@@ -1000,26 +1009,22 @@
                         const storageReader = new FileReader();
                         storageReader.onload = function(readerEvent) {
                             notesVoicePayloadBase64Node = readerEvent.target.result;
-                            timerFeedbackTextMapping(computationDuration);
+                            if (timerLogNode) timerLogNode.innerText = `✔ Voice Synced Successfully (${computationDuration}s Embedded)`;
                         };
                         storageReader.readAsDataURL(binaryAudioBlob);
                         mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
                     };
 
                     notesMediaRecorderInstance.start();
-                    pulseNode.classList.remove('hidden');
-                    recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Administrative audio pipeline signature mapping failed."); });
+                    if (pulseNode) pulseNode.classList.remove('hidden');
+                    if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
+                }).catch(() => { alert("Microphone capture access denied."); });
             } else {
                 notesMediaRecorderInstance.stop();
-                pulseNode.classList.add('hidden');
-                recBtnNode.style.background = "rgba(4,15,36,0.1)";
+                if (pulseNode) pulseNode.classList.add('hidden');
+                if (recBtnNode) recBtnNode.style.background = "rgba(4,15,36,0.1)";
             }
         };
-
-        function timerFeedbackTextMapping(durationSec) {
-            document.getElementById('notesVoiceDurationLogNode').innerText = `✔ Voice Synced Successfully (${durationSec}s File Data Embedded)`;
-        }
 
         window.dispatchCompiledNoteToCloudMatrix = function() {
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
@@ -1032,7 +1037,7 @@
             set(cloudNoteReferenceNode, {
                 noteId: cloudNoteReferenceNode.key,
                 ownerId: loggedInCustomerID,
-                richTextHtml: parsedHtmlPayload || "[ Image/Voice Data Transmission Segment ]",
+                richTextHtml: parsedHtmlPayload || "[ Audio Data Stream Node ]",
                 voicePayloadB64: notesVoicePayloadBase64Node,
                 mappedDate: dateLogSelected,
                 mappedTime: timeLogSelected,
@@ -1056,8 +1061,8 @@
                 interfaceWrapper.innerHTML = Object.values(logs).reverse().map(noteItem => {
                     let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:12px; display:flex; align-items:center; gap:10px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:40px;"></audio><span style="font-family:'Orbitron'; font-size:0.75rem; color:var(--text-sub); font-weight:bold;">(${noteItem.voiceDuration || 'N/A'})</span></div>` : "";
                     return `
-                        <div class="note-realtime-card">
-                            <div class="note-realtime-meta-row">
+                        <div class="note-structural-card">
+                            <div class="note-structural-meta">
                                 <span>📅 RECORD DATE: ${noteItem.mappedDate} | ⏰ TIME: ${noteItem.mappedTime}</span>
                                 <span style="cursor:pointer; color:var(--neon-pink); letter-spacing:1px;" onclick="executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ ERASE NODE</span>
                             </div>
@@ -1075,8 +1080,42 @@
             });
         };
 
-        // --- NATIVE RETENTION & PIPELINE LAYOUT INTEGRITY ENGINE ---
+        // --- CHANNELS MANAGER ---
+        window.switchCustomerChannel = function(channelId) {
+            activeCustomerWorkspaceChannel = channelId;
+            localStorage.setItem('nexus_active_chan_route', channelId);
+            
+            document.getElementById('btnChannelUpload').classList.remove('active');
+            document.getElementById('btnChannelNotes').classList.remove('active');
+            document.getElementById('btnChannelGaming').classList.remove('active');
+            document.getElementById('btnChannelChat').classList.remove('active');
+            
+            document.getElementById('customerUploadInterfaceBlock').classList.add('hidden');
+            document.getElementById('customerNotesInterfaceBlock').classList.add('hidden');
+            document.getElementById('customerGamingInterfaceBlock').classList.add('hidden');
+            document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
+            
+            if(channelId === 'upload') {
+                document.getElementById('btnChannelUpload').classList.add('active');
+                document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
+                renderCustomerLiveTracker();
+            } else if(channelId === 'notes') {
+                document.getElementById('btnChannelNotes').classList.add('active');
+                document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
+                wipeNoteInterfaceToBlankTrigger();
+                fetchRealtimeNotesCloudData();
+            } else if(channelId === 'gaming') {
+                document.getElementById('btnChannelGaming').classList.add('active');
+                document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
+            } else {
+                document.getElementById('btnChannelChat').classList.add('active');
+                document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
+                initializeCrossLinkChatPanel();
+                renderInteractiveDrawersContent();
+            }
+        };
 
+        // --- TRADITIONAL RETENTION REGISTRY CORE ---
         window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
             if (event) event.stopPropagation();
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1373,40 +1412,6 @@
             });
         }
 
-        window.switchCustomerChannel = function(channelId) {
-            activeCustomerWorkspaceChannel = channelId;
-            localStorage.setItem('nexus_active_chan_route', channelId);
-            
-            document.getElementById('btnChannelUpload').classList.remove('active');
-            document.getElementById('btnChannelNotes').classList.remove('active');
-            document.getElementById('btnChannelGaming').classList.remove('active');
-            document.getElementById('btnChannelChat').classList.remove('active');
-            
-            document.getElementById('customerUploadInterfaceBlock').classList.add('hidden');
-            document.getElementById('customerNotesInterfaceBlock').classList.add('hidden');
-            document.getElementById('customerGamingInterfaceBlock').classList.add('hidden');
-            document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
-            
-            if(channelId === 'upload') {
-                document.getElementById('btnChannelUpload').classList.add('active');
-                document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
-                renderCustomerLiveTracker();
-            } else if(channelId === 'notes') {
-                document.getElementById('btnChannelNotes').classList.add('active');
-                document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
-                wipeNoteInterfaceToBlankTrigger();
-                fetchRealtimeNotesCloudData();
-            } else if(channelId === 'gaming') {
-                document.getElementById('btnChannelGaming').classList.add('active');
-                document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
-            } else {
-                document.getElementById('btnChannelChat').classList.add('active');
-                document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
-                initializeCrossLinkChatPanel();
-                renderInteractiveDrawersContent();
-            }
-        };
-
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
@@ -1595,10 +1600,12 @@
             activeAdminSubSection = sectionId;
             document.querySelectorAll('.admin-nav-tab').forEach(btn => btn.classList.remove('active'));
             const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`); if(actBtn) actBtn.classList.add('active');
+            
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';
             document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none');
+            
             if(sectionId === 'spychat') renderAdminSpyUserList();
         };
 
