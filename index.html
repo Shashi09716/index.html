@@ -9,14 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
-        /* --- HIGH-VISIBILITY ULTRA-CONTRAST CYBERPUNK ENGINE --- */
         :root {
             --lamp-color: #f1c40f;
             --neon-cyan: #00f2fe;
             --neon-pink: #ff007f;
             --whatsapp-green: #2ecc71;
             --bg-prime: #02050e;
-            --panel-glass: rgba(6, 17, 38, 0.85);
+            --panel-glass: rgba(6, 17, 38, 0.88);
             --border-glass: rgba(0, 242, 254, 0.6);
             --text-main: #ffffff;
             --text-sub: #f8fafc;
@@ -27,7 +26,7 @@
 
         body.light-theme-active {
             --bg-prime: #f8fafc;
-            --panel-glass: rgba(255, 255, 255, 0.9);
+            --panel-glass: rgba(255, 255, 255, 0.95);
             --border-glass: #0f172a;
             --text-main: #0f172a;
             --text-sub: #1e293b;
@@ -46,7 +45,6 @@
             user-select: none;
             position: relative;
             color: var(--text-main);
-            perspective: 1000px;
         }
 
         /* 3D WebGL Canvas Layer Box */
@@ -69,6 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         .shashi-header-brand-block {
@@ -127,11 +126,11 @@
             padding: 35px 25px;
             border-radius: 24px;
             backdrop-filter: blur(25px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
             width: 95%;
             max-width: 460px;
             pointer-events: auto;
-            transform: translateZ(30px);
+            margin-top: 140px; /* Space for the 3D Lamp on top */
             transition: all 0.5s ease;
         }
 
@@ -146,6 +145,7 @@
             overflow-y: auto;
             padding-top: 100px;
             pointer-events: auto;
+            background: var(--bg-prime);
         }
 
         .hud-container-panel {
@@ -158,10 +158,8 @@
             max-width: 1280px;
             box-shadow: 0 20px 80px rgba(0, 242, 254, 0.15);
             backdrop-filter: blur(25px);
-            transform: translateZ(10px);
         }
 
-        /* --- THE ADVANCED MENU NAVIGATION SYSTEM GENERATIONS --- */
         .workspace-channel-selector, .admin-category-navbar {
             display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid var(--border-glass); flex-wrap: wrap;
         }
@@ -248,16 +246,12 @@
         .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 2px solid rgba(231,76,60,0.5); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
         .wipe-card-btn:hover { background: rgba(231,76,60,0.3); color: #fff; box-shadow: 0 0 15px rgba(231,76,60,0.4); }
 
-        .hidden { display: none !important; }
-        .text-left { text-align: left; }
-
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 10px; border: 2px solid var(--border-glass); overflow: hidden; }
         .notes-pad-rich-area { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
@@ -268,19 +262,12 @@
 
         .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 10px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; }
-        .note-structural-card * { text-align: left !important; }
-        .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
-
-        /* --- THE FUTURE SANDBOX GAMING PIPELINE --- */
         .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(255,0,127,0.15); }
         .gaming-empty-sandbox-container { border: 2px solid rgba(255,0,127,0.3); background: rgba(0,0,0,0.4); border-radius: 12px; padding: 60px 20px; font-family: 'Orbitron'; color: var(--text-main); font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-pink); margin-top: 20px; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.7); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
-        body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
-
         .whatsapp-search-box { padding: 12px; border-bottom: 2px solid var(--border-glass); }
         .whatsapp-search-box input { width: 100%; padding: 10px 14px; background: var(--bg-prime); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); outline: none; }
         .chat-user-item-node { padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; }
@@ -327,7 +314,7 @@
         <div class="hud-glass-terminal" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: 3D LIVE</div>
-                <div class="hud-status-chip cyan-pulse">WEBGL MATRIX: OK</div>
+                <div class="hud-status-chip cyan-pulse">WEBGL RENDER: ACTIVE</div>
             </div>
             <h1 class="hud-logo">Welcome</h1>
             <div class="portal-matrix-tabs">
@@ -373,18 +360,18 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);"></div>
                 <div class="form-grid-layout">
-                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "></div>
-                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "></div>
-                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "></div>
-                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"></div>
-                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "></div>
+                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number (Optional)</label></div>
+                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label></div>
+                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number (Optional)</label></div>
+                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label></div>
+                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address (Optional)</label></div>
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="color:#00f2fe; font-family:'Orbitron'; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color:#fff;" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" "></textarea></div>
+                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" "></textarea><label>Additional System Notes (Optional)</label></div>
                 </div>
                 <button onclick="submitPolicyForm()" class="hud-engage-btn">TRANSMIT SECURE DATA</button>
             </div>
@@ -460,7 +447,6 @@
                 <h2 class="neon-green-text">Shashi Mainframe Core Dashboard</h2>
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
-            
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>
@@ -512,7 +498,7 @@
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         
-        // --- CORE THREE.JS 3D ENGINE INITIALIZATION ROUTINE ---
+        // --- THREE.JS 3D ENGINE INTEGRATION ---
         let scene, camera, renderer, lampGroup, lightBeamMesh, particleSystem;
         let lampActivated = false;
 
@@ -522,145 +508,165 @@
             scene.background = new THREE.Color(0x02050e);
 
             camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(0, 0, 8);
+            camera.position.set(0, 1.2, 7); // Position locked beautifully to overlay with inputs
 
             renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(renderer.domElement);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
             scene.add(ambientLight);
-            const dirLight = new THREE.DirectionalLight(0x00f2fe, 0.8);
+            const dirLight = new THREE.DirectionalLight(0x00f2fe, 1.0);
             dirLight.position.set(5, 10, 7);
             scene.add(dirLight);
 
             lampGroup = new THREE.Group();
             
-            const headGeo = new THREE.CylinderGeometry(1.2, 1.5, 1, 32);
-            const headMat = new THREE.MeshStandardMaterial({ color: 0x1f2d42, roughness: 0.2, metalness: 0.8 });
+            // Future Lamp Mesh Stack Assembly
+            const headGeo = new THREE.CylinderGeometry(0.8, 1.1, 0.7, 32);
+            const headMat = new THREE.MeshStandardMaterial({ color: 0x1f2d42, roughness: 0.1, metalness: 0.9 });
             const lampHead = new THREE.Mesh(headGeo, headMat);
-            lampHead.position.y = 1.5;
+            lampHead.position.y = 2.4;
             lampGroup.add(lampHead);
 
-            const ringGeo = new THREE.TorusGeometry(1.3, 0.1, 16, 100);
+            const ringGeo = new THREE.TorusGeometry(1.0, 0.08, 16, 100);
             const ringMat = new THREE.MeshBasicMaterial({ color: 0x00f2fe });
             const neonRing = new THREE.Mesh(ringGeo, ringMat);
             neonRing.rotation.x = Math.PI / 2;
-            neonRing.position.y = 1;
+            neonRing.position.y = 2.0;
             lampGroup.add(neonRing);
 
-            const stemGeo = new THREE.CylinderGeometry(0.15, 0.15, 2.5, 16);
+            const stemGeo = new THREE.CylinderGeometry(0.1, 0.1, 1.6, 16);
             const stemMat = new THREE.MeshStandardMaterial({ color: 0x394b66, metalness: 0.9 });
             const stem = new THREE.Mesh(stemGeo, stemMat);
-            stem.position.y = -0.25;
+            stem.position.y = 1.2;
             lampGroup.add(stem);
 
-            const baseGeo = new THREE.CylinderGeometry(1.4, 1.6, 0.3, 32);
-            const baseMat = new THREE.MeshStandardMaterial({ color: 0x0a0d14, roughness: 0.5 });
+            const baseGeo = new THREE.CylinderGeometry(1.0, 1.2, 0.2, 32);
+            const baseMat = new THREE.MeshStandardMaterial({ color: 0x0a0d14, roughness: 0.4 });
             const base = new THREE.Mesh(baseGeo, baseMat);
-            base.position.y = -1.6;
+            base.position.y = 0.3;
             lampGroup.add(base);
 
-            const beamGeo = new THREE.ConeGeometry(3, 7, 32, 1, true);
+            // Volumetric Luminous Beam Geometry
+            const beamGeo = new THREE.ConeGeometry(2.2, 4.5, 32, 1, true);
             const beamMat = new THREE.MeshBasicMaterial({
                 color: 0xf1c40f,
                 transparent: true,
-                opacity: 0,
+                opacity: 0.15,
                 side: THREE.DoubleSide,
                 blending: THREE.AdditiveBlending
             });
             lightBeamMesh = new THREE.Mesh(beamGeo, beamMat);
-            lightBeamMesh.position.set(0, -2, 0);
-            lightBeamMesh.visible = false;
+            lightBeamMesh.position.set(0, -0.2, 0);
             lampGroup.add(lightBeamMesh);
 
-            const particleCount = 200;
+            // Floating Space Dust
+            const particleCount = 150;
             const particleGeo = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
             for(let i=0; i<particleCount*3; i+=3) {
-                positions[i] = (Math.random() - 0.5) * 10;
-                positions[i+1] = (Math.random() - 0.5) * 10;
-                positions[i+2] = (Math.random() - 0.5) * 10;
+                positions[i] = (Math.random() - 0.5) * 8;
+                positions[i+1] = (Math.random() - 0.5) * 8;
+                positions[i+2] = (Math.random() - 0.5) * 8;
             }
             particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const particleMat = new THREE.PointsMaterial({ color: 0x00f2fe, size: 0.05, transparent: true, opacity: 0.6 });
+            const particleMat = new THREE.PointsMaterial({ color: 0x00f2fe, size: 0.04, transparent: true, opacity: 0.7 });
             particleSystem = new THREE.Points(particleGeo, particleMat);
             scene.add(particleSystem);
 
             scene.add(lampGroup);
             animate3DLoop();
 
-            container.addEventListener('click', () => {
-                if(!lampActivated) triggerLampActivationOverride();
-            });
-
+            // Smooth Gyro Rotation Tracking
             window.addEventListener('mousemove', (e) => {
                 const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
                 const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-                if(!lampActivated) {
-                    lampGroup.rotation.y = mouseX * 0.4;
-                    lampGroup.rotation.x = -mouseY * 0.2;
-                } else {
-                    lampGroup.rotation.y = (mouseX * 0.2) + Math.PI * 0.15;
-                }
+                lampGroup.rotation.y = mouseX * 0.3;
+                lampGroup.rotation.x = -mouseY * 0.15;
             });
         }
 
         function animate3DLoop() {
             requestAnimationFrame(animate3DLoop);
-            
-            particleSystem.rotation.y += 0.002;
-            particleSystem.rotation.x += 0.001;
-
-            if(lampActivated) {
-                const elapsed = Date.now() * 0.002;
-                lightBeamMesh.material.opacity = 0.4 + Math.sin(elapsed * 3) * 0.1;
-                lampGroup.children[1].material.color.setHex(Math.sin(elapsed) > 0 ? 0xf1c40f : 0x00f2fe);
-            }
-
+            particleSystem.rotation.y += 0.001;
+            const elapsed = Date.now() * 0.003;
+            lightBeamMesh.material.opacity = 0.25 + Math.sin(elapsed * 2) * 0.08;
             renderer.render(scene, camera);
         }
 
-        window.triggerLampActivationOverride = function() {
-            if(lampActivated) return;
-            lampActivated = true;
-            playSynthesizedSound(520, 'sine', 0.3);
-
-            lightBeamMesh.visible = true;
-            lightBeamMesh.material.opacity = 0.5;
-
-            let targetX = 2.5;
-            let currentX = lampGroup.position.x;
-            function slide() {
-                if(currentX < targetX) {
-                    currentX += 0.1;
-                    lampGroup.position.x = currentX;
-                    lampGroup.rotation.y = Math.PI * 0.15;
-                    requestAnimationFrame(slide);
-                } else {
-                    document.getElementById('loginTerminal').classList.remove('hidden');
+        // --- INSTANT focus IDENTITY ROUTINES FIX ---
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            if(!u) return;
+            
+            if(currentMode === 'admin') {
+                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase()) {
+                    document.getElementById('accessNodePass').focus();
+                }
+            } else {
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch) {
+                    document.getElementById('accessNodePass').focus();
                 }
             }
-            slide();
-            speakNaturalHuman("3D Hologram Portal active.");
         };
 
-        window.executeCosmicThemeToggle = function() {
-            const bodyNode = document.body;
-            bodyNode.classList.toggle('light-theme-active');
-            if(bodyNode.classList.contains('light-theme-active')) {
-                document.getElementById('themeToggleBtnLabel').innerText = "🌑 DARK MODE";
-                if(scene) scene.background.set(0xf8fafc);
-                speakNaturalHuman("Light mode active.");
+        // --- TRUE LOG-IN CROSS COMPARISON SEQUENCE KEY ---
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            const p = document.getElementById('accessNodePass').value.trim();
+            if(!u || !p) return;
+            
+            if(currentMode === 'admin') {
+                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+                    executeClusterLogin(null);
+                }
             } else {
-                document.getElementById('themeToggleBtnLabel').innerText = "🌓 LIGHT MODE";
-                if(scene) scene.background.set(0x02050e);
-                speakNaturalHuman("Dark mode active.");
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch && String(userMatch.pass) === String(p)) {
+                    executeClusterLogin(null);
+                }
             }
         };
 
-        // --- CORE NAVIGATION INTERFACE TAB LOGIC SYSTEMS ---
+        window.executeClusterLogin = function(e) {
+            if(e) e.preventDefault(); 
+            const u = document.getElementById('accessNodeUser').value.trim(); 
+            const p = document.getElementById('accessNodePass').value.trim();
+            
+            if(currentMode === 'admin') {
+                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+                    document.getElementById('webgl-canvas-container').style.display = 'none';
+                    document.getElementById('loginTerminal').classList.add('hidden'); 
+                    document.getElementById('adminDashboard').classList.remove('hidden'); 
+                    loadAdminSubmissions();
+                } else { 
+                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    alert("Access Rejected: Invalid Admin Signatures."); 
+                }
+            } else {
+                const match = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase() && String(user.pass) === String(p));
+                if(match) {
+                    if (match.status === 'deactivated') {
+                        alert("Account Deactivated by System Core.");
+                        return;
+                    }
+                    loggedInCustomerID = match.id;
+                    document.getElementById('webgl-canvas-container').style.display = 'none';
+                    document.getElementById('loginTerminal').classList.add('hidden'); 
+                    document.getElementById('customerDashboard').classList.remove('hidden'); 
+                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span>${match.clientName}</span>`;
+                    switchCustomerChannel('upload');
+                } else { 
+                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    alert("Access Rejected: Invalid User Signatures."); 
+                }
+            }
+        };
+
+        // --- RETENTION CHANNELS PIPELINES ---
         window.switchCustomerChannel = function(channelId) {
             activeCustomerWorkspaceChannel = channelId;
             localStorage.setItem('nexus_active_chan_route', channelId);
@@ -691,7 +697,6 @@
                 document.getElementById('btnChannelChat').classList.add('active');
                 document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
                 initializeCrossLinkChatPanel();
-                renderInteractiveDrawersContent();
             }
         };
 
@@ -746,9 +751,7 @@
                     };
                     notesMediaRecorderInstance.start();
                 });
-            } else {
-                notesMediaRecorderInstance.stop();
-            }
+            } else { notesMediaRecorderInstance.stop(); }
         };
 
         window.dispatchCompiledNoteToCloudMatrix = function() {
@@ -790,7 +793,6 @@
                     <div class="whatsapp-user-info">
                         <div class="whatsapp-user-name"><span>${user.clientName}</span></div>
                         <span class="whatsapp-user-id">@${user.id}</span>
-                        <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
                     </div>
                 </div>
             `).join('');
@@ -927,22 +929,13 @@
             push(ref(db, 'chats'), { sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext, textBody: input.value.trim(), epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString() }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
         };
 
-        window.executeClusterLogin = function(e) {
-            if(e) e.preventDefault(); const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim();
-            if(currentMode === 'admin') {
-                if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
-                    document.getElementById('webgl-canvas-container').style.display = 'none';
-                    document.getElementById('loginTerminal').classList.add('hidden'); document.getElementById('adminDashboard').classList.remove('hidden'); loadAdminSubmissions();
-                } else { alert("Access Denied"); }
-            } else {
-                const match = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase() && String(user.pass) === String(p));
-                if(match) {
-                    loggedInCustomerID = match.id;
-                    document.getElementById('webgl-canvas-container').style.display = 'none';
-                    document.getElementById('loginTerminal').classList.add('hidden'); document.getElementById('customerDashboard').classList.remove('hidden'); switchCustomerChannel('upload');
-                } else { alert("Invalid Credentials"); }
-            }
-        };
+        function syncRealtimeNoteDateTimeSelectors() {
+            const currentEpoch = new Date();
+            const dateLog = currentEpoch.toISOString().split('T')[0];
+            const timeLog = currentEpoch.toTimeString().split(' ')[0].substring(0, 5);
+            if (document.getElementById('noteManualDateSelector')) document.getElementById('noteManualDateSelector').value = dateLog;
+            if (document.getElementById('noteManualTimeSelector')) document.getElementById('noteManualTimeSelector').value = timeLog;
+        }
 
         window.logoutEngine = function() { localStorage.clear(); location.reload(); };
         window.processBinaryAttachment = function(e, t) { const f = e.target.files[0]; if(f) { const r = new FileReader(); r.onload = ev => { if(t==='policy') loadedAttachmentB64 = ev.target.result; else globalLiveChatBinaryStreamBase64 = ev.target.result; }; r.readAsDataURL(f); } };
@@ -951,7 +944,16 @@
         window.changeWorkspaceMode = function(m) { currentMode = m; document.getElementById('tabModeUser').classList.remove('active'); document.getElementById('tabModeAdmin').classList.remove('active'); if(m==='admin') document.getElementById('tabModeAdmin').classList.add('active'); else document.getElementById('tabModeUser').classList.add('active'); };
         window.toggleGlobalSystemAudio = function() { isSystemAudioEnabled = !isSystemAudioEnabled; document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? "🔊 SOUND: ON" : "🔇 SOUND: OFF"; };
 
-        // --- SILENT BACKGROUND 2-SECONDS AUTOMATION ENGINE REFRESH MATRIX ---
+        onValue(ref(db, 'users'), (snapshot) => {
+            const data = snapshot.val();
+            cachedGlobalUsersArr = data ? Object.values(data) : [];
+        });
+
+        onValue(ref(db, 'policies'), (snapshot) => {
+            cachedGlobalPolicyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
+        });
+
+        // --- SILENT AUTOMATION AUTO REFRESH LOOP ---
         setInterval(() => {
             if (loggedInCustomerID) {
                 if (activeCustomerWorkspaceChannel === 'upload') renderCustomerLiveTracker();
@@ -963,8 +965,9 @@
             }
         }, 2000);
 
-        // Initiate 3D Scene Assembly on initialization sequence
+        // Initiation sequence trigger
         init3DMainframeEngine();
+        checkActiveStateSessionRetentionOnLaunch();
     </script>
 </body>
 </html>
