@@ -23,11 +23,10 @@
             --chat-bg: #090f14;
             --input-bg: #010610;
             --accent-yellow: #f1c40f;
-            --cyber-glow: 0 0 20px rgba(0, 242, 254, 0.6);
+            --cyber-glow: 0 0 35px rgba(0, 242, 254, 0.8), 0 0 15px rgba(255, 0, 127, 0.5);
             --card-surface: rgba(4, 14, 33, 0.85);
         }
 
-        /* LIGHT THEME HIGH CONTRAST RE-ENGINEERED (NO BLUR TEXT) */
         body.light-theme-active {
             --bg-prime: #f8fafc;
             --panel-glass: #ffffff;
@@ -37,7 +36,7 @@
             --chat-bg: #cbd5e1;
             --input-bg: #ffffff;
             --accent-yellow: #b45309;
-            --cyber-glow: 0 4px 20px rgba(15, 23, 42, 0.15);
+            --cyber-glow: 0 6px 24px rgba(15, 23, 42, 0.2);
             --card-surface: #ffffff;
         }
 
@@ -65,7 +64,7 @@
         /* --- FIXED BRANDING HEADER VECTOR --- */
         .shashi-header-brand-block {
             position: fixed;
-            top: 20px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
@@ -73,20 +72,19 @@
             text-align: center;
             pointer-events: none;
             width: auto;
-            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
         .brand-main-title {
             font-weight: 900;
-            font-size: 2rem;
-            letter-spacing: 5px;
+            font-size: 2.2rem;
+            letter-spacing: 6px;
             color: #ffffff;
-            text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6);
+            text-shadow: 0 0 35px var(--lamp-color), 0 0 15px rgba(241, 196, 15, 0.6);
         }
         
         body.light-theme-active .brand-main-title {
             color: #0f172a;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .cosmic-theme-toggle-switch {
@@ -109,20 +107,13 @@
             width: 145px;
             text-align: center;
         }
-        
-        body.light-theme-active .cosmic-theme-toggle-switch {
-            background: #ffffff;
-            color: #0f172a;
-            border-color: #0f172a;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-        }
+        body.light-theme-active .cosmic-theme-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 6px 14px rgba(0,0,0,0.15); }
 
-        /* --- INTERNAL REFRESHER BUTTON SYSTEM --- */
         .system-instant-refresher-btn {
             background: linear-gradient(135deg, #00f2fe, #4facfe);
             border: none;
             color: #000000;
-            padding: 10px 16px;
+            padding: 12px 20px;
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
@@ -134,267 +125,86 @@
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
             transition: 0.2s ease;
         }
-        .system-instant-refresher-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
-        }
+        .system-instant-refresher-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 242, 254, 0.8); }
 
-        .smoke-container {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .smoke-cloud {
-            position: absolute;
-            top: -50%;
-            width: 50vw;
-            height: 200vh;
-            filter: blur(140px);
-            opacity: 0.14;
-            border-radius: 50%;
-            animation: smokeDrift 22s infinite alternate ease-in-out;
-        }
-
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.2; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
 
-        @keyframes smokeDrift {
-            0% { transform: translateY(-2%) scale(1) rotate(0deg); }
-            100% { transform: translateY(2%) scale(1.06) rotate(8deg); }
-        }
+        @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
 
-        .cinema-stage {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 2;
-            overflow: hidden;
-        }
+        /* --- THE LUXURY STAGE & CYBER LAMP --- */
+        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
+        .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.35) 0%, rgba(2, 5, 14, 1) 75%); box-shadow: inset 0 0 150px rgba(0, 242, 254, 0.4); }
 
-        @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.85); }
-            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.85); }
-            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.85); }
-        }
-
-        .cinema-stage.activated {
-            animation: dynamicColorCycle 5s infinite linear;
-            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%);
-            box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2);
-        }
-
-        .cyber-lamp-core {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-            transform: translateX(0) scale(1.05);
-            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.15); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); filter: drop-shadow(0 0 30px rgba(0, 242, 254, 0.3)); }
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
 
-        .metallic-shutter-head {
-            width: 240px;
-            height: 150px;
-            background: linear-gradient(145deg, #182232, #05070a);
-            border-radius: 100px 100px 40px 40px;
-            position: relative;
-            border: 3px solid #00f2fe;
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.5);
-            z-index: 5;
-            overflow: hidden;
-        }
+        .metallic-shutter-head { width: 250px; height: 155px; background: linear-gradient(145deg, #1c2a39, #05070a); border-radius: 110px 100px 45px 40px; position: relative; border: 3px solid #00f2fe; box-shadow: 0 0 50px rgba(0, 242, 254, 0.7); z-index: 5; overflow: hidden; }
+        .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: 0 0 90px var(--lamp-shadow); }
 
-        .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: 0 0 75px var(--lamp-shadow); }
-
-        .mechanical-gate {
-            position: absolute;
-            top: 25px;
-            width: 60px;
-            height: 90px;
-            background: linear-gradient(145deg, #0f141d, #1a2333);
-            border: 2px solid #2c3b54;
-            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
-            z-index: 6;
-        }
-
+        .mechanical-gate { position: absolute; top: 25px; width: 65px; height: 95px; background: linear-gradient(145deg, #0f141d, #1a2333); border: 2px solid #2c3b54; transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s; z-index: 6; }
         .gate-left { left: 45px; border-radius: 12px 0 0 12px; }
         .gate-right { right: 45px; border-radius: 0 12px 12px 0; }
-        .cinema-stage.activated .gate-left { transform: translateX(-55px); opacity: 0.1; }
-        .cinema-stage.activated .gate-right { transform: translateX(55px); opacity: 0.1; }
+        .cinema-stage.activated .gate-left { transform: translateX(-60px); opacity: 0.05; }
+        .cinema-stage.activated .gate-right { transform: translateX(60px); opacity: 0.05; }
 
-        .blinding-core-light {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: #ffffff;
-            border-radius: 50%;
-            left: 50%;
-            top: 30px;
-            transform: translateX(-50%);
-            filter: blur(6px);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            box-shadow: 0 0 50px #ffffff;
-        }
+        .blinding-core-light { position: absolute; width: 90px; height: 90px; background: #ffffff; border-radius: 50%; left: 50%; top: 25px; transform: translateX(-50%); filter: blur(4px); opacity: 0; transition: opacity 0.4s ease; box-shadow: 0 0 60px #ffffff, 0 0 30px var(--neon-cyan); }
         .cinema-stage.activated .blinding-core-light { opacity: 1; }
 
-        .hydraulic-stem { width: 16px; height: 240px; background: linear-gradient(90deg, #182232, #0b0f17, #2d3d56); z-index: 3; position: relative; }
-        .laser-conduit { position: absolute; width: 4px; height: 100%; background: #18202c; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
-        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 30px var(--lamp-color); }
+        .hydraulic-stem { width: 18px; height: 240px; background: linear-gradient(90deg, #1c2a39, #0b0f17, #2d3d56); z-index: 3; position: relative; }
+        .laser-conduit { position: absolute; width: 6px; height: 100%; background: #18202c; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
+        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 40px var(--lamp-color); }
+        .brushed-heavy-base { width: 210px; height: 32px; background: linear-gradient(180deg, #1e293b, #06090f); border-radius: 50% / 25%; border: 2px solid #334155; z-index: 4; }
 
-        .brushed-heavy-base { width: 200px; height: 28px; background: linear-gradient(180deg, #1e293b, #06090f); border-radius: 50% / 25%; border: 2px solid #334155; z-index: 4; }
+        .volumetric-beam { position: absolute; top: 120px; width: 120px; height: 0; background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.45) 20%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; mix-blend-mode: screen; }
+        .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 600px; width: 900px; filter: blur(2px); }
 
-        .volumetric-beam {
-            position: absolute;
-            top: 120px;
-            width: 100px;
-            height: 0;
-            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.35) 25%, transparent 100%);
-            clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0;
-            transition: height 0.9s ease, width 0.9s ease, opacity 0.3s;
-        }
-        .cinema-stage.activated .volumetric-beam { opacity: 0.5; height: 490px; width: 760px; }
+        /* --- ADVANCED ADVANCED LOGIN WINDOW --- */
+        .hud-glass-terminal { position: absolute; left: 50%; transform: translateX(-50%) scale(0.9); width: 95%; max-width: 470px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 8px solid var(--neon-cyan); padding: 40px 30px; border-radius: 24px; backdrop-filter: blur(50px); box-shadow: 0 50px 120px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,242,254,0.1); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; }
 
-        .quantum-cord { position: absolute; top: 140px; left: 195px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
-        .beaded-wire { width: 4px; height: 160px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
-        .luminescent-node { width: 24px; height: 24px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -10px; box-shadow: 0 0 30px #f1c40f; }
-
-        /* --- HUD INPUT CONTROL MODULES --- */
-        .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; }
-        .hud-input-cluster textarea { height: 110px; resize: none; }
-
-        .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-        .hud-input-cluster textarea ~ label { top: -14px; left: 10px; }
-
-        .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,
-        .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -14px; left: 10px; background: var(--bg-prime); padding: 2px 8px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; font-weight: 900; }
-
-        .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
-        .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
-
-        .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 4px 15px rgba(241,196,15,0.3); }
-        .hud-engage-btn:hover { box-shadow: 0 0 40px rgba(241, 196, 15, 0.8); transform: translateY(-2px); }
-
-        /* --- DASHBOARD WORKSPACE STRUCURE --- */
-        .dashboard-panel-core {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background: var(--bg-prime);
-            z-index: 100;
-            padding: 20px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            transition: background 0.4s ease;
-            padding-bottom: 40px;
-            padding-top: 100px;
-        }
-
-        .hud-container-panel {
-            background: var(--panel-glass);
-            border: 3px solid var(--border-glass);
-            border-top: 6px solid var(--neon-cyan);
-            padding: 35px 25px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 1280px;
-            box-shadow: 0 20px 80px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05);
-            backdrop-filter: blur(40px);
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-
-        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 3px solid var(--border-glass); padding-bottom: 18px; gap: 10px; }
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
-        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
-
-        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); flex-wrap: wrap; }
-        .channel-tab-btn { flex: 1; min-width: 130px; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        /* --- DATA STRUCTURE CARDS --- */
+        .workspace-channel-selector { display: flex; gap: 12px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); flex-wrap: wrap; }
+        .channel-tab-btn { flex: 1; min-width: 120px; padding: 15px 10px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 6px; }
         .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: var(--cyber-glow); }
 
-        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
-        .hud-data-card { background: var(--card-surface); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
-        .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .hud-data-card { background: var(--card-surface); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; }
+        .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron'; font-size: 0.85rem; letter-spacing: 0.5px; }
 
-        .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; }
-        .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); }
-
-        .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; }
-        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
-        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
-        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
-        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
-
-        /* --- THE MASTER BLASTER RICH NOTES ENGINE MODULE --- */
+        /* --- RICH INTEGRATED NOTES SYSTEM --- */
         .notes-matrix-shell-card { background: var(--card-surface); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
         .notes-writing-pad-container { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 10px; border: 2px solid var(--border-glass); overflow: hidden; }
-        .notes-input-rich-pad { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
-        .notes-ribbon-toolbar { background: rgba(0,0,0,0.3); padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; }
-        .note-utility-btn { background: rgba(4,15,36,0.1); border: 2px solid var(--border-glass); color: var(--text-main); padding: 8px 14px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
-        .note-tool-btn:hover, .note-utility-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 10px #00f2fe; }
+        .notes-input-rich-pad { width: 100%; min-height: 190px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
+        .notes-ribbon-toolbar { background: rgba(0,0,0,0.4); padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; }
+        .note-utility-btn { background: rgba(4,15,36,0.1); border: 2px solid var(--border-glass); color: var(--text-main); padding: 8px 14px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .note-utility-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 10px #00f2fe; }
 
         .note-timeline-logs-stack { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
-        .note-cloud-row-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 10px; border: 1px solid var(--border-glass); border-left: 6px solid var(--neon-pink); position: relative; text-align: left; }
+        .note-cloud-row-card { background: var(--input-bg); padding: 18px; border-radius: 10px; border: 1px solid var(--border-glass); border-left: 6px solid var(--neon-pink); position: relative; text-align: left; }
         .note-cloud-meta-row { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
 
-        /* --- FUTURE GAMING COLD SANDBOX PILL --- */
-        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; }
-        .gaming-empty-sandbox-container { border: 2px solid rgba(255,0,127,0.3); background: rgba(0,0,0,0.4); border-radius: 12px; padding: 60px 20px; font-family: 'Orbitron'; color: var(--text-main); font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-pink); margin-top: 20px; }
-        .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
-
-        /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
-        .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.7); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
+        /* --- THE LUXURY WHATSAPP GRID --- */
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative; }
+        .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.8); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
-
-        .whatsapp-search-box { padding: 12px; background: rgba(17, 27, 33, 0.4); border-bottom: 2px solid var(--border-glass); }
-        .whatsapp-search-box input { width: 100%; padding: 10px 14px; background: var(--bg-prime); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 0.95rem; outline: none; font-weight: bold; }
         
-        .chat-user-item-node { padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; transition: background 0.2s; position: relative; }
-        .chat-user-item-node.online-chamak-active { border-right: 5px solid #2ecc71; background: rgba(46, 204, 113, 0.05); }
-        .chat-user-item-node:hover { background: rgba(255,255,255,0.08); }
+        .chat-user-item-node { padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; transition: background 0.2s; }
         .chat-user-item-node.active-chat-target { background: rgba(0, 242, 254, 0.25) !important; border-left: 6px solid #00f2fe; }
         
-        .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; cursor: pointer; }
-        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; }
-        .whatsapp-user-name { font-weight: bold; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
-        .whatsapp-user-id { font-size: 0.8rem; color: #00f2fe; font-family: monospace; font-weight: bold; }
-
-        .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
-        .whatsapp-unread-counter-pill { background: #2ecc71; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-
+        .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; }
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-bg); position: relative; height: 100%; overflow: hidden; }
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; }
-        
+
         .chat-messages-scroll-stack { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
         .bubble-msg-wrapper { max-width: 65%; padding: 12px 16px; border-radius: 12px; font-size: 1rem; line-height: 1.4; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.4); font-weight: 600; word-wrap: break-word; }
         .bubble-outgoing { background: #005c4b; color: #ffffff; align-self: flex-end; border-top-right-radius: 0; border: 1px solid rgba(0,242,254,0.2); }
         .bubble-incoming { background: #202c33; color: #ffffff; align-self: flex-start; border-top-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
         body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; }
         body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; }
-
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; }
 
-        /* --- DRAWERS LAYERED MATRIX --- */
         .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; }
         .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; }
@@ -404,21 +214,11 @@
         .whatsapp-input-field { flex: 1; padding: 14px 20px; background: rgba(42, 57, 66, 0.9); border: 2px solid var(--border-glass); border-radius: 10px; color: #fff; outline: none; font-size: 1.05rem; font-family: 'Rajdhani', sans-serif; font-weight: 700; }
         body.light-theme-active .whatsapp-input-field { background: #ffffff; color: #000; }
         .whatsapp-circle-btn { width: 44px; height: 44px; background: transparent; border: none; color: #00f2fe; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        
-        .admin-status-toggle-select { padding: 6px 10px; background: #02050e; color: #2ecc71; border: 2px solid var(--border-glass); border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; }
-        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #1f2c34; border: 2px solid var(--border-glass); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 100005; width: 210px; display: flex; flex-direction: column; padding: 6px 0; }
-        .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 12px 16px; background: transparent; border: none; color: #ffffff; font-family: 'Rajdhani'; font-weight: 700; font-size: 0.95rem; text-align: left; cursor: pointer; width: 100%; }
-        body.light-theme-active .avatar-dropdown-action-row, body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
-        
-        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(1, 3, 10, 0.85); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); }
-        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 18px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); }
-        .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; }
-        .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 20px; }
-        .nexus-popup-btn { flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; }
-        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
-        .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
 
-        @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
+        /* --- SANDBOX FUTURE GAMING --- */
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; }
+        .gaming-empty-sandbox-container { border: 2px solid rgba(255,0,127,0.3); background: rgba(0,0,0,0.4); border-radius: 12px; padding: 60px 20px; font-family: 'Orbitron'; color: var(--text-main); font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-pink); margin-top: 20px; }
+        .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         .admin-category-navbar { display: flex; gap: 10px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; border: 2px solid var(--border-glass); }
         .admin-nav-tab { flex: 1; padding: 16px 6px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; cursor: pointer; border-radius: 8px; text-align: center; }
@@ -436,7 +236,7 @@
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
             .full-width-field { grid-column: span 1; }
-            #policyCardsStack, #adminUserControlList { grid-template-columns: 1fr !important; }
+            #policyCardsStack { grid-template-columns: 1fr !important; }
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 600px; }
             .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
@@ -471,7 +271,6 @@
             
             <div class="hydraulic-stem"><div class="laser-conduit"></div></div>
             <div class="brushed-heavy-base"></div>
-            
             <div class="volumetric-beam" id="lightBeam"></div>
                                                                                                                                                                                 
             <div class="quantum-cord" id="triggerCord">
@@ -482,11 +281,11 @@
                                                                                                                                                                                 
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
-                <div class="hud-status-chip">AI CORE: LIVE</div>
-                <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
+                <div class="hud-status-chip">AI SECURITY: ACTIVE</div>
+                <div class="hud-status-chip cyan-pulse">FIREWALL: LAYER-7</div>
             </div>
                                                                                                                                                                                                                                                                                         
-            <h1 class="hud-logo">Welcome</h1>
+            <h1 class="hud-logo" style="font-size:2.8rem; text-shadow:0 0 20px var(--neon-cyan);">NEXUS</h1>
                                                                                                                                                                                 
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
@@ -514,7 +313,7 @@
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
                 <div style="display:flex; gap:12px; align-items:center;">
-                    <button class="system-instant-refresher-btn" onclick="triggerInternalSystemHotRefresh()"><span class="gaming-pulse-node-core" style="background:#000; width:8px; height:8px; margin:0;"></span>⚡ REFRESH MODULE</button>
+                    <button class="system-instant-refresher-btn" onclick="triggerInternalSystemHotRefresh()">⚡ REFRESH MODULE</button>
                     <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
                 </div>
             </div>
@@ -535,88 +334,37 @@
             </div>
 
             <div id="customerUploadInterfaceBlock">
-                <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
-                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);"></div>
                 <div class="form-grid-layout">
-                    <div class="hud-input-cluster">
-                        <input type="text" id="regNo" placeholder=" ">
-                        <label>Registration Number (Optional)</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
-                    <div class="hud-input-cluster">
-                        <input type="text" id="insurerName" required placeholder=" ">
-                        <label>Insurer Name *</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
-                    <div class="hud-input-cluster">
-                        <input type="text" id="policyNo" placeholder=" ">
-                        <label>Policy Number (Optional)</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
-                    <div class="hud-input-cluster">
-                        <input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        <label>Contact Number *</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                    <div class="hud-input-cluster full-width-field">
-                        <input type="email" id="email" placeholder=" ">
-                        <label>Email Address (Optional)</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                    <div class="hud-input-cluster full-width-field">
-                        <div class="cyber-upload-node">
-                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
-                            <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')">
-                        </div>
-                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                    <div class="hud-input-cluster full-width-field">
-                        <textarea id="notesReal" placeholder=" "></textarea>
-                        <label>Additional System Notes (Optional)</label>
-                        <div class="neon-glow-underline"></div>
-                    </div>
+                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number (Optional)</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number (Optional)</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address (Optional)</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field"><div class="cyber-upload-node"><label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label><input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')"></div></div>
+                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" "></textarea><label>Additional System Notes (Optional)</label><div class="neon-glow-underline"></div></div>
                 </div>
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>
             </div>
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-matrix-shell-card">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px; text-align: left;">📝 QUANTUM INTEGRATED RICH NOTES ENGINE</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr; gap:15px; margin-bottom: 15px;">
-                        <div class="hud-input-cluster" style="margin-bottom:0;">
-                            <input type="datetime-local" id="noteManualDateTimeCollector">
-                            <label style="top:-14px; font-family:'Orbitron'; font-size:0.85rem; background:var(--bg-prime); padding:0 6px; color:#f1c40f;">Auto Timestamp Selection Anchor</label>
-                        </div>
-                    </div>
-
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">📝 QUANTUM INTEGRATED RICH NOTES ENGINE</h3>
+                    <div class="hud-input-cluster" style="margin-bottom:15px;"><input type="datetime-local" id="noteManualDateTimeCollector"><label style="top:-14px; font-family:'Orbitron'; font-size:0.85rem; background:var(--bg-prime); padding:0 6px; color:#f1c40f;">Auto Timestamp Selection Anchor</label></div>
                     <div class="notes-ribbon-toolbar">
                         <button class="note-utility-btn" onclick="triggerEmbeddedNoteFormat('bold')"><b>B</b> Bold</button>
                         <button class="note-utility-btn" onclick="triggerEmbeddedNoteFormat('italic')"><i>I</i> Italic</button>
                         <button class="note-utility-btn" onclick="triggerEmbeddedNoteFormat('underline')"><u>U</u> Underline</button>
                         <button class="note-utility-btn" style="color:#f1c40f; border-color:#f1c40f;" onclick="triggerEmbeddedNoteHighlight('#f1c40f')">🟨 Marker</button>
-                        <button class="note-utility-btn" style="color:#ff007f; border-color:#ff007f;" onclick="triggerEmbeddedNoteHighlight('#ff007f')">🟥 Marker</button>
                         <button class="note-utility-btn" style="color:#00f2fe; border-color:#00f2fe;" onclick="triggerEmbeddedNoteFontColor('#00f2fe')">🟩 Color</button>
-                        <button class="note-utility-btn" onclick="triggerEmbeddedNoteFontColor('inherit')">⬜ Reset</button>
-                        
-                        <button id="noteAudioRecCoreBtn" class="note-utility-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="toggleRichNotesVoiceStreamRecorder()">
-                            <span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden" style="margin-right:6px;"></span>🎙️ AUDIO RECORDER
-                        </button>
-                        <span id="notesVoiceDurationLogNode" style="font-family:monospace; font-weight:bold; color:var(--neon-pink); font-size:0.95rem;"></span>
+                        <button id="noteAudioRecCoreBtn" class="note-utility-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD VOICE</button>
+                        <span id="notesVoiceDurationLogNode" style="font-family:monospace; font-weight:bold; color:var(--neon-pink);"></span>
                     </div>
-
-                    <div class="notes-writing-pad-container">
-                        <div id="richNoteWritingPadEditable" class="notes-input-rich-pad" contenteditable="true" placeholder="Type structural metadata framework layout note here..."></div>
-                    </div>
-
+                    <div class="notes-writing-pad-container"><div id="richNoteWritingPadEditable" class="notes-input-rich-pad" contenteditable="true"></div></div>
                     <div style="display:flex; gap:15px; margin-top:20px;">
-                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="dispatchCompiledNoteToCloudMatrix()">TRANSMIT SECURE NOTE PACKET</button>
+                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="dispatchCompiledNoteToCloudMatrix()">TRANSMIT NOTE PACKET</button>
                         <button class="abort-btn" style="flex:1; padding:18px; font-family:'Orbitron';" onclick="wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE (BLANK)</button>
                     </div>
-
                     <div class="note-timeline-logs-stack" id="realtimeCloudNotesViewStack"></div>
                 </div>
             </div>
@@ -624,31 +372,26 @@
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
                     <h2 class="neon-cyan-text" style="font-size: 1.8rem;">⚡ FUTURE NEXUS GAMING COLD REPOSITORY BAR</h2>
-                    <p style="color:var(--text-sub); font-weight:700; margin-top:4px;">Operational Matrix Sandbox Gateway Mode</p>
-                    <div class="gaming-empty-sandbox-container">
-                        <span class="gaming-pulse-node-core"></span>[ MAIN REPOSITORY IDLE: SECURE STABLE CONTAINER ASSIGNED - FUTURE GAME LOADING DISPATCH STABLE ]
-                    </div>
+                    <div class="gaming-empty-sandbox-container"><span class="gaming-pulse-node-core"></span>[ MAIN REPOSITORY IDLE: FUTURE GAME REPOSITORY ASSIGNED ]</div>
                 </div>
             </div>
 
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
                     <div class="chat-target-userlist-pane">
-                        <div class="whatsapp-search-box"><input type="text" placeholder="Search contact..."></div>
+                        <div class="whatsapp-search-box"><input type="text" id="whatsappContactSearchField" placeholder="Search contact..." oninput="executeWhatsAppContactFilteringLocal()"></div>
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
-                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="triggerUserProfileAvatarDropdownEngine()">
+                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="">
                                 <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode" style="font-weight: 900; color: #00f2fe;">Select Pipeline...</div></div>
                             </div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
-                        
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
                         <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
-                        
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
@@ -662,8 +405,6 @@
                 </div>
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:15px; font-family:monospace; font-weight: bold;"></div>
             </div>
-
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>
         </div>
     </div>
                                                                                                                                                                                 
@@ -673,7 +414,7 @@
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>
                 <div style="display:flex; gap:12px; align-items:center;">
                     <button class="system-instant-refresher-btn" onclick="triggerInternalSystemHotRefresh()">⚡ REFRESH ENGINE</button>
-                    <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
+                    <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
                 </div>
             </div>
                                                                                                                                                                                                                                                                                         
@@ -683,7 +424,6 @@
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
             </div>
-                                                                                                                                                                                
             <div id="customerCardsContainer"></div>
         </div>
     </div>
@@ -716,13 +456,11 @@
         let spyActiveTargetUserContext = "";
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
-        
         let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
 
         let nativeAudioMediaRecorderInstance = null;
         let compiledAudioChunksCollectorArr = [];
 
-        // Advanced Notes Session Storage state variables
         let notesMediaRecorderInstance = null;
         let notesAudioChunksCollectorArr = [];
         let notesVoicePayloadBase64Node = "";
@@ -738,19 +476,12 @@
             "https://media.giphy.com/media/tX68Mc6nc9gNq/giphy.gif", "https://media.giphy.com/media/3ntq5FxUvS84U/giphy.gif",
             "https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif", "https://media.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif"
         ];
-
         const systemEmojisList = ["😀","😃","😄","😁","😆","😅","😂","🤣","😊","🔥","✨","🎉","💯","✔","❌"];
 
-        window.closeCustomInlinePopupEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(wrapper) wrapper.classList.add('hidden');
-        };
-
-        // --- INTERNAL LIVE REFRESH COLD ENGINE TRIGGER ---
+        // --- INTERNAL SYSTEM HOT REFRESH TERMINAL ---
         window.triggerInternalSystemHotRefresh = function() {
-            playSynthesizedSound(980, 'sine', 0.1);
-            speakNaturalHuman("Refreshing system database logs");
-            
+            playSynthesizedSound(980, 'sine', 0.08);
+            speakNaturalHuman("Refreshing system database layers smoothly.");
             get(ref(db, 'users')).then(snap => { if(snap.exists()) cachedGlobalUsersArr = Object.values(snap.val()); });
             get(ref(db, 'policies')).then(snap => { if(snap.exists()) cachedGlobalPolicyArr = Object.values(snap.val()); });
             
@@ -763,16 +494,25 @@
             }
         };
 
-        // --- RICH NOTES ENGINE DYNAMIC TIMEMAPPING MECHANISM ---
+        // --- WHATSAPP CLIENT FILTERING COMPILER ---
+        window.executeWhatsAppContactFilteringLocal = function() {
+            const query = document.getElementById('whatsappContactSearchField').value.toLowerCase();
+            document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
+                node.style.display = node.innerText.toLowerCase().includes(query) ? "flex" : "none";
+            });
+        };
+
+        window.executeAdminWhatsAppContactFilteringLocal = function() {
+            const query = document.getElementById('adminWhatsAppContactSearchField').value.toLowerCase();
+            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
+                node.style.display = node.innerText.toLowerCase().includes(query) ? "flex" : "none";
+            });
+        };
+
+        // --- RICH NOTES INTERFACE HANDLERS ---
         function syncRealtimeNoteDateTimeSelectors() {
             const currentEpoch = new Date();
-            const yearStr = currentEpoch.getFullYear();
-            const monthStr = String(currentEpoch.getMonth() + 1).padStart(2, '0');
-            const dayStr = String(currentEpoch.getDate()).padStart(2, '0');
-            const hourStr = String(currentEpoch.getHours()).padStart(2, '0');
-            const minStr = String(currentEpoch.getMinutes()).padStart(2, '0');
-            
-            const combinedString = `${yearStr}-${monthStr}-${dayStr}T${hourStr}:${minStr}`;
+            const combinedString = `${currentEpoch.getFullYear()}-${String(currentEpoch.getMonth() + 1).padStart(2, '0')}-${String(currentEpoch.getDate()).padStart(2, '0')}T${String(currentEpoch.getHours()).padStart(2, '0')}:${String(currentEpoch.getMinutes()).padStart(2, '0')}`;
             const timeField = document.getElementById('noteManualDateTimeCollector');
             if(timeField) timeField.value = combinedString;
         }
@@ -785,23 +525,12 @@
             const logNode = document.getElementById('notesVoiceDurationLogNode');
             if(logNode) logNode.innerText = "";
             syncRealtimeNoteDateTimeSelectors();
-            playSynthesizedSound(800, 'sine', 0.08);
+            playSynthesizedSound(800, 'sine', 0.05);
         };
 
-        window.triggerEmbeddedNoteFormat = function(styleProperty) {
-            document.execCommand(styleProperty, false, null);
-            document.getElementById('richNoteWritingPadEditable').focus();
-        };
-
-        window.triggerEmbeddedNoteHighlight = function(colorHexCode) {
-            document.execCommand('backColor', false, colorHexCode);
-            document.getElementById('richNoteWritingPadEditable').focus();
-        };
-
-        window.triggerEmbeddedNoteFontColor = function(colorHexCode) {
-            document.execCommand('foreColor', false, colorHexCode);
-            document.getElementById('richNoteWritingPadEditable').focus();
-        };
+        window.triggerEmbeddedNoteFormat = function(styleProperty) { document.execCommand(styleProperty, false, null); document.getElementById('richNoteWritingPadEditable').focus(); };
+        window.triggerEmbeddedNoteHighlight = function(colorHexCode) { document.execCommand('backColor', false, colorHexCode); document.getElementById('richNoteWritingPadEditable').focus(); };
+        window.triggerEmbeddedNoteFontColor = function(colorHexCode) { document.execCommand('foreColor', false, colorHexCode); document.getElementById('richNoteWritingPadEditable').focus(); };
 
         window.toggleRichNotesVoiceStreamRecorder = function() {
             const recBtnNode = document.getElementById('noteAudioRecCoreBtn');
@@ -815,33 +544,28 @@
                     notesRecordingStartEpoch = Date.now();
 
                     notesVoiceTimerIntervalTracker = setInterval(() => {
-                        const secondsTrack = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        if (timerLogNode) timerLogNode.innerText = `⏱️ [ REC: ${secondsTrack}s ]`;
+                        if (timerLogNode) timerLogNode.innerText = `⏱️ [ REC: ${Math.floor((Date.now() - notesRecordingStartEpoch) / 1000)}s ]`;
                     }, 1000);
 
-                    notesMediaRecorderInstance.ondataavailable = eventPacket => {
-                        if (eventPacket.data.size > 0) notesAudioChunksCollectorArr.push(eventPacket.data);
-                    };
-
+                    notesMediaRecorderInstance.ondataavailable = packet => { if (packet.data.size > 0) notesAudioChunksCollectorArr.push(packet.data); };
                     notesMediaRecorderInstance.onstop = () => {
                         clearInterval(notesVoiceTimerIntervalTracker);
                         const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        autoGeneratedVoiceDurationString = `${computationDuration}s Transmitted`;
+                        autoGeneratedVoiceDurationString = `${computationDuration}s`;
                         
                         const binaryAudioBlob = new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' });
                         const storageReader = new FileReader();
                         storageReader.onload = function(readerEvent) {
                             notesVoicePayloadBase64Node = readerEvent.target.result;
-                            if (timerLogNode) timerLogNode.innerText = `✔ Embedded (${computationDuration}s Audio)`;
+                            if (timerLogNode) timerLogNode.innerText = `✔ Embedded Recording`;
                         };
                         storageReader.readAsDataURL(binaryAudioBlob);
-                        mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
+                        mediaStreamObj.getTracks().forEach(track => track.stop());
                     };
-
                     notesMediaRecorderInstance.start();
                     if (pulseNode) pulseNode.classList.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Audio hardware mapping denied."); });
+                }).catch(() => { alert("Mic hardware failed."); });
             } else {
                 notesMediaRecorderInstance.stop();
                 if (pulseNode) pulseNode.classList.add('hidden');
@@ -852,321 +576,81 @@
         window.dispatchCompiledNoteToCloudMatrix = function() {
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
             const combinedDateTimeString = document.getElementById('noteManualDateTimeCollector').value;
-
             if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
 
             const cloudNoteReferenceNode = push(ref(db, `users_notes/${loggedInCustomerID}`));
             set(cloudNoteReferenceNode, {
                 noteId: cloudNoteReferenceNode.key,
                 ownerId: loggedInCustomerID,
-                richTextHtml: parsedHtmlPayload || "[ Binary Audio Stream Attachment ]",
+                richTextHtml: parsedHtmlPayload || "[ Audio Data Stream Node ]",
                 voicePayloadB64: notesVoicePayloadBase64Node,
                 timestampValue: combinedDateTimeString.replace("T", " @ "),
                 voiceDuration: autoGeneratedVoiceDurationString,
                 epochStamp: Date.now()
-            }).then(() => {
-                wipeNoteInterfaceToBlankTrigger();
-                playSynthesizedSound(1150, 'sine', 0.1);
-                fetchRealtimeNotesCloudData();
-            });
+            }).then(() => { wipeNoteInterfaceToBlankTrigger(); fetchRealtimeNotesCloudData(); });
         };
 
         function fetchRealtimeNotesCloudData() {
-            const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack');
-            if(!interfaceWrapper || !loggedInCustomerID) return;
-
+            const wrapper = document.getElementById('realtimeCloudNotesViewStack'); if(!wrapper || !loggedInCustomerID) return;
             get(ref(db, `users_notes/${loggedInCustomerID}`)).then((snapshotData) => {
-                const logs = snapshotData.val();
-                if(!logs) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); font-family:monospace; text-align:center; padding:15px; font-weight:bold;">No logs cached inside cluster framework.</div>`; return; }
-                
-                interfaceWrapper.innerHTML = Object.values(logs).reverse().map(noteItem => {
-                    let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:10px; display:flex; align-items:center; gap:10px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:38px;"></audio><span style="font-family:'Orbitron'; font-size:0.75rem; color:var(--neon-pink); font-weight:bold;">[${noteItem.voiceDuration || 'Voice'}]</span></div>` : "";
-                    return `
-                        <div class="note-cloud-row-card">
-                            <div class="note-cloud-meta-row">
-                                <span>📅 REGISTRY STAMP: ${noteItem.timestampValue}</span>
-                                <span style="cursor:pointer; color:var(--neon-pink);" onclick="executeCloudNotePurgeMatrix('${noteItem.noteId}')">⚠️ ERASE RECORD</span>
-                            </div>
+                const logs = snapshotData.val(); if(!logs) { wrapper.innerHTML = `<div style="color:var(--text-sub); font-family:monospace; text-align:center; padding:15px; font-weight:bold;">No logs cached inside cluster framework.</div>`; return; }
+                wrapper.innerHTML = Object.values(logs).reverse().map(noteItem => {
+                    let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:10px;"><audio src="${noteItem.voicePayloadB64}" controls style="height:38px;"></audio></div>` : "";
+                    return `<div class="note-cloud-row-card">
+                            <div class="note-cloud-meta-row"><span>📅 REGISTRY STAMP: ${noteItem.timestampValue}</span><span style="cursor:pointer;" onclick="executeCloudNotePurgeMatrix('${noteItem.noteId}')">⚠️ ERASE RECORD</span></div>
                             <div style="color:var(--text-main); font-size:1.05rem; font-weight:600;">${noteItem.richTextHtml}</div>
                             ${voiceAttachmentMarkup}
-                        </div>
-                    `;
+                        </div>`;
                 }).join('');
             });
         }
 
-        window.executeCloudNotePurgeMatrix = function(noteIdSignature) {
-            remove(ref(db, `users_notes/${loggedInCustomerID}/${noteIdSignature}`)).then(() => {
-                fetchRealtimeNotesCloudData();
-            });
-        };
+        window.executeCloudNotePurgeMatrix = function(noteIdSignature) { remove(ref(db, `users_notes/${loggedInCustomerID}/${noteIdSignature}`)).then(() => { fetchRealtimeNotesCloudData(); }); };
 
-        // --- ORGINAL ENGINE CONSOLE DISPATCH REGISTRY ---
-        window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
-            if (event) event.stopPropagation();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
+        // --- BACKEND RETENTION SYNC CHANNELS MANAGER ---
+        window.switchCustomerChannel = function(channelId) {
+            activeCustomerWorkspaceChannel = channelId; localStorage.setItem('nexus_active_chan_route', channelId);
+            document.getElementById('btnChannelUpload').classList.remove('active'); document.getElementById('btnChannelNotes').classList.remove('active'); document.getElementById('btnChannelGaming').classList.remove('active'); document.getElementById('btnChannelChat').classList.remove('active');
+            document.getElementById('customerUploadInterfaceBlock').classList.add('hidden'); document.getElementById('customerNotesInterfaceBlock').classList.add('hidden'); document.getElementById('customerGamingInterfaceBlock').classList.add('hidden'); document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
             
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
-            const activeLocalNickname = localNicknamesObj[targetUserId] || "";
-
-            let targetAvatarPath = defaultAvatarSvg;
-            if(targetUserId !== cachedAdminMainframeRoute.masterId) {
-                const userMatch = cachedGlobalUsersArr.find(u => u.id === targetUserId);
-                if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
-            }
-
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>${standardClientName} Profile</h4>
-                    <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px; font-family:monospace;">ID: @${targetUserId}</p>
-                    <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:2px solid var(--border-glass);">
-                        <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid #00f2fe; display:block; margin:0 auto 10px auto;">
-                    </div>
-                    <div style="margin-bottom:20px; text-align:left;">
-                        <label style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:5px; font-weight:bold;">Local Nickname Attribute</label>
-                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${activeLocalNickname}">
-                    </div>
-                    <div class="nexus-popup-flex-btns">
-                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE PARAMETERS</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-
-            document.getElementById('commitProfileModalChangesBtn').onclick = () => {
-                const inputVal = document.getElementById('popupInlineNicknameModifierField').value.trim();
-                const storageKey = `nicknames_map_${loggedInCustomerID}`;
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-                if(inputVal) currentLocalNicknamesObj[targetUserId] = inputVal; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                closeCustomInlinePopupEngine();
-                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
-            };
-        };
-
-        window.triggerUserProfileAvatarDropdownEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Profile Photo Options</h4>
-                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
-                        <button onclick="commitAvatarClearBlankNode()" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Set Blank Icon</button>
-                        <button onclick="document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%;">Upload from Gallery</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) {
-            event.preventDefault(); event.stopPropagation(); removeAvatarRightClickDropdownNode();
-            const contextDropdown = document.createElement('div');
-            contextDropdown.className = "whatsapp-avatar-context-dropdown"; contextDropdown.id = "avatarContextDropdownMatrixOverlay";
-            contextDropdown.innerHTML = `
-                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Photo</button>
-                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏️ Set Nickname</button>
-            `;
-            document.body.appendChild(contextDropdown);
-            contextDropdown.style.left = `${event.clientX}px`; contextDropdown.style.top = `${event.clientY}px`;
-            document.addEventListener('click', removeAvatarRightClickDropdownNode, { once: true });
-        };
-
-        function removeAvatarRightClickDropdownNode() { const node = document.getElementById('avatarContextDropdownMatrixOverlay'); if(node) node.remove(); }
-
-        window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) {
-            removeAvatarRightClickDropdownNode();
-            if(targetUserId === loggedInCustomerID || currentMode === 'admin') {
-                const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-                wrapper.innerHTML = `
-                    <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                        <h4>Modify Photo for @${targetUserId}</h4>
-                        <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
-                            <button onclick="commitTargetedAvatarClear('${targetUserId}')" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Set Default Icon</button>
-                            <button onclick="document.getElementById('hiddenAvatarFileInputNode').setAttribute('data-target-uid', '${targetUserId}'); document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%;">Upload Gallery</button>
-                            <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                        </div>
-                    </div>
-                `;
-                wrapper.classList.remove('hidden');
-            } else { alert("Photo rewrite restricted."); }
-        };
-
-        window.commitTargetedAvatarClear = function(uid) {
-            closeCustomInlinePopupEngine();
-            set(ref(db, `users/${uid}/avatar`), "").then(() => {
-                if(uid === loggedInCustomerID) {
-                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
-                    document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
-                }
-                playSynthesizedSound(880, 'sine', 0.05);
-            });
-        };
-
-        window.executeTriggeredContextNicknameChange = function(targetUserId, clientRealName) {
-            removeAvatarRightClickDropdownNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Nickname for ${clientRealName}</h4>
-                    <input type="text" id="contextNicknameInputField" class="nexus-popup-input-field" value="${localNicknamesObj[targetUserId] || ""}">
-                    <div class="nexus-popup-flex-btns">
-                        <button id="saveContextNickBtn" class="nexus-popup-btn primary-btn">SAVE</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-            document.getElementById('saveContextNickBtn').onclick = () => {
-                const newNick = document.getElementById('contextNicknameInputField').value.trim();
-                const storageKey = `nicknames_map_${loggedInCustomerID}`;
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-                if(newNick) currentLocalNicknamesObj[targetUserId] = newNick; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                closeCustomInlinePopupEngine();
-                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
-            };
-        };
-
-        window.commitAvatarClearBlankNode = function() {
-            closeCustomInlinePopupEngine();
-            if(loggedInCustomerID) {
-                set(ref(db, `users/${loggedInCustomerID}/avatar`), "").then(() => {
-                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
-                    document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
-                });
-            }
-        };
-
-        window.executeCosmicThemeToggle = function() {
-            const bodyNode = document.body;
-            const toggleLabel = document.getElementById('themeToggleBtnLabel');
-            bodyNode.classList.toggle('light-theme-active');
-            if(bodyNode.classList.contains('light-theme-active')) {
-                toggleLabel.innerText = "🌑 DARK MODE"; speakNaturalHuman("Light mode active.");
+            if(channelId === 'upload') {
+                document.getElementById('btnChannelUpload').classList.add('active'); document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden'); renderCustomerLiveTracker();
+            } else if(channelId === 'notes') {
+                document.getElementById('btnChannelNotes').classList.add('active'); document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden'); wipeNoteInterfaceToBlankTrigger(); fetchRealtimeNotesCloudData();
+            } else if(channelId === 'gaming') {
+                document.getElementById('btnChannelGaming').classList.add('active'); document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
             } else {
-                toggleLabel.innerText = "🌓 LIGHT MODE"; speakNaturalHuman("Dark mode active.");
+                document.getElementById('btnChannelChat').classList.add('active'); document.getElementById('customerChatInterfaceBlock').classList.remove('hidden'); initializeCrossLinkChatPanel(); renderInteractiveDrawersContent();
             }
         };
-
-        function executeAutoPurgeEightDaysOldChats(chatsSnapshotObj) {
-            if(!chatsSnapshotObj) return; const thresholdLifespanLimit = 8 * 24 * 60 * 60 * 1000; const rightNowTimeEpoch = Date.now();
-            Object.keys(chatsSnapshotObj).forEach(key => {
-                const packet = chatsSnapshotObj[key];
-                if(packet.epochTimeNode && (rightNowTimeEpoch - packet.epochTimeNode) > thresholdLifespanLimit) remove(ref(db, `chats/${key}`));
-            });
-        }
-
-        function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUserToken = localStorage.getItem('nexus_logged_in_uid');
-            const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload';
-            const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
-            
-            if(savedUserToken) {
-                loggedInCustomerID = savedUserToken; currentMode = savedMode; activeCustomerWorkspaceChannel = savedWorkspaceChan;
-                document.getElementById('mainStage').style.display = 'none'; document.getElementById('shashiBrandingHeader').style.opacity = '0';
-                if(savedMode === 'admin') {
-                    document.getElementById('adminDashboard').classList.remove('hidden'); loadAdminSubmissions();
-                } else {
-                    document.getElementById('customerDashboard').classList.remove('hidden'); switchCustomerChannel(savedWorkspaceChan);
-                }
-            }
-        }
-
-        onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
-            const rootData = snapshot.val(); if(rootData && rootData.id && rootData.pass) { cachedAdminMainframeRoute.masterId = rootData.id; cachedAdminMainframeRoute.masterPass = rootData.pass; }
-        });
-
-        onValue(ref(db, 'users'), (snapshot) => {
-            const data = snapshot.val(); cachedGlobalUsersArr = data ? Object.values(data) : [];
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                renderUserControlPanel(); if(activeAdminSubSection === 'spychat') renderAdminSpyUserList();
-            }
-            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) initializeCrossLinkChatPanel();
-            if(loggedInCustomerID && currentMode === 'user') {
-                const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
-                if(myProfile) {
-                    if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span style='color:var(--text-main); font-weight:700;'>${myProfile.clientName}</span>`;
-                }
-            }
-        });
-
-        onValue(ref(db, 'policies'), (snapshot) => {
-            cachedGlobalPolicyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) renderPolicyCardsBlock();
-            if(loggedInCustomerID) renderCustomerLiveTracker();
-        });
-
-        onValue(ref(db, 'chats'), (snapshot) => {
-            const data = snapshot.val(); if(data) executeAutoPurgeEightDaysOldChats(data);
-            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
-                renderActiveChatConversationLogs(); markIncomingMessagesAsReadSequence(data); calculateUnreadBadgeCountersTrack(data);
-            }
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
-                renderAdminSpyChatConsoleLogs(); renderAdminSpyUserList();
-            }
-        });
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
-
-        function markIncomingMessagesAsReadSequence(chatsSnap) {
-            if(!chatsSnap || !loggedInCustomerID || !activeSelectedChatTargetUserId) return;
-            Object.keys(chatsSnap).forEach(key => {
-                const m = chatsSnap[key];
-                if(m.sender === activeSelectedChatTargetUserId && m.receiver === loggedInCustomerID && !m.read) update(ref(db, `chats/${key}`), { read: true });
-            });
-        }
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            if(!chatsSnap || !loggedInCustomerID) return;
-            cachedGlobalUsersArr.forEach(user => {
-                let unreadCount = 0;
-                Object.values(chatsSnap).forEach(msg => {
-                    if(msg.sender === user.id && msg.receiver === loggedInCustomerID && !msg.read) {
-                        if(!localStorage.getItem(`deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`)) unreadCount++;
-                    }
-                });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`);
-                if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
-            });
-        }
 
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView'); if(!targetContainer) return;
             const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            const masterAdminPseudoUser = { id: cachedAdminMainframeRoute.masterId, clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
+            // Changed "Mainframe Admin Shashi" destination text directly mapping key structure override to simple clean static context "Admin" inside user view layout panel
+            const masterAdminPseudoUser = { id: cachedAdminMainframeRoute.masterId, clientName: "Admin", avatar: "", isOnlineNode: true };
             const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
             const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
 
             targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
-                const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                return `
-                    <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')">
+                return `<div class="chat-user-item-node ${(user.id === activeSelectedChatTargetUserId)?'active-chat-target':''} ${(user.isOnlineNode)?'online-chamak-active':''}" onclick="setOperationalChatTargetId('${user.id}')">
+                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}">
                         <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name"><span>${localNicknamesObj[user.id] || user.clientName} ${localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick</span>` : ""}</span></div>
+                            <div class="whatsapp-user-name"><span>${localNicknamesObj[user.id] || user.clientName}</span></div>
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
                                 <span class="whatsapp-user-id">@${user.id}</span>
                                 <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
                             </div>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }).join('');
             if(!activeSelectedChatTargetUserId && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
         };
 
         window.setOperationalChatTargetId = function(userId) {
             activeSelectedChatTargetUserId = userId; const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
-            if(userId === cachedAdminMainframeRoute.masterId) { if(titleNode) titleNode.innerText = "Mainframe Admin Shashi"; } 
-            else { const match = cachedGlobalUsersArr.find(u => u.id === userId); if(titleNode && match) titleNode.innerText = localNicknamesObj[userId] || match.clientName; }
+            if(userId === cachedAdminMainframeRoute.masterId) { if(titleNode) titleNode.innerText = "Admin"; } 
+            else { const match = cachedGlobalUsersArr.find(u => u.id === userId); if(titleNode && match) titleNode.innerText = match.clientName; }
             renderActiveChatConversationLogs(); document.querySelectorAll('.chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
         };
 
@@ -1179,9 +663,8 @@
                     const msg = data[key];
                     if((msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) || (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)) {
                         if(localStorage.getItem(`deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`)) return;
-                        const isMyMsg = (msg.sender === loggedInCustomerID);
                         let assetHTML = msg.mediaPayload ? (msg.mediaPayload.startsWith("data:audio") ? `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>` : `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`) : "";
-                        htmlCollector += `<div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})"><div>${msg.textBody}</div>${assetHTML}<div class="whatsapp-time">${msg.timestamp}</div></div>`;
+                        htmlCollector += `<div class="bubble-msg-wrapper ${(msg.sender === loggedInCustomerID) ? 'bubble-outgoing' : 'bubble-incoming'}"><div>${msg.textBody}</div>${assetHTML}<div class="whatsapp-time">${msg.timestamp}</div></div>`;
                     }
                 });
                 wrapper.innerHTML = htmlCollector || `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Encryption verified.</div>`;
@@ -1202,16 +685,6 @@
             });
         };
 
-        window.renderInteractiveDrawersContent = function() {
-            const emojiBox = document.getElementById('systemEmojiMatrixBoxNode'); if(emojiBox) emojiBox.innerHTML = systemEmojisList.map(em => `<div class="emoji-item-node" onclick="injectEmojiToInputField('${em}')">${em}</div>`).join('');
-            const gifBox = document.getElementById('mainframeGifContainerBox'); if(gifBox) gifBox.innerHTML = structuralGifMatrixList.map(gUrl => `<img class="gif-thumb-item" src="${gUrl}" onclick="transmitDirectGifMessage('${gUrl}')">`).join('');
-        };
-
-        window.injectEmojiToInputField = function(emojiText) { const input = document.getElementById('chatCoreMessageTextInput'); if(input) { input.value += emojiText; input.focus(); } };
-        window.transmitDirectGifMessage = function(gifUrl) { globalLiveChatBinaryStreamBase64 = gifUrl; document.getElementById('chatCoreMessageTextInput').value = ""; dispatchMatrixChatMessage(); };
-        window.toggleEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('mainframeGifContainerBox').classList.add('hidden'); document.getElementById('systemEmojiMatrixBoxNode').classList.toggle('hidden'); };
-        window.toggleGifMatrixDropdownPanel = function(event) { event.stopPropagation(); document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.toggle('hidden'); };
-
         window.toggleVoiceAudioRecordingEngine = function() {
             const recBtn = document.getElementById('voiceRecordingCoreTriggerBtn');
             if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
@@ -1223,9 +696,9 @@
                         reader.onload = function(e) { globalLiveChatBinaryStreamBase64 = e.target.result; dispatchMatrixChatMessage(); };
                         reader.readAsDataURL(blob); stream.getTracks().forEach(track => track.stop());
                     };
-                    nativeAudioMediaRecorderInstance.start(); recBtn.classList.add('recording-active-pulse'); document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Recording Audio...";
-                }).catch(() => { alert("Mic device mapping failed."); });
-            } else { nativeAudioMediaRecorderInstance.stop(); recBtn.classList.remove('recording-active-pulse'); document.getElementById('chatAttachmentStatusFeedback').innerText = ""; }
+                    nativeAudioMediaRecorderInstance.start(); recBtn.style.color = '#e74c3c';
+                }).catch(() => { alert("Mic hardware mapping configuration signature error."); });
+            } else { nativeAudioMediaRecorderInstance.stop(); recBtn.style.color = '#00f2fe'; }
         };
 
         window.switchAdminSubSection = function(sectionId) {
@@ -1259,7 +732,7 @@
                         <div class="giant-compiler-grid" style="grid-template-columns: 1fr 1fr 1fr;">
                             <input type="text" id="mainframeAdminIdInput" class="giant-compiler-input">
                             <input type="text" id="mainframeAdminPassInput" class="giant-compiler-input">
-                            <button onclick="executeMainframeAdminSyncRoute()" class="hud-engage-btn" style="height:58px; font-size:0.95rem;">SYNC MASTER ROUTE</button>
+                            <button onclick="executeMainframeAdminSyncRoute()" class="hud-engage-btn" style="height:58px;">SYNC MASTER ROUTE</button>
                         </div>
                     </div>
                     <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:14px; border:2px solid var(--border-glass); margin-bottom:20px;">
@@ -1273,7 +746,10 @@
                 </div>
                 <div id="adminSpyChatBlock" style="display:none; width:100%;">
                     <div class="chat-io-grid-matrix">
-                        <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
+                        <div class="chat-target-userlist-pane">
+                            <div class="whatsapp-search-box"><input type="text" id="adminWhatsAppUserSearchBar" placeholder="Search client contact pipeline..." oninput="filterAdminSpyUsersPaneEngine()"></div>
+                            <div id="adminSpyUsersListWrapper"></div>
+                        </div>
                         <div class="chat-stream-message-container">
                             <div class="chat-stream-header-bar" style="background:#202c33;"><div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:#00f2fe; font-weight:900;">Select User Pipeline Chat...</div></div></div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
@@ -1287,6 +763,13 @@
             document.getElementById('mainframeAdminIdInput').value = cachedAdminMainframeRoute.masterId || "";
             document.getElementById('mainframeAdminPassInput').value = cachedAdminMainframeRoute.masterPass || "";
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(activeAdminSubSection);
+        };
+
+        window.filterAdminSpyUsersPaneEngine = function() {
+            const query = document.getElementById('adminWhatsAppUserSearchBar').value.toLowerCase();
+            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
+                node.style.display = node.innerText.toLowerCase().includes(query) ? "flex" : "none";
+            });
         };
 
         window.createNewCustomerNode = function() {
@@ -1308,7 +791,7 @@
                                     <option value="active" ${!isDeactivated ? 'selected' : ''}>🟢 Active</option>
                                     <option value="deactivated" ${isDeactivated ? 'selected' : ''}>🔴 Deactive</option>
                                 </select>
-                                <button onclick="wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer; font-weight:900; font-family:'Orbitron'; font-size:0.85rem;">Wipe</button>
+                                <button onclick="wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer; font-weight:900; font-family:'Orbitron';">Wipe</button>
                             </div>
                         </div>
                         <div><input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" onchange="alterClientCredentialsOverrideData('${user.id}', ${index})" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; border-radius:6px; width:100%; font-weight:bold;"></div>
@@ -1327,7 +810,7 @@
                 let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:130px; border-radius:6px; margin-top:6px; border:2px solid var(--border-glass);">` : "<span>None</span>";
                 return `<div class="hud-data-card">
                       <div class="owner-name-tag-right">👤 Name: ${d.insure}</div>
-                      <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID || 'N/A'}</span></p>
+                      <p><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID || 'N/A'}</span></p>
                       <p><b>Contact:</b> <span class="admin-clickable-badge">${d.phone || 'N/A'}</span></p>
                       <p><b>Notes:</b> <span>${d.notes || 'None'}</span></p>
                       <p><b>File Node:</b> ${docPreviewHTML}</p>
@@ -1377,7 +860,7 @@
             if(currentMode === 'admin') {
                 if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) executeClusterLogin(null);
             } else {
-                let match = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
                 if(userMatch && String(userMatch.pass) === String(p)) executeClusterLogin(null);
             }
         };
@@ -1394,13 +877,12 @@
             }
         };
 
-        // --- ULTRA HIGH-PERFORMANCE LOW-LATENCY AUDIO DISPATCH ---
         window.speakNaturalHuman = function(textMessage) {
             if (!isSystemAudioEnabled) return;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel(); 
                 const syntax = new SpeechSynthesisUtterance(textMessage);
-                syntax.volume = 1.0; syntax.pitch = 1.1; syntax.rate = 1.2; // Optimized crisp human cadence speed
+                syntax.volume = 1.0; syntax.pitch = 1.1; syntax.rate = 1.25; 
                 window.speechSynthesis.speak(syntax);
             }
         };
@@ -1523,6 +1005,11 @@
         window.dispatchAdminSpyInterceptionMsg = function() {
             const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
             const newChatRef = push(ref(db, 'chats')); set(newChatRef, { sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext, textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString() }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
+        };
+
+        window.renderInteractiveDrawersContent = function() {
+            const emojiBox = document.getElementById('systemEmojiMatrixBoxNode'); if(emojiBox) emojiBox.innerHTML = systemEmojisList.map(em => `<div class="emoji-item-node" onclick="injectEmojiToInputField('${em}')">${em}</div>`).join('');
+            const gifBox = document.getElementById('mainframeGifContainerBox'); if(gifBox) gifBox.innerHTML = structuralGifMatrixList.map(gUrl => `<img class="gif-thumb-item" src="${gUrl}" onclick="transmitDirectGifMessage('${gUrl}')">`).join('');
         };
     </script>
 </body>
