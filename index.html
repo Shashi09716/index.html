@@ -372,6 +372,12 @@
         .channel-tab-btn:hover { background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); }
         .channel-tab-btn.active { background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), rgba(0, 242, 254, 0.1)); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.7); box-shadow: var(--cyber-glow); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); }
 
+        /* Admin Specific Menu Bar Override styling */
+        .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid #2ecc71; box-shadow: inset 0 0 20px rgba(46, 204, 113, 0.15); flex-wrap: wrap; }
+        .admin-nav-tab { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
+        .admin-nav-tab:hover { background: rgba(46, 204, 113, 0.1); border-color: rgba(46, 204, 113, 0.3); }
+        .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(46, 204, 113, 0.1)); color: #2ecc71; border: 2px solid rgba(46, 204, 113, 0.7); box-shadow: 0 0 20px rgba(46, 204, 113, 0.4); text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+
         /* --- CONTROL MATRIX FOOTER SYSTEM --- */
         .matrix-system-controller-dock { margin-top: 20px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 20px; border-radius: 10px; border: 1px solid var(--border-glass); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.8rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
@@ -424,10 +430,6 @@
 
         .hidden { display: none !important; }
         .text-left { text-align: left; }
-
-        .admin-category-navbar { display: flex; gap: 10px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; border: 2px solid var(--border-glass); }
-        .admin-nav-tab { flex: 1; padding: 16px 6px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; text-align: center; }
-        .admin-nav-tab.active { background: rgba(241,196,15,0.25); color: #f1c40f; border: 2px solid rgba(241,196,15,0.5); box-shadow: 0 0 15px rgba(241,196,15,0.2); }
 
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
@@ -835,7 +837,7 @@
 
             <div class="matrix-system-controller-dock">
                 <div class="auto-pulse-refresh-badge">
-                    <span class="refresh-spinner-node"></span> MATRIX MATRIX MATRIX RETRIEVAL ENGINE ACTIVE (2S AUTOMATION SYNC)
+                    <span class="refresh-spinner-node"></span> MATRIX RETRIEVAL ENGINE ACTIVE (2S AUTOMATION SYNC)
                 </div>
             </div>
 
@@ -1085,7 +1087,7 @@
             });
         };
 
-        // --- CHANNELS MANAGER ---
+        // --- CHANNELS MANAGER FIXED ENGINE ---
         window.switchCustomerChannel = function(channelId) {
             activeCustomerWorkspaceChannel = channelId;
             localStorage.setItem('nexus_active_chan_route', channelId);
@@ -1101,19 +1103,19 @@
             document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
             
             if(channelId === 'upload') {
-                document.getElementById('btnChannelUpload').add('active');
+                document.getElementById('btnChannelUpload').classList.add('active');
                 document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
                 renderCustomerLiveTracker();
             } else if(channelId === 'notes') {
-                document.getElementById('btnChannelNotes').add('active');
+                document.getElementById('btnChannelNotes').classList.add('active');
                 document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
                 wipeNoteInterfaceToBlankTrigger();
                 fetchRealtimeNotesCloudData();
             } else if(channelId === 'gaming') {
-                document.getElementById('btnChannelGaming').add('active');
+                document.getElementById('btnChannelGaming').classList.add('active');
                 document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
-            } else {
-                document.getElementById('btnChannelChat').add('active');
+            } else if(channelId === 'chat') {
+                document.getElementById('btnChannelChat').classList.add('active');
                 document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
                 initializeCrossLinkChatPanel();
                 renderInteractiveDrawersContent();
@@ -2009,7 +2011,6 @@
         };
 
         window.generatePlaceholderLabelsForStructureFrameworks = function() {
-            // Internal form setup configurations to maintain exact markup labels matching values
             const structures = [
                 { id: 'regNo', text: 'Registration Number (Optional)' },
                 { id: 'insurerName', text: 'Insurer Name *' },
@@ -2133,7 +2134,7 @@
             const menu = document.createElement('div');
             menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
-            menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
+            menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messagePacketKey || messageKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
             document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
             document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
         };
@@ -2177,11 +2178,9 @@
         // --- HIGH ADVANCED BACKGROUND SEAMLESS AUTO REFRESHER ENGINE ---
         setInterval(() => {
             if (loggedInCustomerID) {
-                // Background me data silently update karta hai bina layout ya form fields text ko block kiye
                 if (activeCustomerWorkspaceChannel === 'upload') {
                     renderCustomerLiveTracker();
                 } else if (activeCustomerWorkspaceChannel === 'notes') {
-                    // Agar chat input focus me nahi hai, tabhi silent updates hotay hain render stack par
                     if (document.activeElement !== document.getElementById('richNoteWritingPadEditable')) {
                         fetchRealtimeNotesCloudData();
                     }
