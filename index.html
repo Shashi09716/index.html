@@ -23,11 +23,12 @@
             --chat-bg: #090f14;
             --input-bg: #010610;
             --accent-yellow: #f1c40f;
-            --cyber-glow: 0 0 20px rgba(0, 242, 254, 0.6);
+            --cyber-glow: 0 0 25px rgba(0, 242, 254, 0.6);
             --card-surface: rgba(4, 14, 33, 0.7);
+            --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
         }
 
-        /* LIGHT THEME CONSTRAST AND VISIBILITY COMPLETED OVERHAUL */
+        /* LIGHT THEME CONTRAST AND VISIBILITY COMPLETED OVERHAUL */
         body.light-theme-active {
             --bg-prime: #f8fafc;
             --panel-glass: #ffffff;
@@ -44,6 +45,7 @@
             --card-border-fix: #0f172a;
             --card-badge-fix: #1e293b;
             --note-card-bg: #ffffff;
+            --lamp-chamak: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         * {
@@ -165,9 +167,9 @@
         }
 
         @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.85); }
-            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.85); }
-            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.85); }
+            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); }
+            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); }
+            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); }
         }
 
         .cinema-stage.activated {
@@ -176,87 +178,88 @@
             box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2);
         }
 
+        /* --- UPGRADED HIGH-LUMINOSITY COLD LAMP DEVICE --- */
         .cyber-lamp-core {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             z-index: 10;
-            transform: translateX(0) scale(1.05);
+            transform: translateX(0) scale(1.1);
             transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
 
         .metallic-shutter-head {
-            width: 240px;
-            height: 150px;
-            background: linear-gradient(145deg, #182232, #05070a);
-            border-radius: 100px 100px 40px 40px;
+            width: 260px;
+            height: 160px;
+            background: linear-gradient(145deg, #1f2d42, #02050a);
+            border-radius: 130px 130px 50px 50px;
             position: relative;
             border: 3px solid #00f2fe;
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.5);
+            box-shadow: var(--cyber-glow), inset 0 0 20px rgba(0, 242, 254, 0.4);
             z-index: 5;
             overflow: hidden;
         }
 
-        .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: 0 0 75px var(--lamp-shadow); }
+        .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
 
         .mechanical-gate {
             position: absolute;
             top: 25px;
-            width: 60px;
-            height: 90px;
-            background: linear-gradient(145deg, #0f141d, #1a2333);
-            border: 2px solid #2c3b54;
+            width: 65px;
+            height: 100px;
+            background: linear-gradient(145deg, #0a0d14, #222d42);
+            border: 2px solid #3b4e6e;
             transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
             z-index: 6;
         }
 
-        .gate-left { left: 45px; border-radius: 12px 0 0 12px; }
-        .gate-right { right: 45px; border-radius: 0 12px 12px 0; }
-        .cinema-stage.activated .gate-left { transform: translateX(-55px); opacity: 0.1; }
-        .cinema-stage.activated .gate-right { transform: translateX(55px); opacity: 0.1; }
+        .gate-left { left: 50px; border-radius: 14px 0 0 14px; }
+        .gate-right { right: 50px; border-radius: 0 14px 14px 0; }
+        .cinema-stage.activated .gate-left { transform: translateX(-65px); opacity: 0.05; }
+        .cinema-stage.activated .gate-right { transform: translateX(65px); opacity: 0.05; }
 
         .blinding-core-light {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            background: #ffffff;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 70%);
             border-radius: 50%;
             left: 50%;
-            top: 30px;
+            top: 25px;
             transform: translateX(-50%);
-            filter: blur(6px);
+            filter: blur(4px);
             opacity: 0;
-            transition: opacity 0.4s ease;
-            box-shadow: 0 0 50px #ffffff;
+            transition: opacity 0.4s ease, background 0.4s ease;
+            box-shadow: 0 0 60px #ffffff, 0 0 120px var(--lamp-color);
         }
         .cinema-stage.activated .blinding-core-light { opacity: 1; }
 
-        .hydraulic-stem { width: 16px; height: 240px; background: linear-gradient(90deg, #182232, #0b0f17, #2d3d56); z-index: 3; position: relative; }
-        .laser-conduit { position: absolute; width: 4px; height: 100%; background: #18202c; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
-        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 30px var(--lamp-color); }
+        .hydraulic-stem { width: 22px; height: 240px; background: linear-gradient(90deg, #222e40, #080b12, #394b66); z-index: 3; position: relative; border-radius: 4px; }
+        .laser-conduit { position: absolute; width: 6px; height: 100%; background: #131a24; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
+        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 35px var(--lamp-color); }
 
-        .brushed-heavy-base { width: 200px; height: 28px; background: linear-gradient(180deg, #1e293b, #06090f); border-radius: 50% / 25%; border: 2px solid #334155; z-index: 4; }
+        .brushed-heavy-base { width: 220px; height: 34px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
 
         .volumetric-beam {
             position: absolute;
-            top: 120px;
-            width: 100px;
+            top: 130px;
+            width: 120px;
             height: 0;
-            background: linear-gradient(to bottom, var(--lamp-color) 0%, rgba(255, 255, 255, 0.35) 25%, transparent 100%);
-            clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
             z-index: 2;
             pointer-events: none;
             opacity: 0;
             transition: height 0.9s ease, width 0.9s ease, opacity 0.3s;
         }
-        .cinema-stage.activated .volumetric-beam { opacity: 0.5; height: 490px; width: 760px; }
+        .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
-        .quantum-cord { position: absolute; top: 140px; left: 195px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
-        .beaded-wire { width: 4px; height: 160px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
-        .luminescent-node { width: 24px; height: 24px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -10px; box-shadow: 0 0 30px #f1c40f; }
+        .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
+        .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
+        .luminescent-node { width: 26px; height: 26px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -11px; box-shadow: 0 0 35px #f1c40f; }
 
         .audio-toggle-switch {
             position: fixed;
@@ -363,29 +366,38 @@
         .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
 
-        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); flex-wrap: wrap; }
-        .channel-tab-btn { flex: 1; min-width: 130px; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; }
-        .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: var(--cyber-glow); }
+        /* --- UPGRADED MASTER MENU NAVIGATION HUB --- */
+        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.15); flex-wrap: wrap; }
+        .channel-tab-btn { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; border: 2px solid transparent; }
+        .channel-tab-btn:hover { background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); }
+        .channel-tab-btn.active { background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), rgba(0, 242, 254, 0.1)); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.7); box-shadow: var(--cyber-glow); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); }
+
+        /* --- CONTROL MATRIX FOOTER SYSTEM --- */
+        .matrix-system-controller-dock { margin-top: 20px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 20px; border-radius: 10px; border: 1px solid var(--border-glass); }
+        .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.8rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .refresh-spinner-node { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
+
+        @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(1.4); opacity: 1; } }
 
         .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .full-width-field { grid-column: span 2; }
 
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(231,76,60,0.3); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
-         
+           
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1); }
         
         .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; }
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
-         
+           
         .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.7)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.03); box-shadow: 0 0 10px #f1c40f; }
-         
+           
         .hud-data-card .owner-name-tag-right {
             position: absolute;
             top: 20px;
@@ -434,6 +446,7 @@
 
         .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 10px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; }
+        .note-structural-card * { text-align: left !important; }
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
 
         /* --- THE FUTURE SANDBOX GAMING PIPELINE --- */
@@ -623,7 +636,7 @@
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -636,26 +649,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -671,14 +684,14 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
             </div>
-                                                                                                    
+                                                                                                                                    
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -697,49 +710,37 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
-                        <label>Registration Number (Optional)</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="insurerName" required placeholder=" ">
-                        <label>Insurer Name *</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="policyNo" placeholder=" ">
-                        <label>Policy Number (Optional)</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        <label>Contact Number *</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     <div class="hud-input-cluster full-width-field">
                         <input type="email" id="email" placeholder=" ">
-                        <label>Email Address (Optional)</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     <div class="hud-input-cluster full-width-field">
                         <textarea id="notesReal" placeholder=" "></textarea>
-                        <label>Additional System Notes (Optional)</label>
-                        <div class="neon-glow-underline"></div>
                     </div>
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>
             </div>
 
@@ -750,11 +751,9 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;">
                             <input type="date" id="noteManualDateSelector">
-                            <label style="top:-14px; font-family:'Orbitron'; font-size:0.85rem; background:var(--bg-prime); padding:0 6px; color:#f1c40f;">System Log Date Mapping</label>
                         </div>
                         <div class="hud-input-cluster" style="margin-bottom:0;">
                             <input type="time" id="noteManualTimeSelector">
-                            <label style="top:-14px; font-family:'Orbitron'; font-size:0.85rem; background:var(--bg-prime); padding:0 6px; color:#f1c40f;">System Log Time Mapping</label>
                         </div>
                     </div>
 
@@ -834,24 +833,30 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:15px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
+            <div class="matrix-system-controller-dock">
+                <div class="auto-pulse-refresh-badge">
+                    <span class="refresh-spinner-node"></span> MATRIX MATRIX MATRIX RETRIEVAL ENGINE ACTIVE (2S AUTOMATION SYNC)
+                </div>
+            </div>
+
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>
         </div>
     </div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             <div class="panel-header-flex">
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
             </div>
-                                                                                                                                                                                
+                                                                                                                                                                                                                                
             <div id="customerCardsContainer"></div>
         </div>
     </div>
@@ -1096,19 +1101,19 @@
             document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
             
             if(channelId === 'upload') {
-                document.getElementById('btnChannelUpload').classList.add('active');
+                document.getElementById('btnChannelUpload').add('active');
                 document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
                 renderCustomerLiveTracker();
             } else if(channelId === 'notes') {
-                document.getElementById('btnChannelNotes').classList.add('active');
+                document.getElementById('btnChannelNotes').add('active');
                 document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
                 wipeNoteInterfaceToBlankTrigger();
                 fetchRealtimeNotesCloudData();
             } else if(channelId === 'gaming') {
-                document.getElementById('btnChannelGaming').classList.add('active');
+                document.getElementById('btnChannelGaming').add('active');
                 document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
             } else {
-                document.getElementById('btnChannelChat').classList.add('active');
+                document.getElementById('btnChannelChat').add('active');
                 document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
                 initializeCrossLinkChatPanel();
                 renderInteractiveDrawersContent();
@@ -2003,6 +2008,29 @@
             if(targetPol) remove(ref(db, 'policies/' + targetPol.id));
         };
 
+        window.generatePlaceholderLabelsForStructureFrameworks = function() {
+            // Internal form setup configurations to maintain exact markup labels matching values
+            const structures = [
+                { id: 'regNo', text: 'Registration Number (Optional)' },
+                { id: 'insurerName', text: 'Insurer Name *' },
+                { id: 'policyNo', text: 'Policy Number (Optional)' },
+                { id: 'contactNo', text: 'Contact Number *' },
+                { id: 'email', text: 'Email Address (Optional)' },
+                { id: 'notesReal', text: 'Additional System Notes (Optional)' }
+            ];
+            structures.forEach(node => {
+                const targetNode = document.getElementById(node.id);
+                if (targetNode && !targetNode.nextElementSibling?.matches('label')) {
+                    const label = document.createElement('label');
+                    label.innerText = node.text;
+                    targetNode.parentNode.insertBefore(label, targetNode.nextSibling);
+                    const underline = document.createElement('div');
+                    underline.className = 'neon-glow-underline';
+                    targetNode.parentNode.insertBefore(underline, label.nextSibling);
+                }
+            });
+        };
+
         window.filterCardsEngine = function(){ 
             const searchInputNode = document.getElementById('searchInput'); if(!searchInputNode) return; 
             let q = searchInputNode.value.toLowerCase(); 
@@ -2107,7 +2135,7 @@
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
             menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
             document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
-            document.addEventListener('click', removeContextDropdownMenuNode, { once: true });
+            document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
         };
 
         function removeContextDropdownMenuNode() { const overlay = document.getElementById('dynamicMsgContextNodeOverlay'); if(overlay) overlay.remove(); }
@@ -2145,6 +2173,35 @@
                 if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
             }
         };
+
+        // --- HIGH ADVANCED BACKGROUND SEAMLESS AUTO REFRESHER ENGINE ---
+        setInterval(() => {
+            if (loggedInCustomerID) {
+                // Background me data silently update karta hai bina layout ya form fields text ko block kiye
+                if (activeCustomerWorkspaceChannel === 'upload') {
+                    renderCustomerLiveTracker();
+                } else if (activeCustomerWorkspaceChannel === 'notes') {
+                    // Agar chat input focus me nahi hai, tabhi silent updates hotay hain render stack par
+                    if (document.activeElement !== document.getElementById('richNoteWritingPadEditable')) {
+                        fetchRealtimeNotesCloudData();
+                    }
+                } else if (activeCustomerWorkspaceChannel === 'chat') {
+                    if (document.activeElement !== document.getElementById('chatCoreMessageTextInput')) {
+                        renderActiveChatConversationLogs();
+                    }
+                }
+            }
+            if (currentMode === 'admin' && !document.getElementById('adminDashboard').classList.contains('hidden')) {
+                if (activeAdminSubSection === 'spychat') {
+                    if (document.activeElement !== document.getElementById('adminSpyResponseInput')) {
+                        renderAdminSpyChatConsoleLogs();
+                    }
+                }
+            }
+        }, 2000);
+
+        // Pre-injection of markup frameworks on initiation
+        setTimeout(() => { generatePlaceholderLabelsForStructureFrameworks(); }, 1000);
     </script>
 </body>
 </html>
