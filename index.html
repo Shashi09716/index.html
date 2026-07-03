@@ -23,8 +23,8 @@
             --chat-bg: #090f14;
             --input-bg: #010610;
             --accent-yellow: #f1c40f;
-            --cyber-glow: 0 0 30px rgba(0, 242, 254, 0.8), 0 0 15px rgba(255, 0, 127, 0.4);
-            --card-surface: rgba(4, 14, 33, 0.7);
+            --cyber-glow: 0 0 35px rgba(0, 242, 254, 0.8), 0 0 15px rgba(255, 0, 127, 0.4);
+            --card-surface: rgba(4, 14, 33, 0.85);
         }
 
         body.light-theme-active {
@@ -61,6 +61,7 @@
             color: var(--text-main);
         }
 
+        /* --- FIXED BRANDING HEADER --- */
         .shashi-header-brand-block {
             position: fixed;
             top: 20px;
@@ -71,7 +72,6 @@
             text-align: center;
             pointer-events: none;
             width: auto;
-            transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 0.5s ease;
         }
         
         .brand-main-title {
@@ -131,10 +131,11 @@
 
         @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
 
+        /* --- THE LUXURY LAMP OVERLAY --- */
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.35) 0%, rgba(2, 5, 14, 1) 80%); box-shadow: inset 0 0 140px rgba(0, 242, 254, 0.35); }
 
-        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: translateX(0) scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
 
         .metallic-shutter-head { width: 240px; height: 150px; background: linear-gradient(145deg, #182232, #05070a); border-radius: 100px 100px 40px 40px; position: relative; border: 3px solid #00f2fe; box-shadow: 0 0 50px rgba(0, 242, 254, 0.6); z-index: 5; overflow: hidden; }
@@ -161,9 +162,8 @@
         .beaded-wire { width: 4px; height: 160px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
         .luminescent-node { width: 24px; height: 24px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -10px; box-shadow: 0 0 30px #f1c40f; }
 
-        /* --- HUD TERMINAL CORE OVERHAUL --- */
+        /* --- HUD PORTAL TERMINAL OVERHAUL --- */
         .hud-glass-terminal { position: absolute; left: 50%; transform: translateX(-50%) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: 0 40px 100px rgba(0,0,0,0.8); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; }
-        .cinema-stage.activated .hud-glass-terminal { transform: translateX(-50%) scale(1); opacity: 1; }
 
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
@@ -174,7 +174,6 @@
         .hud-tab { flex: 1; padding: 14px; background: transparent; border: none; color: var(--text-sub); font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap; }
         .hud-tab.active { background: rgba(241,196,15,0.25); color: #f1c40f; border: 2px solid rgba(241,196,15,0.5); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; }
 
-        /* --- WORKSPACE CORE CONTROLS --- */
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; }
         .hud-input-cluster textarea { height: 100px; resize: none; }
@@ -184,11 +183,56 @@
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,
         .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -14px; left: 10px; background: var(--bg-prime); padding: 2px 8px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; font-weight: 900; }
 
+        .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
+        .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
+
+        .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 4px 15px rgba(241,196,15,0.3); }
+        .hud-engage-btn:hover { box-shadow: 0 0 40px rgba(241, 196, 15, 0.8); transform: translateY(-2px); }
+
+        /* --- DASHBOARD CORE WORKSPACE MATRIX --- */
+        .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 40px; padding-top: 100px; }
+        .hud-container-panel { background: var(--panel-glass); border: 3px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 20px; width: 100%; max-width: 1280px; box-shadow: 0 20px 80px rgba(0, 242, 254, 0.15), inset 0 0 30px rgba(0, 242, 254, 0.05); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; }
+
+        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 3px solid var(--border-glass); padding-bottom: 18px; gap: 10px; }
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
+        .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
+
+        .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; border: 2px solid var(--border-glass); box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); flex-wrap: wrap; }
+        .channel-tab-btn { flex: 1; min-width: 130px; padding: 16px 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: bold; cursor: pointer; border-radius: 8px; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .channel-tab-btn.active { background: rgba(0, 242, 254, 0.25); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: var(--cyber-glow); }
+
+        .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .full-width-field { grid-column: span 2; }
+
+        .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(231,76,60,0.3); letter-spacing: 1px; }
+        .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
+        .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; }
+        
+        .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; }
+        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+        .hud-data-card { background: var(--card-surface); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
+        .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
+
+        .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; }
+        .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); }
+
+        .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; }
+        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+        .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 2px solid rgba(231,76,60,0.5); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 5px; }
+
+        /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
         .notes-matrix-shell-card { background: var(--card-surface); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
         .notes-writing-pad-container { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 10px; border: 2px solid var(--border-glass); overflow: hidden; }
         .notes-input-rich-pad { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
         .notes-ribbon-toolbar { background: rgba(0,0,0,0.4); padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; }
+        body.light-theme-active .notes-ribbon-toolbar { background: rgba(0,0,0,0.05); }
         .note-utility-btn { background: rgba(4,15,36,0.1); border: 2px solid var(--border-glass); color: var(--text-main); padding: 8px 14px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .note-utility-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 12px #00f2fe; }
 
         .note-timeline-logs-stack { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-cloud-row-card { background: var(--input-bg); border-left: 6px solid var(--neon-pink); padding: 18px; border-radius: 10px; border: 1px solid var(--border-glass); position: relative; text-align: left; }
@@ -209,48 +253,38 @@
         
         .chat-user-item-node { padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; transition: background 0.2s; position: relative; }
         .chat-user-item-node.online-chamak-active { border-right: 5px solid #2ecc71; background: rgba(46, 204, 113, 0.05); }
-
         .chat-user-item-node:hover { background: rgba(255,255,255,0.08); }
         .chat-user-item-node.active-chat-target { background: rgba(0, 242, 254, 0.25) !important; border-left: 6px solid #00f2fe; }
         
         .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
-        .whatsapp-avatar:hover { transform: scale(1.08); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; }
         .whatsapp-user-name { font-weight: bold; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.8rem; color: #00f2fe; font-family: monospace; font-weight: bold; }
 
-        .bubble-msg-wrapper { max-width: 65%; padding: 12px 16px; border-radius: 12px; font-size: 1rem; line-height: 1.4; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.4); font-weight: 600; transition: transform 0.2s; cursor: pointer; word-wrap: break-word; }
+        .bubble-msg-wrapper { max-width: 65%; padding: 12px 16px; border-radius: 12px; font-size: 1rem; line-height: 1.4; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.4); font-weight: 600; word-wrap: break-word; }
         .bubble-outgoing { background: #005c4b; color: #ffffff; align-self: flex-end; border-top-right-radius: 0; border: 1px solid rgba(0,242,254,0.2); }
         .bubble-incoming { background: #202c33; color: #ffffff; align-self: flex-start; border-top-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
-        
         body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; }
         body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; }
 
-        .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
-
+        .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; }
         .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; }
 
         .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; }
         .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; }
 
-        .chat-interface-footer-inputs { padding: 14px 20px; background: rgba(32, 44, 51, 0.98); border-top: 2px solid var(--border-glass); display: flex; gap: 14px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
-        body.light-theme-active .chat-interface-footer-inputs { background: #efeae2; }
+        .chat-interface-footer-inputs { padding: 14px 20px; background: rgba(32, 44, 51, 0.98); border-top: 2px solid var(--border-glass); display: flex; gap: 14px; align-items: center; z-index: 10; margin-top: auto; }
         .whatsapp-input-field { flex: 1; padding: 14px 20px; background: rgba(42, 57, 66, 0.9); border: 2px solid var(--border-glass); border-radius: 10px; color: #fff; outline: none; font-size: 1.05rem; font-family: 'Rajdhani', sans-serif; font-weight: 700; }
         body.light-theme-active .whatsapp-input-field { background: #ffffff; color: #000; }
-        
         .whatsapp-circle-btn { width: 44px; height: 44px; background: transparent; border: none; color: #00f2fe; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
         .admin-status-toggle-select { padding: 6px 10px; background: #02050e; color: #2ecc71; border: 2px solid var(--border-glass); border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; }
-        .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
-
         .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #1f2c34; border: 2px solid var(--border-glass); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 100005; width: 210px; display: flex; flex-direction: column; padding: 6px 0; }
         body.light-theme-active .whatsapp-avatar-context-dropdown, body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        
         .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 12px 16px; background: transparent; border: none; color: #ffffff; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; text-align: left; cursor: pointer; width: 100%; }
         body.light-theme-active .avatar-dropdown-action-row, body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
-        .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
 
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(1, 3, 10, 0.85); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); }
         .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 18px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); }
@@ -324,7 +358,7 @@
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI SECURITY: LIVE</div>
-                <div class="hud-status-chip cyan-pulse">FIREWALL: LOGIC</div>
+                <div class="hud-status-chip cyan-pulse">FIREWALL: PASS</div>
             </div>
                                                                                                                                                                                                                                                                                         
             <h1 class="hud-logo">Welcome</h1>
@@ -406,7 +440,7 @@
                     </div>
                     <div class="notes-writing-pad-container"><div id="richNoteWritingPadEditable" class="notes-input-rich-pad" contenteditable="true"></div></div>
                     <div style="display:flex; gap:15px; margin-top:20px;">
-                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="dispatchCompiledNoteToCloudMatrix()">TRANSMIT Secure NOTE PACKET</button>
+                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="dispatchCompiledNoteToCloudMatrix()">TRANSMIT NOTE PACKET</button>
                         <button class="abort-btn" style="flex:1; padding:18px; font-family:'Orbitron';" onclick="wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE (BLANK)</button>
                     </div>
                     <div class="note-timeline-logs-stack" id="realtimeCloudNotesViewStack"></div>
@@ -416,7 +450,7 @@
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
                     <h2 class="neon-cyan-text" style="font-size: 1.8rem;">⚡ FUTURE NEXUS GAMING COLD REPOSITORY BAR</h2>
-                    <div class="gaming-empty-sandbox-container"><span class="gaming-pulse-node-core"></span>[ MAIN REPOSITORY IDLE: FUTURE GAME REPOSITORY ASSIGNED ]</div>
+                    <div class="gaming-empty-sandbox-container"><span class="gaming-pulse-node-core"></span>[ MAIN REPOSITORY IDLE: FUTURE GAME MODULE READY ]</div>
                 </div>
             </div>
 
@@ -522,34 +556,14 @@
             "https://media.giphy.com/media/5ftsmI67WxheqA7RSU/giphy.gif", "https://media.giphy.com/media/t3sZwc69UBFIY/giphy.gif",
             "https://media.giphy.com/media/111ebonMs9xYfC/giphy.gif", "https://media.giphy.com/media/26AHAw0aMMWwLEB68/giphy.gif",
             "https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif", "https://media.giphy.com/media/HTe36hKbaE73a/giphy.gif",
-            "https://media.giphy.com/media/eOXMUp5WZfnp6/giphy.gif", "https://media.giphy.com/media/yr7n0u3qzO9nG/giphy.gif",
-            "https://media.giphy.com/media/3o72F8t9TDi2xVnxOE/giphy.gif", "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif",
-            "https://media.giphy.com/media/l0HlUxcWRsqROfXyM/giphy.gif", "https://media.giphy.com/media/X38toIoZ6TYvC/giphy.gif",
-            "https://media.giphy.com/media/XIqCQx02E1U9W/giphy.gif", "https://media.giphy.com/media/chzz1FQgqhytWRWbp3/giphy.gif",
-            "https://media.giphy.com/media/PPi5c8l8WDY7if1L8z/giphy.gif", "https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif",
-            "https://media.giphy.com/media/v0eHX3n28wvoQ/giphy.gif", "https://media.giphy.com/media/wkW0maGDN1eSc/giphy.gif",
-            "https://media.giphy.com/media/g96QRNjqyQNgc/giphy.gif", "https://media.giphy.com/media/Initial9UnRMAwK38Cg/giphy.gif",
-            "https://media.giphy.com/media/CaiVJu559MBwI/giphy.gif", "https://media.giphy.com/media/87hmScXLJJks0/giphy.gif",
-            "https://media.giphy.com/media/unQ3IJU2RG7DO/giphy.gif", "https://media.giphy.com/media/l4GOM8uEisC0cr4zM/giphy.gif",
-            "https://media.giphy.com/media/Z9X40e90p62U02W8u7/giphy.gif", "https://media.giphy.com/media/S6TEoUBJuGfQc/giphy.gif",
-            "https://media.giphy.com/media/B2vBunhgt9Pc4/giphy.gif", "https://media.giphy.com/media/gREYvGfbcSPh6/giphy.gif",
-            "https://media.giphy.com/media/26ufcVAp3AiJJsrIs/giphy.gif", "https://media.giphy.com/media/l2Jejt7O0s2qAohPO/giphy.gif",
-            "https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif", "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
-            "https://media.giphy.com/media/V8PO3o4IIPgCiIMHXT/giphy.gif", "https://media.giphy.com/media/F9JEZCy9wDSq4/giphy.gif",
-            "https://media.giphy.com/media/3xz2BCe5jn2j4OM9ZS/giphy.gif", "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
-            "https://media.giphy.com/media/12m6YBQBV9PpsA/giphy.gif", "https://media.giphy.com/media/9w47bI6VunLwY/giphy.gif",
-            "https://media.giphy.com/media/G1fM40BFthvP2/giphy.gif", "https://media.giphy.com/media/BY8ORoRpkyp1K/giphy.gif",
-            "https://media.giphy.com/media/scuMhnMRAMoA8/giphy.gif", "https://media.giphy.com/media/7NoNw4pMNTvgc/giphy.gif",
-            "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif", "https://media.giphy.com/media/A8NkSPltAl6De/giphy.gif",
-            "https://media.giphy.com/media/O9x0VpYgMAtfG/giphy.gif", "https://media.giphy.com/media/9AIelkWMW6eqc/giphy.gif",
-            "https://media.giphy.com/media/F3gn6g3fIulTq/giphy.gif", "https://media.giphy.com/media/XZHeMrc4D8Hni/giphy.gif"
+            "https://media.giphy.com/media/eOXMUp5WZfnp6/giphy.gif", "https://media.giphy.com/media/yr7n0u3qzO9nG/giphy.gif"
         ];
-        const systemEmojisList = ["😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","😗","😙","😚","😋","😛","😝","😜","🤪","🤨","🧐","🤓","😎","🤩","🥳","😏","😒","😞","😔","😟","😕","🙁","☹","😣","😖","😫","😩","🥺","😢","😭","😤","😠","😡","🤬","🤯","😳","🥵","🥶","😱","😨","😰","😥","😓","🤗","🤔","🤭","🤫","🤥","😶","😐","😑","😬","🙄","😯","😦","😧","😮","😲","🥱","😴","🤤","😪","😵","🤐","🥴","🤢","🤮","🤧","😷","🤒","🤕","🤑","🤠","😈","👿","👹","👺","🤡","💩","💀","☠","👽","👾","🤖","🎃","😺","😸","😹","😻","😼","😽","🙀","😿","😾","👋","🤚","🖐","✋","🖖","👌","🤏","✌","🤞","🤟","🤘","🤙","👈","👉","👆","🖕","👇","☝","👍","👎","✊","👊","🤛","🤜","👏","🙌","👐","🤲","🤝","🙏","✍","💅","🤳","💪","🦾","🧠","🧡","💛","💚","💙","💜","🖤","🤍","🤎","💔","🔥","✨","🎉","💯","✔","❌","🚨","⏳","🔒","🎈","🚀","👑"];
+        const systemEmojisList = ["😀","😃","😄","😁","😆","😅","😂","🤣","😊","🔥","✨","🎉","💯","✔","❌"];
 
-        // --- INTERNAL SYSTEM HOT REFRESH TERMINAL ---
+        // --- FLASH REFRESH FUNCTION ---
         window.triggerInternalSystemHotRefresh = function() {
             playSynthesizedSound(980, 'sine', 0.08);
-            speakNaturalHuman("Refreshing system database layers smoothly.");
+            speakNaturalHuman("Refreshing structural log system layer database stacks inside core.");
             get(ref(db, 'users')).then(snap => { if(snap.exists()) cachedGlobalUsersArr = Object.values(snap.val()); });
             get(ref(db, 'policies')).then(snap => { if(snap.exists()) cachedGlobalPolicyArr = Object.values(snap.val()); });
             if(currentMode === 'admin') { loadAdminSubmissions(); } else {
@@ -559,7 +573,7 @@
             }
         };
 
-        // --- WHATSAPP CLIENT FILTERING LOCAL LIST ---
+        // --- FILTER CLIENT PANEL SIDEBAR ---
         window.executeWhatsAppContactFilteringLocal = function() {
             const query = document.getElementById('whatsappContactSearchField').value.toLowerCase();
             document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
@@ -574,7 +588,7 @@
             });
         };
 
-        // --- QUANTUM RICH NOTES SYSTEM METADATA ENGINE ---
+        // --- DYNAMIC QUANTUM RICH NOTES LOGIC MODULE ---
         function syncRealtimeNoteDateTimeSelectors() {
             const currentEpoch = new Date();
             const combinedString = `${currentEpoch.getFullYear()}-${String(currentEpoch.getMonth() + 1).padStart(2, '0')}-${String(currentEpoch.getDate()).padStart(2, '0')}T${String(currentEpoch.getHours()).padStart(2, '0')}:${String(currentEpoch.getMinutes()).padStart(2, '0')}`;
@@ -602,22 +616,19 @@
                 navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
                     notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj);
                     notesAudioChunksCollectorArr = []; notesRecordingStartEpoch = Date.now();
-
                     notesVoiceTimerIntervalTracker = setInterval(() => {
                         if (timerLogNode) timerLogNode.innerText = `⏱️ [ REC: ${Math.floor((Date.now() - notesRecordingStartEpoch) / 1000)}s ]`;
                     }, 1000);
-
                     notesMediaRecorderInstance.ondataavailable = packet => { if (packet.data.size > 0) notesAudioChunksCollectorArr.push(packet.data); };
                     notesMediaRecorderInstance.onstop = () => {
                         clearInterval(notesVoiceTimerIntervalTracker);
                         const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
                         autoGeneratedVoiceDurationString = `${computationDuration}s`;
-                        
                         const binaryAudioBlob = new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' });
                         const storageReader = new FileReader();
                         storageReader.onload = function(readerEvent) {
                             notesVoicePayloadBase64Node = readerEvent.target.result;
-                            if (timerLogNode) timerLogNode.innerText = `✔ Voice Saved`;
+                            if (timerLogNode) timerLogNode.innerText = `✔ Embedded Recording`;
                         };
                         storageReader.readAsDataURL(binaryAudioBlob);
                         mediaStreamObj.getTracks().forEach(track => track.stop());
@@ -625,7 +636,7 @@
                     notesMediaRecorderInstance.start();
                     if (pulseNode) pulseNode.classList.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Mic hardware error."); });
+                }).catch(() => { alert("Mic device missing."); });
             } else {
                 notesMediaRecorderInstance.stop();
                 if (pulseNode) pulseNode.classList.add('hidden');
@@ -642,7 +653,7 @@
             set(cloudNoteReferenceNode, {
                 noteId: cloudNoteReferenceNode.key,
                 ownerId: loggedInCustomerID,
-                richTextHtml: parsedHtmlPayload || "[ Audio Node ]",
+                richTextHtml: parsedHtmlPayload || "[ Secure Voice Note Packet ]",
                 voicePayloadB64: notesVoicePayloadBase64Node,
                 timestampValue: combinedDateTimeString.replace("T", " @ "),
                 voiceDuration: autoGeneratedVoiceDurationString,
@@ -667,7 +678,7 @@
 
         window.executeCloudNotePurgeMatrix = function(noteIdSignature) { remove(ref(db, `users_notes/${loggedInCustomerID}/${noteIdSignature}`)).then(() => { fetchRealtimeNotesCloudData(); }); };
 
-        // --- BACKEND CHANNELS OVERVIEW ROUTING MAPS ---
+        // --- BACKEND CHANNELS OVERVIEW CHANNELS MATRIX MANAGER ---
         window.switchCustomerChannel = function(channelId) {
             activeCustomerWorkspaceChannel = channelId; localStorage.setItem('nexus_active_chan_route', channelId);
             document.getElementById('btnChannelUpload').classList.remove('active'); document.getElementById('btnChannelNotes').classList.remove('active'); document.getElementById('btnChannelGaming').classList.remove('active'); document.getElementById('btnChannelChat').classList.remove('active');
@@ -765,7 +776,7 @@
                         reader.readAsDataURL(blob); stream.getTracks().forEach(track => track.stop());
                     };
                     nativeAudioMediaRecorderInstance.start(); recBtn.classList.add('recording-active-pulse');
-                }).catch(() => { alert("Mic rejected."); });
+                }).catch(() => { alert("Mic unavailable."); });
             } else { nativeAudioMediaRecorderInstance.stop(); recBtn.classList.remove('recording-active-pulse'); }
         };
 
@@ -1094,7 +1105,7 @@
         window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl, epochTimeNodeVal) {
             event.stopPropagation(); removeContextDropdownMenuNode(); const menu = document.createElement('div'); menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
-            menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn" style='color:#e74c3c;' onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
+            menu.innerHTML = `${downloadBtnHTML}<button class="dropdown-action-row-btn" style='color:#e74c3c;' onclick="executeStructuralDeletionSelectionMatrix('${messagePacketKey}', ${epochTimeNodeVal})">❌ Delete</button>`;
             document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
             document.addEventListener('click', removeContextDropdownMenuNode, { once: true });
         };
