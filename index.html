@@ -1,119 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHASHI TIWARI | NEXUS 3D MAINFRAME PRO</title>
-    <style>
-        :root { --zap: #f1c40f; --neon: #00f2fe; --bg: #02050e; --panel: rgba(4, 10, 24, 0.9); }
-        body { margin: 0; background: var(--bg); color: #fff; font-family: 'Orbitron', sans-serif; overflow: hidden; }
-        
-        #canvas3d { position: fixed; top:0; left:0; z-index: 1; }
-        .ui-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        
-        /* Interactive 3D Lamp */
-        .lamp-3d { width: 180px; height: 180px; background: radial-gradient(circle, var(--zap), transparent); border-radius: 50%; box-shadow: 0 0 80px var(--zap); cursor: pointer; transition: all 0.5s; }
-        .lamp-3d.bright { box-shadow: 0 0 300px var(--zap); transform: scale(1.2); }
-        
-        /* Lightning Engine */
-        #lightning { position: fixed; top:0; left:0; width:100%; height:100%; background: white; z-index: 999; opacity: 0; pointer-events: none; }
-        .zap-anim { animation: flash 0.1s; }
-        @keyframes flash { 0% { opacity: 0; } 50% { opacity: 0.9; } 100% { opacity: 0; } }
+<style>
+    /* Advanced Holographic Lighting Overlay */
+    @keyframes lightning-strike {
+        0%, 100% { opacity: 0; filter: brightness(1); }
+        5%, 15% { opacity: 0.8; filter: brightness(3); }
+        10% { opacity: 0.4; }
+    }
 
-        /* Panels */
-        .panel { background: var(--panel); border: 2px solid var(--neon); padding: 30px; border-radius: 20px; width: 400px; backdrop-filter: blur(15px); }
-        input { width: 100%; padding: 15px; margin: 10px 0; background: #01040a; border: 1px solid var(--neon); color: white; border-radius: 8px; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: var(--zap); border: none; cursor: pointer; font-weight: 900; border-radius: 8px; }
-        .hidden { display: none; }
-    </style>
-</head>
-<body>
+    .lightning-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
+        z-index: 9999;
+        animation: lightning-strike 2s infinite;
+        display: none;
+    }
 
-    <div id="lightning"></div>
-    <canvas id="canvas3d"></canvas>
+    .cinema-stage.activated .lightning-overlay { display: block; }
 
-    <div class="ui-wrapper">
-        <div class="lamp-3d" id="lamp" onclick="activateSystem()"></div>
-        
-        <div id="login-panel" class="panel">
-            <h2 style="color:var(--neon); text-align:center;">MAIN TERMINAL</h2>
-            <input id="uId" type="text" placeholder="ID VECTOR">
-            <input id="uPass" type="password" placeholder="SECURITY KEY">
-            <button onclick="login()">ENGAGE MAINFRAME</button>
-        </div>
+    /* Polished 3D Card Glassmorphism */
+    .hud-data-card {
+        background: rgba(4, 14, 33, 0.6);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(0, 242, 254, 0.3);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+</style>
 
-        <div id="dashboard" class="panel hidden">
-            <h2 style="color:var(--neon)">SYSTEM ACCESS GRANTED</h2>
-            <button onclick="logout()" class="abort-btn">DISCONNECT NODE</button>
-        </div>
-    </div>
+<div class="lightning-overlay" id="lightningFX"></div>
 
-    <script type="module">
-        // Import Firebase & 3D Libs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-        // Firebase Config
-        const firebaseConfig = {
-            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
-            authDomain: "pikachu-nexus.firebaseapp.com",
-            projectId: "pikachu-nexus",
-            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
-        };
-        const db = getDatabase(initializeApp(firebaseConfig));
-
-        // Lightning & Audio Engine
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        function playZap() {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.frequency.setValueAtTime(200, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+<script>
+    /**
+     * ADVANCED AUDIO ENGINE
+     * Fixes: Audio context now initializes on user interaction (Required by browser security)
+     */
+    let audioCtx = null;
+    window.initAudio = function() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
+    };
 
-        window.activateSystem = () => {
-            document.getElementById('lamp').classList.add('bright');
-            setInterval(() => {
-                const l = document.getElementById('lightning');
-                l.classList.add('zap-anim');
-                playZap();
-                setTimeout(() => l.classList.remove('zap-anim'), 100);
-            }, 2000);
-        };
+    window.playPowerUpSound = function() {
+        if (!isSystemAudioEnabled || !audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 1);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1);
+    };
 
-        // 3D Background Render Engine
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        const geometry = new THREE.IcosahedronGeometry(20, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true });
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-        camera.position.z = 60;
+    /**
+     * TRIGGER LOGIC
+     * Modified to activate sound and lightning on the first click
+     */
+    document.body.addEventListener('click', () => {
+        initAudio();
+    }, { once: true });
 
-        function render() {
-            requestAnimationFrame(render);
-            mesh.rotation.y += 0.002;
-            renderer.render(scene, camera);
-        }
-        render();
-
-        // Login System
-        window.login = async () => {
-            const id = document.getElementById('uId').value;
-            const pass = document.getElementById('uPass').value;
-            // Add Firebase auth logic here...
-            alert("SYSTEM INITIALIZING: Loading modules...");
-            document.getElementById('login-panel').classList.add('hidden');
-            document.getElementById('dashboard').classList.remove('hidden');
-        };
-
-        window.logout = () => { location.reload(); };
-    </script>
-</body>
-</html>
+    // Ensure movement is locked as requested
+    function lockMovement() {
+        document.getElementById('master3DViewport').style.transform = "rotateX(0deg) rotateY(0deg)";
+    }
+    // Call this to disable the mouse parallax
+</script>
