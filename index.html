@@ -3,90 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIKACHU NEXUS MATRIX | SHASHI TIWARI</title>
+    <title>PIKACHU ULTIMATE NEXUS MATRIX ⚡</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">
     <style>
-        :root { --neon-green: #2ecc71; --neon-cyan: #00f2fe; }
-        body { background: #02050e; color: #fff; font-family: 'Rajdhani', sans-serif; margin: 0; }
+        /* ... Tumhara Original CSS yahan rahega ... */
         
-        /* GLOWING ONLINE STATUS */
-        .online-glow { 
-            animation: deepGlow 1.5s infinite alternate; 
-            font-weight: 900; 
-        }
+        /* NEW UPGRADES CSS */
+        .online-glow { animation: deepGlow 1.5s infinite alternate; font-weight: 900; }
         @keyframes deepGlow {
             0%, 100% { text-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71; color: #2ecc71; }
             50% { text-shadow: 0 0 15px #2ecc71, 0 0 25px #2ecc71; color: #fff; }
         }
-
-        /* FROZEN NOTES STYLE */
-        .frozen-input {
-            background: #090f14 !important; border: 1px solid #2ecc71 !important;
-            color: #f1c40f !important; font-family: 'Orbitron'; padding: 10px;
-            border-radius: 8px; width: 100%; cursor: not-allowed; text-align: center;
-        }
-
-        /* CONTEXT MENU */
-        .msg-context-menu {
-            position: absolute; background: #202c33; border: 1px solid #3b4a54;
-            border-radius: 8px; z-index: 99999; padding: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
+        .frozen-input { background: #090f14 !important; border: 1px solid #2ecc71 !important; color: #f1c40f !important; font-family: 'Orbitron'; padding: 10px; border-radius: 8px; width: 100%; cursor: not-allowed; text-align: center; }
+        .msg-context-menu { position: absolute; background: #202c33; border: 1px solid #3b4a54; border-radius: 8px; z-index: 99999; padding: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
-
-    <div id="customerNotesInterfaceBlock" class="hidden">
-        <div class="notes-engine-card-surface">
-            <h3 class="neon-cyan-text">🧠 SHASHI ULTRA SECURE VAULT</h3>
-            <input type="text" id="frozenTimestamp" class="frozen-input" readonly>
-            <div class="notes-editor-container-shell">
-                <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="adminUserControlList" style="display:grid; grid-template-columns:1fr 1fr; gap:15px;"></div>
-
     <script type="module">
-        // --- 1. FROZEN TIMESTAMP ---
+        // 1. IMPORT FIREBASE (Original)
+        // ... (Tumhara Original Firebase Config) ...
+
+        // 2. UPGRADE: FROZEN TIMESTAMP
         function updateFrozenTimestamp() {
             const now = new Date();
-            document.getElementById('frozenTimestamp').value = 
-                `LOCKED AT: ${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
+            const el = document.getElementById('frozenTimestamp');
+            if(el) el.value = `LOCKED AT: ${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
         }
         setInterval(updateFrozenTimestamp, 1000);
 
-        // --- 2. WHATSAPP DELETE ---
+        // 3. UPGRADE: WHATSAPP DELETE PROTOCOL
         window.spawnContextDropdownMenuOverlay = function(event, messageKey, text, media, epoch) {
             event.preventDefault();
+            const existing = document.getElementById("dynamicMsgContextNodeOverlay");
+            if(existing) existing.remove();
+            
             const menu = document.createElement('div');
             menu.className = "msg-context-menu";
+            menu.id = "dynamicMsgContextNodeOverlay";
             menu.innerHTML = `
-                <button onclick="commitMessageErasure('${messageKey}', 'everyone')" style="color:red; background:none; border:none; width:100%; padding:8px;">Delete for Everyone</button>
-                <button onclick="commitMessageErasure('${messageKey}', 'me')" style="color:white; background:none; border:none; width:100%; padding:8px;">Delete for Me</button>
+                <button onclick="commitMessageErasure('${messageKey}', 'everyone')" style="color:red; background:none; border:none; width:100%; padding:8px; cursor:pointer;">Delete for Everyone</button>
+                <button onclick="commitMessageErasure('${messageKey}', 'me', ${epoch})" style="color:white; background:none; border:none; width:100%; padding:8px; cursor:pointer;">Delete for Me</button>
             `;
             menu.style.left = event.clientX + 'px';
             menu.style.top = event.clientY + 'px';
             document.body.appendChild(menu);
         };
 
-        window.commitMessageErasure = function(key, mode) {
-            // Firebase remove logic
-            document.getElementById('dynamicMsgContextNodeOverlay')?.remove();
+        window.commitMessageErasure = function(key, mode, epoch) {
+            if(mode === 'everyone') {
+                remove(ref(db, `chats/${key}`));
+            } else {
+                localStorage.setItem(`deleted_chat_node_${loggedInCustomerID}_${epoch}`, "purged");
+            }
+            document.getElementById("dynamicMsgContextNodeOverlay").remove();
+            renderActiveChatConversationLogs();
         };
 
-        // --- 3. ADMIN INTELLIGENCE ---
-        window.renderAdminUserTable = function() {
-            const listWrapper = document.getElementById('adminUserControlList');
-            listWrapper.innerHTML = cachedGlobalUsersArr.map(user => `
-                <div style="background:#0a121a; padding:15px; border-radius:10px; border-left:5px solid #00f2fe;">
-                    <h4 style="color:#00f2fe;">${user.clientName}</h4>
-                    <p>ID: ${user.id}</p>
-                    <p>Contact: ${user.contact}</p>
-                    <p>DOB: ${user.dob || 'Not Set'}</p>
+        // 4. UPGRADE: ADMIN USER INTELLIGENCE (Credentials Section)
+        // Apne original renderUserControlPanel function ko isse replace karo:
+        window.renderUserControlPanel = function() {
+            const listWrapper = document.getElementById('adminUserControlList'); 
+            if(!listWrapper) return;
+            listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => `
+                <div style="background:#0a121a; padding:15px; border-radius:10px; border-left:5px solid #00f2fe; margin-bottom:10px;">
+                    <h4 style="color:#00f2fe; margin:0;">${user.clientName}</h4>
+                    <p style="margin:5px 0;">ID: ${user.id} | Contact: ${user.contact}</p>
+                    <p style="margin:5px 0;">DOB: ${user.dob || 'Not Set'}</p>
+                    <input type="text" value="${user.pass}" class="giant-compiler-input" style="font-size:0.8rem;">
                 </div>
             `).join('');
         };
+
+        // 5. UPGRADE: GLOWING ONLINE STATUS
+        // Jab user list render karte ho, wahan is logic ka use karo:
+        // const statusClass = user.isOnlineNode ? 'online-glow' : '';
+        // <span class="${statusClass}">${user.clientName}</span>
+
+        // ... (Tumhara Original sara code yahan paste kardo) ...
     </script>
 </body>
 </html>
