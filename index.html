@@ -87,7 +87,6 @@
             letter-spacing: 5px;
             color: #ffffff;
             text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6);
-            transition: color 0.3s;
         }
         
         body.light-theme-active .brand-main-title {
@@ -152,7 +151,6 @@
             100% { transform: translateY(2%) scale(1.06) rotate(8deg); }
         }
 
-        /* Live Administration Header Warning Area */
         .admin-live-protection-alert-banner {
             background: rgba(231, 76, 60, 0.2);
             border: 2px dashed #e74c3c;
@@ -180,12 +178,6 @@
             transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
             z-index: 2;
             overflow: hidden;
-        }
-
-        @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); }
-            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); }
-            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); }
         }
 
         .cinema-stage.activated {
@@ -254,7 +246,7 @@
 
         .hydraulic-stem { width: 22px; height: 240px; background: linear-gradient(90deg, #222e40, #080b12, #394b66); z-index: 3; position: relative; border-radius: 4px; }
         .laser-conduit { position: absolute; width: 6px; height: 100%; background: #131a24; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
-        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 35px var(--lamp-color); }
+        .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 25px var(--lamp-color); }
 
         .brushed-heavy-base { width: 220px; height: 34px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
 
@@ -263,7 +255,7 @@
             top: 130px;
             width: 120px;
             height: 0;
-            background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.3) 25%, transparent 100%);
             clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
             z-index: 2;
             pointer-events: none;
@@ -272,10 +264,10 @@
         }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
-        /* Fixed Pull mechanism cord expand targets */
+        /* FIXED HITBOX GAPS FOR ACCURATE CLICKS */
         .quantum-cord { position: absolute; top: 120px; left: 195px; z-index: 99999; cursor: pointer; padding: 40px; margin-left: -20px; }
-        .beaded-wire { width: 5px; height: 190px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
-        .luminescent-node { width: 30px; height: 36px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 40%; margin-left: -12px; box-shadow: 0 0 45px #f1c40f; }
+        .beaded-wire { width: 5px; height: 190px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); pointer-events: none; }
+        .luminescent-node { width: 30px; height: 36px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 40%; margin-left: -12px; box-shadow: 0 0 45px #f1c40f; pointer-events: none; }
 
         .audio-toggle-switch {
             position: fixed;
@@ -298,7 +290,7 @@
         }
         body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; }
 
-        /* --- HUD TERMINAL BOX --- */
+        /* --- HUD GLASS LOGIN MAIN PANEL --- */
         .hud-glass-terminal {
             position: absolute;
             left: 50%;
@@ -317,7 +309,10 @@
             z-index: 20;
         }
 
-        .cinema-stage.activated .hud-glass-terminal { transform: translateX(-50%) scale(1); opacity: 1; }
+        /* POINTER LOGIC ACCURACY PREVENTING CORD OVERLAP BLOCK */
+        .hud-glass-terminal.hidden { pointer-events: none !important; }
+
+        .cinema-stage.activated .hud-glass-terminal { transform: translateX(-50%) scale(1); opacity: 1; pointer-events: all !important; }
 
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
@@ -332,7 +327,6 @@
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; }
         .hud-input-cluster textarea { height: 100px; resize: none; }
-        .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: var(--input-bg); }
 
         .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
         .hud-input-cluster textarea ~ label { top: -14px; left: 10px; }
@@ -346,7 +340,7 @@
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 4px 15px rgba(241,196,15,0.3); }
         .hud-engage-btn:hover { box-shadow: 0 0 40px rgba(241, 196, 15, 0.8); transform: translateY(-2px); }
 
-        /* --- DASHBOARD CORE SYSTEM MATRIX --- */
+        /* --- DASHBOARDS PACKED COMPILER ENGINES --- */
         .dashboard-panel-core {
             position: fixed;
             inset: 0;
@@ -426,6 +420,7 @@
             padding: 6px 14px;
             border-radius: 6px;
             border: 2px solid rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 5px rgba(0,242,254,0.5);
         }
 
         .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; }
@@ -440,13 +435,13 @@
         .hidden { display: none !important; }
         .text-left { text-align: left; }
 
-        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; }
+        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
-        /* --- ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
+        /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 10px; border: 2px solid var(--border-glass); overflow: hidden; }
         .notes-pad-rich-area { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
@@ -474,16 +469,17 @@
         
         .chat-user-item-node { padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; transition: background 0.2s; position: relative; }
         .chat-user-item-node.online-chamak-active { border-right: 5px solid #2ecc71; background: rgba(46, 204, 113, 0.05); }
+
         .chat-user-item-node:hover { background: rgba(255,255,255,0.08); }
         .chat-user-item-node.active-chat-target { background: rgba(0, 242, 254, 0.25) !important; border-left: 6px solid #00f2fe; }
         
-        .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; cursor: pointer; }
+        .whatsapp-avatar { width: 44px; height: 44px; border-radius: 50%; background: #64748b; object-fit: cover; border: 2px solid var(--border-glass); z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; }
         .whatsapp-user-name { font-weight: bold; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.8rem; color: #00f2fe; font-family: monospace; font-weight: bold; }
 
         .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
-        .whatsapp-unread-counter-pill { background: #2ecc71; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; }
+        .whatsapp-unread-counter-pill { background: #2ecc71; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
 
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-bg); position: relative; height: 100%; overflow: hidden; }
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; }
@@ -500,6 +496,7 @@
 
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
 
+        /* Seen Indicator setup logic */
         .whatsapp-ticks-seen-node { font-size: 0.8rem; margin-left: 5px; font-weight: bold; }
         .tick-unseen { color: #a6bcdc; }
         .tick-seen { color: #3498db; }
@@ -583,7 +580,7 @@
         <div class="smoke-cloud smoke-right"></div>
     </div>
                                                                                                                                                                                                     
-    <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
+    <div class="cinema-stage" id="mainStage">
         <div class="cyber-lamp-core" id="lampDevice">
             <div class="metallic-shutter-head">
                 <div class="blinding-core-light"></div>
@@ -792,7 +789,7 @@
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             <div id="adminAttackLiveBannerAlert" class="admin-live-protection-alert-banner hidden">
-                <span>🚨 <b>CRITICAL PROTECTION TRIGGER:</b> Customer Node <span id="adminLockAlertUserNodeTxt" style="color:#f1c40f;"></span> Has Been Locked Down Automatically After 3 Failed Login Identity Entry Verification Mismatch Detections.</span>
+                <span>🚨 <b>CRITICAL PROTECTION TRIGGER:</b> Customer Node <span id="adminLockAlertUserNodeTxt" style="color:#f1c40f;"></span> Has Been Locked Down Automatically After 3 Failed Login Identity Entry Mismatch Detections. Connect with Admin.</span>
                 <button onclick="document.getElementById('adminAttackLiveBannerAlert').classList.add('hidden')" style="background:#e74c3c; color:white; border:none; padding:6px 12px; border-radius:6px; font-family:'Orbitron'; font-weight:900; cursor:pointer;">[❌ Close Alert]</button>
             </div>
 
@@ -842,7 +839,7 @@
         let cachedGlobalPolicyArr = [];
         
         let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
-        let failedLoginAttemptsStateMap = {}; // Tracking counts internally
+        let failedLoginAttemptsStateMap = {};
 
         let nativeAudioMediaRecorderInstance = null;
         let compiledAudioChunksCollectorArr = [];
@@ -871,7 +868,7 @@
             if(wrapper) wrapper.classList.add('hidden');
         };
 
-        // Precision Ultra Clock Node loop (Hour:Minute:Second:Millisecond:Microsecond:Nanosecond)
+        // Nano-Precision Micro Clock Loop Engine Configuration
         setInterval(() => {
             const clockNode = document.getElementById('noteManualTimeSelector');
             if(clockNode) {
@@ -880,11 +877,8 @@
                 const mins = String(now.getMinutes()).padStart(2, '0');
                 const secs = String(now.getSeconds()).padStart(2, '0');
                 const ms = String(now.getMilliseconds()).padStart(3, '0');
-                
-                // Emulated micro/nano parameters loop counters
                 const us = String(Math.floor(Math.random() * 900) + 100).padStart(3, '0');
                 const ns = String(Math.floor(Math.random() * 900) + 100).padStart(3, '0');
-                
                 clockNode.value = `${hrs}:${mins}:${secs}:${ms}:${us}:${ns}`;
             }
         }, 1);
@@ -1295,12 +1289,9 @@
             document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
         };
 
-        // --- ROBOTIC ATCH ATTAK VOIC LOCK引擎 ---
         window.executeClusterLogin = function(event) {
             if(event) event.preventDefault();
-            const u = document.getElementById('accessNodeUser').value.trim(); 
-            const p = document.getElementById('accessNodePass').value.trim();
-            
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim();
             if (currentMode === 'admin') {
                 if (u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
                     document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden');
@@ -1311,28 +1302,22 @@
                 if (!userMatch) { alert("Access Rejected: Invalid User Signatures."); return; }
 
                 if (userMatch.status === 'deactivated' || userMatch.status === 'attack_locked') {
-                    playSynthesizedSound(150, 'sawtooth', 0.4);
-                    speakNaturalHuman("Security protection block is active. Connect with administration.");
+                    playSynthesizedSound(100, 'sawtooth', 0.8);
+                    speakNaturalHuman("Security terminal protection lock triggered. Account has been deactivated. Connect with admin.");
                     alert("Mainframe Blocked: This node is currently locked.");
                     return;
                 }
 
                 if (String(userMatch.pass) === String(p)) {
-                    failedLoginAttemptsStateMap[userMatch.id] = 0; // Clear score
-                    loggedInCustomerID = userMatch.id; 
-                    update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
+                    failedLoginAttemptsStateMap[userMatch.id] = 0; loggedInCustomerID = userMatch.id; update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
                     document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden');
                     switchCustomerChannel('upload');
                 } else {
-                    // Mismatch score iteration routing logic loop
                     if(!failedLoginAttemptsStateMap[userMatch.id]) failedLoginAttemptsStateMap[userMatch.id] = 0;
                     failedLoginAttemptsStateMap[userMatch.id]++;
-                    
                     if(failedLoginAttemptsStateMap[userMatch.id] >= 3) {
-                        // Enforce lock protocol inside Firebase instantly
                         update(ref(db, `users/${userMatch.id}`), { status: 'deactivated' });
                         set(ref(db, `liveAttackLogs/${userMatch.id}`), { id: userMatch.id, epoch: Date.now() });
-
                         playSynthesizedSound(100, 'sawtooth', 0.8);
                         speakNaturalHuman("Security terminal protection lock triggered. Account has been deactivated. Connect with admin.");
                         alert("🚨 3 Failure Detections Matrix! Profile locked down. Connect with admin.");
@@ -1344,7 +1329,6 @@
             }
         };
 
-        // Live Admin Listening Hook for dynamic attack alerts tracking
         onValue(ref(db, 'liveAttackLogs'), (snapshot) => {
             const alertData = snapshot.val();
             if(alertData && currentMode === 'admin' && !document.getElementById('adminDashboard').classList.contains('hidden')) {
@@ -1377,12 +1361,10 @@
             activeAdminSubSection = sectionId;
             document.querySelectorAll('.admin-nav-tab').forEach(btn => btn.classList.remove('active'));
             const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`); if(actBtn) actBtn.classList.add('active');
-            
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';
             document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none');
-            
             if(sectionId === 'spychat') renderAdminSpyUserList();
         };
 
@@ -1491,7 +1473,12 @@
             update(ref(db, `policies/${targetPol.id}`), { status: statusSelect.value, adminComment: commentInput.value.trim() || "Status saved." });
         };
         window.purgeRegistryLog = function(index){ let targetPol = cachedGlobalPolicyArr[index]; if(targetPol) remove(ref(db, 'policies/' + targetPol.id)); };
-        window.wipeUserPermanently = function(uid) { remove(ref(db, 'users/' + uid)); };
+        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }); };
+        window.executeAdminContextClipboardCopy = function(element, extractionValue) {
+            if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => {
+                const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200);
+            });
+        };
         window.alterClientCredentialsOverrideData = function(oldId, index) {
             const targetNewPass = document.getElementById(`userPasswordInputInline_${index}`).value.trim(); if(!targetNewPass) return;
             get(ref(db, `users/${oldId}`)).then((snapshot) => { let currentProfileData = snapshot.val() || {}; currentProfileData.pass = targetNewPass; set(ref(db, `users/${oldId}`), currentProfileData); });
