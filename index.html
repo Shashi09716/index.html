@@ -638,9 +638,6 @@
             align-items: center;
         }
 
-        /* Diagnostic bar design specifications */
-        .diagnostic-log-text { font-family: monospace; font-size:0.9rem; color:#2ecc71; margin-bottom:4px; line-height:1.3; }
-
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
@@ -706,12 +703,6 @@
             </div>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
-                
-                <div id="biometricInterfaceLayerScan" style="border:1px solid rgba(0,242,254,0.3); border-radius:8px; padding:12px; margin-bottom:18px; text-align:center; position:relative; background:rgba(0,0,0,0.5); overflow:hidden;">
-                    <div id="biometricScanningLineTracker" style="position:absolute; top:0; left:0; width:100%; height:2px; background:var(--neon-cyan); box-shadow:0 0 10px var(--neon-cyan); transition: top 0.4s ease;"></div>
-                    <span style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); font-weight:bold; letter-spacing:1px;">🧬 SECURE MATRIX SENSOR READY</span>
-                </div>
-
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
                     <label id="hudInputLabel">System ID / Customer ID</label>
@@ -938,7 +929,6 @@
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
                 <button class="admin-nav-tab" id="tabBtnAispychat" onclick="switchAdminSubSection('aispychat')">🤖 AI Communication</button>
-                <button class="admin-nav-tab" id="tabBtnSystemstatus" onclick="switchAdminSubSection('systemstatus')">📊 System Status Engine</button>
             </div>
                                                                                                                                                                                                                                 
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
@@ -1044,12 +1034,6 @@
                 const manualDateField = document.getElementById('noteManualDateSelector');
                 if(manualDateField && !manualDateField.getAttribute('data-custom-lock')) {
                     manualDateField.value = `${dateText} (${dayText})`;
-                }
-
-                // Biometric line animation throttle layout anchor
-                const scanLine = document.getElementById('biometricScanningLineTracker');
-                if (scanLine) {
-                    scanLine.style.top = `${Math.abs(Math.sin(Date.now() * 0.003)) * 38}px`;
                 }
 
                 requestAnimationFrame(handleFrameSequence);
@@ -1225,6 +1209,7 @@
             const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
             
             setTimeout(() => {
+                // Save interaction packet to dedicated admin tracking loop node node inside Firebase defaulting rtdb
                 const aiCommLogRef = push(ref(db, 'ai_communications'));
                 set(aiCommLogRef, {
                     customerUID: loggedInCustomerID,
@@ -1477,6 +1462,7 @@
             canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
             canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
 
+            // Dynamic Pitch Audio visualizer frequency lines rendering
             if (isTomListeningStateActive && audioAnalyserNode) {
                 audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
                 canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
@@ -2028,16 +2014,6 @@
                 renderActiveChatConversationLogs();
                 markIncomingMessagesAsReadSequence(data);
                 calculateUnreadBadgeCountersTrack(data);
-                
-                // Read text narrative simulator injection logic parameters block
-                const latestMsg = Object.values(data).pop();
-                if (latestMsg && latestMsg.sender !== loggedInCustomerID && !latestMsg.narratedAlert) {
-                    latestMsg.narratedAlert = true;
-                    if ('speechSynthesis' in window && isSystemAudioEnabled) {
-                        const utterance = new SpeechSynthesisUtterance(latestMsg.textBody);
-                        window.speechSynthesis.speak(utterance);
-                    }
-                }
             }
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
                 renderAdminSpyChatConsoleLogs();
@@ -2045,6 +2021,7 @@
             }
         });
 
+        // --- NEW REAL-TIME SUBSCRIBER ONVALUE CALL FOR AI COMMUNICATION ROUTER OVERVIEW ---
         onValue(ref(db, 'ai_communications'), (snapshot) => {
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'aispychat') {
                 renderAdminAICommunicationConsoleBlock(snapshot.val());
@@ -2352,14 +2329,10 @@
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';
             document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat') ? 'block' : 'none';
             document.getElementById('adminAISpyChatBlock').style.display = (sectionId === 'aispychat') ? 'block' : 'none';
-            document.getElementById('adminSystemStatusDiagnosticBlock').style.display = (sectionId === 'systemstatus') ? 'block' : 'none';
             
             if(sectionId === 'spychat') renderAdminSpyUserList();
             if(sectionId === 'aispychat') {
                 get(ref(db, 'ai_communications')).then(snap => renderAdminAICommunicationConsoleBlock(snap.val()));
-            }
-            if(sectionId === 'systemstatus') {
-                executeAdminLiveDiagnosticStatsCompilation();
             }
         };
 
@@ -2415,30 +2388,12 @@
                     <div style="background:rgba(4,14,33,0.85); padding:20px; border-radius:14px; border:2px solid var(--border-glass); max-height:550px; overflow-y:auto;" id="adminAICommStackViewPane">
                         <p style="color:#8696a0; font-family:monospace; text-align:center;">🔒 Establishing link connection with secure AI logs database node...</p>
                     </div>
-                </div>
-                <div id="adminSystemStatusDiagnosticBlock" style="display:none; width:100%;">
-                    <div style="background:rgba(6,12,32,0.9); padding:25px; border-radius:14px; border:2px solid var(--neon-cyan); box-shadow:0 0 25px rgba(0,242,254,0.15);">
-                        <h4 style="font-family:'Orbitron'; color:var(--neon-cyan); margin-bottom:15px; font-weight:900;">📊 MAINFRAME TELEMETRY COMPILATION METRICS:</h4>
-                        <div id="adminLiveTelemetryDiagnosticsTextPane" style="display:flex; flex-direction:column; gap:8px;"></div>
-                    </div>
                 </div>`;
             
             document.getElementById('mainframeAdminIdInput').value = cachedAdminMainframeRoute.masterId || "";
             document.getElementById('mainframeAdminPassInput').value = cachedAdminMainframeRoute.masterPass || "";
             
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(activeAdminSubSection);
-        };
-
-        window.executeAdminLiveDiagnosticStatsCompilation = function() {
-            const pane = document.getElementById('adminLiveTelemetryDiagnosticsTextPane');
-            if(!pane) return;
-            pane.innerHTML = `
-                <div class="diagnostic-log-text">>> [SYS_CONN]: Real-time Firebase Cluster connection: <span style="color:#fff; background:#2ecc71; padding:2px 6px; border-radius:4px;">ONLINE</span></div>
-                <div class="diagnostic-log-text">>> [TOTAL_RECORDS]: Registered Users inside Matrix: <span style="color:#00f2fe; font-weight:bold;">${cachedGlobalUsersArr.length} Signatures</span></div>
-                <div class="diagnostic-log-text">>> [POLICY_TRAILS]: Active Documents / Files on stack: <span style="color:var(--accent-yellow); font-weight:bold;">${cachedGlobalPolicyArr.length} Packets</span></div>
-                <div class="diagnostic-log-text">>> [FPS_STABILITY]: Graphics Frame Throttle Interpolation: <span style="color:#fff;">60 FPS (Lag-Free Layer Active)</span></div>
-                <div class="diagnostic-log-text">>> [MEM_ENCRYPTION]: Modular Core Buffer Array Cache: <span style="color:var(--neon-pink);">SHA-256 Bit Token Sync Verified</span></div>
-            `;
         };
 
         window.renderAdminAICommunicationConsoleBlock = function(snapshotValData) {
@@ -3085,9 +3040,6 @@
                     if (document.activeElement !== document.getElementById('adminSpyResponseInput')) {
                         renderAdminSpyChatConsoleLogs();
                     }
-                }
-                if (activeAdminSubSection === 'systemstatus') {
-                    executeAdminLiveDiagnosticStatsCompilation();
                 }
             }
         }, 2000);
