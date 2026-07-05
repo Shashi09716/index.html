@@ -26,6 +26,7 @@
             --cyber-glow: 0 0 25px rgba(0, 242, 254, 0.6);
             --card-surface: rgba(4, 14, 33, 0.7);
             --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
+            --chat-wallpaper: radial-gradient(circle at center, #090f14 0%, #02050e 100%);
         }
 
         body.light-theme-active {
@@ -45,6 +46,7 @@
             --card-badge-fix: #1e293b;
             --note-card-bg: #ffffff;
             --lamp-chamak: 0 4px 20px rgba(0,0,0,0.2);
+            --chat-wallpaper: #efeae2;
         }
 
         * {
@@ -142,6 +144,7 @@
             opacity: 0.14;
             border-radius: 50%;
             animation: smokeDrift 22s infinite alternate ease-in-out;
+            will-change: transform;
         }
 
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
@@ -449,7 +452,7 @@
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
 
         /* Locked Parameter Styling Elements */
-        .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: not-allowed !important; pointer-events: none !important; }
+        .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; }
 
         /* --- THE FUTURE SANDBOX GAMING PIPELINE --- */
         .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(255,0,127,0.15); }
@@ -479,7 +482,7 @@
         .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
         .whatsapp-unread-counter-pill { background: #2ecc71; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
 
-        .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-bg); position: relative; height: 100%; overflow: hidden; }
+        .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; }
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; }
         body.light-theme-active .chat-stream-header-bar { background: #efeae2; color: #000; }
 
@@ -495,6 +498,16 @@
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
         .whatsapp-tick-space { color: #00f2fe; font-weight: 900; font-size: 0.8rem; margin-left: 4px; letter-spacing: -1px; }
         .whatsapp-tick-space.double-blue { color: #2ecc71; }
+
+        /* --- CHAT EXTRA DESIGN FEETURES --- */
+        .msg-reactions-tray { display: flex; gap: 5px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 20px; position: absolute; bottom: -12px; right: 10px; font-size: 0.85rem; border: 1px solid var(--border-glass); }
+        .voice-wave-container { display: flex; align-items: center; gap: 3px; height: 20px; margin-left: 10px; }
+        .voice-bar { width: 3px; height: 100%; background: var(--neon-pink); animation: waveBounce 0.6s infinite alternate; }
+        .voice-bar:nth-child(2) { animation-delay: 0.1s; }
+        .voice-bar:nth-child(3) { animation-delay: 0.2s; }
+        .voice-bar:nth-child(4) { animation-delay: 0.3s; }
+        
+        @keyframes waveBounce { 0% { height: 4px; } 100% { height: 20px; } }
 
         /* --- THE DRAWERS LAYOUT ENGINE --- */
         .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; }
@@ -596,6 +609,13 @@
         }
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
+
+        /* --- DYNAMIC CALENDAR ENGINE STYLES --- */
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 10px; }
+        .calendar-day-head { font-family: 'Orbitron'; font-size: 0.75rem; color: #00f2fe; font-weight: bold; text-align: center; }
+        .calendar-cell { padding: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; text-align: center; cursor: pointer; border: 1px solid transparent; font-weight: bold; }
+        .calendar-cell:hover { border-color: #f1c40f; background: rgba(241,196,15,0.2); }
+        .calendar-cell.festival { border-color: #ff007f; background: linear-gradient(135deg, rgba(255,0,127,0.2), transparent); }
 
         @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
 
@@ -782,7 +802,7 @@
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;">
-                            <input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly>
+                            <input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly onclick="openMatrixCalendarEngine()">
                         </div>
                         <div class="hud-input-cluster" style="margin-bottom:0;">
                             <input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly placeholder="Time Frame">
@@ -838,8 +858,12 @@
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="triggerUserProfileAvatarDropdownEngine()">
-                                <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="chatActiveUserHeaderNode" style="font-weight: 900; color: #00f2fe;">Select Pipeline...</div></div>
+                                <div class="whatsapp-user-info">
+                                    <div class="whatsapp-user-name" id="chatActiveUserHeaderNode" style="font-weight: 900; color: #00f2fe;">Select Pipeline...</div>
+                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:#2ecc71;" class="hidden">typing...</div>
+                                </div>
                             </div>
+                            <button onclick="switchChatWallpaperMatrix()" style="background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🎨 WALLPAPER</button>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         
@@ -851,7 +875,7 @@
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="toggleVoiceAudioRecordingEngine()">🎙️</button>
-                            <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
+                            <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." oninput="handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
                             <button class="whatsapp-circle-btn" onclick="toggleGifMatrixDropdownPanel(event)">🖼️</button>
                             <button onclick="dispatchMatrixChatMessage()" style="padding:12px 24px; background:#2ecc71; border:none; border-radius:8px; color:white; font-family:'Orbitron'; font-weight:900; cursor:pointer;">SEND</button>
                         </div>
@@ -933,6 +957,7 @@
         let notesVoiceTimerIntervalTracker = null;
         let notesRecordingStartEpoch = 0;
         let autoGeneratedVoiceDurationString = "";
+        let typingTimeoutTrackerNode = null;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
@@ -960,13 +985,12 @@
                     manualTimeField.value = packedTimeString;
                 }
                 
-                // Realtime Anchored Date Day Fixer Engine
                 const daysOfWeekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                 const dayText = daysOfWeekArr[clock.getDay()];
                 const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()}`;
                 
                 const manualDateField = document.getElementById('noteManualDateSelector');
-                if(manualDateField) {
+                if(manualDateField && !manualDateField.getAttribute('data-custom-lock')) {
                     manualDateField.value = `${dateText} (${dayText})`;
                 }
 
@@ -986,6 +1010,92 @@
             "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","🔥","✨","🎉","💯","✔","❌","🚨","👑"
         ];
 
+        // --- FESTIVAL CALENDAR CONFIG MATRIX ---
+        const matrixFestivalMap = {
+            "26/01": "Republic Day India 🇮🇳",
+            "15/08": "Independence Day India 🇮🇳",
+            "02/10": "Gandhi Jayanti 🕊️",
+            "25/12": "Christmas Celebration 🎄",
+            "01/01": "Global New Year ✨",
+            "31/10": "Diwali Festival 🪔",
+            "10/03": "Holi Festival 🎨"
+        };
+
+        window.openMatrixCalendarEngine = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            const currentObjDate = new Date();
+            const currentMonthIndex = currentObjDate.getMonth();
+            const currentYearValue = currentObjDate.getFullYear();
+            
+            const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            
+            let daysInMonthCount = new Date(currentYearValue, currentMonthIndex + 1, 0).getDate();
+            let startingDayOfWeek = new Date(currentYearValue, currentMonthIndex, 1).getDay();
+            
+            let daysGridHTML = "";
+            for(let i=0; i<startingDayOfWeek; i++) {
+                daysGridHTML += `<div></div>`;
+            }
+            
+            for(let day=1; day<=daysInMonthCount; day++) {
+                const dayStr = String(day).padStart(2,'0');
+                const mStr = String(currentMonthIndex+1).padStart(2,'0');
+                const matchKey = `${dayStr}/${mStr}`;
+                const festivalLabel = matrixFestivalMap[matchKey] || "";
+                const isFestClass = festivalLabel ? "festival" : "";
+                
+                daysGridHTML += `<div class="calendar-cell ${isFestClass}" onclick="selectMatrixCalendarDay('${dayStr}/${mStr}/${currentYearValue}', '${festivalLabel}')">${day} ${festivalLabel ? '⭐' : ''}</div>`;
+            }
+
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>📅 ${monthNamesArr[currentMonthIndex]} - ${currentYearValue}</h4>
+                    <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px;">Click a date to anchor timeline parameters:</p>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-head">Su</div><div class="calendar-day-head">Mo</div><div class="calendar-day-head">Tu</div>
+                        <div class="calendar-day-head">We</div><div class="calendar-day-head">Th</div><div class="calendar-day-head">Fr</div><div class="calendar-day-head">Sa</div>
+                        ${daysGridHTML}
+                    </div>
+                    <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CLOSE ENGINE</button>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.selectMatrixCalendarDay = function(packedDate, festivalInfo) {
+            const dateField = document.getElementById('noteManualDateSelector');
+            if(dateField) {
+                dateField.value = packedDate + (festivalInfo ? ` [${festivalInfo}]` : '');
+                dateField.setAttribute('data-custom-lock', 'true');
+            }
+            if(festivalInfo) alert(`✨ Event Detection Matrix: ${festivalInfo}`);
+            closeCustomInlinePopupEngine();
+        };
+
+        window.switchChatWallpaperMatrix = function() {
+            const wallpapersArr = [
+                "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+                "linear-gradient(135deg, #1d976c, #93f9b9)",
+                "linear-gradient(135deg, #ef32d9, #89fffd)",
+                "radial-gradient(circle at center, #090f14 0%, #02050e 100%)"
+            ];
+            const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 0;
+            let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
+            localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
+            document.querySelector('.chat-stream-message-container').style.background = wallpapersArr[nextWallIdx];
+        };
+
+        window.handleUserTypingSimulationTracker = function() {
+            if(!loggedInCustomerID || !activeSelectedChatTargetUserId) return;
+            set(ref(db, `typing_states/${loggedInCustomerID}`), { typingTo: activeSelectedChatTargetUserId });
+            
+            clearTimeout(typingTimeoutTrackerNode);
+            typingTimeoutTrackerNode = setTimeout(() => {
+                remove(ref(db, `typing_states/${loggedInCustomerID}`));
+            }, 1500);
+        };
+
         window.closeCustomInlinePopupEngine = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(wrapper) wrapper.classList.add('hidden');
@@ -998,6 +1108,8 @@
             autoGeneratedVoiceDurationString = "";
             const logNode = document.getElementById('notesVoiceDurationLogNode');
             if (logNode) logNode.innerText = "";
+            const dateField = document.getElementById('noteManualDateSelector');
+            if(dateField) dateField.removeAttribute('data-custom-lock');
             playSynthesizedSound(880, 'sine', 0.1);
         };
 
@@ -1055,7 +1167,7 @@
                     };
 
                     notesMediaRecorderInstance.start();
-                    if (pulseNode) pulseNode.classList.remove('hidden');
+                    if (pulseNode) pulseNode.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
                 }).catch(() => { alert("Microphone capture access denied."); });
             } else {
@@ -1418,6 +1530,16 @@
             }
         });
 
+        onValue(ref(db, 'typing_states'), (snapshot) => {
+            const data = snapshot.val();
+            const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator');
+            if(data && activeSelectedChatTargetUserId && data[activeSelectedChatTargetUserId] && data[activeSelectedChatTargetUserId].typingTo === loggedInCustomerID) {
+                if(typingStatusNode) typingStatusNode.classList.remove('hidden');
+            } else {
+                if(typingStatusNode) typingStatusNode.classList.add('hidden');
+            }
+        });
+
         // --- LIVE REALTIME INCIDENT DETECTION MONITORS ---
         onValue(ref(db, 'incident_alerts'), (snapshot) => {
             const alertsData = snapshot.val();
@@ -1518,6 +1640,12 @@
             document.querySelectorAll('.chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
         };
 
+        window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
+            update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => {
+                renderActiveChatConversationLogs();
+            });
+        };
+
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
             if(!wrapper || !activeSelectedChatTargetUserId) return;
@@ -1542,10 +1670,13 @@
                             }
                         }
                         
+                        let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
+                        
                         htmlCollector += `
-                            <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})">
+                            <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
                                 <div>${msg.textBody}</div>${assetHTML}
                                 <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
+                                ${reactionMarkup}
                             </div>`;
                     }
                 });
@@ -1578,6 +1709,7 @@
                 document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
                 document.getElementById('mainframeGifContainerBox').classList.add('hidden');
+                remove(ref(db, `typing_states/${loggedInCustomerID}`));
                 renderActiveChatConversationLogs();
             });
         };
@@ -1645,7 +1777,11 @@
 
                     nativeAudioMediaRecorderInstance.start();
                     recBtn.classList.add('recording-active-pulse');
-                    document.getElementById('chatAttachmentStatusFeedback').innerText = "🎙️ Recording live stream audio...";
+                    document.getElementById('chatAttachmentStatusFeedback').innerHTML = `
+                        <div class="voice-wave-container">
+                            <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
+                            <span style="margin-left:10px;">🎙️ Recording WhatsApp Live Voice Audio Node Stream...</span>
+                        </div>`;
                 }).catch(() => {
                     alert("Audio device signature rejected.");
                 });
@@ -1958,7 +2094,6 @@
             document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
         };
 
-        // --- ROBOTIC BRUTE FAIL LOCKOUT HANDLER SYSTEM ---
         function triggerLockoutTerminalUI(usernameString) {
             localStorage.setItem('nexus_hard_lockout_flag_' + usernameString.toLowerCase(), 'true');
             const incRef = push(ref(db, 'incident_alerts'));
@@ -2252,7 +2387,6 @@
             document.body.appendChild(a); a.click(); document.body.removeChild(a); removeContextDropdownMenuNode();
         };
 
-        // --- SECONDARY TRANSLATION PIPELINE MESSAGE FORWARD PIPELINE LINK ---
         window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) {
             removeContextDropdownMenuNode();
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
