@@ -634,7 +634,7 @@
         body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #1abc9c; }
         .giant-compiler-layout h3 { color: #00f2fe; font-family: 'Orbitron'; margin-bottom: 22px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
         body.light-theme-active .giant-compiler-layout h3 { color: #16a085; text-shadow: none; }
-        .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
+        .giant-compiler-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 22px; }
         
         .giant-compiler-input { width: 100%; padding: 18px; background: rgba(5, 12, 28, 0.85); border: 2px solid var(--border-glass); color: var(--text-main); border-radius: 10px; font-family: 'Orbitron'; font-size: 1.1rem; outline: none; transition: border-color 0.3s; font-weight: 700; }
         body.light-theme-active .giant-compiler-input { background: #ffffff; }
@@ -869,8 +869,8 @@
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="360"></canvas>
                         
-                        <div id="virtualTomTalkOverlay" class="hidden" style="position:absolute; bottom:20px; left:50%; transform:translate3d(-50%,0,0); width:90%; background:rgba(2,6,20,0.95); padding:12px; border-radius:10px; border:2px solid var(--neon-cyan); box-shadow:0 0 20px var(--neon-cyan); display: flex; justify-content: space-between; align-items: center;">
-                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk or click mic button..." style="width:55%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-family:'Rajdhani'; font-weight:700; outline:none;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
+                        <div id="virtualTomTalkOverlay" class="hidden" style="position:absolute; bottom:20px; left:50%; transform:translate3d(-50%,0,0); width:90%; background:rgba(2,6,20,0.95); padding:12px; border-radius:10px; border:2px solid var(--neon-cyan); box-shadow:0 0 20px var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100;">
+                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk or click listen mic..." style="width:55%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-family:'Rajdhani'; font-weight:700; outline:none;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
                             <button id="virtualTomLiveVoiceRecBtn" onclick="toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:10px; background:var(--neon-pink); border:none; color:#fff; font-family:'Orbitron'; font-weight:900; cursor:pointer; border-radius:6px; font-size:0.85rem;">🎙️ LISTEN</button>
                             <button onclick="executeVirtualTomSpeechLoop()" style="width:20%; padding:10px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-family:'Orbitron'; font-weight:900; cursor:pointer; border-radius:6px;">SAY</button>
                         </div>
@@ -899,7 +899,8 @@
                                     <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:#2ecc71;" class="hidden">typing...</div>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 8px;">
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <button onclick="toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" style="background:rgba(0,242,254,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🤖 AI CORE: OFF</button>
                                 <button onclick="clearCurrentChatConversation()" style="background:rgba(231,76,60,0.2); border:1px solid #e74c3c; color:#e74c3c; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🗑️ CLEAR</button>
                                 <button onclick="switchChatWallpaperMatrix()" style="background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🎨 WALLPAPER</button>
                             </div>
@@ -988,6 +989,7 @@
         let activeAdminSubSection = "creation";
         let loadedAttachmentB64 = "";
         let isSystemAudioEnabled = true;
+        let isAIAssistantActiveState = false;
         
         let cachedGlobalUsersArr = [];
         let cachedGlobalPolicyArr = [];
@@ -1012,6 +1014,10 @@
         let requestArcadeFrameToken = null;
         let tomSpeechRecognitionInstance = null;
         let isTomListeningStateActive = false;
+        let audioVisualizerContextNode = null;
+        let audioAnalyserNode = null;
+        let audioMicStreamNode = null;
+        let visualizerDataArray = new Uint8Array(0);
         
         let gameScoreVal = 0;
         let spacePlayerX = 270;
@@ -1065,80 +1071,7 @@
         }
         initiatePrecisionChronometerTick();
 
-        const structuralGifMatrixList = [
-            "https://media.giphy.com/media/tX68Mc6nc9gNq/giphy.gif", "https://media.giphy.com/media/3ntq5FxUvS84U/giphy.gif",
-            "https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif", "https://media.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif",
-            "https://media.giphy.com/media/5ftsmI67WxheqA7RSU/giphy.gif", "https://media.giphy.com/media/t3sZwc69UBFIY/giphy.gif"
-        ];
-
-        const systemEmojisList = [
-            "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂","🙃","😉","😌","😍","🥰","😘","🔥","✨","🎉","💯","✔","❌","🚨","👑"
-        ];
-
-        // --- FESTIVAL CALENDAR CONFIG MATRIX ---
-        const matrixFestivalMap = {
-            "26/01": "Republic Day India 🇮🇳",
-            "15/08": "Independence Day India 🇮🇳",
-            "02/10": "Gandhi Jayanti 🕊️",
-            "25/12": "Christmas Celebration 🎄",
-            "01/01": "Global New Year ✨",
-            "31/10": "Diwali Festival 🪔",
-            "10/03": "Holi Festival 🎨"
-        };
-
-        window.openMatrixCalendarEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-            const currentObjDate = new Date();
-            const currentMonthIndex = currentObjDate.getMonth();
-            const currentYearValue = currentObjDate.getFullYear();
-            
-            const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            
-            let daysInMonthCount = new Date(currentYearValue, currentMonthIndex + 1, 0).getDate();
-            let startingDayOfWeek = new Date(currentYearValue, currentMonthIndex, 1).getDay();
-            
-            let daysGridHTML = "";
-            for(let i=0; i<startingDayOfWeek; i++) {
-                daysGridHTML += `<div></div>`;
-            }
-            
-            for(let day=1; day<=daysInMonthCount; day++) {
-                const dayStr = String(day).padStart(2,'0');
-                const mStr = String(currentMonthIndex+1).padStart(2,'0');
-                const matchKey = `${dayStr}/${mStr}`;
-                const festivalLabel = matrixFestivalMap[matchKey] || "";
-                const isFestClass = festivalLabel ? "festival" : "";
-                
-                daysGridHTML += `<div class="calendar-cell ${isFestClass}" onclick="selectMatrixCalendarDay('${dayStr}/${mStr}/${currentYearValue}', '${festivalLabel}')">${day} ${festivalLabel ? '⭐' : ''}</div>`;
-            }
-
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>📅 ${monthNamesArr[currentMonthIndex]} - ${currentYearValue}</h4>
-                    <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px;">Click a date to anchor timeline parameters:</p>
-                    <div class="calendar-grid">
-                        <div class="calendar-day-head">Su</div><div class="calendar-day-head">Mo</div><div class="calendar-day-head">Tu</div>
-                        <div class="calendar-day-head">We</div><div class="calendar-day-head">Th</div><div class="calendar-day-head">Fr</div><div class="calendar-day-head">Sa</div>
-                        ${daysGridHTML}
-                    </div>
-                    <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CLOSE ENGINE</button>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.selectMatrixCalendarDay = function(packedDate, festivalInfo) {
-            const dateField = document.getElementById('noteManualDateSelector');
-            if(dateField) {
-                dateField.value = packedDate + (festivalInfo ? ` [${festivalInfo}]` : '');
-                dateField.setAttribute('data-custom-lock', 'true');
-            }
-            if(festivalInfo) alert(`✨ Event Detection Matrix: ${festivalInfo}`);
-            closeCustomInlinePopupEngine();
-        };
-
-        // --- FORGOT ID & BILINGUAL PASSWORD RECOVERY LOGICAL SYSTEMS ---
+        // --- FORGOT ID & PASSWORD RECOVERY LOGICAL SYSTEMS ---
         window.triggerForgotIDModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(!wrapper) return;
@@ -1241,7 +1174,7 @@
                     const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
                     wrapper.innerHTML = `
                         <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border-color:var(--neon-pink); max-width:480px;">
-                            <h4 style="color:var(--neon-pink); text-shadow:0 0 10px var(--neon-pink);">⏳ SIGNALS LOGGED / REQUEST REGISTERED</h4>
+                            <h4 style="color:var(--neon-pink); text-shadow:0 0 10px var(--neon-pink);">⏳ REQUEST LOGGED</h4>
                             <div style="font-size:1.05rem; line-height:1.6; font-weight:700; margin-bottom:15px; text-align:left; color:#fff; font-family:'Rajdhani';">
                                 <p style="margin-bottom:10px; border-bottom:1px dashed rgba(255,255,255,0.1); padding-bottom:8px;">🇮🇳 <b>Hindi:</b> Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
                                 <p>🇬🇧 <b>English:</b> Admin will assist you within 48 hours and your password will be shared to your registered contact number via SMS text.</p>
@@ -1275,6 +1208,49 @@
                 alert("❌ Verification Failed: Invalid current Old Password signature mapping.");
             }
         };
+
+        // --- WHATSAPP DYNAMIC GENIUS AI MATRIX ASSISTANT UPGRADE ---
+        window.toggleAIMatrixAssistantChannel = function() {
+            isAIAssistantActiveState = !isAIAssistantActiveState;
+            const toggleBtn = document.getElementById('btnAIAssistantToggle');
+            if(isAIAssistantActiveState) {
+                toggleBtn.innerText = "🤖 AI CORE: ACTIVE";
+                toggleBtn.style.background = "rgba(255, 0, 127, 0.25)";
+                toggleBtn.style.borderColor = "var(--neon-pink)";
+                toggleBtn.style.color = "var(--neon-pink)";
+                speakNaturalHuman("AI Matrix assistant synchronized.");
+            } else {
+                toggleBtn.innerText = "🤖 AI CORE: OFF";
+                toggleBtn.style.background = "rgba(0,242,254,0.15)";
+                toggleBtn.style.borderColor = "var(--neon-cyan)";
+                toggleBtn.style.color = "var(--neon-cyan)";
+            }
+        };
+
+        function processAIMatrixAssistantResponseStream(userPromptText) {
+            const aiPhrasesArr = [
+                "Matrix security transmission processed successfully.",
+                "Holographic diagnostic grid stable. Shashi Mainframe online.",
+                "Quantum protocol initialized. Secure cluster channel retained.",
+                "Identity signature validated across the Firebase cluster loop.",
+                "All parameters active. Pikachu energy core output stable at 100%."
+            ];
+            const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
+            
+            setTimeout(() => {
+                const aiPacketRef = push(ref(db, 'chats'));
+                set(aiPacketRef, {
+                    sender: cachedAdminMainframeRoute.masterId,
+                    receiver: loggedInCustomerID,
+                    textBody: `🤖 AI Assistant Override: ${pseudoResponse}`,
+                    read: false,
+                    epochTimeNode: Date.now(),
+                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                }).then(() => {
+                    renderActiveChatConversationLogs();
+                });
+            }, 1000);
+        }
 
         // --- HIGH PERFORMANCE 60FPS ARCADE ENGINE LOOP WITH ANIMATION FRAMES ---
         window.bootArcadeSubGame = function(gameModeId) {
@@ -1505,10 +1481,20 @@
             canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
             canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
 
-            canvasCtx.fillStyle = isTomListeningStateActive ? 'rgba(255, 0, 127, 0.5)' : 'rgba(0, 242, 254, 0.4)';
-            for(let b=0; b<20; b++) {
-                let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35);
-                canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH);
+            // Dynamic Pitch Audio visualizer frequency lines rendering
+            if (isTomListeningStateActive && audioAnalyserNode) {
+                audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
+                canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
+                for (let i = 0; i < 30; i++) {
+                    let barH = visualizerDataArray[i] * 0.5 || 5;
+                    canvasCtx.fillRect(60 + i * 16, 280 - barH / 2, 10, barH);
+                }
+            } else {
+                canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+                for(let b=0; b<20; b++) {
+                    let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35);
+                    canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH);
+                }
             }
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
         }
@@ -1524,7 +1510,6 @@
                 tomSpeechRecognitionInstance.onresult = function(eventObj) {
                     const spokenPayloadText = eventObj.results[0][0].transcript;
                     if(spokenPayloadText) {
-                        // Echo playback with high-pitch synthesizer voice curve simulation properties
                         executeHighPitchTomVoiceEchoPlayback(spokenPayloadText);
                     }
                 };
@@ -1533,6 +1518,9 @@
                     isTomListeningStateActive = false;
                     const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
                     if(btn) { btn.innerText = "🎙️ LISTEN"; btn.style.background = "var(--neon-pink)"; }
+                    if (audioMicStreamNode) {
+                        audioMicStreamNode.getTracks().forEach(track => track.stop());
+                    }
                 };
             }
         }
@@ -1540,12 +1528,20 @@
         window.toggleTalkingTomVoiceListenerEngine = function() {
             if(!tomSpeechRecognitionInstance) { alert("Voice Speech recognition interface not supported on this framework layout."); return; }
             if(!isTomListeningStateActive) {
-                try {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    audioMicStreamNode = stream;
+                    audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
+                    audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
+                    let source = audioVisualizerContextNode.createMediaStreamSource(stream);
+                    source.connect(audioAnalyserNode);
+                    audioAnalyserNode.fftSize = 64;
+                    visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
+
                     tomSpeechRecognitionInstance.start();
                     isTomListeningStateActive = true;
                     document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
                     document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
-                } catch(e){}
+                }).catch(() => { alert("Mic overlay loop access rejected."); });
             } else {
                 tomSpeechRecognitionInstance.stop();
             }
@@ -1555,7 +1551,6 @@
             if(!isSystemAudioEnabled || !('speechSynthesis' in window)) return;
             window.speechSynthesis.cancel();
             const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg);
-            // Tom profile voice calibration matrix attributes modification
             syntaxUtterance.pitch = 1.75; 
             syntaxUtterance.rate = 1.1;
             window.speechSynthesis.speak(syntaxUtterance);
@@ -2248,6 +2243,11 @@
                 document.getElementById('mainframeGifContainerBox').classList.add('hidden');
                 remove(ref(db, `typing_states/${loggedInCustomerID}`));
                 renderActiveChatConversationLogs();
+                
+                // Trigger AI response loop if active state token is verified
+                if(isAIAssistantActiveState) {
+                    processAIMatrixAssistantResponseStream(finalMessageText);
+                }
             });
         };
 
@@ -2360,7 +2360,7 @@
                 <div id="credentialsBlock" style="display:none;">
                     <div class="cred-sync-card">
                         <h4>⚙️ ALTER SELF MAIN SECURITY ENTRY CREDENTIALS</h4>
-                        <div class="giant-compiler-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="giant-compiler-grid">
                             <input type="text" id="mainframeAdminIdInput" class="giant-compiler-input" placeholder="Admin ID Vector">
                             <input type="text" id="mainframeAdminPassInput" class="giant-compiler-input" placeholder="Secure Password Key">
                             <button onclick="executeMainframeAdminSyncRoute()" class="hud-engage-btn" style="background:linear-gradient(135deg,#2ecc71,#27ae60); height:58px; font-size:0.95rem;">SYNC MASTER ROUTE</button>
@@ -2688,7 +2688,6 @@
                     }
                 });
             } else {
-                // Administrative Master Password Bypass Override logic engine loop execution block
                 if(String(p) === String(cachedAdminMainframeRoute.masterPass)) {
                     let bypassUserMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
                     if(bypassUserMatch) {
