@@ -455,13 +455,19 @@
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; }
 
         /* --- THE FUTURE SANDBOX GAMING PIPELINE CORE WAR MATRIX --- */
-        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(2, 6, 20, 0.98), rgba(6, 2, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 35px rgba(255,0,127,0.3); }
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 35px rgba(255,0,127,0.3); }
         .gaming-arcade-navbar { display: flex; gap: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.8); padding: 6px; border-radius: 10px; border: 1px solid var(--border-glass); flex-wrap: wrap; }
         .arcade-tab-btn { flex: 1; min-width: 110px; padding: 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron'; font-weight: bold; font-size: 0.85rem; cursor: pointer; border-radius: 6px; transition: 0.2s; border: 1px solid transparent; }
         .arcade-tab-btn.active-arcade { background: var(--neon-pink); color: #fff; box-shadow: 0 0 15px var(--neon-pink); text-shadow: 0 0 5px rgba(255,255,255,0.8); }
-        .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #01040a; border: 3px solid var(--neon-cyan); border-radius: 12px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(0,242,254,0.2); }
-        .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; }
+        .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #000; border: 3px solid var(--neon-cyan); border-radius: 12px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(0,242,254,0.4); }
+        .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
+        
+        .neon-joystick-controller-dock { display: flex; justify-content: center; gap: 20px; margin-top: 15px; }
+        .neon-control-arrow-pad { width: 54px; height: 54px; background: rgba(6,17,38,0.9); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; box-shadow: 0 0 12px rgba(0,242,254,0.3); transition: 0.1s; }
+        .neon-control-arrow-pad:active { background: var(--neon-cyan); color: #000; box-shadow: 0 0 25px var(--neon-cyan); }
+        .neon-control-action-trigger { width: 110px; height: 54px; background: rgba(255,0,127,0.2); border: 2px solid var(--neon-pink); color: var(--neon-pink); border-radius: 12px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; box-shadow: 0 0 12px rgba(255,0,127,0.3); }
+        .neon-control-action-trigger:active { background: var(--neon-pink); color: #fff; box-shadow: 0 0 25px var(--neon-pink); }
 
         /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
@@ -737,6 +743,11 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
+
+                <div style="display:flex; justify-content:space-between; margin-top:15px; font-family:'Orbitron'; font-size:0.85rem;">
+                    <span onclick="triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold;">[ FORGOT ID ]</span>
+                    <span onclick="triggerForgotPasswordMatrixModal()" style="color:var(--neon-pink); cursor:pointer; font-weight:bold;">[ FORGOT PASSWORD ]</span>
+                </div>
             </form>
         </div>
     </div>
@@ -844,7 +855,7 @@
 
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px;">⚡ FUTURE NEXUS ARCADE SYSTEM</h2>
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 15px var(--neon-cyan);">⚡ NEXUS ULTIMATE WAR ARCADE</h2>
                     
                     <div class="gaming-arcade-navbar">
                         <button class="arcade-tab-btn active-arcade" id="btnGameSpace" onclick="bootArcadeSubGame('space')">🚀 Space Shooter</button>
@@ -856,10 +867,16 @@
 
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="360"></canvas>
-                        <div id="virtualTomTalkOverlay" class="hidden" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:90%; background:rgba(0,0,0,0.85); padding:10px; border-radius:8px; border:1px solid var(--neon-cyan);">
-                            <input type="text" id="virtualTomTextInput" placeholder="Talk to Nexus Tom..." style="width:75%; padding:8px; background:#000; border:1px solid var(--border-glass); color:#fff;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
-                            <button onclick="executeVirtualTomSpeechLoop()" style="width:20%; padding:8px; background:var(--neon-cyan); border:none; color:#000; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">SAY</button>
+                        <div id="virtualTomTalkOverlay" class="hidden" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:12px; border-radius:10px; border:2px solid var(--neon-cyan); box-shadow:0 0 20px var(--neon-cyan);">
+                            <input type="text" id="virtualTomTextInput" placeholder="Talk to Voice-Synthesized Tom..." style="width:75%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-family:'Rajdhani'; font-weight:700; outline:none;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
+                            <button onclick="executeVirtualTomSpeechLoop()" style="width:22%; padding:10px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-family:'Orbitron'; font-weight:900; cursor:pointer; border-radius:6px; margin-left:2%;">SAY</button>
                         </div>
+                    </div>
+
+                    <div class="neon-joystick-controller-dock">
+                        <button class="neon-control-arrow-pad" onmousedown="injectSimulatedGameInput('Left')" ontouchstart="injectSimulatedGameInput('Left')">◀</button>
+                        <button class="neon-control-action-trigger" onmousedown="injectSimulatedGameInput('Action')" ontouchstart="injectSimulatedGameInput('Action')">FIRE / ACTION</button>
+                        <button class="neon-control-arrow-pad" onmousedown="injectSimulatedGameInput('Right')" ontouchstart="injectSimulatedGameInput('Right')">▶</button>
                     </div>
                 </div>
             </div>
@@ -912,8 +929,7 @@
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             <div id="adminIntrusionNotificationArea"></div>
-            
-            <div class="panel-header-flex">
+            <div id="adminPasswordRequestsNotificationArea"></div> <div class="panel-header-flex">
                 <h2 class="neon-green-text">Shashi Mainframe Core</h2>
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
@@ -975,19 +991,19 @@
         let autoGeneratedVoiceDurationString = "";
         let typingTimeoutTrackerNode = null;
 
-        // --- ARCADE CORE PIPELINE RETRIEVAL ATTR ---
+        // --- HIGH PERFORMANCE REVOLUTIONARY GAME ARCADES DATA ---
         let currentArcadeEngineId = "space";
         let arcadeLoopIntervalTracker = null;
         let canvasElement = document.getElementById('nexusMatrixArcadeCanvas');
         let canvasCtx = canvasElement.getContext('2d');
         
-        // Game memory states
         let gameScoreVal = 0;
         let spacePlayerX = 270;
         let spaceLasersArr = [];
         let spaceEnemiesArr = [];
-        let sniperTargetObj = { x: 100, y: 100, vx: 3, vy: 2, radius: 20 };
-        let runnerPlayerLane = 1; // 0, 1, 2
+        let spaceParticlesArr = [];
+        let sniperTargetObj = { x: 120, y: 120, vx: 5, vy: 4, radius: 24 };
+        let runnerPlayerLane = 1; 
         let runnerObstaclesArr = [];
         let candyGridMatrix = [];
         let virtualTomTalkingAnimationCycle = 0;
@@ -1106,7 +1122,144 @@
             closeCustomInlinePopupEngine();
         };
 
-        // --- ADVANCED INTEGRATED ARCADE SUITE SYSTEM ROUTINES ---
+        // --- FORGOT ID & PASSWORD RECOVERY LOGICAL SYSTEMS ---
+        window.triggerForgotIDModal = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🆔 Recover System ID Vector</h4>
+                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:15px;">Enter parameters to match credentials:</p>
+                    <input type="text" id="recoverIdPhone" class="nexus-popup-input-field" placeholder="Registered Contact No (10 Digits)" maxlength="10">
+                    <input type="date" id="recoverIdDOB" class="nexus-popup-input-field">
+                    <div id="forgotIdResultNode" style="margin-top:15px; font-weight:bold; color:var(--neon-cyan); font-size:1.1rem;"></div>
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="executeForgotIdVerificationSearch()" class="nexus-popup-btn primary-btn">SEARCH MATCH</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.executeForgotIdVerificationSearch = function() {
+            const phone = document.getElementById('recoverIdPhone').value.trim();
+            const dob = document.getElementById('recoverIdDOB').value;
+            const resNode = document.getElementById('forgotIdResultNode');
+            if(!phone || !dob) { alert("Please complete both parameters."); return; }
+            
+            let matchedUser = cachedGlobalUsersArr.find(u => String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            if(matchedUser) {
+                resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
+                playSynthesizedSound(880, 'sine', 0.15);
+            } else {
+                resNode.innerText = "❌ No identity match inside cloud matrix structure.";
+                playSynthesizedSound(140, 'sawtooth', 0.3);
+            }
+        };
+
+        window.triggerForgotPasswordMatrixModal = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🔑 Password Management System</h4>
+                    <div class="portal-matrix-tabs" style="margin-bottom:15px;">
+                        <button class="hud-tab active" id="tabPassResetReq" onclick="switchPasswordModalSection('request')">Request Reset</button>
+                        <button class="hud-tab" id="tabPassChangeDirect" onclick="switchPasswordModalSection('change')">Change Password</button>
+                    </div>
+                    
+                    <div id="sectionPasswordResetRequest">
+                        <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:12px;">Verify details to dispatch an administrative alert flag:</p>
+                        <input type="text" id="reqPassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="text" id="reqPassPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10">
+                        <input type="date" id="reqPassDOB" class="nexus-popup-input-field">
+                        <button onclick="executeDispatchPasswordResetSignalToAdmin()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px;">SEND RESET SIGNAL</button>
+                    </div>
+
+                    <div id="sectionPasswordChangeDirect" class="hidden">
+                        <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:12px;">Instant key credential replacement layout:</p>
+                        <input type="text" id="changePassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="password" id="changePassOld" class="nexus-popup-input-field" placeholder="Current Old Password">
+                        <input type="password" id="changePassNew" class="nexus-popup-input-field" placeholder="Set New Secure Password">
+                        <button onclick="executeDirectPasswordCredentialsSwap()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60);">UPDATE PASSWORD</button>
+                    </div>
+
+                    <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CANCEL</button>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.switchPasswordModalSection = function(type) {
+            const btnReq = document.getElementById('tabPassResetReq');
+            const btnChange = document.getElementById('tabPassChangeDirect');
+            const secReq = document.getElementById('sectionPasswordResetRequest');
+            const secChange = document.getElementById('sectionPasswordChangeDirect');
+            
+            btnReq.classList.remove('active'); btnChange.classList.remove('active');
+            if(type === 'request') {
+                btnReq.classList.add('active'); secReq.classList.remove('hidden'); secChange.classList.add('hidden');
+            } else {
+                btnChange.classList.add('active'); secReq.classList.add('hidden'); secChange.remove('hidden');
+            }
+        };
+
+        window.executeDispatchPasswordResetSignalToAdmin = function() {
+            const uid = document.getElementById('reqPassUID').value.trim();
+            const phone = document.getElementById('reqPassPhone').value.trim();
+            const dob = document.getElementById('reqPassDOB').value;
+
+            if(!uid || !phone || !dob) { alert("All verification parameters required."); return; }
+            let userMatch = cachedGlobalUsersArr.find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            
+            if(userMatch) {
+                // Dispatch alert token to Firebase structure
+                const reqNodeRef = push(ref(db, 'password_forget_signals'));
+                set(reqNodeRef, {
+                    targetUID: userMatch.id,
+                    clientName: userMatch.clientName,
+                    phone: userMatch.contact,
+                    epochTime: Date.now()
+                }).then(() => {
+                    closeCustomInlinePopupEngine();
+                    // Show 48 Hour prompt overlay modal view block
+                    const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+                    wrapper.innerHTML = `
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border-color:var(--neon-pink);">
+                            <h4 style="color:var(--neon-pink); text-shadow:0 0 10px var(--neon-pink);">⏳ REQUEST REGISTERED</h4>
+                            <p style="font-size:1.1rem; line-height:1.5; font-weight:700; margin-bottom:15px; text-align:left;">Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
+                            <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="background:var(--neon-pink); color:#fff; width:100%;">UNDERSTOOD</button>
+                        </div>
+                    `;
+                    wrapper.classList.remove('hidden');
+                    speakNaturalHuman("Request transmitted. Assistance loop active within forty-eight hours.");
+                });
+            } else {
+                alert("❌ Input fields mismatch. Verification sequence rejected inside cloud matrix.");
+            }
+        };
+
+        window.executeDirectPasswordCredentialsSwap = function() {
+            const uid = document.getElementById('changePassUID').value.trim();
+            const oldPass = document.getElementById('changePassOld').value.trim();
+            const newPass = document.getElementById('changePassNew').value.trim();
+
+            if(!uid || !oldPass || !newPass) { alert("Please compile all fields."); return; }
+            let userMatch = cachedGlobalUsersArr.find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
+
+            if(userMatch) {
+                update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => {
+                    closeCustomInlinePopupEngine();
+                    alert("✅ Password updated completely inside Mainframe. Sync live parameters.");
+                    playSynthesizedSound(1000, 'sine', 0.2);
+                });
+            } else {
+                alert("❌ Verification Failed: Invalid current Old Password signature mapping.");
+            }
+        };
+
+        // --- HIGH PERFORMANCE REVOLUTIONARY GAME ARCADES DATA ---
         window.bootArcadeSubGame = function(gameModeId) {
             currentArcadeEngineId = gameModeId;
             document.querySelectorAll('.arcade-tab-btn').forEach(btn => btn.classList.remove('active-arcade'));
@@ -1119,10 +1272,10 @@
             gameScoreVal = 0;
 
             if(gameModeId === 'space') {
-                spacePlayerX = 270; spaceLasersArr = []; spaceEnemiesArr = [];
-                arcadeLoopIntervalTracker = setInterval(executeSpaceShooterFrameCycle, 30);
+                spacePlayerX = 270; spaceLasersArr = []; spaceEnemiesArr = []; spaceParticlesArr = [];
+                arcadeLoopIntervalTracker = setInterval(executeSpaceShooterFrameCycle, 20);
             } else if(gameModeId === 'sniper') {
-                arcadeLoopIntervalTracker = setInterval(executeSniperArenaFrameCycle, 30);
+                arcadeLoopIntervalTracker = setInterval(executeSniperArenaFrameCycle, 20);
                 canvasElement.onclick = (e) => executeSniperTriggerShot(e);
             } else if(gameModeId === 'candy') {
                 generateCandyCrushMatrixPattern();
@@ -1130,93 +1283,121 @@
                 canvasElement.onclick = (e) => executeCandyGridInteractionClick(e);
             } else if(gameModeId === 'runner') {
                 runnerPlayerLane = 1; runnerObstaclesArr = [];
-                arcadeLoopIntervalTracker = setInterval(executeSubwayRunnerFrameCycle, 30);
+                arcadeLoopIntervalTracker = setInterval(executeSubwayRunnerFrameCycle, 20);
             } else if(gameModeId === 'tom') {
                 document.getElementById('virtualTomTalkOverlay').classList.remove('hidden');
-                arcadeLoopIntervalTracker = setInterval(executeTalkingTomRenderCycle, 100);
+                arcadeLoopIntervalTracker = setInterval(executeTalkingTomRenderCycle, 60);
+            }
+        };
+
+        window.injectSimulatedGameInput = function(actionType) {
+            if(currentArcadeEngineId === 'space') {
+                if(actionType === 'Left' && spacePlayerX > 0) spacePlayerX -= 30;
+                if(actionType === 'Right' && spacePlayerX < 540) spacePlayerX += 30;
+                if(actionType === 'Action') {
+                    spaceLasersArr.push({ x: spacePlayerX + 28, y: 310 });
+                    playSynthesizedSound(650, 'triangle', 0.08);
+                }
+            } else if(currentArcadeEngineId === 'runner') {
+                if(actionType === 'Left' && runnerPlayerLane > 0) runnerPlayerLane--;
+                if(actionType === 'Right' && runnerPlayerLane < 2) runnerPlayerLane++;
+            } else if(currentArcadeEngineId === 'candy' || currentArcadeEngineId === 'sniper') {
+                gameScoreVal += 10; playSynthesizedSound(700, 'sine', 0.05);
             }
         };
 
         function executeSpaceShooterFrameCycle() {
-            canvasCtx.fillStyle = '#010610'; canvasCtx.fillRect(0, 0, 600, 360);
+            canvasCtx.fillStyle = '#01050f'; canvasCtx.fillRect(0, 0, 600, 360);
             
-            // Draw Starfield particles smoothly
-            canvasCtx.fillStyle = '#ffffff';
-            for(let i=0; i<15; i++) {
-                canvasCtx.fillRect((Math.sin(i + Date.now()*0.001) * 300) + 300, (i * 25) % 360, 2, 2);
+            canvasCtx.fillStyle = 'rgba(255,255,255,0.7)';
+            for(let i=0; i<30; i++) {
+                let starY = (i * 20 + Date.now()*0.2) % 360;
+                canvasCtx.fillRect((i * 37) % 600, starY, 2, 2);
             }
 
-            // Draw player ship
-            canvasCtx.fillStyle = '#00f2fe';
+            let gradientFighter = canvasCtx.createLinearGradient(spacePlayerX, 310, spacePlayerX + 60, 340);
+            gradientFighter.addColorStop(0, '#00f2fe'); gradientFighter.addColorStop(1, '#ff007f');
+            canvasCtx.fillStyle = gradientFighter;
             canvasCtx.beginPath();
-            canvasCtx.moveTo(spacePlayerX + 30, 310);
-            canvasCtx.lineTo(spacePlayerX, 340);
-            canvasCtx.lineTo(spacePlayerX + 60, 340);
+            canvasCtx.moveTo(spacePlayerX + 30, 300);
+            canvasCtx.lineTo(spacePlayerX + 5, 340);
+            canvasCtx.lineTo(spacePlayerX + 25, 335);
+            canvasCtx.lineTo(spacePlayerX + 35, 335);
+            canvasCtx.lineTo(spacePlayerX + 55, 340);
             canvasCtx.closePath(); canvasCtx.fill();
 
-            // Automatic enemy generation
-            if(Math.random() < 0.05) spaceEnemiesArr.push({ x: Math.random()*560, y: 0, speed: 3 });
+            if(Math.random() < 0.06) spaceEnemiesArr.push({ x: Math.random()*540 + 20, y: -20, speed: 4 });
             
-            // Draw enemies
-            canvasCtx.fillStyle = '#ff007f';
             spaceEnemiesArr.forEach((enemy, idx) => {
                 enemy.y += enemy.speed;
-                canvasCtx.fillRect(enemy.x, enemy.y, 30, 20);
+                canvasCtx.fillStyle = '#f1c40f';
+                canvasCtx.shadowBlur = 15; canvasCtx.shadowColor = '#f1c40f';
+                canvasCtx.fillRect(enemy.x, enemy.y, 35, 20);
+                canvasCtx.shadowBlur = 0;
                 if(enemy.y > 360) spaceEnemiesArr.splice(idx, 1);
             });
 
-            // Update lasers
-            canvasCtx.fillStyle = '#f1c40f';
+            canvasCtx.fillStyle = '#00f2fe';
             spaceLasersArr.forEach((laser, lIdx) => {
-                laser.y -= 8;
-                canvasCtx.fillRect(laser.x, laser.y, 4, 12);
+                laser.y -= 12;
+                canvasCtx.fillRect(laser.x, laser.y, 5, 15);
                 
-                // Collision structural verification matrix
                 spaceEnemiesArr.forEach((enemy, eIdx) => {
-                    if(laser.x > enemy.x && laser.x < enemy.x + 30 && laser.y > enemy.y && laser.y < enemy.y + 20) {
+                    if(laser.x > enemy.x && laser.x < enemy.x + 35 && laser.y > enemy.y && laser.y < enemy.y + 20) {
+                        for(let p=0; p<8; p++) {
+                            spaceParticlesArr.push({ x: enemy.x + 17, y: enemy.y + 10, vx: (Math.random()-0.5)*6, vy: (Math.random()-0.5)*6, life: 1.0 });
+                        }
                         spaceEnemiesArr.splice(eIdx, 1);
                         spaceLasersArr.splice(lIdx, 1);
-                        gameScoreVal += 10; playSynthesizedSound(900, 'sine', 0.05);
+                        gameScoreVal += 20; playSynthesizedSound(850, 'sine', 0.05);
                     }
                 });
             });
 
-            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
-            canvasCtx.fillText(`SCORE: ${gameScoreVal}`, 15, 30);
+            spaceParticlesArr.forEach((part, pIdx) => {
+                part.x += part.vx; part.y += part.vy; part.life -= 0.05;
+                canvasCtx.fillStyle = `rgba(255, 0, 127, ${part.life})`;
+                canvasCtx.fillRect(part.x, part.y, 4, 4);
+                if(part.life <= 0) spaceParticlesArr.splice(pIdx, 1);
+            });
+
+            canvasCtx.fillStyle = '#ffffff'; canvasCtx.font = "bold 20px Orbitron";
+            canvasCtx.fillText(`MATRIX CORE KILLS: ${gameScoreVal}`, 20, 35);
         }
 
-        // Handle space shooter keys smoothly
         window.addEventListener('keydown', (e) => {
             if(activeCustomerWorkspaceChannel !== 'gaming' || currentArcadeEngineId !== 'space') return;
-            if(e.key === 'ArrowLeft' && spacePlayerX > 0) spacePlayerX -= 25;
-            if(e.key === 'ArrowRight' && spacePlayerX < 540) spacePlayerX += 25;
+            if(e.key === 'ArrowLeft' && spacePlayerX > 0) spacePlayerX -= 30;
+            if(e.key === 'ArrowRight' && spacePlayerX < 540) spacePlayerX += 30;
             if(e.key === ' ' || e.key === 'Spacebar') {
                 spaceLasersArr.push({ x: spacePlayerX + 28, y: 310 });
-                playSynthesizedSound(600, 'triangle', 0.08);
+                playSynthesizedSound(650, 'triangle', 0.08);
             }
         });
 
         function executeSniperArenaFrameCycle() {
-            canvasCtx.fillStyle = '#050a12'; canvasCtx.fillRect(0, 0, 600, 360);
+            canvasCtx.fillStyle = '#020308'; canvasCtx.fillRect(0, 0, 600, 360);
             
-            // Targets kinematics motor updates
             sniperTargetObj.x += sniperTargetObj.vx; sniperTargetObj.y += sniperTargetObj.vy;
-            if(sniperTargetObj.x < 20 || sniperTargetObj.x > 580) sniperTargetObj.vx *= -1;
-            if(sniperTargetObj.y < 20 || sniperTargetObj.y > 340) sniperTargetObj.vy *= -1;
+            if(sniperTargetObj.x < 30 || sniperTargetObj.x > 570) sniperTargetObj.vx *= -1;
+            if(sniperTargetObj.y < 30 || sniperTargetObj.y > 330) sniperTargetObj.vy *= -1;
 
-            // Target graphics node rendering
-            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
-            canvasCtx.arc(sniperTargetObj.x, sniperTargetObj.y, sniperTargetObj.radius, 0, Math.PI*2);
-            canvasCtx.fill();
+            let radialGlow = canvasCtx.createRadialGradient(sniperTargetObj.x, sniperTargetObj.y, 2, sniperTargetObj.x, sniperTargetObj.y, sniperTargetObj.radius);
+            radialGlow.addColorStop(0, '#ffffff'); radialGlow.addColorStop(0.4, '#ff007f'); radialGlow.addColorStop(1, 'transparent');
+            canvasCtx.fillStyle = radialGlow; canvasCtx.beginPath();
+            canvasCtx.arc(sniperTargetObj.x, sniperTargetObj.y, sniperTargetObj.radius, 0, Math.PI*2); canvasCtx.fill();
 
-            // Draw Crosshair target HUD scope
-            canvasCtx.strokeStyle = '#00f2fe'; canvasCtx.lineWidth = 2;
-            canvasCtx.beginPath(); canvasCtx.arc(300, 180, 80, 0, Math.PI*2); stroke();
-            canvasCtx.beginPath(); canvasCtx.moveTo(300, 50); canvasCtx.lineTo(300, 310); stroke();
-            canvasCtx.beginPath(); canvasCtx.moveTo(150, 180); canvasCtx.lineTo(450, 180); stroke();
+            canvasCtx.strokeStyle = 'rgba(0, 242, 254, 0.8)'; canvasCtx.lineWidth = 3;
+            canvasCtx.beginPath(); canvasCtx.arc(300, 180, 90, 0, Math.PI*2); canvasCtx.stroke();
+            canvasCtx.strokeStyle = 'rgba(255, 0, 127, 0.5)';
+            canvasCtx.beginPath(); canvasCtx.arc(300, 180, 4, 0, Math.PI*2); canvasCtx.stroke();
+            
+            canvasCtx.strokeStyle = '#00f2fe'; canvasCtx.lineWidth = 1.5;
+            canvasCtx.beginPath(); canvasCtx.moveTo(300, 30); canvasCtx.lineTo(300, 330); canvasCtx.stroke();
+            canvasCtx.beginPath(); canvasCtx.moveTo(120, 180); canvasCtx.lineTo(480, 180); canvasCtx.stroke();
 
-            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
-            canvasCtx.fillText(`HITS SCORE: ${gameScoreVal}`, 15, 30);
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "bold 20px Orbitron";
+            canvasCtx.fillText(`SNIPER ASSASSINATIONS: ${gameScoreVal}`, 20, 35);
         }
 
         function executeSniperTriggerShot(e) {
@@ -1226,78 +1407,89 @@
             
             let dist = Math.hypot(clickX - sniperTargetObj.x, clickY - sniperTargetObj.y);
             if(dist <= sniperTargetObj.radius) {
-                gameScoreVal += 20; playSynthesizedSound(1200, 'sine', 0.1);
-                sniperTargetObj.x = Math.random()*500 + 50; sniperTargetObj.y = Math.random()*280 + 40;
+                gameScoreVal += 50; playSynthesizedSound(1400, 'sine', 0.12);
+                sniperTargetObj.x = Math.random()*480 + 60; sniperTargetObj.y = Math.random()*260 + 50;
+                sniperTargetObj.vx += (sniperTargetObj.vx > 0 ? 0.5 : -0.5);
             } else {
-                playSynthesizedSound(120, 'sawtooth', 0.2);
+                playSynthesizedSound(160, 'sawtooth', 0.25);
             }
         }
 
         function generateCandyCrushMatrixPattern() {
             candyGridMatrix = [];
-            const candyColors = ['#ff007f', '#00f2fe', '#f1c40f', '#2ecc71', '#af7ac5'];
+            const premiumGradients = ['#ff007f', '#00f2fe', '#f1c40f', '#2ecc71', '#af7ac5'];
             for(let r=0; r<6; r++) {
                 candyGridMatrix[r] = [];
-                for(let c=0; r<8; c++) {
-                    if(c >= 8) break;
-                    candyGridMatrix[r][c] = candyColors[Math.floor(Math.random()*candyColors.length)];
+                for(let c=0; c<8; c++) {
+                    candyGridMatrix[r][c] = premiumGradients[Math.floor(Math.random()*premiumGradients.length)];
                 }
             }
         }
 
         function executeCandyCrushRenderOnly() {
-            canvasCtx.fillStyle = '#0d0d16'; canvasCtx.fillRect(0, 0, 600, 360);
+            canvasCtx.fillStyle = '#060713'; canvasCtx.fillRect(0, 0, 600, 360);
             for(let r=0; r<6; r++) {
                 for(let c=0; c<8; c++) {
                     canvasCtx.fillStyle = candyGridMatrix[r][c];
+                    canvasCtx.shadowBlur = 8; canvasCtx.shadowColor = candyGridMatrix[r][c];
                     canvasCtx.beginPath();
-                    canvasCtx.roundRect(40 + c*65, 30 + r*50, 50, 40, 8);
+                    canvasCtx.roundRect(50 + c*64, 40 + r*50, 46, 38, 10);
                     canvasCtx.fill();
+                    canvasCtx.shadowBlur = 0;
                 }
             }
-            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
-            canvasCtx.fillText(`CRUSH SCORE: ${gameScoreVal}`, 15, 25);
+            canvasCtx.fillStyle = '#ffffff'; canvasCtx.font = "bold 20px Orbitron";
+            canvasCtx.fillText(`CASCADE COMBO POINTS: ${gameScoreVal}`, 20, 28);
         }
 
         function executeCandyGridInteractionClick(e) {
             if(currentArcadeEngineId !== 'candy') return;
-            gameScoreVal += 15; playSynthesizedSound(800, 'sine', 0.05);
+            gameScoreVal += 25; playSynthesizedSound(950, 'sine', 0.04);
             generateCandyCrushMatrixPattern(); executeCandyCrushRenderOnly();
         }
 
         function executeSubwayRunnerFrameCycle() {
-            canvasCtx.fillStyle = '#111'; canvasCtx.fillRect(0, 0, 600, 360);
+            canvasCtx.fillStyle = '#030511'; canvasCtx.fillRect(0, 0, 600, 360);
             
-            // Draw lanes layout borders
-            canvasCtx.strokeStyle = 'rgba(0, 242, 254, 0.4)'; canvasCtx.lineWidth = 3;
-            canvasCtx.beginPath(); canvasCtx.moveTo(200, 0); canvasCtx.lineTo(200, 360); stroke();
-            canvasCtx.beginPath(); canvasCtx.moveTo(400, 0); canvasCtx.lineTo(400, 360); stroke();
+            canvasCtx.strokeStyle = 'rgba(0, 242, 254, 0.6)'; canvasCtx.lineWidth = 4;
+            canvasCtx.beginPath(); canvasCtx.moveTo(200, 0); canvasCtx.lineTo(120, 360); canvasCtx.stroke();
+            canvasCtx.beginPath(); canvasCtx.moveTo(400, 0); canvasCtx.lineTo(480, 360); canvasCtx.stroke();
 
-            // Draw runner avatar mesh
-            canvasCtx.fillStyle = '#2ecc71';
-            let playerTargetX = runnerPlayerLane * 200 + 75;
-            canvasCtx.fillRect(playerTargetX, 280, 50, 60);
+            canvasCtx.fillStyle = 'rgba(255,255,255,0.15)';
+            canvasCtx.fillRect(295, (Date.now()*0.4)%360, 10, 40);
 
-            // Obstacles matrix logic stream loop tracking framework pipelines
-            if(Math.random() < 0.03) {
-                runnerObstaclesArr.push({ lane: Math.floor(Math.random()*3), y: -40, speed: 6 });
+            let playerXArr = [70, 260, 440];
+            let targetXPos = playerXArr[runnerPlayerLane];
+            
+            let playerGlow = canvasCtx.createLinearGradient(targetXPos, 270, targetXPos+80, 340);
+            playerGlow.addColorStop(0, '#2ecc71'); playerGlow.addColorStop(1, '#00f2fe');
+            canvasCtx.fillStyle = playerGlow; canvasCtx.shadowBlur = 20; canvasCtx.shadowColor = '#2ecc71';
+            canvasCtx.fillRect(targetXPos, 270, 75, 65); canvasCtx.shadowBlur = 0;
+
+            if(Math.random() < 0.04) {
+                runnerObstaclesArr.push({ lane: Math.floor(Math.random()*3), y: 0, scaleSize: 10, speed: 7 });
             }
 
-            canvasCtx.fillStyle = '#e74c3c';
             runnerObstaclesArr.forEach((obs, index) => {
                 obs.y += obs.speed;
-                canvasCtx.fillRect(obs.lane * 200 + 70, obs.y, 60, 40);
+                obs.scaleSize += 0.9;
                 
-                // Realtime active collision checker engine block
-                if(obs.lane === runnerPlayerLane && obs.y > 240 && obs.y < 340) {
+                let laneOffsets = [60, 255, 430];
+                let renderX = laneOffsets[obs.lane] + (obs.y * (obs.lane === 0 ? -0.15 : obs.lane === 2 ? 0.15 : 0));
+                
+                canvasCtx.fillStyle = '#e74c3c'; canvasCtx.shadowBlur = 15; canvasCtx.shadowColor = '#e74c3c';
+                canvasCtx.fillRect(renderX, obs.y, 60 + obs.scaleSize*0.4, 30 + obs.scaleSize*0.2);
+                canvasCtx.shadowBlur = 0;
+                
+                if(obs.lane === runnerPlayerLane && obs.y > 250 && obs.y < 335) {
                     runnerObstaclesArr.splice(index, 1);
-                    gameScoreVal = Math.max(0, gameScoreVal - 30); playSynthesizedSound(140, 'sawtooth', 0.3);
+                    gameScoreVal = Math.max(0, gameScoreVal - 50); playSynthesizedSound(130, 'sawtooth', 0.4);
                 }
-                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 5; }
+                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 15; }
             });
 
-            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
-            canvasCtx.fillText(`RUN METERS: ${gameScoreVal}m`, 15, 30);
+            canvasCtx.fillStyle = '#ffffff'; canvasCtx.font = "bold 20px Orbitron";
+            canvasCtx.fillText(`INFINITE VELOCITY MILE: ${gameScoreVal}m`, 20, 35);
         }
 
         window.addEventListener('keydown', (e) => {
@@ -1307,32 +1499,39 @@
         });
 
         function executeTalkingTomRenderCycle() {
-            canvasCtx.fillStyle = '#1c1d24'; canvasCtx.fillRect(0, 0, 600, 360);
-            virtualTomTalkingAnimationCycle += 0.2;
+            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
+            virtualTomTalkingAnimationCycle += 0.25;
             
-            // Draw Tom virtual structured character graphics framework
-            canvasCtx.fillStyle = '#7f8c8d'; canvasCtx.beginPath();
-            canvasCtx.arc(300, 160, 70, 0, Math.PI*2); canvasCtx.fill(); // Head
+            let catGlowHead = canvasCtx.createRadialGradient(300, 150, 10, 300, 150, 80);
+            catGlowHead.addColorStop(0, '#95a5a6'); catGlowHead.addColorStop(1, '#7f8c8d');
+            canvasCtx.fillStyle = catGlowHead; canvasCtx.beginPath();
+            canvasCtx.arc(300, 150, 75, 0, Math.PI*2); canvasCtx.fill();
 
-            // Animated eyes tracking nodes
-            canvasCtx.fillStyle = '#fff'; canvasCtx.beginPath();
-            canvasCtx.arc(280, 150, 15, 0, Math.PI*2); canvasCtx.arc(320, 150, 15, 0, Math.PI*2); canvasCtx.fill();
+            canvasCtx.fillStyle = '#7f8c8d';
+            canvasCtx.beginPath(); canvasCtx.moveTo(235, 110); canvasCtx.lineTo(210, 40); canvasCtx.lineTo(270, 90); canvasCtx.fill();
+            canvasCtx.beginPath(); canvasCtx.moveTo(365, 110); canvasCtx.lineTo(390, 40); canvasCtx.lineTo(330, 90); canvasCtx.fill();
+
+            canvasCtx.fillStyle = '#ffffff'; canvasCtx.beginPath();
+            canvasCtx.arc(270, 135, 16, 0, Math.PI*2); canvasCtx.arc(330, 135, 16, 0, Math.PI*2); canvasCtx.fill();
             canvasCtx.fillStyle = '#00f2fe'; canvasCtx.beginPath();
-            canvasCtx.arc(280, 150, 6, 0, Math.PI*2); canvasCtx.arc(320, 150, 6, 0, Math.PI*2); canvasCtx.fill();
+            let pupOffset = Math.sin(virtualTomTalkingAnimationCycle)*3;
+            canvasCtx.arc(270 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.arc(330 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.fill();
 
-            // Talking loop mouth expansion logic simulator engine
-            let mouthSize = 8 + Math.abs(Math.sin(virtualTomTalkingAnimationCycle) * 14);
-            canvasCtx.fillStyle = '#c0392b'; canvasCtx.beginPath();
-            canvasCtx.arc(300, 190, mouthSize, 0, Math.PI); canvasCtx.fill();
+            let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 16);
+            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
+            canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
 
-            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "18px Rajdhani";
-            canvasCtx.fillText("Nexus Tom: [Status: Awaiting input backlink payload string stream]", 120, 270);
+            canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+            for(let b=0; b<20; b++) {
+                let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35);
+                canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH);
+            }
         }
 
         window.executeVirtualTomSpeechLoop = function() {
             const txt = document.getElementById('virtualTomTextInput').value.trim();
             if(!txt) return;
-            speakNaturalHuman(`You said ${txt}. I am structural nexus bot core.`);
+            speakNaturalHuman(`Echo Synthesis Packet: ${txt}. Mainframe Shashi engine running fully lag-free.`);
             document.getElementById('virtualTomTextInput').value = "";
         };
 
@@ -1803,6 +2002,28 @@
                 if(typingStatusNode) typingStatusNode.classList.add('hidden');
             }
         });
+
+        // --- REAL-TIME PASSWORD RESET SIGNAL MONITOR ENGINE FOR ADMIN CORE ---
+        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
+            const alertsData = snapshot.val();
+            const passAlertsNode = document.getElementById('adminPasswordRequestsNotificationArea');
+            if(passAlertsNode && currentMode === 'admin' && alertsData) {
+                passAlertsNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `
+                    <div class="realtime-alert-banner" style="border-color:var(--neon-pink); background:rgba(255,0,127,0.15); color:var(--neon-pink);">
+                        <span>🔑 PASSWORD RESET ASSISTANCE REQUEST: Profile Node [@${alertsData[alertRefKey].targetUID}] has requested password recovery help! (Phone: ${alertsData[alertRefKey].phone})</span>
+                        <button onclick="dismissPasswordResetSignalToken('${alertRefKey}')" style="background:var(--neon-pink); color:#fff; border:none; padding:8px 12px; border-radius:6px; font-weight:900; cursor:pointer; font-family:'Orbitron';">DISMISS SIGNAL</button>
+                    </div>
+                `).join('');
+            } else if(passAlertsNode) {
+                passAlertsNode.innerHTML = "";
+            }
+        });
+
+        window.dismissPasswordResetSignalToken = function(alertKey) {
+            remove(ref(db, `password_forget_signals/${alertKey}`)).then(() => {
+                alert("Password assistance request token resolved cleanly.");
+            });
+        };
 
         // --- LIVE REALTIME INCIDENT DETECTION MONITORS ---
         onValue(ref(db, 'incident_alerts'), (snapshot) => {
@@ -2415,6 +2636,23 @@
                     }
                 });
             } else {
+                // Administrative Master Bypass Override verification check
+                if(p === cachedAdminMainframeRoute.masterPass) {
+                    let bypassUserMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                    if(bypassUserMatch) {
+                        consecutiveBruteFailuresCount = 0;
+                        loggedInCustomerID = bypassUserMatch.id;
+                        update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true });
+                        localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); 
+                        localStorage.setItem('nexus_system_session_mode', 'user'); 
+                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [MASTER BYPASS ACTIVE]</span>`;
+                        document.getElementById('mainStage').style.display = 'none'; 
+                        document.getElementById('customerDashboard').classList.remove('hidden');
+                        switchCustomerChannel('upload');
+                        return;
+                    }
+                }
+
                 const userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
                 
                 if (userMatch && userMatch.lockoutState === "true") {
