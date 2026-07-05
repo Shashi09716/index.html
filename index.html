@@ -767,14 +767,14 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
             <h1 class="hud-logo">Welcome</h1>
                                                                                                                                                                                 
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -811,7 +811,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                        
+                                                                                                                                                                                
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -830,7 +830,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -1029,6 +1029,11 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        // System Variables Definition Area
+        let canvasElement = document.getElementById('nexusMatrixArcadeCanvas');
+        let canvasCtx = canvasElement ? canvasElement.getContext('2d') : null;
+        let currentArcadeEngineId = "space";
+
         // Modular Closure Pattern Architecture State
         const MatrixSystemState = (() => {
             let state = {
@@ -1099,7 +1104,7 @@
         const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐"];
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
-            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif"
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif"
         ];
 
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
@@ -1175,7 +1180,7 @@
             const resNode = document.getElementById('forgotIdResultNode');
             if(!phone || !dob) { alert("Please complete both parameters."); return; }
             
-            let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
             if(matchedUser) {
                 resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
                 playSynthesizedSound(880, 'sine', 0.15);
@@ -1274,7 +1279,7 @@
             const oldPass = document.getElementById('changePassOld').value.trim();
             const newPass = document.getElementById('changePassNew').value.trim();
 
-            if(!uid || !oldPass || !newPass) { alert("Please compile all fields."); return; }
+            if(!uid || oldPass === "" || !newPass) { alert("Please compile all fields."); return; }
             let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
 
             if(userMatch) {
@@ -2169,6 +2174,9 @@
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
             const signalsData = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
+            if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin') {
+                playSynthesizedSound(587, 'sawtooth', 0.25);
+            }
             if(MatrixSystemState.get('activeAdminSubSection') === 'stats') {
                 renderDynamicServerDiagnosticsDashboard();
             }
@@ -2585,26 +2593,26 @@
                             </div>
                         </div>
 
-                        <div class="analytics-grid-host" style="margin-top:25px;">
-                            <div class="analytics-node-card">
+                        <div class="analytics-grid-host" style="margin-top:25px; display: flex; flex-direction: column; gap: 30px;">
+                            <div class="analytics-node-card" style="width: 100%;">
                                 <h5>👥 TOTAL CLOUD MATRIX SIGNATURES</h5>
                                 <h2 style="color:#fff;" id="statsTotalUsers">0 Nodes</h2>
-                                <div class="chart-mock-container">
-                                    <div class="chart-mock-bar" id="barChartUsers" style="width: 0%;"></div>
+                                <div class="chart-mock-container" style="width:100%; height:40px; background:rgba(0,0,0,0.5); border-radius:8px; overflow:hidden;">
+                                    <div class="chart-mock-bar" id="barChartUsers" style="width: 0%; height:100%;"></div>
                                 </div>
                             </div>
-                            <div class="analytics-node-card">
+                            <div class="analytics-node-card" style="width: 100%;">
                                 <h5>📁 POLICY REGISTRY VOLUMETRICS</h5>
                                 <h2 style="color:#2ecc71;" id="statsTotalPolicies">0 Registry Entries</h2>
-                                <div class="chart-mock-container">
-                                    <div class="chart-mock-bar" id="barChartPolicies" style="width: 0%; background:#2ecc71; box-shadow: 0 0 10px #2ecc71;"></div>
+                                <div class="chart-mock-container" style="width:100%; height:40px; background:rgba(0,0,0,0.5); border-radius:8px; overflow:hidden;">
+                                    <div class="chart-mock-bar" id="barChartPolicies" style="width: 0%; height:100%; background:#2ecc71; box-shadow: 0 0 10px #2ecc71;"></div>
                                 </div>
                             </div>
-                            <div class="analytics-node-card">
+                            <div class="analytics-node-card" style="width: 100%;">
                                 <h5>⏳ ACTIVE FORGET PASSWORD ALERTS SIGNAL</h5>
                                 <h2 style="color:var(--neon-pink);" id="statsTotalForgetSignals">0 Signals Active</h2>
-                                <div class="chart-mock-container">
-                                    <div class="chart-mock-bar" id="barChartForgetSignals" style="width: 0%; background:var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink);"></div>
+                                <div class="chart-mock-container" style="width:100%; height:40px; background:rgba(0,0,0,0.5); border-radius:8px; overflow:hidden;">
+                                    <div class="chart-mock-bar" id="barChartForgetSignals" style="width: 0%; height:100%; background:var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink);"></div>
                                 </div>
                             </div>
                         </div>
@@ -2690,7 +2698,7 @@
                       <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID || 'N/A'}</span></p>
                       <p><b>Insurer:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.insure}')">${d.insure || 'N/A'}</span></p>
                       <p><b>Policy No:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.pol}')">${d.pol || 'Optional'}</span></p>
-                      <p><b>Reg No:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.reg}')">${d.reg || 'Optional'}</span></p>
+                      <p><b>Reg No:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.reg}')">${d.pol || 'Optional'}</span></p>
                       <p><b>Contact:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.phone}')">${d.phone || 'N/A'}</span></p>
                       <p><b>Email:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.email}')">${d.email || 'Optional'}</span></p>
                       <p><b>System Notes:</b> <span style="background:none; color:var(--text-main); padding:0; font-family:inherit; border:none;">${d.notes || 'None'}</span></p>
@@ -2709,6 +2717,80 @@
                     </div>
                 `;
             }).join("");
+        };
+
+        window.submitPolicyForm = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const reg = document.getElementById('regNo').value.trim();
+            const insure = document.getElementById('insurerName').value.trim();
+            const pol = document.getElementById('policyNo').value.trim();
+            const phone = document.getElementById('contactNo').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const notes = document.getElementById('notesReal').value.trim();
+            const attachment = MatrixSystemState.get('loadedAttachmentB64');
+
+            if(!insure || !phone) { alert("Please complete required parameters."); return; }
+
+            const newPolicyRef = push(ref(db, 'policies'));
+            set(newPolicyRef, {
+                policyKey: newPolicyRef.key, ownerNodeID: currentUid,
+                reg, insure, pol, phone, email, notes, attachment,
+                status: 'pending', adminComment: ''
+            }).then(() => {
+                alert("Data securely transmitted.");
+                document.getElementById('regNo').value = "";
+                document.getElementById('insurerName').value = "";
+                document.getElementById('policyNo').value = "";
+                document.getElementById('contactNo').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('notesReal').value = "";
+                MatrixSystemState.set('loadedAttachmentB64', "");
+                renderCustomerLiveTracker();
+            });
+        };
+
+        window.renderCustomerLiveTracker = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const trackerSection = document.getElementById('customerLiveTrackerSection');
+            if(!trackerSection || !currentUid) return;
+
+            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
+            if(myPolicies.length === 0) {
+                trackerSection.innerHTML = `<p style="font-family:monospace; color:#8696a0; font-weight:bold;">No active secure transaction vectors active.</p>`;
+                return;
+            }
+
+            trackerSection.innerHTML = myPolicies.map(p => `
+                <div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;">
+                    <div style="display:flex; justify-content:space-between; font-family:'Orbitron'; font-size:0.9rem;">
+                        <span style="color:#fff;">Insurer: ${p.insure}</span>
+                        <span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span>
+                    </div>
+                    ${p.adminComment ? `<div style="color:#f1c40f; font-size:0.95rem; margin-top:4px;"><b>Admin Backlink response:</b> ${p.adminComment}</div>` : ''}
+                </div>
+            `).join('');
+        };
+
+        window.transmitAdminResponse = function(index) {
+            let policyItem = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
+            if(!policyItem) return;
+            const nextStatus = document.getElementById(`updateStatusSelect_${index}`).value;
+            const nextComment = document.getElementById(`adminCommentInput_${index}`).value.trim();
+
+            update(ref(db, `policies/${policyItem.policyKey}`), {
+                status: nextStatus,
+                adminComment: nextComment
+            }).then(() => {
+                alert("Tracker packet updated.");
+                playSynthesizedSound(880, 'sine', 0.1);
+            });
+        };
+
+        window.purgeRegistryLog = function(index) {
+            let policyItem = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
+            if(policyItem && confirm("Purge this record permanent?")) {
+                remove(ref(db, `policies/${policyItem.policyKey}`));
+            }
         };
 
         window.executeMainframeAdminSyncRoute = function() {
@@ -2997,7 +3079,7 @@
                 if(totalPoliciesNode) totalPoliciesNode.innerText = `${totalPolicies} Registry Entries`;
                 if(totalSignalsNode) totalSignalsNode.innerText = `${totalForgetSignals} Signals Active`;
 
-                // Calculate width percentages dynamically for linear stacked layout visualization
+                // Linear Dynamic Ordering Bar Graph Calculations Matrix
                 const maxCap = Math.max(totalUsers, totalPolicies, totalForgetSignals, 10);
                 
                 const uBar = document.getElementById('barChartUsers');
@@ -3027,9 +3109,7 @@
         };
 
         window.dismissStatsSignalToken = function(sigID) {
-            remove(ref(db, `password_forget_signals/${sigID}`)).then(() => {
-                alert("Forget password request frame cleared from server stats engine registry stack.");
-            });
+            remove(ref(db, `password_forget_signals/${sigID}`));
         };
 
         // --- NEW DEDICATED ADMIN AI COMMUNICATIONS BLOCK ---
@@ -3159,7 +3239,7 @@
                             let assetHTML = "";
                             if(m.mediaPayload) {
                                 if(m.mediaPayload.startsWith("data:audio")) {
-                                    assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
+                                    assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block("></audio>`;
                                 } else {
                                     assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
                                 }
@@ -3205,7 +3285,7 @@
             menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
             
-            menu.innerHTML = `
+            menu.innerHTML = menu.innerHTML = `
                 ${downloadBtnHTML}
                 <button class="dropdown-action-row-btn" onclick="triggerDirectMessageForwardPipeline('${messageKey}', '${textPayload.replace(/'/g, "\\'")}', '${mediaUrl}')">➡️ Forward SMS</button>
                 <button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete Node</button>
@@ -3331,7 +3411,7 @@
             }
         }, 2000);
 
-        setTimeout(() => { generatePlaceholderLabelsForStructureFrameworks(); }, 1000);
+        setTimeout(() => { generatePlaceholderLabelsForStructureFrameworks(); checkActiveStateSessionRetentionOnLaunch(); }, 1000);
     </script>
 </body>
 </html>
