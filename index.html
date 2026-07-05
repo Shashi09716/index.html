@@ -305,10 +305,10 @@
         .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; }
 
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
-        .hud-status-chip { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
+        .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
 
-        .hud-logo { font-family: 'Orbitron', sans-serif; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; }
+        .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; }
 
         .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; gap: 4px; }
         .hud-tab { flex: 1; padding: 14px; background: transparent; border: none; color: var(--text-sub); font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap; }
@@ -375,7 +375,7 @@
 
         /* Admin Specific Menu Bar Override styling */
         .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid #2ecc71; box-shadow: inset 0 0 20px rgba(46, 204, 113, 0.15); flex-wrap: wrap; }
-        .admin-nav-tab { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
+        .admin-nav-tab { flex: 1; min-width: 130px; padding: 18px 10px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
         .admin-nav-tab:hover { background: rgba(46, 204, 113, 0.1); border-color: rgba(46, 204, 113, 0.3); }
         .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(46, 204, 113, 0.1)); color: #2ecc71; border: 2px solid rgba(46, 204, 113, 0.7); box-shadow: 0 0 20px rgba(46, 204, 113, 0.4); text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
 
@@ -391,20 +391,20 @@
 
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(231,76,60,0.3); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
-           
+            
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1); }
         
         .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; }
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
-           
+            
         .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.7)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.03); box-shadow: 0 0 10px #f1c40f; }
-           
+            
         .hud-data-card .owner-name-tag-right {
             position: absolute;
             top: 20px;
@@ -668,6 +668,91 @@
             align-items: center;
         }
 
+        /* --- ADVANCED FINGERPRINT SCANNER HUD COMPONENT --- */
+        .biometric-scanner-wrapper {
+            margin: 20px auto;
+            width: 80px;
+            height: 80px;
+            border: 2px dashed var(--neon-cyan);
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(0,242,254,0.2);
+            transition: 0.3s;
+        }
+        .biometric-scanner-wrapper:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255,0,127,0.4);
+        }
+        .biometric-scanner-wrapper svg {
+            width: 45px;
+            height: 45px;
+            fill: var(--neon-cyan);
+            transition: 0.3s;
+        }
+        .biometric-laser-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-pink);
+            box-shadow: 0 0 12px var(--neon-pink);
+            top: 0;
+            animation: scannerLaserMotion 2s infinite linear;
+            pointer-events: none;
+            display: none;
+        }
+        @keyframes scannerLaserMotion {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+
+        /* --- STATS GRAPHICAL MODULE PANELS --- */
+        .analytics-grid-host {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        .analytics-node-card {
+            background: rgba(4,12,32,0.85);
+            border: 2px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: left;
+        }
+        .analytics-node-card h5 {
+            font-family: 'Orbitron';
+            font-size: 1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .chart-mock-container {
+            width: 100%;
+            height: 120px;
+            border-bottom: 2px solid rgba(0,242,254,0.4);
+            border-left: 2px solid rgba(0,242,254,0.4);
+            position: relative;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-bottom: 5px;
+        }
+        .chart-mock-bar {
+            width: 18px;
+            background: linear-gradient(to top, var(--neon-cyan), var(--neon-pink));
+            box-shadow: 0 0 10px rgba(0,242,254,0.5);
+            transition: height 0.5s ease;
+            border-radius: 4px 4px 0 0;
+        }
+
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
@@ -679,6 +764,7 @@
             .cinema-stage.activated .cyber-lamp-core { transform: translate3d(0, -160px, 0) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
+            .analytics-grid-host { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -699,7 +785,7 @@
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -712,26 +798,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -743,6 +829,14 @@
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
+
+                <div class="biometric-scanner-wrapper" id="biometricTouchAnchor" onclick="triggerSimulatedBiometricScan()">
+                    <div class="biometric-laser-line" id="biometricLaserNode"></div>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l1.42-1.42A7.93,7.93,0,0,1,4,12,8,8,0,0,1,18.74,7.44l1.44-1.44A9.89,9.89,0,0,0,12,2Zm0,4a6,6,0,0,0-6,6,5.91,5.91,0,0,0,.89,3.12l1.42-1.42A3.91,3.91,0,0,1,8,12a4,4,0,0,1,6.83-2.83l1.44-1.44A5.91,5.91,0,0,0,12,6Zm0,4a2,2,0,0,0-2,2,1.91,1.91,0,0,0,.3,1l1.43-1.43A0.48,0.48,0,0,1,11.5,12,0.5,0.5,0,0,1,12,11.5a0.48,0.48,0,0,1,.07,0l1.43-1.43A1.91,1.91,0,0,0,12,10Z"/>
+                    </svg>
+                </div>
+
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
 
                 <div style="display:flex; justify-content:space-between; margin-top:15px; font-family:'Orbitron'; font-size:0.85rem;">
@@ -752,7 +846,7 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div class="panel-header-flex">
@@ -763,7 +857,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                    
+                                                                                                                                                                        
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -782,7 +876,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -932,7 +1026,7 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>
         </div>
     </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             
@@ -952,14 +1046,16 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
+                <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
+                <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
-                                                                                                                                                                                                                                
+                                                                                                                                                                                
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -980,37 +1076,40 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        let currentMode = 'user';
-        let loggedInCustomerID = "";
-        let activeCustomerWorkspaceChannel = "upload";
-        let activeSelectedChatTargetUserId = "";
-        let globalLiveChatBinaryStreamBase64 = "";
-        let spyActiveTargetUserContext = "";
-        let activeAdminSubSection = "creation";
-        let loadedAttachmentB64 = "";
-        let isSystemAudioEnabled = true;
-        let isAIAssistantActiveState = false;
-        
-        let cachedGlobalUsersArr = [];
-        let cachedGlobalPolicyArr = [];
-        let consecutiveBruteFailuresCount = 0;
-        
-        let cachedAdminMainframeRoute = { masterId: "Shashi2004", masterPass: "Tolu@Molu" };
-        let nativeAudioMediaRecorderInstance = null;
-        let compiledAudioChunksCollectorArr = [];
+        // Modular Closure Pattern Architecture State
+        const MatrixSystemState = (() => {
+            let state = {
+                currentMode: 'user',
+                loggedInCustomerID: "",
+                activeCustomerWorkspaceChannel: "upload",
+                activeSelectedChatTargetUserId: "",
+                globalLiveChatBinaryStreamBase64: "",
+                spyActiveTargetUserContext: "",
+                activeAdminSubSection: "creation",
+                loadedAttachmentB64: "",
+                isSystemAudioEnabled: true,
+                isAIAssistantActiveState: false,
+                cachedGlobalUsersArr: [],
+                cachedGlobalPolicyArr: [],
+                cachedGlobalAiCommsArr: [],
+                consecutiveBruteFailuresCount: 0,
+                cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
+            };
+            return {
+                get: (key) => state[key],
+                set: (key, val) => { state[key] = val; },
+                resetChatAssets: () => {
+                    state.globalLiveChatBinaryStreamBase64 = "";
+                },
+                purgeStateReferences: () => {
+                    // Force garbage collection pointer isolation
+                    state.cachedGlobalUsersArr = [];
+                    state.cachedGlobalPolicyArr = [];
+                    state.cachedGlobalAiCommsArr = [];
+                }
+            };
+        })();
 
-        let notesMediaRecorderInstance = null;
-        let notesAudioChunksCollectorArr = [];
-        let notesVoicePayloadBase64Node = "";
-        let notesVoiceTimerIntervalTracker = null;
-        let notesRecordingStartEpoch = 0;
-        let autoGeneratedVoiceDurationString = "";
-        let typingTimeoutTrackerNode = null;
-
-        // --- HIGH PERFORMANCE REVOLUTIONARY GAME ARCADES DATA ---
-        let currentArcadeEngineId = "space";
-        let canvasElement = document.getElementById('nexusMatrixArcadeCanvas');
-        let canvasCtx = canvasElement.getContext('2d');
         let requestArcadeFrameToken = null;
         let tomSpeechRecognitionInstance = null;
         let isTomListeningStateActive = false;
@@ -1030,7 +1129,23 @@
         let candyGridMatrix = [];
         let virtualTomTalkingAnimationCycle = 0;
 
+        let nativeAudioMediaRecorderInstance = null;
+        let compiledAudioChunksCollectorArr = [];
+        let notesMediaRecorderInstance = null;
+        let notesAudioChunksCollectorArr = [];
+        let notesVoicePayloadBase64Node = "";
+        let notesVoiceTimerIntervalTracker = null;
+        let notesRecordingStartEpoch = 0;
+        let autoGeneratedVoiceDurationString = "";
+        let typingTimeoutTrackerNode = null;
+
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
+        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐"];
+        const structuralGifMatrixList = [
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif"
+        ];
+
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
@@ -1071,6 +1186,31 @@
         }
         initiatePrecisionChronometerTick();
 
+        // --- ADVANCED BIOMETRIC SCAN SIMULATOR ---
+        window.triggerSimulatedBiometricScan = function() {
+            const laser = document.getElementById('biometricLaserNode');
+            laser.style.display = 'block';
+            playSynthesizedSound(440, 'sine', 0.1);
+            speakNaturalHuman("Scanning authentication matrix parameters");
+
+            setTimeout(() => {
+                laser.style.display = 'none';
+                playSynthesizedSound(880, 'sine', 0.2);
+                speakNaturalHuman("Biometric scan passed");
+                
+                // Autofill fallback logic if credentials exist
+                executeClusterLogin(null);
+            }, 2000);
+        };
+
+        // --- PREMIUM AUDIO AUTO-NARRATION ENGINE ---
+        function autoNarrateChatMessage(senderName, textBody) {
+            if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
+            // Filter system or generic prefixes for natural vocal flow
+            const cleanText = textBody.replace(/🤖|🚫/g, '');
+            speakNaturalHuman(`${senderName} says: ${cleanText}`);
+        }
+
         // --- FORGOT ID & PASSWORD RECOVERY LOGICAL SYSTEMS ---
         window.triggerForgotIDModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1097,7 +1237,7 @@
             const resNode = document.getElementById('forgotIdResultNode');
             if(!phone || !dob) { alert("Please complete both parameters."); return; }
             
-            let matchedUser = cachedGlobalUsersArr.find(u => String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => String(u.contact) === String(phone) && String(u.dob) === String(dob));
             if(matchedUser) {
                 resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
                 playSynthesizedSound(880, 'sine', 0.15);
@@ -1160,7 +1300,7 @@
             const dob = document.getElementById('reqPassDOB').value;
 
             if(!uid || !phone || !dob) { alert("All verification parameters required."); return; }
-            let userMatch = cachedGlobalUsersArr.find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
             
             if(userMatch) {
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
@@ -1196,7 +1336,7 @@
             const newPass = document.getElementById('changePassNew').value.trim();
 
             if(!uid || !oldPass || !newPass) { alert("Please compile all fields."); return; }
-            let userMatch = cachedGlobalUsersArr.find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
 
             if(userMatch) {
                 update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => {
@@ -1211,9 +1351,10 @@
 
         // --- WHATSAPP DYNAMIC GENIUS AI MATRIX ASSISTANT UPGRADE ---
         window.toggleAIMatrixAssistantChannel = function() {
-            isAIAssistantActiveState = !isAIAssistantActiveState;
+            let activeState = !MatrixSystemState.get('isAIAssistantActiveState');
+            MatrixSystemState.set('isAIAssistantActiveState', activeState);
             const toggleBtn = document.getElementById('btnAIAssistantToggle');
-            if(isAIAssistantActiveState) {
+            if(activeState) {
                 toggleBtn.innerText = "🤖 AI CORE: ACTIVE";
                 toggleBtn.style.background = "rgba(255, 0, 127, 0.25)";
                 toggleBtn.style.borderColor = "var(--neon-pink)";
@@ -1236,23 +1377,37 @@
                 "All parameters active. Pikachu energy core output stable at 100%."
             ];
             const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
             
             setTimeout(() => {
                 const aiPacketRef = push(ref(db, 'chats'));
+                const aiMsgBody = `🤖 AI Assistant Override: ${pseudoResponse}`;
+                
                 set(aiPacketRef, {
-                    sender: cachedAdminMainframeRoute.masterId,
-                    receiver: loggedInCustomerID,
-                    textBody: `🤖 AI Assistant Override: ${pseudoResponse}`,
+                    sender: MatrixSystemState.get('cachedAdminMainframeRoute').masterId,
+                    receiver: currentUid,
+                    textBody: aiMsgBody,
                     read: false,
                     epochTimeNode: Date.now(),
                     timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
                 }).then(() => {
+                    // STREAM TO DEDICATED REAL-TIME INTERCEPTION COMPONENT LOGS
+                    const interceptRef = push(ref(db, 'ai_communications'));
+                    set(interceptRef, {
+                        customerID: currentUid,
+                        query: userPromptText,
+                        response: aiMsgBody,
+                        epochTimeNode: Date.now(),
+                        timestamp: new Date().toLocaleString()
+                    });
+
                     renderActiveChatConversationLogs();
+                    autoNarrateChatMessage("AI Engine", pseudoResponse);
                 });
             }, 1000);
         }
 
-        // --- HIGH PERFORMANCE 60FPS ARCADE ENGINE LOOP WITH ANIMATION FRAMES ---
+        // --- GAME ARCADES CORE LOOP ---
         window.bootArcadeSubGame = function(gameModeId) {
             currentArcadeEngineId = gameModeId;
             document.querySelectorAll('.arcade-tab-btn').forEach(btn => btn.classList.remove('active-arcade'));
@@ -1481,7 +1636,6 @@
             canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
             canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
 
-            // Dynamic Pitch Audio visualizer frequency lines rendering
             if (isTomListeningStateActive && audioAnalyserNode) {
                 audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
                 canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
@@ -1499,7 +1653,6 @@
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
         }
 
-        // --- TALKING TOM HIGH ACCURACY VOICE LISTENER ECHO CORE ---
         function initializeTalkingTomAudioRecognitionEngine() {
             window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (window.SpeechRecognition) {
@@ -1526,7 +1679,7 @@
         }
 
         window.toggleTalkingTomVoiceListenerEngine = function() {
-            if(!tomSpeechRecognitionInstance) { alert("Voice Speech recognition interface not supported on this framework layout."); return; }
+            if(!tomSpeechRecognitionInstance) { alert("Voice Speech recognition interface not supported."); return; }
             if(!isTomListeningStateActive) {
                 navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
                     audioMicStreamNode = stream;
@@ -1548,7 +1701,7 @@
         };
 
         function executeHighPitchTomVoiceEchoPlayback(audioStringMsg) {
-            if(!isSystemAudioEnabled || !('speechSynthesis' in window)) return;
+            if(!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
             window.speechSynthesis.cancel();
             const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg);
             syntaxUtterance.pitch = 1.75; 
@@ -1564,16 +1717,18 @@
         };
 
         window.clearCurrentChatConversation = function() {
-            if(!loggedInCustomerID || !activeSelectedChatTargetUserId) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
             if(confirm("Are you sure you want to clear your local screen chat trail record?")) {
                 get(ref(db, 'chats')).then((snap) => {
                     const data = snap.val();
                     if(data) {
                         Object.keys(data).forEach(key => {
                             const msg = data[key];
-                            if((msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
-                               (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)) {
-                                localStorage.setItem(`deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`, "purged");
+                            if((msg.sender === currentUid && msg.receiver === targetUid) ||
+                               (msg.sender === targetUid && msg.receiver === currentUid)) {
+                                localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged");
                             }
                         });
                         renderActiveChatConversationLogs();
@@ -1596,12 +1751,14 @@
         };
 
         window.handleUserTypingSimulationTracker = function() {
-            if(!loggedInCustomerID || !activeSelectedChatTargetUserId) return;
-            set(ref(db, `typing_states/${loggedInCustomerID}`), { typingTo: activeSelectedChatTargetUserId });
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
+            set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid });
             
             clearTimeout(typingTimeoutTrackerNode);
             typingTimeoutTrackerNode = setTimeout(() => {
-                remove(ref(db, `typing_states/${loggedInCustomerID}`));
+                remove(ref(db, `typing_states/${currentUid}`));
             }, 1500);
         };
 
@@ -1653,7 +1810,7 @@
 
                     notesVoiceTimerIntervalTracker = setInterval(() => {
                         const secondsTrack = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        if (timerLogNode) timerLogNode.innerText = `⏱️ [ Recording: ${secondsTrack}s ]`;
+                        if (timerLogNode) timerLogNode.innerText = `⏱ [ Recording: ${secondsTrack}s ]`;
                     }, 1000);
 
                     notesMediaRecorderInstance.ondataavailable = eventPacket => {
@@ -1690,13 +1847,14 @@
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
             const dateLogSelected = document.getElementById('noteManualDateSelector').value;
             const timeLogSelected = document.getElementById('noteManualTimeSelector').value;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
 
             if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
 
-            const cloudNoteReferenceNode = push(ref(db, `users_notes/${loggedInCustomerID}`));
+            const cloudNoteReferenceNode = push(ref(db, `users_notes/${currentUid}`));
             set(cloudNoteReferenceNode, {
                 noteId: cloudNoteReferenceNode.key,
-                ownerId: loggedInCustomerID,
+                ownerId: currentUid,
                 richTextHtml: parsedHtmlPayload || "[ Audio Data Stream Node ]",
                 voicePayloadB64: notesVoicePayloadBase64Node,
                 mappedDate: dateLogSelected,
@@ -1712,9 +1870,10 @@
 
         function fetchRealtimeNotesCloudData() {
             const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack');
-            if(!interfaceWrapper || !loggedInCustomerID) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!interfaceWrapper || !currentUid) return;
 
-            get(ref(db, `users_notes/${loggedInCustomerID}`)).then((snapshotData) => {
+            get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
                 const logs = snapshotData.val();
                 if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); font-family:monospace; font-size:1.05rem; text-align:center; padding:20px; font-weight:bold;">🔒 Cloud encryption validated. Repository empty.</div>`; return; }
                 
@@ -1737,13 +1896,14 @@
         }
 
         window.executeCloudNotePurgeMatrix = function(noteIdSignature) {
-            remove(ref(db, `users_notes/${loggedInCustomerID}/${noteIdSignature}`)).then(() => {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            remove(ref(db, `users_notes/${currentUid}/${noteIdSignature}`)).then(() => {
                 fetchRealtimeNotesCloudData();
             });
         };
 
         window.switchCustomerChannel = function(channelId) {
-            activeCustomerWorkspaceChannel = channelId;
+            MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId);
             localStorage.setItem('nexus_active_chan_route', channelId);
             
             document.getElementById('btnChannelUpload').classList.remove('active');
@@ -1782,12 +1942,13 @@
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(!wrapper) return;
             
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
             const activeLocalNickname = localNicknamesObj[targetUserId] || "";
 
             let targetAvatarPath = defaultAvatarSvg;
-            if(targetUserId !== cachedAdminMainframeRoute.masterId) {
-                const userMatch = cachedGlobalUsersArr.find(u => u.id === targetUserId);
+            if(targetUserId !== MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
+                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
                 if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
             }
 
@@ -1815,13 +1976,13 @@
 
             document.getElementById('commitProfileModalChangesBtn').onclick = () => {
                 const inputVal = document.getElementById('popupInlineNicknameModifierField').value.trim();
-                const storageKey = `nicknames_map_${loggedInCustomerID}`;
+                const storageKey = `nicknames_map_${currentUid}`;
                 let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
                 
                 if(inputVal) currentLocalNicknamesObj[targetUserId] = inputVal; else delete currentLocalNicknamesObj[targetUserId];
                 localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
                 closeCustomInlinePopupEngine();
-                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
+                if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
             };
         };
 
@@ -1854,7 +2015,7 @@
             
             contextDropdown.innerHTML = `
                 <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Profile Photo</button>
-                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏️ Set Local Nickname</button>
+                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏ Set Local Nickname</button>
             `;
             
             document.body.appendChild(contextDropdown);
@@ -1871,7 +2032,8 @@
 
         window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) {
             removeAvatarRightClickDropdownNode();
-            if(targetUserId === loggedInCustomerID || currentMode === 'admin') {
+            let currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(targetUserId === currentUid || MatrixSystemState.get('currentMode') === 'admin') {
                 const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
                 if(!wrapper) return;
                 wrapper.innerHTML = `
@@ -1893,7 +2055,7 @@
         window.commitTargetedAvatarClear = function(uid) {
             closeCustomInlinePopupEngine();
             set(ref(db, `users/${uid}/avatar`), "").then(() => {
-                if(uid === loggedInCustomerID) {
+                if(uid === MatrixSystemState.get('loggedInCustomerID')) {
                     document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
                     document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
                 }
@@ -1905,7 +2067,8 @@
             removeAvatarRightClickDropdownNode();
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(!wrapper) return;
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
             const activeNick = localNicknamesObj[targetUserId] || "";
 
             wrapper.innerHTML = `
@@ -1922,20 +2085,21 @@
 
             document.getElementById('saveContextNickBtn').onclick = () => {
                 const newNick = document.getElementById('contextNicknameInputField').value.trim();
-                const storageKey = `nicknames_map_${loggedInCustomerID}`;
+                const storageKey = `nicknames_map_${currentUid}`;
                 let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
                 if(newNick) currentLocalNicknamesObj[targetUserId] = newNick; else delete currentLocalNicknamesObj[targetUserId];
                 localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
                 closeCustomInlinePopupEngine();
-                if(currentMode === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
+                if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
                 playSynthesizedSound(880, 'sine', 0.15);
             };
         };
 
         window.commitAvatarClearBlankNode = function() {
             closeCustomInlinePopupEngine();
-            if(loggedInCustomerID) {
-                set(ref(db, `users/${loggedInCustomerID}/avatar`), "").then(() => {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(currentUid) {
+                set(ref(db, `users/${currentUid}/avatar`), "").then(() => {
                     document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
                     document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
                 });
@@ -1956,18 +2120,6 @@
             }
         };
 
-        function executeAutoPurgeEightDaysOldChats(chatsSnapshotObj) {
-            if(!chatsSnapshotObj) return;
-            const thresholdLifespanLimit = 8 * 24 * 60 * 60 * 1000; 
-            const rightNowTimeEpoch = Date.now();
-            Object.keys(chatsSnapshotObj).forEach(key => {
-                const packet = chatsSnapshotObj[key];
-                if(packet.epochTimeNode && (rightNowTimeEpoch - packet.epochTimeNode) > thresholdLifespanLimit) {
-                    remove(ref(db, `chats/${key}`));
-                }
-            });
-        }
-
         function checkActiveStateSessionRetentionOnLaunch() {
             const savedUserToken = localStorage.getItem('nexus_logged_in_uid');
             const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload';
@@ -1978,9 +2130,10 @@
                     triggerLockoutTerminalUI(savedUserToken);
                     return;
                 }
-                loggedInCustomerID = savedUserToken;
-                currentMode = savedMode;
-                activeCustomerWorkspaceChannel = savedWorkspaceChan;
+                MatrixSystemState.set('loggedInCustomerID', savedUserToken);
+                MatrixSystemState.set('currentMode', savedMode);
+                MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
+                
                 document.getElementById('mainStage').style.display = 'none';
                 document.getElementById('shashiBrandingHeader').style.opacity = '0';
                 if(savedMode === 'admin') {
@@ -1993,26 +2146,32 @@
             }
         }
 
+        // --- REAL-TIME DATA HUB VALUE LISTENERS ---
         onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
             const rootData = snapshot.val();
             if(rootData && rootData.id && rootData.pass) {
-                cachedAdminMainframeRoute.masterId = rootData.id;
-                cachedAdminMainframeRoute.masterPass = rootData.pass;
+                let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                adminRoute.masterId = rootData.id;
+                adminRoute.masterPass = rootData.pass;
+                MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute);
             }
         });
 
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
-            cachedGlobalUsersArr = data ? Object.values(data) : [];
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const userArr = data ? Object.values(data) : [];
+            MatrixSystemState.set('cachedGlobalUsersArr', userArr);
+            
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
                 renderUserControlPanel();
-                if(activeAdminSubSection === 'spychat') renderAdminSpyUserList();
+                if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') renderAdminSpyUserList();
             }
-            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
+            if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) {
                 initializeCrossLinkChatPanel();
             }
-            if(loggedInCustomerID && currentMode === 'user') {
-                const myProfile = cachedGlobalUsersArr.find(u => u.id === loggedInCustomerID);
+            if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
+                const myProfile = userArr.find(u => u.id === currentUid);
                 if(myProfile) {
                     if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
                     document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
@@ -2021,40 +2180,56 @@
         });
 
         onValue(ref(db, 'policies'), (snapshot) => {
-            cachedGlobalPolicyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
+            const policyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
+            MatrixSystemState.set('cachedGlobalPolicyArr', policyArr);
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) renderPolicyCardsBlock();
-            if(loggedInCustomerID) renderCustomerLiveTracker();
+            if(MatrixSystemState.get('loggedInCustomerID')) renderCustomerLiveTracker();
+        });
+
+        // NEW REAL-TIME INTERCEPTION STREAM LISTENER
+        onValue(ref(db, 'ai_communications'), (snapshot) => {
+            const commsData = snapshot.val() ? Object.values(snapshot.val()) : [];
+            MatrixSystemState.set('cachedGlobalAiCommsArr', commsCommsData || commsData);
+            if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') {
+                renderAdminAiInterceptionSpyBlock();
+            }
         });
 
         onValue(ref(db, 'chats'), (snapshot) => {
             const data = snapshot.val();
-            if(data) executeAutoPurgeEightDaysOldChats(data);
-            if(activeCustomerWorkspaceChannel === 'chat' && loggedInCustomerID) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
+            const adminSub = MatrixSystemState.get('activeAdminSubSection');
+            
+            if(activeChan === 'chat' && currentUid) {
                 renderActiveChatConversationLogs();
                 markIncomingMessagesAsReadSequence(data);
                 calculateUnreadBadgeCountersTrack(data);
             }
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && activeAdminSubSection === 'spychat') {
-                renderAdminSpyChatConsoleLogs();
-                renderAdminSpyUserList();
+            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
+                if(adminSub === 'spychat') {
+                    renderAdminSpyChatConsoleLogs();
+                    renderAdminSpyUserList();
+                }
             }
         });
 
         onValue(ref(db, 'typing_states'), (snapshot) => {
             const data = snapshot.val();
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator');
-            if(data && activeSelectedChatTargetUserId && data[activeSelectedChatTargetUserId] && data[activeSelectedChatTargetUserId].typingTo === loggedInCustomerID) {
+            if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid) {
                 if(typingStatusNode) typingStatusNode.classList.remove('hidden');
             } else {
                 if(typingStatusNode) typingStatusNode.classList.add('hidden');
             }
         });
 
-        // --- REAL-TIME PASSWORD RESET SIGNAL MONITOR ENGINE FOR EXCLUSIVE CONTROL BAR ---
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
             const alertsData = snapshot.val();
             const passAlertsNode = document.getElementById('adminPasswordRequestsNotificationArea');
-            if(passAlertsNode && currentMode === 'admin' && alertsData) {
+            if(passAlertsNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) {
                 passAlertsNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `
                     <div class="realtime-alert-banner" style="border-color:var(--neon-pink); background:rgba(255,0,127,0.15); color:var(--neon-pink); font-size: 0.95rem; margin-bottom: 10px;">
                         <span>⚠️ PASSWORD RECOVERY REQUEST: Client Node [@${alertsData[alertRefKey].targetUID}] needs assistance. (Contact: ${alertsData[alertRefKey].phone})</span>
@@ -2072,11 +2247,10 @@
             });
         };
 
-        // --- LIVE REALTIME INCIDENT DETECTION MONITORS ---
         onValue(ref(db, 'incident_alerts'), (snapshot) => {
             const alertsData = snapshot.val();
             const notificationHostNode = document.getElementById('adminIntrusionNotificationArea');
-            if(notificationHostNode && currentMode === 'admin' && alertsData) {
+            if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) {
                 notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `
                     <div class="realtime-alert-banner" style="font-size: 0.95rem;">
                         <span>🚨 INTRUSION DETECTION LOCK: Node Client [@${alertsData[alertRefKey].lockedUID}] Frozen due to verification failure streaks.</span>
@@ -2099,22 +2273,25 @@
         setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
 
         function markIncomingMessagesAsReadSequence(chatsSnap) {
-            if(!chatsSnap || !loggedInCustomerID || !activeSelectedChatTargetUserId) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!chatsSnap || !currentUid || !targetUid) return;
             Object.keys(chatsSnap).forEach(key => {
                 const m = chatsSnap[key];
-                if(m.sender === activeSelectedChatTargetUserId && m.receiver === loggedInCustomerID && !m.read) {
+                if(m.sender === targetUid && m.receiver === currentUid && !m.read) {
                     update(ref(db, `chats/${key}`), { read: true });
                 }
             });
         }
 
         function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            if(!chatsSnap || !loggedInCustomerID) return;
-            cachedGlobalUsersArr.forEach(user => {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!chatsSnap || !currentUid) return;
+            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
                 let unreadCount = 0;
                 Object.values(chatsSnap).forEach(msg => {
-                    if(msg.sender === user.id && msg.receiver === loggedInCustomerID && !msg.read) {
-                        if(!localStorage.getItem(`deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`)) unreadCount++;
+                    if(msg.sender === user.id && msg.receiver === currentUid && !msg.read) {
+                        if(!localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++;
                     }
                 });
                 const pill = document.getElementById(`unreadCounterBadge_${user.id}`);
@@ -2128,13 +2305,14 @@
         window.initializeCrossLinkChatPanel = function() {
             const targetContainer = document.getElementById('chatTargetContainerView');
             if(!targetContainer) return;
-            const prospectiveTargets = cachedGlobalUsersArr.filter(u => u.id !== loggedInCustomerID && u.status === 'active');
-            const masterAdminPseudoUser = { id: cachedAdminMainframeRoute.masterId, clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
+            const masterAdminPseudoUser = { id: MatrixSystemState.get('cachedAdminMainframeRoute').masterId, clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
             const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
 
             targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === activeSelectedChatTargetUserId) ? 'active-chat-target' : '';
+                const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
                 const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
                 const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
                 const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
@@ -2155,17 +2333,18 @@
                 `;
             }).join('');
             
-            if(!activeSelectedChatTargetUserId && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
+            if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
         };
 
         window.setOperationalChatTargetId = function(userId) {
-            activeSelectedChatTargetUserId = userId;
+            MatrixSystemState.set('activeSelectedChatTargetUserId', userId);
             const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
-            if(userId === cachedAdminMainframeRoute.masterId) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
+            if(userId === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
                 if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
             } else {
-                const match = cachedGlobalUsersArr.find(u => u.id === userId);
+                const match = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === userId);
                 if(titleNode && match) titleNode.innerText = localNicknamesObj[userId] || match.clientName;
             }
             renderActiveChatConversationLogs();
@@ -2180,40 +2359,47 @@
 
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper');
-            if(!wrapper || !activeSelectedChatTargetUserId) return;
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!wrapper || !targetUid) return;
+
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Pipeline Empty.</div>`; return; }
                 let htmlCollector = "";
-                Object.keys(data).forEach(key => {
-                    const msg = data[key];
-                    if((msg.sender === loggedInCustomerID && msg.receiver === activeSelectedChatTargetUserId) ||
-                       (msg.sender === activeSelectedChatTargetUserId && msg.receiver === loggedInCustomerID)) {
-                        if(localStorage.getItem(`deleted_chat_node_${loggedInCustomerID}_${msg.epochTimeNode}`)) return;
-                        const isMyMsg = (msg.sender === loggedInCustomerID);
-                        const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                        
-                        let assetHTML = "";
-                        if(msg.mediaPayload) {
-                            if(msg.mediaPayload.startsWith("data:audio")) {
-                                assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
-                            } else {
-                                assetHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
+                
+                // standard requestAnimationFrame loop wrapping to reduce browser throttling micro-stutters
+                requestAnimationFrame(() => {
+                    Object.keys(data).forEach(key => {
+                        const msg = data[key];
+                        if((msg.sender === currentUid && msg.receiver === targetUid) ||
+                           (msg.sender === targetUid && msg.receiver === currentUid)) {
+                            if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
+                            const isMyMsg = (msg.sender === currentUid);
+                            const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
+                            
+                            let assetHTML = "";
+                            if(msg.mediaPayload) {
+                                if(msg.mediaPayload.startsWith("data:audio")) {
+                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
+                                } else {
+                                    assetHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
+                                }
                             }
+                            
+                            let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
+                            
+                            htmlCollector += `
+                                <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
+                                    <div>${msg.textBody}</div>${assetHTML}
+                                    <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
+                                    ${reactionMarkup}
+                                </div>`;
                         }
-                        
-                        let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-                        
-                        htmlCollector += `
-                            <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
-                                <div>${msg.textBody}</div>${assetHTML}
-                                <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
-                                ${reactionMarkup}
-                            </div>`;
-                    }
+                    });
+                    wrapper.innerHTML = htmlCollector || `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Encryption verified.</div>`;
+                    wrapper.scrollTop = wrapper.scrollHeight;
                 });
-                wrapper.innerHTML = htmlCollector || `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Encryption verified.</div>`;
-                wrapper.scrollTop = wrapper.scrollHeight;
             });
         };
 
@@ -2221,31 +2407,37 @@
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
             const textBody = inputField.value.trim();
-            if(!textBody && !globalLiveChatBinaryStreamBase64) return;
+            let liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+
+            if(!textBody && !liveChatB64) return;
 
             let finalMessageText = textBody;
-            if(!finalMessageText && globalLiveChatBinaryStreamBase64.startsWith("data:audio")) {
-                finalMessageText = "🎙️ Voice Audio Transmission";
-            } else if(!finalMessageText && globalLiveChatBinaryStreamBase64) {
+            if(!finalMessageText && liveChatB64.startsWith("data:audio")) {
+                finalMessageText = "🎙 Voice Audio Transmission";
+            } else if(!finalMessageText && liveChatB64) {
                 finalMessageText = "📎 Document Asset Attachment";
             }
 
             const newChatPacketRef = push(ref(db, 'chats'));
             set(newChatPacketRef, {
-                sender: loggedInCustomerID, receiver: activeSelectedChatTargetUserId,
-                textBody: finalMessageText || "📎 Asset Node", mediaPayload: globalLiveChatBinaryStreamBase64,
+                sender: currentUid, receiver: targetUid,
+                textBody: finalMessageText || "📎 Asset Node", mediaPayload: liveChatB64,
                 read: false, epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
-                inputField.value = ""; globalLiveChatBinaryStreamBase64 = "";
+                inputField.value = ""; 
+                MatrixSystemState.resetChatAssets();
                 document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
                 document.getElementById('mainframeGifContainerBox').classList.add('hidden');
-                remove(ref(db, `typing_states/${loggedInCustomerID}`));
+                remove(ref(db, `typing_states/${currentUid}`));
                 renderActiveChatConversationLogs();
                 
-                // Trigger AI response loop if active state token is verified
-                if(isAIAssistantActiveState) {
+                autoNarrateChatMessage("You", finalMessageText);
+
+                if(MatrixSystemState.get('isAIAssistantActiveState')) {
                     processAIMatrixAssistantResponseStream(finalMessageText);
                 }
             });
@@ -2273,7 +2465,7 @@
         };
 
         window.transmitDirectGifMessage = function(gifUrl) {
-            globalLiveChatBinaryStreamBase64 = gifUrl;
+            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
             document.getElementById('chatCoreMessageTextInput').value = "";
             dispatchMatrixChatMessage();
         };
@@ -2305,7 +2497,7 @@
                         const blob = new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' });
                         const reader = new FileReader();
                         reader.onload = function(e) {
-                            globalLiveChatBinaryStreamBase64 = e.target.result;
+                            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result);
                             dispatchMatrixChatMessage();
                         };
                         reader.readAsDataURL(blob);
@@ -2317,7 +2509,7 @@
                     document.getElementById('chatAttachmentStatusFeedback').innerHTML = `
                         <div class="voice-wave-container">
                             <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
-                            <span style="margin-left:10px;">🎙️ Recording WhatsApp Live Voice Audio Node Stream...</span>
+                            <span style="margin-left:10px;">🎙 Recording WhatsApp Live Voice Audio Node Stream...</span>
                         </div>`;
                 }).catch(() => {
                     alert("Audio device signature rejected.");
@@ -2330,16 +2522,20 @@
         };
 
         window.switchAdminSubSection = function(sectionId) {
-            activeAdminSubSection = sectionId;
+            MatrixSystemState.set('activeAdminSubSection', sectionId);
             document.querySelectorAll('.admin-nav-tab').forEach(btn => btn.classList.remove('active'));
             const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`); if(actBtn) actBtn.classList.add('active');
             
             document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';
             document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';
             document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';
-            document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat' ? 'block' : 'none');
+            document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat') ? 'block' : 'none';
+            document.getElementById('adminAiSpyChatBlock').style.display = (sectionId === 'aispy') ? 'block' : 'none';
+            document.getElementById('adminSystemStatsBlock').style.display = (sectionId === 'stats') ? 'block' : 'none';
             
             if(sectionId === 'spychat') renderAdminSpyUserList();
+            if(sectionId === 'aispy') renderAdminAiInterceptionSpyBlock();
+            if(sectionId === 'stats') renderDynamicServerDiagnosticsDashboard();
         };
 
         window.loadAdminSubmissions = function(){
@@ -2359,7 +2555,7 @@
                 </div>
                 <div id="credentialsBlock" style="display:none;">
                     <div class="cred-sync-card">
-                        <h4>⚙️ ALTER SELF MAIN SECURITY ENTRY CREDENTIALS</h4>
+                        <h4>⚙ ALTER SELF MAIN SECURITY ENTRY CREDENTIALS</h4>
                         <div class="giant-compiler-grid">
                             <input type="text" id="mainframeAdminIdInput" class="giant-compiler-input" placeholder="Admin ID Vector">
                             <input type="text" id="mainframeAdminPassInput" class="giant-compiler-input" placeholder="Secure Password Key">
@@ -2389,12 +2585,48 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="adminAiSpyChatBlock" style="display:none; width:100%;">
+                    <div class="giant-compiler-layout">
+                        <h3 style="color:var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">🤖 REAL-TIME LIVE AUTOMATED AI CHAT INTERCEPTION</h3>
+                        <div id="adminAiSpyLogsWrapper" style="display:flex; flex-direction:column; gap:15px; max-height:500px; overflow-y:auto; margin-top:15px;"></div>
+                    </div>
+                </div>
+                <div id="adminSystemStatsBlock" style="display:none; width:100%;">
+                    <div class="giant-compiler-layout">
+                        <h3>📊 REAL-TIME PORTAL SERVER DIAGNOSTIC ENGINE</h3>
+                        <div class="analytics-grid-host" style="margin-top:20px;">
+                            <div class="analytics-node-card">
+                                <h5>👥 TOTAL CLOUD MATRIX SIGNATURES</h5>
+                                <h1 style="color:#fff;" id="statsTotalUsers">0 Nodes</h1>
+                                <div class="chart-mock-container">
+                                    <div class="chart-mock-bar" style="height:30%;"></div>
+                                    <div class="chart-mock-bar" style="height:55%;"></div>
+                                    <div class="chart-mock-bar" style="height:85%;"></div>
+                                </div>
+                            </div>
+                            <div class="analytics-node-card">
+                                <h5>📁 POLICY REGISTRY VOLUMETRICS</h5>
+                                <h1 style="color:#2ecc71;" id="statsTotalPolicies">0 Registry Entries</h1>
+                                <div class="chart-mock-container">
+                                    <div class="chart-mock-bar" style="height:40%; background:#2ecc71;"></div>
+                                    <div class="chart-mock-bar" style="height:60%; background:#2ecc71;"></div>
+                                    <div class="chart-mock-bar" style="height:90%; background:#2ecc71;"></div>
+                                </div>
+                            </div>
+                            <div class="analytics-node-card">
+                                <h5>⚡ DATABASE CORE OPERATION STABILITY</h5>
+                                <h1 style="color:var(--neon-pink);">SECURE STABLE</h1>
+                                <p style="font-size:0.85rem; color:var(--text-sub); margin-top:5px;">Firebase I/O Operations Sync latency: 12ms</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>`;
             
-            document.getElementById('mainframeAdminIdInput').value = cachedAdminMainframeRoute.masterId || "";
-            document.getElementById('mainframeAdminPassInput').value = cachedAdminMainframeRoute.masterPass || "";
+            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
+            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
             
-            renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(activeAdminSubSection);
+            renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
         };
 
         window.createNewCustomerNode = function() {
@@ -2406,7 +2638,7 @@
 
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
-            listWrapper.innerHTML = cachedGlobalUsersArr.map((user, index) => {
+            listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user, index) => {
                 const isDeactivated = user.status === 'deactivated';
                 return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:10px; border:2px solid ${isDeactivated ? '#e74c3c' : 'var(--border-glass)'}; display:flex; flex-direction:column; gap:8px;">
                         <div style="font-size:0.95rem; color:#fff; line-height:1.4;">
@@ -2449,11 +2681,12 @@
 
         window.renderPolicyCardsBlock = function() {
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
-            if(cachedGlobalPolicyArr.length === 0) { targetStack.innerHTML = "<p style='color:var(--text-sub); font-weight:bold;'>No records available inside workspace.</p>"; return; }
+            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr');
+            if(policyArr.length === 0) { targetStack.innerHTML = "<p style='color:var(--text-sub); font-weight:bold;'>No records available inside workspace.</p>"; return; }
             
-            targetStack.innerHTML = cachedGlobalPolicyArr.map((d, i) => {
+            targetStack.innerHTML = policyArr.map((d, i) => {
                 let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" style="max-width:100%; max-height:130px; border-radius:6px; margin-top:6px; border:2px solid var(--border-glass);">` : "<span>None</span>";
-                let clientProfileMatch = cachedGlobalUsersArr.find(u => u.id === d.ownerNodeID);
+                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID);
                 let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown Profile";
 
                 return `
@@ -2488,8 +2721,10 @@
             const nextPass = document.getElementById('mainframeAdminPassInput').value.trim();
             if(!nextId || !nextPass) return;
             set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => {
-                cachedAdminMainframeRoute.masterId = nextId;
-                cachedAdminMainframeRoute.masterPass = nextPass;
+                let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                adminRoute.masterId = nextId;
+                adminRoute.masterPass = nextPass;
+                MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute);
                 alert("Credentials updated completely inside Mainframe Core.");
             });
         };
@@ -2507,13 +2742,13 @@
 
         window.uploadUserProfileAvatarEngine = function(event) {
             const file = event.target.files[0];
-            const targetUid = event.target.getAttribute('data-target-uid') || loggedInCustomerID;
+            const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
             if(file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64Avatar = e.target.result;
                     set(ref(db, `users/${targetUid}/avatar`), base64Avatar).then(() => {
-                        if(targetUid === loggedInCustomerID) {
+                        if(targetUid === MatrixSystemState.get('loggedInCustomerID')) {
                             document.getElementById('customerLiveAvatarPreview').src = base64Avatar;
                             document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar;
                         }
@@ -2528,12 +2763,12 @@
             const u = document.getElementById('accessNodeUser').value.trim();
             if(!u) return;
             
-            if(currentMode === 'admin') {
-                if(cachedAdminMainframeRoute.masterId && u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase()) {
+            if(MatrixSystemState.get('currentMode') === 'admin') {
+                if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) {
                     document.getElementById('accessNodePass').focus();
                 }
             } else {
-                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
                 if(userMatch) {
                     document.getElementById('accessNodePass').focus();
                 }
@@ -2545,13 +2780,13 @@
             const p = document.getElementById('accessNodePass').value.trim();
             if(!u || !p) return;
             
-            if(currentMode === 'admin') {
-                if(cachedAdminMainframeRoute.masterId && u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+            if(MatrixSystemState.get('currentMode') === 'admin') {
+                if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase() && p === MatrixSystemState.get('cachedAdminMainframeRoute').masterPass) {
                     executeClusterLogin(null);
                 }
             } else {
-                let userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(cachedAdminMainframeRoute.masterPass))) {
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(MatrixSystemState.get('cachedAdminMainframeRoute').masterPass))) {
                     executeClusterLogin(null);
                 }
             }
@@ -2563,9 +2798,9 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     if (type === 'policy') {
-                        loadedAttachmentB64 = e.target.result;
+                        MatrixSystemState.set('loadedAttachmentB64', e.target.result);
                     } else if (type === 'chat') {
-                        globalLiveChatBinaryStreamBase64 = e.target.result;
+                        MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result);
                         document.getElementById('chatAttachmentStatusFeedback').innerText = `📎 Attached asset stream resource`;
                     }
                 };
@@ -2574,7 +2809,7 @@
         };
 
         window.speakNaturalHuman = function(textMessage) {
-            if (!isSystemAudioEnabled) return;
+            if (!MatrixSystemState.get('isSystemAudioEnabled')) return;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel(); 
                 const syntax = new SpeechSynthesisUtterance(textMessage);
@@ -2584,7 +2819,7 @@
         };
 
         window.playSynthesizedSound = function(frequency, type, duration) {
-            if (!isSystemAudioEnabled) return;
+            if (!MatrixSystemState.get('isSystemAudioEnabled')) return;
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
@@ -2598,7 +2833,7 @@
         };
 
         window.changeWorkspaceMode = function(mode) {
-            currentMode = mode;
+            MatrixSystemState.set('currentMode', mode);
             const inputLabel = document.getElementById('hudInputLabel');
             
             document.getElementById('tabModeUser').classList.remove('active');
@@ -2627,8 +2862,9 @@
         };
 
         window.toggleGlobalSystemAudio = function() {
-            isSystemAudioEnabled = !isSystemAudioEnabled;
-            document.getElementById('systemAudioToggleBtn').innerHTML = isSystemAudioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
+            let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled');
+            MatrixSystemState.set('isSystemAudioEnabled', audioEnabled);
+            document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
         };
 
         function triggerLockoutTerminalUI(usernameString) {
@@ -2659,14 +2895,14 @@
                 return;
             }
             
-            if (currentMode === 'admin') {
+            if (MatrixSystemState.get('currentMode') === 'admin') {
                 get(ref(db, 'mainframeAdmin')).then((snapshot) => {
                     const freshData = snapshot.val();
-                    const targetAdminID = (freshData && freshData.id) ? freshData.id : cachedAdminMainframeRoute.masterId;
-                    const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : cachedAdminMainframeRoute.masterPass;
+                    const targetAdminID = (freshData && freshData.id) ? freshData.id : MatrixSystemState.get('cachedAdminMainframeRoute').masterId;
+                    const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : MatrixSystemState.get('cachedAdminMainframeRoute').masterPass;
                     
                     if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
-                        consecutiveBruteFailuresCount = 0;
+                        MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
                         document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
@@ -2678,7 +2914,7 @@
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
                     }
                 }).catch(() => {
-                    if(u.toLowerCase() === cachedAdminMainframeRoute.masterId.toLowerCase() && p === cachedAdminMainframeRoute.masterPass) {
+                    if(u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase() && p === MatrixSystemState.get('cachedAdminMainframeRoute').masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
                         document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
@@ -2688,11 +2924,11 @@
                     }
                 });
             } else {
-                if(String(p) === String(cachedAdminMainframeRoute.masterPass)) {
-                    let bypassUserMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(String(p) === String(MatrixSystemState.get('cachedAdminMainframeRoute').masterPass)) {
+                    let bypassUserMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
                     if(bypassUserMatch) {
-                        consecutiveBruteFailuresCount = 0;
-                        loggedInCustomerID = bypassUserMatch.id;
+                        MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
+                        MatrixSystemState.set('loggedInCustomerID', bypassUserMatch.id);
                         update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true });
                         localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); 
                         localStorage.setItem('nexus_system_session_mode', 'user'); 
@@ -2704,7 +2940,7 @@
                     }
                 }
 
-                const userMatch = cachedGlobalUsersArr.find(user => user.id.toLowerCase() === u.toLowerCase());
+                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
                 
                 if (userMatch && userMatch.lockoutState === "true") {
                     triggerLockoutTerminalUI(userMatch.id);
@@ -2712,16 +2948,17 @@
                 }
 
                 if (!userMatch || String(userMatch.pass) !== String(p)) {
-                    consecutiveBruteFailuresCount++;
+                    let failCount = MatrixSystemState.get('consecutiveBruteFailuresCount') + 1;
+                    MatrixSystemState.set('consecutiveBruteFailuresCount', failCount);
                     playSynthesizedSound(150, 'sawtooth', 0.4);
-                    if (consecutiveBruteFailuresCount >= 3) {
+                    if (failCount >= 3) {
                         if(userMatch) {
                             update(ref(db, `users/${userMatch.id}`), { lockoutState: "true" });
                         }
                         triggerLockoutTerminalUI(u);
                         return;
                     }
-                    alert(`Access Rejected: Invalid User Signatures. Warning: Strike ${consecutiveBruteFailuresCount}/3.`);
+                    alert(`Access Rejected: Invalid User Signatures. Warning: Strike ${failCount}/3.`);
                     return;
                 }
                 
@@ -2731,8 +2968,8 @@
                     return;
                 }
                 
-                consecutiveBruteFailuresCount = 0;
-                loggedInCustomerID = userMatch.id; 
+                MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
+                MatrixSystemState.set('loggedInCustomerID', userMatch.id);
                 update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true });
                 localStorage.setItem('nexus_logged_in_uid', userMatch.id); 
                 localStorage.setItem('nexus_system_session_mode', 'user'); 
@@ -2754,18 +2991,18 @@
             if(!ins || !contact){ return; }
             const generatedPolicyId = "POL_" + Date.now();
             set(ref(db, 'policies/' + generatedPolicyId), {
-                id: generatedPolicyId, ownerNodeID: loggedInCustomerID, reg, insure: ins, pol, phone: contact, email: emailVal, notes: noteVal, 
-                attachment: loadedAttachmentB64, status: 'pending', adminComment: "Awaiting overview verification logic.", time: new Date().toLocaleString()
+                id: generatedPolicyId, ownerNodeID: MatrixSystemState.get('loggedInCustomerID'), reg, insure: ins, pol, phone: contact, email: emailVal, notes: noteVal, 
+                attachment: MatrixSystemState.get('loadedAttachmentB64'), status: 'pending', adminComment: "Awaiting overview verification logic.", time: new Date().toLocaleString()
             }).then(() => {
                 document.getElementById('regNo').value = ""; document.getElementById('insurerName').value = ""; document.getElementById('policyNo').value = "";
                 document.getElementById('contactNo').value = ""; document.getElementById('email').value = ""; document.getElementById('notesReal').value = "";
-                loadedAttachmentB64 = ""; renderCustomerLiveTracker();
+                MatrixSystemState.set('loadedAttachmentB64', ""); renderCustomerLiveTracker();
             });
         };
 
         window.renderCustomerLiveTracker = function() {
             const trackerBox = document.getElementById('customerLiveTrackerSection'); if(!trackerBox) return;
-            let userCases = cachedGlobalPolicyArr.filter(item => item.ownerNodeID === loggedInCustomerID);
+            let userCases = MatrixSystemState.get('cachedGlobalPolicyArr').filter(item => item.ownerNodeID === MatrixSystemState.get('loggedInCustomerID'));
             if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color:#00f2fe; font-family:'Orbitron';">📊 LIVE TRACKER</h4><p style="color:var(--text-sub); font-size:0.95rem; font-weight: bold;">No frames recorded.</p>`; return; }
             trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size:1.1rem; margin-bottom:12px; font-weight:900;">📊 LIVE STATUS TRACKER</h4><div style="display:flex; flex-direction:column; gap:10px; max-height:280px; overflow-y:auto;">` + 
             userCases.map((item) => {
@@ -2783,7 +3020,7 @@
         window.transmitAdminResponse = function(index) {
             const statusSelect = document.getElementById(`updateStatusSelect_${index}`); 
             const commentInput = document.getElementById(`adminCommentInput_${index}`);
-            let targetPol = cachedGlobalPolicyArr[index];
+            let targetPol = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
             if(!targetPol) return;
             update(ref(db, `policies/${targetPol.id}`), {
                 status: statusSelect.value,
@@ -2792,8 +3029,44 @@
         };
 
         window.purgeRegistryLog = function(index){ 
-            let targetPol = cachedGlobalPolicyArr[index];
+            let targetPol = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
             if(targetPol) remove(ref(db, 'policies/' + targetPol.id));
+        };
+
+        // --- NEW REAL-TIME GRAPHICAL DIAGNOSTICS & ANALYTICS CONTROLLER ---
+        window.renderDynamicServerDiagnosticsDashboard = function() {
+            setTimeout(() => {
+                const totalUsersNode = document.getElementById('statsTotalUsers');
+                const totalPoliciesNode = document.getElementById('statsTotalPolicies');
+                if(totalUsersNode) totalUsersNode.innerText = `${MatrixSystemState.get('cachedGlobalUsersArr').length} Active Identifiers`;
+                if(totalPoliciesNode) totalPoliciesNode.innerText = `${MatrixSystemState.get('cachedGlobalPolicyArr').length} Enrolled Registry Nodes`;
+            }, 100);
+        };
+
+        // --- NEW DEDICATED ADMIN AI COMMUNICATIONS BLOCK ---
+        window.renderAdminAiInterceptionSpyBlock = function() {
+            const logsWrapper = document.getElementById('adminAiSpyLogsWrapper');
+            if(!logsWrapper) return;
+            let dataArr = MatrixSystemState.get('cachedGlobalAiCommsArr');
+            if(dataArr.length === 0) {
+                logsWrapper.innerHTML = `<div style="color:var(--text-sub); font-weight:bold; font-family:monospace;">🔒 Live AI streams encrypted. Terminal stack empty.</div>`;
+                return;
+            }
+            requestAnimationFrame(() => {
+                logsWrapper.innerHTML = dataArr.reverse().map(comm => `
+                    <div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:10px; padding:18px; margin-bottom:10px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
+                        <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); margin-bottom:8px; font-weight:bold;">
+                            👤 TARGET CUSTOMER STREAM: @${comm.customerID} | ⏱ TIMESTAMP: ${comm.timestamp}
+                        </div>
+                        <div style="font-size:1.05rem; line-height:1.4; color:#fff; margin-bottom:6px;">
+                            <span style="color:var(--neon-pink); font-weight:bold;">QUERY:</span> ${comm.query}
+                        </div>
+                        <div style="font-size:1.05rem; line-height:1.4; color:rgba(255,255,255,0.85);">
+                            <span style="color:#2ecc71; font-weight:bold;">AI NODE RESP:</span> ${comm.response}
+                        </div>
+                    </div>
+                `).join('');
+            });
         };
 
         window.generatePlaceholderLabelsForStructureFrameworks = function() {
@@ -2825,19 +3098,21 @@
         };
 
         window.logoutEngine = function() {
-            if(loggedInCustomerID) update(ref(db, `users/${loggedInCustomerID}`), { isOnlineNode: false });
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(currentUid) update(ref(db, `users/${currentUid}`), { isOnlineNode: false });
             
             document.getElementById('accessNodeUser').value = "";
             document.getElementById('accessNodePass').value = "";
             
             localStorage.clear(); 
             cancelAnimationFrame(requestArcadeFrameToken);
+            MatrixSystemState.purgeStateReferences();
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
             document.getElementById('shashiBrandingHeader').style.opacity = '1'; 
             document.getElementById('clientDisplayLabel').innerText = "";
-            loggedInCustomerID = ""; 
+            MatrixSystemState.set('loggedInCustomerID', "");
             const stage = document.getElementById('mainStage'); 
             stage.style.display = 'flex'; 
             stage.classList.remove('activated'); 
@@ -2846,11 +3121,12 @@
 
         window.renderAdminSpyUserList = function() {
             const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return;
-            if(cachedGlobalUsersArr.length === 0) { listPane.innerHTML = `<div style="padding:15px; color:#fff; font-weight:bold;">No signatures tracked.</div>`; return; }
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${loggedInCustomerID}`)) || {};
+            let globalUsers = MatrixSystemState.get('cachedGlobalUsersArr');
+            if(globalUsers.length === 0) { listPane.innerHTML = `<div style="padding:15px; color:#fff; font-weight:bold;">No signatures tracked.</div>`; return; }
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${MatrixSystemState.get('loggedInCustomerID')}`)) || {};
 
-            listPane.innerHTML = cachedGlobalUsersArr.map(user => {
-                const isSelected = (spyActiveTargetUserContext === user.id);
+            listPane.innerHTML = globalUsers.map(user => {
+                const isSelected = (MatrixSystemState.get('spyActiveTargetUserContext') === user.id);
                 const chamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
                 const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
                 const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
@@ -2868,42 +3144,69 @@
         };
 
         window.setAdminSpyTargetConversationTrack = function(userId) {
-            spyActiveTargetUserContext = userId;
+            MatrixSystemState.set('spyActiveTargetUserContext', userId);
             document.getElementById('spyActiveHeaderTitle').innerText = `Console Pipeline: @${userId}`;
             renderAdminSpyChatConsoleLogs();
             renderAdminSpyUserList();
         };
 
         window.renderAdminSpyChatConsoleLogs = function() {
-            const stack = document.getElementById('adminSpyChatLogsStack'); if(!stack || !spyActiveTargetUserContext) return;
+            const stack = document.getElementById('adminSpyChatLogsStack'); 
+            const spyContext = MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!stack || !spyContext) return;
             get(ref(db, 'chats')).then((snapshot) => {
                 const data = snapshot.val();
                 if(!snapshot.exists()) { stack.innerHTML = `<div style="color:var(--text-sub); font-size:1rem; margin:auto; font-weight:bold;">🔒 Chat string stack clear.</div>`; return; }
                 let htmlCollector = "";
-                Object.keys(data).forEach(key => {
-                    const m = data[key];
-                    if((m.sender === spyActiveTargetUserContext && m.receiver === cachedAdminMainframeRoute.masterId) ||
-                       (m.sender === cachedAdminMainframeRoute.masterId && m.receiver === spyActiveTargetUserContext)) {
-                        const isMyResponse = (m.sender === cachedAdminMainframeRoute.masterId);
-                        const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                        
-                        let assetHTML = "";
-                        if(m.mediaPayload) {
-                            if(m.mediaPayload.startsWith("data:audio")) {
-                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
-                            } else {
-                                assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
+                
+                requestAnimationFrame(() => {
+                    Object.keys(data).forEach(key => {
+                        const m = data[key];
+                        if((m.sender === spyContext && m.receiver === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) ||
+                           (m.sender === MatrixSystemState.get('cachedAdminMainframeRoute').masterId && m.receiver === spyContext)) {
+                            const isMyResponse = (m.sender === MatrixSystemState.get('cachedAdminMainframeRoute').masterId);
+                            const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
+                            
+                            let assetHTML = "";
+                            if(m.mediaPayload) {
+                                if(m.mediaPayload.startsWith("data:audio")) {
+                                    assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
+                                } else {
+                                    assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
+                                }
                             }
+                            
+                            htmlCollector += `
+                                <div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:#005c4b; color:#fff; align-self:flex-end;' : 'background:#202c33; color:#fff; align-self:flex-start;'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})">
+                                    ${m.textBody}${assetHTML}<div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>
+                                </div>`;
                         }
-                        
-                        htmlCollector += `
-                            <div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:#005c4b; color:#fff; align-self:flex-end;' : 'background:#202c33; color:#fff; align-self:flex-start;'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})">
-                                ${m.textBody}${assetHTML}<div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>
-                            </div>`;
-                    }
+                    });
+                    stack.innerHTML = htmlCollector || `<div style="color:var(--text-sub); font-size:1rem; margin:auto; font-weight:bold;">🔒 Encryption verified.</div>`;
+                    stack.scrollTop = stack.scrollHeight;
                 });
-                stack.innerHTML = htmlCollector || `<div style="color:var(--text-sub); font-size:1rem; margin:auto; font-weight:bold;">🔒 Encryption verified.</div>`;
-                stack.scrollTop = stack.scrollHeight;
+            });
+        };
+
+        window.dispatchAdminSpyInterceptionMsg = function() {
+            const inputField = document.getElementById('adminSpyResponseInput');
+            const spyContext = MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!inputField || !spyContext) return;
+            const textBody = inputField.value.trim();
+            if(!textBody) return;
+
+            const newSpyChatRef = push(ref(db, 'chats'));
+            set(newSpyChatRef, {
+                sender: MatrixSystemState.get('cachedAdminMainframeRoute').masterId,
+                receiver: spyContext,
+                textBody: textBody,
+                read: false,
+                epochTimeNode: Date.now(),
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => {
+                inputField.value = "";
+                renderAdminSpyChatConsoleLogs();
+                autoNarrateChatMessage("Admin", textBody);
             });
         };
 
@@ -2934,14 +3237,14 @@
         window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) {
             removeContextDropdownMenuNode();
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const liveActiveUsersList = cachedGlobalUsersArr.filter(user => user.id !== loggedInCustomerID && user.status === 'active');
+            const liveActiveUsersList = MatrixSystemState.get('cachedGlobalUsersArr').filter(user => user.id !== MatrixSystemState.get('loggedInCustomerID') && user.status === 'active');
             
             wrapper.innerHTML = `
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
                     <h4>Forward Transmission Pipeline</h4>
                     <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:10px;">Select targeted network channel node:</p>
                     <select id="forwardDestinationNodeSelector" class="nexus-popup-input-field" style="background:#02050e; color:#f1c40f;">
-                        <option value="${cachedAdminMainframeRoute.masterId}">Mainframe Admin Shashi</option>
+                        <option value="${MatrixSystemState.get('cachedAdminMainframeRoute').masterId}">Mainframe Admin Shashi</option>
                         ${liveActiveUsersList.map(u => `<option value="${u.id}">${u.clientName} (@${u.id})</option>`).join('')}
                     </select>
                     <div class="nexus-popup-flex-btns">
@@ -2957,7 +3260,7 @@
                 
                 const forwardPacketRef = push(ref(db, 'chats'));
                 set(forwardPacketRef, {
-                    sender: currentMode === 'admin' ? cachedAdminMainframeRoute.masterId : loggedInCustomerID,
+                    sender: MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('cachedAdminMainframeRoute').masterId : MatrixSystemState.get('loggedInCustomerID'),
                     receiver: targetUIDSelection,
                     textBody: baseText + " (Forwarded Payload)",
                     mediaPayload: assetLink || "",
@@ -2989,6 +3292,8 @@
 
         window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
             closeCustomInlinePopupEngine();
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const currentMode = MatrixSystemState.get('currentMode');
             if(packetKey && purgeMode === 'everyone') {
                 update(ref(db, `chats/${packetKey}`), {
                     textBody: "🚫 This message was deleted for everyone.",
@@ -2997,31 +3302,40 @@
                     if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
                 });
             } else {
-                localStorage.setItem(`deleted_chat_node_${loggedInCustomerID}_${epochTimeNodeVal}`, "purged");
+                localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged");
                 if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
             }
         };
 
-        // --- INTERSTELLAR AUTOMATION ENGINE BACKGROUND SYNC ---
+        // --- BACKGROUND AUTOMATION SYNC LOGIC ---
         setInterval(() => {
-            if (loggedInCustomerID) {
-                if (activeCustomerWorkspaceChannel === 'upload') {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
+            const currentMode = MatrixSystemState.get('currentMode');
+            const adminSub = MatrixSystemState.get('activeAdminSubSection');
+
+            if (currentUid) {
+                if (activeChan === 'upload') {
                     renderCustomerLiveTracker();
-                } else if (activeCustomerWorkspaceChannel === 'notes') {
+                } else if (activeChan === 'notes') {
                     if (document.activeElement !== document.getElementById('richNoteWritingPadEditable')) {
                         fetchRealtimeNotesCloudData();
                     }
-                } else if (activeCustomerWorkspaceChannel === 'chat') {
+                } else if (activeChan === 'chat') {
                     if (document.activeElement !== document.getElementById('chatCoreMessageTextInput')) {
                         renderActiveChatConversationLogs();
                     }
                 }
             }
             if (currentMode === 'admin' && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                if (activeAdminSubSection === 'spychat') {
+                if (adminSub === 'spychat') {
                     if (document.activeElement !== document.getElementById('adminSpyResponseInput')) {
                         renderAdminSpyChatConsoleLogs();
                     }
+                } else if (adminSub === 'aispy') {
+                    renderAdminAiInterceptionSpyBlock();
+                } else if (adminSub === 'stats') {
+                    renderDynamicServerDiagnosticsDashboard();
                 }
             }
         }, 2000);
