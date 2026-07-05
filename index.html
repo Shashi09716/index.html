@@ -53,6 +53,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            background-color: transparent;
         }
 
         body {
@@ -74,7 +75,7 @@
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
             z-index: 9999;
             font-family: 'Orbitron', sans-serif;
             text-align: center;
@@ -675,7 +676,7 @@
             #adminUserControlList { grid-template-columns: 1fr !important; }
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 600px; }
             .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
-            .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
+            .cinema-stage.activated .cyber-lamp-core { transform: translate3d(0, -160px, 0) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
         }
@@ -2835,7 +2836,7 @@
                         let assetHTML = "";
                         if(m.mediaPayload) {
                             if(m.mediaPayload.startsWith("data:audio")) {
-                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block("></audio>`;
+                                assetHTML = `<br><audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
                             } else {
                                 assetHTML = `<br><img src="${m.mediaPayload}" style="max-width:160px; border-radius:8px; margin-top:5px; display:block;">`;
                             }
@@ -2850,16 +2851,6 @@
                 stack.innerHTML = htmlCollector || `<div style="color:var(--text-sub); font-size:1rem; margin:auto; font-weight:bold;">🔒 Encryption verified.</div>`;
                 stack.scrollTop = stack.scrollHeight;
             });
-        };
-
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const input = document.getElementById('adminSpyResponseInput'); if(!input || !input.value.trim() || !spyActiveTargetUserContext) return;
-            const newChatRef = push(ref(db, 'chats'));
-            set(newChatRef, {
-                sender: cachedAdminMainframeRoute.masterId, receiver: spyActiveTargetUserContext,
-                textBody: input.value.trim(), mediaPayload: "", read: false, epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => { input.value = ""; renderAdminSpyChatConsoleLogs(); });
         };
 
         window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl, epochTimeNodeVal) {
