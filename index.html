@@ -436,7 +436,7 @@
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
+        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
 
         /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
@@ -668,50 +668,6 @@
             align-items: center;
         }
 
-        /* --- ADVANCED FINGERPRINT SCANNER HUD COMPONENT --- */
-        .biometric-scanner-wrapper {
-            margin: 20px auto;
-            width: 80px;
-            height: 80px;
-            border: 2px dashed var(--neon-cyan);
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(0,242,254,0.2);
-            transition: 0.3s;
-        }
-        .biometric-scanner-wrapper:hover {
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 20px rgba(255,0,127,0.4);
-        }
-        .biometric-scanner-wrapper svg {
-            width: 45px;
-            height: 45px;
-            fill: var(--neon-cyan);
-            transition: 0.3s;
-        }
-        .biometric-laser-line {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--neon-pink);
-            box-shadow: 0 0 12px var(--neon-pink);
-            top: 0;
-            animation: scannerLaserMotion 2s infinite linear;
-            pointer-events: none;
-            display: none;
-        }
-        @keyframes scannerLaserMotion {
-            0% { top: 0%; }
-            50% { top: 100%; }
-            100% { top: 0%; }
-        }
-
         /* --- STATS GRAPHICAL MODULE PANELS --- */
         .analytics-grid-host {
             display: grid;
@@ -828,13 +784,6 @@
                     <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
-                </div>
-
-                <div class="biometric-scanner-wrapper" id="biometricTouchAnchor" onclick="triggerSimulatedBiometricScan()">
-                    <div class="biometric-laser-line" id="biometricLaserNode"></div>
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l1.42-1.42A7.93,7.93,0,0,1,4,12,8,8,0,0,1,18.74,7.44l1.44-1.44A9.89,9.89,0,0,0,12,2Zm0,4a6,6,0,0,0-6,6,5.91,5.91,0,0,0,.89,3.12l1.42-1.42A3.91,3.91,0,0,1,8,12a4,4,0,0,1,6.83-2.83l1.44-1.44A5.91,5.91,0,0,0,12,6Zm0,4a2,2,0,0,0-2,2,1.91,1.91,0,0,0,.3,1l1.43-1.43A0.48,0.48,0,0,1,11.5,12,0.5,0.5,0,0,1,12,11.5a0.48,0.48,0,0,1,.07,0l1.43-1.43A1.91,1.91,0,0,0,12,10Z"/>
-                    </svg>
                 </div>
 
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
@@ -1102,7 +1051,6 @@
                     state.globalLiveChatBinaryStreamBase64 = "";
                 },
                 purgeStateReferences: () => {
-                    // Force garbage collection pointer isolation
                     state.cachedGlobalUsersArr = [];
                     state.cachedGlobalPolicyArr = [];
                     state.cachedGlobalAiCommsArr = [];
@@ -1186,27 +1134,9 @@
         }
         initiatePrecisionChronometerTick();
 
-        // --- ADVANCED BIOMETRIC SCAN SIMULATOR ---
-        window.triggerSimulatedBiometricScan = function() {
-            const laser = document.getElementById('biometricLaserNode');
-            laser.style.display = 'block';
-            playSynthesizedSound(440, 'sine', 0.1);
-            speakNaturalHuman("Scanning authentication matrix parameters");
-
-            setTimeout(() => {
-                laser.style.display = 'none';
-                playSynthesizedSound(880, 'sine', 0.2);
-                speakNaturalHuman("Biometric scan passed");
-                
-                // Autofill fallback logic if credentials exist
-                executeClusterLogin(null);
-            }, 2000);
-        };
-
         // --- PREMIUM AUDIO AUTO-NARRATION ENGINE ---
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            // Filter system or generic prefixes for natural vocal flow
             const cleanText = textBody.replace(/🤖|🚫/g, '');
             speakNaturalHuman(`${senderName} says: ${cleanText}`);
         }
@@ -1391,7 +1321,6 @@
                     epochTimeNode: Date.now(),
                     timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
                 }).then(() => {
-                    // STREAM TO DEDICATED REAL-TIME INTERCEPTION COMPONENT LOGS
                     const interceptRef = push(ref(db, 'ai_communications'));
                     set(interceptRef, {
                         customerID: currentUid,
@@ -1670,7 +1599,7 @@
                 tomSpeechRecognitionInstance.onend = function() {
                     isTomListeningStateActive = false;
                     const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
-                    if(btn) { btn.innerText = "🎙️ LISTEN"; btn.style.background = "var(--neon-pink)"; }
+                    if(btn) { btn.innerText = "🎙 LISTEN"; btn.style.background = "var(--neon-pink)"; }
                     if (audioMicStreamNode) {
                         audioMicStreamNode.getTracks().forEach(track => track.stop());
                     }
@@ -1957,7 +1886,7 @@
                     <h4>${standardClientName} Profile</h4>
                     <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px; font-family:monospace;">ID Signature: @${targetUserId}</p>
                     
-                    <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:2px solid var(--border-glass);">
+                    <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:2px solid #00f2fe;">
                         <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid #00f2fe; display:block; margin:0 auto 10px auto;">
                     </div>
 
@@ -2186,10 +2115,9 @@
             if(MatrixSystemState.get('loggedInCustomerID')) renderCustomerLiveTracker();
         });
 
-        // NEW REAL-TIME INTERCEPTION STREAM LISTENER
         onValue(ref(db, 'ai_communications'), (snapshot) => {
             const commsData = snapshot.val() ? Object.values(snapshot.val()) : [];
-            MatrixSystemState.set('cachedGlobalAiCommsArr', commsCommsData || commsData);
+            MatrixSystemState.set('cachedGlobalAiCommsArr', commsData);
             if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') {
                 renderAdminAiInterceptionSpyBlock();
             }
@@ -2269,8 +2197,6 @@
                 alert("Client signature lock cleared smoothly inside Firebase database cloud matrix.");
             });
         };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
 
         function markIncomingMessagesAsReadSequence(chatsSnap) {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2368,7 +2294,6 @@
                 if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Pipeline Empty.</div>`; return; }
                 let htmlCollector = "";
                 
-                // standard requestAnimationFrame loop wrapping to reduce browser throttling micro-stutters
                 requestAnimationFrame(() => {
                     Object.keys(data).forEach(key => {
                         const msg = data[key];
@@ -2381,7 +2306,7 @@
                             let assetHTML = "";
                             if(msg.mediaPayload) {
                                 if(msg.mediaPayload.startsWith("data:audio")) {
-                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
+                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block Hausa;"></audio>`;
                                 } else {
                                     assetHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
                                 }
@@ -2627,13 +2552,6 @@
             document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
             
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
-        };
-
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value;
-            const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) return; const userId = clientName + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { loadAdminSubmissions(); });
         };
 
         window.renderUserControlPanel = function() {
@@ -3033,7 +2951,6 @@
             if(targetPol) remove(ref(db, 'policies/' + targetPol.id));
         };
 
-        // --- NEW REAL-TIME GRAPHICAL DIAGNOSTICS & ANALYTICS CONTROLLER ---
         window.renderDynamicServerDiagnosticsDashboard = function() {
             setTimeout(() => {
                 const totalUsersNode = document.getElementById('statsTotalUsers');
@@ -3043,7 +2960,6 @@
             }, 100);
         };
 
-        // --- NEW DEDICATED ADMIN AI COMMUNICATIONS BLOCK ---
         window.renderAdminAiInterceptionSpyBlock = function() {
             const logsWrapper = document.getElementById('adminAiSpyLogsWrapper');
             if(!logsWrapper) return;
