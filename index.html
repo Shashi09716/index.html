@@ -375,7 +375,7 @@
 
         /* Admin Specific Menu Bar Override styling */
         .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid #2ecc71; box-shadow: inset 0 0 20px rgba(46, 204, 113, 0.15); flex-wrap: wrap; }
-        .admin-nav-tab { flex: 1; min-width: 130px; padding: 18px 10px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
+        .admin-nav-tab { flex: 1; min-width: 120px; padding: 18px 5px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
         .admin-nav-tab:hover { background: rgba(46, 204, 113, 0.1); border-color: rgba(46, 204, 113, 0.3); }
         .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(46, 204, 113, 0.1)); color: #2ecc71; border: 2px solid rgba(46, 204, 113, 0.7); box-shadow: 0 0 20px rgba(46, 204, 113, 0.4); text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
 
@@ -670,9 +670,9 @@
 
         /* --- STATS GRAPHICAL MODULE PANELS --- */
         .analytics-grid-host {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
             width: 100%;
         }
         .analytics-node-card {
@@ -681,6 +681,7 @@
             border-radius: 14px;
             padding: 20px;
             text-align: left;
+            width: 100%;
         }
         .analytics-node-card h5 {
             font-family: 'Orbitron';
@@ -691,22 +692,23 @@
         }
         .chart-mock-container {
             width: 100%;
-            height: 120px;
+            height: 60px;
             border-bottom: 2px solid rgba(0,242,254,0.4);
             border-left: 2px solid rgba(0,242,254,0.4);
             position: relative;
             margin-top: 15px;
             display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            padding-bottom: 5px;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 5px;
         }
         .chart-mock-bar {
-            width: 18px;
-            background: linear-gradient(to top, var(--neon-cyan), var(--neon-pink));
+            height: 24px;
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
             box-shadow: 0 0 10px rgba(0,242,254,0.5);
-            transition: height 0.5s ease;
-            border-radius: 4px 4px 0 0;
+            transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 0 4px 4px 0;
+            width: 0%;
         }
 
         @media (max-width: 768px) {
@@ -720,7 +722,6 @@
             .cinema-stage.activated .cyber-lamp-core { transform: translate3d(0, -160px, 0) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
-            .analytics-grid-host { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -798,6 +799,10 @@
                                                                                                                                                                                 
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
+            <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
+                <marquee id="customerMarqueeText" scrollamount="5">⚡ SYSTEM BROADCAST VECTOR ACTIVE</marquee>
+            </div>
+
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
@@ -983,7 +988,6 @@
                 <div style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--neon-cyan); font-weight: 900; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                     <span class="refresh-spinner-node" style="background: var(--neon-cyan);"></span> 🛡️ MAIN CLOUD ACCOUNT MANAGEMENT & SIGNAL LOGS:
                 </div>
-                <div id="adminPasswordRequestsNotificationArea"></div>
                 <div id="adminIntrusionNotificationArea"></div>
             </div>
             
@@ -1041,6 +1045,8 @@
                 cachedGlobalUsersArr: [],
                 cachedGlobalPolicyArr: [],
                 cachedGlobalAiCommsArr: [],
+                cachedGlobalForgetSignalsArr: [],
+                cachedGlobalGameScoresArr: [],
                 consecutiveBruteFailuresCount: 0,
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
             };
@@ -1054,6 +1060,8 @@
                     state.cachedGlobalUsersArr = [];
                     state.cachedGlobalPolicyArr = [];
                     state.cachedGlobalAiCommsArr = [];
+                    state.cachedGlobalForgetSignalsArr = [];
+                    state.cachedGlobalGameScoresArr = [];
                 }
             };
         })();
@@ -1235,6 +1243,7 @@
             if(userMatch) {
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
                 set(reqNodeRef, {
+                    signalID: reqNodeRef.key,
                     targetUID: userMatch.id,
                     clientName: userMatch.clientName,
                     phone: userMatch.contact,
@@ -1308,6 +1317,8 @@
             ];
             const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const currentUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            const clientNameLabel = currentUserObj ? currentUserObj.clientName : "Unknown Client";
             
             setTimeout(() => {
                 const aiPacketRef = push(ref(db, 'chats'));
@@ -1324,10 +1335,12 @@
                     const interceptRef = push(ref(db, 'ai_communications'));
                     set(interceptRef, {
                         customerID: currentUid,
+                        customerName: clientNameLabel,
                         query: userPromptText,
                         response: aiMsgBody,
                         epochTimeNode: Date.now(),
-                        timestamp: new Date().toLocaleString()
+                        timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                        fullDateString: new Date().toLocaleDateString()
                     });
 
                     renderActiveChatConversationLogs();
@@ -1369,6 +1382,16 @@
             }
         };
 
+        function pushGameScoreToMatrixLogs(gameName, score) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            set(ref(db, `arcade_scores/${currentUid}/${gameName}`), {
+                score: score,
+                timestamp: new Date().toLocaleString(),
+                playerID: currentUid
+            });
+        }
+
         window.injectSimulatedGameInput = function(actionType) {
             if(currentArcadeEngineId === 'space') {
                 if(actionType === 'Left' && spacePlayerX > 0) spacePlayerX -= 30;
@@ -1382,6 +1405,7 @@
                 if(actionType === 'Right' && runnerPlayerLane < 2) runnerPlayerLane++;
             } else if(currentArcadeEngineId === 'candy' || currentArcadeEngineId === 'sniper') {
                 gameScoreVal += 10; playSynthesizedSound(700, 'sine', 0.05);
+                pushGameScoreToMatrixLogs(currentArcadeEngineId, gameScoreVal);
             }
         };
 
@@ -1428,6 +1452,7 @@
                         spaceEnemiesArr.splice(eIdx, 1);
                         spaceLasersArr.splice(lIdx, 1);
                         gameScoreVal += 20; playSynthesizedSound(850, 'sine', 0.05);
+                        pushGameScoreToMatrixLogs('space', gameScoreVal);
                     }
                 });
             });
@@ -1498,6 +1523,7 @@
             if(currentArcadeEngineId !== 'candy') return;
             gameScoreVal += 25; playSynthesizedSound(950, 'sine', 0.04);
             generateCandyCrushMatrixPattern(); executeCandyCrushRenderOnly();
+            pushGameScoreToMatrixLogs('candy', gameScoreVal);
         }
 
         function executeSubwayRunnerFrameCycle() {
@@ -1537,7 +1563,7 @@
                     runnerObstaclesArr.splice(index, 1);
                     gameScoreVal = Math.max(0, gameScoreVal - 50); playSynthesizedSound(130, 'sawtooth', 0.4);
                 }
-                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 15; }
+                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 15; pushGameScoreToMatrixLogs('runner', gameScoreVal); }
             });
 
             canvasCtx.fillStyle = '#ffffff'; canvasCtx.font = "bold 20px Orbitron";
@@ -1850,7 +1876,6 @@
                 document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
                 renderCustomerLiveTracker();
             } else if(channelId === 'notes') {
-                document.getElementById('btnChannelUpload').classList.remove('active');
                 document.getElementById('btnChannelNotes').classList.add('active');
                 document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
                 wipeNoteInterfaceToBlankTrigger();
@@ -2087,6 +2112,21 @@
             }
         });
 
+        // UNIQUE ATTACHMENT: BROADCAST SYNC ENGINE FOR CUSTOMERS
+        onValue(ref(db, 'system_broadcast'), (snapshot) => {
+            const broadcastVal = snapshot.val();
+            const banner = document.getElementById('customerMarqueeContainer');
+            const txtNode = document.getElementById('customerMarqueeText');
+            if(banner && txtNode && MatrixSystemState.get('currentMode') === 'user') {
+                if(broadcastVal && broadcastVal.text) {
+                    txtNode.innerText = `🚨 BROADCAST: ${broadcastVal.text}`;
+                    banner.style.display = 'block';
+                } else {
+                    banner.style.display = 'none';
+                }
+            }
+        });
+
         onValue(ref(db, 'users'), (snapshot) => {
             const data = snapshot.val();
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2096,6 +2136,7 @@
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
                 renderUserControlPanel();
                 if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') renderAdminSpyUserList();
+                if(MatrixSystemState.get('activeAdminSubSection') === 'creation') renderLiveCreationStatsSummary();
             }
             if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) {
                 initializeCrossLinkChatPanel();
@@ -2121,6 +2162,15 @@
             MatrixSystemState.set('cachedGlobalAiCommsArr', commsData);
             if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') {
                 renderAdminAiInterceptionSpyBlock();
+            }
+        });
+
+        // FORGET PASSWORD REALTIME BROADCAST LISTENER
+        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
+            const signalsData = snapshot.val() ? Object.values(snapshot.val()) : [];
+            MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
+            if(MatrixSystemState.get('activeAdminSubSection') === 'stats') {
+                renderDynamicServerDiagnosticsDashboard();
             }
         });
 
@@ -2154,27 +2204,6 @@
                 if(typingStatusNode) typingStatusNode.classList.add('hidden');
             }
         });
-
-        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
-            const alertsData = snapshot.val();
-            const passAlertsNode = document.getElementById('adminPasswordRequestsNotificationArea');
-            if(passAlertsNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) {
-                passAlertsNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `
-                    <div class="realtime-alert-banner" style="border-color:var(--neon-pink); background:rgba(255,0,127,0.15); color:var(--neon-pink); font-size: 0.95rem; margin-bottom: 10px;">
-                        <span>⚠️ PASSWORD RECOVERY REQUEST: Client Node [@${alertsData[alertRefKey].targetUID}] needs assistance. (Contact: ${alertsData[alertRefKey].phone})</span>
-                        <button onclick="dismissPasswordResetSignalToken('${alertRefKey}')" style="background:var(--neon-pink); color:#fff; border:none; padding:6px 12px; border-radius:6px; font-weight:900; cursor:pointer; font-family:'Orbitron'; font-size:0.8rem;">RESOLVE</button>
-                    </div>
-                `).join('');
-            } else if(passAlertsNode) {
-                passAlertsNode.innerHTML = "";
-            }
-        });
-
-        window.dismissPasswordResetSignalToken = function(alertKey) {
-            remove(ref(db, `password_forget_signals/${alertKey}`)).then(() => {
-                alert("Password assistance request token resolved cleanly.");
-            });
-        };
 
         onValue(ref(db, 'incident_alerts'), (snapshot) => {
             const alertsData = snapshot.val();
@@ -2462,6 +2491,22 @@
             if(sectionId === 'spychat') renderAdminSpyUserList();
             if(sectionId === 'aispy') renderAdminAiInterceptionSpyBlock();
             if(sectionId === 'stats') renderDynamicServerDiagnosticsDashboard();
+            if(sectionId === 'creation') renderLiveCreationStatsSummary();
+        };
+
+        // EXACTIVE UNIQUE ATTACHMENT: TRANSMIT BROADCAST TEXT TO FIREBASE
+        window.dispatchMainframeGlobalBroadcast = function() {
+            const txt = document.getElementById('adminBroadcastInputControl').value.trim();
+            set(ref(db, 'system_broadcast'), { text: txt, epoch: Date.now() }).then(() => {
+                alert("🔴 Broadcast signal dispatched throughout active customer clusters!");
+            });
+        };
+
+        window.clearMainframeGlobalBroadcast = function() {
+            remove(ref(db, 'system_broadcast')).then(() => {
+                document.getElementById('adminBroadcastInputControl').value = "";
+                alert("Broadcast pipeline cleared clean.");
+            });
         };
 
         window.loadAdminSubmissions = function(){
@@ -2470,6 +2515,9 @@
                 <div id="idCreationBlock">
                     <div class="giant-compiler-layout">
                         <h3>⚡ ENLARGED ACCOUNT ENGINE COMPILER</h3>
+                        <div style="background:rgba(0,242,254,0.05); padding:12px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:var(--neon-cyan); font-weight:bold;" id="liveCreationStatsMiniNode">
+                            Live Registered Signatures Count: Loading...
+                        </div>
                         <div class="giant-compiler-grid">
                             <input type="text" id="newClientName" class="giant-compiler-input" placeholder="Client Name *">
                             <input type="date" id="newClientDOB" class="giant-compiler-input">
@@ -2486,6 +2534,14 @@
                             <input type="text" id="mainframeAdminIdInput" class="giant-compiler-input" placeholder="Admin ID Vector">
                             <input type="text" id="mainframeAdminPassInput" class="giant-compiler-input" placeholder="Secure Password Key">
                             <button onclick="executeMainframeAdminSyncRoute()" class="hud-engage-btn" style="background:linear-gradient(135deg,#2ecc71,#27ae60); height:58px; font-size:0.95rem;">SYNC MASTER ROUTE</button>
+                        </div>
+                    </div>
+                    <div style="background:rgba(231,76,60,0.05); border:2px solid #e74c3c; border-radius:14px; padding:25px; margin-bottom:25px;">
+                        <h4 style="color:#e74c3c; font-family:'Orbitron'; margin-bottom:15px;">🔴 TERMINAL GLOBAL NETWORK BROADCAST BACKLINK</h4>
+                        <input type="text" id="adminBroadcastInputControl" class="giant-compiler-input" placeholder="Type transmission alert marquee text banner here..." style="border-color:#e74c3c; margin-bottom:15px;">
+                        <div style="display:flex; gap:10px;">
+                            <button onclick="dispatchMainframeGlobalBroadcast()" class="hud-engage-btn" style="background:#e74c3c; color:#fff; flex:1;">TRANSMIT SIGNAL</button>
+                            <button onclick="clearMainframeGlobalBroadcast()" class="abort-btn" style="flex:1; border-radius:10px;">KILL TRANSMISSION</button>
                         </div>
                     </div>
                     <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:14px; border:2px solid var(--border-glass); margin-bottom:20px;">
@@ -2521,29 +2577,35 @@
                 <div id="adminSystemStatsBlock" style="display:none; width:100%;">
                     <div class="giant-compiler-layout">
                         <h3>📊 REAL-TIME PORTAL SERVER DIAGNOSTIC ENGINE</h3>
-                        <div class="analytics-grid-host" style="margin-top:20px;">
+                        
+                        <div style="margin-top:20px; background:rgba(255,0,127,0.1); border:1px dashed var(--neon-pink); border-radius:12px; padding:20px;">
+                            <h4 style="color:var(--neon-pink); font-family:'Orbitron'; margin-bottom:12px;">🔑 LIVE PASSWORD FORGET REQUESTS STREAM</h4>
+                            <div id="adminStatsForgetSignalsLogsWrapper" style="display:flex; flex-direction:column; gap:10px;">
+                                <p style="color:var(--text-sub); font-size:0.95rem;">No active forget requests detected.</p>
+                            </div>
+                        </div>
+
+                        <div class="analytics-grid-host" style="margin-top:25px;">
                             <div class="analytics-node-card">
                                 <h5>👥 TOTAL CLOUD MATRIX SIGNATURES</h5>
-                                <h1 style="color:#fff;" id="statsTotalUsers">0 Nodes</h1>
+                                <h2 style="color:#fff;" id="statsTotalUsers">0 Nodes</h2>
                                 <div class="chart-mock-container">
-                                    <div class="chart-mock-bar" style="height:30%;"></div>
-                                    <div class="chart-mock-bar" style="height:55%;"></div>
-                                    <div class="chart-mock-bar" style="height:85%;"></div>
+                                    <div class="chart-mock-bar" id="barChartUsers" style="width: 0%;"></div>
                                 </div>
                             </div>
                             <div class="analytics-node-card">
                                 <h5>📁 POLICY REGISTRY VOLUMETRICS</h5>
-                                <h1 style="color:#2ecc71;" id="statsTotalPolicies">0 Registry Entries</h1>
+                                <h2 style="color:#2ecc71;" id="statsTotalPolicies">0 Registry Entries</h2>
                                 <div class="chart-mock-container">
-                                    <div class="chart-mock-bar" style="height:40%; background:#2ecc71;"></div>
-                                    <div class="chart-mock-bar" style="height:60%; background:#2ecc71;"></div>
-                                    <div class="chart-mock-bar" style="height:90%; background:#2ecc71;"></div>
+                                    <div class="chart-mock-bar" id="barChartPolicies" style="width: 0%; background:#2ecc71; box-shadow: 0 0 10px #2ecc71;"></div>
                                 </div>
                             </div>
                             <div class="analytics-node-card">
-                                <h5>⚡ DATABASE CORE OPERATION STABILITY</h5>
-                                <h1 style="color:var(--neon-pink);">SECURE STABLE</h1>
-                                <p style="font-size:0.85rem; color:var(--text-sub); margin-top:5px;">Firebase I/O Operations Sync latency: 12ms</p>
+                                <h5>⏳ ACTIVE FORGET PASSWORD ALERTS SIGNAL</h5>
+                                <h2 style="color:var(--neon-pink);" id="statsTotalForgetSignals">0 Signals Active</h2>
+                                <div class="chart-mock-container">
+                                    <div class="chart-mock-bar" id="barChartForgetSignals" style="width: 0%; background:var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink);"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2553,6 +2615,20 @@
             document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
             
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
+        };
+
+        window.renderLiveCreationStatsSummary = function() {
+            const mininode = document.getElementById('liveCreationStatsMiniNode');
+            if(mininode) {
+                mininode.innerText = `Live Registered Signatures Count: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`;
+            }
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value;
+            const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) return; const userId = clientName + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { loadAdminSubmissions(); });
         };
 
         window.renderUserControlPanel = function() {
@@ -2906,64 +2982,57 @@
             }
         };
 
-        window.submitPolicyForm = function(){
-            let reg = document.getElementById('regNo').value.trim(); let ins = document.getElementById('insurerName').value.trim();
-            let pol = document.getElementById('policyNo').value.trim(); let contact = document.getElementById('contactNo').value.trim();
-            let emailVal = document.getElementById('email').value.trim(); let noteVal = document.getElementById('notesReal').value.trim();
-            if(!ins || !contact){ return; }
-            const generatedPolicyId = "POL_" + Date.now();
-            set(ref(db, 'policies/' + generatedPolicyId), {
-                id: generatedPolicyId, ownerNodeID: MatrixSystemState.get('loggedInCustomerID'), reg, insure: ins, pol, phone: contact, email: emailVal, notes: noteVal, 
-                attachment: MatrixSystemState.get('loadedAttachmentB64'), status: 'pending', adminComment: "Awaiting overview verification logic.", time: new Date().toLocaleString()
-            }).then(() => {
-                document.getElementById('regNo').value = ""; document.getElementById('insurerName').value = ""; document.getElementById('policyNo').value = "";
-                document.getElementById('contactNo').value = ""; document.getElementById('email').value = ""; document.getElementById('notesReal').value = "";
-                MatrixSystemState.set('loadedAttachmentB64', ""); renderCustomerLiveTracker();
-            });
-        };
-
-        window.renderCustomerLiveTracker = function() {
-            const trackerBox = document.getElementById('customerLiveTrackerSection'); if(!trackerBox) return;
-            let userCases = MatrixSystemState.get('cachedGlobalPolicyArr').filter(item => item.ownerNodeID === MatrixSystemState.get('loggedInCustomerID'));
-            if (userCases.length === 0) { trackerBox.innerHTML = `<h4 style="color:#00f2fe; font-family:'Orbitron';">📊 LIVE TRACKER</h4><p style="color:var(--text-sub); font-size:0.95rem; font-weight: bold;">No frames recorded.</p>`; return; }
-            trackerBox.innerHTML = `<h4 style="color: #00f2fe; font-family:'Orbitron'; font-size:1.1rem; margin-bottom:12px; font-weight:900;">📊 LIVE STATUS TRACKER</h4><div style="display:flex; flex-direction:column; gap:10px; max-height:280px; overflow-y:auto;">` + 
-            userCases.map((item) => {
-                let badgeClass = item.status === 'uploaded' ? 'status-uploaded' : item.status === 'error' ? 'status-error' : item.status === 'closed' ? 'status-closed' : 'status-pending';
-                return `<div style="background: rgba(5,14,35,0.85); padding:18px; border-radius:12px; border:2px solid var(--border-glass); display:flex; flex-direction:column; gap:12px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <div><strong style="color: #ffffff; font-size: 1.05rem;">Insurer: <span style="color: #00f2fe;">${item.insure}</span></strong></div>
-                            <div><span class="status-badge ${badgeClass}">${item.status.toUpperCase()}</span></div>
-                        </div>
-                        <div style="font-size: 1rem; color: #fff; background: rgba(0,0,0,0.5); padding:10px 14px; border-radius:6px; border-left:4px solid #f1c40f; font-weight:bold;"><b>Feedback:</b> ${item.adminComment}</div>
-                    </div>`;
-            }).join('') + `</div>`;
-        };
-
-        window.transmitAdminResponse = function(index) {
-            const statusSelect = document.getElementById(`updateStatusSelect_${index}`); 
-            const commentInput = document.getElementById(`adminCommentInput_${index}`);
-            let targetPol = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
-            if(!targetPol) return;
-            update(ref(db, `policies/${targetPol.id}`), {
-                status: statusSelect.value,
-                adminComment: commentInput.value.trim() || "Status saved."
-            });
-        };
-
-        window.purgeRegistryLog = function(index){ 
-            let targetPol = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
-            if(targetPol) remove(ref(db, 'policies/' + targetPol.id));
-        };
-
+        // --- NEW REAL-TIME ACCURATE GRAPHICAL DIAGNOSTICS & SYSTEM DASHBOARD ---
         window.renderDynamicServerDiagnosticsDashboard = function() {
             setTimeout(() => {
+                const totalUsers = MatrixSystemState.get('cachedGlobalUsersArr').length;
+                const totalPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').length;
+                const totalForgetSignals = MatrixSystemState.get('cachedGlobalForgetSignalsArr').length;
+
                 const totalUsersNode = document.getElementById('statsTotalUsers');
                 const totalPoliciesNode = document.getElementById('statsTotalPolicies');
-                if(totalUsersNode) totalUsersNode.innerText = `${MatrixSystemState.get('cachedGlobalUsersArr').length} Active Identifiers`;
-                if(totalPoliciesNode) totalPoliciesNode.innerText = `${MatrixSystemState.get('cachedGlobalPolicyArr').length} Enrolled Registry Nodes`;
+                const totalSignalsNode = document.getElementById('statsTotalForgetSignals');
+
+                if(totalUsersNode) totalUsersNode.innerText = `${totalUsers} Nodes`;
+                if(totalPoliciesNode) totalPoliciesNode.innerText = `${totalPolicies} Registry Entries`;
+                if(totalSignalsNode) totalSignalsNode.innerText = `${totalForgetSignals} Signals Active`;
+
+                // Calculate width percentages dynamically for linear stacked layout visualization
+                const maxCap = Math.max(totalUsers, totalPolicies, totalForgetSignals, 10);
+                
+                const uBar = document.getElementById('barChartUsers');
+                const pBar = document.getElementById('barChartPolicies');
+                const sBar = document.getElementById('barChartForgetSignals');
+
+                if(uBar) uBar.style.width = `${(totalUsers / maxCap) * 100}%`;
+                if(pBar) pBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
+                if(sBar) sBar.style.width = `${(totalForgetSignals / maxCap) * 100}%`;
+
+                // Render Live Signal Alert Lists inside Status Dashboard
+                const signalsWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
+                if(signalsWrapper) {
+                    let signalsArr = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
+                    if(signalsArr.length === 0) {
+                        signalsWrapper.innerHTML = `<p style="color:var(--text-sub); font-size:0.95rem; font-family:monospace;">🔒 No signals queued inside current registry terminal stack.</p>`;
+                    } else {
+                        signalsWrapper.innerHTML = signalsArr.map(sig => `
+                            <div style="background:rgba(255,0,127,0.15); border:1px solid var(--neon-pink); padding:10px 15px; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-family:'Rajdhani'; font-size:1rem; font-weight:700; color:#fff;">⚠️ RESET REQUEST: Account Name: <b>${sig.clientName}</b> (@${sig.targetUID}) | Phone Node: ${sig.phone}</span>
+                                <button onclick="dismissStatsSignalToken('${sig.signalID}')" style="background:var(--neon-pink); border:none; padding:5px 12px; color:#fff; border-radius:4px; font-family:'Orbitron'; font-size:0.75rem; font-weight:900; cursor:pointer;">DISMISS</button>
+                            </div>
+                        `).join('');
+                    }
+                }
             }, 100);
         };
 
+        window.dismissStatsSignalToken = function(sigID) {
+            remove(ref(db, `password_forget_signals/${sigID}`)).then(() => {
+                alert("Forget password request frame cleared from server stats engine registry stack.");
+            });
+        };
+
+        // --- NEW DEDICATED ADMIN AI COMMUNICATIONS BLOCK ---
         window.renderAdminAiInterceptionSpyBlock = function() {
             const logsWrapper = document.getElementById('adminAiSpyLogsWrapper');
             if(!logsWrapper) return;
@@ -2976,13 +3045,13 @@
                 logsWrapper.innerHTML = dataArr.reverse().map(comm => `
                     <div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:10px; padding:18px; margin-bottom:10px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
                         <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); margin-bottom:8px; font-weight:bold;">
-                            👤 TARGET CUSTOMER STREAM: @${comm.customerID} | ⏱ TIMESTAMP: ${comm.timestamp}
+                            👤 TARGET CUSTOMER: ${comm.customerName || 'Profile Identity'} [@${comm.customerID}] | ⏰ TIME FRAME: ${comm.timestamp} (${comm.fullDateString || ''})
                         </div>
                         <div style="font-size:1.05rem; line-height:1.4; color:#fff; margin-bottom:6px;">
-                            <span style="color:var(--neon-pink); font-weight:bold;">QUERY:</span> ${comm.query}
+                            <span style="color:var(--neon-pink); font-weight:bold;">CUSTOMER QUERY:</span> ${comm.query}
                         </div>
                         <div style="font-size:1.05rem; line-height:1.4; color:rgba(255,255,255,0.85);">
-                            <span style="color:#2ecc71; font-weight:bold;">AI NODE RESP:</span> ${comm.response}
+                            <span style="color:#2ecc71; font-weight:bold;">AI TERMINAL RESP:</span> ${comm.response}
                         </div>
                     </div>
                 `).join('');
@@ -3256,6 +3325,8 @@
                     renderAdminAiInterceptionSpyBlock();
                 } else if (adminSub === 'stats') {
                     renderDynamicServerDiagnosticsDashboard();
+                } else if (adminSub === 'creation') {
+                    renderLiveCreationStatsSummary();
                 }
             }
         }, 2000);
