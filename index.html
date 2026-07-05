@@ -391,20 +391,20 @@
 
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 10px rgba(231,76,60,0.3); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
-            
+           
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1); }
         
         .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; }
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
-            
+           
         .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.7)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.03); box-shadow: 0 0 10px #f1c40f; }
-            
+           
         .hud-data-card .owner-name-tag-right {
             position: absolute;
             top: 20px;
@@ -436,7 +436,7 @@
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 14px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
+        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46,204,113,0.3); }
 
         /* --- THE ADVANCED RICH NOTE ENGINE MODULE SUITE --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: var(--cyber-glow); }
@@ -668,7 +668,7 @@
             align-items: center;
         }
 
-        /* --- STATS GRAPHICAL MODULE PANELS --- */
+        /* --- STATS GRAPHICAL MODULE PANELS - HORIZONTAL STACKING OVERHAUL --- */
         .analytics-grid-host {
             display: flex;
             flex-direction: column;
@@ -692,7 +692,7 @@
         }
         .chart-mock-container {
             width: 100%;
-            height: 60px;
+            height: 50px;
             border-bottom: 2px solid rgba(0,242,254,0.4);
             border-left: 2px solid rgba(0,242,254,0.4);
             position: relative;
@@ -703,7 +703,7 @@
             padding-left: 5px;
         }
         .chart-mock-bar {
-            height: 24px;
+            height: 22px;
             background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
             box-shadow: 0 0 10px rgba(0,242,254,0.5);
             transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
@@ -767,14 +767,14 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             <h1 class="hud-logo">Welcome</h1>
                                                                                                                                                                                 
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -786,7 +786,6 @@
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
-
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
 
                 <div style="display:flex; justify-content:space-between; margin-top:15px; font-family:'Orbitron'; font-size:0.85rem;">
@@ -808,10 +807,20 @@
                 <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
             </div>
 
+            <div style="background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(255, 0, 127, 0.05)); border: 2px solid var(--border-glass); border-radius: 12px; padding: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--cyber-glow);">
+                <div>
+                    <span style="font-family: 'Orbitron'; font-size: 0.85rem; color: var(--neon-cyan); font-weight: bold; display: block; letter-spacing: 1px;">⚡ NEXUS MATRIX WALLET BALANCE</span>
+                    <span style="font-family: 'Orbitron'; font-size: 1.8rem; font-weight: 900; color: #ffffff; text-shadow: 0 0 10px var(--neon-cyan);" id="customerWalletDisplayNode">$0.00</span>
+                </div>
+                <div style="font-family: 'Orbitron'; font-size: 0.75rem; background: rgba(46, 204, 113, 0.2); border: 1px solid #2ecc71; color: #2ecc71; padding: 6px 12px; border-radius: 6px; font-weight: bold;">
+                    🔒 ENCRYPTED SYNC
+                </div>
+            </div>
+
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                        
+                                                                                                                                        
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -830,7 +839,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -1046,7 +1055,6 @@
                 cachedGlobalPolicyArr: [],
                 cachedGlobalAiCommsArr: [],
                 cachedGlobalForgetSignalsArr: [],
-                cachedGlobalGameScoresArr: [],
                 consecutiveBruteFailuresCount: 0,
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
             };
@@ -1061,7 +1069,6 @@
                     state.cachedGlobalPolicyArr = [];
                     state.cachedGlobalAiCommsArr = [];
                     state.cachedGlobalForgetSignalsArr = [];
-                    state.cachedGlobalGameScoresArr = [];
                 }
             };
         })();
@@ -1382,16 +1389,6 @@
             }
         };
 
-        function pushGameScoreToMatrixLogs(gameName, score) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!currentUid) return;
-            set(ref(db, `arcade_scores/${currentUid}/${gameName}`), {
-                score: score,
-                timestamp: new Date().toLocaleString(),
-                playerID: currentUid
-            });
-        }
-
         window.injectSimulatedGameInput = function(actionType) {
             if(currentArcadeEngineId === 'space') {
                 if(actionType === 'Left' && spacePlayerX > 0) spacePlayerX -= 30;
@@ -1405,7 +1402,6 @@
                 if(actionType === 'Right' && runnerPlayerLane < 2) runnerPlayerLane++;
             } else if(currentArcadeEngineId === 'candy' || currentArcadeEngineId === 'sniper') {
                 gameScoreVal += 10; playSynthesizedSound(700, 'sine', 0.05);
-                pushGameScoreToMatrixLogs(currentArcadeEngineId, gameScoreVal);
             }
         };
 
@@ -1452,7 +1448,6 @@
                         spaceEnemiesArr.splice(eIdx, 1);
                         spaceLasersArr.splice(lIdx, 1);
                         gameScoreVal += 20; playSynthesizedSound(850, 'sine', 0.05);
-                        pushGameScoreToMatrixLogs('space', gameScoreVal);
                     }
                 });
             });
@@ -1523,7 +1518,6 @@
             if(currentArcadeEngineId !== 'candy') return;
             gameScoreVal += 25; playSynthesizedSound(950, 'sine', 0.04);
             generateCandyCrushMatrixPattern(); executeCandyCrushRenderOnly();
-            pushGameScoreToMatrixLogs('candy', gameScoreVal);
         }
 
         function executeSubwayRunnerFrameCycle() {
@@ -1563,7 +1557,7 @@
                     runnerObstaclesArr.splice(index, 1);
                     gameScoreVal = Math.max(0, gameScoreVal - 50); playSynthesizedSound(130, 'sawtooth', 0.4);
                 }
-                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 15; pushGameScoreToMatrixLogs('runner', gameScoreVal); }
+                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 15; }
             });
 
             canvasCtx.fillStyle = '#ffffff'; canvasCtx.font = "bold 20px Orbitron";
@@ -1571,150 +1565,10 @@
             requestArcadeFrameToken = requestAnimationFrame(executeSubwayRunnerFrameCycle);
         }
 
-        function executeTalkingTomRenderCycle() {
-            if (currentArcadeEngineId !== 'tom') return;
-            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
-            virtualTomTalkingAnimationCycle += 0.25;
-            
-            let catGlowHead = canvasCtx.createRadialGradient(300, 150, 10, 300, 150, 80);
-            catGlowHead.addColorStop(0, '#95a5a6'); catGlowHead.addColorStop(1, '#7f8c8d');
-            canvasCtx.fillStyle = catGlowHead; canvasCtx.beginPath();
-            canvasCtx.arc(300, 150, 75, 0, Math.PI*2); canvasCtx.fill();
-
-            canvasCtx.fillStyle = '#ffffff'; canvasCtx.beginPath();
-            canvasCtx.arc(270, 135, 16, 0, Math.PI*2); canvasCtx.arc(330, 135, 16, 0, Math.PI*2); canvasCtx.fill();
-            canvasCtx.fillStyle = '#00f2fe'; canvasCtx.beginPath();
-            let pupOffset = Math.sin(virtualTomTalkingAnimationCycle)*3;
-            canvasCtx.arc(270 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.arc(330 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.fill();
-
-            let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 16);
-            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
-            canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
-
-            if (isTomListeningStateActive && audioAnalyserNode) {
-                audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
-                canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
-                for (let i = 0; i < 30; i++) {
-                    let barH = visualizerDataArray[i] * 0.5 || 5;
-                    canvasCtx.fillRect(60 + i * 16, 280 - barH / 2, 10, barH);
-                }
-            } else {
-                canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
-                for(let b=0; b<20; b++) {
-                    let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35);
-                    canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH);
-                }
-            }
-            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
-        }
-
-        function initializeTalkingTomAudioRecognitionEngine() {
-            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (window.SpeechRecognition) {
-                tomSpeechRecognitionInstance = new window.SpeechRecognition();
-                tomSpeechRecognitionInstance.continuous = false;
-                tomSpeechRecognitionInstance.interimResults = false;
-                
-                tomSpeechRecognitionInstance.onresult = function(eventObj) {
-                    const spokenPayloadText = eventObj.results[0][0].transcript;
-                    if(spokenPayloadText) {
-                        executeHighPitchTomVoiceEchoPlayback(spokenPayloadText);
-                    }
-                };
-
-                tomSpeechRecognitionInstance.onend = function() {
-                    isTomListeningStateActive = false;
-                    const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
-                    if(btn) { btn.innerText = "🎙 LISTEN"; btn.style.background = "var(--neon-pink)"; }
-                    if (audioMicStreamNode) {
-                        audioMicStreamNode.getTracks().forEach(track => track.stop());
-                    }
-                };
-            }
-        }
-
-        window.toggleTalkingTomVoiceListenerEngine = function() {
-            if(!tomSpeechRecognitionInstance) { alert("Voice Speech recognition interface not supported."); return; }
-            if(!isTomListeningStateActive) {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-                    audioMicStreamNode = stream;
-                    audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
-                    audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
-                    let source = audioVisualizerContextNode.createMediaStreamSource(stream);
-                    source.connect(audioAnalyserNode);
-                    audioAnalyserNode.fftSize = 64;
-                    visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
-
-                    tomSpeechRecognitionInstance.start();
-                    isTomListeningStateActive = true;
-                    document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
-                    document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
-                }).catch(() => { alert("Mic overlay loop access rejected."); });
-            } else {
-                tomSpeechRecognitionInstance.stop();
-            }
-        };
-
-        function executeHighPitchTomVoiceEchoPlayback(audioStringMsg) {
-            if(!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            window.speechSynthesis.cancel();
-            const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg);
-            syntaxUtterance.pitch = 1.75; 
-            syntaxUtterance.rate = 1.1;
-            window.speechSynthesis.speak(syntaxUtterance);
-        }
-
-        window.executeVirtualTomSpeechLoop = function() {
-            const txt = document.getElementById('virtualTomTextInput').value.trim();
-            if(!txt) return;
-            executeHighPitchTomVoiceEchoPlayback(txt);
-            document.getElementById('virtualTomTextInput').value = "";
-        };
-
-        window.clearCurrentChatConversation = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!currentUid || !targetUid) return;
-            if(confirm("Are you sure you want to clear your local screen chat trail record?")) {
-                get(ref(db, 'chats')).then((snap) => {
-                    const data = snap.val();
-                    if(data) {
-                        Object.keys(data).forEach(key => {
-                            const msg = data[key];
-                            if((msg.sender === currentUid && msg.receiver === targetUid) ||
-                               (msg.sender === targetUid && msg.receiver === currentUid)) {
-                                localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged");
-                            }
-                        });
-                        renderActiveChatConversationLogs();
-                    }
-                });
-            }
-        };
-
-        window.switchChatWallpaperMatrix = function() {
-            const wallpapersArr = [
-                "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-                "linear-gradient(135deg, #1d976c, #93f9b9)",
-                "linear-gradient(135deg, #ef32d9, #89fffd)",
-                "radial-gradient(circle at center, #090f14 0%, #02050e 100%)"
-            ];
-            const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 0;
-            let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
-            localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
-            document.querySelector('.chat-stream-message-container').style.background = wallpapersArr[nextWallIdx];
-        };
-
-        window.handleUserTypingSimulationTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!currentUid || !targetUid) return;
-            set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid });
-            
-            clearTimeout(typingTimeoutTrackerNode);
-            typingTimeoutTrackerNode = setTimeout(() => {
-                remove(ref(db, `typing_states/${currentUid}`));
-            }, 1500);
+        window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
+            update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => {
+                renderActiveChatConversationLogs();
+            });
         };
 
         window.closeCustomInlinePopupEngine = function() {
@@ -1732,129 +1586,6 @@
             const dateField = document.getElementById('noteManualDateSelector');
             if(dateField) dateField.removeAttribute('data-custom-lock');
             playSynthesizedSound(880, 'sine', 0.1);
-        };
-
-        window.triggerEmbeddedNoteFormat = function(styleProperty) {
-            document.execCommand(styleProperty, false, null);
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if (editor) editor.focus();
-        };
-
-        window.triggerEmbeddedNoteHighlight = function(colorHexCode) {
-            document.execCommand('backColor', false, colorHexCode);
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if (editor) editor.focus();
-        };
-
-        window.triggerEmbeddedNoteFontColor = function(colorHexCode) {
-            document.execCommand('foreColor', false, colorHexCode);
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if (editor) editor.focus();
-        };
-
-        window.toggleRichNotesVoiceStreamRecorder = function() {
-            const recBtnNode = document.getElementById('noteAudioRecCoreBtn');
-            const pulseNode = document.getElementById('noteRecPulseIndicator');
-            const timerLogNode = document.getElementById('notesVoiceDurationLogNode');
-
-            if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
-                    notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj);
-                    notesAudioChunksCollectorArr = [];
-                    notesRecordingStartEpoch = Date.now();
-
-                    notesVoiceTimerIntervalTracker = setInterval(() => {
-                        const secondsTrack = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        if (timerLogNode) timerLogNode.innerText = `⏱ [ Recording: ${secondsTrack}s ]`;
-                    }, 1000);
-
-                    notesMediaRecorderInstance.ondataavailable = eventPacket => {
-                        if (eventPacket.data.size > 0) notesAudioChunksCollectorArr.push(eventPacket.data);
-                    };
-
-                    notesMediaRecorderInstance.onstop = () => {
-                        clearInterval(notesVoiceTimerIntervalTracker);
-                        const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
-                        autoGeneratedVoiceDurationString = `${computationDuration} Seconds`;
-                        
-                        const binaryAudioBlob = new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' });
-                        const storageReader = new FileReader();
-                        storageReader.onload = function(readerEvent) {
-                            notesVoicePayloadBase64Node = readerEvent.target.result;
-                            if (timerLogNode) timerLogNode.innerText = `✔ Voice Synced Successfully (${computationDuration}s Embedded)`;
-                        };
-                        storageReader.readAsDataURL(binaryAudioBlob);
-                        mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
-                    };
-
-                    notesMediaRecorderInstance.start();
-                    if (pulseNode) pulseNode.classList.remove('hidden');
-                    if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Microphone capture access denied."); });
-            } else {
-                notesMediaRecorderInstance.stop();
-                if (pulseNode) pulseNode.classList.add('hidden');
-                if (recBtnNode) recBtnNode.style.background = "rgba(4,15,36,0.1)";
-            }
-        };
-
-        window.dispatchCompiledNoteToCloudMatrix = function() {
-            const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
-            const dateLogSelected = document.getElementById('noteManualDateSelector').value;
-            const timeLogSelected = document.getElementById('noteManualTimeSelector').value;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-
-            if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
-
-            const cloudNoteReferenceNode = push(ref(db, `users_notes/${currentUid}`));
-            set(cloudNoteReferenceNode, {
-                noteId: cloudNoteReferenceNode.key,
-                ownerId: currentUid,
-                richTextHtml: parsedHtmlPayload || "[ Audio Data Stream Node ]",
-                voicePayloadB64: notesVoicePayloadBase64Node,
-                mappedDate: dateLogSelected,
-                mappedTime: timeLogSelected,
-                voiceDuration: autoGeneratedVoiceDurationString,
-                epochStamp: Date.now()
-            }).then(() => {
-                wipeNoteInterfaceToBlankTrigger();
-                playSynthesizedSound(1100, 'sine', 0.15);
-                fetchRealtimeNotesCloudData();
-            });
-        };
-
-        function fetchRealtimeNotesCloudData() {
-            const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!interfaceWrapper || !currentUid) return;
-
-            get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
-                const logs = snapshotData.val();
-                if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); font-family:monospace; font-size:1.05rem; text-align:center; padding:20px; font-weight:bold;">🔒 Cloud encryption validated. Repository empty.</div>`; return; }
-                
-                interfaceWrapper.innerHTML = Object.values(logs).reverse().map(noteItem => {
-                    let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:12px; display:flex; align-items:center; gap:10px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:40px;"></audio><span style="font-family:'Orbitron'; font-size:0.75rem; color:var(--text-sub); font-weight:bold;">(${noteItem.voiceDuration || 'N/A'})</span></div>` : "";
-                    return `
-                        <div class="note-structural-card">
-                            <div class="note-structural-card-content">
-                                <div class="note-structural-meta">
-                                    <span>📅 RECORD DATE: ${noteItem.mappedDate} | ⏰ TIME: ${noteItem.mappedTime}</span>
-                                    <span style="cursor:pointer; color:var(--neon-pink); letter-spacing:1px;" onclick="executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ ERASE NODE</span>
-                                </div>
-                                <div style="color:var(--text-main); font-size:1.1rem; font-weight:600; line-height:1.5;">${noteItem.richTextHtml}</div>
-                                ${voiceAttachmentMarkup}
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            });
-        }
-
-        window.executeCloudNotePurgeMatrix = function(noteIdSignature) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            remove(ref(db, `users_notes/${currentUid}/${noteIdSignature}`)).then(() => {
-                fetchRealtimeNotesCloudData();
-            });
         };
 
         window.switchCustomerChannel = function(channelId) {
@@ -1892,620 +1623,33 @@
             }
         };
 
-        window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
-            if (event) event.stopPropagation();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-            
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            const activeLocalNickname = localNicknamesObj[targetUserId] || "";
-
-            let targetAvatarPath = defaultAvatarSvg;
-            if(targetUserId !== MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
-                if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
-            }
-
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width: 420px;">
-                    <h4>${standardClientName} Profile</h4>
-                    <p style="color:#00f2fe; font-size:0.85rem; margin-bottom:15px; font-family:monospace;">ID Signature: @${targetUserId}</p>
-                    
-                    <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; border:2px solid #00f2fe;">
-                        <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid #00f2fe; display:block; margin:0 auto 10px auto;">
-                    </div>
-
-                    <div style="margin-bottom:20px; text-align:left;">
-                        <label style="color:var(--text-sub); font-size:0.85rem; display:block; margin-bottom:5px; font-weight:bold;">Local Nickname Attribute</label>
-                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${activeLocalNickname}" placeholder="Set local nickname text...">
-                    </div>
-
-                    <div class="nexus-popup-flex-btns">
-                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE PARAMETERS</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE VIEW</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-
-            document.getElementById('commitProfileModalChangesBtn').onclick = () => {
-                const inputVal = document.getElementById('popupInlineNicknameModifierField').value.trim();
-                const storageKey = `nicknames_map_${currentUid}`;
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-                
-                if(inputVal) currentLocalNicknamesObj[targetUserId] = inputVal; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                closeCustomInlinePopupEngine();
-                if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
-            };
-        };
-
-        window.triggerUserProfileAvatarDropdownEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Profile Photo Options</h4>
-                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:20px;">Configure personal avatar node identity:</p>
-                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
-                        <button onclick="commitAvatarClearBlankNode()" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px; background:#f1c40f;">Set Blank Default Icon</button>
-                        <button onclick="document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px;">Upload from Gallery</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%; padding:12px;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) {
-            event.preventDefault();
-            event.stopPropagation();
-            removeAvatarRightClickDropdownNode();
-
-            const contextDropdown = document.createElement('div');
-            contextDropdown.className = "whatsapp-avatar-context-dropdown";
-            contextDropdown.id = "avatarContextDropdownMatrixOverlay";
-            
-            contextDropdown.innerHTML = `
-                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Profile Photo</button>
-                <button class="avatar-dropdown-action-row" onclick="executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏ Set Local Nickname</button>
-            `;
-            
-            document.body.appendChild(contextDropdown);
-            contextDropdown.style.left = `${event.clientX}px`;
-            contextDropdown.style.top = `${event.clientY}px`;
-
-            document.addEventListener('click', removeAvatarRightClickDropdownNode, { once: true });
-        };
-
-        function removeAvatarRightClickDropdownNode() {
-            const node = document.getElementById('avatarContextDropdownMatrixOverlay');
-            if(node) node.remove();
-        }
-
-        window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) {
-            removeAvatarRightClickDropdownNode();
-            let currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(targetUserId === currentUid || MatrixSystemState.get('currentMode') === 'admin') {
-                const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-                if(!wrapper) return;
-                wrapper.innerHTML = `
-                    <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                        <h4>Modify Photo Node for @${targetUserId}</h4>
-                        <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
-                            <button onclick="commitTargetedAvatarClear('${targetUserId}')" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px; background:#f1c40f;">Set Blank Default Icon</button>
-                            <button onclick="document.getElementById('hiddenAvatarFileInputNode').setAttribute('data-target-uid', '${targetUserId}'); document.getElementById('hiddenAvatarFileInputNode').click(); closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn" style="width:100%; padding:12px;">Upload from Gallery</button>
-                            <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                        </div>
-                    </div>
-                `;
-                wrapper.classList.remove('hidden');
-            } else {
-                alert("Photo overwrite modification restricted to active personal configuration matrix.");
-            }
-        };
-
-        window.commitTargetedAvatarClear = function(uid) {
-            closeCustomInlinePopupEngine();
-            set(ref(db, `users/${uid}/avatar`), "").then(() => {
-                if(uid === MatrixSystemState.get('loggedInCustomerID')) {
-                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
-                    document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
-                }
-                playSynthesizedSound(880, 'sine', 0.1);
-            });
-        };
-
-        window.executeTriggeredContextNicknameChange = function(targetUserId, clientRealName) {
-            removeAvatarRightClickDropdownNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            const activeNick = localNicknamesObj[targetUserId] || "";
-
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Set Nickname for ${clientRealName}</h4>
-                    <input type="text" id="contextNicknameInputField" class="nexus-popup-input-field" value="${activeNick}" placeholder="Type custom nickname layout...">
-                    <div class="nexus-popup-flex-btns">
-                        <button id="saveContextNickBtn" class="nexus-popup-btn primary-btn">SAVE</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-
-            document.getElementById('saveContextNickBtn').onclick = () => {
-                const newNick = document.getElementById('contextNicknameInputField').value.trim();
-                const storageKey = `nicknames_map_${currentUid}`;
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(storageKey)) || {};
-                if(newNick) currentLocalNicknamesObj[targetUserId] = newNick; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(storageKey, JSON.stringify(currentLocalNicknamesObj));
-                closeCustomInlinePopupEngine();
-                if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else initializeCrossLinkChatPanel();
-                playSynthesizedSound(880, 'sine', 0.15);
-            };
-        };
-
-        window.commitAvatarClearBlankNode = function() {
-            closeCustomInlinePopupEngine();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(currentUid) {
-                set(ref(db, `users/${currentUid}/avatar`), "").then(() => {
-                    document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
-                    document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
-                });
-            }
-        };
-
-        window.executeCosmicThemeToggle = function() {
-            const bodyNode = document.body;
-            const toggleLabel = document.getElementById('themeToggleBtnLabel');
-            bodyNode.classList.toggle('light-theme-active');
-            
-            if(bodyNode.classList.contains('light-theme-active')) {
-                toggleLabel.innerText = "🌑 DARK MODE";
-                speakNaturalHuman("Light mode active.");
-            } else {
-                toggleLabel.innerText = "🌓 LIGHT MODE";
-                speakNaturalHuman("Dark mode active.");
-            }
-        };
-
-        function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUserToken = localStorage.getItem('nexus_logged_in_uid');
-            const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload';
-            const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
-            
-            if(savedUserToken) {
-                if (localStorage.getItem('nexus_hard_lockout_flag_' + savedUserToken.toLowerCase()) === 'true') {
-                    triggerLockoutTerminalUI(savedUserToken);
-                    return;
-                }
-                MatrixSystemState.set('loggedInCustomerID', savedUserToken);
-                MatrixSystemState.set('currentMode', savedMode);
-                MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
-                
-                document.getElementById('mainStage').style.display = 'none';
-                document.getElementById('shashiBrandingHeader').style.opacity = '0';
-                if(savedMode === 'admin') {
-                    document.getElementById('adminDashboard').classList.remove('hidden');
-                    loadAdminSubmissions();
-                } else {
-                    document.getElementById('customerDashboard').classList.remove('hidden');
-                    switchCustomerChannel(savedWorkspaceChan);
-                }
-            }
-        }
-
-        // --- REAL-TIME DATA HUB VALUE LISTENERS ---
-        onValue(ref(db, 'mainframeAdmin'), (snapshot) => {
-            const rootData = snapshot.val();
-            if(rootData && rootData.id && rootData.pass) {
-                let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-                adminRoute.masterId = rootData.id;
-                adminRoute.masterPass = rootData.pass;
-                MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute);
-            }
-        });
-
-        // UNIQUE ATTACHMENT: BROADCAST SYNC ENGINE FOR CUSTOMERS
-        onValue(ref(db, 'system_broadcast'), (snapshot) => {
-            const broadcastVal = snapshot.val();
-            const banner = document.getElementById('customerMarqueeContainer');
-            const txtNode = document.getElementById('customerMarqueeText');
-            if(banner && txtNode && MatrixSystemState.get('currentMode') === 'user') {
-                if(broadcastVal && broadcastVal.text) {
-                    txtNode.innerText = `🚨 BROADCAST: ${broadcastVal.text}`;
-                    banner.style.display = 'block';
-                } else {
-                    banner.style.display = 'none';
-                }
-            }
-        });
-
-        onValue(ref(db, 'users'), (snapshot) => {
-            const data = snapshot.val();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const userArr = data ? Object.values(data) : [];
-            MatrixSystemState.set('cachedGlobalUsersArr', userArr);
-            
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                renderUserControlPanel();
-                if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') renderAdminSpyUserList();
-                if(MatrixSystemState.get('activeAdminSubSection') === 'creation') renderLiveCreationStatsSummary();
-            }
-            if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) {
-                initializeCrossLinkChatPanel();
-            }
-            if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
-                const myProfile = userArr.find(u => u.id === currentUid);
-                if(myProfile) {
-                    if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
-                }
-            }
-        });
-
-        onValue(ref(db, 'policies'), (snapshot) => {
-            const policyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
-            MatrixSystemState.set('cachedGlobalPolicyArr', policyArr);
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) renderPolicyCardsBlock();
-            if(MatrixSystemState.get('loggedInCustomerID')) renderCustomerLiveTracker();
-        });
-
-        onValue(ref(db, 'ai_communications'), (snapshot) => {
-            const commsData = snapshot.val() ? Object.values(snapshot.val()) : [];
-            MatrixSystemState.set('cachedGlobalAiCommsArr', commsData);
-            if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') {
-                renderAdminAiInterceptionSpyBlock();
-            }
-        });
-
-        // FORGET PASSWORD REALTIME BROADCAST LISTENER
-        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
-            const signalsData = snapshot.val() ? Object.values(snapshot.val()) : [];
-            MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
-            if(MatrixSystemState.get('activeAdminSubSection') === 'stats') {
-                renderDynamicServerDiagnosticsDashboard();
-            }
-        });
-
-        onValue(ref(db, 'chats'), (snapshot) => {
-            const data = snapshot.val();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
-            const adminSub = MatrixSystemState.get('activeAdminSubSection');
-            
-            if(activeChan === 'chat' && currentUid) {
-                renderActiveChatConversationLogs();
-                markIncomingMessagesAsReadSequence(data);
-                calculateUnreadBadgeCountersTrack(data);
-            }
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                if(adminSub === 'spychat') {
-                    renderAdminSpyChatConsoleLogs();
-                    renderAdminSpyUserList();
-                }
-            }
-        });
-
-        onValue(ref(db, 'typing_states'), (snapshot) => {
-            const data = snapshot.val();
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator');
-            if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid) {
-                if(typingStatusNode) typingStatusNode.classList.remove('hidden');
-            } else {
-                if(typingStatusNode) typingStatusNode.classList.add('hidden');
-            }
-        });
-
-        onValue(ref(db, 'incident_alerts'), (snapshot) => {
-            const alertsData = snapshot.val();
-            const notificationHostNode = document.getElementById('adminIntrusionNotificationArea');
-            if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) {
-                notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `
-                    <div class="realtime-alert-banner" style="font-size: 0.95rem;">
-                        <span>🚨 INTRUSION DETECTION LOCK: Node Client [@${alertsData[alertRefKey].lockedUID}] Frozen due to verification failure streaks.</span>
-                        <button onclick="dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" style="background:#e74c3c; color:#fff; border:none; padding:6px 12px; border-radius:6px; font-weight:900; cursor:pointer; font-family: 'Orbitron'; font-size:0.8rem;">UNLOCK</button>
-                    </div>
-                `).join('');
-            } else if(notificationHostNode) {
-                notificationHostNode.innerHTML = "";
-            }
-        });
-
-        window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) {
-            remove(ref(db, `incident_alerts/${alertKey}`)).then(() => {
-                set(ref(db, `users/${originalUserUID}/lockoutState`), "false");
-                localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase());
-                alert("Client signature lock cleared smoothly inside Firebase database cloud matrix.");
-            });
-        };
-
-        function markIncomingMessagesAsReadSequence(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!chatsSnap || !currentUid || !targetUid) return;
-            Object.keys(chatsSnap).forEach(key => {
-                const m = chatsSnap[key];
-                if(m.sender === targetUid && m.receiver === currentUid && !m.read) {
-                    update(ref(db, `chats/${key}`), { read: true });
-                }
-            });
-        }
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!chatsSnap || !currentUid) return;
-            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
-                let unreadCount = 0;
-                Object.values(chatsSnap).forEach(msg => {
-                    if(msg.sender === user.id && msg.receiver === currentUid && !msg.read) {
-                        if(!localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++;
-                    }
-                });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`);
-                if(pill) {
-                    if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); }
-                    else pill.classList.add('hidden');
-                }
-            });
-        }
-
-        window.initializeCrossLinkChatPanel = function() {
-            const targetContainer = document.getElementById('chatTargetContainerView');
-            if(!targetContainer) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            const masterAdminPseudoUser = { id: MatrixSystemState.get('cachedAdminMainframeRoute').masterId, clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
-            const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-
-            targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
-                const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
-                const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
-
-                return `
-                    <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')">
-                        <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name">
-                               <span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
-                                <span class="whatsapp-user-id">@${user.id}</span>
-                                <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-            if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
-        };
-
-        window.setOperationalChatTargetId = function(userId) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', userId);
-            const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            if(userId === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
-            } else {
-                const match = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === userId);
-                if(titleNode && match) titleNode.innerText = localNicknamesObj[userId] || match.clientName;
-            }
-            renderActiveChatConversationLogs();
-            document.querySelectorAll('.chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
-        };
-
-        window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
-            update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => {
-                renderActiveChatConversationLogs();
-            });
-        };
-
-        window.renderActiveChatConversationLogs = function() {
-            const wrapper = document.getElementById('chatMessagesScrollWrapper');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!wrapper || !targetUid) return;
-
-            get(ref(db, 'chats')).then((snapshot) => {
-                const data = snapshot.val();
-                if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Pipeline Empty.</div>`; return; }
-                let htmlCollector = "";
-                
-                requestAnimationFrame(() => {
-                    Object.keys(data).forEach(key => {
-                        const msg = data[key];
-                        if((msg.sender === currentUid && msg.receiver === targetUid) ||
-                           (msg.sender === targetUid && msg.receiver === currentUid)) {
-                            if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
-                            const isMyMsg = (msg.sender === currentUid);
-                            const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                            
-                            let assetHTML = "";
-                            if(msg.mediaPayload) {
-                                if(msg.mediaPayload.startsWith("data:audio")) {
-                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
-                                } else {
-                                    assetHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
-                                }
-                            }
-                            
-                            let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-                            
-                            htmlCollector += `
-                                <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
-                                    <div>${msg.textBody}</div>${assetHTML}
-                                    <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
-                                    ${reactionMarkup}
-                                </div>`;
-                        }
-                    });
-                    wrapper.innerHTML = htmlCollector || `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Encryption verified.</div>`;
-                    wrapper.scrollTop = wrapper.scrollHeight;
-                });
-            });
-        };
-
-        window.dispatchMatrixChatMessage = function() {
-            const inputField = document.getElementById('chatCoreMessageTextInput');
-            if(!inputField) return;
-            const textBody = inputField.value.trim();
-            let liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-
-            if(!textBody && !liveChatB64) return;
-
-            let finalMessageText = textBody;
-            if(!finalMessageText && liveChatB64.startsWith("data:audio")) {
-                finalMessageText = "🎙 Voice Audio Transmission";
-            } else if(!finalMessageText && liveChatB64) {
-                finalMessageText = "📎 Document Asset Attachment";
-            }
-
-            const newChatPacketRef = push(ref(db, 'chats'));
-            set(newChatPacketRef, {
-                sender: currentUid, receiver: targetUid,
-                textBody: finalMessageText || "📎 Asset Node", mediaPayload: liveChatB64,
-                read: false, epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                inputField.value = ""; 
-                MatrixSystemState.resetChatAssets();
-                document.getElementById('chatAttachmentStatusFeedback').innerText = "";
-                document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
-                document.getElementById('mainframeGifContainerBox').classList.add('hidden');
-                remove(ref(db, `typing_states/${currentUid}`));
-                renderActiveChatConversationLogs();
-                
-                autoNarrateChatMessage("You", finalMessageText);
-
-                if(MatrixSystemState.get('isAIAssistantActiveState')) {
-                    processAIMatrixAssistantResponseStream(finalMessageText);
-                }
-            });
-        };
-
-        window.renderInteractiveDrawersContent = function() {
-            const emojiBox = document.getElementById('systemEmojiMatrixBoxNode');
-            if(emojiBox) {
-                emojiBox.innerHTML = systemEmojisList.map(em => `
-                    <div class="emoji-item-node" onclick="injectEmojiToInputField('${em}')">${em}</div>
-                `).join('');
-            }
-
-            const gifBox = document.getElementById('mainframeGifContainerBox');
-            if(gifBox) {
-                gifBox.innerHTML = structuralGifMatrixList.map(gUrl => `
-                    <img class="gif-thumb-item" src="${gUrl}" onclick="transmitDirectGifMessage('${gUrl}')">
-                `).join('');
-            }
-        };
-
-        window.injectEmojiToInputField = function(emojiText) {
-            const input = document.getElementById('chatCoreMessageTextInput');
-            if(input) { input.value += emojiText; input.focus(); }
-        };
-
-        window.transmitDirectGifMessage = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            document.getElementById('chatCoreMessageTextInput').value = "";
-            dispatchMatrixChatMessage();
-        };
-
-        window.toggleEmojiDrawerOverlayPanel = function(event) {
-            event.stopPropagation();
-            document.getElementById('mainframeGifContainerBox').classList.add('hidden');
-            document.getElementById('systemEmojiMatrixBoxNode').classList.toggle('hidden');
-        };
-
-        window.toggleGifMatrixDropdownPanel = function(event) {
-            event.stopPropagation();
-            document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
-            document.getElementById('mainframeGifContainerBox').classList.toggle('hidden');
-        };
-
-        window.toggleVoiceAudioRecordingEngine = function() {
-            const recBtn = document.getElementById('voiceRecordingCoreTriggerBtn');
-            if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-                    nativeAudioMediaRecorderInstance = new MediaRecorder(stream);
-                    compiledAudioChunksCollectorArr = [];
-                    
-                    nativeAudioMediaRecorderInstance.ondataavailable = e => {
-                        if (e.data.size > 0) compiledAudioChunksCollectorArr.push(e.data);
-                    };
-
-                    nativeAudioMediaRecorderInstance.onstop = () => {
-                        const blob = new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' });
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result);
-                            dispatchMatrixChatMessage();
-                        };
-                        reader.readAsDataURL(blob);
-                        stream.getTracks().forEach(track => track.stop());
-                    };
-
-                    nativeAudioMediaRecorderInstance.start();
-                    recBtn.classList.add('recording-active-pulse');
-                    document.getElementById('chatAttachmentStatusFeedback').innerHTML = `
-                        <div class="voice-wave-container">
-                            <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
-                            <span style="margin-left:10px;">🎙 Recording WhatsApp Live Voice Audio Node Stream...</span>
-                        </div>`;
-                }).catch(() => {
-                    alert("Audio device signature rejected.");
-                });
-            } else {
-                nativeAudioMediaRecorderInstance.stop();
-                recBtn.classList.remove('recording-active-pulse');
-                document.getElementById('chatAttachmentStatusFeedback').innerText = "";
-            }
-        };
-
-        window.switchAdminSubSection = function(sectionId) {
-            MatrixSystemState.set('activeAdminSubSection', sectionId);
-            document.querySelectorAll('.admin-nav-tab').forEach(btn => btn.classList.remove('active'));
-            const actBtn = document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`); if(actBtn) actBtn.classList.add('active');
-            
-            document.getElementById('idCreationBlock').style.display = (sectionId === 'creation') ? 'block' : 'none';
-            document.getElementById('credentialsBlock').style.display = (sectionId === 'credentials') ? 'block' : 'none';
-            document.getElementById('policyWorkspaceBlock').style.display = (sectionId === 'workspace') ? 'block' : 'none';
-            document.getElementById('adminSpyChatBlock').style.display = (sectionId === 'spychat') ? 'block' : 'none';
-            document.getElementById('adminAiSpyChatBlock').style.display = (sectionId === 'aispy') ? 'block' : 'none';
-            document.getElementById('adminSystemStatsBlock').style.display = (sectionId === 'stats') ? 'block' : 'none';
-            
-            if(sectionId === 'spychat') renderAdminSpyUserList();
-            if(sectionId === 'aispy') renderAdminAiInterceptionSpyBlock();
-            if(sectionId === 'stats') renderDynamicServerDiagnosticsDashboard();
-            if(sectionId === 'creation') renderLiveCreationStatsSummary();
-        };
-
-        // EXACTIVE UNIQUE ATTACHMENT: TRANSMIT BROADCAST TEXT TO FIREBASE
+        // --- GLOBAL NETWORK BROADCAST TRANSMISSION CONTROL ---
         window.dispatchMainframeGlobalBroadcast = function() {
-            const txt = document.getElementById('adminBroadcastInputControl').value.trim();
-            set(ref(db, 'system_broadcast'), { text: txt, epoch: Date.now() }).then(() => {
-                alert("🔴 Broadcast signal dispatched throughout active customer clusters!");
+            const inputField = document.getElementById('adminBroadcastInputControl');
+            if (!inputField) return;
+            const textMsg = inputField.value.trim();
+            if(!textMsg) return;
+            set(ref(db, 'system_broadcast'), { text: textMsg, epoch: Date.now() }).then(() => {
+                alert("🔴 Broadcast alert signal dispatched safely to all client clusters!");
             });
         };
 
         window.clearMainframeGlobalBroadcast = function() {
             remove(ref(db, 'system_broadcast')).then(() => {
-                document.getElementById('adminBroadcastInputControl').value = "";
-                alert("Broadcast pipeline cleared clean.");
+                const inputField = document.getElementById('adminBroadcastInputControl');
+                if (inputField) inputField.value = "";
+                alert("Broadcast network stream terminated cleanly.");
+            });
+        };
+
+        // --- NEW REAL-TIME WALLET CREDIT MUTATOR FOR ADMINS ---
+        window.alterCustomerLiveWalletMatrixPoints = function(uid) {
+            const inputAmount = document.getElementById(`adminWalletInputMutator_${uid}`).value.trim();
+            if(!inputAmount || isNaN(inputAmount)) { alert("Enter precise numeric digit value mapping!"); return; }
+            
+            update(ref(db, `users/${uid}`), { walletBalance: parseFloat(inputAmount) }).then(() => {
+                alert(`✅ Wallet credit registry mutated successfully to $${inputAmount}!`);
+                playSynthesizedSound(900, 'sine', 0.15);
             });
         };
 
@@ -2628,19 +1772,24 @@
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value;
             const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
             if(!clientName || !contact || !userPass) return; const userId = clientName + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { loadAdminSubmissions(); });
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false", walletBalance: 0.00 }).then(() => { loadAdminSubmissions(); });
         };
 
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
             listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user, index) => {
                 const isDeactivated = user.status === 'deactivated';
+                const bal = user.walletBalance !== undefined ? user.walletBalance : 0.00;
                 return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:10px; border:2px solid ${isDeactivated ? '#e74c3c' : 'var(--border-glass)'}; display:flex; flex-direction:column; gap:8px;">
                         <div style="font-size:0.95rem; color:#fff; line-height:1.4;">
                             <div><b>User ID Vector:</b> <span style="color:#00f2fe;">${user.id}</span></div>
                             <div><b>Client Registry Name:</b> ${user.clientName || 'N/A'}</div>
                             <div><b>Contact Phone Node:</b> ${user.contact || 'N/A'}</div>
-                            <div><b>Birth Date Timeline:</b> ${user.dob || 'N/A'}</div>
+                            <div><b>Wallet Balance:</b> <span style="color:#2ecc71; font-weight:bold;">$${bal}</span></div>
+                        </div>
+                        <div style="display:flex; gap:8px; margin-top:5px;">
+                            <input type="number" id="adminWalletInputMutator_${user.id}" value="${bal}" step="0.01" style="background:var(--bg-prime); border:1px solid var(--border-glass); padding:6px; color:#fff; font-family:monospace; font-size:0.9rem; border-radius:4px; width:65%;">
+                            <button onclick="alterCustomerLiveWalletMatrixPoints('${user.id}')" style="background:#2ecc71; border:none; color:#fff; padding:6px; border-radius:4px; font-family:'Orbitron'; font-size:0.75rem; font-weight:bold; cursor:pointer; width:35%;">MUTATE</button>
                         </div>
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
                             <div style="display:flex; gap:10px; align-items:center;">
@@ -2982,7 +2131,7 @@
             }
         };
 
-        // --- NEW REAL-TIME ACCURATE GRAPHICAL DIAGNOSTICS & SYSTEM DASHBOARD ---
+        // --- NEW REAL-TIME ACCURATE VERTICAL 1-BY-1 GRAPH DIAGNOSTICS & SYSTEM DASHBOARD ---
         window.renderDynamicServerDiagnosticsDashboard = function() {
             setTimeout(() => {
                 const totalUsers = MatrixSystemState.get('cachedGlobalUsersArr').length;
@@ -2997,7 +2146,7 @@
                 if(totalPoliciesNode) totalPoliciesNode.innerText = `${totalPolicies} Registry Entries`;
                 if(totalSignalsNode) totalSignalsNode.innerText = `${totalForgetSignals} Signals Active`;
 
-                // Calculate width percentages dynamically for linear stacked layout visualization
+                // Calculate accurate horizontal linear progress widths safely mapped 1-by-1 stacked layout
                 const maxCap = Math.max(totalUsers, totalPolicies, totalForgetSignals, 10);
                 
                 const uBar = document.getElementById('barChartUsers');
@@ -3008,7 +2157,7 @@
                 if(pBar) pBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
                 if(sBar) sBar.style.width = `${(totalForgetSignals / maxCap) * 100}%`;
 
-                // Render Live Signal Alert Lists inside Status Dashboard
+                // Render Live Password Forget Signals Stream Matrix Data Inside Dashboard Panel
                 const signalsWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
                 if(signalsWrapper) {
                     let signalsArr = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
@@ -3016,7 +2165,7 @@
                         signalsWrapper.innerHTML = `<p style="color:var(--text-sub); font-size:0.95rem; font-family:monospace;">🔒 No signals queued inside current registry terminal stack.</p>`;
                     } else {
                         signalsWrapper.innerHTML = signalsArr.map(sig => `
-                            <div style="background:rgba(255,0,127,0.15); border:1px solid var(--neon-pink); padding:10px 15px; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                            <div style="background:rgba(255,0,127,0.15); border:1px solid var(--neon-pink); padding:10px 15px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
                                 <span style="font-family:'Rajdhani'; font-size:1rem; font-weight:700; color:#fff;">⚠️ RESET REQUEST: Account Name: <b>${sig.clientName}</b> (@${sig.targetUID}) | Phone Node: ${sig.phone}</span>
                                 <button onclick="dismissStatsSignalToken('${sig.signalID}')" style="background:var(--neon-pink); border:none; padding:5px 12px; color:#fff; border-radius:4px; font-family:'Orbitron'; font-size:0.75rem; font-weight:900; cursor:pointer;">DISMISS</button>
                             </div>
@@ -3199,102 +2348,20 @@
             });
         };
 
-        window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl, epochTimeNodeVal) {
-            event.stopPropagation(); removeContextDropdownMenuNode();
-            const menu = document.createElement('div');
-            menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
-            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
-            
-            menu.innerHTML = `
-                ${downloadBtnHTML}
-                <button class="dropdown-action-row-btn" onclick="triggerDirectMessageForwardPipeline('${messageKey}', '${textPayload.replace(/'/g, "\\'")}', '${mediaUrl}')">➡️ Forward SMS</button>
-                <button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete Node</button>
-            `;
-            document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
-            document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
-        };
-
-        function removeContextDropdownMenuNode() { const overlay = document.getElementById('dynamicMsgContextNodeOverlay'); if(overlay) overlay.remove(); }
-        
-        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) {
-            const a = document.createElement('a');
-            a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data;
-            a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.webm`;
-            document.body.appendChild(a); a.click(); document.body.removeChild(a); removeContextDropdownMenuNode();
-        };
-
-        window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) {
-            removeContextDropdownMenuNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const liveActiveUsersList = MatrixSystemState.get('cachedGlobalUsersArr').filter(user => user.id !== MatrixSystemState.get('loggedInCustomerID') && user.status === 'active');
-            
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Forward Transmission Pipeline</h4>
-                    <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:10px;">Select targeted network channel node:</p>
-                    <select id="forwardDestinationNodeSelector" class="nexus-popup-input-field" style="background:#02050e; color:#f1c40f;">
-                        <option value="${MatrixSystemState.get('cachedAdminMainframeRoute').masterId}">Mainframe Admin Shashi</option>
-                        ${liveActiveUsersList.map(u => `<option value="${u.id}">${u.clientName} (@${u.id})</option>`).join('')}
-                    </select>
-                    <div class="nexus-popup-flex-btns">
-                        <button id="executeForwardSendBtn" class="nexus-popup-btn primary-btn">FORWARD SMS</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
-                    </div>
-                </div>`;
-            wrapper.classList.remove('hidden');
-
-            document.getElementById('executeForwardSendBtn').onclick = () => {
-                const targetUIDSelection = document.getElementById('forwardDestinationNodeSelector').value;
-                if(!targetUIDSelection) return;
-                
-                const forwardPacketRef = push(ref(db, 'chats'));
-                set(forwardPacketRef, {
-                    sender: MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('cachedAdminMainframeRoute').masterId : MatrixSystemState.get('loggedInCustomerID'),
-                    receiver: targetUIDSelection,
-                    textBody: baseText + " (Forwarded Payload)",
-                    mediaPayload: assetLink || "",
-                    read: false,
-                    epochTimeNode: Date.now(),
-                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-                }).then(() => {
-                    closeCustomInlinePopupEngine();
-                    alert("Message forwarded accurately across cross link board streams.");
-                });
-            };
-        };
-
-        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) {
-            removeContextDropdownMenuNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Erase Chat Record From Core</h4>
-                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:8px;">
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'everyone', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="background:#e74c3c; color:#fff; width:100%;">Delete for Everyone (Real-Time)</button>
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'me', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Delete for Me Only</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
-            closeCustomInlinePopupEngine();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const currentMode = MatrixSystemState.get('currentMode');
-            if(packetKey && purgeMode === 'everyone') {
-                update(ref(db, `chats/${packetKey}`), {
-                    textBody: "🚫 This message was deleted for everyone.",
-                    mediaPayload: ""
-                }).then(() => {
-                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-                });
-            } else {
-                localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged");
-                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+        // UNIQUE ONVALUE SYNC LOOP ON LAUNCH FOR CUSTOMER BROADCAST TRACKING
+        onValue(ref(db, 'system_broadcast'), (snapshot) => {
+            const broadcastVal = snapshot.val();
+            const banner = document.getElementById('customerMarqueeContainer');
+            const txtNode = document.getElementById('customerMarqueeText');
+            if(banner && txtNode) {
+                if(broadcastVal && broadcastVal.text) {
+                    txtNode.innerText = `🚨 BROADCAST ALERT: ${broadcastVal.text}`;
+                    banner.style.display = 'block';
+                } else {
+                    banner.style.display = 'none';
+                }
             }
-        };
+        });
 
         // --- BACKGROUND AUTOMATION SYNC LOGIC ---
         setInterval(() => {
@@ -3302,6 +2369,15 @@
             const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
             const currentMode = MatrixSystemState.get('currentMode');
             const adminSub = MatrixSystemState.get('activeAdminSubSection');
+
+            // Handle Customer Dynamic Wallet Updates
+            if(currentUid && currentMode === 'user') {
+                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+                const walletDisplay = document.getElementById('customerWalletDisplayNode');
+                if(userMatch && walletDisplay) {
+                    walletDisplay.innerText = `$${userMatch.walletBalance !== undefined ? userMatch.walletBalance.toFixed(2) : '0.00'}`;
+                }
+            }
 
             if (currentUid) {
                 if (activeChan === 'upload') {
