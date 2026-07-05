@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Made By SHASHI TIWARI - Pikachu Ultimate Nexus Matrix ⚡</title>
+    <title>Ultimate Nexus Matrix ⚡</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">
     <style>
         /* --- HIGH-VISIBILITY ULTRA-CONTRAST CYBERPUNK ENGINE --- */
@@ -857,7 +857,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px; text-align: left;">🧠 SHASHI ULTRA RICH NOTES MATRIX</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px; text-align: left;">🧠 ULTRA RICH NOTES MATRIX</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;">
@@ -988,7 +988,7 @@
             </div>
             
             <div class="panel-header-flex">
-                <h2 class="neon-green-text">Shashi Mainframe Core</h2>
+                <h2 class="neon-green-text">Mainframe Core</h2>
                 <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
 
@@ -1850,6 +1850,7 @@
                 document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
                 renderCustomerLiveTracker();
             } else if(channelId === 'notes') {
+                document.getElementById('btnChannelUpload').classList.remove('active');
                 document.getElementById('btnChannelNotes').classList.add('active');
                 document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
                 wipeNoteInterfaceToBlankTrigger();
@@ -2306,7 +2307,7 @@
                             let assetHTML = "";
                             if(msg.mediaPayload) {
                                 if(msg.mediaPayload.startsWith("data:audio")) {
-                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block Hausa;"></audio>`;
+                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
                                 } else {
                                     assetHTML = `<br><img src="${msg.mediaPayload}" style="max-width:180px; border-radius:8px; margin-top:5px; display:block;">`;
                                 }
@@ -2698,13 +2699,14 @@
             const p = document.getElementById('accessNodePass').value.trim();
             if(!u || !p) return;
             
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
             if(MatrixSystemState.get('currentMode') === 'admin') {
-                if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase() && p === MatrixSystemState.get('cachedAdminMainframeRoute').masterPass) {
+                if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
                     executeClusterLogin(null);
                 }
             } else {
                 let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(MatrixSystemState.get('cachedAdminMainframeRoute').masterPass))) {
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
                     executeClusterLogin(null);
                 }
             }
@@ -2813,11 +2815,12 @@
                 return;
             }
             
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
             if (MatrixSystemState.get('currentMode') === 'admin') {
                 get(ref(db, 'mainframeAdmin')).then((snapshot) => {
                     const freshData = snapshot.val();
-                    const targetAdminID = (freshData && freshData.id) ? freshData.id : MatrixSystemState.get('cachedAdminMainframeRoute').masterId;
-                    const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : MatrixSystemState.get('cachedAdminMainframeRoute').masterPass;
+                    const targetAdminID = (freshData && freshData.id) ? freshData.id : masterRoute.masterId;
+                    const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : masterRoute.masterPass;
                     
                     if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
                         MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
@@ -2832,7 +2835,7 @@
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
                     }
                 }).catch(() => {
-                    if(u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase() && p === MatrixSystemState.get('cachedAdminMainframeRoute').masterPass) {
+                    if(u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
                         document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
@@ -2842,7 +2845,7 @@
                     }
                 });
             } else {
-                if(String(p) === String(MatrixSystemState.get('cachedAdminMainframeRoute').masterPass)) {
+                if(masterRoute.masterId && String(p) === String(masterRoute.masterPass)) {
                     let bypassUserMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
                     if(bypassUserMatch) {
                         MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
@@ -2850,9 +2853,10 @@
                         update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true });
                         localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); 
                         localStorage.setItem('nexus_system_session_mode', 'user'); 
-                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [MASTER BYPASS ACTIVE]</span>`;
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('customerDashboard').classList.remove('hidden');
+                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
+                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [MASTER BYPASS ACTIVE]</span>`;
                         switchCustomerChannel('upload');
                         return;
                     }
