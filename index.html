@@ -454,9 +454,13 @@
         /* Locked Parameter Styling Elements */
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; }
 
-        /* --- THE FUTURE SANDBOX GAMING PIPELINE --- */
-        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 40px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(255,0,127,0.15); }
-        .gaming-empty-sandbox-container { border: 2px solid rgba(255,0,127,0.3); background: rgba(0,0,0,0.4); border-radius: 12px; padding: 60px 20px; font-family: 'Orbitron'; color: var(--text-main); font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-pink); margin-top: 20px; }
+        /* --- THE FUTURE SANDBOX GAMING PIPELINE CORE WAR MATRIX --- */
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, rgba(2, 6, 20, 0.98), rgba(6, 2, 14, 0.99)); border: 3px dashed var(--neon-pink); border-radius: 16px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 0 35px rgba(255,0,127,0.3); }
+        .gaming-arcade-navbar { display: flex; gap: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.8); padding: 6px; border-radius: 10px; border: 1px solid var(--border-glass); flex-wrap: wrap; }
+        .arcade-tab-btn { flex: 1; min-width: 110px; padding: 12px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron'; font-weight: bold; font-size: 0.85rem; cursor: pointer; border-radius: 6px; transition: 0.2s; border: 1px solid transparent; }
+        .arcade-tab-btn.active-arcade { background: var(--neon-pink); color: #fff; box-shadow: 0 0 15px var(--neon-pink); text-shadow: 0 0 5px rgba(255,255,255,0.8); }
+        .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #01040a; border: 3px solid var(--neon-cyan); border-radius: 12px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(0,242,254,0.2); }
+        .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
@@ -840,10 +844,22 @@
 
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 1.8rem;">⚡ FUTURE NEXUS GAMING COLD REPOSITORY BAR</h2>
-                    <p style="color:var(--text-sub); font-weight:700; margin-top:4px;">Operational Matrix Sandbox Gateway Mode</p>
-                    <div class="gaming-empty-sandbox-container">
-                        <span class="gaming-pulse-node-core"></span>[ MAIN REPOSITORY IDLE: SECURE STABLE CONTAINER ASSIGNED - FUTURE LOAD PROTOCOL PENDING ]
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px;">⚡ FUTURE NEXUS ARCADE SYSTEM</h2>
+                    
+                    <div class="gaming-arcade-navbar">
+                        <button class="arcade-tab-btn active-arcade" id="btnGameSpace" onclick="bootArcadeSubGame('space')">🚀 Space Shooter</button>
+                        <button class="arcade-tab-btn" id="btnGameSniper" onclick="bootArcadeSubGame('sniper')">🎯 Sniper Arena</button>
+                        <button class="arcade-tab-btn" id="btnGameCandy" onclick="bootArcadeSubGame('candy')">🍬 Pixel Crush</button>
+                        <button class="arcade-tab-btn" id="btnGameRunner" onclick="bootArcadeSubGame('runner')">🏃 Cyber Runner</button>
+                        <button class="arcade-tab-btn" id="btnGameTom" onclick="bootArcadeSubGame('tom')">🐱 Talking Tom</button>
+                    </div>
+
+                    <div class="gaming-canvas-container-box">
+                        <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="360"></canvas>
+                        <div id="virtualTomTalkOverlay" class="hidden" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:90%; background:rgba(0,0,0,0.85); padding:10px; border-radius:8px; border:1px solid var(--neon-cyan);">
+                            <input type="text" id="virtualTomTextInput" placeholder="Talk to Nexus Tom..." style="width:75%; padding:8px; background:#000; border:1px solid var(--border-glass); color:#fff;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
+                            <button onclick="executeVirtualTomSpeechLoop()" style="width:20%; padding:8px; background:var(--neon-cyan); border:none; color:#000; font-family:'Orbitron'; font-weight:bold; cursor:pointer;">SAY</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -959,6 +975,23 @@
         let autoGeneratedVoiceDurationString = "";
         let typingTimeoutTrackerNode = null;
 
+        // --- ARCADE CORE PIPELINE RETRIEVAL ATTR ---
+        let currentArcadeEngineId = "space";
+        let arcadeLoopIntervalTracker = null;
+        let canvasElement = document.getElementById('nexusMatrixArcadeCanvas');
+        let canvasCtx = canvasElement.getContext('2d');
+        
+        // Game memory states
+        let gameScoreVal = 0;
+        let spacePlayerX = 270;
+        let spaceLasersArr = [];
+        let spaceEnemiesArr = [];
+        let sniperTargetObj = { x: 100, y: 100, vx: 3, vy: 2, radius: 20 };
+        let runnerPlayerLane = 1; // 0, 1, 2
+        let runnerObstaclesArr = [];
+        let candyGridMatrix = [];
+        let virtualTomTalkingAnimationCycle = 0;
+
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
@@ -1073,6 +1106,236 @@
             closeCustomInlinePopupEngine();
         };
 
+        // --- ADVANCED INTEGRATED ARCADE SUITE SYSTEM ROUTINES ---
+        window.bootArcadeSubGame = function(gameModeId) {
+            currentArcadeEngineId = gameModeId;
+            document.querySelectorAll('.arcade-tab-btn').forEach(btn => btn.classList.remove('active-arcade'));
+            document.getElementById('virtualTomTalkOverlay').classList.add('hidden');
+            
+            const targetBtnId = "btnGame" + gameModeId.charAt(0).toUpperCase() + gameModeId.slice(1);
+            if(document.getElementById(targetBtnId)) document.getElementById(targetBtnId).classList.add('active-arcade');
+            
+            clearInterval(arcadeLoopIntervalTracker);
+            gameScoreVal = 0;
+
+            if(gameModeId === 'space') {
+                spacePlayerX = 270; spaceLasersArr = []; spaceEnemiesArr = [];
+                arcadeLoopIntervalTracker = setInterval(executeSpaceShooterFrameCycle, 30);
+            } else if(gameModeId === 'sniper') {
+                arcadeLoopIntervalTracker = setInterval(executeSniperArenaFrameCycle, 30);
+                canvasElement.onclick = (e) => executeSniperTriggerShot(e);
+            } else if(gameModeId === 'candy') {
+                generateCandyCrushMatrixPattern();
+                executeCandyCrushRenderOnly();
+                canvasElement.onclick = (e) => executeCandyGridInteractionClick(e);
+            } else if(gameModeId === 'runner') {
+                runnerPlayerLane = 1; runnerObstaclesArr = [];
+                arcadeLoopIntervalTracker = setInterval(executeSubwayRunnerFrameCycle, 30);
+            } else if(gameModeId === 'tom') {
+                document.getElementById('virtualTomTalkOverlay').classList.remove('hidden');
+                arcadeLoopIntervalTracker = setInterval(executeTalkingTomRenderCycle, 100);
+            }
+        };
+
+        function executeSpaceShooterFrameCycle() {
+            canvasCtx.fillStyle = '#010610'; canvasCtx.fillRect(0, 0, 600, 360);
+            
+            // Draw Starfield particles smoothly
+            canvasCtx.fillStyle = '#ffffff';
+            for(let i=0; i<15; i++) {
+                canvasCtx.fillRect((Math.sin(i + Date.now()*0.001) * 300) + 300, (i * 25) % 360, 2, 2);
+            }
+
+            // Draw player ship
+            canvasCtx.fillStyle = '#00f2fe';
+            canvasCtx.beginPath();
+            canvasCtx.moveTo(spacePlayerX + 30, 310);
+            canvasCtx.lineTo(spacePlayerX, 340);
+            canvasCtx.lineTo(spacePlayerX + 60, 340);
+            canvasCtx.closePath(); canvasCtx.fill();
+
+            // Automatic enemy generation
+            if(Math.random() < 0.05) spaceEnemiesArr.push({ x: Math.random()*560, y: 0, speed: 3 });
+            
+            // Draw enemies
+            canvasCtx.fillStyle = '#ff007f';
+            spaceEnemiesArr.forEach((enemy, idx) => {
+                enemy.y += enemy.speed;
+                canvasCtx.fillRect(enemy.x, enemy.y, 30, 20);
+                if(enemy.y > 360) spaceEnemiesArr.splice(idx, 1);
+            });
+
+            // Update lasers
+            canvasCtx.fillStyle = '#f1c40f';
+            spaceLasersArr.forEach((laser, lIdx) => {
+                laser.y -= 8;
+                canvasCtx.fillRect(laser.x, laser.y, 4, 12);
+                
+                // Collision structural verification matrix
+                spaceEnemiesArr.forEach((enemy, eIdx) => {
+                    if(laser.x > enemy.x && laser.x < enemy.x + 30 && laser.y > enemy.y && laser.y < enemy.y + 20) {
+                        spaceEnemiesArr.splice(eIdx, 1);
+                        spaceLasersArr.splice(lIdx, 1);
+                        gameScoreVal += 10; playSynthesizedSound(900, 'sine', 0.05);
+                    }
+                });
+            });
+
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
+            canvasCtx.fillText(`SCORE: ${gameScoreVal}`, 15, 30);
+        }
+
+        // Handle space shooter keys smoothly
+        window.addEventListener('keydown', (e) => {
+            if(activeCustomerWorkspaceChannel !== 'gaming' || currentArcadeEngineId !== 'space') return;
+            if(e.key === 'ArrowLeft' && spacePlayerX > 0) spacePlayerX -= 25;
+            if(e.key === 'ArrowRight' && spacePlayerX < 540) spacePlayerX += 25;
+            if(e.key === ' ' || e.key === 'Spacebar') {
+                spaceLasersArr.push({ x: spacePlayerX + 28, y: 310 });
+                playSynthesizedSound(600, 'triangle', 0.08);
+            }
+        });
+
+        function executeSniperArenaFrameCycle() {
+            canvasCtx.fillStyle = '#050a12'; canvasCtx.fillRect(0, 0, 600, 360);
+            
+            // Targets kinematics motor updates
+            sniperTargetObj.x += sniperTargetObj.vx; sniperTargetObj.y += sniperTargetObj.vy;
+            if(sniperTargetObj.x < 20 || sniperTargetObj.x > 580) sniperTargetObj.vx *= -1;
+            if(sniperTargetObj.y < 20 || sniperTargetObj.y > 340) sniperTargetObj.vy *= -1;
+
+            // Target graphics node rendering
+            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
+            canvasCtx.arc(sniperTargetObj.x, sniperTargetObj.y, sniperTargetObj.radius, 0, Math.PI*2);
+            canvasCtx.fill();
+
+            // Draw Crosshair target HUD scope
+            canvasCtx.strokeStyle = '#00f2fe'; canvasCtx.lineWidth = 2;
+            canvasCtx.beginPath(); canvasCtx.arc(300, 180, 80, 0, Math.PI*2); stroke();
+            canvasCtx.beginPath(); canvasCtx.moveTo(300, 50); canvasCtx.lineTo(300, 310); stroke();
+            canvasCtx.beginPath(); canvasCtx.moveTo(150, 180); canvasCtx.lineTo(450, 180); stroke();
+
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
+            canvasCtx.fillText(`HITS SCORE: ${gameScoreVal}`, 15, 30);
+        }
+
+        function executeSniperTriggerShot(e) {
+            if(currentArcadeEngineId !== 'sniper') return;
+            const rect = canvasElement.getBoundingClientRect();
+            const clickX = e.clientX - rect.left; const clickY = e.clientY - rect.top;
+            
+            let dist = Math.hypot(clickX - sniperTargetObj.x, clickY - sniperTargetObj.y);
+            if(dist <= sniperTargetObj.radius) {
+                gameScoreVal += 20; playSynthesizedSound(1200, 'sine', 0.1);
+                sniperTargetObj.x = Math.random()*500 + 50; sniperTargetObj.y = Math.random()*280 + 40;
+            } else {
+                playSynthesizedSound(120, 'sawtooth', 0.2);
+            }
+        }
+
+        function generateCandyCrushMatrixPattern() {
+            candyGridMatrix = [];
+            const candyColors = ['#ff007f', '#00f2fe', '#f1c40f', '#2ecc71', '#af7ac5'];
+            for(let r=0; r<6; r++) {
+                candyGridMatrix[r] = [];
+                for(let c=0; r<8; c++) {
+                    if(c >= 8) break;
+                    candyGridMatrix[r][c] = candyColors[Math.floor(Math.random()*candyColors.length)];
+                }
+            }
+        }
+
+        function executeCandyCrushRenderOnly() {
+            canvasCtx.fillStyle = '#0d0d16'; canvasCtx.fillRect(0, 0, 600, 360);
+            for(let r=0; r<6; r++) {
+                for(let c=0; c<8; c++) {
+                    canvasCtx.fillStyle = candyGridMatrix[r][c];
+                    canvasCtx.beginPath();
+                    canvasCtx.roundRect(40 + c*65, 30 + r*50, 50, 40, 8);
+                    canvasCtx.fill();
+                }
+            }
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
+            canvasCtx.fillText(`CRUSH SCORE: ${gameScoreVal}`, 15, 25);
+        }
+
+        function executeCandyGridInteractionClick(e) {
+            if(currentArcadeEngineId !== 'candy') return;
+            gameScoreVal += 15; playSynthesizedSound(800, 'sine', 0.05);
+            generateCandyCrushMatrixPattern(); executeCandyCrushRenderOnly();
+        }
+
+        function executeSubwayRunnerFrameCycle() {
+            canvasCtx.fillStyle = '#111'; canvasCtx.fillRect(0, 0, 600, 360);
+            
+            // Draw lanes layout borders
+            canvasCtx.strokeStyle = 'rgba(0, 242, 254, 0.4)'; canvasCtx.lineWidth = 3;
+            canvasCtx.beginPath(); canvasCtx.moveTo(200, 0); canvasCtx.lineTo(200, 360); stroke();
+            canvasCtx.beginPath(); canvasCtx.moveTo(400, 0); canvasCtx.lineTo(400, 360); stroke();
+
+            // Draw runner avatar mesh
+            canvasCtx.fillStyle = '#2ecc71';
+            let playerTargetX = runnerPlayerLane * 200 + 75;
+            canvasCtx.fillRect(playerTargetX, 280, 50, 60);
+
+            // Obstacles matrix logic stream loop tracking framework pipelines
+            if(Math.random() < 0.03) {
+                runnerObstaclesArr.push({ lane: Math.floor(Math.random()*3), y: -40, speed: 6 });
+            }
+
+            canvasCtx.fillStyle = '#e74c3c';
+            runnerObstaclesArr.forEach((obs, index) => {
+                obs.y += obs.speed;
+                canvasCtx.fillRect(obs.lane * 200 + 70, obs.y, 60, 40);
+                
+                // Realtime active collision checker engine block
+                if(obs.lane === runnerPlayerLane && obs.y > 240 && obs.y < 340) {
+                    runnerObstaclesArr.splice(index, 1);
+                    gameScoreVal = Math.max(0, gameScoreVal - 30); playSynthesizedSound(140, 'sawtooth', 0.3);
+                }
+                if(obs.y > 360) { runnerObstaclesArr.splice(index, 1); gameScoreVal += 5; }
+            });
+
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "20px Orbitron";
+            canvasCtx.fillText(`RUN METERS: ${gameScoreVal}m`, 15, 30);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if(activeCustomerWorkspaceChannel !== 'gaming' || currentArcadeEngineId !== 'runner') return;
+            if(e.key === 'ArrowLeft' && runnerPlayerLane > 0) runnerPlayerLane--;
+            if(e.key === 'ArrowRight' && runnerPlayerLane < 2) runnerPlayerLane++;
+        });
+
+        function executeTalkingTomRenderCycle() {
+            canvasCtx.fillStyle = '#1c1d24'; canvasCtx.fillRect(0, 0, 600, 360);
+            virtualTomTalkingAnimationCycle += 0.2;
+            
+            // Draw Tom virtual structured character graphics framework
+            canvasCtx.fillStyle = '#7f8c8d'; canvasCtx.beginPath();
+            canvasCtx.arc(300, 160, 70, 0, Math.PI*2); canvasCtx.fill(); // Head
+
+            // Animated eyes tracking nodes
+            canvasCtx.fillStyle = '#fff'; canvasCtx.beginPath();
+            canvasCtx.arc(280, 150, 15, 0, Math.PI*2); canvasCtx.arc(320, 150, 15, 0, Math.PI*2); canvasCtx.fill();
+            canvasCtx.fillStyle = '#00f2fe'; canvasCtx.beginPath();
+            canvasCtx.arc(280, 150, 6, 0, Math.PI*2); canvasCtx.arc(320, 150, 6, 0, Math.PI*2); canvasCtx.fill();
+
+            // Talking loop mouth expansion logic simulator engine
+            let mouthSize = 8 + Math.abs(Math.sin(virtualTomTalkingAnimationCycle) * 14);
+            canvasCtx.fillStyle = '#c0392b'; canvasCtx.beginPath();
+            canvasCtx.arc(300, 190, mouthSize, 0, Math.PI); canvasCtx.fill();
+
+            canvasCtx.fillStyle = '#fff'; canvasCtx.font = "18px Rajdhani";
+            canvasCtx.fillText("Nexus Tom: [Status: Awaiting input backlink payload string stream]", 120, 270);
+        }
+
+        window.executeVirtualTomSpeechLoop = function() {
+            const txt = document.getElementById('virtualTomTextInput').value.trim();
+            if(!txt) return;
+            speakNaturalHuman(`You said ${txt}. I am structural nexus bot core.`);
+            document.getElementById('virtualTomTextInput').value = "";
+        };
+
         window.switchChatWallpaperMatrix = function() {
             const wallpapersArr = [
                 "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
@@ -1167,7 +1430,7 @@
                     };
 
                     notesMediaRecorderInstance.start();
-                    if (pulseNode) pulseNode.remove('hidden');
+                    if (pulseNode) pulseNode.classList.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
                 }).catch(() => { alert("Microphone capture access denied."); });
             } else {
@@ -1259,6 +1522,7 @@
             } else if(channelId === 'gaming') {
                 document.getElementById('btnChannelGaming').classList.add('active');
                 document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
+                bootArcadeSubGame('space');
             } else if(channelId === 'chat') {
                 document.getElementById('btnChannelChat').classList.add('active');
                 document.getElementById('customerChatInterfaceBlock').classList.remove('hidden');
@@ -2278,6 +2542,7 @@
             document.getElementById('accessNodePass').value = "";
             
             localStorage.clear(); 
+            clearInterval(arcadeLoopIntervalTracker);
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
@@ -2445,7 +2710,7 @@
 
         window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
             closeCustomInlinePopupEngine();
-            if(purgeMode === 'everyone' && packetKey) {
+            if(packetKey && purgeMode === 'everyone') {
                 update(ref(db, `chats/${packetKey}`), {
                     textBody: "🚫 This message was deleted for everyone.",
                     mediaPayload: ""
