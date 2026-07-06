@@ -473,6 +473,8 @@
         /* --- THE WHATSAPP CONSOLE LAYOUT DESIGN --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 16px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.7); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; }
+        .chat-target-userlist-pane::-webkit-scrollbar { width: 5px; }
+        .chat-target-userlist-pane::-webkit-scrollbar-thumb { background: rgba(0,242,254,0.3); border-radius: 10px; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
 
         .whatsapp-search-box { padding: 12px; background: rgba(17, 27, 33, 0.4); border-bottom: 2px solid var(--border-glass); }
@@ -511,7 +513,7 @@
         .whatsapp-tick-space.double-blue { color: #2ecc71; }
 
         /* --- CHAT EXTRA DESIGN FEETURES --- */
-        .msg-reactions-tray { display: flex; gap: 5px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 20px; position: absolute; bottom: -12px; right: 10px; font-size: 0.85rem; border: 1px solid var(--border-glass); }
+        .msg-reactions-tray { display: flex; gap: 5px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 20px; position: absolute; bottom: -12px; right: 10px; font-size: 0.85rem; border: 1px solid var(--border-glass); z-index: 10; }
         .voice-wave-container { display: flex; align-items: center; gap: 3px; height: 20px; margin-left: 10px; }
         .voice-bar { width: 3px; height: 100%; background: var(--neon-pink); animation: waveBounce 0.6s infinite alternate; }
         .voice-bar:nth-child(2) { animation-delay: 0.1s; }
@@ -711,6 +713,16 @@
             width: 0%;
         }
 
+        /* Ambient Particle Matrix View overlay */
+        .matrix-ambient-particle-space {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
@@ -726,6 +738,7 @@
     </style>
 </head>
 <body>
+    <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
     <div class="shashi-header-brand-block" id="shashiBrandingHeader">
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
@@ -767,14 +780,14 @@
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             <h1 class="hud-logo">Welcome</h1>
                                                                                                                                                                                 
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -830,7 +843,7 @@
             <div id="customerUploadInterfaceBlock">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -974,10 +987,10 @@
 
             <div class="matrix-system-controller-dock">
                 <div class="auto-pulse-refresh-badge">
-                    <span class="refresh-spinner-node"></span> MATRIX RETRIEVAL ENGINE ACTIVE (2S AUTOMATION SYNC)
+                    <span class="refresh-spinner-node"></span> HIGH FREQUENCY 10X/1S REALTIME CONSOLE SYNC AUTOMATION ACTIVE
                 </div>
             </div>
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable.</div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Refresh active seamlessly.</div>
         </div>
     </div>
                                                                                                                                                                                 
@@ -1109,6 +1122,55 @@
 
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
+
+        // --- BACKGROUND ADVANCED DYNAMIC CANVAS DECORATOR ---
+        function runAmbientCanvasMatrixSystem() {
+            const canvas = document.getElementById('ambientParticleSpaceNode');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            window.addEventListener('resize', resize);
+            resize();
+
+            for(let i=0; i<40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2.5 + 1,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    alpha: Math.random() * 0.5 + 0.1
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0,0, canvas.width, canvas.height);
+                const isLight = document.body.classList.contains('light-theme-active');
+                ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(0, 242, 254, 0.15)';
+                
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fill();
+                    ctx.restore();
+                });
+                requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+        }
+        runAmbientCanvasMatrixSystem();
 
         // --- ULTRA HIGH RESOLUTION TELEMETRY CLOCK MOTOR ---
         function initiatePrecisionChronometerTick() {
@@ -2300,21 +2362,6 @@
             if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
         };
 
-        window.setOperationalChatTargetId = function(userId) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', userId);
-            const titleNode = document.getElementById('chatActiveUserHeaderNode');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            if(userId === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                if(titleNode) titleNode.innerText = "Mainframe Admin Shashi";
-            } else {
-                const match = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === userId);
-                if(titleNode && match) titleNode.innerText = localNicknamesObj[userId] || match.clientName;
-            }
-            renderActiveChatConversationLogs();
-            document.querySelectorAll('.chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
-        };
-
         window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
             update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => {
                 renderActiveChatConversationLogs();
@@ -3011,6 +3058,7 @@
                         update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true });
                         localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); 
                         localStorage.setItem('nexus_system_session_mode', 'user'); 
+                        localStorage.setItem('nexus_active_chan_route', 'upload');
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('customerDashboard').classList.remove('hidden');
                         document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
@@ -3233,6 +3281,7 @@
                         const m = data[key];
                         if((m.sender === spyContext && m.receiver === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) ||
                            (m.sender === MatrixSystemState.get('cachedAdminMainframeRoute').masterId && m.receiver === spyContext)) {
+                            if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
                             const isMyResponse = (m.sender === MatrixSystemState.get('cachedAdminMainframeRoute').masterId);
                             const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
                             
@@ -3376,7 +3425,8 @@
             }
         };
 
-        // --- BACKGROUND AUTOMATION SYNC LOGIC ---
+        // --- BACKGROUND ADVANCED REFRESHE ENGINE MOTOR (10 TIMES PER SECOND / 100MS INTERVAL) ---
+        // This loop handles rapid silent sync calculations without interrupting users workflows, typing pads, or active elements.
         setInterval(() => {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
@@ -3409,7 +3459,7 @@
                     renderLiveCreationStatsSummary();
                 }
             }
-        }, 2000);
+        }, 100); // Triggering exactly 10 times a second for background synchronization engine.
 
         setTimeout(() => { generatePlaceholderLabelsForStructureFrameworks(); checkActiveStateSessionRetentionOnLaunch(); }, 1000);
     </script>
