@@ -125,7 +125,7 @@
             text-align: center;
         }
         
-        .cosmic-theme-toggle-switch:hover {
+        .cosmic-theme-theme-toggle-switch:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(241, 196, 15, 0.4);
         }
@@ -423,7 +423,7 @@
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
-        .admin-clickable-badge:hover { background: #f1c40f; color: #00; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
+        .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
             
         .hud-data-card .owner-name-tag-right {
             position: absolute;
@@ -687,6 +687,46 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
+        /* --- SIDE-SCROLLER ACTIVITY LOG HUD (NEW LUXURY FEATURE) --- */
+        .mainframe-activity-hud-sidebar {
+            position: fixed;
+            right: -280px;
+            top: 120px;
+            width: 270px;
+            background: rgba(4, 10, 31, 0.95);
+            border: 2px solid var(--border-glass);
+            border-right: none;
+            border-radius: 16px 0 0 16px;
+            padding: 15px;
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: var(--matrix-3d-shadow-cyan);
+            backdrop-filter: blur(20px);
+        }
+        .mainframe-activity-hud-sidebar.visible { right: 0; }
+        .sidebar-toggle-handle {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 90px;
+            background: rgba(6, 17, 38, 0.96);
+            border: 2px solid var(--border-glass);
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            color: #00f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Orbitron';
+            writing-mode: vertical-rl;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
         /* --- STATS GRAPHICAL MODULE PANELS --- */
         .analytics-grid-host {
             display: flex;
@@ -772,6 +812,14 @@
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
     </div>
 
+    <div class="mainframe-activity-hud-sidebar" id="mainframeActivitySidebar">
+        <div class="sidebar-toggle-handle" onclick="toggleMainframeActivityHUD()">LOG HUD</div>
+        <h4 style="font-family:'Orbitron'; color:#00f2fe; font-size:0.9rem; margin-bottom:12px; border-bottom:1px solid rgba(0,242,254,0.3); padding-bottom:6px;">📡 LIVE SIGNAL PACKETS</h4>
+        <div id="sidebarActivityLogsStream" style="max-height:400px; overflow-y:auto; font-family:monospace; font-size:0.75rem; color:#fff; display:flex; flex-direction:column; gap:8px;">
+            <div>[STABLE] Framework initialized successfully.</div>
+        </div>
+    </div>
+
     <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
         <span>🔊 SOUND: ON</span>
     </button>
@@ -783,7 +831,7 @@
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -796,26 +844,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -837,7 +885,7 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
@@ -852,7 +900,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -871,7 +919,7 @@
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -1004,13 +1052,13 @@
 
             <div class="matrix-system-controller-dock">
                 <div class="auto-pulse-refresh-badge">
-                    <span class="refresh-spinner-node"></span> REALTIME EVENT SIGNALS WEB-STREAM ENCRYPTED SECURELY
+                    <span class="refresh-spinner-node"></span> REALTIME PIPELINE CORE WEBSOCKET SYNC ACTIVE
                 </div>
             </div>
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Refresh active seamlessly.</div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. Event stream pipelines active flawlessly.</div>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             
@@ -1029,7 +1077,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
@@ -1038,7 +1086,7 @@
                 <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                            
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -1126,6 +1174,19 @@
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
+        function appendSidebarLogPacket(messageText) {
+            const wrapper = document.getElementById('sidebarActivityLogsStream');
+            if(!wrapper) return;
+            const logRow = document.createElement('div');
+            logRow.innerText = `[${new Date().toLocaleTimeString()}] ${messageText}`;
+            wrapper.appendChild(logRow);
+            wrapper.scrollTop = wrapper.scrollHeight;
+        }
+
+        window.toggleMainframeActivityHUD = function() {
+            document.getElementById('mainframeActivitySidebar').classList.toggle('visible');
+        };
+
         function runAmbientCanvasMatrixSystem() {
             const canvas = document.getElementById('ambientParticleSpaceNode');
             if(!canvas) return;
@@ -1210,7 +1271,7 @@
         }
         initiatePrecisionChronometerTick();
 
-        /* --- 3D PARALLAX EFFECT ADHIK LUXURIOUS BANAANE KE LIYE --- */
+        // 3D PARALLAX EFFECT FOR COMPONENT LAYERS
         document.addEventListener('mousemove', (e) => {
             const panels = document.querySelectorAll('.hud-container-panel');
             const x = e.clientX / window.innerWidth - 0.5;
@@ -1258,6 +1319,7 @@
             if(matchedUser) {
                 resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
                 playSynthesizedSound(880, 'sine', 0.15);
+                appendSidebarLogPacket(`Identifier recovery success for: @${matchedUser.id}`);
             } else {
                 resNode.innerText = "❌ No identity match inside cloud matrix structure.";
                 playSynthesizedSound(140, 'sawtooth', 0.3);
@@ -1342,6 +1404,7 @@
                     `;
                     wrapper.classList.remove('hidden');
                     speakNaturalHuman("Request transmitted. Assistance loop active within forty-eight hours.");
+                    appendSidebarLogPacket(`Forget password signal dispatched by: @${userMatch.id}`);
                 });
             } else {
                 alert("❌ Input fields mismatch. Verification sequence rejected inside cloud matrix.");
@@ -1361,6 +1424,7 @@
                     closeCustomInlinePopupEngine();
                     alert("✅ Password updated completely inside Mainframe. Sync live parameters.");
                     playSynthesizedSound(1000, 'sine', 0.2);
+                    appendSidebarLogPacket(`Direct key replacement completed for: @${userMatch.id}`);
                 });
             } else {
                 alert("❌ Verification Failed: Invalid current Old Password signature mapping.");
@@ -1412,6 +1476,7 @@
                 }).then(() => {
                     const interceptRef = push(ref(db, 'ai_communications'));
                     set(interceptRef, {
+                        commKey: interceptRef.key,
                         customerID: currentUid,
                         customerName: clientNameLabel,
                         query: userPromptText,
@@ -2042,7 +2107,7 @@
             }
         });
 
-        /* --- REMOVED AUTO-REFRESH SETINTERVAL: REAL-TIME EVENT STREAM TRIGGER MECHANICS ATTACHED DIRECTLY --- */
+        /* --- STABLE REACTIVE REAL-TIME WHATSAPP DISPATCH HANDLERS ATTACHED --- */
         onValue(ref(db, 'chats'), (snapshot) => {
             const data = snapshot.val();
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2618,6 +2683,7 @@
                 document.getElementById('notesReal').value = "";
                 MatrixSystemState.set('loadedAttachmentB64', "");
                 renderCustomerLiveTracker();
+                appendSidebarLogPacket(`New insurance form transmitted by client: ${currentUid}`);
             });
         };
 
@@ -2860,6 +2926,7 @@
                         localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
+                        appendSidebarLogPacket("Admin master cluster unlocked successfully.");
                     } else {
                         playSynthesizedSound(150, 'sawtooth', 0.4);
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
@@ -2934,6 +3001,7 @@
                 document.getElementById('customerDashboard').classList.remove('hidden');
                 document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                 switchCustomerChannel('upload');
+                appendSidebarLogPacket(`Client session retention active for node: @${userMatch.id}`);
             }
         };
 
@@ -2958,6 +3026,14 @@
             }, 100);
         };
 
+        window.wipeAiSpyLogMatrixEntry = function(commKey) {
+            if(confirm("Are you sure you want to permanently erase this AI Interception Node block?")) {
+                remove(ref(db, `ai_communications/${commKey}`)).then(() => {
+                    renderAdminAiInterceptionSpyBlock();
+                });
+            }
+        };
+
         window.renderAdminAiInterceptionSpyBlock = function() {
             const logsWrapper = document.getElementById('adminAiSpyLogsWrapper');
             if(!logsWrapper) return;
@@ -2968,8 +3044,9 @@
             }
             requestAnimationFrame(() => {
                 logsWrapper.innerHTML = dataArr.reverse().map(comm => `
-                    <div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:12px; padding:18px; margin-bottom:10px; border:1px solid var(--border-glass);">
-                        <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); margin-bottom:8px; font-weight:bold;">
+                    <div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:12px; padding:18px; margin-bottom:10px; border:1px solid var(--border-glass); position:relative;">
+                        <span onclick="wipeAiSpyLogMatrixEntry('${comm.commKey}')" style="position:absolute; top:15px; right:15px; color:var(--neon-pink); font-family:'Orbitron'; font-size:0.8rem; font-weight:bold; cursor:pointer;">[ ❌ WIPE THREAD ]</span>
+                        <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); margin-bottom:8px; font-weight:bold; width:80%;">
                             👤 TARGET CUSTOMER: ${comm.customerName || 'Profile Identity'} [@${comm.customerID}] | ⏰ TIME FRAME: ${comm.timestamp} (${comm.fullDateString || ''})
                         </div>
                         <div style="font-size:1.05rem; line-height:1.4; color:#fff; margin-bottom:6px;">
@@ -3078,7 +3155,6 @@
                         const m = data[key];
                         if((m.sender === spyContext && m.receiver === "MainframeAdmin") ||
                            (m.sender === "MainframeAdmin" && m.receiver === spyContext)) {
-                            if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
                             const isMyResponse = (m.sender === "MainframeAdmin");
                             const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
                             
@@ -3129,7 +3205,7 @@
             event.stopPropagation(); removeContextDropdownMenuNode();
             const menu = document.createElement('div');
             menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
-            let downloadBtnHTML = menu.innerHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
+            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
             
             menu.innerHTML = `
                 ${downloadBtnHTML}
