@@ -104,10 +104,8 @@
             text-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
 
-        .cosmic-theme-toggle-switch {
+        .cosmic-theme-toggle-switch, .audio-toggle-switch {
             position: fixed;
-            top: 20px;
-            right: 20px;
             z-index: 9999;
             background: rgba(6, 17, 38, 0.95);
             border: 2px solid rgba(241, 196, 15, 0.6);
@@ -124,13 +122,16 @@
             width: 145px;
             text-align: center;
         }
+
+        .cosmic-theme-toggle-switch { top: 20px; right: 20px; }
+        .audio-toggle-switch { top: 20px; left: 20px; }
         
-        .cosmic-theme-toggle-switch:hover {
+        .cosmic-theme-toggle-switch:hover, .audio-toggle-switch:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(241, 196, 15, 0.4);
         }
 
-        body.light-theme-active .cosmic-theme-toggle-switch {
+        body.light-theme-active .cosmic-theme-toggle-switch, body.light-theme-active .audio-toggle-switch {
             background: #ffffff;
             color: #0f172a;
             border-color: #0f172a;
@@ -272,31 +273,6 @@
         .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
         .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
         .luminescent-node { width: 26px; height: 26px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -11px; box-shadow: 0 0 35px #f1c40f; }
-
-        .audio-toggle-switch {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
-            background: rgba(6, 17, 38, 0.95);
-            border: 2px solid rgba(241, 196, 15, 0.5);
-            border-radius: 12px;
-            padding: 12px 18px;
-            color: #f1c40f;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-            font-weight: bold;
-            width: 145px;
-            text-align: center;
-        }
-        .audio-toggle-switch:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3);
-        }
-        body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; }
 
         /* --- HUD TERMINAL CORE --- */
         .hud-glass-terminal {
@@ -502,6 +478,11 @@
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; }
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         body.light-theme-active .chat-stream-header-bar { background: #efeae2; color: #000; }
+        
+        .header-actions-btn { background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem; transition: 0.3s; }
+        .header-actions-btn:hover { background: rgba(0,242,254,0.15); box-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        .header-call-btn { border-color: #2ecc71; color: #2ecc71; }
+        .header-call-btn:hover { background: rgba(46,204,113,0.15); box-shadow: 0 0 10px rgba(46,204,113,0.5); }
 
         .chat-messages-scroll-stack { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; z-index: 2; }
         
@@ -510,6 +491,13 @@
         .bubble-outgoing { background: #005c4b; color: #ffffff; align-self: flex-end; border-top-right-radius: 0; border: 1px solid rgba(0,242,254,0.2); }
         .bubble-incoming { background: #202c33; color: #ffffff; align-self: flex-start; border-top-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
         
+        .reply-reference-box { background: rgba(0,0,0,0.3); border-left: 4px solid #00f2fe; padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 6px; color: #a6bcdc; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        body.light-theme-active .reply-reference-box { background: rgba(0,0,0,0.05); color: #334155; border-color: #d97706; }
+        
+        .reply-preview-banner { position: absolute; bottom: 100%; left: 0; width: 100%; background: rgba(32, 44, 51, 0.95); border-top: 2px solid var(--border-glass); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9; border-left: 4px solid #00f2fe; }
+        body.light-theme-active .reply-preview-banner { background: #e2d9cc; }
+        .reply-preview-text { color: #a6bcdc; font-size: 0.9rem; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin-right: 15px; }
+
         body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
         body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
@@ -618,11 +606,23 @@
             color: var(--text-main);
             box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            position: relative;
         }
 
         @keyframes popupEntrance3D {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
+        }
+        
+        .hologram-call-effect {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-cyan);
+            animation: recPulse 1.5s infinite alternate;
+            background-size: cover;
+            background-position: center;
         }
 
         .nexus-popup-card-box h4 { font-family: 'Orbitron'; color: #00f2fe; margin-bottom: 12px; font-size: 1.25rem; }
@@ -635,6 +635,7 @@
             flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
+        .nexus-popup-btn.danger-btn { background: #e74c3c; color: #fff; }
 
         .giant-compiler-layout { background: rgba(4, 12, 30, 0.85); padding: 35px 25px; border-radius: 20px; border: 3px solid rgba(26,188,156,0.5); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
         body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #1abc9c; }
@@ -713,11 +714,13 @@
             .full-width-field { grid-column: span 1; }
             #policyCardsStack { grid-template-columns: 1fr !important; }
             #adminUserControlList { grid-template-columns: 1fr !important; }
-            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 600px; }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 650px; }
             .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
+            .chat-interface-footer-inputs { flex-wrap: wrap; }
+            .whatsapp-input-field { min-width: 150px; }
         }
     </style>
 </head>
@@ -732,14 +735,14 @@
         <span>🔊 SOUND: ON</span>
     </button>
     <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()">
-        <span id="themeToggleBtnLabel">\uD83C\uDF12 DARK MODE</span>
+        <span id="themeToggleBtnLabel">🌓 DARK MODE</span>
     </button>
 
     <div class="smoke-container">
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -752,26 +755,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -793,7 +796,7 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
@@ -808,7 +811,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -827,7 +830,7 @@
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
                 </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -942,10 +945,13 @@
                                     <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:#2ecc71;" class="hidden">typing...</div>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 8px; align-items: center;">
-                                <button onclick="toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" style="background:rgba(0,242,254,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🤖 AI CORE: OFF</button>
-                                <button onclick="clearCurrentChatConversation()" style="background:rgba(231,76,60,0.2); border:1px solid #e74c3c; color:#e74c3c; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🗑️ CLEAR</button>
-                                <button onclick="switchChatWallpaperMatrix()" style="background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🎨 WALLPAPER</button>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                <button onclick="triggerHologramCall('audio')" class="header-actions-btn header-call-btn">📞 CALL</button>
+                                <button onclick="triggerHologramCall('video')" class="header-actions-btn header-call-btn">📹 VIDEO</button>
+                                
+                                <button onclick="toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn">🤖 AI CORE: OFF</button>
+                                <button onclick="clearCurrentChatConversation()" class="header-actions-btn" style="border-color:#e74c3c; color:#e74c3c;">🗑️ CLEAR</button>
+                                <button onclick="switchChatWallpaperMatrix()" class="header-actions-btn">🎨 WALLPAPER</button>
                             </div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
@@ -953,12 +959,17 @@
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
                         <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
                         
+                        <div id="chatReplyPreviewBanner" class="reply-preview-banner hidden">
+                            <div class="reply-preview-text" id="replyPreviewTextNode">Replying to...</div>
+                            <button onclick="cancelReplyMatrixState()" style="background:none; border:none; color:#e74c3c; font-size:1.2rem; cursor:pointer;">✖</button>
+                        </div>
+
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="toggleVoiceAudioRecordingEngine()">🎙️</button>
-                            <div style="flex: 1; position: relative;">
+                            <div style="flex: 1; position: relative; min-width: 150px;">
                                 <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" style="width:100%;" placeholder="Type a message..." oninput="handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') dispatchMatrixChatMessage()">
                                 <span id="chatInputCharCounter" class="char-counter-badge">0/250</span>
                             </div>
@@ -978,7 +989,7 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             
@@ -997,7 +1008,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
@@ -1006,7 +1017,7 @@
                 <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
-                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -1038,6 +1049,7 @@
                 activeCustomerWorkspaceChannel: "upload",
                 activeSelectedChatTargetUserId: "",
                 globalLiveChatBinaryStreamBase64: "",
+                activeReplyMessageTextNode: "", // NEW STATE FOR REPLY FEATURE
                 spyActiveTargetUserContext: "",
                 activeAdminSubSection: "creation",
                 loadedAttachmentB64: "",
@@ -1055,6 +1067,7 @@
                 set: (key, val) => { state[key] = val; },
                 resetChatAssets: () => {
                     state.globalLiveChatBinaryStreamBase64 = "";
+                    state.activeReplyMessageTextNode = "";
                 },
                 purgeStateReferences: () => {
                     state.cachedGlobalUsersArr = [];
@@ -1066,6 +1079,7 @@
         })();
 
         let requestArcadeFrameToken = null;
+        let ambientParticleToken = null; // FIXED MEMORY LEAK
         let tomSpeechRecognitionInstance = null;
         let isTomListeningStateActive = false;
         let audioVisualizerContextNode = null;
@@ -1083,9 +1097,10 @@
         let notesRecordingStartEpoch = 0;
         let autoGeneratedVoiceDurationString = "";
         let typingTimeoutTrackerNode = null;
+        let isAudioContextAllowed = false; // BROWSER POLICY FIX
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
-        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐"];
+        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐", "✅", "❌", "👽", "🤖", "😎", "💯"]; // Upgraded emojis
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif"
@@ -1093,6 +1108,9 @@
 
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
+
+        // BROWSER POLICY FIX FOR AUDIO
+        document.body.addEventListener('click', () => { isAudioContextAllowed = true; }, { once: true });
 
         function runAmbientCanvasMatrixSystem() {
             const canvas = document.getElementById('ambientParticleSpaceNode');
@@ -1119,6 +1137,11 @@
             }
 
             function draw() {
+                // Optimize: only run heavily when visible
+                if(document.hidden) {
+                    ambientParticleToken = requestAnimationFrame(draw);
+                    return;
+                }
                 ctx.clearRect(0,0, canvas.width, canvas.height);
                 const isLight = document.body.classList.contains('light-theme-active');
                 ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(0, 242, 254, 0.15)';
@@ -1136,9 +1159,9 @@
                     ctx.fill();
                     ctx.restore();
                 });
-                requestAnimationFrame(draw);
+                ambientParticleToken = requestAnimationFrame(draw);
             }
-            requestAnimationFrame(draw);
+            ambientParticleToken = requestAnimationFrame(draw);
         }
         runAmbientCanvasMatrixSystem();
 
@@ -1172,7 +1195,7 @@
                     manualDateField.value = `${dateText} (${dayText})`;
                 }
 
-                requestAnimationFrame(handleFrameSequence);
+                setTimeout(() => requestAnimationFrame(handleFrameSequence), 1000); // Optimized for 1s tick
             };
             requestAnimationFrame(handleFrameSequence);
         }
@@ -1180,8 +1203,8 @@
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            const cleanText = textBody.replace(/🤖|🚫/g, '');
-            speakNaturalHuman(`${senderName} says: ${cleanText}`);
+            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌/g, '');
+            if(cleanText.trim().length > 0) speakNaturalHuman(`${senderName} says: ${cleanText}`);
         }
 
         window.triggerForgotIDModal = function() {
@@ -1390,6 +1413,11 @@
 
         function executeTalkingTomRenderCycle() {
             if (currentArcadeEngineId !== 'tom' || !canvasCtx) return;
+            // Prevent drawing if tab hidden
+            if(document.hidden) {
+                requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
+                return;
+            }
             canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
             virtualTomTalkingAnimationCycle += 0.25;
             
@@ -1535,7 +1563,7 @@
             clearTimeout(typingTimeoutTrackerNode);
             typingTimeoutTrackerNode = setTimeout(() => {
                 remove(ref(db, `typing_states/${currentUid}`));
-            }, 1500);
+            }, 1000);
         };
 
         window.closeCustomInlinePopupEngine = function() {
@@ -1988,14 +2016,13 @@
             const signalsData = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
             if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin') {
-                playSynthesizedSound(587, 'sawtooth', 0.25);
+                if(isAudioContextAllowed) playSynthesizedSound(587, 'sawtooth', 0.25);
             }
             if(MatrixSystemState.get('activeAdminSubSection') === 'stats') {
                 renderDynamicServerDiagnosticsDashboard();
             }
         });
 
-        /* Safe path updates to strictly separate read logic and block infinite looping */
         onValue(ref(db, 'chats'), (snapshot) => {
             const data = snapshot.val();
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2005,7 +2032,6 @@
             if(activeChan === 'chat' && currentUid) {
                 renderActiveChatConversationLogs();
                 
-                /* Non-recursive safe field targeting */
                 if(data && MatrixSystemState.get('activeSelectedChatTargetUserId')) {
                     const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
                     Object.keys(data).forEach(key => {
@@ -2030,8 +2056,13 @@
             const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator');
+            
             if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid) {
-                if(typingStatusNode) typingStatusNode.classList.remove('hidden');
+                if(typingStatusNode) {
+                    const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid);
+                    typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} is typing...`;
+                    typingStatusNode.classList.remove('hidden');
+                }
             } else {
                 if(typingStatusNode) typingStatusNode.classList.add('hidden');
             }
@@ -2128,6 +2159,7 @@
             if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
             document.getElementById('chatActiveHeaderAvatarNode').src = targetAvatarPath;
 
+            cancelReplyMatrixState(); // RESET REPLY STATE ON CHAT SWITCH
             renderActiveChatConversationLogs();
         };
 
@@ -2167,9 +2199,11 @@
                             }
                             
                             let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
+                            let replyMarkup = msg.quotedText ? `<div class="reply-reference-box">${msg.quotedText}</div>` : "";
                             
                             htmlCollector += `
-                                <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
+                                <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody.replace(/'/g, "\\'")}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
+                                    ${replyMarkup}
                                     <div>${msg.textBody}</div>${assetHTML}
                                     <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
                                     ${reactionMarkup}
@@ -2196,6 +2230,54 @@
             wrapper.classList.remove('hidden');
         };
 
+        // NEW FEATURE: INITIATE REPLY
+        window.initiateReplyMatrixState = function(messageTextSnippet) {
+            MatrixSystemState.set('activeReplyMessageTextNode', messageTextSnippet);
+            document.getElementById('replyPreviewTextNode').innerText = `Replying to: ${messageTextSnippet}`;
+            document.getElementById('chatReplyPreviewBanner').classList.remove('hidden');
+            document.getElementById('chatCoreMessageTextInput').focus();
+            removeContextDropdownMenuNode();
+        };
+
+        window.cancelReplyMatrixState = function() {
+            MatrixSystemState.set('activeReplyMessageTextNode', "");
+            document.getElementById('chatReplyPreviewBanner').classList.add('hidden');
+        };
+
+        // NEW FEATURE: MOCK HOLOGRAM CALL
+        window.triggerHologramCall = function(callType) {
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!targetUid) return;
+            const targetUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid);
+            const targetName = targetUserObj ? targetUserObj.clientName : "Mainframe Admin";
+            const targetAvatar = targetUserObj && targetUserObj.avatar ? targetUserObj.avatar : defaultAvatarSvg;
+            
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+
+            let typeLabel = callType === 'video' ? "📹 ENCRYPTED VIDEO LINK" : "📞 SECURE AUDIO LINK";
+            
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 40px rgba(0,242,254,0.4);">
+                    <h4 style="color:var(--neon-cyan); font-size:1rem; margin-bottom: 20px;">${typeLabel}</h4>
+                    <div class="hologram-call-effect" style="background-image: url('${targetAvatar}');"></div>
+                    <h3 style="color:#fff; margin-bottom:10px; font-family:'Orbitron'; font-weight:900;">${targetName}</h3>
+                    <p style="color:#2ecc71; font-family:monospace; margin-bottom:25px;" id="hologramCallStatusTxt">Establishing Quantum Connection...</p>
+                    
+                    <div style="display:flex; justify-content:center; gap:20px;">
+                        <button onclick="closeCustomInlinePopupEngine()" class="whatsapp-circle-btn" style="background:#e74c3c; color:#fff; width:60px; height:60px; font-size:2rem; box-shadow: 0 0 20px rgba(231,76,60,0.6);">☎</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+            if(isAudioContextAllowed) playSynthesizedSound(440, 'sine', 1.5);
+
+            setTimeout(() => {
+                const statusTxt = document.getElementById('hologramCallStatusTxt');
+                if(statusTxt) statusTxt.innerText = "Ringing...";
+            }, 1500);
+        };
+
         window.dispatchMatrixChatMessage = function() {
             const inputField = document.getElementById('chatCoreMessageTextInput');
             if(!inputField) return;
@@ -2203,6 +2285,7 @@
             let liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const activeReplyText = MatrixSystemState.get('activeReplyMessageTextNode'); // ADDED FOR REPLY
 
             if(!textBody && !liveChatB64) return;
 
@@ -2217,6 +2300,7 @@
             set(newChatPacketRef, {
                 sender: currentUid, receiver: targetUid,
                 textBody: finalMessageText || "📎 Asset Node", mediaPayload: liveChatB64,
+                quotedText: activeReplyText, // SAVING REPLY CONTEXT
                 read: false, epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
@@ -2226,6 +2310,7 @@
                 document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
                 document.getElementById('mainframeGifContainerBox').classList.add('hidden');
+                cancelReplyMatrixState(); // CANCEL REPLY BANNER AFTER SEND
                 remove(ref(db, `typing_states/${currentUid}`));
                 renderActiveChatConversationLogs();
                 
@@ -2458,7 +2543,7 @@
         window.createNewCustomerNode = function() {
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value;
             const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) return; const userId = clientName + contact.slice(-4);
+            if(!clientName || !contact || !userPass) return; const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { loadAdminSubmissions(); });
         };
 
@@ -2489,14 +2574,14 @@
 
         window.toggleUserNodeActivationState = function(uid, selectValue) {
             update(ref(db, `users/${uid}`), { status: selectValue }).then(() => {
-                playSynthesizedSound(600, 'sine', 0.2);
+                if(isAudioContextAllowed) playSynthesizedSound(600, 'sine', 0.2);
             });
         };
 
         window.executeAdminContextClipboardCopy = function(element, extractionValue) {
             if(!extractionValue) return;
             navigator.clipboard.writeText(extractionValue).then(() => {
-                playSynthesizedSound(880, 'sine', 0.15);
+                if(isAudioContextAllowed) playSynthesizedSound(880, 'sine', 0.15);
                 const originalText = element.innerText;
                 element.innerText = "COPIED ✔";
                 setTimeout(() => { element.innerText = originalText; }, 1200);
@@ -2505,7 +2590,6 @@
 
         window.wipeUserPermanently = function(uid) { remove(ref(db, 'users/' + uid)); };
 
-        /* Patched workspace indexing matrix bindings to use actual key parameter */
         window.renderPolicyCardsBlock = function() {
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
             let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr');
@@ -2604,7 +2688,7 @@
                 adminComment: nextComment
             }).then(() => {
                 alert("Tracker packet updated.");
-                playSynthesizedSound(880, 'sine', 0.1);
+                if(isAudioContextAllowed) playSynthesizedSound(880, 'sine', 0.1);
             });
         };
 
@@ -2713,7 +2797,7 @@
         };
 
         window.playSynthesizedSound = function(frequency, type, duration) {
-            if (!MatrixSystemState.get('isSystemAudioEnabled')) return;
+            if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return;
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
@@ -2747,6 +2831,7 @@
         window.triggerLampActivationOverride = function() {
             const mainStage = document.getElementById('mainStage'); 
             const loginTerminal = document.getElementById('loginTerminal');
+            isAudioContextAllowed = true; // Unlock Audio API naturally
             if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
                 playSynthesizedSound(520, 'sine', 0.3); 
                 mainStage.classList.add('activated'); 
@@ -2773,7 +2858,7 @@
                 </div>`;
             
             setInterval(() => {
-                playSynthesizedSound(180, 'sawtooth', 0.4);
+                if(isAudioContextAllowed) playSynthesizedSound(180, 'sawtooth', 0.4);
             }, 2000);
             speakNaturalHuman("Security violation detected. Your identifier link is locked.");
         }
@@ -2805,7 +2890,7 @@
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
                     } else {
-                        playSynthesizedSound(150, 'sawtooth', 0.4);
+                        if(isAudioContextAllowed) playSynthesizedSound(150, 'sawtooth', 0.4);
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
                     }
                 }).catch(() => {
@@ -2847,7 +2932,7 @@
                 if (!userMatch || String(userMatch.pass) !== String(p)) {
                     let failCount = MatrixSystemState.get('consecutiveBruteFailuresCount') + 1;
                     MatrixSystemState.set('consecutiveBruteFailuresCount', failCount);
-                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    if(isAudioContextAllowed) playSynthesizedSound(150, 'sawtooth', 0.4);
                     if (failCount >= 3) {
                         if(userMatch) {
                             update(ref(db, `users/${userMatch.id}`), { lockoutState: "true" });
@@ -2860,7 +2945,7 @@
                 }
                 
                 if (userMatch.status === 'deactivated') {
-                    playSynthesizedSound(150, 'sawtooth', 0.4);
+                    if(isAudioContextAllowed) playSynthesizedSound(150, 'sawtooth', 0.4);
                     alert("Mainframe Blocked: Your account key has been deactivated by Shashi Admin Mainframe Core.");
                     return;
                 }
@@ -2960,7 +3045,7 @@
             localStorage.removeItem('nexus_system_session_mode');
             localStorage.removeItem('nexus_active_chan_route');
             
-            cancelAnimationFrame(requestArcadeFrameToken);
+            if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
             MatrixSystemState.purgeStateReferences();
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
@@ -3031,9 +3116,14 @@
                                 }
                             }
                             
+                            let reactionMarkup = m.reaction ? `<div class="msg-reactions-tray">${m.reaction}</div>` : "";
+                            let replyMarkup = m.quotedText ? `<div class="reply-reference-box">${m.quotedText}</div>` : "";
+                            
                             htmlCollector += `
-                                <div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:#005c4b; color:#fff; align-self:flex-end;' : 'background:#202c33; color:#fff; align-self:flex-start;'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})">
+                                <div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:#005c4b; color:#fff; align-self:flex-end;' : 'background:#202c33; color:#fff; align-self:flex-start;'}" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody.replace(/'/g, "\\'")}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})">
+                                    ${replyMarkup}
                                     ${m.textBody}${assetHTML}<div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>
+                                    ${reactionMarkup}
                                 </div>`;
                         }
                     });
@@ -3071,9 +3161,11 @@
             menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
             let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
             
+            // NEW REPLY FEATURE BUTTON ADDED HERE
             menu.innerHTML = `
+                <button class="dropdown-action-row-btn" onclick="initiateReplyMatrixState('${textPayload}')">↪️ Reply / Quote</button>
                 ${downloadBtnHTML}
-                <button class="dropdown-action-row-btn" onclick="triggerDirectMessageForwardPipeline('${messageKey}', '${textPayload.replace(/'/g, "\\'")}', '${mediaUrl}')">➡️ Forward SMS</button>
+                <button class="dropdown-action-row-btn" onclick="triggerDirectMessageForwardPipeline('${messageKey}', '${textPayload}', '${mediaUrl}')">➡️ Forward SMS</button>
                 <button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete Node</button>
             `;
             document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
@@ -3152,7 +3244,8 @@
             if(packetKey && purgeMode === 'everyone') {
                 update(ref(db, `chats/${packetKey}`), {
                     textBody: "🚫 This message was deleted for everyone.",
-                    mediaPayload: ""
+                    mediaPayload: "",
+                    quotedText: ""
                 }).then(() => {
                     if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
                 });
