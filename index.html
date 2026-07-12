@@ -3,45 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO ⚡</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700;900&display=swap">
     <style>
+        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE --- */
         :root {
-            --lamp-color: #f1c40f;
-            --lamp-glow: #f1c40f;
-            --lamp-shadow: rgba(241, 196, 15, 0.9);
-            --neon-cyan: #00f2fe;
-            --neon-pink: #ff007f;
-            --whatsapp-green: #2ecc71;
-            --bg-prime: #02050e;
-            --panel-glass: rgba(6, 17, 38, 0.94);
-            --border-glass: rgba(0, 242, 254, 0.7);
-            --text-main: #ffffff;
-            --text-sub: #f8fafc;
-            --chat-bg: #090f14;
-            --input-bg: #010610;
+            --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
+            --neon-cyan: #00f2fe; --neon-pink: #ff007f; --whatsapp-green: #2ecc71;
+            --bg-prime: #02050e; --panel-glass: rgba(6, 17, 38, 0.94);
+            --border-glass: rgba(0, 242, 254, 0.7); --text-main: #ffffff; --text-sub: #f8fafc;
+            --chat-bg: #090f14; --input-bg: #010610;
             --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
             --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
             --chat-wallpaper: radial-gradient(circle at center, #090f14 0%, #02050e 100%);
             --matrix-3d-shadow-cyan: 0 15px 30px rgba(0, 242, 254, 0.25);
             --matrix-3d-shadow-pink: 0 15px 30px rgba(255, 0, 127, 0.25);
-            --matrix-3d-shadow-green: 0 15px 30px rgba(46, 204, 113, 0.25);
         }
 
         body.light-theme-active {
-            --bg-prime: #f8fafc;
-            --panel-glass: rgba(255, 255, 255, 0.96);
-            --border-glass: #0f172a;
-            --text-main: #0f172a;
-            --text-sub: #1e293b;
-            --chat-bg: #efeae2;
-            --input-bg: #ffffff;
+            --bg-prime: #f8fafc; --panel-glass: rgba(255, 255, 255, 0.96);
+            --border-glass: #0f172a; --text-main: #0f172a; --text-sub: #1e293b;
+            --chat-bg: #efeae2; --input-bg: #ffffff;
             --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.15);
             --lamp-chamak: 0 6px 24px rgba(0,0,0,0.2);
             --chat-wallpaper: #efeae2;
             --matrix-3d-shadow-cyan: 0 10px 20px rgba(0, 0, 0, 0.1);
             --matrix-3d-shadow-pink: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --matrix-3d-shadow-green: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
@@ -66,13 +53,7 @@
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 3s infinite; letter-spacing: 2px; text-transform: uppercase; }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
 
-        @keyframes glitchTextAnim {
-            0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; }
-            5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; }
-            10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; }
-            15% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); }
-            100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); }
-        }
+        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); } }
 
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; }
@@ -88,11 +69,7 @@
 
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
 
-        @keyframes dynamicColorCycle {
-            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); }
-            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); }
-            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); }
-        }
+        @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
 
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2); }
         .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
@@ -119,13 +96,12 @@
         .volumetric-beam { position: absolute; top: 130px; width: 120px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
-        /* The Pull Cord - Optimized & Upgraded */
-        .quantum-cord { position: absolute; top: 160px; left: 210px; z-index: 10000; cursor: grab; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; }
-        .quantum-cord:active { cursor: grabbing; }
-        .quantum-cord:hover .luminescent-node { box-shadow: 0 0 60px #f1c40f, 0 0 20px #fff; transform: scale(1.1); transition: 0.3s; }
-        .quantum-cord.pulled { transform: translateY(70px) scale(0.95); }
-        .beaded-wire { width: 6px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); margin: 0 auto; box-shadow: 0 0 15px rgba(241,196,15,0.8); }
-        .luminescent-node { width: 36px; height: 34px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; transition: 0.3s; }
+        /* The Pull Cord - Advanced Spring Physics */
+        .quantum-cord { position: absolute; top: 160px; left: 210px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; }
+        .quantum-cord:active { cursor: grabbing; transform: translateY(80px) scale(0.95); transition: transform 0.1s linear; }
+        .quantum-cord:hover .luminescent-node { box-shadow: 0 0 60px #f1c40f, 0 0 20px #fff; transform: scale(1.2); }
+        .beaded-wire { width: 6px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); box-shadow: 0 0 15px rgba(241,196,15,0.8); }
+        .luminescent-node { width: 38px; height: 38px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; transition: 0.3s; margin-top: -5px;}
 
         /* --- HUD TERMINAL CORE --- */
         .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
@@ -338,14 +314,14 @@
         .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
 
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(1, 3, 10, 0.88); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); perspective: 1000px; }
-        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 24px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); box-shadow: 0 30px 60px rgba(0,0,0,0.8); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; }
+        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 24px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); box-shadow: 0 30px 60px rgba(0,0,0,0.8); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden;}
 
-        @keyframes popupEntrance3D {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
         
-        .hologram-call-effect { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px auto; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); animation: recPulse 1.5s infinite alternate; background-size: cover; background-position: center; }
+        .hologram-call-effect { width: 100%; height: 220px; border-radius: 12px; margin: 0 auto 20px auto; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: #000; }
+        .hologram-call-effect video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: contrast(1.2) saturate(1.2) hue-rotate(1.5); }
+        .hologram-scanline { position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: rgba(0,242,254,0.6); box-shadow: 0 0 10px #00f2fe; animation: scanHolo 2s infinite linear; pointer-events: none;}
+        @keyframes scanHolo { 0% { top: 0; } 100% { top: 100%; } }
 
         .nexus-popup-card-box h4 { font-family: 'Orbitron'; color: #00f2fe; margin-bottom: 12px; font-size: 1.25rem; }
         .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
@@ -365,12 +341,14 @@
         body.light-theme-active .giant-compiler-input { background: #ffffff; }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
 
-        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.5rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 12px 28px; border-radius: 12px; display: inline-block; box-shadow: 0 8px 20px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; }
+        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
+        .hyper-clock-ticker::before { content:''; position:absolute; top:-4px; left:-4px; right:-4px; bottom:-4px; border-radius:14px; border:2px dashed #00f2fe; animation: clockSpin 10s linear infinite; pointer-events: none;}
+        @keyframes clockSpin { 100% { transform: rotate(360deg); } }
 
         .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
 
         .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
-        .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); position:relative;}
         .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
         
         .chart-mock-container { width: 100%; height: 60px; border-bottom: 2px solid rgba(0,242,254,0.4); border-left: 2px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; padding-left: 5px; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; }
@@ -395,6 +373,7 @@
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
             .chat-interface-footer-inputs { flex-wrap: wrap; gap: 8px; }
             .whatsapp-input-field { min-width: 120px; }
+            .quantum-cord { padding: 80px 60px; margin-left: -60px; margin-top: -60px;} /* Ultra big hitbox mobile */
         }
     </style>
 </head>
@@ -454,7 +433,7 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" ">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
@@ -802,6 +781,7 @@
         let isAudioContextAllowed = false; 
         let globalAudioCtx = null; 
         let isCordPulled = false;
+        let liveVideoCallStreamObj = null;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐", "✅", "❌", "👽", "🤖", "😎", "💯"];
@@ -816,7 +796,7 @@
         document.body.addEventListener('click', () => { isAudioContextAllowed = true; }, { once: true });
         document.body.addEventListener('touchstart', () => { isAudioContextAllowed = true; }, { once: true });
 
-        // BULB PULL CORD ATTACHMENTS FOR CLICK & TOUCH SENSING - UPGRADED
+        // PERFECT PULL CORD LOGIC WITH SPRING PHYSICS
         window.pullCordAction = function(event) {
             if (event) event.preventDefault();
             if (isCordPulled) return;
@@ -890,11 +870,11 @@
             window.addEventListener('resize', resize);
             resize();
 
-            for(let i=0; i<20; i++) {
+            for(let i=0; i<25; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 1,
+                    radius: Math.random() * 2.5 + 1,
                     vx: (Math.random() - 0.5) * 0.3,
                     vy: (Math.random() - 0.5) * 0.3,
                     alpha: Math.random() * 0.4 + 0.1
@@ -929,6 +909,7 @@
         }
         runAmbientCanvasMatrixSystem();
 
+        // INTERESTING ADVANCED CLOCK WITH MILLISECONDS
         function initiatePrecisionChronometerTick() {
             setInterval(() => {
                 const userBox = document.getElementById('userPrecisionTimeNode');
@@ -940,25 +921,24 @@
                 const hh = padData(clock.getHours());
                 const mm = padData(clock.getMinutes());
                 const ss = padData(clock.getSeconds());
+                const ms = padData(Math.floor(clock.getMilliseconds() / 10), 2);
                 
-                const packedTimeString = `${hh}:${mm}:${ss}`;
-                if(userBox) userBox.innerText = packedTimeString;
-                if(adminBox) adminBox.innerText = packedTimeString;
+                const packedTimeString = `${hh}:${mm}:${ss}<span style="font-size:0.5em; opacity:0.7;">.${ms}</span>`;
+                const pureTimeString = `${hh}:${mm}:${ss}`;
+
+                if(userBox) userBox.innerHTML = packedTimeString;
+                if(adminBox) adminBox.innerHTML = packedTimeString;
 
                 const manualTimeField = document.getElementById('noteManualTimeSelector');
-                if(manualTimeField) {
-                    manualTimeField.value = packedTimeString;
-                }
+                if(manualTimeField) manualTimeField.value = pureTimeString;
                 
                 const daysOfWeekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                 const dayText = daysOfWeekArr[clock.getDay()];
                 const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()}`;
                 
                 const manualDateField = document.getElementById('noteManualDateSelector');
-                if(manualDateField) {
-                    manualDateField.value = `${dateText} (${dayText})`;
-                }
-            }, 1000);
+                if(manualDateField) manualDateField.value = `${dateText} (${dayText})`;
+            }, 50); // Fast interval for MS render
         }
         initiatePrecisionChronometerTick();
 
@@ -1336,6 +1316,10 @@
         window.closeCustomInlinePopupEngine = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             if(wrapper) wrapper.classList.add('hidden');
+            if(liveVideoCallStreamObj) {
+                liveVideoCallStreamObj.getTracks().forEach(track => track.stop());
+                liveVideoCallStreamObj = null;
+            }
         };
 
         window.wipeNoteInterfaceToBlankTrigger = function() {
@@ -2123,6 +2107,7 @@
             if(b2) b2.classList.add('hidden');
         };
 
+        // REAL CAMERA ACCESS FOR HOLOGRAM VIDEO CALL 
         window.triggerHologramCall = function(callType) {
             const isUserAdmin = MatrixSystemState.get('currentMode') === 'admin';
             const targetUid = isUserAdmin ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
@@ -2135,11 +2120,17 @@
             if(!wrapper) return;
 
             let typeLabel = callType === 'video' ? "📹 ENCRYPTED VIDEO LINK" : "📞 SECURE AUDIO LINK";
+            let visualEffectHTML = callType === 'video' ? 
+                `<div class="hologram-call-effect" style="border-radius:12px;">
+                    <video id="liveHoloVideoStream" autoplay muted playsinline></video>
+                    <div class="hologram-scanline"></div>
+                </div>` : 
+                `<div class="hologram-call-effect" style="border-radius:50%; width:120px; height:120px; background-image: url('${targetAvatar}');"></div>`;
             
             wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 40px rgba(0,242,254,0.4);">
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 40px rgba(0,242,254,0.4); max-width:380px;">
                     <h4 style="color:var(--neon-cyan); font-size:1rem; margin-bottom: 20px;">${typeLabel}</h4>
-                    <div class="hologram-call-effect" style="background-image: url('${targetAvatar}');"></div>
+                    ${visualEffectHTML}
                     <h3 style="color:#fff; margin-bottom:10px; font-family:'Orbitron'; font-weight:900;">${targetName}</h3>
                     <p style="color:#2ecc71; font-family:monospace; margin-bottom:25px;" id="hologramCallStatusTxt">Establishing Connection...</p>
                     
@@ -2151,9 +2142,19 @@
             wrapper.classList.remove('hidden');
             if(isAudioContextAllowed) playSynthesizedSound(440, 'sine', 1.0);
 
+            if(callType === 'video') {
+                navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
+                    liveVideoCallStreamObj = stream;
+                    const videoNode = document.getElementById('liveHoloVideoStream');
+                    if(videoNode) videoNode.srcObject = stream;
+                }).catch(() => {
+                    document.getElementById('hologramCallStatusTxt').innerText = "Camera Access Denied by System.";
+                });
+            }
+
             setTimeout(() => {
                 const statusTxt = document.getElementById('hologramCallStatusTxt');
-                if(statusTxt) statusTxt.innerText = "Ringing...";
+                if(statusTxt && statusTxt.innerText === "Establishing Connection...") statusTxt.innerText = "Ringing (Secure Line)...";
             }, 1500);
         };
 
@@ -2426,6 +2427,15 @@
                             </div>
                         </div>
 
+                        <div style="background:rgba(231, 76, 60, 0.1); border:2px solid #e74c3c; padding:20px; border-radius:12px; margin-top:20px;">
+                            <h4 style="color:#e74c3c; font-family:'Orbitron'; margin-bottom:15px;">⚠️ PURGE SYSTEM (REAL-TIME DELETE DATA)</h4>
+                            <div style="display: flex; gap: 15px; flex-wrap:wrap;">
+                                <button onclick="window.clearAllAiLogs()" class="abort-btn" style="flex:1;">Purge AI Logs</button>
+                                <button onclick="if(confirm('Wipe ALL Client Policies permanently?')) { remove(ref(db, 'policies')); alert('Policies wiped.'); }" class="abort-btn" style="flex:1;">Purge Vault & Policies</button>
+                                <button onclick="if(confirm('Wipe ALL Chats from Cloud?')) { remove(ref(db, 'chats')); alert('Chats wiped.'); }" class="abort-btn" style="flex:1;">Purge Chat Pipelines</button>
+                            </div>
+                        </div>
+
                         <div class="analytics-grid-host" style="margin-top:25px; display: flex; flex-direction: column; gap: 30px;">
                             <div class="analytics-node-card">
                                 <h5>👥 TOTAL REGISTRATION NODES</h5>
@@ -2670,6 +2680,25 @@
                     });
                 };
                 reader.readAsDataURL(file);
+            }
+        };
+
+        // NEW: AUTO LOGIN FUNCTION (Checks directly while typing)
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            const p = document.getElementById('accessNodePass').value.trim();
+            if(!u || p === "") return;
+            
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            if(MatrixSystemState.get('currentMode') === 'admin') {
+                if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                    executeClusterLogin(null);
+                }
+            } else {
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    executeClusterLogin(null);
+                }
             }
         };
 
