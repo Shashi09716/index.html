@@ -27,7 +27,6 @@
             --card-surface: rgba(4, 14, 33, 0.85);
             --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
             --chat-wallpaper: radial-gradient(circle at center, #090f14 0%, #02050e 100%);
-            
             --matrix-3d-shadow-cyan: 0 15px 30px rgba(0, 242, 254, 0.25);
             --matrix-3d-shadow-pink: 0 15px 30px rgba(255, 0, 127, 0.25);
             --matrix-3d-shadow-green: 0 15px 30px rgba(46, 204, 113, 0.25);
@@ -56,111 +55,63 @@
             --matrix-3d-shadow-green: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
 
         body {
-            background: var(--bg-prime);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Rajdhani', sans-serif;
-            user-select: none;
-            position: relative;
-            width: 100vw;
-            transition: background 0.4s ease, color 0.4s ease;
-            color: var(--text-main);
+            background: var(--bg-prime); height: 100vh; display: flex; justify-content: center;
+            align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif;
+            user-select: none; position: relative; width: 100vw;
+            transition: background 0.4s ease, color 0.4s ease; color: var(--text-main);
         }
 
-        .shashi-header-brand-block {
-            position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            pointer-events: none;
-            width: auto;
-            transition: all 0.5s ease;
-        }
-        
-        .brand-main-title {
-            font-weight: 900;
-            font-size: 2.2rem;
-            letter-spacing: 6px;
-            color: #ffffff;
-            text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6);
-        }
-        
-        body.light-theme-active .brand-main-title {
-            color: #0f172a;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-
-        .cosmic-theme-toggle-switch, .audio-toggle-switch, .fullscreen-toggle-switch {
-            position: fixed;
-            z-index: 9999;
-            background: rgba(6, 17, 38, 0.95);
-            border: 2px solid rgba(241, 196, 15, 0.6);
-            border-radius: 12px;
-            padding: 12px 18px;
-            color: #f1c40f;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            font-weight: bold;
-            letter-spacing: 1px;
+        /* --- UNIFIED CYBERPUNK NAVBAR --- */
+        .top-cyber-navbar {
+            position: fixed; top: 0; left: 0; right: 0; height: 65px;
+            background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
             transition: all 0.3s ease;
-            width: 145px;
-            text-align: center;
         }
 
-        .cosmic-theme-toggle-switch { top: 20px; right: 20px; }
-        .audio-toggle-switch { top: 20px; left: 20px; }
-        .fullscreen-toggle-switch { top: 75px; right: 20px; border-color: #00f2fe; color: #00f2fe; }
+        body.light-theme-active .top-cyber-navbar {
+            background: rgba(255, 255, 255, 0.95); border-color: #0f172a; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-brand-glitch {
+            font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem;
+            color: #fff; position: relative; animation: glitchTextAnim 3s infinite;
+            letter-spacing: 2px;
+        }
+
+        body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
+
+        @keyframes glitchTextAnim {
+            0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; }
+            5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; }
+            10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; }
+            15% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); }
+        }
+
+        .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         
-        .cosmic-theme-toggle-switch:hover, .audio-toggle-switch:hover, .fullscreen-toggle-switch:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.4);
+        .nav-btn {
+            background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass);
+            border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px;
+            font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer;
+            transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
-        body.light-theme-active .cosmic-theme-toggle-switch, body.light-theme-active .audio-toggle-switch, body.light-theme-active .fullscreen-toggle-switch {
-            background: #ffffff;
-            color: #0f172a;
-            border-color: #0f172a;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
+
+        body.light-theme-active .nav-btn {
+            background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .smoke-container {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .smoke-cloud {
-            position: absolute;
-            top: -50%;
-            width: 50vw;
-            height: 200vh;
-            filter: blur(140px);
-            opacity: 0.14;
-            border-radius: 50%;
-            animation: smokeDrift 22s infinite alternate ease-in-out;
-            will-change: transform;
-        }
-
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
 
@@ -169,17 +120,7 @@
             100% { transform: translateY(2%) scale(1.06) rotate(8deg); }
         }
 
-        .cinema-stage {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 2;
-            overflow: hidden;
-        }
+        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
 
         @keyframes dynamicColorCycle {
             0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); }
@@ -187,68 +128,20 @@
             66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); }
         }
 
-        .cinema-stage.activated {
-            animation: dynamicColorCycle 5s infinite linear;
-            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%);
-            box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2);
-        }
-
-        .cyber-lamp-core {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-            transform: scale(1.1);
-            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
+        .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2); }
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
 
-        .metallic-shutter-head {
-            width: 260px;
-            height: 160px;
-            background: linear-gradient(145deg, #1f2d42, #02050a);
-            border-radius: 130px 130px 50px 50px;
-            position: relative;
-            border: 3px solid #00f2fe;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 242, 254, 0.4);
-            z-index: 5;
-            overflow: hidden;
-        }
-
+        .metallic-shutter-head { width: 260px; height: 160px; background: linear-gradient(145deg, #1f2d42, #02050a); border-radius: 130px 130px 50px 50px; position: relative; border: 3px solid #00f2fe; box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 242, 254, 0.4); z-index: 5; overflow: hidden; }
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
 
-        .mechanical-gate {
-            position: absolute;
-            top: 25px;
-            width: 65px;
-            height: 100px;
-            background: linear-gradient(145deg, #0a0d14, #222d42);
-            border: 2px solid #3b4e6e;
-            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
-            z-index: 6;
-        }
-
+        .mechanical-gate { position: absolute; top: 25px; width: 65px; height: 100px; background: linear-gradient(145deg, #0a0d14, #222d42); border: 2px solid #3b4e6e; transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s; z-index: 6; }
         .gate-left { left: 50px; border-radius: 14px 0 0 14px; }
         .gate-right { right: 50px; border-radius: 0 14px 14px 0; }
         .cinema-stage.activated .gate-left { transform: translateX(-65px); opacity: 0.05; }
         .cinema-stage.activated .gate-right { transform: translateX(65px); opacity: 0.05; }
 
-        .blinding-core-light {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 70%);
-            border-radius: 50%;
-            left: 50%;
-            top: 25px;
-            transform: translateX(-50%);
-            filter: blur(4px);
-            opacity: 0;
-            transition: opacity 0.4s ease, background 0.4s ease;
-            box-shadow: 0 0 60px #ffffff, 0 0 120px var(--lamp-color);
-        }
+        .blinding-core-light { position: absolute; width: 100px; height: 100px; background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 70%); border-radius: 50%; left: 50%; top: 25px; transform: translateX(-50%); filter: blur(4px); opacity: 0; transition: opacity 0.4s ease, background 0.4s ease; box-shadow: 0 0 60px #ffffff, 0 0 120px var(--lamp-color); }
         .cinema-stage.activated .blinding-core-light { opacity: 1; }
 
         .hydraulic-stem { width: 22px; height: 240px; background: linear-gradient(90deg, #222e40, #080b12, #394b66); z-index: 3; position: relative; border-radius: 4px; }
@@ -257,18 +150,7 @@
 
         .brushed-heavy-base { width: 220px; height: 34px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 15px 25px rgba(0,0,0,0.7); }
 
-        .volumetric-beam {
-            position: absolute;
-            top: 130px;
-            width: 120px;
-            height: 0;
-            background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-            clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0;
-            transition: height 0.9s ease, width 0.9s ease, opacity 0.3s;
-        }
+        .volumetric-beam { position: absolute; top: 130px; width: 120px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
         .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
@@ -276,31 +158,14 @@
         .luminescent-node { width: 26px; height: 26px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -11px; box-shadow: 0 0 35px #f1c40f; }
 
         /* --- HUD TERMINAL CORE --- */
-        .hud-glass-terminal {
-            position: absolute;
-            left: 50%;
-            transform: translate3d(-50%, 0, 0) scale(0.9);
-            width: 95%;
-            max-width: 460px;
-            background: var(--panel-glass);
-            border: 3px solid var(--border-glass);
-            border-left: 6px solid #f1c40f;
-            padding: 35px 25px;
-            border-radius: 24px;
-            backdrop-filter: blur(40px);
-            box-shadow: var(--matrix-3d-shadow-cyan);
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 20;
-        }
-
+        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; }
         .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; }
 
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
 
-        .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); animation: glitchTextAnim 4s infinite alternate; }
 
         .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; gap: 4px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); }
         .hud-tab { flex: 1; padding: 14px; background: transparent; border: none; color: var(--text-sub); font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap; }
@@ -324,41 +189,14 @@
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
 
         /* --- DASHBOARD PANEL ENGINE --- */
-        .dashboard-panel-core {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background: var(--bg-prime);
-            z-index: 100;
-            padding: 20px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            transition: background 0.4s ease;
-            padding-bottom: 60px;
-            padding-top: 100px;
-        }
+        .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; } /* Adjusted padding-top for Navbar */
 
-        .hud-container-panel {
-            background: var(--panel-glass);
-            border: 3px solid var(--border-glass);
-            border-top: 6px solid var(--neon-cyan);
-            padding: 35px 25px;
-            border-radius: 24px;
-            width: 100%;
-            max-width: 1280px;
-            box-shadow: var(--matrix-3d-shadow-cyan);
-            backdrop-filter: blur(40px);
-            margin-top: 10px;
-            margin-bottom: 20px;
-            transition: transform 0.5s ease;
-        }
+        .hud-container-panel { background: var(--panel-glass); border: 3px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1280px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
 
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 3px solid var(--border-glass); padding-bottom: 18px; gap: 10px; flex-wrap: wrap; }
-        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
-        .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
-        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
+        .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; animation: none; }
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; animation: glitchTextAnim 3s infinite reverse; }
 
         /* --- WORKSPACE CHANNELS --- */
         .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 16px; border: 2px solid var(--border-glass); box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
@@ -384,7 +222,6 @@
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
             
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
-        
         .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); }
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
@@ -398,21 +235,7 @@
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
             
-        .hud-data-card .owner-name-tag-right {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-family: 'Orbitron', sans-serif;
-            color: #00f2fe;
-            font-size: 0.9rem;
-            font-weight: 900;
-            background: rgba(0, 242, 254, 0.2);
-            padding: 6px 14px;
-            border-radius: 6px;
-            border: 2px solid rgba(0, 242, 254, 0.5);
-            text-shadow: 0 0 5px rgba(0,242,254,0.5);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        }
+        .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); text-shadow: 0 0 5px rgba(0,242,254,0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
         .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
@@ -437,7 +260,6 @@
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 2px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
         .notes-pad-rich-area { width: 100%; min-height: 250px; padding: 20px; color: var(--text-main); background: transparent; font-size: 1.15rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
         
-        /* Advanced Note Pad Styles inside contenteditable */
         .notes-pad-rich-area ul, .notes-pad-rich-area ol { margin-left: 20px; margin-bottom: 10px; }
         .notes-pad-rich-area li { margin-bottom: 5px; }
 
@@ -461,7 +283,7 @@
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- CONSOLE WHATSAPP BLUEPRINT --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: calc(100vh - 280px); min-height: 500px; max-height: 800px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; }
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: calc(100vh - 280px); min-height: 500px; max-height: 800px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; transition: height 0.3s; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.8); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
 
@@ -486,7 +308,7 @@
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         body.light-theme-active .chat-stream-header-bar { background: #efeae2; color: #000; }
         
-        .header-actions-btn { background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem; transition: 0.3s; }
+        .header-actions-btn { background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem; transition: 0.3s; margin-left: 5px;}
         .header-actions-btn:hover { background: rgba(0,242,254,0.15); box-shadow: 0 0 10px rgba(0,242,254,0.5); }
         .header-call-btn { border-color: #2ecc71; color: #2ecc71; }
         .header-call-btn:hover { background: rgba(46,204,113,0.15); box-shadow: 0 0 10px rgba(46,204,113,0.5); }
@@ -539,107 +361,33 @@
         .whatsapp-circle-btn:hover { transform: scale(1.15); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
-        .admin-status-toggle-select {
-            padding: 6px 10px;
-            background: #02050e;
-            color: #2ecc71;
-            border: 2px solid var(--border-glass);
-            border-radius: 6px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            outline: none;
-            width: auto;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-        }
+        .admin-status-toggle-select { padding: 6px 10px; background: #02050e; color: #2ecc71; border: 2px solid var(--border-glass); border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; outline: none; width: auto; box-shadow: 0 3px 6px rgba(0,0,0,0.4); }
         .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
 
-        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu {
-            position: absolute;
-            background: #1f2c34;
-            border: 2px solid var(--border-glass);
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-            z-index: 100005;
-            width: 210px;
-            display: flex;
-            flex-direction: column;
-            padding: 8px 0;
-            overflow: hidden;
-        }
-        body.light-theme-active .whatsapp-avatar-context-dropdown, 
-        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-color: #0f172a; }
+        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #1f2c34; border: 2px solid var(--border-glass); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); z-index: 100005; width: 210px; display: flex; flex-direction: column; padding: 8px 0; overflow: hidden; }
+        body.light-theme-active .whatsapp-avatar-context-dropdown, body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-color: #0f172a; }
         
-        .avatar-dropdown-action-row, .dropdown-action-row-btn {
-            padding: 12px 16px;
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-align: left;
-            cursor: pointer;
-            transition: background 0.2s;
-            width: 100%;
-        }
-        body.light-theme-active .avatar-dropdown-action-row,
-        body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
+        .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 12px 16px; background: transparent; border: none; color: #ffffff; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; width: 100%; }
+        body.light-theme-active .avatar-dropdown-action-row, body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
         .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
         .delete-color { color: #e74c3c !important; }
         .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
 
         /* Popups Systems */
-        .nexus-custom-popup-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(1, 3, 10, 0.88);
-            z-index: 200000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(15px);
-            perspective: 1000px;
-        }
-        .nexus-popup-card-box {
-            background: var(--panel-glass);
-            border: 3px solid var(--border-glass);
-            padding: 30px;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 440px;
-            text-align: center;
-            color: var(--text-main);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-            animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            position: relative;
-        }
+        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(1, 3, 10, 0.88); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); perspective: 1000px; }
+        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 24px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); box-shadow: 0 30px 60px rgba(0,0,0,0.8); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; }
 
         @keyframes popupEntrance3D {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
         
-        .hologram-call-effect {
-            width: 100px; height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 20px auto;
-            border: 3px solid var(--neon-cyan);
-            box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-cyan);
-            animation: recPulse 1.5s infinite alternate;
-            background-size: cover;
-            background-position: center;
-        }
+        .hologram-call-effect { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px auto; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); animation: recPulse 1.5s infinite alternate; background-size: cover; background-position: center; }
 
         .nexus-popup-card-box h4 { font-family: 'Orbitron'; color: #00f2fe; margin-bottom: 12px; font-size: 1.25rem; }
-        .nexus-popup-input-field {
-            width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass);
-            border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
-        }
+        .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
         .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 20px; }
-        .nexus-popup-btn {
-            flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .nexus-popup-btn { flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
         .nexus-popup-btn.danger-btn { background: #e74c3c; color: #fff; }
@@ -654,107 +402,57 @@
         body.light-theme-active .giant-compiler-input { background: #ffffff; }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
 
-        .hyper-clock-ticker {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #f1c40f;
-            background: rgba(0,0,0,0.85);
-            border: 2px solid #00f2fe;
-            padding: 12px 28px;
-            border-radius: 12px;
-            display: inline-block;
-            box-shadow: 0 8px 20px rgba(0,242,254,0.3);
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.5rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 12px 28px; border-radius: 12px; display: inline-block; box-shadow: 0 8px 20px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; }
 
-        .realtime-alert-banner {
-            background: rgba(231,76,60,0.25);
-            border: 2px solid #e74c3c;
-            color: #e74c3c;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-family: 'Orbitron';
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        }
+        .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
 
         /* --- STATS ENGINE DIAGNOSTICS --- */
         .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
         .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
         
-        .chart-mock-container {
-            width: 100%;
-            height: 60px;
-            border-bottom: 2px solid rgba(0,242,254,0.4);
-            border-left: 2px solid rgba(0,242,254,0.4);
-            position: relative;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-left: 5px;
-            background: rgba(0,0,0,0.4);
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
-            border-radius: 6px;
-        }
-        .chart-mock-bar {
-            height: 24px;
-            background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
-            box-shadow: 0 0 15px rgba(0,242,254,0.6);
-            transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            border-radius: 0 6px 6px 0;
-            width: 0%;
-        }
+        .chart-mock-container { width: 100%; height: 60px; border-bottom: 2px solid rgba(0,242,254,0.4); border-left: 2px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; padding-left: 5px; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; }
+        .chart-mock-bar { height: 24px; background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1); border-radius: 0 6px 6px 0; width: 0%; }
 
         .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
         .char-counter-badge { font-size: 0.8rem; color: #8696a0; float: right; margin-top: 5px; font-family: monospace; }
 
         @media (max-width: 768px) {
+            .top-cyber-navbar { padding: 0 10px; height: auto; flex-direction: column; padding-bottom: 10px; padding-top: 10px; }
+            .navbar-controls { justify-content: center; }
+            .dashboard-panel-core { padding-top: 120px; padding-bottom: 20px;}
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
             .full-width-field { grid-column: span 1; }
             #policyCardsStack { grid-template-columns: 1fr !important; }
             #adminUserControlList { grid-template-columns: 1fr !important; }
-            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 120px); }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 150px); }
             .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
             .chat-interface-footer-inputs { flex-wrap: wrap; }
             .whatsapp-input-field { min-width: 150px; }
-            .fullscreen-toggle-switch { top: 125px; } /* Adjusting position for mobile */
         }
     </style>
 </head>
 <body>
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
-    <div class="shashi-header-brand-block" id="shashiBrandingHeader">
-        <div class="brand-main-title">Made By SHASHI TIWARI</div>
-    </div>
-
-    <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
-        <span>🔊 SOUND: ON</span>
-    </button>
-    <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()">
-        <span id="themeToggleBtnLabel">🌓 DARK MODE</span>
-    </button>
-    <button id="fullScreenBtn" class="fullscreen-toggle-switch" onclick="toggleFullScreenEngine()">
-        <span id="fullScreenLabel">🔲 FULL SCREEN</span>
-    </button>
+    <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
+        <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
+        <div class="navbar-controls">
+            <button id="systemAudioToggleBtn" class="nav-btn" onclick="toggleGlobalSystemAudio()">🔊 SOUND: ON</button>
+            <button class="nav-btn" onclick="executeCosmicThemeToggle()"><span id="themeToggleBtnLabel">🌓 DARK MODE</span></button>
+            <button id="fullScreenBtn" class="nav-btn" onclick="toggleFullScreenEngine()"><span id="fullScreenLabel">🔲 FULL SCREEN</span></button>
+        </div>
+    </nav>
 
     <div class="smoke-container">
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -767,26 +465,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -808,7 +506,7 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
@@ -823,7 +521,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -835,6 +533,7 @@
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
                 <button class="channel-tab-btn" id="btnChannelNotes" onclick="switchCustomerChannel('notes')">📝 Rich Notes Matrix</button>
+                <button class="channel-tab-btn" id="btnChannelVault" onclick="switchCustomerChannel('vault')">📂 Cloud Vault</button>
                 <button class="channel-tab-btn" id="btnChannelGaming" onclick="switchCustomerChannel('gaming')">🎮 Gaming Nexus</button>
                 <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
             </div>
@@ -842,7 +541,7 @@
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
                 </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
@@ -870,9 +569,10 @@
                         <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster full-width-field">
-                        <div class="cyber-upload-node">
-                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
-                            <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')">
+                        <div class="cyber-upload-node" onclick="document.getElementById('clientAttachment').click()">
+                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900; cursor: pointer;">📎 UPLOAD DOCUMENT / PHOTO</label>
+                            <input type="file" id="clientAttachment" style="display:none;" onchange="processBinaryAttachment(event, 'policy')">
+                            <div id="policyAttachmentFeedback" style="color:var(--whatsapp-green); font-size:0.9rem; font-weight:bold; margin-top:10px;"></div>
                         </div>
                     </div>
                     <div class="hud-input-cluster full-width-field">
@@ -926,7 +626,10 @@
                         <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="toggleRichNotesVoiceStreamRecorder()">
                             <span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD VOICE
                         </button>
-                        <span id="notesVoiceDurationLogNode" style="font-family:monospace; font-weight:bold; color:var(--neon-pink); font-size:0.95rem;"></span>
+                        
+                        <button class="note-tool-btn" style="color:#00f2fe; border-color:#00f2fe; margin-left: auto;" onclick="exportNoteToTxt()">📥 EXPORT NOTE</button>
+
+                        <span id="notesVoiceDurationLogNode" style="font-family:monospace; font-weight:bold; color:var(--neon-pink); font-size:0.95rem; width:100%; display:block; margin-top:10px;"></span>
                     </div>
 
                     <div class="notes-editor-container-shell">
@@ -939,6 +642,15 @@
                     </div>
 
                     <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
+                </div>
+            </div>
+
+            <div id="customerVaultInterfaceBlock" class="hidden">
+                <div class="giant-compiler-layout">
+                    <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
+                    <p style="color:var(--text-sub); margin-bottom: 20px; font-size:1.05rem;">All your synchronized policy documents and chat media assets securely centralized.</p>
+                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px;">
+                        </div>
                 </div>
             </div>
 
@@ -1017,7 +729,7 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             
@@ -1036,7 +748,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
@@ -1045,7 +757,7 @@
                 <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
-                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                        
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -1126,7 +838,7 @@
         let autoGeneratedVoiceDurationString = "";
         let typingTimeoutTrackerNode = null;
         let isAudioContextAllowed = false; 
-        let globalAudioCtx = null; // Memory leak fix
+        let globalAudioCtx = null; 
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐", "✅", "❌", "👽", "🤖", "😎", "💯"];
@@ -1147,7 +859,9 @@
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().then(() => {
                     label.innerText = "🔳 EXIT SCREEN";
-                    chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 150px)");
+                    if(window.innerWidth > 768) {
+                        chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 150px)");
+                    }
                 }).catch(err => {
                     alert(`Error attempting to enable fullscreen mode: ${err.message}`);
                 });
@@ -1155,7 +869,9 @@
                 if (document.exitFullscreen) {
                     document.exitFullscreen().then(() => {
                         label.innerText = "🔲 FULL SCREEN";
-                        chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 280px)");
+                        if(window.innerWidth > 768) {
+                            chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 280px)");
+                        }
                     });
                 }
             }
@@ -1438,7 +1154,7 @@
                 }).then(() => {
                     const interceptRef = push(ref(db, 'ai_communications'));
                     set(interceptRef, {
-                        logId: interceptRef.key, // ADDED PROPER LOG ID FOR DELETION
+                        logId: interceptRef.key, 
                         customerID: currentUid,
                         customerName: clientNameLabel,
                         query: userPromptText,
@@ -1565,8 +1281,8 @@
         };
 
         window.clearCurrentChatConversation = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID') || "MainframeAdmin";
+            const targetUid = MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
             if(!currentUid || !targetUid) return;
             if(confirm("Are you sure you want to clear your local screen chat record?")) {
                 get(ref(db, 'chats')).then((snap) => {
@@ -1579,7 +1295,11 @@
                                 localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged");
                             }
                         });
-                        renderActiveChatConversationLogs();
+                        if(MatrixSystemState.get('currentMode') === 'admin') {
+                            renderAdminSpyChatConsoleLogs();
+                        } else {
+                            renderActiveChatConversationLogs();
+                        }
                     }
                 });
             }
@@ -1649,6 +1369,22 @@
             document.execCommand('foreColor', false, colorHexCode);
             const editor = document.getElementById('richNoteWritingPadEditable');
             if (editor) editor.focus();
+        };
+
+        // EXPORT NOTE FEATURE
+        window.exportNoteToTxt = function() {
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(!editor) return;
+            const textContent = editor.innerText.trim();
+            if(!textContent) {
+                alert("Matrix Node empty. Type a note to export.");
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(textContent);
+            a.download = `Nexus_Note_${Date.now()}.txt`;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            playSynthesizedSound(1100, 'sine', 0.15);
         };
 
         window.toggleRichNotesVoiceStreamRecorder = function() {
@@ -1756,17 +1492,62 @@
             });
         };
 
+        // RENDER CLOUD VAULT GALLERY
+        window.renderCloudVault = function() {
+            const vaultContainer = document.getElementById('cloudVaultGridContainer');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!vaultContainer || !currentUid) return;
+            
+            let vaultItemsHTML = "";
+            
+            const myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid && p.attachment);
+            myPolicies.forEach(p => {
+                vaultItemsHTML += `
+                    <div style="background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; padding: 10px; text-align: center;">
+                        <img src="${p.attachment}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; cursor: pointer;" onclick="triggerEnlargedAttachmentView('${p.attachment}')">
+                        <span style="display:block; font-size:0.8rem; color:#2ecc71; margin-bottom: 5px; font-weight:bold;">Policy Asset</span>
+                        <button onclick="executePhysicalAssetDownloadEngine('${p.attachment}')" class="note-tool-btn" style="width: 100%; justify-content: center;">💾 DOWNLOAD</button>
+                    </div>
+                `;
+            });
+            
+            get(ref(db, 'chats')).then((snap) => {
+                const data = snap.val();
+                if(data) {
+                    Object.keys(data).forEach(key => {
+                        const msg = data[key];
+                        if((msg.sender === currentUid || msg.receiver === currentUid) && msg.mediaPayload && !msg.mediaPayload.startsWith("data:audio")) {
+                            vaultItemsHTML += `
+                                <div style="background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; padding: 10px; text-align: center;">
+                                    <img src="${msg.mediaPayload}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; cursor: pointer;" onclick="triggerEnlargedAttachmentView('${msg.mediaPayload}')">
+                                    <span style="display:block; font-size:0.8rem; color:#00f2fe; margin-bottom: 5px; font-weight:bold;">Chat Media</span>
+                                    <button onclick="executePhysicalAssetDownloadEngine('${msg.mediaPayload}')" class="note-tool-btn" style="width: 100%; justify-content: center;">💾 DOWNLOAD</button>
+                                </div>
+                            `;
+                        }
+                    });
+                }
+                if(!vaultItemsHTML) {
+                    vaultContainer.innerHTML = `<p style="color:var(--text-sub); grid-column: 1 / -1; font-weight:bold;">No media assets found in cloud vault.</p>`;
+                } else {
+                    vaultContainer.innerHTML = vaultItemsHTML;
+                }
+            });
+        };
+
         window.switchCustomerChannel = function(channelId) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId);
             localStorage.setItem('nexus_active_chan_route', channelId);
             
             document.getElementById('btnChannelUpload').classList.remove('active');
             document.getElementById('btnChannelNotes').classList.remove('active');
+            document.getElementById('btnChannelVault').classList.remove('active');
             document.getElementById('btnChannelGaming').classList.remove('active');
             document.getElementById('btnChannelChat').classList.remove('active');
             
             document.getElementById('customerUploadInterfaceBlock').classList.add('hidden');
             document.getElementById('customerNotesInterfaceBlock').classList.add('hidden');
+            document.getElementById('customerVaultInterfaceBlock').classList.add('hidden');
             document.getElementById('customerGamingInterfaceBlock').classList.add('hidden');
             document.getElementById('customerChatInterfaceBlock').classList.add('hidden');
             
@@ -1779,6 +1560,10 @@
                 document.getElementById('customerNotesInterfaceBlock').classList.remove('hidden');
                 wipeNoteInterfaceToBlankTrigger();
                 fetchRealtimeNotesCloudData();
+            } else if(channelId === 'vault') {
+                document.getElementById('btnChannelVault').classList.add('active');
+                document.getElementById('customerVaultInterfaceBlock').classList.remove('hidden');
+                renderCloudVault();
             } else if(channelId === 'gaming') {
                 document.getElementById('btnChannelGaming').classList.add('active');
                 document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden');
@@ -1989,7 +1774,11 @@
                 MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
                 
                 document.getElementById('mainStage').style.display = 'none';
-                document.getElementById('shashiBrandingHeader').style.opacity = '0';
+                
+                // Show Navbar securely
+                const nav = document.getElementById('mainCyberNavbar');
+                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+
                 if(savedMode === 'admin') {
                     document.getElementById('adminDashboard').classList.remove('hidden');
                     loadAdminSubmissions();
@@ -2051,7 +1840,10 @@
             const policyArr = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedGlobalPolicyArr', policyArr);
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) renderPolicyCardsBlock();
-            if(MatrixSystemState.get('loggedInCustomerID')) renderCustomerLiveTracker();
+            if(MatrixSystemState.get('loggedInCustomerID')) {
+                renderCustomerLiveTracker();
+                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'vault') renderCloudVault();
+            }
         });
 
         onValue(ref(db, 'ai_communications'), (snapshot) => {
@@ -2103,6 +1895,9 @@
                     renderAdminSpyChatConsoleLogs();
                     renderAdminSpyUserList();
                 }
+            }
+            if(activeChan === 'vault') {
+                renderCloudVault();
             }
         });
 
@@ -2220,7 +2015,8 @@
 
         window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
             update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => {
-                renderActiveChatConversationLogs();
+                if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs();
+                else renderActiveChatConversationLogs();
             });
         };
         
@@ -2302,6 +2098,7 @@
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:90%; width:auto;">
                     <img src="${imgSrc}" style="max-width:100%; max-height:75vh; border-radius:12px; border:2px solid var(--border-glass);">
                     <div style="margin-top:15px;">
+                        <button onclick="executePhysicalAssetDownloadEngine('${imgSrc}')" class="nexus-popup-btn primary-btn" style="width:120px; background:#2ecc71; margin-right:10px;">💾 SAVE</button>
                         <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:120px;">CLOSE</button>
                     </div>
                 </div>
@@ -2337,7 +2134,8 @@
         };
 
         window.triggerHologramCall = function(callType) {
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const isUserAdmin = MatrixSystemState.get('currentMode') === 'admin';
+            const targetUid = isUserAdmin ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
             if(!targetUid) return;
             const targetUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid);
             const targetName = targetUserObj ? targetUserObj.clientName : "Mainframe Admin";
@@ -2352,7 +2150,7 @@
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 40px rgba(0,242,254,0.4);">
                     <h4 style="color:var(--neon-cyan); font-size:1rem; margin-bottom: 20px;">${typeLabel}</h4>
                     <div class="hologram-call-effect" style="background-image: url('${targetAvatar}');"></div>
-                    <h3 style="color:#fff; margin-bottom:10px; font-family:'Orbitron'; font-weight:900;">${targetName}</h3>
+                    <h3 style="color:#fff; margin-bottom:10px; font-family:'Orbitron'; font-weight:900; animation: glitchTextAnim 3s infinite;">${targetName}</h3>
                     <p style="color:#2ecc71; font-family:monospace; margin-bottom:25px;" id="hologramCallStatusTxt">Establishing Quantum Connection...</p>
                     
                     <div style="display:flex; justify-content:center; gap:20px;">
@@ -2438,7 +2236,11 @@
             MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
             const input = document.getElementById('chatCoreMessageTextInput');
             if(input) input.value = "";
-            dispatchMatrixChatMessage();
+            const adminInput = document.getElementById('adminSpyResponseInput');
+            if(adminInput) adminInput.value = "";
+            
+            if(MatrixSystemState.get('currentMode') === 'admin') dispatchAdminSpyInterceptionMsg();
+            else dispatchMatrixChatMessage();
         };
 
         window.toggleEmojiDrawerOverlayPanel = function(event) {
@@ -2511,7 +2313,7 @@
             document.getElementById('adminAiSpyChatBlock').style.display = (sectionId === 'aispy') ? 'block' : 'none';
             document.getElementById('adminSystemStatsBlock').style.display = (sectionId === 'stats') ? 'block' : 'none';
             
-            if(sectionId === 'spychat') renderAdminSpyUserList();
+            if(sectionId === 'spychat') { renderAdminSpyUserList(); renderInteractiveDrawersContent(); }
             if(sectionId === 'aispy') renderAdminAiInterceptionSpyBlock();
             if(sectionId === 'stats') renderDynamicServerDiagnosticsDashboard();
             if(sectionId === 'creation') renderLiveCreationStatsSummary();
@@ -2533,10 +2335,14 @@
 
         window.loadAdminSubmissions = function(){
             let container = document.getElementById('customerCardsContainer'); if(!container) return;
+            // Removed branding opacity toggle logic that broke the UI layout
+            const nav = document.getElementById('mainCyberNavbar');
+            if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+
             container.innerHTML = `
                 <div id="idCreationBlock">
                     <div class="giant-compiler-layout">
-                        <h3>⚡ ACCOUNT ENGINE IDENTITY NODES</h3>
+                        <h3 style="animation: glitchTextAnim 4s infinite;">⚡ ACCOUNT ENGINE IDENTITY NODES</h3>
                         <div style="background:rgba(0,242,254,0.05); padding:12px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:var(--neon-cyan); font-weight:bold;" id="liveCreationStatsMiniNode">
                             Live Registered Signatures Count: Loading...
                         </div>
@@ -2581,6 +2387,11 @@
                         <div class="chat-stream-message-container">
                             <div class="chat-stream-header-bar" style="background:#202c33;">
                                 <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:#00f2fe; font-weight:900;">Select User Pipeline Chat...</div></div>
+                                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; margin-left:auto;">
+                                    <button onclick="triggerHologramCall('audio')" class="header-actions-btn header-call-btn">📞 CALL</button>
+                                    <button onclick="triggerHologramCall('video')" class="header-actions-btn header-call-btn">📹 VIDEO</button>
+                                    <button onclick="clearCurrentChatConversation()" class="header-actions-btn" style="border-color:#e74c3c; color:#e74c3c;">🗑️ CLEAR ALL</button>
+                                </div>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             
@@ -2608,13 +2419,13 @@
                 </div>
                 <div id="adminAiSpyChatBlock" style="display:none; width:100%;">
                     <div class="giant-compiler-layout">
-                        <h3 style="color:var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink);">🤖 REAL-TIME LIVE AUTOMATED AI CHAT INTERCEPTION</h3>
+                        <h3 style="color:var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); animation: glitchTextAnim 3s infinite;">🤖 REAL-TIME LIVE AUTOMATED AI CHAT INTERCEPTION</h3>
                         <div id="adminAiSpyLogsWrapper" style="display:flex; flex-direction:column; gap:15px; max-height:500px; overflow-y:auto; margin-top:15px;"></div>
                     </div>
                 </div>
                 <div id="adminSystemStatsBlock" style="display:none; width:100%;">
                     <div class="giant-compiler-layout">
-                        <h3>📊 REAL-TIME PORTAL SERVER DIAGNOSTIC ENGINE</h3>
+                        <h3 style="animation: glitchTextAnim 4s infinite alternate;">📊 REAL-TIME PORTAL SERVER DIAGNOSTIC ENGINE</h3>
                         
                         <div style="margin-top:20px; background:rgba(255,0,127,0.1); border:1px dashed var(--neon-pink); border-radius:12px; padding:20px;">
                             <h4 style="color:var(--neon-pink); font-family:'Orbitron'; margin-bottom:12px;">🔑 LIVE PASSWORD FORGET REQUESTS STREAM</h4>
@@ -2768,6 +2579,7 @@
                 document.getElementById('contactNo').value = "";
                 document.getElementById('email').value = "";
                 document.getElementById('notesReal').value = "";
+                document.getElementById('policyAttachmentFeedback').innerText = "";
                 MatrixSystemState.set('loadedAttachmentB64', "");
                 renderCustomerLiveTracker();
             });
@@ -2893,6 +2705,7 @@
                 reader.onload = function(e) {
                     if (type === 'policy') {
                         MatrixSystemState.set('loadedAttachmentB64', e.target.result);
+                        document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`;
                     } else if (type === 'chat') {
                         MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result);
                         document.getElementById('chatAttachmentStatusFeedback').innerText = `📎 Attached asset stream resource`;
@@ -2954,13 +2767,17 @@
                 mainStage.classList.add('activated'); 
                 loginTerminal.classList.remove('hidden');
                 speakNaturalHuman("Portal active.");
+                
+                // Show Navbar
+                const nav = document.getElementById('mainCyberNavbar');
+                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
             }
         };
 
         window.toggleGlobalSystemAudio = function() {
             let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled');
             MatrixSystemState.set('isSystemAudioEnabled', audioEnabled);
-            document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `<span>🔊 SOUND: ON</span>` : `<span>🔇 SOUND: OFF</span>`;
+            document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`;
         };
 
         function triggerLockoutTerminalUI(usernameString) {
@@ -2970,7 +2787,7 @@
             
             document.body.innerHTML = `
                 <div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Orbitron'; text-align:center; padding:40px;">
-                    <h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT TRIGGERED</h1>
+                    <h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px; animation: glitchTextAnim 2s infinite;">SECURITY LOCKOUT TRIGGERED</h1>
                     <p style="font-size:1.4rem; color:#fff; max-width:650px; line-height:1.6; font-family:'Rajdhani'; font-weight:700;">Your access signatures for ID [${usernameString}] have been locked. Connect with Shashi Admin Mainframe Core to authorize an identity reset.</p>
                 </div>`;
             
@@ -3002,7 +2819,6 @@
                         MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
-                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                         localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -3014,7 +2830,6 @@
                     if(u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('adminDashboard').classList.remove('hidden');
-                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                         localStorage.setItem('nexus_logged_in_uid', u); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
@@ -3032,7 +2847,6 @@
                         localStorage.setItem('nexus_active_chan_route', 'upload');
                         document.getElementById('mainStage').style.display = 'none'; 
                         document.getElementById('customerDashboard').classList.remove('hidden');
-                        document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [MASTER BYPASS ACTIVE]</span>`;
                         switchCustomerChannel('upload');
                         return;
@@ -3078,7 +2892,6 @@
                 
                 document.getElementById('mainStage').style.display = 'none'; 
                 document.getElementById('customerDashboard').classList.remove('hidden');
-                document.getElementById('shashiBrandingHeader').style.opacity = '0'; 
                 switchCustomerChannel('upload');
             }
         };
@@ -3164,10 +2977,6 @@
             });
         };
 
-        window.generatePlaceholderLabelsForStructureFrameworks = function() {
-            // Placeholder styles are handled statically to increase rendering security blueprints.
-        };
-
         window.filterCardsEngine = function(){ 
             const searchInputNode = document.getElementById('searchInput'); if(!searchInputNode) return; 
             let q = searchInputNode.value.toLowerCase(); 
@@ -3190,13 +2999,15 @@
             
             document.getElementById('customerDashboard').classList.add('hidden'); 
             document.getElementById('adminDashboard').classList.add('hidden');
-            document.getElementById('shashiBrandingHeader').style.opacity = '1'; 
             document.getElementById('clientDisplayLabel').innerText = "";
             MatrixSystemState.set('loggedInCustomerID', "");
             const stage = document.getElementById('mainStage'); 
             stage.style.display = 'flex'; 
             stage.classList.remove('activated'); 
             document.getElementById('loginTerminal').classList.add('hidden');
+
+            const nav = document.getElementById('mainCyberNavbar');
+            if(nav) { nav.style.opacity = '0'; nav.style.pointerEvents = 'none'; }
         };
 
         window.renderAdminSpyUserList = function() {
@@ -3244,6 +3055,10 @@
                         const m = data[key];
                         if((m.sender === spyContext && m.receiver === "MainframeAdmin") ||
                            (m.sender === "MainframeAdmin" && m.receiver === spyContext)) {
+                            
+                            // Prevent purged display 
+                            if(localStorage.getItem(`deleted_chat_node_MainframeAdmin_${m.epochTimeNode}`)) return;
+                            
                             const isMyResponse = (m.sender === "MainframeAdmin");
                             const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
                             
@@ -3329,7 +3144,7 @@
         window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) {
             const a = document.createElement('a');
             a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data;
-            a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.webm`;
+            a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.${data.startsWith("data:audio") ? 'webm' : 'jpg'}`;
             document.body.appendChild(a); a.click(); document.body.removeChild(a); removeContextDropdownMenuNode();
         };
 
@@ -3363,51 +3178,4 @@
                     receiver: targetUIDSelection,
                     textBody: baseText + " (Forwarded Payload)",
                     mediaPayload: assetLink || "",
-                    read: false,
-                    epochTimeNode: Date.now(),
-                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-                }).then(() => {
-                    closeCustomInlinePopupEngine();
-                    alert("Message forwarded accurately across cross link board streams.");
-                });
-            };
-        };
-
-        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) {
-            removeContextDropdownMenuNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Erase Chat Record From Core</h4>
-                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:8px;">
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'everyone', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="background:#e74c3c; color:#fff; width:100%;">Delete for Everyone (Real-Time)</button>
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'me', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Delete for Me Only</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
-            closeCustomInlinePopupEngine();
-            const currentMode = MatrixSystemState.get('currentMode');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(packetKey && purgeMode === 'everyone') {
-                update(ref(db, `chats/${packetKey}`), {
-                    textBody: "🚫 This message was deleted for everyone.",
-                    mediaPayload: "",
-                    quotedText: ""
-                }).then(() => {
-                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-                });
-            } else {
-                localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged");
-                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-            }
-        };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 1000);
-    </script>
-</body>
-</html>
+                    read
