@@ -153,12 +153,12 @@
         .volumetric-beam { position: absolute; top: 130px; width: 120px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
-        /* The Pull Cord - Fixed pointer events and z-index */
-        .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 1000; cursor: grab; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 30px; margin-left: -30px; margin-top: -10px; pointer-events: all; }
+        /* The Pull Cord - Enhanced Mobile Touch Hitbox */
+        .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 1000; cursor: grab; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 40px; margin-left: -40px; margin-top: -10px; pointer-events: all; }
         .quantum-cord:active { cursor: grabbing; }
         .quantum-cord.pulled { transform: translateY(60px) scale(0.95); }
-        .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); margin: 0 auto; box-shadow: 0 0 10px rgba(241,196,15,0.5); }
-        .luminescent-node { width: 28px; height: 28px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 35px #f1c40f; border: 2px solid #000; }
+        .beaded-wire { width: 6px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); margin: 0 auto; box-shadow: 0 0 15px rgba(241,196,15,0.8); }
+        .luminescent-node { width: 34px; height: 34px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; }
 
         /* --- HUD TERMINAL CORE --- */
         .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
@@ -261,7 +261,7 @@
         /* --- NOTE GRID ENGINE PRO --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 2px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
-        .notes-pad-rich-area { width: 100%; min-height: 250px; padding: 20px; color: var(--text-main); background: transparent; font-size: 1.15rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
+        .notes-pad-rich-area { width: 100%; min-height: 350px; padding: 20px; color: var(--text-main); background: transparent; font-size: 1.15rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.8; overflow-y: auto; text-align: left; }
         
         .notes-pad-rich-area ul, .notes-pad-rich-area ol { margin-left: 20px; margin-bottom: 10px; }
         .notes-pad-rich-area li { margin-bottom: 5px; }
@@ -286,7 +286,7 @@
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- CONSOLE WHATSAPP BLUEPRINT --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: calc(100vh - 280px); min-height: 500px; max-height: 800px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; transition: height 0.3s; }
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 100%; min-height: 500px; max-height: calc(100vh - 200px); background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; transition: height 0.3s; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.8); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
 
@@ -423,14 +423,14 @@
         @media (max-width: 768px) {
             .top-cyber-navbar { padding: 0 10px; height: auto; flex-direction: column; padding-bottom: 10px; padding-top: 10px; }
             .navbar-controls { justify-content: center; }
-            .dashboard-panel-core { padding-top: 120px; padding-bottom: 20px;}
+            .dashboard-panel-core { padding-top: 140px; padding-bottom: 20px;}
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
             .form-grid-layout { grid-template-columns: 1fr !important; }
             .full-width-field { grid-column: span 1; }
             #policyCardsStack { grid-template-columns: 1fr !important; }
             #adminUserControlList { grid-template-columns: 1fr !important; }
-            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 150px); }
-            .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 170px) !important; max-height:none; }
+            .chat-target-userlist-pane { max-height: 140px; flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 2px solid var(--border-glass); }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
             .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
             .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
@@ -469,7 +469,7 @@
             
             <div class="volumetric-beam" id="lightBeam"></div>
             
-            <div class="quantum-cord" id="triggerCord" onclick="pullCordAction(event)">
+            <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
@@ -495,7 +495,7 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">
+                    <input type="password" id="accessNodePass" required placeholder=" ">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
@@ -842,6 +842,7 @@
         let typingTimeoutTrackerNode = null;
         let isAudioContextAllowed = false; 
         let globalAudioCtx = null; 
+        let isCordPulled = false;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐", "✅", "❌", "👽", "🤖", "😎", "💯"];
@@ -854,21 +855,31 @@
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
 
         document.body.addEventListener('click', () => { isAudioContextAllowed = true; }, { once: true });
+        document.body.addEventListener('touchstart', () => { isAudioContextAllowed = true; }, { once: true });
 
-        // PERFECT PULL CORD LOGIC (LAG-FREE)
+        // PERFECT PULL CORD LOGIC (LAG-FREE + TOUCH SUPPORT)
         window.pullCordAction = function(event) {
-            event.stopPropagation();
+            if (event) event.preventDefault();
+            if (isCordPulled) return;
+            isCordPulled = true;
+
             const cord = document.getElementById('triggerCord');
-            if (cord.classList.contains('pulled')) return;
-            
             cord.classList.add('pulled');
+            
             if(isAudioContextAllowed) playSynthesizedSound(300, 'triangle', 0.2);
             
             setTimeout(() => {
                 cord.classList.remove('pulled');
                 triggerLampActivationOverride();
+                isCordPulled = false;
             }, 300);
         };
+
+        const triggerCordNode = document.getElementById('triggerCord');
+        if (triggerCordNode) {
+            triggerCordNode.addEventListener('touchstart', pullCordAction, {passive: false});
+            triggerCordNode.addEventListener('click', pullCordAction);
+        }
 
         window.triggerLampActivationOverride = function() {
             const mainStage = document.getElementById('mainStage'); 
@@ -883,29 +894,28 @@
                 // Show Navbar Securely
                 const nav = document.getElementById('mainCyberNavbar');
                 if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                
+                // Pause particles to save CPU when login is active
+                if(ambientParticleToken) {
+                    cancelAnimationFrame(ambientParticleToken);
+                    ambientParticleToken = null;
+                }
             }
         };
 
         // FULL SCREEN ENGINE LOGIC
         window.toggleFullScreenEngine = function() {
             const label = document.getElementById('fullScreenLabel');
-            const chatBoxList = document.querySelectorAll('.chat-io-grid-matrix');
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().then(() => {
                     label.innerText = "🔳 EXIT SCREEN";
-                    if(window.innerWidth > 768) {
-                        chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 150px)");
-                    }
                 }).catch(err => {
-                    alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+                    console.warn(`Fullscreen error: ${err.message}`);
                 });
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen().then(() => {
                         label.innerText = "🔲 FULL SCREEN";
-                        if(window.innerWidth > 768) {
-                            chatBoxList.forEach(cb => cb.style.height = "calc(100vh - 280px)");
-                        }
                     });
                 }
             }
@@ -925,7 +935,6 @@
             window.addEventListener('resize', resize);
             resize();
 
-            // Reduced to 25 to prevent lag
             for(let i=0; i<25; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
@@ -965,7 +974,7 @@
         }
         runAmbientCanvasMatrixSystem();
 
-        // LAG FREE CLOCK (SetInterval instead of requestAnimationFrame)
+        // LAG FREE CLOCK
         function initiatePrecisionChronometerTick() {
             setInterval(() => {
                 const userBox = document.getElementById('userPrecisionTimeNode');
@@ -1212,7 +1221,6 @@
 
         // LAG FREE ARCADE
         function executeTalkingTomRenderCycle() {
-            // STOP executing if not in gaming tab
             if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming') {
                 return; 
             }
@@ -1288,6 +1296,7 @@
                 navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
                     audioMicStreamNode = stream;
                     audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
+                    if(audioVisualizerContextNode.state === 'suspended') audioVisualizerContextNode.resume();
                     audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
                     let source = audioVisualizerContextNode.createMediaStreamSource(stream);
                     source.connect(audioAnalyserNode);
@@ -1826,6 +1835,8 @@
                     document.getElementById('customerDashboard').classList.remove('hidden');
                     switchCustomerChannel(savedWorkspaceChan);
                 }
+                // Suspend particle drawing after instant login
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
             }
         }
 
@@ -2268,16 +2279,16 @@
         };
 
         window.injectEmojiToInputField = function(emojiText) {
-            const input = document.getElementById('chatCoreMessageTextInput') || document.getElementById('adminSpyResponseInput');
+            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
+            const input = document.getElementById(inputId);
             if(input) { input.value += emojiText; input.focus(); }
         };
 
         window.transmitDirectGifMessage = function(gifUrl) {
             MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            const input = document.getElementById('chatCoreMessageTextInput');
+            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
+            const input = document.getElementById(inputId);
             if(input) input.value = "";
-            const adminInput = document.getElementById('adminSpyResponseInput');
-            if(adminInput) adminInput.value = "";
             
             if(MatrixSystemState.get('currentMode') === 'admin') dispatchAdminSpyInterceptionMsg();
             else dispatchMatrixChatMessage();
@@ -2300,7 +2311,9 @@
         };
 
         window.toggleVoiceAudioRecordingEngine = function() {
-            const recBtn = document.getElementById('voiceRecordingCoreTriggerBtn') || document.getElementById('adminVoiceRecordingCoreTriggerBtn');
+            const btnId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminVoiceRecordingCoreTriggerBtn' : 'voiceRecordingCoreTriggerBtn';
+            const recBtn = document.getElementById(btnId);
+            
             if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
                 navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
                     nativeAudioMediaRecorderInstance = new MediaRecorder(stream);
@@ -2508,10 +2521,29 @@
         };
 
         window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value;
-            const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) return; const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName, dob, contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { loadAdminSubmissions(); });
+            const clientName = document.getElementById('newClientName').value.trim(); 
+            const dob = document.getElementById('newClientDOB').value;
+            const contact = document.getElementById('newClientContact').value.trim(); 
+            const userPass = document.getElementById('newUserPass').value.trim();
+            
+            if(!clientName || !contact || !userPass) {
+                alert("Please complete required Identity parameters.");
+                return; 
+            }
+            
+            // Fix trailing spaces & ensure strict generation
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            
+            set(ref(db, 'users/' + userId), { 
+                id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false" 
+            }).then(() => { 
+                alert(`✅ New User Node Compiled Successfully!\n\nUser ID: ${userId}\nPassword: ${userPass}\n\nThe user can now log in using these secure credentials.`);
+                document.getElementById('newClientName').value = "";
+                document.getElementById('newClientDOB').value = "";
+                document.getElementById('newClientContact').value = "";
+                document.getElementById('newUserPass').value = "";
+                loadAdminSubmissions(); 
+            });
         };
 
         window.renderUserControlPanel = function() {
@@ -2850,6 +2882,8 @@
                         // Show Navbar securely
                         const nav = document.getElementById('mainCyberNavbar');
                         if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
                     } else {
                         if(isAudioContextAllowed) playSynthesizedSound(150, 'sawtooth', 0.4);
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
@@ -2864,6 +2898,7 @@
                         
                         const nav = document.getElementById('mainCyberNavbar');
                         if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
                     }
                 });
             } else {
@@ -2883,6 +2918,7 @@
                         
                         const nav = document.getElementById('mainCyberNavbar');
                         if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
                         return;
                     }
                 }
@@ -2930,6 +2966,7 @@
                 
                 const nav = document.getElementById('mainCyberNavbar');
                 if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
             }
         };
 
@@ -3045,6 +3082,7 @@
 
             const nav = document.getElementById('mainCyberNavbar');
             if(nav) { nav.style.opacity = '0'; nav.style.pointerEvents = 'none'; }
+            runAmbientCanvasMatrixSystem();
         };
 
         window.renderAdminSpyUserList = function() {
@@ -3211,56 +3249,4 @@
                 
                 const forwardPacketRef = push(ref(db, 'chats'));
                 set(forwardPacketRef, {
-                    sender: MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID'),
-                    receiver: targetUIDSelection,
-                    textBody: baseText + " (Forwarded Payload)",
-                    mediaPayload: assetLink || "",
-                    read: false,
-                    epochTimeNode: Date.now(),
-                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-                }).then(() => {
-                    closeCustomInlinePopupEngine();
-                    alert("Message forwarded accurately across cross link board streams.");
-                });
-            };
-        };
-
-        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) {
-            removeContextDropdownMenuNode();
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>Erase Chat Record From Core</h4>
-                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:8px;">
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'everyone', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="background:#e74c3c; color:#fff; width:100%;">Delete for Everyone (Real-Time)</button>
-                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'me', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Delete for Me Only</button>
-                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
-            closeCustomInlinePopupEngine();
-            const currentMode = MatrixSystemState.get('currentMode');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID') || "MainframeAdmin";
-            
-            if(packetKey && purgeMode === 'everyone') {
-                update(ref(db, `chats/${packetKey}`), {
-                    textBody: "🚫 This message was deleted for everyone.",
-                    mediaPayload: "",
-                    quotedText: ""
-                }).then(() => {
-                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-                });
-            } else {
-                localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged");
-                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
-            }
-        };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 1000);
-    </script>
-</body>
-</html>
+                    sender: MatrixSystem
