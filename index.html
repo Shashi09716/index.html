@@ -298,7 +298,7 @@
         }
         body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; }
 
-        /* --- HUD TERMINAL CORE OVERHAUL --- */
+        /* --- HUD TERMINAL CORE --- */
         .hud-glass-terminal {
             position: absolute;
             left: 50%;
@@ -346,12 +346,12 @@
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 6px 20px rgba(241,196,15,0.4); }
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
 
-        /* --- DASHBOARD CORE PANEL SYSTEM --- */
+        /* --- DASHBOARD PANEL ENGINE --- */
         .dashboard-panel-core {
             position: fixed;
             inset: 0;
             display: flex;
-            justify(content): center;
+            justify-content: center;
             align-items: flex-start;
             background: var(--bg-prime);
             z-index: 100;
@@ -383,19 +383,17 @@
         .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
 
-        /* --- WORKSPACE TABS --- */
+        /* --- WORKSPACE CHANNELS --- */
         .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 16px; border: 2px solid var(--border-glass); box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
         .channel-tab-btn { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; border: 2px solid transparent; }
         .channel-tab-btn:hover { background: rgba(0, 242, 254, 0.12); transform: translateY(-2px); }
         .channel-tab-btn.active { background: linear-gradient(135deg, rgba(0, 242, 254, 0.35), rgba(0, 242, 254, 0.1)); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.8); box-shadow: 0 8px 20px rgba(0,242,254,0.3); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); transform: translateY(-4px); }
 
-        /* Admin Specific Menu Bar Override styling */
         .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid #2ecc71; box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
         .admin-nav-tab { flex: 1; min-width: 120px; padding: 18px 5px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
         .admin-nav-tab:hover { background: rgba(46, 204, 113, 0.12); transform: translateY(-2px); }
         .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.35), rgba(46, 204, 113, 0.1)); color: #2ecc71; border: 2px solid rgba(46, 204, 113, 0.8); box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3); text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); transform: translateY(-4px); }
 
-        /* --- CONTROL MATRIX FOOTER SYSTEM --- */
         .matrix-system-controller-dock { margin-top: 25px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.8rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
         .refresh-spinner-node { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
@@ -414,7 +412,7 @@
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
             
-        /* Data Display Cards */
+        /* Data Cards Blueprint */
         .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.85)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 16px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hud-data-card:hover { transform: translateY(-5px); box-shadow: 0 25px 45px rgba(0, 242, 254, 0.25); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
@@ -457,7 +455,7 @@
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
 
-        /* --- NOTE ENGINE --- */
+        /* --- NOTE GRID ENGINE --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 3px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 2px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
         .notes-pad-rich-area { width: 100%; min-height: 180px; padding: 18px; color: var(--text-main); background: transparent; font-size: 1.1rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.6; overflow-y: auto; text-align: left; }
@@ -469,18 +467,17 @@
         .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 12px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; }
         .note-structural-card:hover { transform: translateY(-3px); }
-        .note-structural-card * { text-align: left !important; }
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
 
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
-        /* --- STANDALONE TALKING TOM ARCADE ENGINE --- */
+        /* --- ARCADE TOM STREAM CORE --- */
         .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 3px dashed var(--neon-pink); border-radius: 20px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: var(--matrix-3d-shadow-pink); }
         .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #000; border: 3px solid var(--neon-cyan); border-radius: 16px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,242,254,0.4); }
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- THE WHATSAPP CONSOLE STREAM SYSTEM --- */
+        /* --- CONSOLE WHATSAPP BLUEPRINT --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 600px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; }
         .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.8); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
@@ -517,8 +514,8 @@
         body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
 
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
-        .whatsapp-tick-space { color: #00f2fe; font-weight: 900; font-size: 0.8rem; margin-left: 4px; letter-spacing: -1px; }
-        .whatsapp-tick-space.double-blue { color: #2ecc71; }
+        .whatsapp-tick-space { color: #8696a0; font-weight: 900; font-size: 0.8rem; margin-left: 4px; letter-spacing: -1px; }
+        .whatsapp-tick-space.double-blue { color: #00f2fe; }
 
         .msg-reactions-tray { display: flex; gap: 5px; background: rgba(0,0,0,0.9); padding: 4px 8px; border-radius: 20px; position: absolute; bottom: -12px; right: 10px; font-size: 0.85rem; border: 1px solid var(--border-glass); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .voice-wave-container { display: flex; align-items: center; gap: 3px; height: 20px; margin-left: 10px; }
@@ -538,6 +535,7 @@
         .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
 
         .chat-interface-footer-inputs { padding: 14px 20px; background: rgba(32, 44, 51, 0.98); border-top: 2px solid var(--border-glass); display: flex; gap: 14px; align-items: center; z-index: 10; position: relative; margin-top: auto; box-shadow: 0 -4px 15px rgba(0,0,0,0.4); }
+        .chat-interface-footer-inputs button { background: none; border: none; }
         body.light-theme-active .chat-interface-footer-inputs { background: #efeae2; }
         .whatsapp-input-field { flex: 1; padding: 14px 20px; background: rgba(42, 57, 66, 0.9); border: 2px solid var(--border-glass); border-radius: 10px; color: #fff; outline: none; font-size: 1.05rem; font-family: 'Rajdhani', sans-serif; font-weight: 700; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
         body.light-theme-active .whatsapp-input-field { background: #ffffff; color: #000; }
@@ -597,7 +595,7 @@
         .delete-color { color: #e74c3c !important; }
         .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
 
-        /* Popups Layer Overlay */
+        /* Popups Systems */
         .nexus-custom-popup-overlay {
             position: fixed;
             inset: 0;
@@ -638,14 +636,6 @@
         .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
         .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
 
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 10px; }
-        .calendar-day-head { font-family: 'Orbitron'; font-size: 0.75rem; color: #00f2fe; font-weight: bold; text-align: center; }
-        .calendar-cell { padding: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; text-align: center; cursor: pointer; border: 1px solid transparent; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .calendar-cell:hover { border-color: #f1c40f; background: rgba(241,196,15,0.2); }
-        .calendar-cell.festival { border-color: #ff007f; background: linear-gradient(135deg, rgba(255,0,127,0.2), transparent); }
-
-        @keyframes recPulse { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
-
         .giant-compiler-layout { background: rgba(4, 12, 30, 0.85); padding: 35px 25px; border-radius: 20px; border: 3px solid rgba(26,188,156,0.5); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
         body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #1abc9c; }
         .giant-compiler-layout h3 { color: #00f2fe; font-family: 'Orbitron'; margin-bottom: 22px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
@@ -685,29 +675,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
-        /* --- STATS GRAPHICAL MODULE PANELS --- */
-        .analytics-grid-host {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            width: 100%;
-        }
-        .analytics-node-card {
-            background: rgba(4,12,32,0.85);
-            border: 2px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 22px;
-            text-align: left;
-            width: 100%;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .analytics-node-card h5 {
-            font-family: 'Orbitron';
-            font-size: 1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
+        /* --- STATS ENGINE DIAGNOSTICS --- */
+        .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
+        .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
+        
         .chart-mock-container {
             width: 100%;
             height: 60px;
@@ -732,22 +704,8 @@
             width: 0%;
         }
 
-        .matrix-ambient-particle-space {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .char-counter-badge {
-            font-size: 0.8rem;
-            color: #8696a0;
-            float: right;
-            margin-top: 5px;
-            font-family: monospace;
-        }
+        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        .char-counter-badge { font-size: 0.8rem; color: #8696a0; float: right; margin-top: 5px; font-family: monospace; }
 
         @media (max-width: 768px) {
             .giant-compiler-grid { grid-template-columns: 1fr !important; }
@@ -774,14 +732,14 @@
         <span>🔊 SOUND: ON</span>
     </button>
     <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()">
-        <span id="themeToggleBtnLabel">🌓 LIGHT MODE</span>
+        <span id="themeToggleBtnLabel">\uD83C\uDF12 DARK MODE</span>
     </button>
 
     <div class="smoke-container">
         <div class="smoke-cloud smoke-left"></div>
         <div class="smoke-cloud smoke-right"></div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
             <div class="metallic-shutter-head">
@@ -794,26 +752,26 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <div class="quantum-cord" id="triggerCord">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
         </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <h1 class="hud-logo">Welcome</h1>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
@@ -835,7 +793,7 @@
             </form>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
@@ -850,7 +808,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
                 <div>
@@ -869,22 +827,32 @@
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
                 </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster">
                         <input type="text" id="regNo" placeholder=" ">
+                        <label>Registration Number (Optional)</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="insurerName" required placeholder=" ">
+                        <label>Insurer Name *</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="policyNo" placeholder=" ">
+                        <label>Policy Number (Optional)</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster">
                         <input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                        <label>Contact Number *</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster full-width-field">
                         <input type="email" id="email" placeholder=" ">
+                        <label>Email Address (Optional)</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
@@ -894,6 +862,8 @@
                     </div>
                     <div class="hud-input-cluster full-width-field">
                         <textarea id="notesReal" placeholder=" "></textarea>
+                        <label>Additional System Notes (Optional)</label>
+                        <div class="neon-glow-underline"></div>
                     </div>
                 </div>
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>
@@ -905,7 +875,7 @@
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;">
-                            <input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly onclick="openMatrixCalendarEngine()">
+                            <input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly>
                         </div>
                         <div class="hud-input-cluster" style="margin-bottom:0;">
                             <input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly placeholder="Time Frame">
@@ -943,7 +913,7 @@
 
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 15px var(--neon-cyan);">🐱 virtual TALKING TOM CHANNELS</h2>
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 15px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM CHANNELS</h2>
                     
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="360"></canvas>
@@ -1002,13 +972,13 @@
 
             <div class="matrix-system-controller-dock">
                 <div class="auto-pulse-refresh-badge">
-                    <span class="refresh-spinner-node"></span> HIGH FREQUENCY 10X/1S REALTIME CONSOLE SYNC AUTOMATION ACTIVE
+                    <span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE
                 </div>
             </div>
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Refresh active seamlessly.</div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
             
@@ -1027,7 +997,7 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
@@ -1036,7 +1006,7 @@
                 <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
-                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                            
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -1405,8 +1375,6 @@
                         timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
                         fullDateString: new Date().toLocaleDateString()
                     });
-
-                    renderActiveChatConversationLogs();
                     autoNarrateChatMessage("AI Engine", pseudoResponse);
                 });
             }, 1000);
@@ -1414,14 +1382,14 @@
 
         window.bootArcadeSubGame = function(gameModeId) {
             currentArcadeEngineId = "tom";
-            cancelAnimationFrame(requestArcadeFrameToken);
+            if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
             if (tomSpeechRecognitionInstance) { tomSpeechRecognitionInstance.stop(); isTomListeningStateActive = false; }
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
             initializeTalkingTomAudioRecognitionEngine();
         };
 
         function executeTalkingTomRenderCycle() {
-            if (currentArcadeEngineId !== 'tom') return;
+            if (currentArcadeEngineId !== 'tom' || !canvasCtx) return;
             canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
             virtualTomTalkingAnimationCycle += 0.25;
             
@@ -1444,7 +1412,7 @@
                 audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
                 canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
                 for (let i = 0; i < 30; i++) {
-                    let barH = visualizerDataArray[i] * 0.5 || 5;
+                    let barH = (visualizerDataArray[i] || 0) * 0.5 || 5;
                     canvasCtx.fillRect(60 + i * 16, 280 - barH / 2, 10, barH);
                 }
             } else {
@@ -1498,7 +1466,7 @@
                     isTomListeningStateActive = true;
                     document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
                     document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
-                }).catch(() => { alert("Mic overlay loop access rejected."); });
+                }).catch(() => { alert("Mic access matrix link rejected."); });
             } else {
                 tomSpeechRecognitionInstance.stop();
             }
@@ -1643,7 +1611,7 @@
                     notesMediaRecorderInstance.start();
                     if (pulseNode) pulseNode.classList.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Microphone capture access denied."); });
+                }).catch(() => { alert("Microphone framework access denied."); });
             } else {
                 notesMediaRecorderInstance.stop();
                 if (pulseNode) pulseNode.classList.add('hidden');
@@ -2027,6 +1995,7 @@
             }
         });
 
+        /* Safe path updates to strictly separate read logic and block infinite looping */
         onValue(ref(db, 'chats'), (snapshot) => {
             const data = snapshot.val();
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2035,7 +2004,17 @@
             
             if(activeChan === 'chat' && currentUid) {
                 renderActiveChatConversationLogs();
-                markIncomingMessagesAsReadSequence(data);
+                
+                /* Non-recursive safe field targeting */
+                if(data && MatrixSystemState.get('activeSelectedChatTargetUserId')) {
+                    const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+                    Object.keys(data).forEach(key => {
+                        const m = data[key];
+                        if(m.sender === targetUid && m.receiver === currentUid && !m.read) {
+                            update(ref(db, `chats/${key}`), { read: true });
+                        }
+                    });
+                }
                 calculateUnreadBadgeCountersTrack(data);
             }
             if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
@@ -2075,23 +2054,11 @@
 
         window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) {
             remove(ref(db, `incident_alerts/${alertKey}`)).then(() => {
-                set(ref(db, `users/${originalUserUID}/lockoutState`), "false");
+                update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" });
                 localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase());
                 alert("Client signature lock cleared smoothly inside Firebase database cloud matrix.");
             });
         };
-
-        function markIncomingMessagesAsReadSequence(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!chatsSnap || !currentUid || !targetUid) return;
-            Object.keys(chatsSnap).forEach(key => {
-                const m = chatsSnap[key];
-                if(m.sender === targetUid && m.receiver === currentUid && !m.read) {
-                    update(ref(db, `chats/${key}`), { read: true });
-                }
-            });
-        }
 
         function calculateUnreadBadgeCountersTrack(chatsSnap) {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2193,7 +2160,7 @@
                             let assetHTML = "";
                             if(msg.mediaPayload) {
                                 if(msg.mediaPayload.startsWith("data:audio")) {
-                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:blockピー;"></audio>`;
+                                    assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
                                 } else {
                                     assetHTML = `<br><img src="${msg.mediaPayload}" onclick="triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="max-width:180px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`;
                                 }
@@ -2339,7 +2306,7 @@
                             <span style="margin-left:10px;">🎙 Recording WhatsApp Live Voice Audio Node Stream...</span>
                         </div>`;
                 }).catch(() => {
-                    alert("Audio device signature rejected.");
+                    alert("Audio matrix framework access link rejected.");
                 });
             } else {
                 nativeAudioMediaRecorderInstance.stop();
@@ -2515,7 +2482,7 @@
                                 <button onclick="wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer; text-decoration:underline; font-weight:900; font-family:'Orbitron'; font-size:0.85rem;">Wipe</button>
                             </div>
                         </div>
-                        <div><input type="text" id="userPasswordInputInline_${index}" value="${user.pass}" onchange="alterClientCredentialsOverrideData('${user.id}', ${index})" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; border-radius:6px; width:100%; font-weight:bold; font-size:1.05rem;"></div>
+                        <div><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; border-radius:6px; width:100%; font-weight:bold; font-size:1.05rem;"></div>
                     </div>`;
             }).join('');
         };
@@ -2538,18 +2505,19 @@
 
         window.wipeUserPermanently = function(uid) { remove(ref(db, 'users/' + uid)); };
 
+        /* Patched workspace indexing matrix bindings to use actual key parameter */
         window.renderPolicyCardsBlock = function() {
             const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
             let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr');
             if(policyArr.length === 0) { targetStack.innerHTML = "<p style='color:var(--text-sub); font-weight:bold;'>No records available inside workspace.</p>"; return; }
             
-            targetStack.innerHTML = policyArr.map((d, i) => {
+            targetStack.innerHTML = policyArr.map((d) => {
                 let docPreviewHTML = d.attachment ? `<br><img src="${d.attachment}" onclick="triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; margin-top:6px; border:2px solid var(--border-glass); cursor:pointer;">` : "<span>None</span>";
                 let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID);
                 let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown Profile";
 
                 return `
-                    <div class="hud-data-card">
+                    <div class="hud-data-card" data-policy-key="${d.policyKey}">
                       <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
                       <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID || 'N/A'}</span></p>
                       <p><b>Insurer:</b> <span class="admin-clickable-badge" onclick="executeAdminContextClipboardCopy(this, '${d.insure}')">${d.insure || 'N/A'}</span></p>
@@ -2560,16 +2528,16 @@
                       <p><b>System Notes:</b> <span style="background:none; color:var(--text-main); padding:0; font-family:inherit; border:none;">${d.notes || 'None'}</span></p>
                       <p><b>File Node:</b> ${docPreviewHTML}</p>
                       <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5); border-radius: 8px; border: 2px solid var(--border-glass);">
-                         <select id="updateStatusSelect_${i}" style="padding:10px; font-size:0.95rem; width:100%; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f; border:2px solid var(--border-glass); border-radius:6px; font-weight:bold;">
+                         <select id="updateStatusSelect_${d.policyKey}" style="padding:10px; font-size:0.95rem; width:100%; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f; border:2px solid var(--border-glass); border-radius:6px; font-weight:bold;">
                                <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending Review</option>
                                <option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded Done</option>
                                <option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ System Error</option>
                                <option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Gate Closed</option>
                          </select>
-                         <input type="text" id="adminCommentInput_${i}" value="${d.adminComment || ''}" placeholder="Type secure feedback comment..." style="padding:10px; font-size:1rem; background:#020408; width:100%; margin-bottom:8px; color:#fff; border:2px solid var(--border-glass); border-radius:6px; font-weight:bold;">
-                         <button onclick="transmitAdminResponse(${i})" style="padding:12px; background:linear-gradient(135deg, #f1c40f, #d4ac0d); color:black; border:none; width:100%; font-weight:900; font-family:'Orbitron'; font-size:0.9rem; border-radius:6px; cursor:pointer;">TRANSMIT TRACKER PACKET</button>
+                         <input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Type secure feedback comment..." style="padding:10px; font-size:1rem; background:#020408; width:100%; margin-bottom:8px; color:#fff; border:2px solid var(--border-glass); border-radius:6px; font-weight:bold;">
+                         <button onclick="transmitAdminResponse('${d.policyKey}')" style="padding:12px; background:linear-gradient(135deg, #f1c40f, #d4ac0d); color:black; border:none; width:100%; font-weight:900; font-family:'Orbitron'; font-size:0.9rem; border-radius:6px; cursor:pointer;">TRANSMIT TRACKER PACKET</button>
                       </div>
-                      <button class="wipe-card-btn" onclick="purgeRegistryLog(${i})">Purge Record</button>
+                      <button class="wipe-card-btn" onclick="purgeRegistryLog('${d.policyKey}')">Purge Record</button>
                     </div>
                 `;
             }).join("");
@@ -2627,13 +2595,11 @@
             `).join('');
         };
 
-        window.transmitAdminResponse = function(index) {
-            let policyItem = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
-            if(!policyItem) return;
-            const nextStatus = document.getElementById(`updateStatusSelect_${index}`).value;
-            const nextComment = document.getElementById(`adminCommentInput_${index}`).value.trim();
+        window.transmitAdminResponse = function(policyKey) {
+            const nextStatus = document.getElementById(`updateStatusSelect_${policyKey}`).value;
+            const nextComment = document.getElementById(`adminCommentInput_${policyKey}`).value.trim();
 
-            update(ref(db, `policies/${policyItem.policyKey}`), {
+            update(ref(db, `policies/${policyKey}`), {
                 status: nextStatus,
                 adminComment: nextComment
             }).then(() => {
@@ -2642,10 +2608,9 @@
             });
         };
 
-        window.purgeRegistryLog = function(index) {
-            let policyItem = MatrixSystemState.get('cachedGlobalPolicyArr')[index];
-            if(policyItem && confirm("Purge this record permanent?")) {
-                remove(ref(db, `policies/${policyItem.policyKey}`));
+        window.purgeRegistryLog = function(policyKey) {
+            if(confirm("Purge this record permanent?")) {
+                remove(ref(db, `policies/${policyKey}`));
             }
         };
 
@@ -2662,15 +2627,10 @@
             });
         };
 
-        window.alterClientCredentialsOverrideData = function(oldId, index) {
-            const targetNewPass = document.getElementById(`userPasswordInputInline_${index}`).value.trim();
+        window.alterClientCredentialsOverrideData = function(uid) {
+            const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim();
             if(!targetNewPass) return;
-            
-            get(ref(db, `users/${oldId}`)).then((snapshot) => {
-                let currentProfileData = snapshot.val() || {};
-                currentProfileData.pass = targetNewPass;
-                set(ref(db, `users/${oldId}`), currentProfileData);
-            });
+            update(ref(db, `users/${uid}`), { pass: targetNewPass });
         };
 
         window.uploadUserProfileAvatarEngine = function(event) {
@@ -2711,7 +2671,7 @@
         window.checkAutoLogin = function() {
             const u = document.getElementById('accessNodeUser').value.trim();
             const p = document.getElementById('accessNodePass').value.trim();
-            if(!u || !p) return;
+            if(!u || p === "") return;
             
             let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
             if(MatrixSystemState.get('currentMode') === 'admin') {
@@ -2922,24 +2882,36 @@
         };
 
         window.renderDynamicServerDiagnosticsDashboard = function() {
-            setTimeout(() => {
-                const totalUsers = MatrixSystemState.get('cachedGlobalUsersArr').length;
-                const totalPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').length;
+            const totalUsers = MatrixSystemState.get('cachedGlobalUsersArr').length;
+            const totalPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').length;
 
-                const totalUsersNode = document.getElementById('statsTotalUsers');
-                const totalPoliciesNode = document.getElementById('statsTotalPolicies');
+            const totalUsersNode = document.getElementById('statsTotalUsers');
+            const totalPoliciesNode = document.getElementById('statsTotalPolicies');
 
-                if(totalUsersNode) totalUsersNode.innerText = `${totalUsers} Nodes`;
-                if(totalPoliciesNode) totalPoliciesNode.innerText = `${totalPolicies} Registry Entries`;
+            if(totalUsersNode) totalUsersNode.innerText = `${totalUsers} Nodes`;
+            if(totalPoliciesNode) totalPoliciesNode.innerText = `${totalPolicies} Registry Entries`;
 
-                const maxCap = Math.max(totalUsers, totalPolicies, 10);
-                
-                const uBar = document.getElementById('barChartUsers');
-                const pBar = document.getElementById('barChartPolicies');
+            const maxCap = Math.max(totalUsers, totalPolicies, 10);
+            
+            const uBar = document.getElementById('barChartUsers');
+            const pBar = document.getElementById('barChartPolicies');
 
-                if(uBar) uBar.style.width = `${(totalUsers / maxCap) * 100}%`;
-                if(pBar) pBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
-            }, 100);
+            if(uBar) uBar.style.width = `${(totalUsers / maxCap) * 100}%`;
+            if(pBar) pBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
+
+            const signalsData = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
+            const signalsWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
+            if(signalsWrapper) {
+                if(signalsData.length === 0) {
+                    signalsWrapper.innerHTML = `<p style="color:var(--text-sub); font-size:0.95rem;">No active forget requests detected.</p>`;
+                } else {
+                    signalsWrapper.innerHTML = signalsData.map(sig => `
+                        <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; border:1px solid rgba(255,0,127,0.3);">
+                            <span style="color:#ff007f; font-weight:bold;">@${sig.targetUID}</span> (${sig.clientName || 'N/A'}) requested help. Phone node: ${sig.phone}
+                        </div>
+                    `).join('');
+                }
+            }
         };
 
         window.renderAdminAiInterceptionSpyBlock = function() {
@@ -2951,7 +2923,7 @@
                 return;
             }
             requestAnimationFrame(() => {
-                logsWrapper.innerHTML = dataArr.reverse().map(comm => `
+                logsWrapper.innerHTML = dataArr.slice().reverse().map(comm => `
                     <div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:12px; padding:18px; margin-bottom:10px; border:1px solid var(--border-glass);">
                         <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--neon-cyan); margin-bottom:8px; font-weight:bold;">
                             👤 TARGET CUSTOMER: ${comm.customerName || 'Profile Identity'} [@${comm.customerID}] | ⏰ TIME FRAME: ${comm.timestamp} (${comm.fullDateString || ''})
@@ -2968,25 +2940,7 @@
         };
 
         window.generatePlaceholderLabelsForStructureFrameworks = function() {
-            const structures = [
-                { id: 'regNo', text: 'Registration Number (Optional)' },
-                { id: 'insurerName', text: 'Insurer Name *' },
-                { id: 'policyNo', text: 'Policy Number (Optional)' },
-                { id: 'contactNo', text: 'Contact Number *' },
-                { id: 'email', text: 'Email Address (Optional)' },
-                { id: 'notesReal', text: 'Additional System Notes (Optional)' }
-            ];
-            structures.forEach(node => {
-                const targetNode = document.getElementById(node.id);
-                if (targetNode && !targetNode.nextElementSibling?.matches('label')) {
-                    const label = document.createElement('label');
-                    label.innerText = node.text;
-                    targetNode.parentNode.insertBefore(label, targetNode.nextSibling);
-                    const underline = document.createElement('div');
-                    underline.className = 'neon-glow-underline';
-                    targetNode.parentNode.insertBefore(underline, label.nextSibling);
-                }
-            });
+            // Placeholder styles are handled statically to increase rendering security blueprints.
         };
 
         window.filterCardsEngine = function(){ 
@@ -3002,7 +2956,10 @@
             document.getElementById('accessNodeUser').value = "";
             document.getElementById('accessNodePass').value = "";
             
-            localStorage.clear(); 
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            localStorage.removeItem('nexus_active_chan_route');
+            
             cancelAnimationFrame(requestArcadeFrameToken);
             MatrixSystemState.purgeStateReferences();
             
@@ -3205,41 +3162,7 @@
             }
         };
 
-        setInterval(() => {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel');
-            const currentMode = MatrixSystemState.get('currentMode');
-            const adminSub = MatrixSystemState.get('activeAdminSubSection');
-
-            if (currentUid) {
-                if (activeChan === 'upload') {
-                    renderCustomerLiveTracker();
-                } else if (activeChan === 'notes') {
-                    if (document.activeElement !== document.getElementById('richNoteWritingPadEditable')) {
-                        fetchRealtimeNotesCloudData();
-                    }
-                } else if (activeChan === 'chat') {
-                    if (document.activeElement !== document.getElementById('chatCoreMessageTextInput')) {
-                        renderActiveChatConversationLogs();
-                    }
-                }
-            }
-            if (currentMode === 'admin' && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                if (adminSub === 'spychat') {
-                    if (document.activeElement !== document.getElementById('adminSpyResponseInput')) {
-                        renderAdminSpyChatConsoleLogs();
-                    }
-                } else if (adminSub === 'aispy') {
-                    renderAdminAiInterceptionSpyBlock();
-                } else if (adminSub === 'stats') {
-                    renderDynamicServerDiagnosticsDashboard();
-                } else if (adminSub === 'creation') {
-                    renderLiveCreationStatsSummary();
-                }
-            }
-        }, 100);
-
-        setTimeout(() => { generatePlaceholderLabelsForStructureFrameworks(); checkActiveStateSessionRetentionOnLaunch(); }, 1000);
+        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 1000);
     </script>
 </body>
 </html>
