@@ -81,7 +81,7 @@
         .navbar-brand-glitch {
             font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem;
             color: #fff; position: relative; animation: glitchTextAnim 3s infinite;
-            letter-spacing: 2px;
+            letter-spacing: 2px; text-transform: uppercase;
         }
 
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
@@ -94,14 +94,14 @@
             100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); }
         }
 
-        .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         
         .nav-btn {
             background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass);
             border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px;
             font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer;
             transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all;
         }
 
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
@@ -153,13 +153,16 @@
         .volumetric-beam { position: absolute; top: 130px; width: 120px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
 
-        .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
-        .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
-        .luminescent-node { width: 26px; height: 26px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -11px; box-shadow: 0 0 35px #f1c40f; }
+        /* The Pull Cord - Fixed pointer events and z-index */
+        .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 1000; cursor: grab; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 30px; margin-left: -30px; margin-top: -10px; pointer-events: all; }
+        .quantum-cord:active { cursor: grabbing; }
+        .quantum-cord.pulled { transform: translateY(60px) scale(0.95); }
+        .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); margin: 0 auto; box-shadow: 0 0 10px rgba(241,196,15,0.5); }
+        .luminescent-node { width: 28px; height: 28px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 35px #f1c40f; border: 2px solid #000; }
 
         /* --- HUD TERMINAL CORE --- */
-        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; }
-        .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; }
+        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
+        .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; pointer-events: all; }
 
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
@@ -189,7 +192,7 @@
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
 
         /* --- DASHBOARD PANEL ENGINE --- */
-        .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; } /* Adjusted padding-top for Navbar */
+        .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; }
 
         .hud-container-panel { background: var(--panel-glass); border: 3px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1280px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
 
@@ -453,8 +456,8 @@
         <div class="smoke-cloud smoke-right"></div>
     </div>
                                                                                                                                                                                                                                                                                                                                         
-    <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
-        <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
+    <div class="cinema-stage" id="mainStage">
+        <div class="cyber-lamp-core" id="lampDevice">
             <div class="metallic-shutter-head">
                 <div class="blinding-core-light"></div>
                 <div class="mechanical-gate gate-left"></div>
@@ -465,8 +468,8 @@
             <div class="brushed-heavy-base"></div>
             
             <div class="volumetric-beam" id="lightBeam"></div>
-                                                                                                                                                                                                                                                                                                                                        
-            <div class="quantum-cord" id="triggerCord">
+            
+            <div class="quantum-cord" id="triggerCord" onclick="pullCordAction(event)">
                 <div class="beaded-wire"></div>
                 <div class="luminescent-node"></div>
             </div>
@@ -852,6 +855,37 @@
 
         document.body.addEventListener('click', () => { isAudioContextAllowed = true; }, { once: true });
 
+        // PERFECT PULL CORD LOGIC (LAG-FREE)
+        window.pullCordAction = function(event) {
+            event.stopPropagation();
+            const cord = document.getElementById('triggerCord');
+            if (cord.classList.contains('pulled')) return;
+            
+            cord.classList.add('pulled');
+            if(isAudioContextAllowed) playSynthesizedSound(300, 'triangle', 0.2);
+            
+            setTimeout(() => {
+                cord.classList.remove('pulled');
+                triggerLampActivationOverride();
+            }, 300);
+        };
+
+        window.triggerLampActivationOverride = function() {
+            const mainStage = document.getElementById('mainStage'); 
+            const loginTerminal = document.getElementById('loginTerminal');
+            isAudioContextAllowed = true; 
+            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
+                playSynthesizedSound(520, 'sine', 0.3); 
+                mainStage.classList.add('activated'); 
+                loginTerminal.classList.remove('hidden');
+                speakNaturalHuman("Portal active.");
+                
+                // Show Navbar Securely
+                const nav = document.getElementById('mainCyberNavbar');
+                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+            }
+        };
+
         // FULL SCREEN ENGINE LOGIC
         window.toggleFullScreenEngine = function() {
             const label = document.getElementById('fullScreenLabel');
@@ -877,6 +911,7 @@
             }
         };
 
+        // LAG FREE PARTICLES
         function runAmbientCanvasMatrixSystem() {
             const canvas = document.getElementById('ambientParticleSpaceNode');
             if(!canvas) return;
@@ -890,13 +925,14 @@
             window.addEventListener('resize', resize);
             resize();
 
-            for(let i=0; i<40; i++) {
+            // Reduced to 25 to prevent lag
+            for(let i=0; i<25; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     radius: Math.random() * 2.5 + 1,
-                    vx: (Math.random() - 0.5) * 0.6,
-                    vy: (Math.random() - 0.5) * 0.6,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
                     alpha: Math.random() * 0.5 + 0.1
                 });
             }
@@ -929,11 +965,12 @@
         }
         runAmbientCanvasMatrixSystem();
 
+        // LAG FREE CLOCK (SetInterval instead of requestAnimationFrame)
         function initiatePrecisionChronometerTick() {
-            const userBox = document.getElementById('userPrecisionTimeNode');
-            const adminBox = document.getElementById('adminPrecisionTimeNode');
-            
-            const handleFrameSequence = () => {
+            setInterval(() => {
+                const userBox = document.getElementById('userPrecisionTimeNode');
+                const adminBox = document.getElementById('adminPrecisionTimeNode');
+                
                 const clock = new Date();
                 const padData = (val, len = 2) => String(val).padStart(len, '0');
                 
@@ -958,10 +995,7 @@
                 if(manualDateField && !manualDateField.getAttribute('data-custom-lock')) {
                     manualDateField.value = `${dateText} (${dayText})`;
                 }
-
-                setTimeout(() => requestAnimationFrame(handleFrameSequence), 1000); 
-            };
-            requestAnimationFrame(handleFrameSequence);
+            }, 1000);
         }
         initiatePrecisionChronometerTick();
 
@@ -1176,12 +1210,18 @@
             initializeTalkingTomAudioRecognitionEngine();
         };
 
+        // LAG FREE ARCADE
         function executeTalkingTomRenderCycle() {
+            // STOP executing if not in gaming tab
+            if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming') {
+                return; 
+            }
             if (currentArcadeEngineId !== 'tom' || !canvasCtx) return;
             if(document.hidden) {
                 requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
                 return;
             }
+            
             canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
             virtualTomTalkingAnimationCycle += 0.25;
             
@@ -2335,7 +2375,7 @@
 
         window.loadAdminSubmissions = function(){
             let container = document.getElementById('customerCardsContainer'); if(!container) return;
-            // Removed branding opacity toggle logic that broke the UI layout
+            
             const nav = document.getElementById('mainCyberNavbar');
             if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
 
@@ -2758,22 +2798,6 @@
             document.getElementById('accessNodePass').value = ""; 
         };
 
-        window.triggerLampActivationOverride = function() {
-            const mainStage = document.getElementById('mainStage'); 
-            const loginTerminal = document.getElementById('loginTerminal');
-            isAudioContextAllowed = true; 
-            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
-                playSynthesizedSound(520, 'sine', 0.3); 
-                mainStage.classList.add('activated'); 
-                loginTerminal.classList.remove('hidden');
-                speakNaturalHuman("Portal active.");
-                
-                // Show Navbar
-                const nav = document.getElementById('mainCyberNavbar');
-                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-            }
-        };
-
         window.toggleGlobalSystemAudio = function() {
             let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled');
             MatrixSystemState.set('isSystemAudioEnabled', audioEnabled);
@@ -2822,6 +2846,10 @@
                         localStorage.setItem('nexus_logged_in_uid', targetAdminID); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
+                        
+                        // Show Navbar securely
+                        const nav = document.getElementById('mainCyberNavbar');
+                        if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                     } else {
                         if(isAudioContextAllowed) playSynthesizedSound(150, 'sawtooth', 0.4);
                         alert("Access Rejected: Incorrect Mainframe Administrative Vector.");
@@ -2833,6 +2861,9 @@
                         localStorage.setItem('nexus_logged_in_uid', u); 
                         localStorage.setItem('nexus_system_session_mode', 'admin');
                         loadAdminSubmissions();
+                        
+                        const nav = document.getElementById('mainCyberNavbar');
+                        if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                     }
                 });
             } else {
@@ -2849,6 +2880,9 @@
                         document.getElementById('customerDashboard').classList.remove('hidden');
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [MASTER BYPASS ACTIVE]</span>`;
                         switchCustomerChannel('upload');
+                        
+                        const nav = document.getElementById('mainCyberNavbar');
+                        if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                         return;
                     }
                 }
@@ -2893,6 +2927,9 @@
                 document.getElementById('mainStage').style.display = 'none'; 
                 document.getElementById('customerDashboard').classList.remove('hidden');
                 switchCustomerChannel('upload');
+                
+                const nav = document.getElementById('mainCyberNavbar');
+                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
             }
         };
 
@@ -3178,4 +3215,52 @@
                     receiver: targetUIDSelection,
                     textBody: baseText + " (Forwarded Payload)",
                     mediaPayload: assetLink || "",
-                    read
+                    read: false,
+                    epochTimeNode: Date.now(),
+                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                }).then(() => {
+                    closeCustomInlinePopupEngine();
+                    alert("Message forwarded accurately across cross link board streams.");
+                });
+            };
+        };
+
+        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) {
+            removeContextDropdownMenuNode();
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>Erase Chat Record From Core</h4>
+                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:8px;">
+                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'everyone', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="background:#e74c3c; color:#fff; width:100%;">Delete for Everyone (Real-Time)</button>
+                        <button onclick="commitMessageErasureExecution('${messagePacketKey}', 'me', ${epochTimeNodeVal})" class="nexus-popup-btn primary-btn" style="width:100%; background:#f1c40f;">Delete for Me Only</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) {
+            closeCustomInlinePopupEngine();
+            const currentMode = MatrixSystemState.get('currentMode');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID') || "MainframeAdmin";
+            
+            if(packetKey && purgeMode === 'everyone') {
+                update(ref(db, `chats/${packetKey}`), {
+                    textBody: "🚫 This message was deleted for everyone.",
+                    mediaPayload: "",
+                    quotedText: ""
+                }).then(() => {
+                    if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+                });
+            } else {
+                localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged");
+                if(currentMode === 'admin') renderAdminSpyChatConsoleLogs(); else renderActiveChatConversationLogs();
+            }
+        };
+
+        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 1000);
+    </script>
+</body>
+</html>
