@@ -3,170 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D ⚡ PRO VERSION</title>
+    <title>Ultimate Nexus Matrix 3D - WhatsApp Pro Edition ⚡</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap">
     <style>
-        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE --- */
+        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE WITH WHATSAPP PRO --- */
         :root {
-            --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
-            --neon-cyan: #00f2fe; --neon-pink: #ff007f; --whatsapp-green: #2ecc71; --admin-purple: #af7ac5;
-            --bg-prime: #02050e; --panel-glass: rgba(6, 17, 38, 0.94); --border-glass: rgba(0, 242, 254, 0.7);
-            --text-main: #ffffff; --text-sub: #f8fafc; --chat-bg: #090f14; --input-bg: #010610;
-            --accent-yellow: #f1c40f; --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
-            --card-surface: rgba(4, 14, 33, 0.85); --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
+            --lamp-color: #f1c40f;
+            --lamp-glow: #f1c40f;
+            --lamp-shadow: rgba(241, 196, 15, 0.9);
+            --neon-cyan: #00f2fe;
+            --neon-pink: #ff007f;
+            --whatsapp-green: #2ecc71;
+            --whatsapp-pro-teal: #00a884;
+            --admin-purple: #af7ac5;
+            --bg-prime: #02050e;
+            --panel-glass: rgba(6, 17, 38, 0.94);
+            --border-glass: rgba(0, 242, 254, 0.7);
+            --text-main: #ffffff;
+            --text-sub: #f8fafc;
+            --chat-bg: #090f14;
+            --input-bg: #010610;
+            --accent-yellow: #f1c40f;
+            --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
+            --card-surface: rgba(4, 14, 33, 0.85);
+            --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
             --chat-wallpaper: radial-gradient(circle at center, #090f14 0%, #02050e 100%);
+            
             --matrix-3d-shadow-cyan: 0 15px 30px rgba(0, 242, 254, 0.25);
             --matrix-3d-shadow-pink: 0 15px 30px rgba(255, 0, 127, 0.25);
             --matrix-3d-shadow-green: 0 15px 30px rgba(46, 204, 113, 0.25);
         }
 
         body.light-theme-active {
-            --bg-prime: #f8fafc; --panel-glass: rgba(255, 255, 255, 0.96); --border-glass: #0f172a;
-            --text-main: #0f172a; --text-sub: #1e293b; --chat-bg: #efeae2; --input-bg: #ffffff;
-            --accent-yellow: #d97706; --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            --card-node-bg: #ffffff; --card-text-fix: #0f172a; --card-sub-fix: #334155;
-            --card-border-fix: #0f172a; --card-badge-fix: #1e293b; --note-card-bg: #ffffff;
-            --lamp-chamak: 0 6px 24px rgba(0,0,0,0.2); --chat-wallpaper: #efeae2;
+            --bg-prime: #f8fafc;
+            --panel-glass: rgba(255, 255, 255, 0.96);
+            --border-glass: #0f172a;
+            --text-main: #0f172a;
+            --text-sub: #1e293b;
+            --chat-bg: #efeae2;
+            --input-bg: #ffffff;
+            --accent-yellow: #d97706;
+            --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --card-node-bg: #ffffff;
+            --card-text-fix: #0f172a;
+            --card-sub-fix: #334155;
+            --card-border-fix: #0f172a;
+            --card-badge-fix: #1e293b;
+            --note-card-bg: #ffffff;
+            --lamp-chamak: 0 6px 24px rgba(0,0,0,0.2);
+            --chat-wallpaper: #efeae2;
             --matrix-3d-shadow-cyan: 0 10px 20px rgba(0, 0, 0, 0.1);
             --matrix-3d-shadow-pink: 0 10px 20px rgba(0, 0, 0, 0.1);
             --matrix-3d-shadow-green: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
         body {
-            background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center;
-            overflow: hidden; font-family: 'Rajdhani', sans-serif; user-select: none; position: relative; width: 100vw;
-            transition: background 0.4s ease, color 0.4s ease; color: var(--text-main);
+            background: var(--bg-prime);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            user-select: none;
+            position: relative;
+            width: 100vw;
+            transition: background 0.4s ease, color 0.4s ease;
+            color: var(--text-main);
         }
 
-        .shashi-header-brand-block { position: fixed; top: 25px; left: 50%; transform: translateX(-50%); z-index: 9999; font-family: 'Orbitron', sans-serif; text-align: center; pointer-events: none; width: auto; transition: all 0.5s ease; will-change: opacity, transform; }
-        .brand-main-title { font-weight: 900; font-size: 2.2rem; letter-spacing: 6px; color: #ffffff; text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6); }
-        body.light-theme-active .brand-main-title { color: #0f172a; text-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-
-        .cosmic-theme-toggle-switch, .audio-toggle-switch {
-            position: fixed; top: 20px; z-index: 9999; background: rgba(6, 17, 38, 0.95); border: 2px solid rgba(241, 196, 15, 0.6);
-            border-radius: 12px; padding: 12px 18px; color: #f1c40f; font-family: 'Orbitron', sans-serif; font-size: 0.85rem;
-            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); font-weight: bold; letter-spacing: 1px; transition: all 0.3s ease;
-            width: 145px; text-align: center; will-change: transform;
+        .shashi-header-brand-block {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            pointer-events: none;
+            width: auto;
+            transition: all 0.5s ease;
         }
-        .cosmic-theme-toggle-switch { right: 20px; }
-        .audio-toggle-switch { left: 20px; }
-        .cosmic-theme-toggle-switch:hover, .audio-toggle-switch:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(241, 196, 15, 0.4); }
-        body.light-theme-active .cosmic-theme-toggle-switch, body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 6px 14px rgba(0,0,0,0.15); }
+        
+        .brand-main-title {
+            font-weight: 900;
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            color: #ffffff;
+            text-shadow: 0 0 30px rgba(241, 196, 15, 1), 0 0 10px rgba(241, 196, 15, 0.6);
+        }
+        
+        body.light-theme-active .brand-main-title {
+            color: #0f172a;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
 
-        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform; }
-        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
+        .cosmic-theme-toggle-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(6, 17, 38, 0.95);
+            border: 2px solid rgba(241, 196, 15, 0.6);
+            border-radius: 12px;
+            padding: 12px 18px;
+            color: #f1c40f;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 145px;
+            text-align: center;
+        }
+        
+        .cosmic-theme-toggle-switch:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.4);
+        }
+
+        body.light-theme-active .cosmic-theme-toggle-switch {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: #0f172a;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+        .smoke-container {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .smoke-cloud {
+            position: absolute;
+            top: -50%;
+            width: 50vw;
+            height: 200vh;
+            filter: blur(140px);
+            opacity: 0.14;
+            border-radius: 50%;
+            animation: smokeDrift 22s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
-        @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
 
-        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; will-change: transform, background; }
-        @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
-        .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2); }
+        @keyframes smokeDrift {
+            0% { transform: translateY(-2%) scale(1) rotate(0deg); }
+            100% { transform: translateY(2%) scale(1.06) rotate(8deg); }
+        }
 
-        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); will-change: transform; }
+        .cinema-stage {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        @keyframes dynamicColorCycle {
+            0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); }
+            33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); }
+            66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); }
+        }
+
+        .cinema-stage.activated {
+            animation: dynamicColorCycle 5s infinite linear;
+            background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%);
+            box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2);
+        }
+
+        .cyber-lamp-core {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            transform: scale(1.1);
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
-        .metallic-shutter-head { width: 260px; height: 160px; background: linear-gradient(145deg, #1f2d42, #02050a); border-radius: 130px 130px 50px 50px; position: relative; border: 3px solid #00f2fe; box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 242, 254, 0.4); z-index: 5; overflow: hidden; transition: border-color 0.5s, box-shadow 0.5s; }
+
+        .metallic-shutter-head {
+            width: 260px;
+            height: 160px;
+            background: linear-gradient(145deg, #1f2d42, #02050a);
+            border-radius: 130px 130px 50px 50px;
+            position: relative;
+            border: 3px solid #00f2fe;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 242, 254, 0.4);
+            z-index: 5;
+            overflow: hidden;
+        }
+
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
-        .mechanical-gate { position: absolute; top: 25px; width: 65px; height: 100px; background: linear-gradient(145deg, #0a0d14, #222d42); border: 2px solid #3b4e6e; transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s; z-index: 6; will-change: transform, opacity; }
-        .gate-left { left: 50px; border-radius: 14px 0 0 14px; } .gate-right { right: 50px; border-radius: 0 14px 14px 0; }
+
+        .mechanical-gate {
+            position: absolute;
+            top: 25px;
+            width: 65px;
+            height: 100px;
+            background: linear-gradient(145deg, #0a0d14, #222d42);
+            border: 2px solid #3b4e6e;
+            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
+            z-index: 6;
+        }
+
+        .gate-left { left: 50px; border-radius: 14px 0 0 14px; }
+        .gate-right { right: 50px; border-radius: 0 14px 14px 0; }
         .cinema-stage.activated .gate-left { transform: translateX(-65px); opacity: 0.05; }
         .cinema-stage.activated .gate-right { transform: translateX(65px); opacity: 0.05; }
-        .blinding-core-light { position: absolute; width: 100px; height: 100px; background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 70%); border-radius: 50%; left: 50%; top: 25px; transform: translateX(-50%); filter: blur(4px); opacity: 0; transition: opacity 0.4s ease, background 0.4s ease; box-shadow: 0 0 60px #ffffff, 0 0 120px var(--lamp-color); will-change: opacity, box-shadow; }
+
+        .blinding-core-light {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 70%);
+            border-radius: 50%;
+            left: 50%;
+            top: 25px;
+            transform: translateX(-50%);
+            filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.4s ease, background 0.4s ease;
+            box-shadow: 0 0 60px #ffffff, 0 0 120px var(--lamp-color);
+        }
         .cinema-stage.activated .blinding-core-light { opacity: 1; }
+
         .hydraulic-stem { width: 22px; height: 240px; background: linear-gradient(90deg, #222e40, #080b12, #394b66); z-index: 3; position: relative; border-radius: 4px; }
         .laser-conduit { position: absolute; width: 6px; height: 100%; background: #131a24; left: 50%; transform: translateX(-50%); transition: background 0.5s; }
         .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 35px var(--lamp-color); }
+
         .brushed-heavy-base { width: 220px; height: 34px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 15px 25px rgba(0,0,0,0.7); }
-        .volumetric-beam { position: absolute; top: 130px; width: 120px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; will-change: opacity, height, width; }
+
+        .volumetric-beam {
+            position: absolute;
+            top: 130px;
+            width: 120px;
+            height: 0;
+            background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            transition: height 0.9s ease, width 0.9s ease, opacity 0.3s;
+        }
         .cinema-stage.activated .volumetric-beam { opacity: 0.7; height: 530px; width: 840px; filter: drop-shadow(0 0 30px var(--lamp-shadow)); }
+
         .quantum-cord { position: absolute; top: 150px; left: 210px; z-index: 99; cursor: pointer; transition: transform 0.15s linear; padding: 20px; margin-left: -20px; }
         .beaded-wire { width: 4px; height: 170px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 4px, #0f172a 4px, #0f172a 8px); }
         .luminescent-node { width: 26px; height: 26px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; margin-left: -11px; box-shadow: 0 0 35px #f1c40f; }
 
+        .audio-toggle-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: rgba(6, 17, 38, 0.95);
+            border: 2px solid rgba(241, 196, 15, 0.5);
+            border-radius: 12px;
+            padding: 12px 18px;
+            color: #f1c40f;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 145px;
+            text-align: center;
+        }
+        .audio-toggle-switch:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3);
+        }
+        body.light-theme-active .audio-toggle-switch { background: #ffffff; color: #0f172a; border-color: #0f172a; }
+
         /* --- HUD TERMINAL CORE --- */
-        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 3px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; will-change: transform, opacity; }
+        .hud-glass-terminal {
+            position: absolute;
+            left: 50%;
+            transform: translate3d(-50%, 0, 0) scale(0.9);
+            width: 95%;
+            max-width: 460px;
+            background: var(--panel-glass);
+            border: 3px solid var(--border-glass);
+            border-left: 6px solid #f1c40f;
+            padding: 35px 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(40px);
+            box-shadow: var(--matrix-3d-shadow-cyan);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 20;
+        }
+
         .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; }
+
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
+
         .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
         .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; gap: 4px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); }
         .hud-tab { flex: 1; padding: 14px; background: transparent; border: none; color: var(--text-sub); font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap; }
         .hud-tab.active { background: rgba(241,196,15,0.25); color: #f1c40f; border: 2px solid rgba(241,196,15,0.5); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .hud-input-cluster textarea { height: 100px; resize: none; }
         .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: var(--input-bg); }
+
         .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
         .hud-input-cluster textarea ~ label { top: -14px; left: 10px; }
+
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,
         .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -14px; left: 10px; background: var(--bg-prime); padding: 2px 8px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; font-weight: 900; }
+
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
+
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 6px 20px rgba(241,196,15,0.4); }
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
 
         /* --- DASHBOARD PANEL ENGINE --- */
-        .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; will-change: opacity; }
-        .hud-container-panel { background: var(--panel-glass); border: 3px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1280px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
+        .dashboard-panel-core {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: var(--bg-prime);
+            z-index: 100;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: background 0.4s ease;
+            padding-bottom: 60px;
+            padding-top: 100px;
+        }
+
+        .hud-container-panel {
+            background: var(--panel-glass);
+            border: 3px solid var(--border-glass);
+            border-top: 6px solid var(--neon-cyan);
+            padding: 35px 25px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 1280px;
+            box-shadow: var(--matrix-3d-shadow-cyan);
+            backdrop-filter: blur(40px);
+            margin-top: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 3px solid var(--border-glass); padding-bottom: 18px; gap: 10px; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
         .neon-cyan-text span { font-size: 1.6rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
+
+        /* --- WORKSPACE CHANNELS --- */
         .workspace-channel-selector { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 16px; border: 2px solid var(--border-glass); box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
         .channel-tab-btn { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; border: 2px solid transparent; }
         .channel-tab-btn:hover { background: rgba(0, 242, 254, 0.12); transform: translateY(-2px); }
         .channel-tab-btn.active { background: linear-gradient(135deg, rgba(0, 242, 254, 0.35), rgba(0, 242, 254, 0.1)); color: #00f2fe; border: 2px solid rgba(0, 242, 254, 0.8); box-shadow: 0 8px 20px rgba(0,242,254,0.3); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); transform: translateY(-4px); }
+
         .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 14px; border: 2px solid #2ecc71; box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
         .admin-nav-tab { flex: 1; min-width: 120px; padding: 18px 5px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 10px; transition: all 0.3s ease; text-align: center; border: 2px solid transparent; }
         .admin-nav-tab:hover { background: rgba(46, 204, 113, 0.12); transform: translateY(-2px); }
         .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.35), rgba(46, 204, 113, 0.1)); color: #2ecc71; border: 2px solid rgba(46, 204, 113, 0.8); box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3); text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); transform: translateY(-4px); }
+
         .matrix-system-controller-dock { margin-top: 25px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.8rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
         .refresh-spinner-node { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
+
         @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(1.4); opacity: 1; } }
+
         .form-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .full-width-field { grid-column: span 2; }
+
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
+            
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
-        .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); transition: border-color 0.3s; }
-        .search-terminal-input:focus { border-color: #f1c40f; }
+        
+        .search-terminal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); }
 
-        /* Status Story / Pro Features Additions */
-        .status-horizontal-list { display: flex; gap: 12px; padding: 12px; overflow-x: auto; border-bottom: 2px solid var(--border-glass); background: rgba(0,0,0,0.3); scroll-behavior: smooth; }
-        .status-horizontal-list::-webkit-scrollbar { height: 4px; }
-        .status-horizontal-list::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 4px; }
-        .status-circle { width: 56px; height: 56px; border-radius: 50%; border: 3px solid #2ecc71; object-fit: cover; cursor: pointer; flex-shrink: 0; padding: 2px; transition: transform 0.2s; box-shadow: 0 0 8px rgba(46,204,113,0.5); }
-        .status-circle:hover { transform: scale(1.1); border-color: #00f2fe; box-shadow: 0 0 12px rgba(0,242,254,0.6); }
-        .chat-action-btn-matrix { background: none; border: none; color: #00f2fe; font-size: 1.3rem; cursor: pointer; transition: 0.3s; margin-left: 10px; }
-        .chat-action-btn-matrix:hover { transform: scale(1.2) rotate(5deg); color: #f1c40f; text-shadow: 0 0 10px #f1c40f; }
-        
-        .reply-banner-node { background: rgba(0, 242, 254, 0.1); border-left: 4px solid #00f2fe; border-top: 1px solid rgba(0,242,254,0.3); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-radius: 10px 10px 0 0; font-size: 0.9rem; font-weight: bold; backdrop-filter: blur(10px); transition: all 0.3s ease; }
-        .quoted-msg-box { background: rgba(0, 0, 0, 0.4); border-left: 4px solid #2ecc71; padding: 8px 10px; margin-bottom: 8px; border-radius: 6px; font-size: 0.85rem; color: #a6bcdc; display: flex; flex-direction: column; }
-        .quoted-msg-box span.quote-author { color: #2ecc71; font-family: 'Orbitron'; font-size: 0.75rem; margin-bottom: 4px; font-weight: bold; }
-        
-        .matrix-call-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.95); z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(20px); transition: opacity 0.4s ease; will-change: opacity; }
-        .call-avatar-pulse { width: 160px; height: 160px; border-radius: 50%; border: 4px solid #00f2fe; animation: callPulse 1.5s infinite; object-fit: cover; margin-bottom: 30px; }
-        @keyframes callPulse { 0% { box-shadow: 0 0 0 0 rgba(0,242,254,0.7); } 70% { box-shadow: 0 0 0 35px rgba(0,242,254,0); } 100% { box-shadow: 0 0 0 0 rgba(0,242,254,0); } }
-        
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+            
+        /* Data Cards Blueprint */
         .hud-data-card { background: var(--card-node-bg, rgba(4, 14, 33, 0.85)); border: 2px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 16px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hud-data-card:hover { transform: translateY(-5px); box-shadow: 0 25px 45px rgba(0, 242, 254, 0.25); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
+        
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; position: relative; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
-        .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); text-shadow: 0 0 5px rgba(0,242,254,0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+            
+        .hud-data-card .owner-name-tag-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Orbitron', sans-serif;
+            color: #00f2fe;
+            font-size: 0.9rem;
+            font-weight: 900;
+            background: rgba(0, 242, 254, 0.2);
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 2px solid rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 5px rgba(0,242,254,0.5);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
         .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
-        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; } .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; } .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; } .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+
         .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 2px solid rgba(231,76,60,0.5); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .wipe-card-btn:hover { background: rgba(231,76,60,0.35); color: #fff; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
+
         .hidden { display: none !important; }
         .text-left { text-align: left; }
+
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
+
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 2px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
 
@@ -178,10 +464,12 @@
         body.light-theme-active .notes-toolbar-ribbon { background: rgba(0,0,0,0.05); }
         .note-tool-btn { background: rgba(4,15,36,0.2); border: 2px solid var(--border-glass); color: var(--text-main); padding: 8px 14px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); }
         .note-tool-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 15px #00f2fe; transform: scale(1.03); }
+
         .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 12px; border-top: 1px solid var(--border-glass); border-right: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); position: relative; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; }
         .note-structural-card:hover { transform: translateY(-3px); }
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; }
+
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
         /* --- ARCADE TOM STREAM CORE --- */
@@ -190,14 +478,21 @@
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- CONSOLE WHATSAPP BLUEPRINT PRO --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 310px 1fr; gap: 0; height: 620px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; }
-        .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.8); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: hidden; z-index: 5; }
+        /* --- CONSOLE WHATSAPP BLUEPRINT --- */
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: 680px; background: var(--chat-bg); border-radius: 20px; border: 3px solid var(--border-glass); overflow: hidden; backdrop-filter: blur(20px); box-shadow: var(--matrix-3d-shadow-cyan); position: relative; }
+        .chat-target-userlist-pane { background: rgba(17, 27, 33, 0.9); border-right: 2px solid var(--border-glass); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
         body.light-theme-active .chat-target-userlist-pane { background: #cbd5e1; }
-        
-        .whatsapp-search-box { padding: 14px; background: rgba(17, 27, 33, 0.5); border-bottom: 2px solid var(--border-glass); }
+
+        .whatsapp-search-box { padding: 14px; background: rgba(17, 27, 33, 0.5); border-bottom: 2px solid var(--border-glass); display: flex; flex-direction: column; gap: 10px; }
         .whatsapp-search-box input { width: 100%; padding: 11px 14px; background: var(--bg-prime); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 0.95rem; outline: none; font-weight: bold; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
-        .chat-target-users-scrollable { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        
+        /* WHATSAPP PRO STORIES CONTAINER */
+        .whatsapp-pro-stories-tray { display: flex; gap: 12px; padding: 10px 14px; background: rgba(0,0,0,0.4); border-bottom: 2px solid var(--border-glass); overflow-x: auto; min-height: 85px; align-items: center; }
+        .story-circle-node { position: relative; width: 54px; height: 54px; flex-shrink: 0; cursor: pointer; text-align: center; }
+        .story-circle-node img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #02050e; margin: 3px; }
+        .story-circle-node.has-story { border: 2.5px dashed var(--whatsapp-pro-teal); border-radius: 50%; }
+        .story-circle-node .add-story-plus { position: absolute; bottom: 0; right: 0; background: var(--whatsapp-pro-teal); color: #fff; border-radius: 50%; width: 18px; height: 18px; font-size: 12px; font-weight: bold; display: flex; justify-content: center; align-items: center; border: 1.5px solid var(--bg-prime); }
+        .story-node-label { font-size: 0.75rem; color: var(--text-sub); display: block; margin-top: 2px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 55px; }
 
         .chat-user-item-node { padding: 15px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border-glass); color: var(--text-main); cursor: pointer; transition: all 0.2s ease; position: relative; }
         .chat-user-item-node.online-chamak-active { border-right: 5px solid #2ecc71; background: rgba(46, 204, 113, 0.05); }
@@ -209,35 +504,47 @@
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; }
         .whatsapp-user-name { font-weight: bold; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; }
         .whatsapp-user-id { font-size: 0.8rem; color: #00f2fe; font-family: monospace; font-weight: bold; }
+
         .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
         .whatsapp-unread-counter-pill { background: #2ecc71; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; box-shadow: 0 3px 8px rgba(0,0,0,0.5); }
 
-        .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; will-change: transform; }
+        .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; }
+        
+        /* PINNED MESSAGE HEADER ANCHOR */
+        .pinned-message-bar-anchor { display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; background: rgba(2, 6, 20, 0.95); border-bottom: 1px solid var(--border-glass); color: var(--accent-yellow); font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; z-index: 3; }
+
         .chat-stream-header-bar { background: rgba(32, 44, 51, 0.98); padding: 14px 20px; border-bottom: 2px solid var(--border-glass); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         body.light-theme-active .chat-stream-header-bar { background: #efeae2; color: #000; }
-        .chat-messages-scroll-stack { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; z-index: 2; scroll-behavior: smooth; }
+
+        .chat-messages-scroll-stack { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; z-index: 2; }
         
-        .bubble-msg-wrapper { max-width: 65%; padding: 12px 16px; border-radius: 14px; font-size: 1rem; line-height: 1.4; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.5); font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; word-wrap: break-word; will-change: transform; }
+        .bubble-msg-wrapper { max-width: 65%; padding: 12px 16px; border-radius: 14px; font-size: 1rem; line-height: 1.4; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.5); font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; word-wrap: break-word; }
         .bubble-msg-wrapper:hover { transform: scale(1.01); box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
         .bubble-outgoing { background: #005c4b; color: #ffffff; align-self: flex-end; border-top-right-radius: 0; border: 1px solid rgba(0,242,254,0.2); }
         .bubble-incoming { background: #202c33; color: #ffffff; align-self: flex-start; border-top-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
+        
         body.light-theme-active .bubble-incoming { background: #ffffff; color: #0f172a; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
         body.light-theme-active .bubble-outgoing { background: #d9fdd3; color: #0f172a; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-        
-        .msg-starred-icon { font-size: 0.75rem; color: #f1c40f; float: right; margin-left: 5px; }
+
         .whatsapp-time { font-size: 0.75rem; color: #a6bcdc; text-align: right; margin-top: 6px; display: block; font-weight: normal; }
         .whatsapp-tick-space { color: #8696a0; font-weight: 900; font-size: 0.8rem; margin-left: 4px; letter-spacing: -1px; }
-        .whatsapp-tick-space.double-blue { color: #00f2fe; text-shadow: 0 0 5px rgba(0,242,254,0.6); }
+        .whatsapp-tick-space.double-blue { color: #00f2fe; }
+
         .msg-reactions-tray { display: flex; gap: 5px; background: rgba(0,0,0,0.9); padding: 4px 8px; border-radius: 20px; position: absolute; bottom: -12px; right: 10px; font-size: 0.85rem; border: 1px solid var(--border-glass); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        
+        .starred-message-badge { color: var(--accent-yellow); font-size: 0.85rem; margin-left: 6px; display: inline-block; }
+
         .voice-wave-container { display: flex; align-items: center; gap: 3px; height: 20px; margin-left: 10px; }
         .voice-bar { width: 3px; height: 100%; background: var(--neon-pink); animation: waveBounce 0.6s infinite alternate; }
-        .voice-bar:nth-child(2) { animation-delay: 0.1s; } .voice-bar:nth-child(3) { animation-delay: 0.2s; } .voice-bar:nth-child(4) { animation-delay: 0.3s; }
+        .voice-bar:nth-child(2) { animation-delay: 0.1s; }
+        .voice-bar:nth-child(3) { animation-delay: 0.2s; }
+        .voice-bar:nth-child(4) { animation-delay: 0.3s; }
+        
         @keyframes waveBounce { 0% { height: 4px; } 100% { height: 20px; } }
 
         .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
         .emoji-item-node:hover { transform: scale(1.3); }
+
         .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
         .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
@@ -252,97 +559,248 @@
         .whatsapp-circle-btn:hover { transform: scale(1.15); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
-        .admin-status-toggle-select { padding: 6px 10px; background: #02050e; color: #2ecc71; border: 2px solid var(--border-glass); border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: bold; cursor: pointer; outline: none; width: auto; box-shadow: 0 3px 6px rgba(0,0,0,0.4); }
+        .admin-status-toggle-select {
+            padding: 6px 10px;
+            background: #02050e;
+            color: #2ecc71;
+            border: 2px solid var(--border-glass);
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            width: auto;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+        }
         .admin-status-toggle-select.state-deactivated { color: #e74c3c; border-color: #e74c3c; }
 
-        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #1f2c34; border: 2px solid var(--border-glass); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); z-index: 100005; width: 210px; display: flex; flex-direction: column; padding: 8px 0; overflow: hidden; }
-        body.light-theme-active .whatsapp-avatar-context-dropdown, body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-color: #0f172a; }
-        .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 12px 16px; background: transparent; border: none; color: #ffffff; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; width: 100%; }
-        body.light-theme-active .avatar-dropdown-action-row, body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
+        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu {
+            position: absolute;
+            background: #1f2c34;
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            z-index: 100005;
+            width: 210px;
+            display: flex;
+            flex-direction: column;
+            padding: 8px 0;
+            overflow: hidden;
+        }
+        body.light-theme-active .whatsapp-avatar-context-dropdown, 
+        body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-color: #0f172a; }
+        
+        .avatar-dropdown-action-row, .dropdown-action-row-btn {
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        body.light-theme-active .avatar-dropdown-action-row,
+        body.light-theme-active .dropdown-action-row-btn { color: #0f172a; }
         .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
-        .delete-color { color: #e74c3c !important; } .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
+        .delete-color { color: #e74c3c !important; }
+        .delete-color:hover { background: rgba(231,76,60,0.15) !important; }
 
         /* Popups Systems */
-        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(1, 3, 10, 0.88); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); perspective: 1000px; }
-        .nexus-popup-card-box { background: var(--panel-glass); border: 3px solid var(--border-glass); padding: 30px; border-radius: 24px; width: 90%; max-width: 440px; text-align: center; color: var(--text-main); box-shadow: 0 30px 60px rgba(0,0,0,0.8); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .nexus-custom-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(1, 3, 10, 0.88);
+            z-index: 200000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            perspective: 1000px;
+        }
+        .nexus-popup-card-box {
+            background: var(--panel-glass);
+            border: 3px solid var(--border-glass);
+            padding: 30px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 440px;
+            text-align: center;
+            color: var(--text-main);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popupEntrance3D {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .nexus-popup-card-box h4 { font-family: 'Orbitron'; color: #00f2fe; margin-bottom: 12px; font-size: 1.25rem; }
-        .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
+        .nexus-popup-input-field {
+            width: 100%; padding: 14px; background: var(--input-bg); border: 2px solid var(--border-glass);
+            border-radius: 8px; color: var(--text-main); font-size: 1rem; outline: none; font-weight: bold; margin-top: 10px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
         .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 20px; }
-        .nexus-popup-btn { flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; } .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
+        .nexus-popup-btn {
+            flex: 1; padding: 14px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .nexus-popup-btn.primary-btn { background: #00f2fe; color: #000; }
+        .nexus-popup-btn.cancel-btn { background: #334155; color: #fff; }
 
         .giant-compiler-layout { background: rgba(4, 12, 30, 0.85); padding: 35px 25px; border-radius: 20px; border: 3px solid rgba(26,188,156,0.5); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
         body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #1abc9c; }
         .giant-compiler-layout h3 { color: #00f2fe; font-family: 'Orbitron'; margin-bottom: 22px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
         body.light-theme-active .giant-compiler-layout h3 { color: #16a085; text-shadow: none; }
         .giant-compiler-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 22px; }
+        
         .giant-compiler-input { width: 100%; padding: 18px; background: rgba(5, 12, 28, 0.9); border: 2px solid var(--border-glass); color: var(--text-main); border-radius: 10px; font-family: 'Orbitron'; font-size: 1.1rem; outline: none; transition: border-color 0.3s; font-weight: 700; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); }
         body.light-theme-active .giant-compiler-input { background: #ffffff; }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
 
-        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 12px 24px; border-radius: 12px; display: inline-block; box-shadow: 0 8px 20px rgba(0,242,254,0.3); margin-bottom: 20px; }
-        .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        .hyper-clock-ticker {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #f1c40f;
+            background: rgba(0,0,0,0.85);
+            border: 2px solid #00f2fe;
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 8px 20px rgba(0,242,254,0.3);
+            margin-bottom: 20px;
+        }
+
+        .realtime-alert-banner {
+            background: rgba(231,76,60,0.25);
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-family: 'Orbitron';
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
 
         /* --- STATS ENGINE DIAGNOSTICS --- */
         .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
         .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
-        .chart-mock-container { width: 100%; height: 60px; border-bottom: 2px solid rgba(0,242,254,0.4); border-left: 2px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; padding-left: 5px; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; }
-        .chart-mock-bar { height: 24px; background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1); border-radius: 0 6px 6px 0; width: 0%; }
+        
+        .chart-mock-container {
+            width: 100%;
+            height: 60px;
+            border-bottom: 2px solid rgba(0,242,254,0.4);
+            border-left: 2px solid rgba(0,242,254,0.4);
+            position: relative;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 5px;
+            background: rgba(0,0,0,0.4);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+            border-radius: 6px;
+        }
+        .chart-mock-bar {
+            height: 24px;
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
+            box-shadow: 0 0 15px rgba(0,242,254,0.6);
+            transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 0 6px 6px 0;
+            width: 0%;
+        }
+
         .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
         .char-counter-badge { font-size: 0.8rem; color: #8696a0; float: right; margin-top: 5px; font-family: monospace; }
 
         @media (max-width: 768px) {
-            .giant-compiler-grid { grid-template-columns: 1fr !important; } .form-grid-layout { grid-template-columns: 1fr !important; }
-            .full-width-field { grid-column: span 1; } #policyCardsStack { grid-template-columns: 1fr !important; }
+            .giant-compiler-grid { grid-template-columns: 1fr !important; }
+            .form-grid-layout { grid-template-columns: 1fr !important; }
+            .full-width-field { grid-column: span 1; }
+            #policyCardsStack { grid-template-columns: 1fr !important; }
             #adminUserControlList { grid-template-columns: 1fr !important; }
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 600px; }
-            .chat-target-userlist-pane { max-height: 180px; }
+            .chat-target-userlist-pane { max-height: 220px; }
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.7); }
-            .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); } .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
+            .emoji-matrix-drawer { grid-template-columns: repeat(6, 1fr); }
+            .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
+    
     <div class="shashi-header-brand-block" id="shashiBrandingHeader">
         <div class="brand-main-title">Made By SHASHI TIWARI</div>
     </div>
-    <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()"><span>🔊 SOUND: ON</span></button>
-    <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()"><span id="themeToggleBtnLabel">🌓 DARK MODE</span></button>
 
-    <div class="smoke-container"><div class="smoke-cloud smoke-left"></div><div class="smoke-cloud smoke-right"></div></div>
-    
-    <div id="matrixCallOverlay" class="matrix-call-overlay hidden">
-        <h2 style="color:#00f2fe; font-family:'Orbitron'; margin-bottom:10px; font-size:1.8rem;" id="callStatusText">Calling...</h2>
-        <h3 style="color:#fff; font-family:'Rajdhani'; margin-bottom:40px; font-size:1.4rem;" id="callTargetName">Target User</h3>
-        <img src="" id="callTargetAvatar" class="call-avatar-pulse">
-        <div style="display:flex; gap:30px; margin-top:20px;">
-            <button onclick="endMatrixCall()" style="background:#e74c3c; color:#fff; border:none; width:70px; height:70px; border-radius:50%; font-size:1.8rem; cursor:pointer; box-shadow:0 0 25px #e74c3c;">📴</button>
-        </div>
+    <button id="systemAudioToggleBtn" class="audio-toggle-switch" onclick="toggleGlobalSystemAudio()">
+        <span>🔊 SOUND: ON</span>
+    </button>
+    <button class="cosmic-theme-toggle-switch" onclick="executeCosmicThemeToggle()">
+        <span id="themeToggleBtnLabel">🌓 DARK MODE</span>
+    </button>
+
+    <div class="smoke-container">
+        <div class="smoke-cloud smoke-left"></div>
+        <div class="smoke-cloud smoke-right"></div>
     </div>
-
+                                                                                                                                                                                                                                                                                                        
     <div class="cinema-stage" id="mainStage" onclick="triggerLampActivationOverride()">
         <div class="cyber-lamp-core" id="lampDevice" style="cursor: pointer;">
-            <div class="metallic-shutter-head"><div class="blinding-core-light"></div><div class="mechanical-gate gate-left"></div><div class="mechanical-gate gate-right"></div></div>
+            <div class="metallic-shutter-head">
+                <div class="blinding-core-light"></div>
+                <div class="mechanical-gate gate-left"></div>
+                <div class="mechanical-gate gate-right"></div>
+            </div>
+            
             <div class="hydraulic-stem"><div class="laser-conduit"></div></div>
             <div class="brushed-heavy-base"></div>
+            
             <div class="volumetric-beam" id="lightBeam"></div>
-            <div class="quantum-cord" id="triggerCord"><div class="beaded-wire"></div><div class="luminescent-node"></div></div>
+                                                                                                                                                                                                                                                                                                        
+            <div class="quantum-cord" id="triggerCord">
+                <div class="beaded-wire"></div>
+                <div class="luminescent-node"></div>
+            </div>
         </div>
-        
+                                                                                                                                                                                                                                                                                                        
         <div class="hud-glass-terminal hidden" id="loginTerminal" onclick="event.stopPropagation()">
-            <div class="hud-top-bar"><div class="hud-status-chip">AI CORE: LIVE</div><div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div></div>
+            <div class="hud-top-bar">
+                <div class="hud-status-chip">AI CORE: LIVE</div>
+                <div class="hud-status-chip cyan-pulse">CORE SYNC: OK</div>
+            </div>
+                                                                                                                                                                                                                                                                                                        
             <h1 class="hud-logo">Welcome</h1>
+                                                                                                                                                                                                                                                                                                        
             <div class="portal-matrix-tabs">
                 <button class="hud-tab active" id="tabModeUser" onclick="changeWorkspaceMode('user')">👤 User Space</button>
                 <button class="hud-tab" id="tabModeAdmin" onclick="changeWorkspaceMode('admin')">👨‍💼 Admin Core</button>
             </div>
+                                                                                                                                                                                                                                                                                                        
             <form id="secureGatewayForm" onsubmit="executeClusterLogin(event)">
-                <div class="hud-input-cluster"><input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()"><label id="hudInputLabel">System ID / Customer ID</label><div class="neon-glow-underline"></div></div>
-                <div class="hud-input-cluster"><input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()"><label>Secure Access Password Key</label><div class="neon-glow-underline"></div></div>
+                <div class="hud-input-cluster">
+                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="verifyInputIdentityProgress()">
+                    <label id="hudInputLabel">System ID / Customer ID</label>
+                    <div class="neon-glow-underline"></div>
+                </div>
+                <div class="hud-input-cluster">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="checkAutoLogin()">
+                    <label>Secure Access Password Key</label>
+                    <div class="neon-glow-underline"></div>
+                </div>
+
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
+
                 <div style="display:flex; justify-content:space-between; margin-top:15px; font-family:'Orbitron'; font-size:0.85rem;">
                     <span onclick="triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold;">[ FORGOT ID ]</span>
                     <span onclick="triggerForgotPasswordMatrixModal()" style="color:var(--neon-pink); cursor:pointer; font-weight:bold;">[ FORGOT PASSWORD ]</span>
@@ -350,40 +808,78 @@
             </form>
         </div>
     </div>
-    
+                                                                                                                                                                                                                                                                                                        
     <div class="dashboard-panel-core hidden" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:8px; border-radius:8px; margin-bottom:15px; font-family:'Orbitron'; font-size:0.9rem; color:#fff; font-weight:bold; display:none;">
                 <marquee id="customerMarqueeText" scrollamount="5">⚡ SYSTEM BROADCAST VECTOR ACTIVE</marquee>
             </div>
-            <div class="panel-header-flex"><h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2><button onclick="logoutEngine()" class="abort-btn">LOGOUT</button></div>
-            <div style="text-align: center; margin-bottom: 20px;"><div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div></div>
+
+            <div class="panel-header-flex">
+                <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
+                <button onclick="logoutEngine()" class="abort-btn">LOGOUT</button>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
+            </div>
+                                                                                                                                                                                                                                                                                                        
             <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()" src="">
-                <div><label style="color:#00f2fe; font-size:1rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo Layout</label><input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="uploadUserProfileAvatarEngine(event)"></div>
+                <div>
+                    <label style="color:#00f2fe; font-size:1rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo Layout</label>
+                    <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="uploadUserProfileAvatarEngine(event)">
+                </div>
             </div>
+
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn" id="btnChannelUpload" onclick="switchCustomerChannel('upload')">📁 Policy Column</button>
-                <button class="channel-tab-btn" id="btnChannelNotes" onclick="switchCustomerChannel('notes')">📝 Rich Notes</button>
+                <button class="channel-tab-btn" id="btnChannelNotes" onclick="switchCustomerChannel('notes')">📝 Rich Notes Matrix</button>
                 <button class="channel-tab-btn" id="btnChannelGaming" onclick="switchCustomerChannel('gaming')">🎮 Gaming Nexus</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 Cross Link Board</button>
+                <button class="channel-tab-btn" id="btnChannelChat" onclick="switchCustomerChannel('chat')">💬 WhatsApp Pro Board</button>
             </div>
 
             <div id="customerUploadInterfaceBlock" class="hidden">
-                <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);"></div>
+                <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
+                </div>
+                                                                                                                                                                                                                                                                                                        
                 <div class="form-grid-layout">
-                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="regNo" placeholder=" ">
+                        <label>Registration Number (Optional)</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="insurerName" required placeholder=" ">
+                        <label>Insurer Name *</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="policyNo" placeholder=" ">
+                        <label>Policy Number (Optional)</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                        <label>Contact Number *</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
+                    <div class="hud-input-cluster full-width-field">
+                        <input type="email" id="email" placeholder=" ">
+                        <label>Email Address (Optional)</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
                     <div class="hud-input-cluster full-width-field">
                         <div class="cyber-upload-node">
                             <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900;">📎 UPLOAD DOCUMENT / PHOTO</label>
                             <input type="file" id="clientAttachment" style="background:transparent; border:none; padding:5px; width:100%; color: var(--text-main);" onchange="processBinaryAttachment(event, 'policy')">
                         </div>
                     </div>
-                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" "></textarea><label>Additional System Notes (Optional)</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field">
+                        <textarea id="notesReal" placeholder=" "></textarea>
+                        <label>Additional System Notes (Optional)</label>
+                        <div class="neon-glow-underline"></div>
+                    </div>
                 </div>
                 <button onclick="submitPolicyForm()" class="hud-engage-btn" style="margin-top: 10px;">TRANSMIT SECURE DATA</button>
             </div>
@@ -391,10 +887,16 @@
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface">
                     <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px; text-align: left;">🧠 ULTRA RICH NOTES MATRIX</h3>
+                    
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly placeholder="Time Frame"></div>
+                        <div class="hud-input-cluster" style="margin-bottom:0;">
+                            <input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly>
+                        </div>
+                        <div class="hud-input-cluster" style="margin-bottom:0;">
+                            <input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly placeholder="Time Frame">
+                        </div>
                     </div>
+
                     <div class="notes-toolbar-ribbon">
                         <button class="note-tool-btn" onclick="triggerEmbeddedNoteFormat('bold')"><b>B</b> Bold</button>
                         <button class="note-tool-btn" onclick="triggerEmbeddedNoteFormat('italic')"><i>I</i> Italic</button>
@@ -404,23 +906,33 @@
                         <button class="note-tool-btn" style="color:#e74c3c; border-color:#e74c3c;" onclick="triggerEmbeddedNoteFontColor('#e74c3c')">🟥 Red Font</button>
                         <button class="note-tool-btn" style="color:#2ecc71; border-color:#2ecc71;" onclick="triggerEmbeddedNoteFontColor('#2ecc71')">🟩 Green Font</button>
                         <button class="note-tool-btn" onclick="triggerEmbeddedNoteFontColor('inherit')">⬜ Reset</button>
-                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD VOICE NOTE</button>
+                        
+                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="toggleRichNotesVoiceStreamRecorder()">
+                            <span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD VOICE NOTE
+                        </button>
                         <span id="notesVoiceDurationLogNode" style="font-family:monospace; font-weight:bold; color:var(--neon-pink); font-size:0.95rem;"></span>
                     </div>
-                    <div class="notes-editor-container-shell"><div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Type structural metadata framework layout note here..."></div></div>
+
+                    <div class="notes-editor-container-shell">
+                        <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Type structural metadata framework layout note here..."></div>
+                    </div>
+
                     <div style="display:flex; gap:15px; margin-top:20px;">
                         <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="dispatchCompiledNoteToCloudMatrix()">TRANSMIT SECURE NODE PACKET</button>
-                        <button class="abort-btn" style="flex:1; padding:18px; font-family:'Orbitron';" onclick="wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
+                        <button class="abort-btn" style="flex:1; padding:18px; font-family:'Orbitron';" onclick="wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE (BLANK)</button>
                     </div>
+
                     <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
                 </div>
             </div>
 
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 15px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM CHANNELS</h2>
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 15px var(--neon-cyan);">CN 🎮 INTERACTIVE arcade NEXUS</h2>
+                    
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="360"></canvas>
+                        
                         <div id="virtualTomTalkOverlay" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:12px; border-radius:10px; border:2px solid var(--neon-cyan); box-shadow:0 0 20px var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100;">
                             <input type="text" id="virtualTomTextInput" placeholder="Type to talk or click listen mic..." style="width:55%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-family:'Rajdhani'; font-weight:700; outline:none;" onkeydown="if(event.key==='Enter') executeVirtualTomSpeechLoop()">
                             <button id="virtualTomLiveVoiceRecBtn" onclick="toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:10px; background:var(--neon-pink); border:none; color:#fff; font-family:'Orbitron'; font-weight:900; cursor:pointer; border-radius:6px; font-size:0.85rem;">🎙️ LISTEN</button>
@@ -433,11 +945,24 @@
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix">
                     <div class="chat-target-userlist-pane">
-                        <div class="whatsapp-search-box"><input type="text" id="clientContactSearchField" placeholder="Search contact..." oninput="debounceFilterClientChatContactList()"></div>
+                        <div class="whatsapp-search-box">
+                            <input type="text" id="clientContactSearchField" placeholder="Search contact text content..." oninput="filterClientChatContactList()">
+                            <div style="display:flex; gap:8px; margin-top:5px;">
+                                <button onclick="triggerCreateGroupChatModal()" style="padding:6px; background:var(--whatsapp-pro-teal); border:none; border-radius:4px; color:#fff; font-family:'Orbitron'; font-size:0.75rem; font-weight:bold; cursor:pointer; flex:1;">➕ NEW GROUP</button>
+                                <button onclick="triggerBroadcastMessageModal()" style="padding:6px; background:#2980b9; border:none; border-radius:4px; color:#fff; font-family:'Orbitron'; font-size:0.75rem; font-weight:bold; cursor:pointer; flex:1;">📢 BROADCAST</button>
+                            </div>
+                        </div>
                         
-                        <div class="status-horizontal-list" id="whatsappStatusList"></div>
-                        
-                        <div class="chat-target-users-scrollable" id="chatTargetContainerView"></div>
+                        <div class="whatsapp-pro-stories-tray" id="whatsappStoriesTrayView">
+                            <div class="story-circle-node" onclick="triggerAddNewStatusStory()">
+                                <img src="" id="myStorySelfAvatarNode">
+                                <span class="add-story-plus">+</span>
+                                <span class="story-node-label">My Status</span>
+                            </div>
+                            <div id="statusStoriesTrackDynamicList" style="display:flex; gap:12px;"></div>
+                        </div>
+
+                        <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
@@ -448,28 +973,24 @@
                                     <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:#2ecc71;" class="hidden">typing...</div>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 8px; align-items: center;">
-                                <button class="chat-action-btn-matrix" onclick="initiateCallMatrix('video')">📹</button>
-                                <button class="chat-action-btn-matrix" onclick="initiateCallMatrix('audio')">📞</button>
-                                
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <button onclick="initiateAudioVideoMockCall('audio')" style="font-size:1.3rem; cursor:pointer; color:#2ecc71;">📞</button>
+                                <button onclick="initiateAudioVideoMockCall('video')" style="font-size:1.3rem; cursor:pointer; color:#00f2fe;">📹</button>
                                 <button onclick="toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" style="background:rgba(0,242,254,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🤖 AI CORE: OFF</button>
-                                <button onclick="clearCurrentChatConversation()" style="background:rgba(231,76,60,0.2); border:1px solid #e74c3c; color:#e74c3c; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🗑️ CLEAR</button>
-                                <button onclick="switchChatWallpaperMatrix()" style="background:none; border:1px solid var(--border-glass); color:#00f2fe; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">🎨 WALL</button>
+                                <button onclick="triggerWhatsAppProSettingsPanel()" style="background:none; border:1px solid var(--border-glass); color:#f1c40f; padding:4px 8px; border-radius:6px; cursor:pointer; font-family:'Orbitron'; font-size:0.75rem;">⚙️ OPTIONS</button>
                             </div>
                         </div>
+
+                        <div id="pinnedMessageBarHeader" class="pinned-message-bar-anchor hidden">
+                            <span>📌 Pinned: <span id="pinnedMessageTextString" style="color:#fff; font-family:'Rajdhani';"></span></span>
+                            <span style="cursor:pointer; color:var(--neon-pink);" onclick="unpinCurrentChatMessage()">✕</span>
+                        </div>
+
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         
                         <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
                         <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
                         
-                        <div id="replyContextBanner" class="reply-banner-node hidden">
-                            <div style="flex:1;">
-                                <div style="color:#00f2fe; font-size:0.8rem; font-family:'Orbitron';">Replying to...</div>
-                                <div id="replyContextText" style="color:#fff; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; max-width:80%; font-weight:600;"></div>
-                            </div>
-                            <button onclick="cancelReplyContext()" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-weight:bold; font-size:1.4rem;">✖</button>
-                        </div>
-
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn" onclick="toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="processBinaryAttachment(event, 'chat')">
@@ -487,27 +1008,43 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:15px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
-            <div class="matrix-system-controller-dock"><div class="auto-pulse-refresh-badge"><span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE</div></div>
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. High Frequency Sync active seamlessly.</div>
+            <div class="matrix-system-controller-dock">
+                <div class="auto-pulse-refresh-badge">
+                    <span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE
+                </div>
+            </div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
-    
+                                                                                                                                                                                                                                                                                                        
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
+            
             <div id="exclusiveAccountMatrixControlBar" style="background: linear-gradient(135deg, #09152e, #030814); border: 2px solid var(--neon-cyan); border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,242,254,0.25);">
-                <div style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--neon-cyan); font-weight: 900; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"><span class="refresh-spinner-node" style="background: var(--neon-cyan);"></span> 🛡️ MAIN CLOUD ACCOUNT MANAGEMENT & SIGNAL LOGS:</div>
+                <div style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--neon-cyan); font-weight: 900; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <span class="refresh-spinner-node" style="background: var(--neon-cyan);"></span> 🛡️ MAIN CLOUD ACCOUNT MANAGEMENT & SIGNAL LOGS:
+                </div>
                 <div id="adminIntrusionNotificationArea"></div>
             </div>
-            <div class="panel-header-flex"><h2 class="neon-green-text">Mainframe Core</h2><button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button></div>
-            <div style="text-align: center; margin-bottom: 20px;"><div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div></div>
+            
+            <div class="panel-header-flex">
+                <h2 class="neon-green-text">Mainframe Core</h2>
+                <button onclick="logoutEngine()" class="abort-btn">DISCONNECT</button>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
+            </div>
+                                                                                                                                                                                                                                                                                                        
             <div class="admin-category-navbar">
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="switchAdminSubSection('creation')">🆔 ID Create</button>
-                <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials</button>
+                <button class="admin-nav-tab" id="tabBtnCredentials" onclick="switchAdminSubSection('credentials')">🔑 Credentials Matrix</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="switchAdminSubSection('workspace')">💼 Workspace</button>
-                <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Spy</button>
+                <button class="admin-nav-tab" id="tabBtnSpychat" onclick="switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
                 <button class="admin-nav-tab" id="tabBtnAispy" onclick="switchAdminSubSection('aispy')">🤖 AI Spychat</button>
-                <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 Stats Engine</button>
+                <button class="admin-nav-tab" id="tabBtnStats" onclick="switchAdminSubSection('stats')">📊 System Status Engine</button>
             </div>
+                                                                                                                                                                                                                                                                                                        
             <div class="customerCardsContainer" id="customerCardsContainer"></div>
         </div>
     </div>
@@ -518,7 +1055,13 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        const firebaseConfig = { apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I", authDomain: "pikachu-nexus.firebaseapp.com", projectId: "pikachu-nexus", databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/" };
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
+            authDomain: "pikachu-nexus.firebaseapp.com",
+            projectId: "pikachu-nexus",
+            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
+        };
+
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
@@ -528,469 +1071,549 @@
 
         const MatrixSystemState = (() => {
             let state = {
-                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "upload", activeSelectedChatTargetUserId: "",
-                globalLiveChatBinaryStreamBase64: "", spyActiveTargetUserContext: "", activeAdminSubSection: "creation", loadedAttachmentB64: "",
-                isSystemAudioEnabled: true, isAIAssistantActiveState: false, cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [],
-                cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], consecutiveBruteFailuresCount: 0,
-                cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }, currentReplyPayload: null
+                currentMode: 'user',
+                loggedInCustomerID: "",
+                activeCustomerWorkspaceChannel: "upload",
+                activeSelectedChatTargetUserId: "",
+                globalLiveChatBinaryStreamBase64: "",
+                spyActiveTargetUserContext: "",
+                activeAdminSubSection: "creation",
+                loadedAttachmentB64: "",
+                isSystemAudioEnabled: true,
+                isAIAssistantActiveState: false,
+                cachedGlobalUsersArr: [],
+                cachedGlobalPolicyArr: [],
+                cachedGlobalAiCommsArr: [],
+                cachedGlobalForgetSignalsArr: [],
+                consecutiveBruteFailuresCount: 0,
+                cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
             };
             return {
-                get: (key) => state[key], set: (key, val) => { state[key] = val; },
-                resetChatAssets: () => { state.globalLiveChatBinaryStreamBase64 = ""; state.currentReplyPayload = null; },
-                purgeStateReferences: () => { state.cachedGlobalUsersArr = []; state.cachedGlobalPolicyArr = []; state.cachedGlobalAiCommsArr = []; state.cachedGlobalForgetSignalsArr = []; }
+                get: (key) => state[key],
+                set: (key, val) => { state[key] = val; },
+                resetChatAssets: () => {
+                    state.globalLiveChatBinaryStreamBase64 = "";
+                },
+                purgeStateReferences: () => {
+                    state.cachedGlobalUsersArr = [];
+                    state.cachedGlobalPolicyArr = [];
+                    state.cachedGlobalAiCommsArr = [];
+                    state.cachedGlobalForgetSignalsArr = [];
+                }
             };
         })();
 
-        let requestArcadeFrameToken = null; let tomSpeechRecognitionInstance = null; let isTomListeningStateActive = false;
-        let audioVisualizerContextNode = null; let audioAnalyserNode = null; let audioMicStreamNode = null; let visualizerDataArray = new Uint8Array(0); let virtualTomTalkingAnimationCycle = 0;
-        let nativeAudioMediaRecorderInstance = null; let compiledAudioChunksCollectorArr = [];
-        let notesMediaRecorderInstance = null; let notesAudioChunksCollectorArr = []; let notesVoicePayloadBase64Node = ""; let notesVoiceTimerIntervalTracker = null; let notesRecordingStartEpoch = 0; let autoGeneratedVoiceDurationString = "";
-        let typingTimeoutTrackerNode = null; let searchDebounceTrackerNode = null;
+        let requestArcadeFrameToken = null;
+        let tomSpeechRecognitionInstance = null;
+        let isTomListeningStateActive = false;
+        let audioVisualizerContextNode = null;
+        let audioAnalyserNode = null;
+        let audioMicStreamNode = null;
+        let visualizerDataArray = new Uint8Array(0);
+        let virtualTomTalkingAnimationCycle = 0;
+
+        let nativeAudioMediaRecorderInstance = null;
+        let compiledAudioChunksCollectorArr = [];
+        let notesMediaRecorderInstance = null;
+        let notesAudioChunksCollectorArr = [];
+        let notesVoicePayloadBase64Node = "";
+        let notesVoiceTimerIntervalTracker = null;
+        let notesRecordingStartEpoch = 0;
+        let autoGeneratedVoiceDurationString = "";
+        let typingTimeoutTrackerNode = null;
+        let liveCallTimerIntervalTracker = null;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐"];
-        const structuralGifMatrixList = [ "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif", "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif" ];
+        const structuralGifMatrixList = [
+            "https://media.giphy.com/media/3o7Tn335IfX10CqAae/giphy.gif",
+            "https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif"
+        ];
 
         document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg;
         document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg;
+        document.getElementById('myStorySelfAvatarNode').src = defaultAvatarSvg;
 
         function runAmbientCanvasMatrixSystem() {
             const canvas = document.getElementById('ambientParticleSpaceNode');
-            if(!canvas) return; const ctx = canvas.getContext('2d'); let particles = [];
-            const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-            window.addEventListener('resize', resize); resize();
-            for(let i=0; i<40; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6, alpha: Math.random() * 0.5 + 0.1 });
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            window.addEventListener('resize', resize);
+            resize();
+
+            for(let i=0; i<40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2.5 + 1,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    alpha: Math.random() * 0.5 + 0.1
+                });
+            }
+
             function draw() {
                 ctx.clearRect(0,0, canvas.width, canvas.height);
-                ctx.fillStyle = document.body.classList.contains('light-theme-active') ? 'rgba(15, 23, 42, 0.08)' : 'rgba(0, 242, 254, 0.15)';
-                particles.forEach(p => { p.x += p.vx; p.y += p.vy; if(p.x < 0 || p.x > canvas.width) p.vx *= -1; if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.save(); ctx.globalAlpha = p.alpha; ctx.fill(); ctx.restore();
-                }); requestAnimationFrame(draw);
-            } requestAnimationFrame(draw);
-        } runAmbientCanvasMatrixSystem();
+                const isLight = document.body.classList.contains('light-theme-active');
+                ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.08)' : 'rgba(0, 242, 254, 0.15)';
+                
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fill();
+                    ctx.restore();
+                });
+                requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+        }
+        runAmbientCanvasMatrixSystem();
 
         function initiatePrecisionChronometerTick() {
-            const userBox = document.getElementById('userPrecisionTimeNode'); const adminBox = document.getElementById('adminPrecisionTimeNode');
+            const userBox = document.getElementById('userPrecisionTimeNode');
+            const adminBox = document.getElementById('adminPrecisionTimeNode');
+            
             const handleFrameSequence = () => {
-                const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');
-                const packedTimeString = `${padData(clock.getHours())}:${padData(clock.getMinutes())}:${padData(clock.getSeconds())}`;
-                if(userBox) userBox.innerText = packedTimeString; if(adminBox) adminBox.innerText = packedTimeString;
-                const manualTimeField = document.getElementById('noteManualTimeSelector'); if(manualTimeField) manualTimeField.value = packedTimeString;
-                const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()} (${["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][clock.getDay()]})`;
-                const manualDateField = document.getElementById('noteManualDateSelector'); if(manualDateField && !manualDateField.getAttribute('data-custom-lock')) manualDateField.value = dateText;
+                const clock = new Date();
+                const padData = (val, len = 2) => String(val).padStart(len, '0');
+                
+                const hh = padData(clock.getHours());
+                const mm = padData(clock.getMinutes());
+                const ss = padData(clock.getSeconds());
+                
+                const packedTimeString = `${hh}:${mm}:${ss}`;
+                if(userBox) userBox.innerText = packedTimeString;
+                if(adminBox) adminBox.innerText = packedTimeString;
+
+                const manualTimeField = document.getElementById('noteManualTimeSelector');
+                if(manualTimeField) {
+                    manualTimeField.value = packedTimeString;
+                }
+                
+                const daysOfWeekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const dayText = daysOfWeekArr[clock.getDay()];
+                const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()}`;
+                
+                const manualDateField = document.getElementById('noteManualDateSelector');
+                if(manualDateField && !manualDateField.getAttribute('data-custom-lock')) {
+                    manualDateField.value = `${dateText} (${dayText})`;
+                }
+
                 requestAnimationFrame(handleFrameSequence);
-            }; requestAnimationFrame(handleFrameSequence);
-        } initiatePrecisionChronometerTick();
+            };
+            requestAnimationFrame(handleFrameSequence);
+        }
+        initiatePrecisionChronometerTick();
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            const cleanText = textBody.replace(/🤖|🚫/g, ''); speakNaturalHuman(`${senderName} says: ${cleanText}`);
+            const cleanText = textBody.replace(/🤖|🚫/g, '');
+            speakNaturalHuman(`${senderName} says: ${cleanText}`);
         }
 
-        window.initiateCallMatrix = function(type) {
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); if(!targetUid) return;
-            const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid);
-            document.getElementById('callTargetName').innerText = userMatch ? userMatch.clientName : "Contact User";
-            document.getElementById('callTargetAvatar').src = userMatch && userMatch.avatar ? userMatch.avatar : defaultAvatarSvg;
-            document.getElementById('callStatusText').innerText = type === 'video' ? "📹 Secure Video Calling..." : "📞 Secure Audio Calling...";
-            document.getElementById('matrixCallOverlay').classList.remove('hidden');
-            playSynthesizedSound(440, 'sine', 1); setTimeout(() => playSynthesizedSound(440, 'sine', 1), 2000);
-        };
-
-        window.endMatrixCall = function() {
-            document.getElementById('matrixCallOverlay').classList.add('hidden');
-            playSynthesizedSound(200, 'sawtooth', 0.5);
-        };
-
-        window.setupReplyContext = function(msgKey, text) {
-            removeContextDropdownMenuNode();
-            MatrixSystemState.set('currentReplyPayload', text);
-            document.getElementById('replyContextText').innerText = text;
-            document.getElementById('replyContextBanner').classList.remove('hidden');
-            document.getElementById('chatCoreMessageTextInput').focus();
-            playSynthesizedSound(880, 'sine', 0.1);
-        };
-
-        window.cancelReplyContext = function() {
-            MatrixSystemState.set('currentReplyPayload', null);
-            document.getElementById('replyContextBanner').classList.add('hidden');
-        };
-
-        window.starMessageAction = function(msgKey) {
-            removeContextDropdownMenuNode();
-            let stars = JSON.parse(localStorage.getItem('nexus_starred_msgs')) || [];
-            stars.push(msgKey); localStorage.setItem('nexus_starred_msgs', JSON.stringify(stars));
-            alert("⭐ Message encrypted and Starred locally.");
-            renderActiveChatConversationLogs();
-        };
-
-        window.triggerForgotIDModal = function() { /* Retained Logic */ 
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>🆔 Recover System ID</h4>
-                <input type="text" id="recoverIdPhone" class="nexus-popup-input-field" placeholder="Contact No (10 Digits)" maxlength="10">
-                <input type="date" id="recoverIdDOB" class="nexus-popup-input-field"><div id="forgotIdResultNode" style="margin-top:15px; font-weight:bold; color:var(--neon-cyan);"></div>
-                <div class="nexus-popup-flex-btns"><button onclick="executeForgotIdVerificationSearch()" class="nexus-popup-btn primary-btn">SEARCH</button><button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button></div></div>`;
+        window.triggerForgotIDModal = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🆔 Recover System ID Vector</h4>
+                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:15px;">Enter parameters to match credentials:</p>
+                    <input type="text" id="recoverIdPhone" class="nexus-popup-input-field" placeholder="Registered Contact No (10 Digits)" maxlength="10">
+                    <input type="date" id="recoverIdDOB" class="nexus-popup-input-field">
+                    <div id="forgotIdResultNode" style="margin-top:15px; font-weight:bold; color:var(--neon-cyan); font-size:1.1rem;"></div>
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="executeForgotIdVerificationSearch()" class="nexus-popup-btn primary-btn">SEARCH MATCH</button>
+                        <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
+                    </div>
+                </div>
+            `;
             wrapper.classList.remove('hidden');
         };
 
         window.executeForgotIdVerificationSearch = function() {
-            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value; const resNode = document.getElementById('forgotIdResultNode');
+            const phone = document.getElementById('recoverIdPhone').value.trim();
+            const dob = document.getElementById('recoverIdDOB').value;
+            const resNode = document.getElementById('forgotIdResultNode');
             if(!phone || !dob) { alert("Please complete both parameters."); return; }
+            
             let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
-            if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> ID: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`; playSynthesizedSound(880, 'sine', 0.15); } 
-            else { resNode.innerText = "❌ No identity match."; playSynthesizedSound(140, 'sawtooth', 0.3); }
+            if(matchedUser) {
+                resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#fff; background:#00f2fe; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
+                playSynthesizedSound(880, 'sine', 0.15);
+            } else {
+                resNode.innerText = "❌ No identity match inside cloud matrix structure.";
+                playSynthesizedSound(140, 'sawtooth', 0.3);
+            }
         };
 
-        window.triggerForgotPasswordMatrixModal = function() { /* Retained Logic */ };
-        window.switchPasswordModalSection = function(type) { /* Retained Logic */ };
-        window.executeDispatchPasswordResetSignalToAdmin = function() { /* Retained Logic */ };
-        window.executeDirectPasswordCredentialsSwap = function() { /* Retained Logic */ };
+        window.triggerForgotPasswordMatrixModal = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🔑 Password Management System</h4>
+                    <div class="portal-matrix-tabs" style="margin-bottom:15px;">
+                        <button class="hud-tab active" id="tabPassResetReq" onclick="switchPasswordModalSection('request')">Request Reset</button>
+                        <button class="hud-tab" id="tabPassChangeDirect" onclick="switchPasswordModalSection('change')">Change Password</button>
+                    </div>
+                    
+                    <div id="sectionPasswordResetRequest">
+                        <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:12px;">Verify details to dispatch an administrative alert flag:</p>
+                        <input type="text" id="reqPassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="text" id="reqPassPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10">
+                        <input type="date" id="reqPassDOB" class="nexus-popup-input-field">
+                        <button onclick="executeDispatchPasswordResetSignalToAdmin()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px;">SEND RESET SIGNAL</button>
+                    </div>
+
+                    <div id="sectionPasswordChangeDirect" class="hidden">
+                        <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:12px;">Instant key credential replacement layout:</p>
+                        <input type="text" id="changePassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="password" id="changePassOld" class="nexus-popup-input-field" placeholder="Current Old Password">
+                        <input type="password" id="changePassNew" class="nexus-popup-input-field" placeholder="Set New Secure Password">
+                        <button onclick="executeDirectPasswordCredentialsSwap()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60);">UPDATE PASSWORD</button>
+                    </div>
+
+                    <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CANCEL</button>
+                </div>
+            `;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.switchPasswordModalSection = function(type) {
+            const btnReq = document.getElementById('tabPassResetReq');
+            const btnChange = document.getElementById('tabPassChangeDirect');
+            const secReq = document.getElementById('sectionPasswordResetRequest');
+            const secChange = document.getElementById('sectionPasswordChangeDirect');
+            
+            btnReq.classList.remove('active'); btnChange.classList.remove('active');
+            if(type === 'request') {
+                btnReq.classList.add('active'); secReq.classList.remove('hidden'); secChange.classList.add('hidden');
+            } else {
+                btnChange.classList.add('active'); secReq.classList.add('hidden'); secChange.classList.remove('hidden');
+            }
+        };
+
+        window.executeDispatchPasswordResetSignalToAdmin = function() {
+            const uid = document.getElementById('reqPassUID').value.trim();
+            const phone = document.getElementById('reqPassPhone').value.trim();
+            const dob = document.getElementById('reqPassDOB').value;
+
+            if(!uid || !phone || !dob) { alert("All verification parameters required."); return; }
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            
+            if(userMatch) {
+                const reqNodeRef = push(ref(db, 'password_forget_signals'));
+                set(reqNodeRef, {
+                    signalID: reqNodeRef.key,
+                    targetUID: userMatch.id,
+                    clientName: userMatch.clientName,
+                    phone: userMatch.contact,
+                    epochTime: Date.now()
+                }).then(() => {
+                    closeCustomInlinePopupEngine();
+                    const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+                    wrapper.innerHTML = `
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="border-color:var(--neon-pink); max-width:480px;">
+                            <h4 style="color:var(--neon-pink); text-shadow:0 0 10px var(--neon-pink);">⏳ REQUEST LOGGED</h4>
+                            <div style="font-size:1.05rem; line-height:1.6; font-weight:700; margin-bottom:15px; text-align:left; color:#fff; font-family:'Rajdhani';">
+                                <p style="margin-bottom:10px; border-bottom:1px dashed rgba(255,255,255,0.1); padding-bottom:8px;">🇮🇳 <b>Hindi:</b> Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
+                                <p>🇬🇧 <b>English:</b> Admin will assist you within 48 hours and your password will be shared to your registered contact number via SMS text.</p>
+                            </div>
+                            <button onclick="closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="background:var(--neon-pink); color:#fff; width:100%;">UNDERSTOOD</button>
+                        </div>
+                    `;
+                    wrapper.classList.remove('hidden');
+                    speakNaturalHuman("Request transmitted. Assistance loop active within forty-eight hours.");
+                });
+            } else {
+                alert("❌ Input fields mismatch. Verification sequence rejected inside cloud matrix.");
+            }
+        };
+
+        window.executeDirectPasswordCredentialsSwap = function() {
+            const uid = document.getElementById('changePassUID').value.trim();
+            const oldPass = document.getElementById('changePassOld').value.trim();
+            const newPass = document.getElementById('changePassNew').value.trim();
+
+            if(!uid || oldPass === "" || !newPass) { alert("Please complete all fields."); return; }
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
+
+            if(userMatch) {
+                update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => {
+                    closeCustomInlinePopupEngine();
+                    alert("✅ Password updated completely inside Mainframe. Sync live parameters.");
+                    playSynthesizedSound(1000, 'sine', 0.2);
+                });
+            } else {
+                alert("❌ Verification Failed: Invalid current Old Password signature mapping.");
+            }
+        };
 
         window.toggleAIMatrixAssistantChannel = function() {
-            let activeState = !MatrixSystemState.get('isAIAssistantActiveState'); MatrixSystemState.set('isAIAssistantActiveState', activeState);
+            let activeState = !MatrixSystemState.get('isAIAssistantActiveState');
+            MatrixSystemState.set('isAIAssistantActiveState', activeState);
             const toggleBtn = document.getElementById('btnAIAssistantToggle');
-            if(activeState) { toggleBtn.innerText = "🤖 AI CORE: ACTIVE"; toggleBtn.style.background = "rgba(255, 0, 127, 0.25)"; toggleBtn.style.borderColor = "var(--neon-pink)"; toggleBtn.style.color = "var(--neon-pink)"; speakNaturalHuman("AI Matrix active."); } 
-            else { toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.background = "rgba(0,242,254,0.15)"; toggleBtn.style.borderColor = "var(--neon-cyan)"; toggleBtn.style.color = "var(--neon-cyan)"; }
+            if(activeState) {
+                toggleBtn.innerText = "🤖 AI CORE: ACTIVE";
+                toggleBtn.style.background = "rgba(255, 0, 127, 0.25)";
+                toggleBtn.style.borderColor = "var(--neon-pink)";
+                toggleBtn.style.color = "var(--neon-pink)";
+                speakNaturalHuman("AI Matrix assistant synchronized.");
+            } else {
+                toggleBtn.innerText = "🤖 AI CORE: OFF";
+                toggleBtn.style.background = "rgba(0,242,254,0.15)";
+                toggleBtn.style.borderColor = "var(--neon-cyan)";
+                toggleBtn.style.color = "var(--neon-cyan)";
+            }
         };
 
         function processAIMatrixAssistantResponseStream(userPromptText) {
-            const aiPhrasesArr = ["Matrix security transmission processed successfully.", "Holographic diagnostic grid stable.", "Quantum protocol initialized.", "Identity signature validated."];
+            const aiPhrasesArr = [
+                "Matrix security transmission processed successfully.",
+                "Holographic diagnostic grid stable. Shashi Mainframe online.",
+                "Quantum protocol initialized. Secure cluster channel retained.",
+                "Identity signature validated across the Firebase cluster loop.",
+                "All parameters active. Energy core output stable at 100%."
+            ];
             const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const currentUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const currentUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            const clientNameLabel = currentUserObj ? currentUserObj.clientName : "Unknown Client";
+            
             setTimeout(() => {
-                const aiPacketRef = push(ref(db, 'chats')); const aiMsgBody = `🤖 AI Assistant Override: ${pseudoResponse}`;
-                set(aiPacketRef, { sender: "MainframeAdmin", receiver: currentUid, textBody: aiMsgBody, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
-                    set(push(ref(db, 'ai_communications')), { customerID: currentUid, customerName: currentUserObj ? currentUserObj.clientName : "Unknown", query: userPromptText, response: aiMsgBody, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), fullDateString: new Date().toLocaleDateString() });
+                const aiPacketRef = push(ref(db, 'chats'));
+                const aiMsgBody = `🤖 AI Assistant Override: ${pseudoResponse}`;
+                
+                set(aiPacketRef, {
+                    sender: "MainframeAdmin",
+                    receiver: currentUid,
+                    textBody: aiMsgBody,
+                    read: false,
+                    epochTimeNode: Date.now(),
+                    timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                }).then(() => {
+                    const interceptRef = push(ref(db, 'ai_communications'));
+                    set(interceptRef, {
+                        customerID: currentUid,
+                        customerName: clientNameLabel,
+                        query: userPromptText,
+                        response: aiMsgBody,
+                        epochTimeNode: Date.now(),
+                        timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                        fullDateString: new Date().toLocaleDateString()
+                    });
                     autoNarrateChatMessage("AI Engine", pseudoResponse);
                 });
             }, 1000);
         }
 
         window.bootArcadeSubGame = function(gameModeId) {
-            currentArcadeEngineId = "tom"; if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
+            currentArcadeEngineId = "tom";
+            if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
             if (tomSpeechRecognitionInstance) { tomSpeechRecognitionInstance.stop(); isTomListeningStateActive = false; }
-            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); initializeTalkingTomAudioRecognitionEngine();
+            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
+            initializeTalkingTomAudioRecognitionEngine();
         };
 
-        function executeTalkingTomRenderCycle() { /* Arcade Render Retained */ }
-        function initializeTalkingTomAudioRecognitionEngine() { /* Arcade Audio Retained */ }
-        window.toggleTalkingTomVoiceListenerEngine = function() { /* Arcade Voice Control Retained */ };
-        function executeHighPitchTomVoiceEchoPlayback(audioStringMsg) { /* Voice Synth Retained */ }
-        window.executeVirtualTomSpeechLoop = function() { /* Loop Retained */ };
+        function executeTalkingTomRenderCycle() {
+            if (currentArcadeEngineId !== 'tom' || !canvasCtx) return;
+            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
+            virtualTomTalkingAnimationCycle += 0.25;
+            
+            let catGlowHead = canvasCtx.createRadialGradient(300, 150, 10, 300, 150, 80);
+            catGlowHead.addColorStop(0, '#95a5a6'); catGlowHead.addColorStop(1, '#7f8c8d');
+            canvasCtx.fillStyle = catGlowHead; canvasCtx.beginPath();
+            canvasCtx.arc(300, 150, 75, 0, Math.PI*2); canvasCtx.fill();
+
+            canvasCtx.fillStyle = '#ffffff'; canvasCtx.beginPath();
+            canvasCtx.arc(270, 135, 16, 0, Math.PI*2); canvasCtx.arc(330, 135, 16, 0, Math.PI*2); canvasCtx.fill();
+            canvasCtx.fillStyle = '#00f2fe'; canvasCtx.beginPath();
+            let pupOffset = Math.sin(virtualTomTalkingAnimationCycle)*3;
+            canvasCtx.arc(270 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.arc(330 + pupOffset, 135, 7, 0, Math.PI*2); canvasCtx.fill();
+
+            let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 16);
+            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath();
+            canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
+
+            if (isTomListeningStateActive && audioAnalyserNode) {
+                audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
+                canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
+                for (let i = 0; i < 30; i++) {
+                    let barH = (visualizerDataArray[i] || 0) * 0.5 || 5;
+                    canvasCtx.fillRect(60 + i * 16, 280 - barH / 2, 10, barH);
+                }
+            } else {
+                canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+                for(let b=0; b<20; b++) {
+                    let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35);
+                    canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH);
+                }
+            }
+            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
+        }
+
+        function initializeTalkingTomAudioRecognitionEngine() {
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (window.SpeechRecognition) {
+                tomSpeechRecognitionInstance = new window.SpeechRecognition();
+                tomSpeechRecognitionInstance.continuous = false;
+                tomSpeechRecognitionInstance.interimResults = false;
+                
+                tomSpeechRecognitionInstance.onresult = function(eventObj) {
+                    const spokenPayloadText = eventObj.results[0][0].transcript;
+                    if(spokenPayloadText) {
+                        executeHighPitchTomVoiceEchoPlayback(spokenPayloadText);
+                    }
+                };
+
+                tomSpeechRecognitionInstance.onend = function() {
+                    isTomListeningStateActive = false;
+                    const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
+                    if(btn) { btn.innerText = "🎙 LISTEN"; btn.style.background = "var(--neon-pink)"; }
+                    if (audioMicStreamNode) {
+                        audioMicStreamNode.getTracks().forEach(track => track.stop());
+                    }
+                };
+            }
+        }
+
+        window.toggleTalkingTomVoiceListenerEngine = function() {
+            if(!tomSpeechRecognitionInstance) { alert("Voice Speech recognition interface not supported."); return; }
+            if(!isTomListeningStateActive) {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    audioMicStreamNode = stream;
+                    audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
+                    audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
+                    let source = audioVisualizerContextNode.createMediaStreamSource(stream);
+                    source.connect(audioAnalyserNode);
+                    audioAnalyserNode.fftSize = 64;
+                    visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
+
+                    tomSpeechRecognitionInstance.start();
+                    isTomListeningStateActive = true;
+                    document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
+                    document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
+                }).catch(() => { alert("Mic access matrix link rejected."); });
+            } else {
+                tomSpeechRecognitionInstance.stop();
+            }
+        };
+
+        function executeHighPitchTomVoiceEchoPlayback(audioStringMsg) {
+            if(!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg);
+            syntaxUtterance.pitch = 1.75; 
+            syntaxUtterance.rate = 1.1;
+            window.speechSynthesis.speak(syntaxUtterance);
+        }
+
+        window.executeVirtualTomSpeechLoop = function() {
+            const txt = document.getElementById('virtualTomTextInput').value.trim();
+            if(!txt) return;
+            executeHighPitchTomVoiceEchoPlayback(txt);
+            document.getElementById('virtualTomTextInput').value = "";
+        };
 
         window.clearCurrentChatConversation = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
             if(!currentUid || !targetUid) return;
-            if(confirm("Clear your local screen chat record?")) {
+            if(confirm("Are you sure you want to clear your local screen chat record?")) {
                 get(ref(db, 'chats')).then((snap) => {
-                    const data = snap.val(); if(data) {
-                        Object.keys(data).forEach(key => { const msg = data[key]; if((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged"); });
+                    const data = snap.val();
+                    if(data) {
+                        Object.keys(data).forEach(key => {
+                            const msg = data[key];
+                            if((msg.sender === currentUid && msg.receiver === targetUid) ||
+                               (msg.sender === targetUid && msg.receiver === currentUid)) {
+                                localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged");
+                            }
+                        });
                         renderActiveChatConversationLogs();
                     }
                 });
             }
         };
 
-        window.switchChatWallpaperMatrix = function() {
-            const wallpapersArr = ["linear-gradient(135deg, #0f2027, #203a43, #2c5364)", "linear-gradient(135deg, #1d976c, #93f9b9)", "linear-gradient(135deg, #ef32d9, #89fffd)", "radial-gradient(circle at center, #090f14 0%, #02050e 100%)"];
-            let nextWallIdx = (parseInt(localStorage.getItem('nexus_chat_wall_idx') || 0) + 1) % wallpapersArr.length;
-            localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
-            document.querySelector('.chat-stream-message-container').style.background = wallpapersArr[nextWallIdx];
-        };
-
         window.handleUserTypingSimulationTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const inputField = document.getElementById('chatCoreMessageTextInput');
-            if (inputField) document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const inputField = document.getElementById('chatCoreMessageTextInput');
+            if (inputField) {
+                document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`;
+            }
             if(!currentUid || !targetUid) return;
             set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid });
-            clearTimeout(typingTimeoutTrackerNode); typingTimeoutTrackerNode = setTimeout(() => { remove(ref(db, `typing_states/${currentUid}`)); }, 1500);
-        };
-
-        window.closeCustomInlinePopupEngine = function() { const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(wrapper) wrapper.classList.add('hidden'); };
-        window.wipeNoteInterfaceToBlankTrigger = function() { /* Notes Logic */ };
-        window.triggerEmbeddedNoteFormat = function(styleProperty) { /* Format Logic */ };
-        window.triggerEmbeddedNoteHighlight = function(colorHexCode) { /* Highlights */ };
-        window.triggerEmbeddedNoteFontColor = function(colorHexCode) { /* Font Color */ };
-        window.toggleRichNotesVoiceStreamRecorder = function() { /* Voice Recorder */ };
-        window.dispatchCompiledNoteToCloudMatrix = function() { /* Dispatch Note */ };
-        function fetchRealtimeNotesCloudData() { /* Fetch Notes */ }
-        window.executeCloudNotePurgeMatrix = function(noteIdSignature) { /* Purge */ };
-
-        window.switchCustomerChannel = function(channelId) {
-            MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
-            ['Upload', 'Notes', 'Gaming', 'Chat'].forEach(c => { document.getElementById(`btnChannel${c}`).classList.remove('active'); document.getElementById(`customer${c}InterfaceBlock`).classList.add('hidden'); });
-            document.getElementById(`btnChannel${channelId.charAt(0).toUpperCase() + channelId.slice(1)}`).classList.add('active');
-            document.getElementById(`customer${channelId.charAt(0).toUpperCase() + channelId.slice(1)}InterfaceBlock`).classList.remove('hidden');
-            if(channelId === 'upload') renderCustomerLiveTracker(); else if(channelId === 'notes') { wipeNoteInterfaceToBlankTrigger(); fetchRealtimeNotesCloudData(); } else if(channelId === 'gaming') bootArcadeSubGame('tom'); else if(channelId === 'chat') { initializeCrossLinkChatPanel(); renderInteractiveDrawersContent(); }
-        };
-
-        window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) { /* Modal logic retained */ };
-        window.triggerUserProfileAvatarDropdownEngine = function() { /* Dropdown logic retained */ };
-        window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) { /* Context Menu retained */ };
-        function removeAvatarRightClickDropdownNode() { const node = document.getElementById('avatarContextDropdownMatrixOverlay'); if(node) node.remove(); }
-        window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) { /* Avatar Override */ };
-        window.commitTargetedAvatarClear = function(uid) { /* Clear target avatar */ };
-        window.executeTriggeredContextNicknameChange = function(targetUserId, clientRealName) { /* Change Nickname */ };
-        window.commitAvatarClearBlankNode = function() { /* Self Avatar clear */ };
-
-        window.executeCosmicThemeToggle = function() {
-            const bodyNode = document.body; bodyNode.classList.toggle('light-theme-active');
-            document.getElementById('themeToggleBtnLabel').innerText = bodyNode.classList.contains('light-theme-active') ? "🌑 DARK MODE" : "🌓 LIGHT MODE";
-            speakNaturalHuman(bodyNode.classList.contains('light-theme-active') ? "Light mode active." : "Dark mode active.");
-        };
-
-        function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
-            if(savedUserToken) {
-                if (localStorage.getItem('nexus_hard_lockout_flag_' + savedUserToken.toLowerCase()) === 'true') { triggerLockoutTerminalUI(savedUserToken); return; }
-                MatrixSystemState.set('loggedInCustomerID', savedUserToken); MatrixSystemState.set('currentMode', savedMode); MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
-                document.getElementById('mainStage').style.display = 'none'; document.getElementById('shashiBrandingHeader').style.opacity = '0';
-                if(savedMode === 'admin') { document.getElementById('adminDashboard').classList.remove('hidden'); loadAdminSubmissions(); } else { document.getElementById('customerDashboard').classList.remove('hidden'); switchCustomerChannel(savedWorkspaceChan); }
-            }
-        }
-
-        // Firebase Event Listeners
-        onValue(ref(db, 'mainframeAdmin'), (snapshot) => { const d = snapshot.val(); if(d && d.id && d.pass) { MatrixSystemState.set('cachedAdminMainframeRoute', {masterId: d.id, masterPass: d.pass}); } });
-        onValue(ref(db, 'system_broadcast'), (snapshot) => { const b = snapshot.val(); const bnr = document.getElementById('customerMarqueeContainer'); const txt = document.getElementById('customerMarqueeText'); if(bnr && txt && MatrixSystemState.get('currentMode') === 'user') { if(b && b.text) { txt.innerText = `🚨 BROADCAST: ${b.text}`; bnr.style.display = 'block'; } else bnr.style.display = 'none'; } });
-        onValue(ref(db, 'users'), (snapshot) => {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const userArr = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalUsersArr', userArr);
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) { renderUserControlPanel(); if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') renderAdminSpyUserList(); if(MatrixSystemState.get('activeAdminSubSection') === 'creation') renderLiveCreationStatsSummary(); }
-            if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) initializeCrossLinkChatPanel();
-            if(currentUid && MatrixSystemState.get('currentMode') === 'user') { const myProfile = userArr.find(u => u.id === currentUid); if(myProfile) { if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar; document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`; } }
-        });
-        onValue(ref(db, 'policies'), (snapshot) => { MatrixSystemState.set('cachedGlobalPolicyArr', snapshot.val() ? Object.values(snapshot.val()) : []); if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) renderPolicyCardsBlock(); if(MatrixSystemState.get('loggedInCustomerID')) renderCustomerLiveTracker(); });
-        onValue(ref(db, 'ai_communications'), (snapshot) => { MatrixSystemState.set('cachedGlobalAiCommsArr', snapshot.val() ? Object.values(snapshot.val()) : []); if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') renderAdminAiInterceptionSpyBlock(); });
-        onValue(ref(db, 'password_forget_signals'), (snapshot) => { MatrixSystemState.set('cachedGlobalForgetSignalsArr', snapshot.val() ? Object.values(snapshot.val()) : []); if(MatrixSystemState.get('activeAdminSubSection') === 'stats') renderDynamicServerDiagnosticsDashboard(); });
-        
-        onValue(ref(db, 'chats'), (snapshot) => {
-            const data = snapshot.val(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel'); const adminSub = MatrixSystemState.get('activeAdminSubSection');
-            if(activeChan === 'chat' && currentUid) {
-                renderActiveChatConversationLogs();
-                if(data && MatrixSystemState.get('activeSelectedChatTargetUserId')) {
-                    const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-                    Object.keys(data).forEach(key => { const m = data[key]; if(m.sender === targetUid && m.receiver === currentUid && !m.read) update(ref(db, `chats/${key}`), { read: true }); });
-                }
-                calculateUnreadBadgeCountersTrack(data);
-            }
-            if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden') && adminSub === 'spychat') { renderAdminSpyChatConsoleLogs(); renderAdminSpyUserList(); }
-        });
-
-        onValue(ref(db, 'typing_states'), (snapshot) => {
-            const data = snapshot.val(); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const typingNode = document.getElementById('whatsappTypingStatusIndicator');
-            if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid) { if(typingNode) typingNode.classList.remove('hidden'); } else { if(typingNode) typingNode.classList.add('hidden'); }
-        });
-        
-        onValue(ref(db, 'incident_alerts'), (snapshot) => { /* Lockout Handler Retained */ });
-        window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { /* Dissmiss Lockout Retained */ };
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!chatsSnap || !currentUid) return;
-            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
-                let unreadCount = 0; Object.values(chatsSnap).forEach(msg => { if(msg.sender === user.id && msg.receiver === currentUid && !msg.read && !localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++; });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`); if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
-            });
-        }
-
-        window.initializeCrossLinkChatPanel = function() {
-            const targetContainer = document.getElementById('chatTargetContainerView');
-            const statusContainer = document.getElementById('whatsappStatusList');
-            if(!targetContainer) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            const masterAdminPseudoUser = { id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true };
-            const fullTargetList = [masterAdminPseudoUser, ...prospectiveTargets];
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-
-            // Render Status Area (WhatsApp Pro feature)
-            if(statusContainer) {
-                statusContainer.innerHTML = `<img class="status-circle" src="${document.getElementById('customerLiveAvatarPreview').src}" onclick="alert('Upload your Status Node')" style="border-color:#f1c40f;" title="My Status">` + 
-                prospectiveTargets.map(u => `<img class="status-circle" src="${u.avatar ? u.avatar : defaultAvatarSvg}" onclick="alert('Viewing Secure Status Node of @${u.id}')" title="${u.clientName}">`).join('');
-            }
-
-            targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
-                const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
-                const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
-
-                return `
-                    <div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="setOperationalChatTargetId('${user.id}')">
-                        <img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')">
-                        <div class="whatsapp-user-info">
-                            <div class="whatsapp-user-name"><span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span></div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
-                                <span class="whatsapp-user-id">@${user.id}</span>
-                                <div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
-                            </div>
-                        </div>
-                    </div>`;
-            }).join('');
             
-            if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) setOperationalChatTargetId(fullTargetList[0].id);
-        };
-
-        window.debounceFilterClientChatContactList = function() {
-            clearTimeout(searchDebounceTrackerNode);
-            searchDebounceTrackerNode = setTimeout(() => {
-                const query = document.getElementById('clientContactSearchField').value.toLowerCase();
-                document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
-                    node.style.display = node.innerText.toLowerCase().includes(query) ? "flex" : "none";
-                });
-            }, 300); // 300ms debounce for smoother UI fast filtering
-        };
-
-        window.setOperationalChatTargetId = function(uid) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
-            const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-            document.getElementById('chatActiveUserHeaderNode').innerText = userMatch ? userMatch.clientName : (uid === "MainframeAdmin" ? "Mainframe Admin Shashi" : "Pipeline context...");
-            document.getElementById('chatActiveHeaderAvatarNode').src = userMatch && userMatch.avatar ? userMatch.avatar : defaultAvatarSvg;
-            renderActiveChatConversationLogs();
-        };
-
-        window.addMessageReactionEngine = function(msgKey, reactionEmoji) { update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => renderActiveChatConversationLogs()); };
-
-        window.renderActiveChatConversationLogs = function() {
-            const wrapper = document.getElementById('chatMessagesScrollWrapper');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!wrapper || !targetUid) return;
-            const starredMsgsArr = JSON.parse(localStorage.getItem('nexus_starred_msgs')) || [];
-
-            get(ref(db, 'chats')).then((snapshot) => {
-                const data = snapshot.val();
-                if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Pipeline Empty.</div>`; return; }
-                let htmlCollector = "";
-                
-                requestAnimationFrame(() => {
-                    Object.keys(data).forEach(key => {
-                        const msg = data[key];
-                        if((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) {
-                            if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
-                            const isMyMsg = (msg.sender === currentUid);
-                            const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                            const starIcon = starredMsgsArr.includes(key) ? `<span class="msg-starred-icon">⭐</span>` : "";
-                            
-                            let assetHTML = "";
-                            if(msg.mediaPayload) {
-                                if(msg.mediaPayload.startsWith("data:audio")) assetHTML = `<br><audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`;
-                                else assetHTML = `<br><img src="${msg.mediaPayload}" onclick="triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="max-width:180px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`;
-                            }
-                            
-                            // PRO FEATURE: Reply Quote Block HTML
-                            let quotedBlockHTML = msg.replyTarget ? `<div class="quoted-msg-box"><span class="quote-author">${isMyMsg ? 'You' : 'Sender'} Replied to:</span>${msg.replyTarget}</div>` : "";
-                            let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-                            
-                            htmlCollector += `
-                                <div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'}" style="position:relative;" onclick="spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="addMessageReactionEngine('${key}', '❤️')">
-                                    ${quotedBlockHTML}
-                                    <div>${msg.textBody}</div>${assetHTML}
-                                    <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''} ${starIcon}</div>
-                                    ${reactionMarkup}
-                                </div>`;
-                        }
-                    });
-                    wrapper.innerHTML = htmlCollector || `<div style="color:#8696a0; font-size:0.95rem; margin:auto; font-weight: bold;">🔒 Encryption verified.</div>`;
-                    wrapper.scrollTop = wrapper.scrollHeight;
-                });
-            });
-        };
-
-        window.triggerEnlargedAttachmentView = function(imgSrc) { /* Logic Retained */ };
-
-        window.dispatchMatrixChatMessage = function() {
-            const inputField = document.getElementById('chatCoreMessageTextInput'); if(!inputField) return;
-            const textBody = inputField.value.trim(); const liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const currentReplyText = MatrixSystemState.get('currentReplyPayload');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-
-            if(!textBody && !liveChatB64) return;
-            let finalMessageText = textBody || (liveChatB64.startsWith("data:audio") ? "🎙 Voice Audio Transmission" : "📎 Document Asset Attachment");
-
-            const newChatPacketRef = push(ref(db, 'chats'));
-            set(newChatPacketRef, {
-                sender: currentUid, receiver: targetUid, textBody: finalMessageText, mediaPayload: liveChatB64,
-                replyTarget: currentReplyText || null, // Adds Reply context reference
-                read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                inputField.value = ""; document.getElementById('chatInputCharCounter').innerText = "0/250";
-                MatrixSystemState.resetChatAssets(); cancelReplyContext();
-                document.getElementById('chatAttachmentStatusFeedback').innerText = "";
-                document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.add('hidden');
+            clearTimeout(typingTimeoutTrackerNode);
+            typingTimeoutTrackerNode = setTimeout(() => {
                 remove(ref(db, `typing_states/${currentUid}`));
-                renderActiveChatConversationLogs();
-                autoNarrateChatMessage("You", finalMessageText);
-                if(MatrixSystemState.get('isAIAssistantActiveState')) processAIMatrixAssistantResponseStream(finalMessageText);
-            });
+            }, 1500);
         };
 
-        window.renderInteractiveDrawersContent = function() { /* Emote Drawers Retained */ };
-        window.injectEmojiToInputField = function(emojiText) { const input = document.getElementById('chatCoreMessageTextInput'); if(input) { input.value += emojiText; input.focus(); } };
-        window.transmitDirectGifMessage = function(gifUrl) { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl); document.getElementById('chatCoreMessageTextInput').value = ""; dispatchMatrixChatMessage(); };
-        window.toggleEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('mainframeGifContainerBox').classList.add('hidden'); document.getElementById('systemEmojiMatrixBoxNode').classList.toggle('hidden'); };
-        window.toggleGifMatrixDropdownPanel = function(event) { event.stopPropagation(); document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.toggle('hidden'); };
-        window.toggleVoiceAudioRecordingEngine = function() { /* WebM record retained */ };
-
-        // Admin & Management Functions Retained exactly
-        window.switchAdminSubSection = function(sectionId) { /* Tab Switcher */ };
-        window.dispatchMainframeGlobalBroadcast = function() { /* Broadcaster */ };
-        window.clearMainframeGlobalBroadcast = function() { /* Clear Broadcaster */ };
-        window.loadAdminSubmissions = function(){ /* Admin HTML Layout generation - omitted repetitive HTML here for char limit safety but structural logic retained entirely in above script blocks */ };
-        window.renderLiveCreationStatsSummary = function() { /* Stats Gen */ };
-        window.createNewCustomerNode = function() { /* Node Creator */ };
-        window.renderUserControlPanel = function() { /* Control Panel */ };
-        window.toggleUserNodeActivationState = function(uid, selectValue) { /* Toggle DB State */ };
-        window.executeAdminContextClipboardCopy = function(element, extractionValue) { /* Clipboard Tool */ };
-        window.wipeUserPermanently = function(uid) { remove(ref(db, 'users/' + uid)); };
-        window.renderPolicyCardsBlock = function() { /* Policy Blocks */ };
-        window.submitPolicyForm = function() { /* Submit Policy to Firebase */ };
-        window.renderCustomerLiveTracker = function() { /* Live Tracker Map */ };
-        window.transmitAdminResponse = function(policyKey) { /* Admin Comment Response */ };
-        window.purgeRegistryLog = function(policyKey) { /* Delete Record DB */ };
-        window.executeMainframeAdminSyncRoute = function() { /* Password Update Global DB */ };
-        window.alterClientCredentialsOverrideData = function(uid) { /* Override */ };
-        window.uploadUserProfileAvatarEngine = function(event) { /* Base64 Img DB Setup */ };
-        window.verifyInputIdentityProgress = function() { /* Focus Handler */ };
-        window.checkAutoLogin = function() { /* Logic */ };
-        window.processBinaryAttachment = function(event, type) { /* FileReader Logic */ };
-        window.speakNaturalHuman = function(textMessage) { /* Voice WebAPI Logic */ };
-        window.playSynthesizedSound = function(frequency, type, duration) { /* Web Audio API Tone Generator */ };
-        window.changeWorkspaceMode = function(mode) { /* User/Admin Mode Swap */ };
-        window.triggerLampActivationOverride = function() { /* Cinematic Entrance */ };
-        window.toggleGlobalSystemAudio = function() { /* Toggle */ };
-        function triggerLockoutTerminalUI(usernameString) { /* Lockout CSS Scene */ }
-        window.executeClusterLogin = function(event) { /* Core Login Verification DB Rules */ };
-        window.renderDynamicServerDiagnosticsDashboard = function() { /* Analytics Stats Builder */ };
-        window.renderAdminAiInterceptionSpyBlock = function() { /* Admin Spy HTML Map */ };
-        window.filterCardsEngine = function(){ /* Filter */ };
-        window.logoutEngine = function() { /* Session Kill */ };
-        window.renderAdminSpyUserList = function() { /* Admin List View */ };
-        window.setAdminSpyTargetConversationTrack = function(userId) { /* Set Target UID Admin */ };
-        window.renderAdminSpyChatConsoleLogs = function() { /* Spy Chat */ };
-        window.dispatchAdminSpyInterceptionMsg = function() { /* Send Spy Msg */ };
-
-        window.spawnContextDropdownMenuOverlay = function(event, messageKey, textPayload, mediaUrl, epochTimeNodeVal) {
-            event.stopPropagation(); removeContextDropdownMenuNode();
-            const menu = document.createElement('div'); menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicMsgContextNodeOverlay";
-            let downloadBtnHTML = mediaUrl ? `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${mediaUrl}')">💾 Save Asset</button>` : `<button class="dropdown-action-row-btn" onclick="executePhysicalAssetDownloadEngine('${textPayload}', true)">💾 Save Text</button>`;
-            
-            // Added Reply Context and Star Message in Menu Overlay
-            menu.innerHTML = `
-                ${downloadBtnHTML}
-                <button class="dropdown-action-row-btn" onclick="setupReplyContext('${messageKey}', '${textPayload.replace(/'/g, "\\'")}')">↩️ Reply Message</button>
-                <button class="dropdown-action-row-btn" onclick="starMessageAction('${messageKey}')">⭐ Star Message</button>
-                <button class="dropdown-action-row-btn" onclick="triggerDirectMessageForwardPipeline('${messageKey}', '${textPayload.replace(/'/g, "\\'")}', '${mediaUrl}')">➡️ Forward SMS</button>
-                <button class="dropdown-action-row-btn delete-color" onclick="executeStructuralDeletionSelectionMatrix('${messageKey}', ${epochTimeNodeVal})">❌ Delete Node</button>
-            `;
-            document.body.appendChild(menu); menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
-            document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
+        window.closeCustomInlinePopupEngine = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(wrapper) wrapper.classList.add('hidden');
         };
 
-        function removeContextDropdownMenuNode() { const overlay = document.getElementById('dynamicMsgContextNodeOverlay'); if(overlay) overlay.remove(); }
-        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) { /* File Downloader */ };
-        window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) { /* Forward popup UI */ };
-        window.executeStructuralDeletionSelectionMatrix = function(messagePacketKey, epochTimeNodeVal) { /* Delete Dialog UI */ };
-        window.commitMessageErasureExecution = function(packetKey, purgeMode, epochTimeNodeVal = 0) { /* Execute Delete */ };
+        window.wipeNoteInterfaceToBlankTrigger = function() {
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.innerHTML = "";
+            notesVoicePayloadBase64Node = "";
+            autoGeneratedVoiceDurationString = "";
+            const logNode = document.getElementById('notesVoiceDurationLogNode');
+            if (logNode) logNode.innerText = "";
+            const dateField = document.getElementById('noteManualDateSelector');
+            if(dateField) dateField.removeAttribute('data-custom-lock');
+            playSynthesizedSound(880, 'sine', 0.1);
+        };
 
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 1000);
-    </script>
-</body>
-</html>
+        window.triggerEmbeddedNoteFormat = function(styleProperty) {
+            document.execCommand(styleProperty, false, null);
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
+        };
+
+        window.triggerEmbeddedNoteHighlight = function(colorHexCode) {
+            document.execCommand('backColor', false, colorHexCode);
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
+        };
+
+        window.triggerEmbeddedNoteFontColor = function(colorHexCode) {
+            document.execCommand('foreColor', false, colorHexCode);
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if (editor) editor.focus();
+        };
+
+        window.toggleRichNotesVoiceStreamRecorder = function() {
+            const recBtnNode = document.getElementById('noteAudioRecCoreBtn');
+            const pulseNode = document.getElementById('noteRecPulseIndicator');
+            const timerLogNode = document.getElementById('notesVoiceDurationLogNode');
+
+            if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
+                    notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj);
+                    notesAudioChunksCollectorArr = [];
+                    notesRecordingStartEpoch = Date.now();
+
+                    notesVoiceTimerIntervalTracker = setInterval(() => {
+                        const secondsTrack = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
+                        if (timerLogNode) timerLogNode.innerText = `⏱ [ Recording: ${secondsTrack}s ]`;
+                    }, 1000);
+
+                    notesMediaRecorderInstance.ondataavailable = eventPacket => {
