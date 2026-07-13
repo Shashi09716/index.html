@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V3.0</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V3.0 (Fixed & Upgraded)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Inter:wght@400;500;600&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -35,9 +35,6 @@
             --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
             --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
             --chat-wallpaper: #0b141a url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
-            --matrix-3d-shadow-cyan: 0 15px 30px rgba(0, 242, 254, 0.25);
-            --matrix-3d-shadow-pink: 0 15px 30px rgba(255, 0, 127, 0.25);
-            --matrix-3d-shadow-green: 0 15px 30px rgba(46, 204, 113, 0.25);
         }
 
         body.light-theme-active {
@@ -49,24 +46,24 @@
             --wa-bg: #f0f2f5;
             --wa-header: #f0f2f5;
             --wa-search-bg: #ffffff;
-            --wa-search-input: #f0f2f5;
+            --wa-search-input: #ffffff;
             --wa-msg-in: #ffffff;
             --wa-msg-out: #d9fdd3;
             --wa-text: #111b21;
             --wa-text-muted: #667781;
-            --wa-border: #e9edef;
+            --wa-border: #d1d7db;
             --wa-hover: #f5f6f6;
             
             --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.15);
             --lamp-chamak: 0 6px 24px rgba(0,0,0,0.2);
             --chat-wallpaper: #efeae2 url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
-            --matrix-3d-shadow-cyan: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --matrix-3d-shadow-pink: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --matrix-3d-shadow-green: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; user-select: none; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); }
+        
+        /* FIX 1: Ambient Canvas Overlapping - Set Z-Index to strictly background */
+        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
         
         /* --- NAVIGATION CONSOLE HEADER LAYER --- */
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
@@ -121,7 +118,7 @@
         .luminescent-node { width: 38px; height: 38px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; transition: 0.3s; margin-top: -5px;}
 
         /* --- ACCESS CORE LOGIN MAINFRAME HUD --- */
-        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
+        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--cyber-glow); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
         .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; pointer-events: all; }
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
@@ -132,23 +129,27 @@
         .hud-tab.active { background: rgba(241,196,15,0.25); color: #f1c40f; border: 2px solid rgba(241,196,15,0.5); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; display: flex; gap: 10px;}
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { flex: 1; padding: 18px 16px; background: rgba(2, 6, 20, 0.7); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        body.light-theme-active .hud-input-cluster input, body.light-theme-active .hud-input-cluster textarea { background: #fff; color: #000; }
         .hud-input-cluster textarea { height: 100px; resize: none; }
         .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; }
+        body.light-theme-active .hud-input-cluster label { color: #666; }
         .hud-input-cluster textarea ~ label { top: -14px; left: 10px; }
         .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label,
         .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -14px; left: 10px; background: var(--bg-prime); padding: 2px 8px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; font-weight: 900; }
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 6px 20px rgba(241,196,15,0.4); }
-        
+        .hud-engage-btn:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(241,196,15,0.6); }
+
         /* --- DASHBOARD WRAPPERS --- */
         .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; }
-        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1280px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; position: relative; z-index: 10; }
+        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1280px; box-shadow: var(--cyber-glow); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; position: relative; z-index: 10; }
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid var(--border-glass); padding-bottom: 18px; gap: 10px; flex-wrap: wrap; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; }
 
         .workspace-channel-selector, .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
+        body.light-theme-active .workspace-channel-selector, body.light-theme-active .admin-category-navbar { background: rgba(255,255,255,0.5); }
         .channel-tab-btn, .admin-nav-tab { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 12px; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .channel-tab-btn.active, .admin-nav-tab.active { background: linear-gradient(135deg, rgba(0, 242, 254, 0.35), rgba(0, 242, 254, 0.1)); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.8); box-shadow: 0 8px 20px rgba(0,242,254,0.3); transform: translateY(-4px); }
         .admin-nav-tab.active { background: linear-gradient(135deg, rgba(46, 204, 113, 0.35), rgba(46, 204, 113, 0.1)); color: #2ecc71; border-color: rgba(46, 204, 113, 0.8); }
@@ -161,12 +162,17 @@
 
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5); margin-bottom: 20px; text-shadow: 0 0 10px #f1c40f; }
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; }
+        body.light-theme-active .search-terminal-input, body.light-theme-active .giant-compiler-input { background: #fff; color:#000; }
 
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
         .hud-data-card { background: rgba(4, 14, 33, 0.85); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 16px; display: flex; flex-direction: column; gap: 14px; position: relative; transition: transform 0.3s ease; }
         .hud-data-card:hover { transform: translateY(-5px); box-shadow: 0 25px 45px rgba(0, 242, 254, 0.25); }
         
-        /* --- WHATSAPP CLONE COMPONENT SPACE --- */
+        /* --- RICH NOTES IDE CSS --- */
+        .note-tool-btn { background: rgba(4,15,36,0.5); border: 1px solid var(--border-glass); color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.3); }
+        .note-tool-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 15px #00f2fe; transform: translateY(-2px); }
+        
+        /* --- WHATSAPP CLONE COMPONENT SPACE (ADMIN & USER) --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 360px 1fr; gap: 0; height: 600px; background: var(--wa-bg); border-radius: 16px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; z-index: 15; }
         .chat-target-userlist-pane { background: var(--wa-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; height: 100%; }
         .whatsapp-search-box { padding: 10px 14px; background: var(--wa-search-bg); border-bottom: 1px solid var(--wa-border); }
@@ -181,7 +187,7 @@
         .whatsapp-user-name { font-weight: 600; font-size: 1.05rem; display: flex; align-items: center; justify-content: space-between; font-family: 'Inter', sans-serif; color: var(--wa-text); }
         
         .whatsapp-last-msg-preview { font-size: 0.85rem; color: var(--wa-text-muted); font-family: 'Inter', sans-serif; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
-        .whatsapp-meta-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; font-size: 0.75rem; color: var(--wa-text-muted); }
+        .whatsapp-unread-counter-pill { background: var(--wa-accent); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top:4px;}
 
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; }
         .chat-stream-header-bar { background: var(--wa-header); padding: 10px 16px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--wa-border); z-index: 10; }
@@ -209,18 +215,18 @@
         .whatsapp-circle-btn:hover { color: var(--wa-text); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 0.8s infinite alternate; }
 
-        .emoji-matrix-drawer { background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 95; position: relative; }
+        /* FIX 2: EMOJI DRAWER HIDDEN ISSUE - Absolute position within chat container */
+        .emoji-matrix-drawer { position: absolute; bottom: 70px; left: 0; right: 0; background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 150; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
         .emoji-item-node:hover { transform: scale(1.3); }
 
         .msg-interactive-dropdown-menu { position: absolute; background: var(--wa-search-input); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 100005; min-width: 180px; display: flex; flex-direction: column; padding: 6px 0; border: 1px solid var(--wa-border); }
-        .dropdown-action-row-btn { padding: 10px 16px; background: transparent; border: none; color: var(--wa-text); font-family: 'Inter', sans-serif; font-size: 0.95rem; text-align: left; cursor: pointer; width: 100%; }
+        .dropdown-action-row-btn { padding: 10px 16px; background: transparent; border: none; color: var(--wa-text); font-family: 'Inter', sans-serif; font-size: 0.95rem; text-align: left; cursor: pointer; width: 100%; transition: background 0.2s;}
         .dropdown-action-row-btn:hover { background: var(--wa-hover); }
 
         .wa-date-separator-row { display: flex; justify-content: center; margin: 12px 0; width: 100%; }
         .wa-date-pill-node { background: rgba(17, 27, 33, 0.7); color: #8696a0; padding: 6px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; font-family: 'Inter', sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
         .hidden { display: none !important; }
         
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(11, 20, 26, 0.85); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
@@ -240,14 +246,16 @@
             .giant-compiler-grid, .form-grid-layout, #policyCardsStack { grid-template-columns: 1fr !important; }
             .full-width-field { grid-column: span 1; }
             
-            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: 520px !important; }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 250px) !important; }
             .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
             .chat-stream-message-container { width: 100%; height: 100%; display: none; }
             
+            /* FIX 3: MOBILE BACK BUTTON GLITCH - Explicit display toggling */
             .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none !important; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-stream-message-container { display: flex !important; }
             .mobile-back-btn { display: inline-block !important; }
             .bubble-msg-wrapper { max-width: 85%; }
+            .emoji-matrix-drawer { grid-template-columns: repeat(4, 1fr); }
         }
         
         @media (min-width: 851px) {
@@ -361,8 +369,14 @@
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div style="background: rgba(3, 10, 26, 0.9); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px;">
                     <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 15px;">🧠 ADVANCED IDE WORD PROCESSOR</h3>
+                    <div style="display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap;">
+                        <button class="note-tool-btn" onclick="document.execCommand('bold', false, null)"><b>B</b></button>
+                        <button class="note-tool-btn" onclick="document.execCommand('italic', false, null)"><i>I</i></button>
+                        <button class="note-tool-btn" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+                        <button class="note-tool-btn" style="background:#00a884; color:#fff;" onclick="window.downloadNotesAsTxt()">💾 Save Offline (.txt)</button>
+                    </div>
                     <div style="border: 1px solid var(--border-glass); border-radius: 12px; overflow: hidden; background: #000;">
-                        <div id="richNoteWritingPadEditable" style="min-height: 300px; padding: 20px; color: #fff; outline: none;" contenteditable="true"></div>
+                        <div id="richNoteWritingPadEditable" style="min-height: 300px; padding: 20px; color: #fff; outline: none;" contenteditable="true" placeholder="Type framework notes here..."></div>
                     </div>
                     <div style="display:flex; gap:15px; margin-top:20px;">
                         <button class="hud-engage-btn" style="background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET</button>
@@ -381,8 +395,14 @@
 
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div style="background: linear-gradient(145deg, #020614, #0b0212); border: 3px dashed var(--neon-pink); padding: 30px; text-align: center; border-radius: 20px;">
-                    <h2 class="neon-cyan-text" style="margin-bottom: 15px;">🎮 ARCADE VIRTUAL CORE</h2>
-                    <canvas id="nexusMatrixArcadeCanvas" width="600" height="300" style="background:#000; border:2px solid var(--neon-cyan); border-radius:12px; width:100%; max-width:600px; height:300px;"></canvas>
+                    <h2 class="neon-cyan-text" style="margin-bottom: 15px;">🐱 VIRTUAL TALKING TOM CORE</h2>
+                    <div style="position:relative; width:100%; max-width:600px; margin: 0 auto;">
+                        <canvas id="nexusMatrixArcadeCanvas" width="600" height="300" style="background:#000; border:2px solid var(--neon-cyan); border-radius:12px; width:100%; height:300px;"></canvas>
+                        <div style="position:absolute; bottom:15px; left:50%; transform:translateX(-50%); display:flex; gap:10px; width:90%; background:rgba(0,0,0,0.8); padding:10px; border-radius:10px;">
+                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="flex:1; padding:8px; background:#111; color:#fff; border:1px solid #00f2fe; border-radius:4px;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
+                            <button onclick="window.executeVirtualTomSpeechLoop()" style="padding:8px 15px; background:var(--neon-pink); color:#fff; border:none; border-radius:4px; font-weight:bold;">SAY</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -398,12 +418,16 @@
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <button class="mobile-back-btn" style="background:none; border:none; color:var(--wa-accent); font-size:1.4rem; cursor:pointer;" onclick="window.exitMobileChatView()">←</button>
-                                <div id="chatActiveUserHeaderNode" style="font-weight: 700;">Select Pipeline...</div>
-                                <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-accent);" class="hidden">typing...</div>
+                                <img id="chatActiveHeaderAvatarNodeUser" class="whatsapp-avatar" src="">
+                                <div style="display:flex; flex-direction:column;">
+                                    <div id="chatActiveUserHeaderNode" style="font-weight: 700; color:var(--wa-text);">Select Pipeline...</div>
+                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-accent);" class="hidden">typing...</div>
+                                </div>
                             </div>
                             <div style="display: flex; gap: 10px;">
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn">📞</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn">📹</button>
+                                <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
                             </div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
@@ -419,7 +443,7 @@
                             <button class="whatsapp-circle-btn" onclick="window.toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
-                            <textarea id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message" oninput="window.handleUserTypingSimulationTracker()"></textarea>
+                            <textarea id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message" oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); window.dispatchMatrixChatMessage(); }"></textarea>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
                             <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-accent);">➤</button>
                         </div>
@@ -449,6 +473,7 @@
                 <button class="admin-nav-tab active" id="tabBtnCreation" onclick="window.switchAdminSubSection('creation')">🆔 ID Create</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="window.switchAdminSubSection('workspace')">💼 Vault Manager</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="window.switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
+                <button class="admin-nav-tab" id="tabBtnAispy" onclick="window.switchAdminSubSection('aispy')">🤖 AI Intercept</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="window.switchAdminSubSection('stats')">📊 Diagnostic Stats</button>
             </div>
             
@@ -484,12 +509,16 @@
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <button class="mobile-back-btn" style="background:none; border:none; color:var(--wa-accent); font-size:1.4rem; cursor:pointer;" onclick="window.exitMobileChatView()">←</button>
-                                <div id="spyActiveHeaderTitle" style="font-weight:700; color:var(--wa-text);">Select Pipeline...</div>
-                                <div id="adminWhatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-accent);" class="hidden">typing...</div>
+                                <img id="chatActiveHeaderAvatarNodeAdmin" class="whatsapp-avatar" src="">
+                                <div style="display:flex; flex-direction:column;">
+                                    <div id="spyActiveHeaderTitle" style="font-weight:700; color:var(--wa-text);">Select Pipeline...</div>
+                                    <div id="adminWhatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-accent);" class="hidden">typing...</div>
+                                </div>
                             </div>
                             <div style="display: flex; gap: 10px;">
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn">📞</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn">📹</button>
+                                <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
                             </div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
@@ -505,13 +534,21 @@
                             <button class="whatsapp-circle-btn" onclick="window.toggleAdminEmojiDrawerOverlayPanel(event)">😀</button>
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('adminChatMediaFileInput').click()">📎</button>
                             <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
-                            <textarea id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type a message to pipeline" oninput="window.handleAdminTypingSimulationTracker()"></textarea>
+                            <textarea id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type a message to pipeline" oninput="window.handleAdminTypingSimulationTracker()" onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); window.dispatchAdminSpyInterceptionMsg(); }"></textarea>
                             <button id="adminVoiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
                             <button onclick="window.dispatchAdminSpyInterceptionMsg()" class="whatsapp-circle-btn" style="color:var(--wa-accent);">➤</button>
                         </div>
                     </div>
                 </div>
                 <div id="adminChatAttachmentStatusFeedback" style="color:#f1c40f; margin-top:8px; font-weight:bold; padding-left:15px;"></div>
+            </div>
+
+            <div id="adminAiSpyChatBlock" style="display:none;">
+                <div class="giant-compiler-layout">
+                    <h3>🤖 AI INTERCEPTION LOGS</h3>
+                    <p style="color:var(--text-sub);">AI Responses to prompts.</p>
+                    <div id="adminAiSpyLogsWrapper" style="margin-top:15px;"></div>
+                </div>
             </div>
 
             <div id="adminSystemStatsBlock" style="display:none;">
@@ -561,8 +598,11 @@
         let globalAudioCtx = null, isCordPulled = false, isAudioContextAllowed = false;
         let typingTimeoutTracker = null;
 
+        // --- Arcade Variables ---
+        let virtualTomTalkingAnimationCycle = 0, tomArcadeFrameToken = null;
+
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
-        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","❤️","😮","👏","🙌"];
+        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","❤️","😮","👏","🙌","😎","🤖"];
 
         ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
 
@@ -631,7 +671,7 @@
         function initiatePrecisionChronometerTick() {
             setInterval(() => {
                 const clock = new Date();
-                const pad = (val) => String(val).padStart(len = 2, '0');
+                const pad = (val) => String(val).padStart(2, '0');
                 const pureTimeString = `${pad(clock.getHours())}:${pad(clock.getMinutes())}:${pad(clock.getSeconds())}`;
                 ['userPrecisionTimeNode', 'adminPrecisionTimeNode'].forEach(id => {
                     const node = document.getElementById(id); if(node) node.innerText = pureTimeString;
@@ -665,6 +705,14 @@
                 osc.connect(gain); gain.connect(globalAudioCtx.destination);
                 osc.start(); osc.stop(globalAudioCtx.currentTime + duration);
             } catch(e) {}
+        };
+        
+        window.speakNaturalHuman = function(text) {
+            if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const syntax = new SpeechSynthesisUtterance(text);
+            syntax.pitch = 1.1; syntax.rate = 1.0;
+            window.speechSynthesis.speak(syntax);
         };
 
         window.changeWorkspaceMode = function(mode) {
@@ -712,7 +760,7 @@
                     localStorage.setItem('nexus_logged_in_uid', u);
                     localStorage.setItem('nexus_system_session_mode', 'admin');
                     window.loadAdminSubmissions();
-                } else { alert("Access Rejected: Invalid Admin Credentials Signature."); }
+                } else { alert("Access Rejected: Invalid Admin Credentials."); }
             } else {
                 let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
                 if(userMatch && (String(userMatch.pass) === String(p) || p === master.masterPass)) {
@@ -741,6 +789,7 @@
             if(channelId === 'upload') renderCustomerLiveTracker();
             else if(channelId === 'notes') fetchRealtimeNotesCloudData();
             else if(channelId === 'vault') renderCloudVault();
+            else if(channelId === 'gaming') window.bootArcadeSubGame();
             else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); }
         };
 
@@ -748,8 +797,8 @@
             MatrixSystemState.set('activeAdminSubSection', sectionId);
             document.querySelectorAll('.admin-nav-tab').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`tabBtn${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`)?.classList.add('active');
-            ['creation', 'workspace', 'spychat', 'stats'].forEach(id => {
-                document.getElementById(id === 'workspace' ? 'policyWorkspaceBlock' : id === 'spychat' ? 'adminSpyChatBlock' : id === 'stats' ? 'adminSystemStatsBlock' : id + 'Block').style.display = (sectionId === id) ? 'block' : 'none';
+            ['creation', 'workspace', 'spychat', 'aispy', 'stats'].forEach(id => {
+                document.getElementById(id === 'workspace' ? 'policyWorkspaceBlock' : id === 'spychat' ? 'adminSpyChatBlock' : id === 'aispy' ? 'adminAiSpyChatBlock' : id === 'stats' ? 'adminSystemStatsBlock' : id + 'Block').style.display = (sectionId === id) ? 'block' : 'none';
             });
             if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); }
             if(sectionId === 'stats') window.renderDiagnosticStatsDashboard();
@@ -807,27 +856,26 @@
 
         // --- REAL WHATSAPP CORE ENHANCEMENT SUITE FUNCTIONS ---
         function isolateLastInteractionMetrics(partnerId, modeContext = 'user') {
-            const allChats = MatrixSystemState.get('cachedGlobalUsersArr'); 
             let myId = modeContext === 'admin' ? 'MainframeAdmin' : MatrixSystemState.get('loggedInCustomerID');
-            
             let matchLogs = [];
-            // Safe cross-query backup scanning
-            const globalRef = MatrixSystemState.get('activeCustomerWorkspaceChannel'); 
-            // Query local copy array internally synchronized from full chat node stream data
+            
             return new Promise((resolve) => {
                 get(ref(db, 'chats')).then((snapshot) => {
                     const logs = snapshot.val();
-                    if(!logs) { resolve({ body: "No conversation history", time: "" }); return; }
+                    if(!logs) { resolve({ body: "No conversation history", time: "", unread: 0 }); return; }
+                    let unreadCount = 0;
                     Object.values(logs).forEach(m => {
                         if((m.sender === myId && m.receiver === partnerId) || (m.sender === partnerId && m.receiver === myId)) {
                             matchLogs.push(m);
+                            // Count unread if I am receiver
+                            if(m.receiver === myId && !m.read) unreadCount++;
                         }
                     });
-                    if(matchLogs.length === 0) { resolve({ body: "No operational logs", time: "" }); return; }
+                    if(matchLogs.length === 0) { resolve({ body: "No operational logs", time: "", unread: 0 }); return; }
                     matchLogs.sort((x, y) => x.epochTimeNode - y.epochTimeNode);
                     let finalLog = matchLogs[matchLogs.length - 1];
-                    resolve({ body: finalLog.textBody, time: finalLog.timestamp || "" });
-                }).catch(() => resolve({ body: "Encryption active", time: "" }));
+                    resolve({ body: finalLog.textBody, time: finalLog.timestamp || "", unread: unreadCount });
+                }).catch(() => resolve({ body: "Encryption active", time: "", unread: 0 }));
             });
         }
 
@@ -836,7 +884,7 @@
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const userList = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
             
-            let pipelineQueue = [{ id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "" }, ...userList];
+            let pipelineQueue = [{ id: "MainframeAdmin", clientName: "Mainframe Admin", avatar: "" }, ...userList];
             container.innerHTML = "";
 
             pipelineQueue.forEach(user => {
@@ -851,7 +899,10 @@
                             <span>${user.clientName}</span>
                             <span id="userTimeNodeSlot_${user.id}" style="font-size:0.75rem; color:var(--wa-text-muted);"></span>
                         </div>
-                        <div class="whatsapp-last-msg-preview" id="userMsgNodeSlot_${user.id}">Loading transmission...</div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div class="whatsapp-last-msg-preview" id="userMsgNodeSlot_${user.id}">Loading...</div>
+                            <div id="unreadPillUser_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
+                        </div>
                     </div>
                 `;
                 container.appendChild(node);
@@ -859,8 +910,13 @@
                 isolateLastInteractionMetrics(user.id, 'user').then(metrics => {
                     const txtBox = document.getElementById(`userMsgNodeSlot_${user.id}`);
                     const timeBox = document.getElementById(`userTimeNodeSlot_${user.id}`);
+                    const pill = document.getElementById(`unreadPillUser_${user.id}`);
                     if(txtBox) txtBox.innerText = metrics.body;
                     if(timeBox) timeBox.innerText = metrics.time;
+                    if(pill) {
+                        if(metrics.unread > 0) { pill.innerText = metrics.unread; pill.classList.remove('hidden'); }
+                        else { pill.classList.add('hidden'); }
+                    }
                 });
             });
         };
@@ -882,7 +938,10 @@
                             <span>${user.clientName}</span>
                             <span id="adminTimeNodeSlot_${user.id}" style="font-size:0.75rem; color:var(--wa-text-muted);"></span>
                         </div>
-                        <div class="whatsapp-last-msg-preview" id="adminMsgNodeSlot_${user.id}">Loading transmission...</div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div class="whatsapp-last-msg-preview" id="adminMsgNodeSlot_${user.id}">Loading...</div>
+                            <div id="unreadPillAdmin_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div>
+                        </div>
                     </div>
                 `;
                 container.appendChild(node);
@@ -890,8 +949,13 @@
                 isolateLastInteractionMetrics(user.id, 'admin').then(metrics => {
                     const txtBox = document.getElementById(`adminMsgNodeSlot_${user.id}`);
                     const timeBox = document.getElementById(`adminTimeNodeSlot_${user.id}`);
+                    const pill = document.getElementById(`unreadPillAdmin_${user.id}`);
                     if(txtBox) txtBox.innerText = metrics.body;
                     if(timeBox) timeBox.innerText = metrics.time;
+                    if(pill) {
+                        if(metrics.unread > 0) { pill.innerText = metrics.unread; pill.classList.remove('hidden'); }
+                        else { pill.classList.add('hidden'); }
+                    }
                 });
             });
         };
@@ -899,6 +963,12 @@
         window.setOperationalChatTargetId = function(uid) {
             MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
             document.getElementById('clientChatGridMatrixWrapper')?.classList.add('mobile-chat-view-active');
+            
+            // Set Header Name and Avatar
+            const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+            document.getElementById('chatActiveUserHeaderNode').innerText = userMatch ? userMatch.clientName : (uid === "MainframeAdmin" ? "Mainframe Admin" : "User");
+            document.getElementById('chatActiveHeaderAvatarNodeUser').src = (userMatch && userMatch.avatar) ? userMatch.avatar : defaultAvatarSvg;
+
             window.cancelReplyMatrixState();
             get(ref(db, 'chats')).then(s => window.renderActiveChatConversationLogs(s.val()));
             window.initializeCrossLinkChatPanel();
@@ -906,7 +976,11 @@
 
         window.setAdminSpyTargetConversationTrack = function(uid) {
             MatrixSystemState.set('spyActiveTargetUserContext', uid);
-            document.getElementById('spyActiveHeaderTitle').innerText = `Console Pipeline: @${uid}`;
+            
+            const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+            document.getElementById('spyActiveHeaderTitle').innerText = userMatch ? userMatch.clientName : "User";
+            document.getElementById('chatActiveHeaderAvatarNodeAdmin').src = (userMatch && userMatch.avatar) ? userMatch.avatar : defaultAvatarSvg;
+            
             document.getElementById('adminChatGridBox')?.classList.add('mobile-chat-view-active');
             window.cancelReplyMatrixState();
             get(ref(db, 'chats')).then(s => window.renderAdminSpyChatConsoleLogs(s.val()));
@@ -925,7 +999,6 @@
             let htmlPayload = "";
             let currentTrackedDateString = "";
             
-            // Sort database map key rows chronologically
             let messageNodeArray = [];
             Object.keys(data).forEach(k => {
                 let m = data[k];
@@ -975,7 +1048,6 @@
             wrapper.innerHTML = mapMessageLogsWithDateSeparators(data, current, target);
             wrapper.scrollTop = wrapper.scrollHeight;
 
-            // Instantly clear unread parameters by setting matching incoming entries status data rows read signature values to true
             if(data) {
                 Object.keys(data).forEach(key => {
                     if(data[key].sender === target && data[key].receiver === current && !data[key].read) {
@@ -1080,6 +1152,17 @@
                 document.getElementById('chatAttachmentStatusFeedback').innerText = "";
                 document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden');
                 window.cancelReplyMatrixState();
+                
+                // Trigger AI Bot if replying
+                if(finalMsg.toLowerCase().includes("@bot") || target === "MainframeAdmin") {
+                    setTimeout(() => {
+                        window.playSynthesizedSound(880, 'triangle', 0.2);
+                        set(push(ref(db, 'chats')), {
+                            sender: "MainframeAdmin", receiver: current, textBody: "🤖 AI Matrix: Message intercepted and encrypted successfully.",
+                            read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                        });
+                    }, 1500);
+                }
             });
         };
 
@@ -1145,6 +1228,26 @@
             }
         };
 
+        window.clearCurrentChatConversation = function() {
+            const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
+            if(confirm("Are you sure you want to clear this conversation history?")) {
+                get(ref(db, 'chats')).then((snap) => {
+                    const data = snap.val();
+                    if(data) {
+                        Object.keys(data).forEach(key => {
+                            const msg = data[key];
+                            if((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) {
+                                remove(ref(db, `chats/${key}`));
+                            }
+                        });
+                        alert("Chat Cleared.");
+                    }
+                });
+            }
+        };
+
         // --- VOICE AND HOLOGRAM STUBS ---
         window.toggleVoiceAudioRecordingEngine = function() {
             const btnId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminVoiceRecordingCoreTriggerBtn' : 'voiceRecordingCoreTriggerBtn';
@@ -1196,9 +1299,9 @@
         window.triggerEnlargedAttachmentView = function(src) {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" style="max-width:90%; background:transparent; border:none;">
+                <div class="nexus-popup-card-box" style="max-width:90%; background:transparent; border:none; box-shadow:none;">
                     <img src="${src}" style="max-width:100%; border-radius:12px; box-shadow:0 0 30px rgba(0,242,254,0.5);">
-                    <div style="margin-top:15px;"><button class="nexus-popup-btn cancel-btn" onclick="window.closeCustomInlinePopupEngine()">CLOSE ASSET</button></div>
+                    <div style="margin-top:15px;"><button class="nexus-popup-btn cancel-btn" style="background:#e74c3c; color:#fff;" onclick="window.closeCustomInlinePopupEngine()">CLOSE ASSET</button></div>
                 </div>
             `;
             wrapper.classList.remove('hidden');
@@ -1208,18 +1311,18 @@
         window.filterClientChatContactList = function() {
             const q = document.getElementById('clientContactSearchField').value.toLowerCase();
             document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
-                node.style.display = node.innerText.toLowerCase().includes(q) ? "" : "none";
+                node.style.display = node.innerText.toLowerCase().includes(q) ? "flex" : "none";
             });
         };
 
         window.filterAdminChatContactList = function() {
             const q = document.getElementById('adminContactSearchField').value.toLowerCase();
             document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
-                node.style.display = node.innerText.toLowerCase().includes(q) ? "" : "none";
+                node.style.display = node.innerText.toLowerCase().includes(q) ? "flex" : "none";
             });
         };
 
-        // --- REMAINING LEGACY MODULES AND FORMS COMPILATION ---
+        // --- OLD MODULES RESTORATION ---
         window.loadAdminSubmissions = function() {
             document.getElementById('liveCreationStatsMiniNode').innerText = `System Active. Channels Sync Vector online.`;
             renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection('creation');
@@ -1242,7 +1345,7 @@
             const wrapper = document.getElementById('adminUserControlList'); if(!wrapper) return;
             wrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map(u => `
                 <div style="background:rgba(4,14,33,0.85); padding:16px; border-radius:12px; border:1px solid var(--border-glass);">
-                    <div><b>ID:</b> ${u.id}<br><b>Name:</b> ${u.clientName}<br><b>Contact:</b> ${u.contact}</div>
+                    <div><b style="color:var(--text-muted);">ID:</b> <span style="color:#00f2fe">${u.id}</span><br><b>Name:</b> ${u.clientName}<br><b>Contact:</b> ${u.contact}</div>
                     <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
                         <span style="color:#2ecc71; font-weight:bold;">Active Signature</span>
                         <button class="abort-btn" style="padding:4px 8px; font-size:0.8rem;" onclick="remove(ref(db, 'users/${u.id}'))">WIPE</button>
@@ -1338,6 +1441,20 @@
             document.getElementById('richNoteWritingPadEditable').innerHTML = "";
         };
 
+        window.downloadNotesAsTxt = function() {
+            const htmlNode = document.getElementById('richNoteWritingPadEditable');
+            if (!htmlNode) return;
+            let formattedText = htmlNode.innerText || "";
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(formattedText));
+            element.setAttribute('download', `Nexus_Document_${Date.now()}.txt`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            window.playSynthesizedSound(600, 'sine', 0.2);
+        };
+
         window.renderCloudVault = function() {
             const container = document.getElementById('cloudVaultGridContainer');
             const current = MatrixSystemState.get('loggedInCustomerID');
@@ -1355,8 +1472,52 @@
                 <div style="background:rgba(4,14,33,0.7); padding:20px; border-radius:12px; border:1px solid var(--border-glass);">
                     <p style="color:#fff; margin-bottom:8px;"><b>System Architecture Sync Nodes:</b> Active</p>
                     <p style="color:var(--neon-cyan);">Total Cloud Pipelines Monitored: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Nodes</p>
+                    <p style="color:#2ecc71;">Active Policies in DB: ${MatrixSystemState.get('cachedGlobalPolicyArr').length}</p>
                 </div>
             `;
+        };
+
+        window.bootArcadeSubGame = function() {
+            const canvas = document.getElementById('nexusMatrixArcadeCanvas');
+            const ctx = canvas ? canvas.getContext('2d') : null;
+            if(!ctx) return;
+            if (tomArcadeFrameToken) cancelAnimationFrame(tomArcadeFrameToken);
+            
+            function renderTom() {
+                if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming') return;
+                ctx.fillStyle = '#0a0d16'; ctx.fillRect(0, 0, 600, 300);
+                virtualTomTalkingAnimationCycle += 0.15;
+                
+                // Head
+                let gradient = ctx.createRadialGradient(300, 150, 10, 300, 150, 80);
+                gradient.addColorStop(0, '#95a5a6'); gradient.addColorStop(1, '#7f8c8d');
+                ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(300, 150, 75, 0, Math.PI*2); ctx.fill();
+
+                // Eyes
+                ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(270, 135, 16, 0, Math.PI*2); ctx.arc(330, 135, 16, 0, Math.PI*2); ctx.fill();
+                ctx.fillStyle = '#00f2fe'; ctx.beginPath();
+                let pupOffset = Math.sin(virtualTomTalkingAnimationCycle)*3;
+                ctx.arc(270 + pupOffset, 135, 7, 0, Math.PI*2); ctx.arc(330 + pupOffset, 135, 7, 0, Math.PI*2); ctx.fill();
+
+                // Mouth
+                let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 12);
+                ctx.fillStyle = '#ff007f'; ctx.beginPath(); ctx.arc(300, 185, speechMouthRadius, 0, Math.PI); ctx.fill();
+
+                // Visualizer
+                ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+                for(let b=0; b<20; b++) { let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35); ctx.fillRect(100 + b*21, 260 - barH/2, 12, barH); }
+                
+                tomArcadeFrameToken = requestAnimationFrame(renderTom);
+            }
+            renderTom();
+        };
+
+        window.executeVirtualTomSpeechLoop = function() {
+            const input = document.getElementById('virtualTomTextInput');
+            if(input && input.value.trim() !== "") {
+                window.speakNaturalHuman(input.value);
+                input.value = "";
+            }
         };
 
         window.triggerForgotIDModal = function() { alert("Identity verification pipeline linked. Contact Admin terminal for recovery assistance."); };
@@ -1375,7 +1536,8 @@
                 } else {
                     MatrixSystemState.set('loggedInCustomerID', userMatchFallback);
                     document.getElementById('customerDashboard').classList.remove('hidden');
-                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:#00f2fe;">${userMatchFallback}</span>`;
+                    const match = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === userMatchFallback);
+                    document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:#00f2fe;">${match ? match.clientName : userMatchFallback}</span>`;
                     window.switchCustomerChannel('upload');
                 }
                 if(ambientParticleToken) cancelAnimationFrame(ambientParticleToken);
