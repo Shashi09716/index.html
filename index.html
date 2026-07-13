@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V6.0 (Zero Bug Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V5.0 (Zero Bug Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -73,13 +73,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; user-select: none; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); }
         
-        /* --- NEW PROFESSIONAL TOAST NOTIFICATIONS --- */
-        .cyber-toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9999999; display: flex; flex-direction: column; gap: 10px; align-items: center; pointer-events: none; }
-        .cyber-toast { background: rgba(0, 242, 254, 0.1); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 12px 24px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,242,254,0.4); font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 0.95rem; backdrop-filter: blur(10px); animation: toastFadeIn 0.3s ease forwards, toastFadeOut 0.3s ease 2.7s forwards; white-space: nowrap; }
-        .cyber-toast.toast-error { border-color: var(--neon-pink); color: var(--neon-pink); box-shadow: 0 0 15px rgba(255,0,127,0.4); background: rgba(255,0,127,0.1); }
-        @keyframes toastFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes toastFadeOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
-
         /* --- NAVIGATION CONSOLE HEADER LAYER --- */
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
@@ -116,6 +109,7 @@
         .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
         .cinema-stage.activated .cyber-lamp-core { transform: translateX(380px) scale(0.85); }
         
+        /* Realistic Mechanical Gate Shutter */
         .metallic-shutter-head { width: 280px; height: 180px; background: radial-gradient(circle at center, #1a2536, #02050a); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0, 242, 254, 0.5); z-index: 5; overflow: hidden; }
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
         .mechanical-gate { position: absolute; top: 0; width: 50%; height: 100%; background: repeating-linear-gradient(90deg, #0a0d14, #0a0d14 10px, #1a2536 10px, #1a2536 20px); border: 2px solid #00f2fe; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s; z-index: 6; }
@@ -188,7 +182,7 @@
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
 
-        /* Stable Chronometer Clock */
+        /* Stable Chronometer Clock without glitching squares */
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
 
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
@@ -291,7 +285,7 @@
         .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
         
         /* --------------------------------------------------------------------- */
-        /* THE ULTIMATE ANTI-OVERLAP FIX FOR WHATSAPP TIME & TEXT */
+        /* FIX: Realistic Message Bubbles With Tails & NO TIME/TEXT OVERLAPPING! */
         /* --------------------------------------------------------------------- */
         .bubble-msg-wrapper { 
             max-width: 65%; 
@@ -306,30 +300,25 @@
             cursor: pointer; 
             word-wrap: break-word; 
             margin-bottom: 2px; /* Close spacing for same-user messages */
-            
-            /* Crucial Fix: */
-            display: block; 
-            width: fit-content; 
+            display: inline-block;
         }
         
+        /* Message Grouping Spacing (More margin if next msg is from different user) */
         .bubble-msg-wrapper.first-in-group { margin-top: 12px; }
 
         .bubble-text-content {
-            display: inline;
-            white-space: pre-wrap;
-        }
-        
-        .wa-time-spacer {
             display: inline-block;
-            width: 75px;  /* This acts as a physical block that text CANNOT overlap */
-            height: 10px; /* Forces wrap if text gets too close to the time area */
+            padding-right: 65px; /* Creates extra space inside text container for time */
+            padding-bottom: 5px;
+            white-space: pre-wrap;
+            min-width: 40px;
         }
 
         .whatsapp-time { 
             font-size: 0.68rem; 
             color: rgba(255,255,255,0.6); 
             position: absolute;
-            bottom: 4px;
+            bottom: 6px;
             right: 8px;
             display: flex; 
             align-items: center; 
@@ -467,8 +456,6 @@
     </style>
 </head>
 <body>
-    <div id="toastContainer" class="cyber-toast-container"></div>
-
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
@@ -926,33 +913,6 @@
 
         window.MatrixSystemState = MatrixSystemState;
 
-        // Auto Lock Idle System
-        let idleTime = 0;
-        document.onmousemove = document.onkeypress = document.ontouchstart = () => { idleTime = 0; };
-        setInterval(() => {
-            if(MatrixSystemState.get('loggedInCustomerID') !== "") {
-                idleTime++;
-                if (idleTime > 300) { // 5 minutes inactivity
-                    window.showToast("Session locked due to inactivity.", true);
-                    window.logoutEngine();
-                }
-            }
-        }, 1000);
-
-        window.showToast = function(msg, isError = false) {
-            const toastContainer = document.getElementById('toastContainer');
-            if(!toastContainer) return;
-            const toast = document.createElement('div');
-            toast.className = isError ? 'cyber-toast toast-error' : 'cyber-toast';
-            toast.innerText = msg;
-            toastContainer.appendChild(toast);
-            if(isAudioContextAllowed) window.playSynthesizedSound(isError ? 150 : 880, isError ? 'sawtooth' : 'sine', 0.15);
-            setTimeout(() => { toast.remove(); }, 3000);
-        };
-
-        // Override default alerts with cyber toast
-        window.alert = function(msg) { window.showToast(msg, msg.includes('❌') || msg.includes('Error') || msg.includes('Rejected')); };
-
         ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
 
         window.pullCordAction = function(event) {
@@ -1114,7 +1074,7 @@
             const editor = document.getElementById('richNoteWritingPadEditable');
             if(!editor) return;
             const textContent = editor.innerText;
-            if(!textContent.trim()) { window.showToast("Note is empty!", true); return; }
+            if(!textContent.trim()) { alert("Note is empty!"); return; }
 
             const blob = new Blob([textContent], { type: format === 'doc' ? 'application/msword' : 'text/plain' });
             const a = document.createElement('a');
@@ -1161,7 +1121,7 @@
         window.executeForgotIdVerificationSearch = function() {
             const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value;
             const resNode = document.getElementById('forgotIdResultNode');
-            if(!phone || !dob) { window.showToast("Please complete both parameters.", true); return; }
+            if(!phone || !dob) { alert("Please complete both parameters."); return; }
             let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
             if(matchedUser) {
                 resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
@@ -1204,7 +1164,7 @@
 
         window.executeDispatchPasswordResetSignalToAdmin = function() {
             const uid = document.getElementById('reqPassUID').value.trim(); const phone = document.getElementById('reqPassPhone').value.trim(); const dob = document.getElementById('reqPassDOB').value;
-            if(!uid || !phone || !dob) { window.showToast("All verification parameters required.", true); return; }
+            if(!uid || !phone || !dob) { alert("All verification parameters required."); return; }
             let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
             if(userMatch) {
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
@@ -1220,18 +1180,18 @@
                     nextWrap.classList.remove('hidden');
                     window.speakNaturalHuman("Request logged smoothly.");
                 });
-            } else { window.showToast("Verification mismatch.", true); }
+            } else { alert("❌ Verification mismatch."); }
         };
 
         window.executeDirectPasswordCredentialsSwap = function() {
             const uid = document.getElementById('changePassUID').value.trim(); const oldPass = document.getElementById('changePassOld').value.trim(); const newPass = document.getElementById('changePassNew').value.trim();
-            if(!uid || oldPass === "" || !newPass) { window.showToast("Complete all fields.", true); return; }
+            if(!uid || oldPass === "" || !newPass) { alert("Complete all fields."); return; }
             let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
             if(userMatch) {
                 update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => {
-                    window.closeCustomInlinePopupEngine(); window.showToast("Password updated completely."); window.playSynthesizedSound(1000, 'sine', 0.2);
+                    window.closeCustomInlinePopupEngine(); alert("✅ Password updated completely."); window.playSynthesizedSound(1000, 'sine', 0.2);
                 });
-            } else { window.showToast("Invalid current password signature.", true); }
+            } else { alert("❌ Invalid current password signature."); }
         };
 
         window.toggleAIMatrixAssistantChannel = function() {
@@ -1321,7 +1281,7 @@
         }
 
         window.toggleTalkingTomVoiceListenerEngine = function() {
-            if(!tomSpeechRecognitionInstance) { window.showToast("Voice Recognition not supported.", true); return; }
+            if(!tomSpeechRecognitionInstance) { alert("Voice Recognition not supported."); return; }
             if(!isTomListeningStateActive) {
                 navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
                     audioMicStreamNode = stream; audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
@@ -1332,7 +1292,7 @@
                     tomSpeechRecognitionInstance.start(); isTomListeningStateActive = true;
                     document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
                     document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
-                }).catch(() => { window.showToast("Mic access rejected.", true); });
+                }).catch(() => { alert("Mic access rejected."); });
             } else { tomSpeechRecognitionInstance.stop(); }
         };
 
@@ -1435,7 +1395,7 @@
                     notesMediaRecorderInstance.start();
                     if (pulseNode) pulseNode.classList.remove('hidden');
                     if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { window.showToast("Microphone access denied.", true); });
+                }).catch(() => { alert("Microphone access denied."); });
             } else {
                 notesMediaRecorderInstance.stop();
                 if (pulseNode) pulseNode.classList.add('hidden');
@@ -1454,7 +1414,6 @@
                 set(cloudNoteReferenceNode, { noteId: cloudNoteReferenceNode.key, ownerId: currentUid, richTextHtml: parsedHtmlPayload || "[ Audio Stream Payload ]", voicePayloadB64: notesVoicePayloadBase64Node, mappedDate: dateLogSelected, mappedTime: timeLogSelected, voiceDuration: autoGeneratedVoiceDurationString, epochStamp: Date.now() }).then(() => {
                     window.wipeNoteInterfaceToBlankTrigger(); window.playSynthesizedSound(1100, 'sine', 0.15); fetchRealtimeNotesCloudData();
                     localStorage.removeItem('nexus_autosave_note');
-                    window.showToast("Note synced to cloud Matrix.");
                 });
             } catch(e) {}
         };
@@ -1548,7 +1507,6 @@
                 localStorage.setItem(`nicknames_map_${currentUid}`, JSON.stringify(currentLocalNicknamesObj));
                 window.closeCustomInlinePopupEngine();
                 if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else window.initializeCrossLinkChatPanel();
-                window.showToast("Profile nickname updated.");
             };
         };
 
@@ -1582,7 +1540,7 @@
                 const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
                 wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Modify Photo @${targetUserId}</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button onclick="window.commitTargetedAvatarClear('${targetUserId}')" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Remove Photo</button><button onclick="document.getElementById('hiddenAvatarFileInputNode').setAttribute('data-target-uid', '${targetUserId}'); document.getElementById('hiddenAvatarFileInputNode').click(); window.closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn">Upload Gallery</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
                 wrapper.classList.remove('hidden');
-            } else { window.showToast("Photo overwrite restricted.", true); }
+            } else { alert("Photo overwrite restricted."); }
         };
 
         window.commitTargetedAvatarClear = function(uid) {
@@ -1591,7 +1549,6 @@
                 set(ref(db, `users/${uid}/avatar`), "").then(() => {
                     if(uid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg; document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg; }
                     window.playSynthesizedSound(880, 'sine', 0.1);
-                    window.showToast("Avatar removed.");
                 });
             } catch(e){}
         };
@@ -1609,7 +1566,6 @@
                 window.closeCustomInlinePopupEngine();
                 if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyUserList(); else window.initializeCrossLinkChatPanel();
                 window.playSynthesizedSound(880, 'sine', 0.15);
-                window.showToast("Nickname updated.");
             };
         };
 
@@ -1743,7 +1699,7 @@
             remove(ref(db, `incident_alerts/${alertKey}`)).then(() => {
                 update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" });
                 localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase());
-                window.showToast("Client lock cleared.");
+                alert("Client lock cleared.");
             });
         };
 
@@ -1840,17 +1796,14 @@
                                 htmlCollector += `<div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody.replace(/'/g, "\\'")}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
                                     ${replyMarkup}
                                     ${assetHTML}
-                                    <div class="bubble-text-content">${msg.textBody}<span class="wa-time-spacer"></span></div>
+                                    <div class="bubble-text-content">${msg.textBody}</div>
                                     <div class="whatsapp-time">${msg.timestamp} ${isMyMsg ? ticksVisualString : ''}</div>
                                     ${reactionMarkup}
                                 </div>`;
                             }
                         });
                         wrapper.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted.</div>`;
-                        
-                        // Smart Scroll to bottom
-                        const isAtBottom = wrapper.scrollHeight - wrapper.scrollTop <= wrapper.clientHeight + 100;
-                        if(isAtBottom) wrapper.scrollTop = wrapper.scrollHeight;
+                        wrapper.scrollTop = wrapper.scrollHeight;
                     });
                 });
             } catch(e){}
@@ -1917,10 +1870,6 @@
                     document.getElementById('chatAttachmentStatusFeedback').innerText = ""; document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.add('hidden');
                     window.cancelReplyMatrixState(); remove(ref(db, `typing_states/${currentUid}`)); window.renderActiveChatConversationLogs(); autoNarrateChatMessage("You", finalMessageText);
                     if(MatrixSystemState.get('isAIAssistantActiveState')) processAIMatrixAssistantResponseStream(finalMessageText);
-                    
-                    // Force scroll
-                    const wrapper = document.getElementById('chatMessagesScrollWrapper');
-                    if(wrapper) wrapper.scrollTop = wrapper.scrollHeight;
                 });
             } catch(e){}
         };
@@ -1958,7 +1907,7 @@
                     };
                     nativeAudioMediaRecorderInstance.start(); if(recBtn) recBtn.classList.add('recording-active-pulse');
                     const feedback = document.getElementById('chatAttachmentStatusFeedback'); if(feedback) feedback.innerHTML = `Live Recording...`;
-                }).catch(() => { window.showToast("Audio device rejected.", true); });
+                }).catch(() => { alert("Audio device rejected."); });
             } else { nativeAudioMediaRecorderInstance.stop(); if(recBtn) recBtn.classList.remove('recording-active-pulse'); document.getElementById('chatAttachmentStatusFeedback').innerText = ""; }
         };
 
@@ -1988,8 +1937,8 @@
             if(sectionId === 'creation') renderLiveCreationStatsSummary();
         };
 
-        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { window.showToast("🔴 Broadcast transmitted!"); }); };
-        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; window.showToast("Broadcast formatted clean."); }); };
+        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { alert("🔴 Broadcast transmitted!"); }); };
+        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; alert("Broadcast formatted clean."); }); };
 
         window.generateRandomPassword = function() {
             const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
@@ -2003,19 +1952,19 @@
             if (!p) return;
             let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
             navigator.clipboard.writeText(formattedText).then(() => {
-                window.showToast("📋 CLIENT DATA COPIED SUCCESSFULLY!");
+                alert("📋 CLIENT DATA COPIED SUCCESSFULLY!");
             });
         };
 
         window.executeBatchDeleteAiLogs = function() {
             let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { window.showToast("No logs selected.", true); return; }
+            if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
             if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
                 checkedBoxes.forEach(box => {
                     let key = box.getAttribute('data-key');
                     remove(ref(db, `ai_communications/${key}`));
                 });
-                window.showToast("Selected logs purged.");
+                alert("Selected logs purged.");
             }
         };
 
@@ -2023,7 +1972,7 @@
 
         window.executeBatchDeleteSignals = function() {
             let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { window.showToast("No targets selected.", true); return; }
+            if (checkedBoxes.length === 0) { alert("No targets selected."); return; }
             if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
                 get(ref(db, 'password_forget_signals')).then((snap) => {
                     let data = snap.val();
@@ -2035,7 +1984,7 @@
                                 }
                             });
                         });
-                        window.showToast("Selected signals removed.");
+                        alert("Selected signals removed.");
                     }
                 });
             }
@@ -2057,7 +2006,7 @@
 
         window.createNewCustomerNode = function() {
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { window.showToast("Please complete required parameters.", true); return; }
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
             const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
             set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { 
                 alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
@@ -2100,10 +2049,10 @@
 
         window.submitPolicyForm = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
-            if(!insure || !phone) { window.showToast("Please complete required parameters.", true); return; }
+            if(!insure || !phone) { alert("Please complete required parameters."); return; }
             const newPolicyRef = push(ref(db, 'policies'));
             set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
-                window.showToast("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); renderCustomerLiveTracker();
+                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); renderCustomerLiveTracker();
             });
         };
 
@@ -2114,10 +2063,10 @@
             trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
         };
 
-        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { window.showToast("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
-        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); window.showToast("Record purged."); } };
-        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); window.showToast("Master credentials synchronized."); }); };
-        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); window.showToast("Credentials overridden."); };
+        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
+        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
+        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
+        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
 
         window.uploadUserProfileAvatarEngine = function(event) {
             const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
@@ -2180,14 +2129,12 @@
                         MatrixSystemState.set('consecutiveBruteFailuresCount', 0); document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden'); localStorage.setItem('nexus_logged_in_uid', targetAdminID); localStorage.setItem('nexus_system_session_mode', 'admin'); window.loadAdminSubmissions();
                         const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                         if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                        window.showToast("Admin Protocol Engaged.");
-                    } else { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); window.showToast("Access Rejected: Incorrect Admin Vector.", true); }
+                    } else { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); alert("Access Rejected: Incorrect Admin Vector."); }
                 }).catch(() => {
                     if(u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
                         document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden'); localStorage.setItem('nexus_logged_in_uid', u); localStorage.setItem('nexus_system_session_mode', 'admin'); window.loadAdminSubmissions();
                         const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                         if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                        window.showToast("Admin Protocol Engaged (Fallback).");
                     }
                 });
             } else {
@@ -2196,9 +2143,7 @@
                     if(bypassUserMatch) {
                         MatrixSystemState.set('consecutiveBruteFailuresCount', 0); MatrixSystemState.set('loggedInCustomerID', bypassUserMatch.id); update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true }); localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); localStorage.setItem('nexus_system_session_mode', 'user'); localStorage.setItem('nexus_active_chan_route', 'upload'); document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden'); document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [BYPASS]</span>`; window.switchCustomerChannel('upload');
                         const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                        window.showToast("Master Bypass Engaged.");
-                        return;
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; } return;
                     }
                 }
                 const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
@@ -2207,14 +2152,13 @@
                     let failCount = MatrixSystemState.get('consecutiveBruteFailuresCount') + 1; MatrixSystemState.set('consecutiveBruteFailuresCount', failCount);
                     if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4);
                     if (failCount >= 3) { if(userMatch) update(ref(db, `users/${userMatch.id}`), { lockoutState: "true" }); triggerLockoutTerminalUI(u); return; }
-                    window.showToast(`Access Rejected: Invalid Credentials. Strike ${failCount}/3.`, true); return;
+                    alert(`Access Rejected: Invalid Credentials. Strike ${failCount}/3.`); return;
                 }
-                if (userMatch.status === 'deactivated') { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); window.showToast("Account deactivated by Admin.", true); return; }
+                if (userMatch.status === 'deactivated') { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); alert("Account deactivated by Admin."); return; }
                 
                 MatrixSystemState.set('consecutiveBruteFailuresCount', 0); MatrixSystemState.set('loggedInCustomerID', userMatch.id); update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true }); localStorage.setItem('nexus_logged_in_uid', userMatch.id); localStorage.setItem('nexus_system_session_mode', 'user'); localStorage.setItem('nexus_active_chan_route', 'upload'); document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${userMatch.clientName}</span>`; document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden'); window.switchCustomerChannel('upload');
                 const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                 if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                window.showToast("Welcome Back.");
             }
         };
 
@@ -2274,7 +2218,6 @@
             document.getElementById('customerDashboard').classList.add('hidden'); document.getElementById('adminDashboard').classList.add('hidden'); document.getElementById('clientDisplayLabel').innerText = "";
             MatrixSystemState.set('loggedInCustomerID', ""); const stage = document.getElementById('mainStage'); stage.style.display = 'flex'; stage.classList.remove('activated'); document.getElementById('loginTerminal').classList.add('hidden');
             const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '0'; nav.style.pointerEvents = 'none'; } runAmbientCanvasMatrixSystem();
-            window.showToast("System Logged Out.");
         };
 
         window.renderAdminSpyUserList = function() {
@@ -2325,17 +2268,13 @@
                                 htmlCollector += `<div class="bubble-msg-wrapper ${isMyResponse ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody.replace(/'/g, "\\'")}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
                                     ${replyMarkup}
                                     ${assetHTML}
-                                    <div class="bubble-text-content">${m.textBody}<span class="wa-time-spacer"></span></div>
+                                    <div class="bubble-text-content">${m.textBody}</div>
                                     <div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>
                                     ${reactionMarkup}
                                 </div>`;
                             }
                         });
-                        stack.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); padding:10px; background:var(--wa-header); font-weight:bold; border-radius:8px; margin:auto;">🔒 Messages are end-to-end encrypted.</div>`; 
-                        
-                        // Smart Scroll to bottom
-                        const isAtBottom = stack.scrollHeight - stack.scrollTop <= stack.clientHeight + 100;
-                        if(isAtBottom) stack.scrollTop = stack.scrollHeight;
+                        stack.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); padding:10px; background:var(--wa-header); font-weight:bold; border-radius:8px; margin:auto;">🔒 Messages are end-to-end encrypted.</div>`; stack.scrollTop = stack.scrollHeight;
                     });
                 });
             } catch(e) {}
@@ -2349,10 +2288,6 @@
             try {
                 set(push(ref(db, 'chats')), { sender: "MainframeAdmin", receiver: spyContext, textBody: finalMessageText, mediaPayload: liveChatB64, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
                     inputField.value = ""; MatrixSystemState.resetChatAssets(); document.getElementById('chatAttachmentStatusFeedback').innerText = ""; window.cancelReplyMatrixState(); renderAdminSpyChatConsoleLogs(); autoNarrateChatMessage("Admin", finalMessageText);
-                    
-                    // Force scroll
-                    const stack = document.getElementById('adminSpyChatLogsStack');
-                    if(stack) stack.scrollTop = stack.scrollHeight;
                 });
             } catch(e){}
         };
@@ -2367,4 +2302,29 @@
         };
 
         function removeContextDropdownMenuNode() { document.getElementById('dynamicMsgContextNodeOverlay')?.remove(); }
-        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) { const a = document.createElement('a'); a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data; a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.${data.startsWith("data:audio") ? 'webm' : 'jpg'}`; document.body.appendChild(a); a.click();
+        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) { const a = document.createElement('a'); a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data; a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.${data.startsWith("data:audio") ? 'webm' : 'jpg'}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); removeContextDropdownMenuNode(); };
+
+        window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) {
+            removeContextDropdownMenuNode(); const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            const liveActiveUsersList = MatrixSystemState.get('cachedGlobalUsersArr').filter(user => user.id !== MatrixSystemState.get('loggedInCustomerID') && user.status === 'active');
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Forward Transmission</h4><select id="forwardDestinationNodeSelector" class="nexus-popup-input-field"><option value="MainframeAdmin">Mainframe Admin Shashi</option>${liveActiveUsersList.map(u => `<option value="${u.id}">${u.clientName} (@${u.id})</option>`).join('')}</select><div class="nexus-popup-flex-btns"><button id="executeForwardSendBtn" class="nexus-popup-btn primary-btn">FORWARD</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
+            wrapper.classList.remove('hidden');
+            document.getElementById('executeForwardSendBtn').onclick = () => {
+                const targetUIDSelection = document.getElementById('forwardDestinationNodeSelector').value; if(!targetUIDSelection) return;
+                set(push(ref(db, 'chats')), { sender: MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID'), receiver: targetUIDSelection, textBody: baseText || "📎 Forwarded Asset Node", mediaPayload: assetLink || "", read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => { window.closeCustomInlinePopupEngine(); alert("✅ Packet forwarded."); });
+            };
+        };
+
+        window.executeStructuralDeletionSelectionMatrix = function(msgKey, epochTimeNodeVal) {
+            removeContextDropdownMenuNode(); const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Delete Message Node</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button id="btnDeleteForMe" class="nexus-popup-btn" style="background:#2a3942;">Delete for me</button><button id="btnDeleteForEveryone" class="nexus-popup-btn danger-btn">Delete for everyone</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
+            wrapper.classList.remove('hidden');
+            document.getElementById('btnDeleteForMe').onclick = () => { localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged"); window.closeCustomInlinePopupEngine(); if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); };
+            document.getElementById('btnDeleteForEveryone').onclick = () => { update(ref(db, `chats/${msgKey}`), { textBody: "🚫 This message was deleted", mediaPayload: "" }).then(() => { window.closeCustomInlinePopupEngine(); }); };
+        };
+
+        checkActiveStateSessionRetentionOnLaunch();
+    </script>
+</body>
+</html>
