@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700;900&display=swap">
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V3.0</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Inter:wght@400;500;600&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
@@ -13,15 +13,25 @@
             --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe; 
             --neon-pink: #ff007f; 
-            --whatsapp-green: #005c4b;
-            --whatsapp-incoming: #202c33;
+            
+            /* TRUE WHATSAPP WEB COLORS */
+            --wa-bg: #111b21;
+            --wa-header: #202c33;
+            --wa-search-bg: #202c33;
+            --wa-search-input: #2a3942;
+            --wa-msg-in: #202c33;
+            --wa-msg-out: #005c4b;
+            --wa-text: #e9edef;
+            --wa-text-muted: #8696a0;
+            --wa-accent: #00a884;
+            --wa-border: #222d34;
+            --wa-hover: #2a3942;
+            
             --bg-prime: #02050e; 
-            --panel-glass: rgba(6, 17, 38, 0.85);
-            --border-glass: rgba(0, 242, 254, 0.35); 
+            --panel-glass: rgba(6, 17, 38, 0.9);
+            --border-glass: rgba(0, 242, 254, 0.4); 
             --text-main: #ffffff; 
             --text-sub: #f8fafc;
-            --chat-bg: #111b21; 
-            --input-bg: #2a3942;
             --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
             --lamp-chamak: 0 0 50px #f1c40f, 0 0 100px rgba(241, 196, 15, 0.6);
             --chat-wallpaper: #0b141a url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
@@ -36,10 +46,19 @@
             --border-glass: #0f172a; 
             --text-main: #0f172a; 
             --text-sub: #1e293b;
-            --chat-bg: #efeae2; 
-            --input-bg: #ffffff;
-            --whatsapp-incoming: #ffffff;
-            --whatsapp-green: #d9fdd3;
+            
+            /* TRUE WHATSAPP WEB LIGHT THEME */
+            --wa-bg: #f0f2f5;
+            --wa-header: #f0f2f5;
+            --wa-search-bg: #ffffff;
+            --wa-search-input: #f0f2f5;
+            --wa-msg-in: #ffffff;
+            --wa-msg-out: #d9fdd3;
+            --wa-text: #111b21;
+            --wa-text-muted: #667781;
+            --wa-border: #e9edef;
+            --wa-hover: #f5f6f6;
+            
             --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.15);
             --lamp-chamak: 0 6px 24px rgba(0,0,0,0.2);
             --chat-wallpaper: #efeae2 url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
@@ -69,13 +88,6 @@
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
         body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* --- PARTICLE ENGINE CHANNELS --- */
-        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
-        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
-        .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
-        .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
-        @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
-        
         /* --- HYDRAULIC MECHANICAL SHUTTER LAMP INTERFACE --- */
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
         @keyframes dynamicColorCycle { 
@@ -89,10 +101,9 @@
         
         .metallic-shutter-head { width: 280px; height: 180px; background: radial-gradient(circle at center, #1a2536, #02050a); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0, 242, 254, 0.5); z-index: 5; overflow: hidden; }
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
-        
         .mechanical-gate { position: absolute; top: 0; width: 50%; height: 100%; background: repeating-linear-gradient(90deg, #0a0d14, #0a0d14 10px, #1a2536 10px, #1a2536 20px); border: 2px solid #00f2fe; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s; z-index: 6; }
-        .gate-left { left: 0; border-right: 1px solid rgba(0, 242, 254, 0.5); }
-        .gate-right { right: 0; border-left: 1px solid rgba(0, 242, 254, 0.5); }
+        .gate-left { left: 0; border-right: 1px solid rgba(0, 242, 254, 0.5); transform-origin: left center; }
+        .gate-right { right: 0; border-left: 1px solid rgba(0, 242, 254, 0.5); transform-origin: right center; }
         .cinema-stage.activated .gate-left { transform: translateX(-100%); opacity: 0; }
         .cinema-stage.activated .gate-right { transform: translateX(100%); opacity: 0; }
         
@@ -112,7 +123,7 @@
         .beaded-wire { width: 6px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); box-shadow: 0 0 15px rgba(241,196,15,0.8); }
         .luminescent-node { width: 38px; height: 38px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; transition: 0.3s; margin-top: -5px;}
 
-        /* --- ACCESS CORE LOGIN MAINFRAME HUD --- */
+        /* --- ACCESS CORE LOGIN MAINFRAME HUD (GLASSMORPHISM EFFECT) --- */
         .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
         .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; pointer-events: all; }
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
@@ -122,8 +133,8 @@
         .portal-matrix-tabs { display: flex; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 12px; margin-bottom: 25px; gap: 4px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); }
         .hud-tab { flex: 1; padding: 14px; background: transparent; border: none; color: var(--text-sub); font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 8px; transition: 0.3s; white-space: nowrap; }
         .hud-tab.active { background: rgba(241,196,15,0.25); color: #f1c40f; border: 2px solid rgba(241,196,15,0.5); font-family: 'Orbitron', sans-serif; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; display: flex; gap: 10px;}
+        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { flex: 1; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .hud-input-cluster textarea { height: 100px; resize: none; }
         .hud-input-cluster select { color: #f1c40f; font-weight: bold; background: var(--input-bg); }
         .hud-input-cluster label { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
@@ -134,6 +145,7 @@
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 6px 20px rgba(241,196,15,0.4); }
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
+        #genPassBtn { display: none; height: 100%; padding: 18px; }
 
         /* --- DASHBOARD WRAPPERS --- */
         .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; }
@@ -160,7 +172,7 @@
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
 
-        /* --- GLITCH FREE STABLE CHRONOMETER --- */
+        /* Stable Chronometer Clock without glitching squares */
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
 
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
@@ -191,13 +203,14 @@
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 1px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
 
-        /* --- IDE / WORD PROCESSOR RICH TEXT EDITOR --- */
+        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
         .notes-pad-rich-area { width: 100%; min-height: 350px; padding: 20px; color: var(--text-main); background: transparent; font-size: 1.15rem; border: none; outline: none; font-family: 'Rajdhani', sans-serif; font-weight: 600; line-height: 1.8; overflow-y: auto; text-align: left; }
         .notes-pad-rich-area h1 { font-size: 2.2rem; margin-bottom: 12px; color: var(--neon-cyan); font-weight: 900; }
         .notes-pad-rich-area h2 { font-size: 1.8rem; margin-bottom: 10px; color: var(--neon-pink); font-weight: 900; }
         .notes-pad-rich-area h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--lamp-color); font-weight: 900; }
+        .notes-pad-rich-area pre { background: #000; padding: 10px; border-radius: 8px; border: 1px solid var(--border-glass); font-family: monospace; color: #00f2fe; overflow-x: auto; margin-bottom: 10px;}
         
         .notes-toolbar-ribbon { background: rgba(0,0,0,0.6); padding: 12px 15px; border-bottom: 1px solid var(--border-glass); display: flex; gap: 8px; align-items: center; flex-flow: row wrap; justify-content: flex-start; }
         body.light-theme-active .notes-toolbar-ribbon { background: rgba(0,0,0,0.05); }
@@ -216,78 +229,64 @@
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- WHATSAPP WEB EXACT COLOR SPACE CLONE --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: calc(100vh - 240px); background: var(--chat-bg); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; }
-        .chat-target-userlist-pane { background: #111b21; border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
-        body.light-theme-active .chat-target-userlist-pane { background: #ffffff; border-right: 1px solid #d1d7db; }
-        .whatsapp-search-box { padding: 10px 14px; background: #111b21; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        body.light-theme-active .whatsapp-search-box { background: #f0f2f5; border-bottom: 1px solid #d1d7db;}
-        .whatsapp-search-box input { width: 100%; padding: 8px 14px; background: #202c33; border: none; border-radius: 8px; color: #d1d7db; font-size: 0.95rem; outline: none; font-family: 'Rajdhani', sans-serif;}
-        body.light-theme-active .whatsapp-search-box input { background: #ffffff; color: #3b4a54; border: 1px solid #e9edef; }
+        /* --- WHATSAPP WEB COLOR SPACE PERFECT CLONE --- */
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: calc(100vh - 240px); background: var(--wa-bg); border-radius: 16px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; }
+        .chat-target-userlist-pane { background: var(--wa-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
+        .whatsapp-search-box { padding: 10px 14px; background: var(--wa-search-bg); border-bottom: 1px solid var(--wa-border); }
+        .whatsapp-search-box input { width: 100%; padding: 8px 14px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; font-family: 'Inter', sans-serif;}
         
-        .chat-user-item-node { padding: 12px 15px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #e9edef; cursor: pointer; transition: all 0.2s ease; position: relative; }
-        body.light-theme-active .chat-user-item-node { color: #111b21; border-bottom: 1px solid #f0f2f5; }
-        .chat-user-item-node:hover { background: #202c33; }
-        body.light-theme-active .chat-user-item-node:hover { background: #f5f6f6; }
-        .chat-user-item-node.active-chat-target { background: #2a3942 !important; }
-        body.light-theme-active .chat-user-item-node.active-chat-target { background: #f0f2f5 !important; border-left: 4px solid #00a884; }
+        .chat-user-item-node { padding: 12px 15px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); cursor: pointer; transition: all 0.2s ease; position: relative; }
+        .chat-user-item-node:hover { background: var(--wa-hover); }
+        .chat-user-item-node.active-chat-target { background: var(--wa-hover) !important; border-left: 4px solid var(--wa-accent); }
         .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 2px solid #2ecc71; padding: 2px; }
         
         .whatsapp-avatar { width: 48px; height: 48px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
         .whatsapp-avatar:hover { transform: scale(1.05); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
-        .whatsapp-user-name { font-weight: bold; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family:'Rajdhani', sans-serif; }
-        .whatsapp-user-id { font-size: 0.85rem; color: #8696a0; font-family: 'Rajdhani', sans-serif; margin-top:2px; }
+        .whatsapp-user-name { font-weight: 500; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family:'Inter', sans-serif; }
+        .whatsapp-user-id { font-size: 0.85rem; color: var(--wa-text-muted); font-family: 'Inter', sans-serif; margin-top:2px; }
         
         .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
-        .whatsapp-unread-counter-pill { background: #00a884; color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Rajdhani', sans-serif; }
+        .whatsapp-unread-counter-pill { background: var(--wa-accent); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
 
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; }
-        .chat-stream-header-bar { background: #202c33; padding: 10px 16px; color: #e9edef; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; border-bottom:1px solid rgba(255,255,255,0.1); }
-        body.light-theme-active .chat-stream-header-bar { background: #f0f2f5; color: #111b21; border-bottom:1px solid #d1d7db;}
+        .chat-stream-header-bar { background: var(--wa-header); padding: 10px 16px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; border-bottom:1px solid var(--wa-border); }
         
-        .header-actions-btn { background:none; border:none; color:#aebac1; padding:8px; border-radius:50%; cursor:pointer; font-size:1.2rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center;}
-        .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:#d1d7db;}
-        body.light-theme-active .header-actions-btn { color:#54656f; }
-        body.light-theme-active .header-actions-btn:hover { background: rgba(0,0,0,0.05); color:#111b21; }
-        .header-call-btn { color: #00a884; font-family:'Orbitron'; font-size:0.85rem; border:1px solid #00a884; padding:4px 10px; border-radius:6px; }
+        .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.2rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center;}
+        .header-actions-btn:hover { background: rgba(255,255,255,0.05); color:var(--wa-text);}
+        .header-call-btn { color: var(--wa-accent); font-family:'Orbitron'; font-size:0.85rem; border:1px solid var(--wa-accent); padding:4px 10px; border-radius:6px; }
 
-        .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
+        .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; z-index: 2; scroll-behavior: smooth; }
         
-        /* Message Bubbles Exact Colors Fix */
-        .bubble-msg-wrapper { max-width: 65%; padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; line-height: 1.4; position: relative; box-shadow: 0 1px 0.5px rgba(11,20,26,.13); font-weight: 500; font-family: 'Rajdhani', sans-serif; cursor: pointer; word-wrap: break-word; margin-bottom:4px; display:flex; flex-direction:column;}
-        .bubble-outgoing { background: var(--whatsapp-green); color: #e9edef; align-self: flex-end; border-top-right-radius: 0; }
-        .bubble-incoming { background: var(--whatsapp-incoming); color: #e9edef; align-self: flex-start; border-top-left-radius: 0; }
+        /* Message Bubbles Exact Colors Fix with corner tails */
+        .bubble-msg-wrapper { max-width: 65%; padding: 6px 7px 8px 9px; border-radius: 7.5px; font-size: 0.95rem; line-height: 19px; position: relative; box-shadow: 0 1px 0.5px rgba(11,20,26,.13); font-weight: 500; font-family: 'Inter', sans-serif; cursor: pointer; word-wrap: break-word; margin-bottom:4px; display:flex; flex-direction:column;}
+        .bubble-outgoing { background: var(--wa-msg-out); color: #e9edef; align-self: flex-end; border-top-right-radius: 0; }
+        .bubble-outgoing::before { content: ""; position: absolute; top: 0; right: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 13px solid transparent; border-left: 13px solid var(--wa-msg-out); }
         
-        .reply-reference-box { background: rgba(0,0,0,0.2); border-left: 4px solid #00a884; padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 6px; color: #e9edef; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        body.light-theme-active .reply-reference-box { background: rgba(0,0,0,0.05); color: #111b21; }
-        .reply-preview-banner { position: absolute; bottom: 100%; left: 0; width: 100%; background: #202c33; border-top: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9; border-left: 4px solid #00a884; }
-        body.light-theme-active .reply-preview-banner { background: #f0f2f5; border-top: 1px solid #d1d7db;}
-        .reply-preview-text { color: #8696a0; font-size: 0.9rem; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin-right: 15px; }
+        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0; }
+        .bubble-incoming::before { content: ""; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 13px solid transparent; border-right: 13px solid var(--wa-msg-in); }
+        
+        .reply-reference-box { background: rgba(0,0,0,0.2); border-left: 4px solid var(--wa-accent); padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 6px; color: var(--wa-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .reply-preview-banner { position: absolute; bottom: 100%; left: 0; width: 100%; background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9; border-left: 4px solid var(--wa-accent); }
+        .reply-preview-text { color: var(--wa-text-muted); font-size: 0.9rem; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin-right: 15px; }
 
-        .whatsapp-time { font-size: 0.7rem; color: rgba(255,255,255,0.6); text-align: right; margin-top: 2px; display: flex; justify-content: flex-end; align-items:center; float:right; gap:4px; margin-left: 10px;}
+        .whatsapp-time { font-size: 0.7rem; color: rgba(255,255,255,0.6); text-align: right; margin-top: -10px; float: right; margin-left: 15px; position: relative; bottom: -5px; display: flex; align-items: center; gap: 4px; }
         body.light-theme-active .whatsapp-time { color: rgba(0,0,0,0.45); }
-        .whatsapp-tick-space { color: #8696a0; font-weight: 900; font-size: 0.75rem; letter-spacing: -1px; }
+        .whatsapp-tick-space { color: #8696a0; font-weight: 900; font-size: 0.75rem; letter-spacing: -2px; }
         .whatsapp-tick-space.double-blue { color: #53bdeb; }
 
-        .msg-reactions-tray { display: flex; gap: 2px; background: #202c33; padding: 2px 6px; border-radius: 12px; position: absolute; bottom: -10px; right: 10px; font-size: 0.85rem; border: 1px solid #111b21; box-shadow: 0 1px 2px rgba(0,0,0,0.3); pointer-events: none; }
-        body.light-theme-active .msg-reactions-tray { background: #fff; border: 1px solid #d1d7db; }
+        .msg-reactions-tray { display: flex; gap: 2px; background: var(--wa-header); padding: 2px 6px; border-radius: 12px; position: absolute; bottom: -10px; right: 10px; font-size: 0.85rem; border: 1px solid var(--wa-border); box-shadow: 0 1px 2px rgba(0,0,0,0.3); pointer-events: none; }
         
-        .chat-interface-footer-inputs { padding: 10px 16px; background: #202c33; display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
-        body.light-theme-active .chat-interface-footer-inputs { background: #f0f2f5; }
-        .whatsapp-input-field { flex: 1; padding: 10px 16px; background: #2a3942; border: none; border-radius: 8px; color: #e9edef; outline: none; font-size: 1rem; font-family: 'Rajdhani', sans-serif; font-weight: 500; }
-        body.light-theme-active .whatsapp-input-field { background: #ffffff; color: #111b21; border: 1px solid #cbd5e1; }
+        .chat-interface-footer-inputs { padding: 10px 16px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
+        .whatsapp-input-field { flex: 1; padding: 12px 16px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); outline: none; font-size: 0.95rem; font-family: 'Inter', sans-serif; resize: none; overflow: hidden; min-height: 42px; line-height: 20px;}
         
-        .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: #8696a0; font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
-        .whatsapp-circle-btn:hover { color: #d1d7db; }
+        .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
+        .whatsapp-circle-btn:hover { color: var(--wa-text); }
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
 
-        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #233138; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 100005; min-width: 180px; display: flex; flex-direction: column; padding: 8px 0; overflow: hidden; border:1px solid rgba(255,255,255,0.1); }
-        body.light-theme-active .whatsapp-avatar-context-dropdown, body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #cbd5e1;}
-        .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 10px 16px; background: transparent; border: none; color: #d1d7db; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; width: 100%; }
-        body.light-theme-active .avatar-dropdown-action-row, body.light-theme-active .dropdown-action-row-btn { color: #3b4a54; }
-        .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: #111b21; }
-        body.light-theme-active .avatar-dropdown-action-row:hover, body.light-theme-active .dropdown-action-row-btn:hover { background: #f5f6f6; }
+        .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: var(--wa-search-input); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 100005; min-width: 180px; display: flex; flex-direction: column; padding: 8px 0; overflow: hidden; border:1px solid var(--wa-border); }
+        .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 10px 16px; background: transparent; border: none; color: var(--wa-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; width: 100%; }
+        .avatar-dropdown-action-row:hover, .dropdown-action-row-btn:hover { background: var(--wa-hover); }
         .delete-color { color: #e74c3c !important; }
 
         /* --- VISUAL INTERFACE COMPONENT HOLOGRAPHY --- */
@@ -301,17 +300,14 @@
         @keyframes radarPing { 0% { transform:scale(0.5); opacity:1; } 100% { transform:scale(2.5); opacity:0; } }
 
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(11, 20, 26, 0.9); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
-        .nexus-popup-card-box { background: #202c33; border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; width: 90%; max-width: 420px; text-align: center; color: #e9edef; box-shadow: 0 20px 40px rgba(0,0,0,0.6); animation: popupEntrance3D 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
-        body.light-theme-active .nexus-popup-card-box { background: #ffffff; color:#111b21; border:1px solid #d1d7db; }
+        .nexus-popup-card-box { background: var(--wa-header); border: 1px solid var(--wa-border); padding: 30px; border-radius: 16px; width: 90%; max-width: 420px; text-align: center; color: var(--wa-text); box-shadow: 0 20px 40px rgba(0,0,0,0.6); animation: popupEntrance3D 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
         @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: #00a884; margin-bottom: 15px; font-size: 1.3rem; font-weight:700;}
-        .nexus-popup-input-field { width: 100%; padding: 12px; background: #111b21; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #e9edef; font-size: 1rem; outline: none; font-weight: 600; margin-top: 10px; }
-        body.light-theme-active .nexus-popup-input-field { background:#f0f2f5; color:#111b21; border-color:#d1d7db;}
+        .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: var(--wa-accent); margin-bottom: 15px; font-size: 1.3rem; font-weight:700;}
+        .nexus-popup-input-field { width: 100%; padding: 12px; background: var(--wa-search-input); border: 1px solid var(--wa-border); border-radius: 8px; color: var(--wa-text); font-size: 1rem; outline: none; font-weight: 600; margin-top: 10px; }
         .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 25px; }
         .nexus-popup-btn { flex: 1; padding: 12px; font-family: 'Rajdhani', sans-serif; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; font-size:1rem; }
-        .nexus-popup-btn.primary-btn { background: #00a884; color: #111b21; }
-        .nexus-popup-btn.cancel-btn { background: #2a3942; color: #e9edef; }
-        body.light-theme-active .nexus-popup-btn.cancel-btn { background: #f0f2f5; color: #3b4a54; }
+        .nexus-popup-btn.primary-btn { background: var(--wa-accent); color: #111b21; }
+        .nexus-popup-btn.cancel-btn { background: var(--wa-search-input); color: var(--wa-text); }
         .nexus-popup-btn.danger-btn { background: #e74c3c; color: #fff; }
 
         .giant-compiler-layout { background: rgba(4, 12, 30, 0.85); padding: 35px 25px; border-radius: 20px; border: 1px solid var(--border-glass); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
@@ -326,17 +322,17 @@
         .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
         
         /* Animated Neon Data Graphs */
-        .chart-mock-container { width: 100%; height: 50px; border: 1px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; overflow: hidden; }
-        .chart-mock-bar { height: 100%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 1.2s cubic-bezier(0.075, 0.82, 0.165, 1); display: flex; align-items: center; padding-left: 15px; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; color: #fff; width: 0%; }
+        .chart-mock-container { width: 100%; height: 40px; border: 1px solid var(--border-glass); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; overflow: hidden; }
+        .chart-mock-bar { height: 100%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 1s ease-in-out; display: flex; align-items: center; padding-left: 15px; font-family: 'Orbitron'; font-weight: 900; font-size: 0.85rem; color: #fff; width: 0%; white-space: nowrap; overflow: hidden; }
 
         .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
         .char-counter-badge { font-size: 0.8rem; color: #8696a0; position:absolute; right:15px; top:50%; transform:translateY(-50%); font-family: monospace; font-weight:bold;}
 
-        .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
+        .emoji-matrix-drawer { background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
         .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
         .emoji-item-node:hover { transform: scale(1.3); }
 
-        .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--border-glass); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
+        .mainframe-gif-drawer { background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
         .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
 
@@ -346,24 +342,27 @@
         .cyber-checkbox:checked { background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
         .cyber-checkbox:checked::after { content: "✓"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 900; font-size: 0.8rem; }
 
-        .mobile-back-btn { display: none; background: transparent; border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 6px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-right: 8px; }
+        .mobile-back-btn { display: none; background: transparent; border: none; color: var(--wa-accent); padding: 6px 12px; border-radius: 6px; font-family: 'Inter'; font-size: 1.5rem; font-weight: bold; cursor: pointer; margin-right: 8px; transition: 0.2s; }
+        .mobile-back-btn:hover { color: #fff; }
 
-        /* --- COMPREHENSIVE GRIDS & OVERLAPS FIX FOR MOBILE & LAPTOP --- */
-        @media (max-width: 768px) {
+        /* --- MOBILE & PC OVERLAPPING CORRECTION STYLES --- */
+        @media (max-width: 850px) {
             .top-cyber-navbar { padding: 10px; height: auto; flex-direction: column; gap: 8px; position: absolute; }
             .navbar-controls { justify-content: center; }
             .dashboard-panel-core { padding-top: 160px; padding-bottom: 20px; }
             .giant-compiler-grid, .form-grid-layout, #policyCardsStack, #adminUserControlList { grid-template-columns: 1fr !important; gap: 16px !important; }
             .full-width-field { grid-column: span 1; }
             
-            /* WhatsApp Web Exact Mobile Responsive Routing View */
+            /* WhatsApp Clone Responsive Architecture - FIX OVERLAPPING */
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 240px) !important; }
             .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
             .chat-stream-message-container { width: 100%; height: 100%; display: none; }
             
+            /* Toggling active view */
             .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-stream-message-container { display: flex; }
             .mobile-back-btn { display: inline-block; }
+            .bubble-msg-wrapper { max-width: 85%; }
 
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.65); }
             .emoji-matrix-drawer { grid-template-columns: repeat(4, 1fr); }
@@ -374,7 +373,7 @@
             .metallic-shutter-head { width: 220px; height: 140px; border-radius: 110px 110px 40px 40px;}
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 851px) {
             .chat-io-grid-matrix { grid-template-columns: 340px 1fr !important; }
             .chat-target-userlist-pane { display: flex !important; }
             .chat-stream-message-container { display: flex !important; }
@@ -432,7 +431,8 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.checkAutoLogin()">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.checkAutoLogin()" style="flex:1;">
+                    <button type="button" class="nav-btn" id="genPassBtn" style="display:none;" onclick="document.getElementById('accessNodePass').value = Math.random().toString(36).slice(-8) + '!'">Gen Pass</button>
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
@@ -470,10 +470,10 @@
 
             <div class="workspace-channel-selector">
                 <button class="channel-tab-btn" id="btnChannelUpload" onclick="window.switchCustomerChannel('upload')">📁 Policy Column</button>
-                <button class="channel-tab-btn" id="btnChannelNotes" onclick="window.switchCustomerChannel('notes')">📝 Rich Notes</button>
+                <button class="channel-tab-btn" id="btnChannelNotes" onclick="window.switchCustomerChannel('notes')">📝 Rich Notes IDE</button>
                 <button class="channel-tab-btn" id="btnChannelVault" onclick="window.switchCustomerChannel('vault')">📂 Cloud Vault</button>
                 <button class="channel-tab-btn" id="btnChannelGaming" onclick="window.switchCustomerChannel('gaming')">🎮 Gaming Nexus</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="window.switchCustomerChannel('chat')">💬 WhatsApp Link</button>
+                <button class="channel-tab-btn" id="btnChannelChat" onclick="window.switchCustomerChannel('chat')">💬 WhatsApp Web Link</button>
             </div>
 
             <div id="customerUploadInterfaceBlock" class="hidden">
@@ -498,17 +498,18 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 IDE WORK PROCESSOR NOTES</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 ADVANCED IDE WORD PROCESSOR</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
                     </div>
                     <div class="notes-toolbar-ribbon">
-                        <button class="note-tool-btn" onclick="window.triggerNoteFormatBlock('h1')">H1</button>
-                        <button class="note-tool-btn" onclick="window.triggerNoteFormatBlock('h2')">H2</button>
-                        <button class="note-tool-btn" onclick="window.triggerNoteFormatBlock('h3')">H3</button>
-                        <button class="note-tool-btn" onclick="window.triggerNoteFormatBlock('p')">Paragraph</button>
-                        <div class="toolbar-divider"></div>
+                        <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
+                            <option value="p">Paragraph</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="h3">Heading 3</option>
+                        </select>
                         <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
                             <option value="3">Normal Size</option>
                             <option value="5">Large Text</option>
@@ -518,14 +519,23 @@
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')"><b>B</b></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')"><i>I</i></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')"><u>U</u></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')"><del>S</del></button>
+                        <div class="toolbar-divider"></div>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('justifyLeft')">⇤ Left</button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('justifyCenter')">⇥ Center</button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('justifyRight')">⇥ Right</button>
+                        <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')">⏺ List</button>
-                        <button class="note-tool-btn" style="color:#f1c40f; border-color:#f1c40f;" onclick="window.triggerEmbeddedNoteHighlight('#f1c40f')">🟨</button>
+                        <button class="note-tool-btn" onclick="window.triggerNoteFormatBlock('pre')">{' '} Code</button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertHorizontalRule')">--- Rule</button>
+                        <button class="note-tool-btn" style="color:#f1c40f; border-color:#f1c40f;" onclick="window.triggerEmbeddedNoteHighlight('#f1c40f')">🟨 High</button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.triggerNoteAction('undo')">↩️ Undo</button>
                         <button class="note-tool-btn" onclick="window.triggerNoteAction('redo')">↪️ Redo</button>
                         <button class="note-tool-btn" onclick="window.triggerNoteAction('removeFormat')">🧹 Clear</button>
                         <div class="toolbar-divider"></div>
                         <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD</button>
+                        <button class="note-tool-btn" style="background:#00a884; color:#fff; border:none;" onclick="window.downloadNotesAsTxt()">💾 Save Offline (.txt)</button>
                     </div>
                     <div class="notes-editor-container-shell">
                         <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Type framework notes here..."></div>
@@ -569,16 +579,17 @@
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
-                                <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
+                                <button class="mobile-back-btn" onclick="window.exitMobileChatView()">←</button>
                                 <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerUserProfileAvatarDropdownEngine()">
                                 <div class="whatsapp-user-info">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode" style="font-weight: 700;">Select Pipeline...</div>
-                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:#00a884; font-family:'Rajdhani';" class="hidden">typing...</div>
+                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-accent); font-family:'Inter';" class="hidden">typing...</div>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
-                                <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
-                                <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
+                                <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn" title="Voice Call">📞</button>
+                                <button onclick="window.triggerHologramCall('video')" class="header-actions-btn" title="Video Call">📹</button>
+                                <div style="width: 1px; height: 20px; background: var(--wa-border); margin: 0 5px;"></div>
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
@@ -591,7 +602,7 @@
                         
                         <div id="chatReplyPreviewBanner" class="reply-preview-banner hidden">
                             <div class="reply-preview-text" id="replyPreviewTextNode">Replying to...</div>
-                            <button onclick="window.cancelReplyMatrixState()" style="background:none; border:none; color:#e74c3c; font-size:1.2rem; cursor:pointer;">✖</button>
+                            <button onclick="window.cancelReplyMatrixState()" style="background:none; border:none; color:var(--wa-text-muted); font-size:1.2rem; cursor:pointer;">✖</button>
                         </div>
 
                         <div class="chat-interface-footer-inputs">
@@ -599,11 +610,11 @@
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <div style="flex: 1; position: relative; min-width: 150px; display:flex; align-items:center;">
-                                <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
+                                <textarea id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message" oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); window.dispatchMatrixChatMessage(); }"></textarea>
                                 <span id="chatInputCharCounter" class="char-counter-badge hidden"></span>
                             </div>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
-                            <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:#00a884; transform:rotate(-45deg);">➤</button>
+                            <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-text-muted);">➤</button>
                         </div>
                     </div>
                 </div>
@@ -747,7 +758,7 @@
             window.addEventListener('resize', resize); resize();
             for(let i=0; i<25; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, alpha: Math.random() * 0.4 + 0.1 }); }
             function draw() {
-                if(document.hidden || MatrixSystemState.get('loggedInCustomerID') !== "") { ambientParticleToken = requestAnimationFrame(draw); return; }
+                if(document.hidden || document.getElementById('mainStage').style.display === 'none') { ambientParticleToken = requestAnimationFrame(draw); return; }
                 ctx.clearRect(0,0, canvas.width, canvas.height);
                 const isLight = document.body.classList.contains('light-theme-active');
                 ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.1)' : 'rgba(0, 242, 254, 0.2)';
@@ -787,7 +798,7 @@
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            const cleanText = textBody.replace(/🤖|🤖 AI|🚫|📎|🎙|✅|❌/g, '');
+            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌/g, '');
             if(cleanText.trim().length > 0) window.speakNaturalHuman(`${senderName} says: ${cleanText}`);
         }
 
@@ -891,7 +902,7 @@
             if(activeState) {
                 toggleBtn.innerText = "🤖 AI CORE: ON"; toggleBtn.style.color = "var(--neon-pink)"; window.speakNaturalHuman("AI system online.");
             } else {
-                toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "#8696a0";
+                toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "var(--wa-text-muted)";
             }
         };
 
@@ -925,7 +936,9 @@
 
         function executeTalkingTomRenderCycle() {
             if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming' || currentArcadeEngineId !== 'tom' || !canvasCtx) return;
-            if (document.hidden) { requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); return; }
+            if (document.hidden || document.getElementById('customerGamingInterfaceBlock').classList.contains('hidden')) { 
+                requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); return; 
+            }
             
             canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
             virtualTomTalkingAnimationCycle += 0.25;
@@ -1048,6 +1061,7 @@
             if(liveVideoCallStreamObj) { liveVideoCallStreamObj.getTracks().forEach(track => track.stop()); liveVideoCallStreamObj = null; }
         };
 
+        /* ADVANCED NOTEPAD IDE LOGIC */
         window.wipeNoteInterfaceToBlankTrigger = function() {
             const editor = document.getElementById('richNoteWritingPadEditable');
             if (editor) editor.innerHTML = "";
@@ -1060,6 +1074,27 @@
         window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteFontSizeChange = function(sizeVal) { document.execCommand('fontSize', false, sizeVal); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteAction = function(actionId) { document.execCommand(actionId, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); };
+
+        window.downloadNotesAsTxt = function() {
+            const htmlNode = document.getElementById('richNoteWritingPadEditable');
+            if (!htmlNode) return;
+            let formattedText = htmlNode.innerHTML
+                .replace(/<br\s*[\/]?>/gi, "\n")
+                .replace(/<\/p>/gi, "\n")
+                .replace(/<\/h[1-6]>/gi, "\n\n")
+                .replace(/<\/div>/gi, "\n")
+                .replace(/<[^>]+>/g, ""); // Strip all remaining tags
+                
+            formattedText = formattedText.replace(/&nbsp;/g, " ");
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(formattedText));
+            element.setAttribute('download', `Nexus_Document_${Date.now()}.txt`);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            window.playSynthesizedSound(600, 'sine', 0.2);
+        };
 
         window.toggleRichNotesVoiceStreamRecorder = function() {
             const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
@@ -1309,7 +1344,7 @@
         onValue(ref(db, 'ai_communications'), (snapshot) => {
             const commsData = []; snapshot.forEach(child => { let val = child.val(); val.dbKey = child.key; commsData.push(val); });
             MatrixSystemState.set('cachedGlobalAiCommsArr', commsData);
-            if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') renderAdminAiInterceptionSpyBlock();
+            if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') window.renderAdminAiInterceptionSpyBlock();
         });
 
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
@@ -1475,8 +1510,7 @@
                     <div style="display:flex; justify-content:center; gap:30px;">
                         <button onclick="window.closeCustomInlinePopupEngine()" class="whatsapp-circle-btn" style="background:#e74c3c; color:#fff; width:65px; height:65px; font-size:2rem; border-radius:50%; box-shadow: 0 10px 20px rgba(231,76,60,0.4); transform:rotate(135deg);">📞</button>
                     </div>
-                </div>
-            `;
+                </div>`;
             wrapper.classList.remove('hidden');
             if(isAudioContextAllowed) window.playSynthesizedSound(440, 'sine', 1.0);
 
@@ -1643,16 +1677,16 @@
                         <div class="chat-target-userlist-pane" id="adminSpyUsersListWrapper"></div>
                         <div class="chat-stream-message-container">
                             <div class="chat-stream-header-bar">
-                                <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
-                                <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:#00f2fe;">Select Pipeline...</div></div>
+                                <button class="mobile-back-btn" onclick="window.exitMobileChatView()">←</button>
+                                <div class="whatsapp-user-info"><div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:var(--wa-text);">Select Pipeline...</div></div>
                                 <div style="display: flex; gap: 8px;"><button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button></div>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
-                            <div id="adminChatReplyPreviewBanner" class="reply-preview-banner hidden"><div class="reply-preview-text" id="adminReplyPreviewTextNode">Replying...</div><button onclick="window.cancelReplyMatrixState()" style="color:#e74c3c; cursor:pointer;">✖</button></div>
+                            <div id="adminChatReplyPreviewBanner" class="reply-preview-banner hidden"><div class="reply-preview-text" id="adminReplyPreviewTextNode">Replying...</div><button onclick="window.cancelReplyMatrixState()" style="color:#e74c3c; cursor:pointer; background:none; border:none; font-size:1.2rem;">✖</button></div>
                             <div class="chat-interface-footer-inputs">
                                 <button class="whatsapp-circle-btn" onclick="document.getElementById('adminChatMediaFileInput').click()">📎</button>
                                 <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
-                                <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()">
+                                <textarea id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); window.dispatchAdminSpyInterceptionMsg(); }"></textarea>
                                 <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="padding:10px 16px; background:#00a884; border-radius:8px; color:#111b21; font-weight:bold; cursor:pointer; border:none;">➤</button>
                             </div>
                         </div>
@@ -1713,7 +1747,7 @@
                 return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:14px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'};">
                         <div><b>ID:</b> <span style="color:#00f2fe;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b> ${user.contact}</div>
                         <div style="display:flex; justify-content:space-between; margin-top:10px;"><select class="admin-status-toggle-select" onchange="window.toggleUserNodeActivationState('${user.id}', this.value)"><option value="active" ${!isDeact?'selected':''}>🟢 Active</option><option value="deactivated" ${isDeact?'selected':''}>🔴 Deactive</option></select><button onclick="window.wipeUserPermanently('${user.id}')" style="color:#e74c3c; background:none; border:none; cursor:pointer;">Wipe</button></div>
-                        <div style="margin-top:10px;"><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:1px solid var(--border-glass); color:#f1c40f; padding:8px 12px; width:100%;"></div></div>`;
+                        <div style="margin-top:10px;"><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; width:100%;"></div></div>`;
             }).join('');
         };
 
@@ -1795,8 +1829,8 @@
         window.changeWorkspaceMode = function(mode) {
             MatrixSystemState.set('currentMode', mode); const inputLabel = document.getElementById('hudInputLabel');
             document.getElementById('tabModeUser').classList.remove('active'); document.getElementById('tabModeAdmin').classList.remove('active');
-            if (mode === 'admin') { document.getElementById('tabModeAdmin').classList.add('active'); if(inputLabel) inputLabel.innerText = "Confirm Admin Vector ID"; } 
-            else { document.getElementById('tabModeUser').classList.add('active'); if(inputLabel) inputLabel.innerText = "System ID / Customer ID"; }
+            if (mode === 'admin') { document.getElementById('tabModeAdmin').classList.add('active'); if(inputLabel) inputLabel.innerText = "Confirm Admin Vector ID"; document.getElementById('genPassBtn').style.display = "none"; } 
+            else { document.getElementById('tabModeUser').classList.add('active'); if(inputLabel) inputLabel.innerText = "System ID / Customer ID"; document.getElementById('genPassBtn').style.display = "none"; }
             document.getElementById('accessNodeUser').value = ""; document.getElementById('accessNodePass').value = ""; 
         };
 
@@ -1861,12 +1895,12 @@
                 const userBar = document.getElementById('barChartUsers');
                 if (userBar) {
                     userBar.style.width = `${(totalUsers / maxCap) * 100}%`;
-                    userBar.innerText = `${totalUsers} Nodes`;
+                    userBar.innerText = `${totalUsers} Nodes Registered`;
                 }
                 const policyBar = document.getElementById('barChartPolicies');
                 if (policyBar) {
                     policyBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
-                    policyBar.innerText = `${totalPolicies} Entries`;
+                    policyBar.innerText = `${totalPolicies} Secure Documents`;
                 }
             }, 100);
 
@@ -1943,7 +1977,7 @@
                             let assetHTML = "";
                             if(m.mediaPayload) { if(m.mediaPayload.startsWith("data:audio")) assetHTML = `<audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`; else assetHTML = `<img src="${m.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')" style="max-width:160px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`; }
                             let reactionMarkup = m.reaction ? `<div class="msg-reactions-tray">${m.reaction}</div>` : ""; let replyMarkup = m.quotedText ? `<div class="reply-reference-box">${m.quotedText}</div>` : "";
-                            htmlCollector += `<div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:#005c4b; color:#fff; align-self:flex-end;' : 'background:#202c33; color:#fff; align-self:flex-start;'}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody.replace(/'/g, "\\'")}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">${replyMarkup}<div>${m.textBody}</div>${assetHTML}<div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>${reactionMarkup}</div>`;
+                            htmlCollector += `<div class="bubble-msg-wrapper" style="${isMyResponse ? 'background:var(--wa-msg-out); color:#fff; align-self:flex-end;' : 'background:var(--wa-msg-in); color:var(--wa-text); align-self:flex-start;'}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody.replace(/'/g, "\\'")}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">${replyMarkup}<div>${m.textBody}</div>${assetHTML}<div class="whatsapp-time">${m.timestamp} ${isMyResponse ? ticksString : ''}</div>${reactionMarkup}</div>`;
                         }
                     });
                     stack.innerHTML = htmlCollector || `<div>🔒 Encryption verified.</div>`; stack.scrollTop = stack.scrollHeight;
@@ -1987,7 +2021,7 @@
         window.executeStructuralDeletionSelectionMatrix = function(msgKey, epochTimeNodeVal) {
             removeContextDropdownMenuNode(); const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Delete Message Node</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button id="btnDeleteForMe" class="nexus-popup-btn" style="background:#2a3942;">Delete for me</button><button id="btnDeleteForEveryone" class="nexus-popup-btn danger-btn">Delete for everyone</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Delete Message Node</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button id="btnDeleteForMe" class="nexus-popup-btn" style="background:var(--wa-search-input);">Delete for me</button><button id="btnDeleteForEveryone" class="nexus-popup-btn danger-btn">Delete for everyone</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
             wrapper.classList.remove('hidden');
             document.getElementById('btnDeleteForMe').onclick = () => { localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged"); window.closeCustomInlinePopupEngine(); if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); };
             document.getElementById('btnDeleteForEveryone').onclick = () => { update(ref(db, `chats/${msgKey}`), { textBody: "🚫 This message was deleted", mediaPayload: "" }).then(() => { window.closeCustomInlinePopupEngine(); }); };
