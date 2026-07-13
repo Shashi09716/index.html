@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V7.0 (Zero Bug & Ultra WA Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V6.0 (Zero Bug Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -73,7 +73,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; user-select: none; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); }
         
-        /* --- PROFESSIONAL TOAST NOTIFICATIONS --- */
+        /* --- NEW PROFESSIONAL TOAST NOTIFICATIONS --- */
         .cyber-toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9999999; display: flex; flex-direction: column; gap: 10px; align-items: center; pointer-events: none; }
         .cyber-toast { background: rgba(0, 242, 254, 0.1); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 12px 24px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,242,254,0.4); font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 0.95rem; backdrop-filter: blur(10px); animation: toastFadeIn 0.3s ease forwards, toastFadeOut 0.3s ease 2.7s forwards; white-space: nowrap; }
         .cyber-toast.toast-error { border-color: var(--neon-pink); color: var(--neon-pink); box-shadow: 0 0 15px rgba(255,0,127,0.4); background: rgba(255,0,127,0.1); }
@@ -97,6 +97,13 @@
         .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; }
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
         body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        /* --- PARTICLE ENGINE CHANNELS --- */
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
+        .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
+        .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
+        @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
         
         /* --- HYDRAULIC MECHANICAL SHUTTER LAMP INTERFACE --- */
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
@@ -181,8 +188,10 @@
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; }
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
 
+        /* Stable Chronometer Clock */
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
 
+        .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); transition: 0.3s; }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
 
@@ -193,12 +202,24 @@
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
+        .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
+        .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
+        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+        .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.5); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .wipe-card-btn:hover { background: rgba(231,76,60,0.35); color: #fff; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
         .hidden { display: none !important; }
         .text-left { text-align: left; }
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
 
+        .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 1px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
+        .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
+
+        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD (PRO LEVEL V2) --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); transition: all 0.3s ease; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
@@ -206,6 +227,7 @@
         .notes-pad-rich-area { width: 100%; min-height: 400px; flex: 1; padding: 30px; color: var(--text-main); background: #ffffff; color: #111b21; font-size: 1.15rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; }
         body.light-theme-active .notes-pad-rich-area { border: 1px solid #cbd5e1; }
         
+        /* Table Styles for Notepad */
         .notes-pad-rich-area table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
         .notes-pad-rich-area th, .notes-pad-rich-area td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
         .notes-pad-rich-area th { background-color: #f8fafc; font-weight: bold; }
@@ -220,18 +242,26 @@
         .color-picker-wrapper { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; font-family: 'Orbitron'; font-weight: bold; color: var(--text-main); }
         .color-picker-input { cursor: pointer; width: 25px; height: 25px; border: none; border-radius: 5px; background: transparent; padding: 0; outline: none; }
 
+        /* Note Status Bar */
         .notes-status-bar { padding: 8px 15px; background: rgba(0,0,0,0.8); border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 0.85rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center; }
         body.light-theme-active .notes-status-bar { background: #f0f2f5; color: #111b21; border-color: #cbd5e1; }
 
         .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; }
         .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 18px; border-radius: 12px; border: 1px solid var(--border-glass); position: relative; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; }
+        .note-structural-card:hover { transform: translateY(-3px); }
+        .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.3); padding-bottom: 8px; }
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
+
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 3px dashed var(--neon-pink); border-radius: 20px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: var(--matrix-3d-shadow-pink); }
+        .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #000; border: 3px solid var(--neon-cyan); border-radius: 16px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,242,254,0.4); }
+        .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
+        .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- 100% REAL WHATSAPP WEB COLOR SPACE PERFECT CLONE --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: calc(100vh - 240px); background: var(--wa-bg); border-radius: 0px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
-        .whatsapp-search-box { padding: 10px 14px; background: var(--wa-search-bg); border-bottom: 1px solid var(--wa-border); display:flex; gap:8px; align-items:center;}
-        .whatsapp-search-box input { flex:1; padding: 8px 14px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; font-family: inherit;}
+        .whatsapp-search-box { padding: 10px 14px; background: var(--wa-search-bg); border-bottom: 1px solid var(--wa-border); }
+        .whatsapp-search-box input { width: 100%; padding: 8px 14px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; font-family: inherit;}
         body.light-theme-active .whatsapp-search-box input { border: 1px solid #e9edef; }
         
         .chat-user-item-node { padding: 12px 15px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); cursor: pointer; transition: background 0.2s ease; position: relative; }
@@ -241,12 +271,13 @@
         body.light-theme-active .chat-user-item-node.active-chat-target { background: #f0f2f5 !important; border-left: 4px solid var(--wa-green); padding-left: 11px; }
         .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 2px solid #2ecc71; padding: 2px; }
         
-        .whatsapp-avatar { width: 48px; height: 48px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
+        .whatsapp-avatar { width: 48px; height: 48px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
         .whatsapp-avatar:hover { transform: scale(1.05); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
         .whatsapp-user-name { font-weight: 500; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
-        .whatsapp-user-id { font-size: 0.8rem; color: var(--wa-text-muted); font-family: inherit; margin-top:2px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+        .whatsapp-user-id { font-size: 0.85rem; color: var(--wa-text-muted); font-family: inherit; margin-top:2px; }
         
+        .nickname-badge-info { font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.25); padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px; }
         .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: inherit; }
 
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; }
@@ -255,7 +286,8 @@
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.2rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center;}
         .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
         body.light-theme-active .header-actions-btn:hover { background: rgba(0,0,0,0.05); color:#111b21; }
-        
+        .header-call-btn { color: var(--wa-green); font-family:'Orbitron'; font-size:0.85rem; border:1px solid var(--wa-green); padding:4px 10px; border-radius:6px; }
+
         .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
         
         /* --------------------------------------------------------------------- */
@@ -273,7 +305,9 @@
             font-family: inherit; 
             cursor: pointer; 
             word-wrap: break-word; 
-            margin-bottom: 2px;
+            margin-bottom: 2px; /* Close spacing for same-user messages */
+            
+            /* Crucial Fix: */
             display: block; 
             width: fit-content; 
         }
@@ -287,8 +321,8 @@
         
         .wa-time-spacer {
             display: inline-block;
-            width: 75px;  /* Block that text CANNOT overlap */
-            height: 10px; 
+            width: 75px;  /* This acts as a physical block that text CANNOT overlap */
+            height: 10px; /* Forces wrap if text gets too close to the time area */
         }
 
         .whatsapp-time { 
@@ -316,14 +350,22 @@
         .bubble-incoming.has-tail { border-top-left-radius: 0; }
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid var(--wa-msg-in); }
         /* --------------------------------------------------------------------- */
+        
+        .reply-reference-box { background: rgba(0,0,0,0.2); border-left: 4px solid var(--wa-green); padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 6px; color: var(--wa-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        body.light-theme-active .reply-reference-box { background: rgba(0,0,0,0.05); color: #111b21; }
+        .reply-preview-banner { position: absolute; bottom: 100%; left: 0; width: 100%; background: var(--wa-header); border-top: 1px solid var(--wa-border); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9; border-left: 4px solid var(--wa-green); }
+        .reply-preview-text { color: var(--wa-text-muted); font-size: 0.9rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin-right: 15px; }
 
+        .msg-reactions-tray { display: flex; gap: 2px; background: var(--wa-msg-in); padding: 2px 6px; border-radius: 12px; position: absolute; bottom: -10px; right: 10px; font-size: 0.85rem; border: 1px solid var(--wa-bg); box-shadow: 0 1px 2px rgba(0,0,0,0.3); pointer-events: none; }
+        
         .chat-interface-footer-inputs { padding: 10px 16px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
         .whatsapp-input-field { flex: 1; padding: 10px 16px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); outline: none; font-size: 0.95rem; font-family: inherit; font-weight: 400; }
         body.light-theme-active .whatsapp-input-field { border: 1px solid #cbd5e1; }
         
         .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
         .whatsapp-circle-btn:hover { color: var(--wa-text); }
-        
+        .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
+
         .whatsapp-avatar-context-dropdown, .msg-interactive-dropdown-menu { position: absolute; background: #233138; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 100005; min-width: 180px; display: flex; flex-direction: column; padding: 8px 0; overflow: hidden; border:1px solid rgba(255,255,255,0.1); }
         body.light-theme-active .whatsapp-avatar-context-dropdown, body.light-theme-active .msg-interactive-dropdown-menu { background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #cbd5e1;}
         .avatar-dropdown-action-row, .dropdown-action-row-btn { padding: 10px 16px; background: transparent; border: none; color: #d1d7db; font-family: inherit; font-weight: 500; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; width: 100%; }
@@ -332,35 +374,95 @@
         body.light-theme-active .avatar-dropdown-action-row:hover, body.light-theme-active .dropdown-action-row-btn:hover { background: #f5f6f6; }
         .delete-color { color: #e74c3c !important; }
 
+        /* --- VISUAL INTERFACE COMPONENT HOLOGRAPHY --- */
+        .hologram-call-effect { width: 100%; height: 260px; border-radius: 16px; margin: 0 auto 20px auto; border: 2px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.3), inset 0 0 40px rgba(0,242,254,0.4); background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: #0b141a; display:flex; justify-content:center; align-items:center; }
+        .hologram-call-effect video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: contrast(1.1) saturate(1.2) hue-rotate(2deg); }
+        .hologram-scanline { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: rgba(0,242,254,0.8); box-shadow: 0 0 15px #00f2fe; animation: scanHolo 2.5s infinite linear; pointer-events: none;}
+        @keyframes scanHolo { 0% { top: -10%; opacity:0; } 10% { opacity:1; } 90% { opacity:1; } 100% { top: 110%; opacity:0; } }
+        .radar-pulse-ring { position:absolute; width:100px; height:100px; border-radius:50%; border:2px solid #00f2fe; animation: radarPing 2s infinite ease-out; opacity:0; }
+        .radar-pulse-ring:nth-child(2) { animation-delay: 0.6s; }
+        .radar-pulse-ring:nth-child(3) { animation-delay: 1.2s; }
+        @keyframes radarPing { 0% { transform:scale(0.5); opacity:1; } 100% { transform:scale(2.5); opacity:0; } }
+
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(11, 20, 26, 0.9); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
         .nexus-popup-card-box { background: #202c33; border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; width: 90%; max-width: 420px; text-align: center; color: #e9edef; box-shadow: 0 20px 40px rgba(0,0,0,0.6); animation: popupEntrance3D 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
         body.light-theme-active .nexus-popup-card-box { background: #ffffff; color:#111b21; border:1px solid #d1d7db; }
         @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: #00a884; margin-bottom: 15px; font-size: 1.3rem; font-weight:700;}
         .nexus-popup-input-field { width: 100%; padding: 12px; background: #111b21; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #e9edef; font-size: 1rem; outline: none; font-weight: 600; margin-top: 10px; }
         body.light-theme-active .nexus-popup-input-field { background:#f0f2f5; color:#111b21; border-color:#d1d7db;}
         .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 25px; }
         .nexus-popup-btn { flex: 1; padding: 12px; font-family: 'Rajdhani', sans-serif; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s; font-size:1rem; }
         .nexus-popup-btn.primary-btn { background: #00a884; color: #111b21; }
         .nexus-popup-btn.cancel-btn { background: #2a3942; color: #e9edef; }
-        
+        body.light-theme-active .nexus-popup-btn.cancel-btn { background: #f0f2f5; color: #3b4a54; }
+        .nexus-popup-btn.danger-btn { background: #e74c3c; color: #fff; }
+
         .giant-compiler-layout { background: rgba(4, 12, 30, 0.85); padding: 35px 25px; border-radius: 20px; border: 1px solid var(--border-glass); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
+        body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #1abc9c; }
+        .giant-compiler-layout h3 { color: #00f2fe; font-family: 'Orbitron'; margin-bottom: 22px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
+        body.light-theme-active .giant-compiler-layout h3 { color: #16a085; text-shadow: none; }
+        .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+
+        /* --- GRAPH AND MONITOR LOG CONTROLLERS --- */
+        .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
+        .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); position:relative;}
+        .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
         
-        /* Mobile fixes */
+        /* Animated Neon Data Graphs */
+        .chart-mock-container { width: 100%; height: 50px; border: 1px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; overflow: hidden; }
+        .chart-mock-bar { height: 100%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 1.2s cubic-bezier(0.075, 0.82, 0.165, 1); display: flex; align-items: center; padding-left: 15px; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; color: #fff; width: 0%; }
+
+        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        .char-counter-badge { font-size: 0.8rem; color: var(--wa-text-muted); position:absolute; right:15px; top:50%; transform:translateY(-50%); font-family: monospace; font-weight:bold;}
+
+        .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
+        .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
+        .emoji-item-node:hover { transform: scale(1.3); }
+
+        .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); }
+        .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
+        .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
+
+        /* Cyber Checkboxes */
+        .cyber-checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main); font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; }
+        .cyber-checkbox { appearance: none; width: 18px; height: 18px; border: 2px solid var(--border-glass); border-radius: 4px; background: transparent; cursor: pointer; position: relative; transition: 0.2s; }
+        .cyber-checkbox:checked { background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
+        .cyber-checkbox:checked::after { content: "✓"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 900; font-size: 0.8rem; }
+
+        .mobile-back-btn { display: none; background: transparent; border: 1px solid var(--wa-border); color: var(--neon-cyan); padding: 6px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-right: 8px; }
+
+        /* --- MOBILE & PC OVERLAPPING CORRECTION STYLES --- */
         @media (max-width: 768px) {
             .top-cyber-navbar { padding: 10px; height: auto; flex-direction: column; gap: 8px; position: absolute; }
+            .navbar-controls { justify-content: center; }
             .dashboard-panel-core { padding-top: 160px; padding-bottom: 20px; }
+            .giant-compiler-grid, .form-grid-layout, #policyCardsStack, #adminUserControlList { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .full-width-field { grid-column: span 1; }
+            
+            /* WhatsApp Clone Responsive Architecture */
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 240px) !important; }
             .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
             .chat-stream-message-container { width: 100%; height: 100%; display: none; }
+            
             .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-stream-message-container { display: flex; }
             .mobile-back-btn { display: inline-block; }
+
             .cinema-stage.activated .cyber-lamp-core { transform: translateY(-160px) scale(0.65); }
+            .emoji-matrix-drawer { grid-template-columns: repeat(4, 1fr); }
+            .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
+            .chat-interface-footer-inputs { flex-wrap: wrap; gap: 8px; }
+            .whatsapp-input-field { min-width: 120px; }
+            .quantum-cord { padding: 80px 60px; margin-left: -60px; margin-top: -60px;}
+            .metallic-shutter-head { width: 220px; height: 140px; border-radius: 110px 110px 40px 40px;}
         }
+
         @media (min-width: 769px) {
             .chat-io-grid-matrix { grid-template-columns: 340px 1fr !important; }
             .chat-target-userlist-pane { display: flex !important; }
             .chat-stream-message-container { display: flex !important; }
+            .mobile-back-btn { display: none !important; }
         }
     </style>
 </head>
@@ -444,17 +546,11 @@
                 <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-            <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px; background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; border:1px solid var(--border-glass);">
-                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer; width:70px; height:70px;" onclick="window.triggerUserProfileAvatarDropdownEngine()" src="">
-                <div style="flex:1;">
-                    <label style="color:#00f2fe; font-size:1rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="window.triggerUserProfileAvatarDropdownEngine()">📷 Edit Profile Photo</label>
+            <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
+                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer;" onclick="window.triggerUserProfileAvatarDropdownEngine()" src="">
+                <div>
+                    <label style="color:#00f2fe; font-size:1rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="window.triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo Layout</label>
                     <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserProfileAvatarEngine(event)">
-                    
-                    <div style="display:flex; gap:10px; align-items:center; margin-top:8px;">
-                        <span style="color:#8696a0; font-size:0.9rem;">Bio:</span>
-                        <input type="text" id="userBioInputText" placeholder="Hey there! I am using Nexus..." style="background:transparent; border:none; border-bottom:1px solid var(--border-glass); color:#fff; outline:none; font-family:inherit; flex:1;">
-                        <button onclick="window.updateUserBioFromDashboard()" class="nav-btn" style="padding:4px 8px; font-size:0.75rem;">💾 Save Bio</button>
-                    </div>
                 </div>
             </div>
 
@@ -526,8 +622,12 @@
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')" title="Bullet List">⏺ List</button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertOrderedList')" title="Numbered List">🔢 List</button>
-                        <div class="color-picker-wrapper" title="Text Color">🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000"></div>
-                        <div class="color-picker-wrapper" title="Highlight Color">🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f"></div>
+                        <div class="color-picker-wrapper" title="Text Color">
+                            🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000">
+                        </div>
+                        <div class="color-picker-wrapper" title="Highlight Color">
+                            🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f">
+                        </div>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗 Link</button>
                         <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️ Image</button>
@@ -541,6 +641,8 @@
                         <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
                         <button class="note-tool-btn" onclick="window.printNoteEditorContent()" title="Print / PDF">🖨️ Print</button>
                         <button class="note-tool-btn" onclick="window.toggleFullScreenNoteMode()" id="btnNoteFullScreenToggle">🔲 Full Screen</button>
+                        <div class="toolbar-divider"></div>
+                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🎙️ RECORD</button>
                     </div>
                     
                     <div class="notes-editor-container-shell" id="printAreaNotepad">
@@ -585,10 +687,7 @@
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
                     <div class="chat-target-userlist-pane">
-                        <div class="whatsapp-search-box">
-                            <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
-                            <button onclick="window.promptCreateGroup()" title="Create Group" style="background:none; border:none; color:var(--wa-text-muted); cursor:pointer; font-size:1.4rem;">👥</button>
-                        </div>
+                        <div class="whatsapp-search-box"><input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()"></div>
                         <div id="chatTargetContainerView"></div>
                     </div>
                     <div class="chat-stream-message-container">
@@ -598,18 +697,21 @@
                                 <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerUserProfileAvatarDropdownEngine()">
                                 <div class="whatsapp-user-info">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div>
-                                    <div class="whatsapp-user-id" id="chatActiveUserBioNode">...</div>
                                     <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-green); font-family:inherit;" class="hidden">typing...</div>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
+                                <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
                             </div>
                         </div>
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
+                        
+                        <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
+                        <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
                         
                         <div id="chatReplyPreviewBanner" class="reply-preview-banner hidden">
                             <div class="reply-preview-text" id="replyPreviewTextNode">Replying to...</div>
@@ -617,19 +719,25 @@
                         </div>
 
                         <div class="chat-interface-footer-inputs">
+                            <button class="whatsapp-circle-btn" onclick="window.toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
                             <button class="whatsapp-circle-btn" onclick="document.getElementById('chatMediaFileInput').click()">📎</button>
                             <div style="flex: 1; position: relative; min-width: 150px; display:flex; align-items:center;">
                                 <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
+                                <span id="chatInputCharCounter" class="char-counter-badge hidden"></span>
                             </div>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
                             <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-green); transform:rotate(-45deg);">➤</button>
                         </div>
                     </div>
                 </div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:15px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
-            <div class="ai-helper-banner" style="margin-top: 15px;">💡 Encryption live. Cloud Firebase sync stable. High Frequency Sync active.</div>
+            <div class="matrix-system-controller-dock">
+                <div class="auto-pulse-refresh-badge"><span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE</div>
+            </div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
@@ -646,6 +754,7 @@
                 <h2 class="neon-green-text">Mainframe Core</h2>
                 <button onclick="window.logoutEngine()" class="abort-btn">DISCONNECT</button>
             </div>
+
             <div style="text-align: center; margin-bottom: 20px;">
                 <div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
             </div>
@@ -655,6 +764,7 @@
                 <button class="admin-nav-tab" id="tabBtnCredentials" onclick="window.switchAdminSubSection('credentials')">🔑 Credentials</button>
                 <button class="admin-nav-tab" id="tabBtnWorkspace" onclick="window.switchAdminSubSection('workspace')">💼 Workspace</button>
                 <button class="admin-nav-tab" id="tabBtnSpychat" onclick="window.switchAdminSubSection('spychat')">💬 WhatsApp Console</button>
+                <button class="admin-nav-tab" id="tabBtnAispy" onclick="window.switchAdminSubSection('aispy')">🤖 AI Spychat</button>
                 <button class="admin-nav-tab" id="tabBtnStats" onclick="window.switchAdminSubSection('stats')">📊 System Status</button>
             </div>
 
@@ -716,11 +826,21 @@
                                 <div style="display: flex; gap: 8px;"><button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button></div>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
+                            <div id="adminChatReplyPreviewBanner" class="reply-preview-banner hidden"><div class="reply-preview-text" id="adminReplyPreviewTextNode">Replying...</div><button onclick="window.cancelReplyMatrixState()" style="color:#e74c3c; cursor:pointer;">✖</button></div>
                             <div class="chat-interface-footer-inputs">
+                                <button class="whatsapp-circle-btn" onclick="document.getElementById('adminChatMediaFileInput').click()">📎</button>
+                                <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
                                 <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()">
                                 <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="padding:10px 16px; background:var(--wa-green); border-radius:8px; color:#111b21; font-weight:bold; cursor:pointer; border:none;">➤</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="adminAiSpyChatBlock" style="display:none;">
+                    <div class="giant-compiler-layout">
+                        <h3>🤖 AI MONITOR</h3>
+                        <div id="adminAiSpyLogsWrapper"></div>
                     </div>
                 </div>
 
@@ -737,11 +857,20 @@
                                 <div class="chart-mock-container"><div class="chart-mock-bar" id="barChartPolicies" style="background:linear-gradient(90deg, #2ecc71, #27ae60);">0 Entries</div></div>
                             </div>
                         </div>
+                        <div style="margin-top:20px; border:1px dashed var(--neon-pink); padding:20px; border-radius: 12px;">
+                            <h4 style="color:var(--neon-pink); margin-bottom: 15px;">🔑 RECENT LOSS PASSWORD SIGNALS FEED</h4>
+                            <div style="display:flex; gap:15px; margin-bottom:15px; align-items:center;">
+                                <label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllSignals(this)"> Select All</label>
+                                <button onclick="window.executeBatchDeleteSignals()" class="abort-btn" style="padding:6px 14px;">🗑️ Delete Selected</button>
+                            </div>
+                            <div id="adminStatsForgetSignalsLogsWrapper"></div>
+                        </div>
                         <div style="border:2px solid #e74c3c; padding:20px; margin-top:20px; border-radius: 12px;">
                             <h4 style="color:#e74c3c;">⚠️ PURGE SYSTEM</h4>
                             <div style="display: flex; gap: 15px; flex-wrap:wrap; margin-top: 10px;">
-                                <button onclick="if(confirm('Wipe Policies?')){remove(ref(db, 'policies')); window.showToast('Policies wiped');}" class="abort-btn" style="flex:1;">Purge Vault</button>
-                                <button onclick="if(confirm('Wipe Chats?')){remove(ref(db, 'chats')); window.showToast('Chats wiped');}" class="abort-btn" style="flex:1;">Purge Chats</button>
+                                <button onclick="window.clearAllAiLogs()" class="abort-btn" style="flex:1;">Purge AI</button>
+                                <button onclick="if(confirm('Wipe Policies?')){remove(ref(db, 'policies'));}" class="abort-btn" style="flex:1;">Purge Vault</button>
+                                <button onclick="if(confirm('Wipe Chats?')){remove(ref(db, 'chats'));}" class="abort-btn" style="flex:1;">Purge Chats</button>
                             </div>
                         </div>
                     </div>
@@ -789,6 +918,11 @@
         let typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
+        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐", "✅", "❌", "👽", "🤖", "😎", "💯"];
+        const structuralGifMatrixList = [
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif"
+        ];
 
         window.MatrixSystemState = MatrixSystemState;
 
@@ -798,7 +932,7 @@
         setInterval(() => {
             if(MatrixSystemState.get('loggedInCustomerID') !== "") {
                 idleTime++;
-                if (idleTime > 300) { 
+                if (idleTime > 300) { // 5 minutes inactivity
                     window.showToast("Session locked due to inactivity.", true);
                     window.logoutEngine();
                 }
@@ -815,6 +949,8 @@
             if(isAudioContextAllowed) window.playSynthesizedSound(isError ? 150 : 880, isError ? 'sawtooth' : 'sine', 0.15);
             setTimeout(() => { toast.remove(); }, 3000);
         };
+
+        // Override default alerts with cyber toast
         window.alert = function(msg) { window.showToast(msg, msg.includes('❌') || msg.includes('Error') || msg.includes('Rejected')); };
 
         ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
@@ -907,26 +1043,14 @@
         }
         initiatePrecisionChronometerTick();
 
-        // --- BIO FEATURE ---
-        window.updateUserBioFromDashboard = function() {
-            const newBio = document.getElementById('userBioInputText').value.trim();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(currentUid) {
-                update(ref(db, `users/${currentUid}`), { bio: newBio }).then(() => {
-                    window.showToast("Bio updated successfully.");
-                });
-            }
-        };
-
-        window.promptCreateGroup = function() {
-            const groupName = prompt("Enter Group Name:");
-            if(groupName && groupName.trim() !== "") {
-                const groupId = "group_" + Date.now();
-                set(ref(db, 'users/' + groupId), { id: groupId, pass: "none", status: 'active', clientName: groupName.trim(), contact: "Group", isGroup: true, avatar: "https://cdn-icons-png.flaticon.com/512/166/166258.png", bio: "Public Group Chat" }).then(() => { 
-                    window.showToast(`Group '${groupName}' Created!`);
-                });
-            }
-        };
+        // ------------------ NEW NOTEPAD PRO FEATURES V2 ------------------
+        
+        // Auto-load saved draft on boot
+        window.addEventListener('load', () => {
+            const savedNote = localStorage.getItem('nexus_autosave_note');
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(savedNote && editor) { editor.innerHTML = savedNote; window.updateNotepadLiveCounters(); }
+        });
 
         window.updateNotepadLiveCounters = function() {
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -934,9 +1058,11 @@
             const textContent = editor.innerText || "";
             const charCount = textContent.length;
             const wordCount = textContent.trim().split(/\s+/).filter(word => word.length > 0).length;
+            
             document.getElementById('noteLiveWordCount').innerText = `Words: ${wordCount}`;
             document.getElementById('noteLiveCharCount').innerText = `Characters: ${charCount}`;
             
+            // Auto Save Engine
             localStorage.setItem('nexus_autosave_note', editor.innerHTML);
             const status = document.getElementById('noteLiveAutoSaveStatus');
             if(status) {
@@ -946,30 +1072,126 @@
             }
         };
 
-        window.insertCodeBlock = function() { document.execCommand('insertHTML', false, `<pre style="background:var(--wa-bg); color:#00f2fe; padding:15px; border-radius:8px; border:1px solid var(--border-glass); font-family:monospace; overflow-x:auto;"><code>// Insert your code here...</code></pre><p><br></p>`); window.updateNotepadLiveCounters(); };
-        window.insertProfessionalTable = function() { document.execCommand('insertHTML', false, `<table border="1" style="width:100%; border-collapse:collapse; margin-bottom:15px;"><tr><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 1</th><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 2</th></tr><tr><td style="padding:8px; border:1px solid var(--border-glass);">Data 1</td><td style="padding:8px; border:1px solid var(--border-glass);">Data 2</td></tr></table><p><br></p>`); window.updateNotepadLiveCounters(); };
-        window.insertLinkToNotepad = function() { const url = prompt("Enter URL:", "https://"); if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); } };
-        window.insertImageToNotepad = function() { const url = prompt("Enter Image URL:", "https://"); if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); } };
-        window.toggleFullScreenNoteMode = function() { const card = document.getElementById('notesMainWrapperCard'); const btn = document.getElementById('btnNoteFullScreenToggle'); if(card.classList.contains('fullscreen-active')) { card.classList.remove('fullscreen-active'); btn.innerText = "🔲 Full Screen"; } else { card.classList.add('fullscreen-active'); btn.innerText = "🔳 Exit Full Screen"; } };
-        window.downloadNoteContent = function(format) { const editor = document.getElementById('richNoteWritingPadEditable'); if(!editor) return; const textContent = editor.innerText; if(!textContent.trim()) { window.showToast("Note is empty!", true); return; } const blob = new Blob([textContent], { type: format === 'doc' ? 'application/msword' : 'text/plain' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Nexus_Professional_Note_${Date.now()}.${format}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); };
-        window.printNoteEditorContent = function() { const printArea = document.getElementById('printAreaNotepad').innerHTML; const originalContent = document.body.innerHTML; document.body.innerHTML = `<div style="padding:40px; color:#000; font-family:sans-serif;">${printArea}</div>`; window.print(); document.body.innerHTML = originalContent; location.reload(); };
+        window.insertCodeBlock = function() {
+            const html = `<pre style="background:var(--wa-bg); color:#00f2fe; padding:15px; border-radius:8px; border:1px solid var(--border-glass); font-family:monospace; overflow-x:auto;"><code>// Insert your code here...</code></pre><p><br></p>`;
+            document.execCommand('insertHTML', false, html);
+            window.updateNotepadLiveCounters();
+        };
+
+        window.insertProfessionalTable = function() {
+            const html = `<table border="1" style="width:100%; border-collapse:collapse; margin-bottom:15px;">
+                <tr><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 1</th><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 2</th></tr>
+                <tr><td style="padding:8px; border:1px solid var(--border-glass);">Data 1</td><td style="padding:8px; border:1px solid var(--border-glass);">Data 2</td></tr>
+                <tr><td style="padding:8px; border:1px solid var(--border-glass);">Data 3</td><td style="padding:8px; border:1px solid var(--border-glass);">Data 4</td></tr>
+            </table><p><br></p>`;
+            document.execCommand('insertHTML', false, html);
+            window.updateNotepadLiveCounters();
+        };
+        
+        window.insertLinkToNotepad = function() {
+            const url = prompt("Enter the URL for the link:", "https://");
+            if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); }
+        };
+
+        window.insertImageToNotepad = function() {
+            const url = prompt("Enter the Image URL:", "https://");
+            if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); }
+        };
+
+        window.toggleFullScreenNoteMode = function() {
+            const card = document.getElementById('notesMainWrapperCard');
+            const btn = document.getElementById('btnNoteFullScreenToggle');
+            if(card.classList.contains('fullscreen-active')) {
+                card.classList.remove('fullscreen-active');
+                btn.innerText = "🔲 Full Screen";
+            } else {
+                card.classList.add('fullscreen-active');
+                btn.innerText = "🔳 Exit Full Screen";
+            }
+        };
+
+        window.downloadNoteContent = function(format) {
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(!editor) return;
+            const textContent = editor.innerText;
+            if(!textContent.trim()) { window.showToast("Note is empty!", true); return; }
+
+            const blob = new Blob([textContent], { type: format === 'doc' ? 'application/msword' : 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `Nexus_Professional_Note_${Date.now()}.${format}`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        window.printNoteEditorContent = function() {
+            const printArea = document.getElementById('printAreaNotepad').innerHTML;
+            const originalContent = document.body.innerHTML;
+            document.body.innerHTML = `<div style="padding:40px; color:#000; font-family:sans-serif;">${printArea}</div>`;
+            window.print();
+            document.body.innerHTML = originalContent;
+            location.reload(); 
+        };
+        // --------------------------------------------------------------
+
+        function autoNarrateChatMessage(senderName, textBody) {
+            if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
+            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌/g, '');
+            if(cleanText.trim().length > 0) window.speakNaturalHuman(`${senderName} says: ${cleanText}`);
+        }
 
         window.triggerForgotIDModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>🆔 Recover System ID Vector</h4><input type="text" id="recoverIdPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10"><input type="date" id="recoverIdDOB" class="nexus-popup-input-field"><div id="forgotIdResultNode" style="margin-top:15px; font-weight:bold; color:var(--neon-cyan); font-size:1.1rem;"></div><div class="nexus-popup-flex-btns"><button onclick="window.executeForgotIdVerificationSearch()" class="nexus-popup-btn primary-btn">SEARCH MATCH</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button></div></div>`;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🆔 Recover System ID Vector</h4>
+                    <p style="color:var(--text-sub); font-size:0.9rem; margin-bottom:15px;">Enter parameters to match credentials:</p>
+                    <input type="text" id="recoverIdPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10">
+                    <input type="date" id="recoverIdDOB" class="nexus-popup-input-field">
+                    <div id="forgotIdResultNode" style="margin-top:15px; font-weight:bold; color:var(--neon-cyan); font-size:1.1rem;"></div>
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="window.executeForgotIdVerificationSearch()" class="nexus-popup-btn primary-btn">SEARCH MATCH</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
+                    </div>
+                </div>`;
             wrapper.classList.remove('hidden');
         };
 
         window.executeForgotIdVerificationSearch = function() {
-            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value; const resNode = document.getElementById('forgotIdResultNode');
+            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value;
+            const resNode = document.getElementById('forgotIdResultNode');
             if(!phone || !dob) { window.showToast("Please complete both parameters.", true); return; }
             let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
-            if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`; window.playSynthesizedSound(880, 'sine', 0.15); } else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); }
+            if(matchedUser) {
+                resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:2px 8px; border-radius:4px;">${matchedUser.id}</span>`;
+                window.playSynthesizedSound(880, 'sine', 0.15);
+            } else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); }
         };
 
         window.triggerForgotPasswordMatrixModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>🔑 Password Management System</h4><div class="portal-matrix-tabs" style="margin-bottom:15px;"><button class="hud-tab active" id="tabPassResetReq" onclick="window.switchPasswordModalSection('request')">Request Reset</button><button class="hud-tab" id="tabPassChangeDirect" onclick="window.switchPasswordModalSection('change')">Change Password</button></div><div id="sectionPasswordResetRequest"><input type="text" id="reqPassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID"><input type="text" id="reqPassPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10"><input type="date" id="reqPassDOB" class="nexus-popup-input-field"><button onclick="window.executeDispatchPasswordResetSignalToAdmin()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px;">SEND RESET SIGNAL</button></div><div id="sectionPasswordChangeDirect" class="hidden"><input type="text" id="changePassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID"><input type="password" id="changePassOld" class="nexus-popup-input-field" placeholder="Current Old Password"><input type="password" id="changePassNew" class="nexus-popup-input-field" placeholder="Set New Secure Password"><button onclick="window.executeDirectPasswordCredentialsSwap()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60);">UPDATE PASSWORD</button></div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CANCEL</button></div>`;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🔑 Password Management System</h4>
+                    <div class="portal-matrix-tabs" style="margin-bottom:15px;">
+                        <button class="hud-tab active" id="tabPassResetReq" onclick="window.switchPasswordModalSection('request')">Request Reset</button>
+                        <button class="hud-tab" id="tabPassChangeDirect" onclick="window.switchPasswordModalSection('change')">Change Password</button>
+                    </div>
+                    <div id="sectionPasswordResetRequest">
+                        <input type="text" id="reqPassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="text" id="reqPassPhone" class="nexus-popup-input-field" placeholder="Registered Contact No" maxlength="10">
+                        <input type="date" id="reqPassDOB" class="nexus-popup-input-field">
+                        <button onclick="window.executeDispatchPasswordResetSignalToAdmin()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px;">SEND RESET SIGNAL</button>
+                    </div>
+                    <div id="sectionPasswordChangeDirect" class="hidden">
+                        <input type="text" id="changePassUID" class="nexus-popup-input-field" placeholder="System ID / Customer ID">
+                        <input type="password" id="changePassOld" class="nexus-popup-input-field" placeholder="Current Old Password">
+                        <input type="password" id="changePassNew" class="nexus-popup-input-field" placeholder="Set New Secure Password">
+                        <button onclick="window.executeDirectPasswordCredentialsSwap()" class="hud-engage-btn" style="margin-top:15px; font-size:0.95rem; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60);">UPDATE PASSWORD</button>
+                    </div>
+                    <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="margin-top:15px; width:100%;">CANCEL</button>
+                </div>`;
             wrapper.classList.remove('hidden');
         };
 
@@ -989,7 +1211,12 @@
                 set(reqNodeRef, { signalID: reqNodeRef.key, targetUID: userMatch.id, clientName: userMatch.clientName, phone: userMatch.contact, epochTime: Date.now() }).then(() => {
                     window.closeCustomInlinePopupEngine();
                     const nextWrap = document.getElementById('nexusCustomInlineModalWrapper');
-                    nextWrap.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">⏳ REQUEST LOGGED</h4><p style="margin-bottom:10px; text-align:left;">Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button></div>`;
+                    nextWrap.innerHTML = `
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                            <h4 style="color:#00a884;">⏳ REQUEST LOGGED</h4>
+                            <p style="margin-bottom:10px; text-align:left;">Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
+                            <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button>
+                        </div>`;
                     nextWrap.classList.remove('hidden');
                     window.speakNaturalHuman("Request logged smoothly.");
                 });
@@ -1001,18 +1228,55 @@
             if(!uid || oldPass === "" || !newPass) { window.showToast("Complete all fields.", true); return; }
             let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
             if(userMatch) {
-                update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => { window.closeCustomInlinePopupEngine(); window.showToast("Password updated completely."); window.playSynthesizedSound(1000, 'sine', 0.2); });
+                update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => {
+                    window.closeCustomInlinePopupEngine(); window.showToast("Password updated completely."); window.playSynthesizedSound(1000, 'sine', 0.2);
+                });
             } else { window.showToast("Invalid current password signature.", true); }
         };
 
+        window.toggleAIMatrixAssistantChannel = function() {
+            let activeState = !MatrixSystemState.get('isAIAssistantActiveState');
+            MatrixSystemState.set('isAIAssistantActiveState', activeState);
+            const toggleBtn = document.getElementById('btnAIAssistantToggle');
+            if(activeState) {
+                toggleBtn.innerText = "🤖 AI CORE: ON"; toggleBtn.style.color = "var(--neon-pink)"; window.speakNaturalHuman("AI system online.");
+            } else {
+                toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "var(--wa-text-muted)";
+            }
+        };
+
+        function processAIMatrixAssistantResponseStream(userPromptText) {
+            const aiPhrasesArr = ["Matrix transmission processed successfully.", "Holographic grid stable. Shashi Mainframe online.", "Quantum protocol initialized.", "Identity signature validated across clusters.", "Energy core output stable."];
+            const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const currentUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            const clientNameLabel = currentUserObj ? currentUserObj.clientName : "Unknown Client";
+
+            setTimeout(() => {
+                const aiPacketRef = push(ref(db, 'chats'));
+                const aiMsgBody = `🤖 AI Assistant: ${pseudoResponse}`;
+                set(aiPacketRef, { sender: "MainframeAdmin", receiver: currentUid, textBody: aiMsgBody, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
+                    try {
+                        const interceptRef = push(ref(db, 'ai_communications'));
+                        set(interceptRef, { logId: interceptRef.key, customerID: currentUid, customerName: clientNameLabel, query: userPromptText, response: aiMsgBody, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), fullDateString: new Date().toLocaleDateString() });
+                    } catch(e) {}
+                    autoNarrateChatMessage("AI Engine", pseudoResponse);
+                });
+            }, 1000);
+        }
+
         window.bootArcadeSubGame = function(gameModeId) {
-            currentArcadeEngineId = "tom"; canvasElement = document.getElementById('nexusMatrixArcadeCanvas'); canvasCtx = canvasElement ? canvasElement.getContext('2d') : null;
+            currentArcadeEngineId = "tom";
+            canvasElement = document.getElementById('nexusMatrixArcadeCanvas');
+            canvasCtx = canvasElement ? canvasElement.getContext('2d') : null;
             if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
+            if (tomSpeechRecognitionInstance) { tomSpeechRecognitionInstance.stop(); isTomListeningStateActive = false; }
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
+            initializeTalkingTomAudioRecognitionEngine();
         };
 
         function executeTalkingTomRenderCycle() {
-            if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming' || !canvasCtx) return;
+            if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming' || currentArcadeEngineId !== 'tom' || !canvasCtx) return;
             if (document.hidden) { requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); return; }
             
             canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 360);
@@ -1030,21 +1294,59 @@
             let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 16);
             canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath(); canvasCtx.arc(300, 185, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
 
-            canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
-            for(let b=0; b<20; b++) { let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35); canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH); }
+            if (isTomListeningStateActive && audioAnalyserNode) {
+                audioAnalyserNode.getByteFrequencyData(visualizerDataArray);
+                canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
+                for (let i = 0; i < 30; i++) { let barH = (visualizerDataArray[i] || 0) * 0.5 || 5; canvasCtx.fillRect(60 + i * 16, 280 - barH / 2, 10, barH); }
+            } else {
+                canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+                for(let b=0; b<20; b++) { let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35); canvasCtx.fillRect(100 + b*21, 280 - barH/2, 12, barH); }
+            }
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
+        }
+
+        function initializeTalkingTomAudioRecognitionEngine() {
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (window.SpeechRecognition) {
+                tomSpeechRecognitionInstance = new window.SpeechRecognition();
+                tomSpeechRecognitionInstance.continuous = false; tomSpeechRecognitionInstance.interimResults = false;
+                tomSpeechRecognitionInstance.onresult = function(e) { const txt = e.results[0][0].transcript; if(txt) window.executeHighPitchTomVoiceEchoPlayback(txt); };
+                tomSpeechRecognitionInstance.onend = function() {
+                    isTomListeningStateActive = false;
+                    const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
+                    if(btn) { btn.innerText = "🎙 LISTEN"; btn.style.background = "var(--neon-pink)"; }
+                    if (audioMicStreamNode) { audioMicStreamNode.getTracks().forEach(track => track.stop()); }
+                };
+            }
+        }
+
+        window.toggleTalkingTomVoiceListenerEngine = function() {
+            if(!tomSpeechRecognitionInstance) { window.showToast("Voice Recognition not supported.", true); return; }
+            if(!isTomListeningStateActive) {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    audioMicStreamNode = stream; audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
+                    if(audioVisualizerContextNode.state === 'suspended') audioVisualizerContextNode.resume();
+                    audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
+                    let source = audioVisualizerContextNode.createMediaStreamSource(stream); source.connect(audioAnalyserNode);
+                    audioAnalyserNode.fftSize = 64; visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
+                    tomSpeechRecognitionInstance.start(); isTomListeningStateActive = true;
+                    document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING";
+                    document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
+                }).catch(() => { window.showToast("Mic access rejected.", true); });
+            } else { tomSpeechRecognitionInstance.stop(); }
+        };
+
+        window.executeHighPitchTomVoiceEchoPlayback = function(audioStringMsg) {
+            if(!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg);
+            syntaxUtterance.pitch = 1.75; syntaxUtterance.rate = 1.1;
+            window.speechSynthesis.speak(syntaxUtterance);
         }
 
         window.executeVirtualTomSpeechLoop = function() {
             const txt = document.getElementById('virtualTomTextInput').value.trim();
-            if(!txt) return; 
-            if('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const syntaxUtterance = new SpeechSynthesisUtterance(txt);
-                syntaxUtterance.pitch = 1.75; syntaxUtterance.rate = 1.1;
-                window.speechSynthesis.speak(syntaxUtterance);
-            }
-            document.getElementById('virtualTomTextInput').value = "";
+            if(!txt) return; window.executeHighPitchTomVoiceEchoPlayback(txt); document.getElementById('virtualTomTextInput').value = "";
         };
 
         window.clearCurrentChatConversation = function() {
@@ -1072,9 +1374,9 @@
 
         window.switchChatWallpaperMatrix = function() {
             const wallpapersArr = [
-                "var(--wa-chat-bg)", 
-                "linear-gradient(135deg, #111b21, #202c33)", 
-                "var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover"
+                "var(--wa-chat-bg)", // Light/Dark solid
+                "linear-gradient(135deg, #111b21, #202c33)", // Darker WA
+                "var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover" // Original doodle
             ];
             const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
             let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
@@ -1085,7 +1387,10 @@
         window.handleUserTypingSimulationTracker = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            const inputField = document.getElementById('chatCoreMessageTextInput');
+            if (inputField) { document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`; }
             if(!currentUid || !targetUid) return;
+            
             try {
                 set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid });
                 clearTimeout(typingTimeoutTrackerNode);
@@ -1113,6 +1418,31 @@
         window.triggerNoteFontSizeChange = function(sizeVal) { document.execCommand('fontSize', false, sizeVal); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteAction = function(actionId) { document.execCommand(actionId, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
 
+        window.toggleRichNotesVoiceStreamRecorder = function() {
+            const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
+            if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
+                    notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj); notesAudioChunksCollectorArr = []; notesRecordingStartEpoch = Date.now();
+                    notesMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) notesAudioChunksCollectorArr.push(e.data); };
+                    notesMediaRecorderInstance.onstop = () => {
+                        const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000);
+                        autoGeneratedVoiceDurationString = `${computationDuration} Seconds`;
+                        const storageReader = new FileReader();
+                        storageReader.onload = function(readerEvent) { notesVoicePayloadBase64Node = readerEvent.target.result; };
+                        storageReader.readAsDataURL(new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' }));
+                        mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
+                    };
+                    notesMediaRecorderInstance.start();
+                    if (pulseNode) pulseNode.classList.remove('hidden');
+                    if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
+                }).catch(() => { window.showToast("Microphone access denied.", true); });
+            } else {
+                notesMediaRecorderInstance.stop();
+                if (pulseNode) pulseNode.classList.add('hidden');
+                if (recBtnNode) recBtnNode.style.background = "rgba(4,15,36,0.1)";
+            }
+        };
+
         window.dispatchCompiledNoteToCloudMatrix = function() {
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
             const dateLogSelected = document.getElementById('noteManualDateSelector').value;
@@ -1133,11 +1463,13 @@
             const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack');
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             if(!interfaceWrapper || !currentUid) return;
+            
             try {
                 get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
                     if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); text-align:center; padding:20px; font-weight:bold;"> Repository empty.</div>`; return; }
                     interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
-                        return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime}</span><span style="cursor:pointer; color:var(--neon-pink);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌</span></div><div style="color:var(--text-main); font-size:1.1rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; overflow-x:auto;">${noteItem.richTextHtml}</div></div></div>`;
+                        let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:12px; display:flex; align-items:center; gap:10px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:40px;"></audio></div>` : "";
+                        return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime}</span><span style="cursor:pointer; color:var(--neon-pink);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌</span></div><div style="color:var(--text-main); font-size:1.1rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; overflow-x:auto;">${noteItem.richTextHtml}</div>${voiceAttachmentMarkup}</div></div>`;
                     }).join('');
                 });
             } catch(e){}
@@ -1152,6 +1484,7 @@
             MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid && p.attachment).forEach(p => {
                 vaultItemsHTML += `<div style="background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; padding: 10px; text-align: center;"><img src="${p.attachment}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; cursor: pointer;" onclick="window.triggerEnlargedAttachmentView('${p.attachment}')"><span style="display:block; font-size:0.8rem; color:#2ecc71; margin-bottom: 5px; font-weight:bold;">Policy Document</span><button onclick="window.executePhysicalAssetDownloadEngine('${p.attachment}')" class="note-tool-btn" style="width: 100%; justify-content: center;">💾 DOWNLOAD</button></div>`;
             });
+            
             try {
                 get(ref(db, 'chats')).then((snap) => {
                     const data = snap.val();
@@ -1182,7 +1515,7 @@
             else if(channelId === 'notes') { fetchRealtimeNotesCloudData(); }
             else if(channelId === 'vault') renderCloudVault();
             else if(channelId === 'gaming') window.bootArcadeSubGame('tom');
-            else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.switchChatWallpaperMatrix();}
+            else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
         };
 
         window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
@@ -1191,24 +1524,19 @@
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
             let targetAvatarPath = defaultAvatarSvg;
-            let bioText = "No Bio Available.";
-            
-            const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
-            if(userMatch) {
-                if(userMatch.avatar) targetAvatarPath = userMatch.avatar;
-                if(userMatch.bio) bioText = userMatch.bio;
+            if(targetUserId !== "MainframeAdmin") {
+                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
+                if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
             }
-            
             wrapper.innerHTML = `
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
                     <h4>${standardClientName} Profile</h4>
                     <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid var(--wa-green); display:block; margin:0 auto 10px auto;">
-                    <p style="color:var(--wa-text-muted); font-style:italic; margin-bottom:15px;">"${bioText}"</p>
                     <div style="margin-bottom:20px; text-align:left;">
                         <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${localNicknamesObj[targetUserId] || ""}" placeholder="Set custom nickname...">
                     </div>
                     <div class="nexus-popup-flex-btns">
-                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE NICKNAME</button>
+                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE</button>
                         <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
                     </div>
                 </div>`;
@@ -1240,17 +1568,9 @@
 
         window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) {
             event.preventDefault(); event.stopPropagation(); removeAvatarRightClickDropdownNode();
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const isAdmin = MatrixSystemState.get('currentMode') === 'admin';
-            
-            let modifyPhotoBtn = '';
-            if(targetUserId === currentUid || isAdmin) {
-                modifyPhotoBtn = `<button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Photo</button>`;
-            }
-            
             const contextDropdown = document.createElement('div');
             contextDropdown.className = "whatsapp-avatar-context-dropdown"; contextDropdown.id = "avatarContextDropdownMatrixOverlay";
-            contextDropdown.innerHTML = `${modifyPhotoBtn}<button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏ Set Nickname</button>`;
+            contextDropdown.innerHTML = `<button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Photo</button><button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏ Set Nickname</button>`;
             document.body.appendChild(contextDropdown); contextDropdown.style.left = `${event.clientX}px`; contextDropdown.style.top = `${event.clientY}px`;
             document.addEventListener('click', removeAvatarRightClickDropdownNode, { once: true });
         };
@@ -1352,7 +1672,6 @@
                     const myProfile = userArr.find(u => u.id === currentUid);
                     if(myProfile) {
                         if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                        if(myProfile.bio) document.getElementById('userBioInputText').value = myProfile.bio;
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
                     }
                 }
@@ -1367,10 +1686,19 @@
             } catch(e) {}
         });
 
+        onValue(ref(db, 'ai_communications'), (snapshot) => {
+            try {
+                const commsData = []; snapshot.forEach(child => { let val = child.val(); val.dbKey = child.key; commsData.push(val); });
+                MatrixSystemState.set('cachedGlobalAiCommsArr', commsData);
+                if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') window.renderAdminAiInterceptionSpyBlock();
+            } catch(e) {}
+        });
+
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
             try {
                 const signalsData = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
                 if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin' && isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
+                if(MatrixSystemState.get('activeAdminSubSection') === 'stats') window.renderDynamicServerDiagnosticsDashboard();
             } catch(e){}
         });
 
@@ -1440,7 +1768,7 @@
                 const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
                 const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
                 const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
-                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="window.spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.bio ? user.bio : '@' + user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
+                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName}')" oncontextmenu="window.spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">@${user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
             }).join('');
             if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) window.setOperationalChatTargetId(fullTargetList[0].id);
         };
@@ -1454,7 +1782,6 @@
             MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
             const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
             document.getElementById('chatActiveUserHeaderNode').innerText = userMatch ? userMatch.clientName : (uid === "MainframeAdmin" ? "Mainframe Admin Shashi" : "Pipeline context...");
-            document.getElementById('chatActiveUserBioNode').innerText = userMatch && userMatch.bio ? userMatch.bio : (userMatch && userMatch.isGroup ? "Public Group Chat" : "online");
             document.getElementById('chatActiveHeaderAvatarNode').src = (userMatch && userMatch.avatar) ? userMatch.avatar : defaultAvatarSvg;
             
             document.getElementById('clientChatGridMatrixWrapper')?.classList.add('mobile-chat-view-active');
@@ -1463,7 +1790,9 @@
         };
 
         window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
-            try { update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => { if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); }); } catch(e) {}
+            try {
+                update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => { if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); });
+            } catch(e) {}
         };
         
         window.spawnReactionMenu = function(event, messageKey) {
@@ -1478,33 +1807,23 @@
         window.renderActiveChatConversationLogs = function() {
             const wrapper = document.getElementById('chatMessagesScrollWrapper'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID');
             if(!wrapper || !targetUid) return;
-            
-            const isGroupChat = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid)?.isGroup;
-
             try {
                 get(ref(db, 'chats')).then((snapshot) => {
                     const data = snapshot.val();
                     if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted. No one outside of this chat can read them.</div>`; return; }
                     let htmlCollector = "";
                     requestAnimationFrame(() => {
-                        let lastSenderId = null; 
+                        let lastSenderId = null; // Fix for Message Grouping
                         
                         Object.keys(data).forEach(key => {
                             const msg = data[key];
-                            let shouldDisplay = false;
-                            
-                            if (isGroupChat) {
-                                if (msg.receiver === targetUid) shouldDisplay = true;
-                            } else {
-                                if ((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) shouldDisplay = true;
-                            }
-
-                            if(shouldDisplay) {
+                            if((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) {
                                 if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
                                 
                                 const isMyMsg = (msg.sender === currentUid); 
                                 const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
                                 
+                                // Grouping logic: If the sender is the same as the previous message, hide the tail
                                 const isFirstInGroup = (msg.sender !== lastSenderId);
                                 lastSenderId = msg.sender;
                                 
@@ -1517,14 +1836,8 @@
                                 let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
                                 let replyMarkup = msg.quotedText ? `<div class="reply-reference-box">${msg.quotedText}</div>` : "";
                                 
-                                let groupSenderLabel = "";
-                                if (isGroupChat && !isMyMsg && isFirstInGroup) {
-                                    const sUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === msg.sender);
-                                    groupSenderLabel = `<div style="color:var(--neon-pink); font-size:0.75rem; font-weight:bold; margin-bottom:2px;">~ ${sUser ? sUser.clientName : msg.sender}</div>`;
-                                }
-                                
+                                /* EXACT FIX APPLIED HERE: Grouping classes + Anti-Overlap Container */
                                 htmlCollector += `<div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${msg.textBody.replace(/'/g, "\\'")}', '${msg.mediaPayload || ''}', ${msg.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
-                                    ${groupSenderLabel}
                                     ${replyMarkup}
                                     ${assetHTML}
                                     <div class="bubble-text-content">${msg.textBody}<span class="wa-time-spacer"></span></div>
@@ -1535,6 +1848,7 @@
                         });
                         wrapper.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted.</div>`;
                         
+                        // Smart Scroll to bottom
                         const isAtBottom = wrapper.scrollHeight - wrapper.scrollTop <= wrapper.clientHeight + 100;
                         if(isAtBottom) wrapper.scrollTop = wrapper.scrollHeight;
                     });
@@ -1602,6 +1916,7 @@
                     inputField.value = ""; document.getElementById('chatInputCharCounter').innerText = "0/250"; MatrixSystemState.resetChatAssets();
                     document.getElementById('chatAttachmentStatusFeedback').innerText = ""; document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.add('hidden');
                     window.cancelReplyMatrixState(); remove(ref(db, `typing_states/${currentUid}`)); window.renderActiveChatConversationLogs(); autoNarrateChatMessage("You", finalMessageText);
+                    if(MatrixSystemState.get('isAIAssistantActiveState')) processAIMatrixAssistantResponseStream(finalMessageText);
                     
                     // Force scroll
                     const wrapper = document.getElementById('chatMessagesScrollWrapper');
@@ -1610,7 +1925,42 @@
             } catch(e){}
         };
 
-        window.toggleEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('systemEmojiMatrixBoxNode')?.classList.toggle('hidden'); };
+        window.renderInteractiveDrawersContent = function() {
+            const emojiBox = document.getElementById('systemEmojiMatrixBoxNode'); if(emojiBox) emojiBox.innerHTML = systemEmojisList.map(em => `<div class="emoji-item-node" onclick="window.injectEmojiToInputField('${em}')">${em}</div>`).join('');
+            const gifBox = document.getElementById('mainframeGifContainerBox'); if(gifBox) gifBox.innerHTML = structuralGifMatrixList.map(gUrl => `<img class="gif-thumb-item" src="${gUrl}" onclick="window.transmitDirectGifMessage('${gUrl}')">`).join('');
+        };
+
+        window.injectEmojiToInputField = function(emojiText) {
+            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
+            const input = document.getElementById(inputId); if(input) { input.value += emojiText; input.focus(); }
+        };
+
+        window.transmitDirectGifMessage = function(gifUrl) {
+            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
+            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput'; const input = document.getElementById(inputId); if(input) input.value = "";
+            if(MatrixSystemState.get('currentMode') === 'admin') window.dispatchAdminSpyInterceptionMsg(); else window.dispatchMatrixChatMessage();
+        };
+
+        window.toggleEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('mainframeGifContainerBox')?.classList.add('hidden'); document.getElementById('systemEmojiMatrixBoxNode')?.classList.toggle('hidden'); };
+        window.toggleGifMatrixDropdownPanel = function(event) { event.stopPropagation(); document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden'); document.getElementById('mainframeGifContainerBox')?.classList.toggle('hidden'); };
+
+        window.toggleVoiceAudioRecordingEngine = function() {
+            const btnId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminVoiceRecordingCoreTriggerBtn' : 'voiceRecordingCoreTriggerBtn'; const recBtn = document.getElementById(btnId);
+            if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    nativeAudioMediaRecorderInstance = new MediaRecorder(stream); compiledAudioChunksCollectorArr = [];
+                    nativeAudioMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) compiledAudioChunksCollectorArr.push(e.data); };
+                    nativeAudioMediaRecorderInstance.onstop = () => {
+                        const reader = new FileReader();
+                        reader.onload = function(e) { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); if(MatrixSystemState.get('currentMode') === 'admin') window.dispatchAdminSpyInterceptionMsg(); else window.dispatchMatrixChatMessage(); };
+                        reader.readAsDataURL(new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' }));
+                        stream.getTracks().forEach(track => track.stop());
+                    };
+                    nativeAudioMediaRecorderInstance.start(); if(recBtn) recBtn.classList.add('recording-active-pulse');
+                    const feedback = document.getElementById('chatAttachmentStatusFeedback'); if(feedback) feedback.innerHTML = `Live Recording...`;
+                }).catch(() => { window.showToast("Audio device rejected.", true); });
+            } else { nativeAudioMediaRecorderInstance.stop(); if(recBtn) recBtn.classList.remove('recording-active-pulse'); document.getElementById('chatAttachmentStatusFeedback').innerText = ""; }
+        };
 
         // Static Rendering Update Function!
         window.switchAdminSubSection = function(sectionId) {
@@ -1632,10 +1982,316 @@
                 if (node) { node.style.display = (sectionId === key) ? 'block' : 'none'; }
             });
 
-            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.exitMobileChatView(); }
+            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); window.exitMobileChatView(); }
             if(sectionId === 'aispy') window.renderAdminAiInterceptionSpyBlock();
             if(sectionId === 'stats') window.renderDynamicServerDiagnosticsDashboard();
-            if(sectionId === 'creation') window.renderLiveCreationStatsSummary();
+            if(sectionId === 'creation') renderLiveCreationStatsSummary();
+        };
+
+        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { window.showToast("🔴 Broadcast transmitted!"); }); };
+        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; window.showToast("Broadcast formatted clean."); }); };
+
+        window.generateRandomPassword = function() {
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let pass = "";
+            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
+            document.getElementById('newUserPass').value = pass;
+        };
+
+        window.copyClientDataToClipboard = function(policyKey) {
+            let p = MatrixSystemState.get('cachedGlobalPolicyArr').find(item => item.policyKey === policyKey);
+            if (!p) return;
+            let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
+            navigator.clipboard.writeText(formattedText).then(() => {
+                window.showToast("📋 CLIENT DATA COPIED SUCCESSFULLY!");
+            });
+        };
+
+        window.executeBatchDeleteAiLogs = function() {
+            let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { window.showToast("No logs selected.", true); return; }
+            if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
+                checkedBoxes.forEach(box => {
+                    let key = box.getAttribute('data-key');
+                    remove(ref(db, `ai_communications/${key}`));
+                });
+                window.showToast("Selected logs purged.");
+            }
+        };
+
+        window.selectAllAiLogs = function(masterBox) { document.querySelectorAll('.ai-log-checkbox').forEach(box => box.checked = masterBox.checked); };
+
+        window.executeBatchDeleteSignals = function() {
+            let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { window.showToast("No targets selected.", true); return; }
+            if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
+                get(ref(db, 'password_forget_signals')).then((snap) => {
+                    let data = snap.val();
+                    if (data) {
+                        Object.keys(data).forEach(key => {
+                            checkedBoxes.forEach(box => {
+                                if (data[key].targetUID === box.getAttribute('data-uid')) {
+                                    remove(ref(db, `password_forget_signals/${key}`));
+                                }
+                            });
+                        });
+                        window.showToast("Selected signals removed.");
+                    }
+                });
+            }
+        };
+
+        window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
+
+        window.loadAdminSubmissions = function(){
+            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
+            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
+            renderUserControlPanel(); renderPolicyCardsBlock(); switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
+        };
+
+        window.renderLiveCreationStatsSummary = function() { 
+            const mini = document.getElementById('liveCreationStatsMiniNode');
+            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { window.showToast("Please complete required parameters.", true); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false" }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            });
+        };
+
+        window.renderUserControlPanel = function() {
+            const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
+            listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user) => {
+                const isDeact = user.status === 'deactivated';
+                return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:14px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'};">
+                        <div><b>ID:</b> <span style="color:#00f2fe;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b> ${user.contact}</div>
+                        <div style="display:flex; justify-content:space-between; margin-top:10px;"><select class="admin-status-toggle-select" onchange="window.toggleUserNodeActivationState('${user.id}', this.value)" style="padding:6px; background:var(--bg-prime); color:var(--neon-cyan); border:1px solid var(--border-glass);"><option value="active" ${!isDeact?'selected':''}>🟢 Active</option><option value="deactivated" ${isDeact?'selected':''}>🔴 Deactive</option></select><button onclick="window.wipeUserPermanently('${user.id}')" style="color:#e74c3c; font-weight:bold; background:none; border:none; cursor:pointer;">Wipe</button></div>
+                        <div style="margin-top:10px;"><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; width:100%;"></div></div>`;
+            }).join('');
+        };
+
+        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
+        window.executeAdminContextClipboardCopy = function(element, extractionValue) { if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.15); const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200); }).catch(() => {}); };
+        window.wipeUserPermanently = function(uid) { if(confirm("Are you sure you want to permanently delete this user?")) remove(ref(db, 'users/' + uid)); };
+
+        window.renderPolicyCardsBlock = function() {
+            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
+            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr'); if(policyArr.length === 0) { targetStack.innerHTML = "<p>No records mapping.</p>"; return; }
+            targetStack.innerHTML = policyArr.map((d) => {
+                let docPreviewHTML = d.attachment ? `<img src="${d.attachment}" onclick="window.triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; cursor:pointer;">` : "<span>None</span>";
+                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID); let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown";
+                return `<div class="hud-data-card" data-policy-key="${d.policyKey}">
+                    <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
+                    <button onclick="window.copyClientDataToClipboard('${d.policyKey}')" class="nav-btn" style="position:absolute; bottom: 20px; right: 20px; font-size:0.75rem;">📋 COPY DATA</button>
+                    <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID}</span></p>
+                    <p><b>Insurer:</b> ${d.insure}</p><p><b>Policy No:</b> ${d.pol}</p><p><b>Reg No:</b> ${d.reg}</p><p><b>Contact:</b> ${d.phone}</p><p><b>Email:</b> ${d.email}</p><p><b>Notes:</b> ${d.notes}</p><p><b>File:</b> ${docPreviewHTML}</p>
+                    <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5);"><select id="updateStatusSelect_${d.policyKey}" style="width:100%; padding:8px; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f;"><option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option><option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option><option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option><option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option></select><input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Response..." style="width:100%; padding:8px; margin-bottom:8px; color:#fff; background:#020408;"><button onclick="window.transmitAdminResponse('${d.policyKey}')" class="hud-engage-btn" style="padding:10px; font-size:0.9rem;">UPDATE PACKET</button></div>
+                    <button class="wipe-card-btn" onclick="window.purgeRegistryLog('${d.policyKey}')">Purge Record</button>
+                </div>`;
+            }).join("");
+        };
+
+        window.submitPolicyForm = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
+            if(!insure || !phone) { window.showToast("Please complete required parameters.", true); return; }
+            const newPolicyRef = push(ref(db, 'policies'));
+            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
+                window.showToast("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); renderCustomerLiveTracker();
+            });
+        };
+
+        window.renderCustomerLiveTracker = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
+            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
+            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
+            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
+        };
+
+        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { window.showToast("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
+        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); window.showToast("Record purged."); } };
+        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); window.showToast("Master credentials synchronized."); }); };
+        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); window.showToast("Credentials overridden."); };
+
+        window.uploadUserProfileAvatarEngine = function(event) {
+            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
+            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; set(ref(db, `users/${targetUid}/avatar`), base64Avatar).then(() => { if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; } event.target.removeAttribute('data-target-uid'); }); }; reader.readAsDataURL(file); }
+        };
+
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            if(MatrixSystemState.get('currentMode') === 'admin') { if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) window.executeClusterLogin(null); } 
+            else { let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) window.executeClusterLogin(null); }
+        };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('currentMode') === 'admin') { if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) document.getElementById('accessNodePass').focus(); } 
+            else { let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); if(userMatch) document.getElementById('accessNodePass').focus(); }
+        };
+
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); document.getElementById('chatAttachmentStatusFeedback').innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.05; syntax.rate = 0.95; window.speechSynthesis.speak(syntax); };
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.changeWorkspaceMode = function(mode) {
+            MatrixSystemState.set('currentMode', mode); const inputLabel = document.getElementById('hudInputLabel');
+            document.getElementById('tabModeUser').classList.remove('active'); document.getElementById('tabModeAdmin').classList.remove('active');
+            if (mode === 'admin') { document.getElementById('tabModeAdmin').classList.add('active'); if(inputLabel) inputLabel.innerText = "Confirm Admin Vector ID"; } 
+            else { document.getElementById('tabModeUser').classList.add('active'); if(inputLabel) inputLabel.innerText = "System ID / Customer ID"; }
+            document.getElementById('accessNodeUser').value = ""; document.getElementById('accessNodePass').value = ""; 
+        };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
+        function triggerLockoutTerminalUI(usernameString) {
+            localStorage.setItem('nexus_hard_lockout_flag_' + usernameString.toLowerCase(), 'true');
+            set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, epoch: Date.now() });
+            document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">Access signatures for ID [${usernameString}] locked.</p></div>`;
+            setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); window.speakNaturalHuman("Security violation detected.");
+        }
+
+        window.executeClusterLogin = function(event) {
+            if(event) event.preventDefault(); const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u) return;
+            if (localStorage.getItem('nexus_hard_lockout_flag_' + u.toLowerCase()) === 'true') { triggerLockoutTerminalUI(u); return; }
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            if (MatrixSystemState.get('currentMode') === 'admin') {
+                get(ref(db, 'mainframeAdmin')).then((snapshot) => {
+                    const freshData = snapshot.val(); const targetAdminID = (freshData && freshData.id) ? freshData.id : masterRoute.masterId; const targetAdminPass = (freshData && freshData.pass) ? freshData.pass : masterRoute.masterPass;
+                    if (u.toLowerCase() === targetAdminID.toLowerCase() && p === targetAdminPass) {
+                        MatrixSystemState.set('consecutiveBruteFailuresCount', 0); document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden'); localStorage.setItem('nexus_logged_in_uid', targetAdminID); localStorage.setItem('nexus_system_session_mode', 'admin'); window.loadAdminSubmissions();
+                        const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                        window.showToast("Admin Protocol Engaged.");
+                    } else { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); window.showToast("Access Rejected: Incorrect Admin Vector.", true); }
+                }).catch(() => {
+                    if(u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                        document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden'); localStorage.setItem('nexus_logged_in_uid', u); localStorage.setItem('nexus_system_session_mode', 'admin'); window.loadAdminSubmissions();
+                        const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                        window.showToast("Admin Protocol Engaged (Fallback).");
+                    }
+                });
+            } else {
+                if(masterRoute.masterId && String(p) === String(masterRoute.masterPass)) {
+                    let bypassUserMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                    if(bypassUserMatch) {
+                        MatrixSystemState.set('consecutiveBruteFailuresCount', 0); MatrixSystemState.set('loggedInCustomerID', bypassUserMatch.id); update(ref(db, `users/${bypassUserMatch.id}`), { isOnlineNode: true }); localStorage.setItem('nexus_logged_in_uid', bypassUserMatch.id); localStorage.setItem('nexus_system_session_mode', 'user'); localStorage.setItem('nexus_active_chan_route', 'upload'); document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden'); document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${bypassUserMatch.clientName} [BYPASS]</span>`; window.switchCustomerChannel('upload');
+                        const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                        if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                        window.showToast("Master Bypass Engaged.");
+                        return;
+                    }
+                }
+                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                if (userMatch && userMatch.lockoutState === "true") { triggerLockoutTerminalUI(userMatch.id); return; }
+                if (!userMatch || String(userMatch.pass) !== String(p)) {
+                    let failCount = MatrixSystemState.get('consecutiveBruteFailuresCount') + 1; MatrixSystemState.set('consecutiveBruteFailuresCount', failCount);
+                    if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4);
+                    if (failCount >= 3) { if(userMatch) update(ref(db, `users/${userMatch.id}`), { lockoutState: "true" }); triggerLockoutTerminalUI(u); return; }
+                    window.showToast(`Access Rejected: Invalid Credentials. Strike ${failCount}/3.`, true); return;
+                }
+                if (userMatch.status === 'deactivated') { if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.4); window.showToast("Account deactivated by Admin.", true); return; }
+                
+                MatrixSystemState.set('consecutiveBruteFailuresCount', 0); MatrixSystemState.set('loggedInCustomerID', userMatch.id); update(ref(db, `users/${userMatch.id}`), { isOnlineNode: true }); localStorage.setItem('nexus_logged_in_uid', userMatch.id); localStorage.setItem('nexus_system_session_mode', 'user'); localStorage.setItem('nexus_active_chan_route', 'upload'); document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${userMatch.clientName}</span>`; document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden'); window.switchCustomerChannel('upload');
+                const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                window.showToast("Welcome Back.");
+            }
+        };
+
+        window.renderDynamicServerDiagnosticsDashboard = function() {
+            const totalUsers = MatrixSystemState.get('cachedGlobalUsersArr').length; const totalPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').length;
+            const maxCap = Math.max(totalUsers, totalPolicies, 10);
+            
+            setTimeout(() => {
+                const userBar = document.getElementById('barChartUsers');
+                if (userBar) {
+                    userBar.style.width = `${(totalUsers / maxCap) * 100}%`;
+                    userBar.innerText = `${totalUsers} Nodes Registered`;
+                }
+                const policyBar = document.getElementById('barChartPolicies');
+                if (policyBar) {
+                    policyBar.style.width = `${(totalPolicies / maxCap) * 100}%`;
+                    policyBar.innerText = `${totalPolicies} Secure Documents`;
+                }
+            }, 100);
+
+            const signalsData = MatrixSystemState.get('cachedGlobalForgetSignalsArr'); const signalsWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
+            if(signalsWrapper) { 
+                if(signalsData.length === 0) { 
+                    signalsWrapper.innerHTML = `<p>No active requests parsed.</p>`; 
+                } else { 
+                    signalsWrapper.innerHTML = signalsData.map(sig => `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; border:1px solid rgba(255,0,127,0.3); margin-bottom:8px; display:flex; align-items:center; justify-content:space-between;">
+                        <div><input type="checkbox" class="cyber-checkbox signal-log-checkbox" data-uid="${sig.targetUID}"> <span style="color:#ff007f; font-weight:bold;">@${sig.targetUID}</span> (${sig.clientName || 'N/A'}) contact: ${sig.phone}</div>
+                        <button onclick="remove(ref(db, 'password_forget_signals/${sig.signalID}'))" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-weight:bold;">❌</button>
+                    </div>`).join(''); 
+                } 
+            }
+        };
+
+        window.deleteAiLog = function(logDbKey) { if(confirm("Permanently erase this log?")) remove(ref(db, `ai_communications/${logDbKey}`)); };
+        window.clearAllAiLogs = function() { if(confirm("Clear all AI history?")) remove(ref(db, 'ai_communications')); };
+
+        window.renderAdminAiInterceptionSpyBlock = function() {
+            const logsWrapper = document.getElementById('adminAiSpyLogsWrapper'); if(!logsWrapper) return;
+            let dataArr = MatrixSystemState.get('cachedGlobalAiCommsArr');
+            if(dataArr.length === 0) { logsWrapper.innerHTML = `<div>Repository empty.</div>`; return; }
+            logsWrapper.innerHTML = `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"> Select All</label>
+                <div style="display:flex; gap:10px;">
+                    <button onclick="window.executeBatchDeleteAiLogs()" class="abort-btn" style="padding:8px 16px;">🗑️ Delete Selected</button>
+                    <button onclick="window.clearAllAiLogs()" class="abort-btn" style="padding:8px 16px;">🗑️ CLEAR ALL AI LOGS</button>
+                </div>
+            </div>` + dataArr.slice().reverse().map(comm => `<div style="background:rgba(4,16,40,0.85); border-left:5px solid var(--neon-pink); border-radius:12px; padding:18px; margin-bottom:15px;"><div style="display:flex; justify-content:space-between; align-items:center;"><div style="color:var(--neon-cyan);"><input type="checkbox" class="cyber-checkbox ai-log-checkbox" data-key="${comm.dbKey}"> 👤 TARGET: ${comm.customerName || 'N/A'} [@${comm.customerID}] | ⏰ TIME: ${comm.timestamp}</div><button onclick="window.deleteAiLog('${comm.dbKey}')" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-size:1.1rem;">❌</button></div><div style="color:#fff; margin-bottom:6px; margin-top:8px;"><span style="color:var(--neon-pink);">PROMPT:</span> ${comm.query}</div><div style="color:rgba(255,255,255,0.85);"><span style="color:#2ecc71;">RESPONSE:</span> ${comm.response}</div></div>`).join('');
+        };
+
+        window.filterCardsEngine = function(){ const searchInputNode = document.getElementById('searchInput'); if(!searchInputNode) return; let q = searchInputNode.value.toLowerCase(); document.querySelectorAll('.hud-data-card').forEach(c => { c.style.display = c.innerText.toLowerCase().includes(q) ? "" : "none"; }); };
+
+        window.logoutEngine = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(currentUid && currentUid !== "MainframeAdmin") update(ref(db, `users/${currentUid}`), { isOnlineNode: false });
+            document.getElementById('accessNodeUser').value = ""; document.getElementById('accessNodePass').value = "";
+            localStorage.removeItem('nexus_logged_in_uid'); localStorage.removeItem('nexus_system_session_mode'); localStorage.removeItem('nexus_active_chan_route');
+            if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken); MatrixSystemState.purgeStateReferences();
+            document.getElementById('customerDashboard').classList.add('hidden'); document.getElementById('adminDashboard').classList.add('hidden'); document.getElementById('clientDisplayLabel').innerText = "";
+            MatrixSystemState.set('loggedInCustomerID', ""); const stage = document.getElementById('mainStage'); stage.style.display = 'flex'; stage.classList.remove('activated'); document.getElementById('loginTerminal').classList.add('hidden');
+            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '0'; nav.style.pointerEvents = 'none'; } runAmbientCanvasMatrixSystem();
+            window.showToast("System Logged Out.");
+        };
+
+        window.renderAdminSpyUserList = function() {
+            const listPane = document.getElementById('adminSpyUsersListWrapper'); if(!listPane) return; let globalUsers = MatrixSystemState.get('cachedGlobalUsersArr');
+            if(globalUsers.length === 0) { listPane.innerHTML = `<div>No channels mapped.</div>`; return; }
+            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_MainframeAdmin`)) || {};
+            listPane.innerHTML = globalUsers.map(user => `<div class="chat-user-item-node ${(MatrixSystemState.get('spyActiveTargetUserContext') === user.id)?'active-chat-target':''} ${(user.isOnlineNode)?'online-chamak-active':''}" onclick="window.setAdminSpyTargetConversationTrack('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar?user.avatar:defaultAvatarSvg}" oncontextmenu="window.spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name">${localNicknamesObj[user.id] || user.clientName} ${localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : ""}</div><div class="whatsapp-user-id">@${user.id}</div></div></div>`).join('');
+        };
+
+        window.setAdminSpyTargetConversationTrack = function(userId) { 
+            MatrixSystemState.set('spyActiveTargetUserContext', userId); 
+            const matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === userId);
+            document.getElementById('spyActiveHeaderTitle').innerText = matchedUser ? matchedUser.clientName : `Console Pipeline: @${userId}`; 
+            
+            document.getElementById('adminChatGridBox')?.classList.add('mobile-chat-view-active');
+            
+            renderAdminSpyChatConsoleLogs(); window.renderAdminSpyUserList(); 
         };
 
         window.renderAdminSpyChatConsoleLogs = function() {
@@ -1647,7 +2303,7 @@
                     if(!snapshot.exists()) { stack.innerHTML = `<div style="color:var(--wa-text-muted); padding:10px; background:var(--wa-header); font-weight:bold; border-radius:8px; margin:auto;">🔒 Messages are end-to-end encrypted.</div>`; return; }
                     let htmlCollector = "";
                     requestAnimationFrame(() => {
-                        let lastSenderId = null; 
+                        let lastSenderId = null; // Fix for Message Grouping
                         
                         Object.keys(data).forEach(key => {
                             const m = data[key];
@@ -1657,6 +2313,7 @@
                                 const isMyResponse = (m.sender === "MainframeAdmin"); 
                                 const ticksString = m.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
                                 
+                                // Grouping logic: If the sender is the same as the previous message, hide the tail
                                 const isFirstInGroup = (m.sender !== lastSenderId);
                                 lastSenderId = m.sender;
                                 
@@ -1664,6 +2321,7 @@
                                 if(m.mediaPayload) { if(m.mediaPayload.startsWith("data:audio")) assetHTML = `<audio src="${m.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block;"></audio>`; else assetHTML = `<img src="${m.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')" style="max-width:160px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`; }
                                 let reactionMarkup = m.reaction ? `<div class="msg-reactions-tray">${m.reaction}</div>` : ""; let replyMarkup = m.quotedText ? `<div class="reply-reference-box">${m.quotedText}</div>` : "";
                                 
+                                /* EXACT FIX APPLIED HERE: Grouping classes + Anti-Overlap Container */
                                 htmlCollector += `<div class="bubble-msg-wrapper ${isMyResponse ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', '${m.textBody.replace(/'/g, "\\'")}', '${m.mediaPayload || ''}', ${m.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
                                     ${replyMarkup}
                                     ${assetHTML}
@@ -1675,6 +2333,7 @@
                         });
                         stack.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); padding:10px; background:var(--wa-header); font-weight:bold; border-radius:8px; margin:auto;">🔒 Messages are end-to-end encrypted.</div>`; 
                         
+                        // Smart Scroll to bottom
                         const isAtBottom = stack.scrollHeight - stack.scrollTop <= stack.clientHeight + 100;
                         if(isAtBottom) stack.scrollTop = stack.scrollHeight;
                     });
@@ -1691,6 +2350,7 @@
                 set(push(ref(db, 'chats')), { sender: "MainframeAdmin", receiver: spyContext, textBody: finalMessageText, mediaPayload: liveChatB64, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
                     inputField.value = ""; MatrixSystemState.resetChatAssets(); document.getElementById('chatAttachmentStatusFeedback').innerText = ""; window.cancelReplyMatrixState(); renderAdminSpyChatConsoleLogs(); autoNarrateChatMessage("Admin", finalMessageText);
                     
+                    // Force scroll
                     const stack = document.getElementById('adminSpyChatLogsStack');
                     if(stack) stack.scrollTop = stack.scrollHeight;
                 });
@@ -1707,29 +2367,4 @@
         };
 
         function removeContextDropdownMenuNode() { document.getElementById('dynamicMsgContextNodeOverlay')?.remove(); }
-        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) { const a = document.createElement('a'); a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data; a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.${data.startsWith("data:audio") ? 'webm' : 'jpg'}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); removeContextDropdownMenuNode(); };
-
-        window.triggerDirectMessageForwardPipeline = function(msgKey, baseText, assetLink) {
-            removeContextDropdownMenuNode(); const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const liveActiveUsersList = MatrixSystemState.get('cachedGlobalUsersArr').filter(user => user.id !== MatrixSystemState.get('loggedInCustomerID') && user.status === 'active');
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Forward Transmission</h4><select id="forwardDestinationNodeSelector" class="nexus-popup-input-field"><option value="MainframeAdmin">Mainframe Admin Shashi</option>${liveActiveUsersList.map(u => `<option value="${u.id}">${u.clientName} (@${u.id})</option>`).join('')}</select><div class="nexus-popup-flex-btns"><button id="executeForwardSendBtn" class="nexus-popup-btn primary-btn">FORWARD</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
-            wrapper.classList.remove('hidden');
-            document.getElementById('executeForwardSendBtn').onclick = () => {
-                const targetUIDSelection = document.getElementById('forwardDestinationNodeSelector').value; if(!targetUIDSelection) return;
-                set(push(ref(db, 'chats')), { sender: MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID'), receiver: targetUIDSelection, textBody: baseText || "📎 Forwarded Asset Node", mediaPayload: assetLink || "", read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => { window.closeCustomInlinePopupEngine(); window.showToast("✅ Packet forwarded."); });
-            };
-        };
-
-        window.executeStructuralDeletionSelectionMatrix = function(msgKey, epochTimeNodeVal) {
-            removeContextDropdownMenuNode(); const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Delete Message Node</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button id="btnDeleteForMe" class="nexus-popup-btn" style="background:#2a3942;">Delete for me</button><button id="btnDeleteForEveryone" class="nexus-popup-btn danger-btn">Delete for everyone</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
-            wrapper.classList.remove('hidden');
-            document.getElementById('btnDeleteForMe').onclick = () => { localStorage.setItem(`deleted_chat_node_${currentUid}_${epochTimeNodeVal}`, "purged"); window.closeCustomInlinePopupEngine(); if(MatrixSystemState.get('currentMode') === 'admin') renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); };
-            document.getElementById('btnDeleteForEveryone').onclick = () => { update(ref(db, `chats/${msgKey}`), { textBody: "🚫 This message was deleted", mediaPayload: "" }).then(() => { window.closeCustomInlinePopupEngine(); }); };
-        };
-
-        checkActiveStateSessionRetentionOnLaunch();
-    </script>
-</body>
-</html>
+        window.executePhysicalAssetDownloadEngine = function(data, isTxt=false) { const a = document.createElement('a'); a.href = isTxt ? "data:text/plain;charset=utf-8," + encodeURIComponent(data) : data; a.download = isTxt ? `Nexus_Data_${Date.now()}.txt` : `Nexus_Asset_${Date.now()}.${data.startsWith("data:audio") ? 'webm' : 'jpg'}`; document.body.appendChild(a); a.click();
