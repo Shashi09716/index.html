@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V8.0 (Ultra Professional & Lag-Free Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V9.0 (Ultra Premium & Bug-Free Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -94,6 +94,12 @@
             15%, 100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); } 
         }
         
+        @keyframes urgentPulseBlink {
+            0% { box-shadow: 0 0 10px #e74c3c; background: rgba(231,76,60,0.1); }
+            50% { box-shadow: 0 0 30px #e74c3c; background: rgba(231,76,60,0.3); }
+            100% { box-shadow: 0 0 10px #e74c3c; background: rgba(231,76,60,0.1); }
+        }
+
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; }
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
@@ -454,6 +460,7 @@
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
         <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
         <div class="navbar-controls">
+            <div id="adminTopNotificationBadge"></div>
             <button id="systemAudioToggleBtn" class="nav-btn" onclick="window.toggleGlobalSystemAudio()">🔊 SOUND: ON</button>
             <button class="nav-btn" onclick="window.executeCosmicThemeToggle()"><span id="themeToggleBtnLabel">🌓 DARK MODE</span></button>
             <button id="fullScreenBtn" class="nav-btn" onclick="window.toggleFullScreenEngine()"><span id="fullScreenLabel">🔲 FULL SCREEN</span></button>
@@ -579,11 +586,25 @@
                             <option value="h3">Heading 3</option>
                             <option value="blockquote">Quote block</option>
                         </select>
+                        <select class="note-tool-select" onchange="document.execCommand('fontName', false, this.value); window.updateNotepadLiveCounters();">
+                            <option value="Segoe UI">Font: Default</option>
+                            <option value="Arial">Font: Arial</option>
+                            <option value="Courier New">Font: Courier</option>
+                            <option value="Georgia">Font: Georgia</option>
+                            <option value="Impact">Font: Impact</option>
+                        </select>
+                        <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
+                            <option value="3">Size: Normal</option>
+                            <option value="5">Size: Large</option>
+                            <option value="7">Size: Huge</option>
+                        </select>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('subscript')" title="Subscript">X₂</button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('superscript')" title="Superscript">X²</button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
                         <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
@@ -598,6 +619,11 @@
                         <div class="color-picker-wrapper" title="Highlight Color">
                             🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f">
                         </div>
+                        <div class="toolbar-divider"></div>
+                        <button class="note-tool-btn" onclick="window.triggerNoteAction('undo')" title="Undo">↩️</button>
+                        <button class="note-tool-btn" onclick="window.triggerNoteAction('redo')" title="Redo">↪️</button>
+                        <button class="note-tool-btn" onclick="window.triggerNoteAction('removeFormat')" title="Clear Format">🧹</button>
+                        <button class="note-tool-btn" onclick="window.executeFindAndReplace()" style="color:var(--neon-cyan); border-color:var(--neon-cyan);" title="Find and Replace">🔍 Find/Replace</button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
                         <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
@@ -674,6 +700,7 @@
                                 </div>
                             </div>
                             <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                <button onclick="window.promptChatSearch()" class="header-actions-btn" title="Search Chat">🔍</button>
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
@@ -809,6 +836,7 @@
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                    <button onclick="window.promptChatSearch()" class="header-actions-btn" title="Search Chat">🔍</button>
                                     <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                     <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                     <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
@@ -1081,6 +1109,19 @@
             if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); }
         };
 
+        window.executeFindAndReplace = function() {
+            const findText = prompt("Find text:", "");
+            if(!findText) return;
+            const replaceText = prompt("Replace with:", "");
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(editor) {
+                // simple quick replace for UI
+                editor.innerHTML = editor.innerHTML.split(findText).join(replaceText);
+                window.updateNotepadLiveCounters();
+                alert("Text replaced successfully!");
+            }
+        };
+
         window.toggleFullScreenNoteMode = function() {
             const card = document.getElementById('notesMainWrapperCard');
             const btn = document.getElementById('btnNoteFullScreenToggle');
@@ -1194,18 +1235,21 @@
             if(userMatch) {
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
                 set(reqNodeRef, { signalID: reqNodeRef.key, targetUID: userMatch.id, clientName: userMatch.clientName, phone: userMatch.contact, epochTime: Date.now() }).then(() => {
-                    window.closeCustomInlinePopupEngine();
                     const nextWrap = document.getElementById('nexusCustomInlineModalWrapper');
                     nextWrap.innerHTML = `
-                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                            <h4 style="color:#00a884;">⏳ REQUEST LOGGED</h4>
-                            <p style="margin-bottom:10px; text-align:left;">Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
-                            <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button>
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:#0b141a; border:1px solid var(--border-glass);">
+                            <h3 style="color:#00a884; font-size:1.6rem; margin-bottom:15px;">✅ REQUEST LOGGED <br> अनुरोध दर्ज हुआ</h3>
+                            <div style="background: rgba(0, 242, 254, 0.05); border-left: 4px solid var(--neon-cyan); padding: 15px; margin-bottom: 20px; text-align: left;">
+                                <p style="color:#e9edef; font-size:1rem; margin-bottom:10px; line-height: 1.5;">Your password reset request has been securely logged. Admin will assist you within <b>24 to 48 hours</b> and your new password will be shared via SMS on your registered contact number.</p>
+                                <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
+                                <p style="color:#8696a0; font-size:0.95rem; line-height: 1.5;">आपका पासवर्ड रीसेट अनुरोध सुरक्षित रूप से दर्ज कर लिया गया है। एडमिन <b>24 से 48 घंटों</b> के भीतर आपकी सहायता करेंगे और आपका नया पासवर्ड आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से साझा किया जाएगा।</p>
+                            </div>
+                            <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%; font-size: 1.1rem; padding: 15px;">UNDERSTOOD / समझ गया</button>
                         </div>`;
                     nextWrap.classList.remove('hidden');
-                    window.speakNaturalHuman("Request logged smoothly.");
+                    window.speakNaturalHuman("Request logged securely. Check SMS soon.");
                 });
-            } else { alert("❌ Verification mismatch."); }
+            } else { alert("❌ Verification mismatch. Detail missing from cloud matrix."); }
         };
 
         window.executeDirectPasswordCredentialsSwap = function() {
@@ -1350,7 +1394,7 @@
             const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
             const targetUid = MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
             if(!currentUid || !targetUid) return;
-            if(confirm("Are you sure you want to clear this conversation history?")) {
+            if(confirm("Are you sure you want to completely wipe this conversation history?")) {
                 get(ref(db, 'chats')).then((snap) => {
                     try {
                         const data = snap.val();
@@ -1648,6 +1692,42 @@
             document.getElementById('adminChatGridBox')?.classList.remove('mobile-chat-view-active');
         };
 
+        window.promptChatSearch = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4>🔍 Search Chat Conversation</h4>
+                    <input type="text" id="internalChatSearchInput" class="nexus-popup-input-field" placeholder="Enter keyword to search...">
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="window.executeInternalChatSearch()" class="nexus-popup-btn primary-btn">SEARCH</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
+                    </div>
+                </div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.executeInternalChatSearch = function() {
+            const query = document.getElementById('internalChatSearchInput').value.trim().toLowerCase();
+            window.closeCustomInlinePopupEngine();
+            if(!query) return;
+            let foundCount = 0;
+            document.querySelectorAll('.bubble-msg-wrapper').forEach(bubble => {
+                const textNode = bubble.querySelector('.bubble-text-content');
+                if(textNode) {
+                    if(textNode.innerText.toLowerCase().includes(query)) {
+                        bubble.style.border = "2px solid #00f2fe";
+                        bubble.style.boxShadow = "0 0 15px rgba(0,242,254,0.5)";
+                        if(foundCount === 0) bubble.scrollIntoView({behavior: "smooth", block: "center"});
+                        foundCount++;
+                    } else {
+                        bubble.style.border = "none";
+                        bubble.style.boxShadow = "0 1px 0.5px rgba(11,20,26,.13)";
+                    }
+                }
+            });
+            if(foundCount === 0) alert("No matches found in this conversation.");
+        };
+
         function checkActiveStateSessionRetentionOnLaunch() {
             const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
             if(savedUserToken) {
@@ -1723,10 +1803,21 @@
             } catch(e) {}
         });
 
+        // ADMIN ACTIVE NOTIFICATION TRIGGER
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
             try {
                 const signalsData = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
-                if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin' && isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
+                
+                // NOTIFICATION LOGIC ENHANCEMENT
+                const notifBadge = document.getElementById('adminTopNotificationBadge');
+                if(MatrixSystemState.get('currentMode') === 'admin' && notifBadge) {
+                    if(signalsData.length > 0) {
+                        notifBadge.innerHTML = `<div style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; color:#fff; padding:6px 15px; border-radius:8px; font-family:'Orbitron'; font-weight:bold; font-size:0.85rem; animation: urgentPulseBlink 1.5s infinite; cursor:pointer;" onclick="window.switchAdminSubSection('stats')">⚠️ ${signalsData.length} PENDING RESET REQUESTS!</div>`;
+                        if(isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
+                    } else {
+                        notifBadge.innerHTML = "";
+                    }
+                }
                 if(MatrixSystemState.get('activeAdminSubSection') === 'stats') window.renderDynamicServerDiagnosticsDashboard();
             } catch(e){}
         });
@@ -1761,6 +1852,14 @@
                     const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid);
                     typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; typingStatusNode.classList.remove('hidden');
                 } else if(typingStatusNode) typingStatusNode.classList.add('hidden');
+                
+                // For admin
+                const adminTypingNode = document.getElementById('adminWhatsappTypingStatusIndicator');
+                const adminTargetUid = MatrixSystemState.get('spyActiveTargetUserContext');
+                if(adminTypingNode && data && adminTargetUid && data[adminTargetUid] && data[adminTargetUid].typingTo === "MainframeAdmin") {
+                    adminTypingNode.innerText = "typing..."; adminTypingNode.classList.remove('hidden');
+                } else if (adminTypingNode) adminTypingNode.classList.add('hidden');
+
             } catch(e) {}
         });
 
@@ -2446,131 +2545,4 @@
         window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
 
         window.uploadUserProfileAvatarEngine = function(event) {
-            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
-            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
-                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
-                set(ref(db, targetDbString), base64Avatar).then(() => { 
-                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    event.target.removeAttribute('data-target-uid'); 
-                }); 
-            }; reader.readAsDataURL(file); }
-        };
-
-        window.checkAutoLogin = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            if(MatrixSystemState.get('currentMode') === 'admin') { if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) window.executeClusterLogin(null); } 
-            else { let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) window.executeClusterLogin(null); }
-        };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('currentMode') === 'admin') { if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) document.getElementById('accessNodePass').focus(); } 
-            else { let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); if(userMatch) document.getElementById('accessNodePass').focus(); }
-        };
-
-        window.processBinaryAttachment = function(event, type) {
-            const fileInput = event.target;
-            if(fileInput && fileInput.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
-                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
-
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.05; syntax.rate = 0.95; window.speechSynthesis.speak(syntax); } catch(e){} };
-        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
-
-        window.changeWorkspaceMode = function(mode) {
-            MatrixSystemState.set('currentMode', mode); const inputLabel = document.getElementById('hudInputLabel');
-            document.getElementById('tabModeUser').classList.remove('active'); document.getElementById('tabModeAdmin').classList.remove('active');
-            if (mode === 'admin') { document.getElementById('tabModeAdmin').classList.add('active'); if(inputLabel) inputLabel.innerText = "Confirm Admin Vector ID"; } 
-            else { document.getElementById('tabModeUser').classList.add('active'); if(inputLabel) inputLabel.innerText = "System ID / Customer ID"; }
-            document.getElementById('accessNodeUser').value = ""; document.getElementById('accessNodePass').value = ""; 
-        };
-
-        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-
-        window.triggerLockoutTerminalUI = function(usernameString) {
-            localStorage.setItem('nexus_hard_lockout_flag_' + usernameString.toLowerCase(), 'true');
-            set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, epoch: Date.now() });
-            document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">Access signatures for ID [${usernameString}] locked.</p></div>`;
-            setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); window.speakNaturalHuman("Security violation detected.");
-        }
-
-        // =========================================================================
-        // FULLY FIXED EXECUTE LOGIN FUNCTION (NO CUT OFFS, ZERO BUGS)
-        // =========================================================================
-        window.executeClusterLogin = function(event) {
-            if(event) { event.preventDefault(); event.stopPropagation(); }
-            
-            const u = document.getElementById('accessNodeUser').value.trim(); 
-            const p = document.getElementById('accessNodePass').value.trim(); 
-            if(!u || p === "") return;
-
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            let isSuccess = false;
-            let loggedInId = "";
-            let mode = MatrixSystemState.get('currentMode');
-
-            if(mode === 'admin') { 
-                if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
-                    isSuccess = true;
-                    loggedInId = "MainframeAdmin";
-                }
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    isSuccess = true;
-                    loggedInId = userMatch.id;
-                }
-            }
-
-            if(isSuccess) {
-                MatrixSystemState.set('loggedInCustomerID', loggedInId);
-                localStorage.setItem('nexus_logged_in_uid', loggedInId);
-                localStorage.setItem('nexus_system_session_mode', mode);
-                
-                document.getElementById('mainStage').style.display = 'none';
-                const nav = document.getElementById('mainCyberNavbar');
-                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                
-                if(mode === 'admin') {
-                    document.getElementById('adminDashboard').classList.remove('hidden');
-                    window.loadAdminSubmissions();
-                } else {
-                    document.getElementById('customerDashboard').classList.remove('hidden');
-                    window.switchCustomerChannel('upload');
-                }
-                
-                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2);
-            } else {
-                let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
-                fails++;
-                MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
-                if (fails >= 3 && mode === 'user') {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
-                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
-                }
-                alert("❌ ACCESS DENIED: Invalid System ID or Password.");
-                if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
-            }
-        };
-
-        window.logoutEngine = function() {
-            MatrixSystemState.set('loggedInCustomerID', "");
-            localStorage.removeItem('nexus_logged_in_uid');
-            localStorage.removeItem('nexus_system_session_mode');
-            window.location.reload();
-        };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
-    </script>
-</body>
-</html>
+            const file = event.target.files[0]; const targetUid =
