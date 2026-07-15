@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V8.0 (Ultra Professional & Lag-Free Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V9.0 (Ultra Professional & Lag-Free Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -76,7 +76,6 @@
         input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         
-        /* SCROLLBAR CUSTOMIZATION (PRO LEVEL) */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; }
@@ -218,7 +217,7 @@
         .cred-sync-card { background: rgba(4, 12, 30, 0.85); border: 1px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
 
-        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD (PRO LEVEL V2) --- */
+        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD (PRO LEVEL V3) --- */
         .notes-engine-card-surface { background: var(--card-node-bg, rgba(3, 10, 26, 0.9)); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); transition: all 0.3s ease; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
@@ -290,6 +289,8 @@
         /* New Top Bar Status Icon for Real WhatsApp Look */
         .wa-status-circle-icon { width: 32px; height: 32px; border-radius: 50%; border: 2px dashed var(--wa-text-muted); display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--wa-text-muted); font-size: 1rem; transition: 0.3s; }
         .wa-status-circle-icon:hover { border-color: var(--wa-green); color: var(--wa-green); }
+        .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; }
+        @keyframes statusPulse { 0% { box-shadow: 0 0 0 0 rgba(0,168,132,0.4); } 70% { box-shadow: 0 0 0 10px rgba(0,168,132,0); } 100% { box-shadow: 0 0 0 0 rgba(0,168,132,0); } }
 
         .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
         
@@ -391,6 +392,19 @@
         body.light-theme-active .giant-compiler-layout h3 { color: #16a085; text-shadow: none; }
         .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
 
+        /* Admin Blinking Alert Banner - For Password Resets */
+        #adminPasswordResetAlertBanner { background: #e74c3c; color: white; padding: 12px 20px; text-align: center; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1rem; border-radius: 8px; border: 2px solid #fff; margin-bottom: 20px; box-shadow: 0 0 20px rgba(231, 76, 60, 0.8); animation: adminAlertBlink 1s infinite alternate; }
+        @keyframes adminAlertBlink { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.7; transform: scale(1.02); } }
+
+        /* Status Viewer Fullscreen Engine */
+        .status-viewer-overlay { position: fixed; inset: 0; background: #000; z-index: 300000; display: flex; flex-direction: column; }
+        .status-viewer-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); position: absolute; top: 0; width: 100%; z-index: 10; }
+        .status-progress-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.3); margin-bottom: 10px; display: flex; gap: 4px; }
+        .status-progress-segment { flex: 1; background: rgba(255,255,255,0.5); height: 100%; border-radius: 2px; overflow: hidden; }
+        .status-progress-fill { height: 100%; background: #fff; width: 0%; }
+        .status-image-container { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; }
+        .status-image-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
         .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
         .analytics-node-card { background: rgba(4,12,32,0.85); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); position:relative;}
         .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
@@ -531,7 +545,8 @@
                 <div style="flex:1;">
                     <label style="color:#00f2fe; font-size:1rem; font-weight:bold; display:block; margin-bottom:4px; cursor:pointer;" onclick="window.triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo</label>
                     <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserProfileAvatarEngine(event)">
-                    <input type="text" id="customerBioInput" class="giant-compiler-input" style="padding: 10px; font-size: 0.9rem; border-color: rgba(0, 242, 254, 0.5); color: var(--text-main);" placeholder="Update your Bio / About status..." onchange="window.updateCustomerBioEngine()">
+                    <input type="text" id="customerNameInput" class="giant-compiler-input" style="padding: 10px; font-size: 0.9rem; border-color: rgba(0, 242, 254, 0.5); color: var(--text-main); margin-bottom: 5px;" placeholder="Update your Full Name..." onchange="window.updateCustomerProfileEngine()">
+                    <input type="text" id="customerBioInput" class="giant-compiler-input" style="padding: 10px; font-size: 0.9rem; border-color: rgba(0, 242, 254, 0.5); color: var(--text-main);" placeholder="Update your Bio / About status..." onchange="window.updateCustomerProfileEngine()">
                 </div>
             </div>
 
@@ -565,7 +580,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V3</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
@@ -579,11 +594,23 @@
                             <option value="h3">Heading 3</option>
                             <option value="blockquote">Quote block</option>
                         </select>
+                        <select class="note-tool-select" onchange="window.triggerNoteFontFamily(this.value)">
+                            <option value="Segoe UI">Segoe UI</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Courier New">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Times New Roman">Times Roman</option>
+                        </select>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('subscript')" title="Subscript">X<sub>2</sub></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('superscript')" title="Superscript">X<sup>2</sup></button>
+                        <div class="toolbar-divider"></div>
+                        <button class="note-tool-btn" onclick="document.execCommand('undo', false, null)" title="Undo">↩️</button>
+                        <button class="note-tool-btn" onclick="document.execCommand('redo', false, null)" title="Redo">↪️</button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
                         <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
@@ -657,7 +684,8 @@
                     <div class="chat-target-userlist-pane">
                         <div class="whatsapp-search-box">
                             <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
-                            <div class="wa-status-circle-icon" title="Status Update">⭕</div>
+                            <div class="wa-status-circle-icon" title="View / Upload Status" onclick="window.openStatusViewerEngine()">⭕</div>
+                            <input type="file" id="statusUploadInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserStatusMatrixEngine(event)">
                             <button class="nav-btn" style="padding: 8px 12px; font-size: 1.1rem; border-radius: 6px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
                         <div id="chatTargetContainerView"></div>
@@ -666,8 +694,8 @@
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
                                 <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
-                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerUserProfileAvatarDropdownEngine()">
-                                <div class="whatsapp-user-info">
+                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
+                                <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div>
                                     <div id="chatActiveUserBioNode" style="font-size: 0.8rem; color: var(--wa-text-muted); font-family: inherit; margin-top: 2px;"></div>
                                     <div id="whatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-green); font-family:inherit;" class="hidden">typing...</div>
@@ -716,6 +744,7 @@
     
     <div class="dashboard-panel-core hidden" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left;">
+            <div id="adminPasswordResetAlertBanner" class="hidden"></div>
             <div id="exclusiveAccountMatrixControlBar" style="background: linear-gradient(135deg, #09152e, #030814); border: 2px solid var(--neon-cyan); border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,242,254,0.25);">
                 <div style="font-family: 'Orbitron'; font-size: 0.9rem; color: var(--neon-cyan); font-weight: 900; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                     <span class="refresh-spinner-node" style="background: var(--neon-cyan);"></span> 🛡️ MAIN CLOUD ACCOUNT MANAGEMENT & SIGNAL LOGS:
@@ -794,7 +823,7 @@
                         <div class="chat-target-userlist-pane">
                             <div class="whatsapp-search-box">
                                 <input type="text" id="adminClientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterAdminClientChatContactList()">
-                                <div class="wa-status-circle-icon" title="Status Update">⭕</div>
+                                <div class="wa-status-circle-icon" title="View Statuses" onclick="window.openStatusViewerEngine()">⭕</div>
                             </div>
                             <div id="adminSpyUsersListWrapper"></div>
                         </div>
@@ -802,8 +831,8 @@
                             <div class="chat-stream-header-bar">
                                 <div style="display:flex; align-items:center; gap:12px;">
                                     <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
-                                    <img id="adminChatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerUserProfileAvatarDropdownEngine()">
-                                    <div class="whatsapp-user-info">
+                                    <img id="adminChatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('spyActiveTargetUserContext'))">
+                                    <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('spyActiveTargetUserContext'))">
                                         <div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:var(--wa-text);">Select Pipeline...</div>
                                         <div id="adminWhatsappTypingStatusIndicator" style="font-size:0.8rem; color:var(--wa-green); font-family:inherit;" class="hidden">typing...</div>
                                     </div>
@@ -880,6 +909,27 @@
     </div>
 
     <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="window.closeCustomInlinePopupEngine()"></div>
+    <div id="statusViewerOverlayWrapper" class="status-viewer-overlay hidden">
+        <div class="status-viewer-header">
+            <div style="display:flex; align-items:center; gap:12px; flex:1;">
+                <button onclick="window.closeStatusViewerEngine()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">⬅️</button>
+                <img id="statusActiveAvatar" class="whatsapp-avatar" src="" style="width:40px; height:40px;">
+                <div style="color:#fff; font-family:'Segoe UI', sans-serif;">
+                    <div id="statusActiveName" style="font-weight:600; font-size:1.1rem;">Name</div>
+                    <div id="statusActiveTime" style="font-size:0.8rem; opacity:0.8;">Time</div>
+                </div>
+            </div>
+            <button onclick="window.closeStatusViewerEngine()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">✖</button>
+        </div>
+        <div class="status-progress-bar" id="statusProgressBarContainer" style="position:absolute; top:70px; left:10px; right:10px; z-index:10;"></div>
+        <div class="status-image-container">
+            <img id="statusActiveImageDisplay" src="">
+        </div>
+        <div style="position:absolute; bottom:20px; width:100%; display:flex; justify-content:center; gap:20px; z-index:10;">
+            <button onclick="window.navigateStatus(-1)" class="hud-engage-btn" style="width:100px; padding:10px;">⬅ PREV</button>
+            <button onclick="window.navigateStatus(1)" class="hud-engage-btn" style="width:100px; padding:10px;">NEXT ➡</button>
+        </div>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -899,17 +949,19 @@
 
         const MatrixSystemState = (() => {
             let state = {
-                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "upload", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "creation", loadedAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], consecutiveBruteFailuresCount: 0, cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "upload", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "creation", loadedAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], consecutiveBruteFailuresCount: 0, cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
             };
             return {
                 get: (key) => state[key],
                 set: (key, val) => { state[key] = val; },
                 resetChatAssets: () => { state.globalLiveChatBinaryStreamBase64 = ""; state.activeReplyMessageTextNode = ""; },
-                purgeStateReferences: () => { state.cachedGlobalUsersArr = []; state.cachedGlobalPolicyArr = []; state.cachedGlobalAiCommsArr = []; state.cachedGlobalForgetSignalsArr = []; state.cachedGlobalGroupsArr = []; }
+                purgeStateReferences: () => { state.cachedGlobalUsersArr = []; state.cachedGlobalPolicyArr = []; state.cachedGlobalAiCommsArr = []; state.cachedGlobalForgetSignalsArr = []; state.cachedGlobalGroupsArr = []; state.cachedGlobalStatusesArr = []; }
             };
         })();
 
         window.cachedChatsData = {};
+        window.activeStatusFeedQueue = [];
+        window.currentStatusViewingIndex = 0;
 
         let requestArcadeFrameToken = null, ambientParticleToken = null, tomSpeechRecognitionInstance = null;
         let isTomListeningStateActive = false, audioVisualizerContextNode = null, audioAnalyserNode = null, audioMicStreamNode = null;
@@ -929,7 +981,6 @@
 
         ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
 
-        // PERFORMANCE LAG FIX: Debounce typing calls
         let _typingTimer;
         window.debouncedInputCheck = function() { clearTimeout(_typingTimer); _typingTimer = setTimeout(window.verifyInputIdentityProgress, 300); }
         let _loginTimer;
@@ -976,7 +1027,6 @@
             else { if (document.exitFullscreen) { document.exitFullscreen().then(() => { label.innerText = "🔲 FULL SCREEN"; }); } }
         };
 
-        // PERFORMANCE LAG FIX: Ambient loop properly suspends CPU drain when hidden.
         function runAmbientCanvasMatrixSystem() {
             const canvas = document.getElementById('ambientParticleSpaceNode');
             if(!canvas) return;
@@ -986,10 +1036,7 @@
             window.addEventListener('resize', resize); resize();
             for(let i=0; i<25; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, alpha: Math.random() * 0.4 + 0.1 }); }
             function draw() {
-                if(document.hidden || MatrixSystemState.get('loggedInCustomerID') !== "") { 
-                    // Stop entirely if hidden or logged in to save CPU (LAG FREE!)
-                    return; 
-                }
+                if(document.hidden || MatrixSystemState.get('loggedInCustomerID') !== "") return; 
                 ctx.clearRect(0,0, canvas.width, canvas.height);
                 const isLight = document.body.classList.contains('light-theme-active');
                 ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.1)' : 'rgba(0, 242, 254, 0.2)';
@@ -1027,7 +1074,7 @@
         }
         initiatePrecisionChronometerTick();
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES ------------------
+        // ------------------ UPGRADED PRO NOTEPAD FEATURES V3 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -1040,7 +1087,7 @@
             const textContent = editor.innerText || "";
             const charCount = textContent.length;
             const wordCount = textContent.trim().split(/\s+/).filter(word => word.length > 0).length;
-            const readTime = Math.ceil(wordCount / 200); // avg read speed 200 wpm
+            const readTime = Math.ceil(wordCount / 200); 
             
             document.getElementById('noteLiveWordCount').innerText = `Words: ${wordCount}`;
             document.getElementById('noteLiveCharCount').innerText = `Characters: ${charCount}`;
@@ -1065,65 +1112,45 @@
             const html = `<table border="1" style="width:100%; border-collapse:collapse; margin-bottom:15px;">
                 <tr><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 1</th><th style="padding:8px; background:rgba(0,242,254,0.1); border:1px solid var(--border-glass);">Header 2</th></tr>
                 <tr><td style="padding:8px; border:1px solid var(--border-glass);">Data 1</td><td style="padding:8px; border:1px solid var(--border-glass);">Data 2</td></tr>
-                <tr><td style="padding:8px; border:1px solid var(--border-glass);">Data 3</td><td style="padding:8px; border:1px solid var(--border-glass);">Data 4</td></tr>
             </table><p><br></p>`;
             document.execCommand('insertHTML', false, html);
             window.updateNotepadLiveCounters();
         };
 
-        window.insertLinkToNotepad = function() {
-            const url = prompt("Enter the URL for the link:", "https://");
-            if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); }
-        };
-
-        window.insertImageToNotepad = function() {
-            const url = prompt("Enter the Image URL:", "https://");
-            if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); }
-        };
+        window.insertLinkToNotepad = function() { const url = prompt("Enter the URL for the link:", "https://"); if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); } };
+        window.insertImageToNotepad = function() { const url = prompt("Enter the Image URL:", "https://"); if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); } };
 
         window.toggleFullScreenNoteMode = function() {
-            const card = document.getElementById('notesMainWrapperCard');
-            const btn = document.getElementById('btnNoteFullScreenToggle');
-            if(card.classList.contains('fullscreen-active')) {
-                card.classList.remove('fullscreen-active');
-                btn.innerText = "🔲 Full Screen";
-            } else {
-                card.classList.add('fullscreen-active');
-                btn.innerText = "🔳 Exit Full Screen";
-            }
+            const card = document.getElementById('notesMainWrapperCard'); const btn = document.getElementById('btnNoteFullScreenToggle');
+            if(card.classList.contains('fullscreen-active')) { card.classList.remove('fullscreen-active'); btn.innerText = "🔲 Full Screen"; } 
+            else { card.classList.add('fullscreen-active'); btn.innerText = "🔳 Exit Full Screen"; }
         };
 
         window.downloadNoteContent = function(format) {
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if(!editor) return;
+            const editor = document.getElementById('richNoteWritingPadEditable'); if(!editor) return;
             const textContent = format === 'html' ? editor.innerHTML : editor.innerText;
             if(!textContent.trim()) { alert("Note is empty!"); return; }
-
             const blob = new Blob([textContent], { type: format === 'doc' ? 'application/msword' : format === 'html' ? 'text/html' : 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `Nexus_Professional_Note_${Date.now()}.${format}`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Nexus_Professional_Note_${Date.now()}.${format}`;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
         };
 
         window.printNoteEditorContent = function() {
-            const printArea = document.getElementById('printAreaNotepad').innerHTML;
-            const originalContent = document.body.innerHTML;
+            const printArea = document.getElementById('printAreaNotepad').innerHTML; const originalContent = document.body.innerHTML;
             document.body.innerHTML = `<div style="padding:40px; color:#000; font-family:sans-serif;">${printArea}</div>`;
-            window.print();
-            document.body.innerHTML = originalContent;
-            location.reload(); 
+            window.print(); document.body.innerHTML = originalContent; location.reload(); 
         };
+
+        window.triggerEmbeddedNoteFormat = function(styleProperty) { document.execCommand(styleProperty, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
+        window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
+        window.triggerNoteFontFamily = function(fontName) { document.execCommand('fontName', false, fontName); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
+
         // --------------------------------------------------------------
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
             const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌/g, '');
-            if(cleanText.trim().length > 0) {
-                try { window.speakNaturalHuman(`${senderName} says: ${cleanText}`); } catch(e) {}
-            }
+            if(cleanText.trim().length > 0) { try { window.speakNaturalHuman(`${senderName} says: ${cleanText}`); } catch(e) {} }
         }
 
         window.triggerForgotIDModal = function() {
@@ -1196,11 +1223,15 @@
                 set(reqNodeRef, { signalID: reqNodeRef.key, targetUID: userMatch.id, clientName: userMatch.clientName, phone: userMatch.contact, epochTime: Date.now() }).then(() => {
                     window.closeCustomInlinePopupEngine();
                     const nextWrap = document.getElementById('nexusCustomInlineModalWrapper');
+                    // BILINGUAL FORGOT PASSWORD SUCCESS MESSAGE
                     nextWrap.innerHTML = `
                         <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                            <h4 style="color:#00a884;">⏳ REQUEST LOGGED</h4>
-                            <p style="margin-bottom:10px; text-align:left;">Admin 48 Hour ke andar aapki help karega aur aapka Password aapke Contact No par share karega SMS ke through.</p>
-                            <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button>
+                            <h4 style="color:#00a884;">⏳ REQUEST LOGGED / अनुरोध सबमिट हो गया</h4>
+                            <p style="margin-bottom:10px; text-align:left; font-size: 0.95rem; color:var(--text-sub);">
+                                <strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new password on your registered Contact Number via SMS within 24 to 48 hours.<br><br>
+                                <strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपका नया पासवर्ड शेयर करेंगे।
+                            </p>
+                            <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button>
                         </div>`;
                     nextWrap.classList.remove('hidden');
                     window.speakNaturalHuman("Request logged smoothly.");
@@ -1219,12 +1250,16 @@
             } else { alert("❌ Invalid current password signature."); }
         };
 
-        window.updateCustomerBioEngine = function() {
+        window.updateCustomerProfileEngine = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const bioText = document.getElementById('customerBioInput').value.trim();
+            const nameText = document.getElementById('customerNameInput').value.trim();
             if(currentUid) {
+                let updates = {};
+                if(bioText) updates.bio = bioText;
+                if(nameText) updates.clientName = nameText;
                 try {
-                    update(ref(db, `users/${currentUid}`), { bio: bioText }).then(() => { window.playSynthesizedSound(880, 'sine', 0.1); });
+                    update(ref(db, `users/${currentUid}`), updates).then(() => { window.playSynthesizedSound(880, 'sine', 0.1); });
                 } catch(e) {}
             }
         };
@@ -1409,12 +1444,6 @@
             window.playSynthesizedSound(880, 'sine', 0.1);
         };
 
-        window.triggerEmbeddedNoteFormat = function(styleProperty) { document.execCommand(styleProperty, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
-        window.triggerEmbeddedNoteHighlight = function(colorHexCode) { document.execCommand('backColor', false, colorHexCode); document.getElementById('richNoteWritingPadEditable')?.focus(); };
-        window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
-        window.triggerNoteFontSizeChange = function(sizeVal) { document.execCommand('fontSize', false, sizeVal); document.getElementById('richNoteWritingPadEditable')?.focus(); };
-        window.triggerNoteAction = function(actionId) { document.execCommand(actionId, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
-
         window.toggleRichNotesVoiceStreamRecorder = function() {
             const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
             if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
@@ -1521,47 +1550,160 @@
             else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
         };
 
-        window.triggerTargetUserContactProfileModal = function(event, targetUserId, standardClientName) {
+        // --- NEW STRICT PROFILE VIEW (1:1 WHATSAPP CLONE CONTACT INFO) ---
+        window.triggerTargetUserContactProfileModal = function(event, targetUserId) {
             if (event) event.stopPropagation();
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            let targetAvatarPath = defaultAvatarSvg;
             
+            let targetAvatarPath = defaultAvatarSvg;
+            let displayName = "Unknown";
+            let displayContact = "Private";
+            let displayBio = "Available";
             let isGroupNode = targetUserId.startsWith('group_');
 
             if(targetUserId !== "MainframeAdmin" && !isGroupNode) {
                 const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
-                if(userMatch && userMatch.avatar) targetAvatarPath = userMatch.avatar;
+                if(userMatch) {
+                    targetAvatarPath = userMatch.avatar || defaultAvatarSvg;
+                    displayName = userMatch.clientName || "Unknown";
+                    displayContact = userMatch.contact || "Private";
+                    displayBio = userMatch.bio || "Available";
+                }
             } else if (isGroupNode) {
                 const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
-                if(groupMatch && groupMatch.avatar) targetAvatarPath = groupMatch.avatar;
+                if(groupMatch) {
+                    targetAvatarPath = groupMatch.avatar || defaultAvatarSvg;
+                    displayName = groupMatch.name || "Group";
+                    displayContact = "Group Chat";
+                    displayBio = `${groupMatch.members.length} Participants`;
+                }
+            } else if (targetUserId === "MainframeAdmin") {
+                displayName = "Mainframe Admin Shashi";
+                displayContact = "System Admin";
+                displayBio = "Managing Matrix Cloud";
             }
             
+            // Render beautiful WhatsApp-like contact info sidebar/modal
             wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
-                    <h4>${standardClientName} Profile</h4>
-                    <img src="${targetAvatarPath}" style="width:130px; height:130px; border-radius:50%; object-fit:cover; border:2px solid var(--wa-green); display:block; margin:0 auto 10px auto;">
-                    <div style="margin-bottom:20px; text-align:left;">
-                        <input type="text" id="popupInlineNicknameModifierField" class="nexus-popup-input-field" value="${localNicknamesObj[targetUserId] || ""}" placeholder="Set custom nickname...">
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:380px;">
+                    <div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;">
+                        <img src="${targetAvatarPath}" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 10px 20px rgba(0,0,0,0.5);">
+                        <h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.6rem; margin-top:15px;">${displayName}</h2>
+                        <div style="color:var(--wa-text-muted); font-size:1rem; margin-top:5px;">${displayContact}</div>
                     </div>
-                    <div class="nexus-popup-flex-btns">
-                        <button id="commitProfileModalChangesBtn" class="nexus-popup-btn primary-btn">SAVE</button>
-                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CLOSE</button>
+                    <div style="padding:25px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;">
+                        <h4 style="color:var(--wa-green); font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4>
+                        <div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.1rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Close</button>
                     </div>
                 </div>`;
             wrapper.classList.remove('hidden');
-            document.getElementById('commitProfileModalChangesBtn').onclick = () => {
-                const inputVal = document.getElementById('popupInlineNicknameModifierField').value.trim();
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-                if(inputVal) currentLocalNicknamesObj[targetUserId] = inputVal; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(`nicknames_map_${currentUid}`, JSON.stringify(currentLocalNicknamesObj));
-                window.closeCustomInlinePopupEngine();
-                if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyUserList(); else window.initializeCrossLinkChatPanel();
-            };
         };
 
+        // --- NEW WHATSAPP STATUS (STORY) ENGINE ---
+        onValue(ref(db, 'statuses'), (snapshot) => {
+            try {
+                const data = snapshot.val();
+                let statusesArr = data ? Object.values(data) : [];
+                // Filter only 24 hours
+                const now = Date.now();
+                statusesArr = statusesArr.filter(s => (now - s.epochTime) < (24 * 60 * 60 * 1000));
+                MatrixSystemState.set('cachedGlobalStatusesArr', statusesArr);
+                
+                // Light up the status circle icon if there are active statuses
+                const statusIcons = document.querySelectorAll('.wa-status-circle-icon');
+                if(statusesArr.length > 0) {
+                    statusIcons.forEach(icon => icon.classList.add('has-status'));
+                } else {
+                    statusIcons.forEach(icon => icon.classList.remove('has-status'));
+                }
+            } catch(e) {}
+        });
+
+        window.openStatusViewerEngine = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr');
+            
+            // Allow admin to see everyone, user sees contacts
+            window.activeStatusFeedQueue = allStatuses;
+            window.currentStatusViewingIndex = 0;
+            
+            if(window.activeStatusFeedQueue.length === 0) {
+                // If user clicks, prompt to upload
+                if(MatrixSystemState.get('currentMode') === 'user') {
+                    if(confirm("No recent updates. Upload a new Status?")) {
+                        document.getElementById('statusUploadInputNode').click();
+                    }
+                } else {
+                    alert("No active statuses in the system.");
+                }
+                return;
+            }
+            window.renderCurrentStatusSlide();
+        };
+
+        window.uploadUserStatusMatrixEngine = function(event) {
+            const file = event.target.files[0];
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(file && currentUid) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const b64 = e.target.result;
+                    const statusRef = push(ref(db, 'statuses'));
+                    set(statusRef, { id: statusRef.key, ownerId: currentUid, mediaPayload: b64, epochTime: Date.now() }).then(() => {
+                        alert("✅ Status Update Sent!");
+                        window.playSynthesizedSound(880, 'sine', 0.1);
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        window.renderCurrentStatusSlide = function() {
+            const overlay = document.getElementById('statusViewerOverlayWrapper');
+            if(!overlay) return;
+            if(window.activeStatusFeedQueue.length === 0 || window.currentStatusViewingIndex >= window.activeStatusFeedQueue.length || window.currentStatusViewingIndex < 0) {
+                window.closeStatusViewerEngine();
+                return;
+            }
+            
+            const currentStatus = window.activeStatusFeedQueue[window.currentStatusViewingIndex];
+            const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentStatus.ownerId);
+            
+            document.getElementById('statusActiveAvatar').src = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg;
+            document.getElementById('statusActiveName').innerText = userObj ? userObj.clientName : "Admin";
+            
+            const diff = Math.floor((Date.now() - currentStatus.epochTime) / 60000);
+            let timeStr = diff < 60 ? `${diff} minutes ago` : `${Math.floor(diff/60)} hours ago`;
+            document.getElementById('statusActiveTime').innerText = timeStr;
+            
+            document.getElementById('statusActiveImageDisplay').src = currentStatus.mediaPayload;
+            
+            // Build progress bars
+            const progressContainer = document.getElementById('statusProgressBarContainer');
+            progressContainer.innerHTML = window.activeStatusFeedQueue.map((_, idx) => {
+                let w = (idx < window.currentStatusViewingIndex) ? '100%' : (idx === window.currentStatusViewingIndex ? '100%' : '0%');
+                // The current one could be animated via CSS, but hardcoded to 100 for static view for now
+                return `<div class="status-progress-segment"><div class="status-progress-fill" style="width:${w}; transition: width 0.3s;"></div></div>`;
+            }).join('');
+
+            overlay.classList.remove('hidden');
+        };
+
+        window.navigateStatus = function(direction) {
+            window.currentStatusViewingIndex += direction;
+            window.renderCurrentStatusSlide();
+        };
+
+        window.closeStatusViewerEngine = function() {
+            document.getElementById('statusViewerOverlayWrapper')?.classList.add('hidden');
+        };
+        // --- END WHATSAPP STATUS ENGINE ---
+
         window.triggerUserProfileAvatarDropdownEngine = function() {
+            // STRICT EDIT RULE: Only current user can edit their own profile
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             wrapper.innerHTML = `
                 <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
@@ -1573,62 +1715,6 @@
                     </div>
                 </div>`;
             wrapper.classList.remove('hidden');
-        };
-
-        window.spawnAvatarRightClickMatrixDropdown = function(event, targetUserId, clientRealName) {
-            event.preventDefault(); event.stopPropagation(); removeAvatarRightClickDropdownNode();
-            const contextDropdown = document.createElement('div');
-            contextDropdown.className = "whatsapp-avatar-context-dropdown"; contextDropdown.id = "avatarContextDropdownMatrixOverlay";
-            contextDropdown.innerHTML = `<button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextAvatarPhotoChange('${targetUserId}')">📷 Modify Photo</button><button class="avatar-dropdown-action-row" onclick="window.executeTriggeredContextNicknameChange('${targetUserId}', '${clientRealName}')">✏ Set Nickname</button>`;
-            document.body.appendChild(contextDropdown); contextDropdown.style.left = `${event.clientX}px`; contextDropdown.style.top = `${event.clientY}px`;
-            document.addEventListener('click', removeAvatarRightClickDropdownNode, { once: true });
-        };
-        function removeAvatarRightClickDropdownNode() { document.getElementById('avatarContextDropdownMatrixOverlay')?.remove(); }
-
-        window.executeTriggeredContextAvatarPhotoChange = function(targetUserId) {
-            removeAvatarRightClickDropdownNode(); 
-            let currentUid = MatrixSystemState.get('loggedInCustomerID');
-            
-            let isAllowed = false;
-            if(targetUserId === currentUid || MatrixSystemState.get('currentMode') === 'admin') isAllowed = true;
-            if(targetUserId.startsWith('group_')) {
-                const groupObj = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
-                if(groupObj && (groupObj.createdBy === currentUid || MatrixSystemState.get('currentMode') === 'admin')) isAllowed = true;
-            }
-
-            if(isAllowed) {
-                const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-                wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Modify Photo @${targetUserId}</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button onclick="window.commitTargetedAvatarClear('${targetUserId}')" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Remove Photo</button><button onclick="document.getElementById('hiddenAvatarFileInputNode').setAttribute('data-target-uid', '${targetUserId}'); document.getElementById('hiddenAvatarFileInputNode').click(); window.closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn">Upload Gallery</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
-                wrapper.classList.remove('hidden');
-            } else { alert("Photo overwrite restricted. Privacy lock active. You cannot modify someone else's profile."); }
-        };
-
-        window.commitTargetedAvatarClear = function(uid) {
-            window.closeCustomInlinePopupEngine();
-            try {
-                let dbRefString = uid.startsWith('group_') ? `groups/${uid}/avatar` : `users/${uid}/avatar`;
-                set(ref(db, dbRefString), "").then(() => {
-                    if(uid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg; }
-                    if(uid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg; }
-                    window.playSynthesizedSound(880, 'sine', 0.1);
-                });
-            } catch(e){}
-        };
-
-        window.executeTriggeredContextNicknameChange = function(targetUserId, clientRealName) {
-            removeAvatarRightClickDropdownNode(); const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Set Nickname for ${clientRealName}</h4><input type="text" id="contextNicknameInputField" class="nexus-popup-input-field" value="${localNicknamesObj[targetUserId] || ""}" placeholder="Custom name..."><div class="nexus-popup-flex-btns"><button id="saveContextNickBtn" class="nexus-popup-btn primary-btn">SAVE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
-            wrapper.classList.remove('hidden');
-            document.getElementById('saveContextNickBtn').onclick = () => {
-                const newNick = document.getElementById('contextNicknameInputField').value.trim();
-                let currentLocalNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-                if(newNick) currentLocalNicknamesObj[targetUserId] = newNick; else delete currentLocalNicknamesObj[targetUserId];
-                localStorage.setItem(`nicknames_map_${currentUid}`, JSON.stringify(currentLocalNicknamesObj));
-                window.closeCustomInlinePopupEngine();
-                if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyUserList(); else window.initializeCrossLinkChatPanel();
-                window.playSynthesizedSound(880, 'sine', 0.15);
-            };
         };
 
         window.commitAvatarClearBlankNode = function() {
@@ -1691,6 +1777,7 @@
                     if(myProfile) {
                         if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
                         if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
+                        if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
                     }
                 }
@@ -1728,6 +1815,16 @@
                 const signalsData = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
                 if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin' && isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
                 if(MatrixSystemState.get('activeAdminSubSection') === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+                
+                const alertBanner = document.getElementById('adminPasswordResetAlertBanner');
+                if(alertBanner) {
+                    if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin') {
+                        alertBanner.innerHTML = `🚨 URGENT: ${signalsData.length} User(s) requested a password reset. Check System Status!`;
+                        alertBanner.classList.remove('hidden');
+                    } else {
+                        alertBanner.classList.add('hidden');
+                    }
+                }
             } catch(e){}
         });
 
@@ -1789,11 +1886,6 @@
                 const pill = document.getElementById(`unreadCounterBadge_${user.id}`);
                 if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
             });
-            MatrixSystemState.get('cachedGlobalGroupsArr').forEach(group => {
-                let unreadCount = 0; 
-                const pill = document.getElementById(`unreadCounterBadge_${group.id}`);
-                if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
-            });
         }
 
         window.triggerCreateGroupModal = function() {
@@ -1844,15 +1936,13 @@
             const formattedGroups = myGroups.map(g => ({ id: g.id, clientName: g.name + " (Group)", avatar: g.avatar, isOnlineNode: false, isGroup: true, bio: `Group • ${g.members.length} participants` }));
 
             const fullTargetList = [{ id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true }, ...prospectiveTargets, ...formattedGroups];
-            const localNicknamesObj = JSON.parse(localStorage.getItem(`nicknames_map_${currentUid}`)) || {};
-
+            
             targetContainer.innerHTML = fullTargetList.map(user => {
                 const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
                 const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                const activeDisplayTitle = localNicknamesObj[user.id] || user.clientName;
-                const trackingCustomNicknameTag = localNicknamesObj[user.id] ? `<span class="nickname-badge-info">Nick: ${localNicknamesObj[user.id]}</span>` : "";
+                const activeDisplayTitle = user.clientName;
                 
-                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}', '${user.clientName.replace(/'/g, "\\'")}')" oncontextmenu="window.spawnAvatarRightClickMatrixDropdown(event, '${user.id}', '${user.clientName.replace(/'/g, "\\'")}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${activeDisplayTitle} ${trackingCustomNicknameTag}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.isGroup ? '👥 Group Chat' : '@'+user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
+                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${activeDisplayTitle}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.isGroup ? '👥 Group Chat' : '@'+user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
             }).join('');
             if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) window.setOperationalChatTargetId(fullTargetList[0].id);
         };
@@ -1901,7 +1991,6 @@
             window.cancelReplyMatrixState(); window.renderActiveChatConversationLogs();
         };
         
-        // ADMIN SPY WHATSAPP FUNCTIONS SYNCED
         window.setAdminOperationalChatTargetId = function(uid) {
             MatrixSystemState.set('spyActiveTargetUserContext', uid);
             let displayTitle = "Pipeline context...";
@@ -1936,7 +2025,7 @@
             
             listWrapper.innerHTML = allTargets.map(user => {
                 const isActiveCss = (user.id === MatrixSystemState.get('spyActiveTargetUserContext')) ? 'active-chat-target' : '';
-                return `<div class="chat-user-item-node ${isActiveCss}" onclick="window.setAdminOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div class="whatsapp-user-id">${user.isGroup ? '👥 Group' : '@'+user.id}</div></div></div>`;
+                return `<div class="chat-user-item-node ${isActiveCss}" onclick="window.setAdminOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div class="whatsapp-user-id">${user.isGroup ? '👥 Group' : '@'+user.id}</div></div></div>`;
             }).join('');
             if(!MatrixSystemState.get('spyActiveTargetUserContext') && allTargets.length > 0) window.setAdminOperationalChatTargetId(allTargets[0].id);
         }
@@ -2442,8 +2531,25 @@
 
         window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
         window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
-        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
-        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
+        window.executeMainframeAdminSyncRoute = function() { 
+            const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); 
+            const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); 
+            if(!nextId || !nextPass) return; 
+            
+            set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { 
+                let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); 
+                adminRoute.masterId = nextId; 
+                adminRoute.masterPass = nextPass; 
+                MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); 
+                alert("Master credentials synchronized."); 
+            }); 
+        };
+
+        window.alterClientCredentialsOverrideData = function(uid) { 
+            const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); 
+            if(!targetNewPass) return; 
+            update(ref(db, `users/${uid}`), { pass: targetNewPass }); 
+        };
 
         window.uploadUserProfileAvatarEngine = function(event) {
             const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
@@ -2483,6 +2589,7 @@
         };
 
         window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.05; syntax.rate = 0.95; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
         window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
 
         window.changeWorkspaceMode = function(mode) {
@@ -2502,9 +2609,6 @@
             setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); window.speakNaturalHuman("Security violation detected.");
         }
 
-        // =========================================================================
-        // FULLY FIXED EXECUTE LOGIN FUNCTION (NO CUT OFFS, ZERO BUGS)
-        // =========================================================================
         window.executeClusterLogin = function(event) {
             if(event) { event.preventDefault(); event.stopPropagation(); }
             
