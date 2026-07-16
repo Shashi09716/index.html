@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V10.0 (Ultra Professional Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V11.0 (Ultra Professional Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -179,6 +179,23 @@
         .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1350px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
         body.light-theme-active .hud-container-panel { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top-color: #0ea5e9; }
+        
+        /* --- MAIN MENU GRID EXCLUSIVE STYLES --- */
+        .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; padding: 10px; margin-top: 20px; }
+        .menu-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 35px 20px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+        body.light-theme-active .menu-card { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.15), transparent); transform: skewX(-25deg); transition: 0.5s; z-index:1; }
+        .menu-card:hover::before { left: 150%; }
+        .menu-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 40px rgba(0,242,254,0.3); border-color: var(--neon-cyan); }
+        body.light-theme-active .menu-card:hover { box-shadow: 0 15px 35px rgba(14,165,233,0.2); border-color: #0ea5e9; }
+        .menu-card .icon { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0 0 20px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
+        .menu-card:hover .icon { transform: scale(1.1); }
+        body.light-theme-active .menu-card .icon { text-shadow: 0 5px 15px rgba(14,165,233,0.3); }
+        .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; font-weight:700; position:relative; z-index:2; }
+        body.light-theme-active .menu-card h3 { color: #0f172a; }
+        .menu-card p { font-size: 0.95rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.4; }
+        body.light-theme-active .menu-card p { color: #475569; }
+
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid var(--border-glass); padding-bottom: 18px; gap: 10px; flex-wrap: wrap; }
         body.light-theme-active .panel-header-flex { border-bottom-color: #e2e8f0; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
@@ -190,6 +207,7 @@
 
         .workspace-channel-selector, .admin-category-navbar { display: flex; gap: 14px; margin-bottom: 25px; background: rgba(0,0,0,0.6); padding: 8px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 5px 15px rgba(0,0,0,0.6); flex-wrap: wrap; }
         body.light-theme-active .workspace-channel-selector, body.light-theme-active .admin-category-navbar { background: #f1f5f9; border-color: #cbd5e1; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+        
         .channel-tab-btn, .admin-nav-tab { flex: 1; min-width: 140px; padding: 18px 14px; background: transparent; border: none; color: var(--text-sub); font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; justify-content: center; align-items: center; gap: 8px; border: 2px solid transparent; }
         body.light-theme-active .channel-tab-btn, body.light-theme-active .admin-nav-tab { color: #475569; }
         .channel-tab-btn:hover, .admin-nav-tab:hover { background: rgba(0, 242, 254, 0.12); transform: translateY(-2px); }
@@ -210,8 +228,13 @@
 
         .form-grid-layout, .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .full-width-field { grid-column: span 2; }
-        .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; }
+        .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; display:inline-flex; align-items:center; justify-content:center; gap:8px;}
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
+
+        .home-action-btn { background: rgba(0,242,254,0.1); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); padding: 12px 24px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
+        body.light-theme-active .home-action-btn { background:#e0f2fe; color:#0369a1; border-color:#0ea5e9; }
+        body.light-theme-active .home-action-btn:hover { background:#0ea5e9; color:#fff; box-shadow:0 0 15px rgba(14,165,233,0.4); }
 
         /* Stable Chronometer Clock */
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
@@ -257,14 +280,14 @@
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
         body.light-theme-active .cred-sync-card h4 { color: #16a34a; text-shadow: none; }
 
-        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD (PRO LEVEL V4) --- */
+        /* --- ADVANCED WORD PROCESSOR RICH TEXT EDITOR NOTEPAD (PRO LEVEL V5) --- */
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); transition: all 0.3s ease; }
         body.light-theme-active .notes-engine-card-surface { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); }
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
         body.light-theme-active .notes-editor-container-shell { background: #ffffff; border-color: #cbd5e1; box-shadow: inset 0 2px 6px rgba(0,0,0,0.05); }
         .notes-engine-card-surface.fullscreen-active .notes-editor-container-shell { flex: 1; }
-        .notes-pad-rich-area { width: 100%; min-height: 400px; flex: 1; padding: 30px; background: #ffffff; color: #111b21; font-size: 1.15rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; }
+        .notes-pad-rich-area { width: 100%; min-height: 400px; flex: 1; padding: 40px; background: #ffffff; color: #111b21; font-size: 1.15rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; }
         body.light-theme-active .notes-pad-rich-area { border: 1px solid #cbd5e1; border-top: none; border-bottom: none; }
         
         .notes-pad-rich-area table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
@@ -348,6 +371,13 @@
         .wa-status-circle-icon:hover { border-color: var(--wa-green); color: var(--wa-green); }
         .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
         @keyframes statusPulse { 0% { box-shadow: 0 0 0 0 rgba(0,168,132,0.4); } 70% { box-shadow: 0 0 0 10px rgba(0,168,132,0); } 100% { box-shadow: 0 0 0 0 rgba(0,168,132,0); } }
+
+        /* STATUS DASHBOARD STYLES */
+        .status-dashboard-overlay { position: absolute; inset: 0; background: var(--wa-bg); z-index: 10000; display: flex; flex-direction: column; animation: slideInLeft 0.3s forwards; }
+        @keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+        .status-dashboard-header { background: var(--wa-header); padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); font-weight: 600; font-size: 1.2rem; }
+        .status-dashboard-header button { background:none; border:none; color:var(--wa-text); font-size:1.5rem; cursor:pointer; }
+        .status-section-title { padding: 20px 20px 10px 20px; color: var(--wa-green); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
         
@@ -604,7 +634,10 @@
 
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
-                <button onclick="window.logoutEngine()" class="abort-btn">LOGOUT</button>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="window.switchCustomerChannel('menu')" class="home-action-btn hidden" id="btnBackToHome">🏠 HOME</button>
+                    <button onclick="window.logoutEngine()" class="abort-btn">LOGOUT</button>
+                </div>
             </div>
 
             <div style="text-align: center; margin-bottom: 20px;">
@@ -621,15 +654,36 @@
                 </div>
             </div>
 
-            <div class="workspace-channel-selector">
-                <button class="channel-tab-btn" id="btnChannelUpload" onclick="window.switchCustomerChannel('upload')">📁 Policy Column</button>
-                <button class="channel-tab-btn" id="btnChannelNotes" onclick="window.switchCustomerChannel('notes')">📝 Rich Notes</button>
-                <button class="channel-tab-btn" id="btnChannelVault" onclick="window.switchCustomerChannel('vault')">📂 Cloud Vault</button>
-                <button class="channel-tab-btn" id="btnChannelGaming" onclick="window.switchCustomerChannel('gaming')">🎮 Gaming Nexus</button>
-                <button class="channel-tab-btn" id="btnChannelChat" onclick="window.switchCustomerChannel('chat')">💬 WhatsApp Link</button>
+            <div id="customerMainMenuBlock" class="main-menu-grid">
+                <div class="menu-card" onclick="window.switchCustomerChannel('upload')">
+                    <div class="icon">📁</div>
+                    <h3>Policy Column</h3>
+                    <p>Manage and upload your secure policies.</p>
+                </div>
+                <div class="menu-card" onclick="window.switchCustomerChannel('notes')">
+                    <div class="icon">📝</div>
+                    <h3>Rich Notes</h3>
+                    <p>Professional workspace notepad.</p>
+                </div>
+                <div class="menu-card" onclick="window.switchCustomerChannel('vault')">
+                    <div class="icon">📂</div>
+                    <h3>Cloud Vault</h3>
+                    <p>Access your synchronized documents.</p>
+                </div>
+                <div class="menu-card" onclick="window.switchCustomerChannel('gaming')">
+                    <div class="icon">🎮</div>
+                    <h3>Gaming Nexus</h3>
+                    <p>Play AI talking games.</p>
+                </div>
+                <div class="menu-card" onclick="window.switchCustomerChannel('chat')">
+                    <div class="icon">💬</div>
+                    <h3>WhatsApp Web</h3>
+                    <p>Chat & Status management.</p>
+                </div>
             </div>
 
             <div id="customerUploadInterfaceBlock" class="hidden">
+                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 15px;">📁 SECURE POLICY SYSTEM</h3>
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 18px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 2px solid rgba(0,242,254,0.3); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);"></div>
                 <div class="form-grid-layout">
                     <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number</label><div class="neon-glow-underline"></div></div>
@@ -651,7 +705,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V4</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V5</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
@@ -760,15 +814,17 @@
 
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
+                    
                     <div class="chat-target-userlist-pane">
                         <div class="whatsapp-search-box">
                             <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
-                            <div class="wa-status-circle-icon" title="View / Upload Status" onclick="window.openStatusViewerEngine()">⭕</div>
+                            <div class="wa-status-circle-icon" title="View / Upload Status" onclick="window.openStatusDashboardOverlay()">⭕</div>
                             <input type="file" id="statusUploadInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserStatusMatrixEngine(event)">
                             <button class="nav-btn" style="padding: 8px 12px; font-size: 1.1rem; border-radius: 6px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
                         <div id="chatTargetContainerView"></div>
                     </div>
+                    
                     <div class="chat-stream-message-container">
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:12px;">
@@ -788,6 +844,7 @@
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
                             </div>
                         </div>
+                        
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
                         
                         <div style="position:relative; z-index:100;">
@@ -810,6 +867,24 @@
                             </div>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
                             <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-green); transform:rotate(-45deg);">➤</button>
+                        </div>
+                    </div>
+
+                    <div id="whatsappStatusDashboardPanel" class="status-dashboard-overlay hidden">
+                        <div class="status-dashboard-header">
+                            <button onclick="window.closeStatusDashboardOverlay()">⬅️</button> Status
+                        </div>
+                        <div style="overflow-y:auto; flex:1;">
+                            <div class="status-section-title">My Status</div>
+                            <div class="chat-user-item-node" onclick="document.getElementById('statusUploadInputNode').click()">
+                                <img class="whatsapp-avatar" id="myStatusPreviewAvatar" src="">
+                                <div class="whatsapp-user-info">
+                                    <div class="whatsapp-user-name">My status</div>
+                                    <div class="whatsapp-user-id">Tap to add status update</div>
+                                </div>
+                            </div>
+                            <div class="status-section-title">Recent updates</div>
+                            <div id="recentStatusUpdatesContainer"></div>
                         </div>
                     </div>
                 </div>
@@ -1032,7 +1107,7 @@
 
         const MatrixSystemState = (() => {
             let state = {
-                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "upload", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "creation", loadedAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], consecutiveBruteFailuresCount: 0, cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "creation", loadedAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], consecutiveBruteFailuresCount: 0, cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" }
             };
             return {
                 get: (key) => state[key],
@@ -1173,7 +1248,7 @@
         }
         initiatePrecisionChronometerTick();
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES V4 ------------------
+        // ------------------ UPGRADED PRO NOTEPAD FEATURES V5 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -1661,18 +1736,28 @@
 
         window.switchCustomerChannel = function(channelId) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
+            
+            // Hide all blocks and Main Menu
+            document.getElementById('customerMainMenuBlock').style.display = 'none';
             ['upload', 'notes', 'vault', 'gaming', 'chat'].forEach(id => {
-                document.getElementById(`btnChannel${id.charAt(0).toUpperCase()+id.slice(1)}`).classList.remove('active');
                 document.getElementById(`customer${id.charAt(0).toUpperCase()+id.slice(1)}InterfaceBlock`).classList.add('hidden');
             });
-            document.getElementById(`btnChannel${channelId.charAt(0).toUpperCase()+channelId.slice(1)}`).classList.add('active');
-            document.getElementById(`customer${channelId.charAt(0).toUpperCase()+channelId.slice(1)}InterfaceBlock`).classList.remove('hidden');
             
-            if(channelId === 'upload') renderCustomerLiveTracker();
-            else if(channelId === 'notes') { fetchRealtimeNotesCloudData(); }
-            else if(channelId === 'vault') renderCloudVault();
-            else if(channelId === 'gaming') window.bootArcadeSubGame('tom');
-            else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
+            const btnHome = document.getElementById('btnBackToHome');
+            
+            if (channelId === 'menu') {
+                document.getElementById('customerMainMenuBlock').style.display = 'grid';
+                if(btnHome) btnHome.classList.add('hidden');
+            } else {
+                if(btnHome) btnHome.classList.remove('hidden');
+                document.getElementById(`customer${channelId.charAt(0).toUpperCase()+channelId.slice(1)}InterfaceBlock`).classList.remove('hidden');
+                
+                if(channelId === 'upload') renderCustomerLiveTracker();
+                else if(channelId === 'notes') { fetchRealtimeNotesCloudData(); }
+                else if(channelId === 'vault') renderCloudVault();
+                else if(channelId === 'gaming') window.bootArcadeSubGame('tom');
+                else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
+            }
         };
 
         // --- NEW STRICT PROFILE VIEW (1:1 WHATSAPP CLONE CONTACT INFO) ---
@@ -1743,26 +1828,88 @@
                 } else {
                     statusIcons.forEach(icon => icon.classList.remove('has-status'));
                 }
+                
+                // Update My Status thumbnail if dashboard is open
+                const myUid = MatrixSystemState.get('loggedInCustomerID');
+                const myLatest = statusesArr.filter(s => s.ownerId === myUid).sort((a,b)=>b.epochTime-a.epochTime)[0];
+                const thumb = document.getElementById('myStatusPreviewAvatar');
+                if(thumb) {
+                    if(myLatest) { thumb.src = myLatest.mediaPayload; thumb.style.border = "2px solid #00a884"; }
+                    else { thumb.src = defaultAvatarSvg; thumb.style.border = "none"; }
+                }
             } catch(e) {}
         });
 
-        window.openStatusViewerEngine = function() {
+        window.openStatusDashboardOverlay = function() {
+            const dashboard = document.getElementById('whatsappStatusDashboardPanel');
+            if(!dashboard) return;
+            
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr');
             
-            // Allow admin to see everyone, user sees contacts
+            // Group statuses by user
+            let grouped = {};
+            allStatuses.forEach(s => {
+                if(!grouped[s.ownerId]) grouped[s.ownerId] = [];
+                grouped[s.ownerId].push(s);
+            });
+            
+            const recentContainer = document.getElementById('recentStatusUpdatesContainer');
+            let recentHtml = "";
+            
+            Object.keys(grouped).forEach(uid => {
+                if(uid === currentUid) return; // Skip self in recent
+                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+                const name = userObj ? userObj.clientName : "Admin";
+                const avatar = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg;
+                const latestTime = new Date(Math.max(...grouped[uid].map(s=>s.epochTime))).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                recentHtml += `<div class="chat-user-item-node" onclick="window.openStatusViewerEngineForUser('${uid}')">
+                                <img class="whatsapp-avatar" src="${avatar}" style="border: 2px solid #00a884; padding:2px;">
+                                <div class="whatsapp-user-info">
+                                    <div class="whatsapp-user-name">${name}</div>
+                                    <div class="whatsapp-user-id">${latestTime}</div>
+                                </div>
+                            </div>`;
+            });
+            
+            if(recentHtml === "") {
+                recentHtml = "<div style='color:var(--wa-text-muted); padding:20px; text-align:center;'>No recent updates</div>";
+            }
+            
+            recentContainer.innerHTML = recentHtml;
+            dashboard.classList.remove('hidden');
+        };
+        
+        window.closeStatusDashboardOverlay = function() {
+            document.getElementById('whatsappStatusDashboardPanel')?.classList.add('hidden');
+        };
+
+        window.openStatusViewerEngineForUser = function(targetUid) {
+            const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr');
+            const userStatuses = allStatuses.filter(s => s.ownerId === targetUid).sort((a,b)=>a.epochTime-b.epochTime);
+            
+            if(userStatuses.length === 0) return;
+            
+            window.activeStatusFeedQueue = userStatuses;
+            window.currentStatusViewingIndex = 0;
+            window.renderCurrentStatusSlide();
+        };
+
+        window.openStatusViewerEngine = function() {
+            // Fallback for Admin who just wants to see all
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(MatrixSystemState.get('currentMode') === 'user') {
+                window.openStatusDashboardOverlay();
+                return;
+            }
+            
+            const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr');
             window.activeStatusFeedQueue = allStatuses;
             window.currentStatusViewingIndex = 0;
             
             if(window.activeStatusFeedQueue.length === 0) {
-                // If user clicks, prompt to upload
-                if(MatrixSystemState.get('currentMode') === 'user') {
-                    if(confirm("No recent updates. Upload a new Status?")) {
-                        document.getElementById('statusUploadInputNode').click();
-                    }
-                } else {
-                    alert("No active statuses in the system.");
-                }
+                alert("No active statuses in the system.");
                 return;
             }
             window.renderCurrentStatusSlide();
@@ -1809,7 +1956,6 @@
             const progressContainer = document.getElementById('statusProgressBarContainer');
             progressContainer.innerHTML = window.activeStatusFeedQueue.map((_, idx) => {
                 let w = (idx < window.currentStatusViewingIndex) ? '100%' : (idx === window.currentStatusViewingIndex ? '100%' : '0%');
-                // The current one could be animated via CSS, but hardcoded to 100 for static view for now
                 return `<div class="status-progress-segment"><div class="status-progress-fill" style="width:${w}; transition: width 0.3s;"></div></div>`;
             }).join('');
 
@@ -1860,7 +2006,7 @@
         };
 
         function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'upload'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
+            const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'menu'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
             if(savedUserToken) {
                 if (localStorage.getItem('nexus_hard_lockout_flag_' + savedUserToken.toLowerCase()) === 'true') { window.triggerLockoutTerminalUI(savedUserToken); return; }
                 MatrixSystemState.set('loggedInCustomerID', savedUserToken); MatrixSystemState.set('currentMode', savedMode); MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
@@ -2696,7 +2842,7 @@
             }
         };
 
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntaxUtterance.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
         
         window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
 
@@ -2757,7 +2903,7 @@
                     window.loadAdminSubmissions();
                 } else {
                     document.getElementById('customerDashboard').classList.remove('hidden');
-                    window.switchCustomerChannel('upload');
+                    window.switchCustomerChannel('menu');
                 }
                 
                 if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
@@ -2786,4 +2932,3 @@
     </script>
 </body>
 </html>
-
