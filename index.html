@@ -152,7 +152,7 @@
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
         body.light-theme-active .ai-helper-banner { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; box-shadow: none; }
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); transition: 0.3s; }
-        body.light-theme-active .search-terminal-input, .giant-compiler-input { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        body.light-theme-active .search-terminal-input, body.light-theme-active .giant-compiler-input { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
         body.light-theme-active .giant-compiler-input:focus { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.2); }
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
@@ -1094,7 +1094,6 @@
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         
-        // --- Dynamic Emoji Generator (1000+ Emojis) ---
         function generateMassiveEmojiArray() {
             let emojis = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
             for(let i=0x1F600; i<=0x1F64F; i++) emojis.push(String.fromCodePoint(i));
@@ -1104,7 +1103,6 @@
         }
         const systemEmojisList = generateMassiveEmojiArray();
         
-        // Extended GIFs
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif",
@@ -1116,7 +1114,6 @@
 
         window.MatrixSystemState = MatrixSystemState;
 
-        // UI Listeners
         document.addEventListener('click', function(e) {
             const isClickInsideEmojiDrawer = e.target.closest('#systemEmojiMatrixBoxNode') || e.target.closest('#adminSystemEmojiMatrixBoxNode');
             const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
@@ -1192,7 +1189,6 @@
         }
         initiatePrecisionChronometerTick();
 
-        // ------------------ NEW CUSTOMER SIGNUP FLOW ------------------
         window.triggerCustomerSignupModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             wrapper.innerHTML = `
@@ -1235,18 +1231,14 @@
             });
         };
 
-        // --- NEW ADMIN PENDING APPROVALS ---
         onValue(ref(db, 'pending_accounts'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedPendingUsersArr', data);
             
-            // Auto Approve Logic (if > 48 hours)
             if (MatrixSystemState.get('currentMode') === 'admin') {
                 const now = Date.now();
                 data.forEach(req => {
-                    if (now - req.epoch > 172800000) { // 48 hours
-                        window.approvePendingAccount(req.reqId, true); 
-                    }
+                    if (now - req.epoch > 172800000) { window.approvePendingAccount(req.reqId, true); }
                 });
                 window.renderAdminPendingApprovals();
             }
@@ -1284,7 +1276,6 @@
         };
         window.rejectPendingAccount = function(reqId) { if(confirm("Reject this request?")) remove(ref(db, 'pending_accounts/' + reqId)); };
 
-        // ------------------ FEATURE TOGGLES (ADMIN) & MAINTENANCE ------------------
         onValue(ref(db, 'global_settings/features'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -1381,7 +1372,6 @@
             }).join('');
         };
 
-        // ------------------ CUSTOMER SUPPORT TICKET ENGINE ------------------
         onValue(ref(db, 'support_tickets'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedSupportTicketsArr', data);
@@ -1453,7 +1443,6 @@
         };
         window.closeTicket = function(tid) { update(ref(db, `support_tickets/${tid}`), { status: 'closed' }); };
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES V14 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -1710,7 +1699,6 @@
             }
         };
 
-        // Custom Wallpaper Functionality Expansion
         window.switchChatWallpaperMatrix = function() {
             const wallpapersArr = [
                 "var(--wa-chat-bg)", 
@@ -1915,11 +1903,9 @@
         window.executeCosmicThemeToggle = function() { document.body.classList.toggle('light-theme-active'); const label = document.getElementById('themeToggleBtnLabel'); if(document.body.classList.contains('light-theme-active')) { label.innerText = "🌑 DARK MODE"; window.speakNaturalHuman("Light theme active."); } else { label.innerText = "🌓 LIGHT MODE"; window.speakNaturalHuman("Dark theme active."); } };
         window.exitMobileChatView = function() { document.getElementById('clientChatGridMatrixWrapper')?.classList.remove('mobile-chat-view-active'); document.getElementById('adminChatGridBox')?.classList.remove('mobile-chat-view-active'); };
 
-        // INITIALIZATION LOCK REMOVED ONCE SCRIPT EXECUTES TO PREVENT FOUC
         function checkActiveStateSessionRetentionOnLaunch() {
             const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'menu'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
             
-            // Remove the body lock instantly
             document.getElementById('mainBodyEngine').classList.remove('init-lock');
 
             if(savedUserToken) {
@@ -1959,9 +1945,7 @@
         });
 
         onValue(ref(db, 'groups'), (snapshot) => { try { const data = snapshot.val(); const groupsArr = data ? Object.values(data) : []; MatrixSystemState.set('cachedGlobalGroupsArr', groupsArr); if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat') window.initializeCrossLinkChatPanel(); if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList(); } catch(e) {} });
-        
         onValue(ref(db, 'policies'), (snapshot) => { try { const policyArr = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalPolicyArr', policyArr); if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) window.renderPolicyCardsBlock(); if(MatrixSystemState.get('loggedInCustomerID')) { window.renderCustomerLiveTracker(); if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'vault') window.renderCloudVault(); } } catch(e) {} });
-        
         onValue(ref(db, 'ai_communications'), (snapshot) => { try { const commsData = []; snapshot.forEach(child => { let val = child.val(); val.dbKey = child.key; commsData.push(val); }); MatrixSystemState.set('cachedGlobalAiCommsArr', commsData); if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') window.renderAdminAiInterceptionSpyBlock(); } catch(e) {} });
         
         onValue(ref(db, 'password_forget_signals'), (snapshot) => {
@@ -1992,7 +1976,6 @@
         });
 
         onValue(ref(db, 'typing_states'), (snapshot) => { try { const data = snapshot.val(); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; typingStatusNode.classList.remove('hidden'); } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); } catch(e) {} });
-        
         onValue(ref(db, 'incident_alerts'), (snapshot) => { try { const alertsData = snapshot.val(); const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `<div class="realtime-alert-banner"><span>🚨 SECURITY LOCKOUT: [@${alertsData[alertRefKey].lockedUID}] Frozen.</span><button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" class="abort-btn" style="padding:6px 12px;">UNLOCK</button></div>`).join(''); } else if(notificationHostNode) notificationHostNode.innerHTML = ""; } catch(e) {} });
 
         window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase()); alert("Client lock cleared."); }); };
