@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V14.0 (Ultra Gateway Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V14.0</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
-        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
             --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe; --neon-pink: #ff007f; 
@@ -37,8 +36,7 @@
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); border-radius: 4px; } ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: var(--neon-pink); }
         
-        /* Initialization Lock (Fixes 1-sec FOUC) */
-        .init-lock { display: none !important; }
+        .hidden { display: none !important; opacity: 0 !important; pointer-events: none !important; }
         
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; opacity: 0; pointer-events: none;}
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
@@ -49,12 +47,14 @@
         .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; }
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
         body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
-        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
+        
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
         @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
-        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; will-change: transform; }
+        
+        .cinema-stage { position: absolute; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); z-index: 2; overflow: hidden; }
         @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.25) 0%, rgba(2, 5, 14, 1) 80%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.2); }
         .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1); transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
@@ -74,14 +74,18 @@
         .brushed-heavy-base { width: 240px; height: 40px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 20px 35px rgba(0,0,0,0.8); }
         .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.75; height: 600px; width: 900px; filter: drop-shadow(0 0 40px var(--lamp-shadow)); }
+        
+        /* ROPE STYLING */
         .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; }
         .quantum-cord:active { cursor: grabbing; transform: translateY(80px) scale(0.95); transition: transform 0.1s linear; }
         .quantum-cord:hover .luminescent-node { box-shadow: 0 0 60px #f1c40f, 0 0 20px #fff; transform: scale(1.2); }
         .beaded-wire { width: 6px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); box-shadow: 0 0 15px rgba(241,196,15,0.8); }
         .luminescent-node { width: 38px; height: 38px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 45px #f1c40f; border: 2px solid #000; transition: 0.3s; margin-top: -5px;}
-        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; pointer-events: none; }
-        .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; pointer-events: all; }
+        
+        .hud-glass-terminal { position: absolute; left: 50%; transform: translate3d(-50%, 0, 0) scale(0.9); width: 95%; max-width: 460px; background: var(--panel-glass); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 35px 25px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); transition: all 1s cubic-bezier(0.19, 1, 0.22, 1); z-index: 20; }
+        .cinema-stage.activated .hud-glass-terminal { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1 !important; pointer-events: all !important; display: block !important;}
         body.light-theme-active .hud-glass-terminal { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.75rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
@@ -89,6 +93,7 @@
         body.light-theme-active .hud-status-chip.cyan-pulse { color: #008fa6; border-color: #008fa6; }
         .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.6rem; text-align: center; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); animation: glitchTextAnim 4s infinite alternate; }
         body.light-theme-active .hud-logo { text-shadow: none; animation: none; color: #0f172a; }
+        
         .hud-input-cluster { position: relative; margin-bottom: 28px; width: 100%; }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 16px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         body.light-theme-active .hud-input-cluster input, body.light-theme-active .hud-input-cluster textarea, body.light-theme-active .hud-input-cluster select { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: none; }
@@ -105,11 +110,14 @@
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
         .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
         body.light-theme-active .hud-input-cluster input:focus ~ .neon-glow-underline { box-shadow: none; background: #b48600; }
+        
         .hud-engage-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 6px 20px rgba(241,196,15,0.4); text-transform: uppercase;}
         .hud-engage-btn:hover { box-shadow: 0 0 45px rgba(241, 196, 15, 0.9); transform: scale(1.02); }
+        
         .dashboard-panel-core { position: fixed; inset: 0; display: flex; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; transition: background 0.4s ease; padding-bottom: 60px; padding-top: 100px; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 25px; border-radius: 24px; width: 100%; max-width: 1350px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
         body.light-theme-active .hud-container-panel { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top-color: #0ea5e9; }
+        
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; padding: 10px; margin-top: 20px; }
         .menu-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 35px 20px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
         body.light-theme-active .menu-card { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
@@ -124,6 +132,7 @@
         body.light-theme-active .menu-card h3 { color: #0f172a; }
         .menu-card p { font-size: 0.95rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.4; }
         body.light-theme-active .menu-card p { color: #475569; }
+        
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid var(--border-glass); padding-bottom: 18px; gap: 10px; flex-wrap: wrap; }
         body.light-theme-active .panel-header-flex { border-bottom-color: #e2e8f0; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.2rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
@@ -132,6 +141,7 @@
         body.light-theme-active .neon-cyan-text span { color: #334155; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.6); font-weight: 900; animation: glitchTextAnim 3s infinite reverse; }
         body.light-theme-active .neon-green-text { color: #16a34a; text-shadow: none; animation: none; }
+        
         .matrix-system-controller-dock { margin-top: 25px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); }
         body.light-theme-active .matrix-system-controller-dock { background: #f8fafc; border-color: #cbd5e1; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.8rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
@@ -139,22 +149,28 @@
         .refresh-spinner-node { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
         body.light-theme-active .refresh-spinner-node { background: #16a34a; }
         @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(1.4); opacity: 1; } }
+        
         .form-grid-layout, .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .full-width-field { grid-column: span 2; }
+        
         .abort-btn { padding: 12px 24px; background: #e74c3c; color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 6px 15px rgba(231,76,60,0.4); letter-spacing: 1px; display:inline-flex; align-items:center; justify-content:center; gap:8px;}
         .abort-btn:hover { background: #c0392b; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
         .home-action-btn { background: rgba(0,242,254,0.1); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); padding: 12px 24px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; }
         .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
         body.light-theme-active .home-action-btn { background:#e0f2fe; color:#0369a1; border-color:#0ea5e9; }
         body.light-theme-active .home-action-btn:hover { background:#0ea5e9; color:#fff; box-shadow:0 0 15px rgba(14,165,233,0.4); }
+        
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.85); border: 2px solid #00f2fe; padding: 14px 30px; border-radius: 12px; display: inline-block; box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; }
         body.light-theme-active .hyper-clock-ticker { background: #ffffff; color: #0f172a; border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-shadow: none; }
+        
         .ai-helper-banner { padding: 16px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.08); border: 2px solid rgba(0,242,254,0.3); color: #00f2fe; text-align: center; font-size: 1.05rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); }
         body.light-theme-active .ai-helper-banner { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; box-shadow: none; }
+        
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.4); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); transition: 0.3s; }
         body.light-theme-active .search-terminal-input, body.light-theme-active .giant-compiler-input { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         .giant-compiler-input:focus { border-color: #1abc9c; box-shadow: 0 0 12px rgba(26,188,156,0.3); }
         body.light-theme-active .giant-compiler-input:focus { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.2); }
+        
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
         .hud-data-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 25px; border-radius: 16px; display: flex; flex-direction: column; gap: 14px; word-break: break-all; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         body.light-theme-active .hud-data-card { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
@@ -164,27 +180,34 @@
         body.light-theme-active .hud-data-card p { color: #334155; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 110px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
         body.light-theme-active .hud-data-card b { color: #0f172a; }
+        
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.3); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         body.light-theme-active .admin-clickable-badge { background: #fef9c3; color: #b45309; border-color: #fde047; box-shadow: none; }
         .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f1c40f; }
         .hud-data-card .owner-name-tag-right { position: absolute; top: 20px; right: 20px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.9rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 14px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         body.light-theme-active .hud-data-card .owner-name-tag-right { color: #0284c7; background: #e0f2fe; border-color: #7dd3fc; box-shadow: none; }
+        
         .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
         .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
         .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
         .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+        
         .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.5); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 5px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .wipe-card-btn:hover { background: rgba(231,76,60,0.35); color: #fff; box-shadow: 0 0 20px rgba(231,76,60,0.6); transform: scale(1.02); }
-        .hidden { display: none !important; }
+        
         .text-left { text-align: left; }
+        
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4); }
         body.light-theme-active .cyber-upload-node { border-color: #0ea5e9; background: #f0f9ff; box-shadow: none; }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); }
+        
         .cred-sync-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 6px solid #2ecc71; padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-green); }
         body.light-theme-active .cred-sync-card { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .cred-sync-card h4 { font-family: 'Orbitron', sans-serif; color: #2ecc71; font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
         body.light-theme-active .cred-sync-card h4 { color: #16a34a; text-shadow: none; }
+        
+        /* NOTES STYLING */
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); transition: all 0.3s ease; display: flex; flex-direction: column; }
         body.light-theme-active .notes-engine-card-surface { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); }
@@ -226,6 +249,8 @@
         body.light-theme-active .note-structural-meta { color: #db2777; border-bottom-color: #fbcfe8; }
         .locked-anchor-input { background: rgba(15,23,42,0.6) !important; border-color: rgba(255,0,127,0.4) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
         body.light-theme-active .locked-anchor-input { background: #fdf2f8 !important; border-color: #fbcfe8 !important; color: #db2777 !important; }
+        
+        /* GAMING STYLING */
         .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 3px dashed var(--neon-pink); border-radius: 20px; padding: 30px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: var(--matrix-3d-shadow-pink); }
         body.light-theme-active .gaming-bar-nexus-wrapper { background: #ffffff; border-color: #fbcfe8; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .gaming-canvas-container-box { width: 100%; max-width: 600px; height: 360px; background: #000; border: 3px solid var(--neon-cyan); border-radius: 16px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,242,254,0.4); }
@@ -233,7 +258,7 @@
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- 100% REAL WHATSAPP WEB COLOR SPACE PERFECT CLONE --- */
+        /* --- WHATSAPP CLONE --- */
         .chat-io-grid-matrix { display: flex; height: calc(100vh - 240px); background: var(--wa-bg); border-radius: 0px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         body.light-theme-active .chat-io-grid-matrix { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .chat-target-userlist-pane { width: 340px; background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; flex-shrink: 0; }
@@ -257,7 +282,6 @@
         .chat-stream-message-container { flex: 1; display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease; min-width: 0;}
         .chat-stream-header-bar { background: var(--wa-header); padding: 10px 16px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         
-        /* Message Search Bar within Chat */
         .chat-message-search-input { background: var(--wa-search-bg); border: 1px solid var(--wa-border); color: var(--wa-text); border-radius: 20px; padding: 6px 15px; font-size: 0.9rem; outline: none; width: 150px; transition: width 0.3s ease; }
         .chat-message-search-input:focus { width: 220px; border-color: var(--wa-green); }
         body.light-theme-active .chat-message-search-input { background: #fff; border-color: #cbd5e1; color: #111b21;}
@@ -340,13 +364,11 @@
         .nexus-popup-btn.cancel-btn { background: #2a3942; color: #e9edef; }
         body.light-theme-active .nexus-popup-btn.cancel-btn { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
         .nexus-popup-btn.danger-btn { background: #e74c3c; color: #fff; }
-        .giant-compiler-layout { background: var(--card-bg); padding: 35px 25px; border-radius: 20px; border: 1px solid var(--border-glass); margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.6); }
-        body.light-theme-active .giant-compiler-layout { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .giant-compiler-layout h3 { color: #00f2fe; font-family: 'Orbitron'; margin-bottom: 22px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
-        body.light-theme-active .giant-compiler-layout h3 { color: #0284c7; text-shadow: none; }
+        
         .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 16px; border-radius: 12px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
         #adminPasswordResetAlertBanner { background: #e74c3c; color: white; padding: 12px 20px; text-align: center; font-family: 'Orbitron', sans-serif; font-weight: bold; font-size: 1rem; border-radius: 8px; border: 2px solid #fff; margin-bottom: 20px; box-shadow: 0 0 20px rgba(231, 76, 60, 0.8); animation: adminAlertBlink 1s infinite alternate; }
         @keyframes adminAlertBlink { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.7; transform: scale(1.02); } }
+        
         .status-viewer-overlay { position: fixed; inset: 0; background: #000; z-index: 300000; display: flex; flex-direction: column; }
         .status-viewer-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); position: absolute; top: 0; width: 100%; z-index: 10; }
         .status-progress-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.3); margin-bottom: 10px; display: flex; gap: 4px; }
@@ -354,26 +376,6 @@
         .status-progress-fill { height: 100%; background: #fff; width: 0%; }
         .status-image-container { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; }
         .status-image-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .analytics-grid-host { display: flex; flex-direction: column; gap: 25px; width: 100%; }
-        .analytics-node-card { background: var(--card-bg); border: 2px solid var(--border-glass); border-radius: 16px; padding: 22px; text-align: left; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.5); position:relative;}
-        body.light-theme-active .analytics-node-card { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1rem; color: var(--neon-cyan); margin-bottom: 12px; letter-spacing: 0.5px; }
-        body.light-theme-active .analytics-node-card h5 { color: #0284c7; }
-        .chart-mock-container { width: 100%; height: 50px; border: 1px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; background: rgba(0,0,0,0.4); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); border-radius: 6px; overflow: hidden; }
-        body.light-theme-active .chart-mock-container { background: #f1f5f9; border-color: #cbd5e1; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
-        .chart-mock-bar { height: 100%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 15px rgba(0,242,254,0.6); transition: width 1.2s cubic-bezier(0.075, 0.82, 0.165, 1); display: flex; align-items: center; padding-left: 15px; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; color: #fff; width: 0%; }
-        body.light-theme-active .chart-mock-bar { box-shadow: none; background: linear-gradient(90deg, #0ea5e9, #db2777); }
-        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
-        .char-counter-badge { font-size: 0.8rem; color: var(--wa-text-muted); position:absolute; right:15px; top:50%; transform:translateY(-50%); font-family: monospace; font-weight:bold;}
-        .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; max-height: 180px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); position: absolute; bottom: 100%; left: 0; width: 100%; }
-        body.light-theme-active .emoji-matrix-drawer { background: #ffffff; border-top-color: #cbd5e1; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        .emoji-item-node { font-size: 1.75rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
-        .emoji-item-node:hover { transform: scale(1.3); }
-        .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 190px; overflow-y: auto; z-index: 5; box-shadow: 0 -5px 15px rgba(0,0,0,0.5); position: absolute; bottom: 100%; left: 0; width: 100%; }
-        body.light-theme-active .mainframe-gif-drawer { background: #ffffff; border-top-color: #cbd5e1; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
-        .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
-        body.light-theme-active .gif-thumb-item:hover { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14,165,233,0.3); }
         
         /* New Custom CSS Toggle Switches */
         .cyber-checkbox-label { display: flex; align-items: center; justify-content: space-between; cursor: pointer; color: var(--text-main); font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; background: rgba(0,0,0,0.3); padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border-glass); transition: 0.3s;}
@@ -385,13 +387,6 @@
         body.light-theme-active .cyber-toggle::after { background: #94a3b8; }
         .cyber-toggle:checked { background: var(--wa-green); border-color: var(--wa-green); box-shadow: 0 0 15px rgba(0, 168, 132, 0.5); }
         .cyber-toggle:checked::after { left: 26px; background: #fff; }
-
-        /* Maintenance Overlay */
-        .maintenance-lock-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.98); z-index: 9999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #e74c3c; text-align: center; backdrop-filter: blur(15px); }
-        body.light-theme-active .maintenance-lock-overlay { background: rgba(255, 255, 255, 0.98); }
-
-        .mobile-back-btn { display: none; background: transparent; border: 1px solid var(--wa-border); color: var(--neon-cyan); padding: 6px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-right: 8px; }
-        body.light-theme-active .mobile-back-btn { color: #0284c7; border-color: #cbd5e1; }
 
         @media (max-width: 768px) {
             .top-cyber-navbar { padding: 10px; height: auto; flex-direction: column; gap: 8px; position: absolute; }
@@ -416,7 +411,7 @@
         }
     </style>
 </head>
-<body class="init-lock" id="mainBodyEngine">
+<body id="mainBodyEngine">
 
     <div id="maintenanceOverlay" class="maintenance-lock-overlay hidden">
         <h1 style="font-family:'Orbitron', sans-serif; font-size:4rem; text-shadow:0 0 30px #e74c3c;">SYSTEM OFFLINE</h1>
@@ -461,7 +456,7 @@
                 <div class="hud-status-chip cyan-pulse">UNIVERSAL SYNC: OK</div>
             </div>
             <h1 class="hud-logo">NEXUS GATEWAY</h1>
-            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin && window.executeClusterLogin(event);">
+            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin(event);">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="window.debouncedInputCheck()">
                     <label id="hudInputLabel">User ID / Admin ID</label>
@@ -1112,7 +1107,85 @@
             "https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif", "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
         ];
 
-        window.MatrixSystemState = MatrixSystemState;
+        // Core Functions attached to Window explicitly
+        window.pullCordAction = function(event) {
+            if (event) event.preventDefault(); if (isCordPulled) return; isCordPulled = true;
+            const cord = document.getElementById('triggerCord'); if (cord) cord.style.transform = "translateY(40px)";
+            if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            setTimeout(() => { if (cord) cord.style.transform = "translateY(0px)"; window.triggerLampActivationOverride(); isCordPulled = false; }, 300);
+        };
+
+        window.triggerLampActivationOverride = function() {
+            const mainStage = document.getElementById('mainStage'); const loginTerminal = document.getElementById('loginTerminal'); isAudioContextAllowed = true; 
+            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
+                window.playSynthesizedSound(520, 'sine', 0.3); mainStage.classList.add('activated'); loginTerminal.classList.remove('hidden'); window.speakNaturalHuman("Portal active.");
+                const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+            }
+        };
+
+        window.executeClusterLogin = function(event) {
+            if(event) { event.preventDefault(); event.stopPropagation(); }
+            const u = document.getElementById('accessNodeUser').value.trim(); 
+            const p = document.getElementById('accessNodePass').value.trim(); 
+            if(!u || p === "") return;
+
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            let isSuccess = false;
+            let loggedInId = "";
+            let mode = MatrixSystemState.get('currentMode');
+
+            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                isSuccess = true; loggedInId = "MainframeAdmin"; mode = 'admin';
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                    isSuccess = true; loggedInId = userMatch.id; mode = 'user';
+                }
+            }
+
+            if(isSuccess) {
+                MatrixSystemState.set('loggedInCustomerID', loggedInId);
+                MatrixSystemState.set('currentMode', mode);
+                localStorage.setItem('nexus_logged_in_uid', loggedInId);
+                localStorage.setItem('nexus_system_session_mode', mode);
+                
+                document.getElementById('mainStage').style.display = 'none';
+                const nav = document.getElementById('mainCyberNavbar');
+                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                
+                if(mode === 'admin') {
+                    document.getElementById('adminDashboard').classList.remove('hidden'); window.loadAdminSubmissions();
+                } else {
+                    document.getElementById('customerDashboard').classList.remove('hidden'); window.switchCustomerChannel('menu');
+                }
+                
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2);
+            } else {
+                let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0; fails++; MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
+                if (fails >= 3) {
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
+                }
+                alert("❌ ACCESS DENIED: Invalid System ID or Password.");
+                if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
+            }
+        };
+
+        window.logoutEngine = function() {
+            MatrixSystemState.set('loggedInCustomerID', ""); localStorage.removeItem('nexus_logged_in_uid'); localStorage.removeItem('nexus_system_session_mode'); window.location.reload();
+        };
+
+        // Attach listeners safely
+        document.addEventListener('DOMContentLoaded', () => {
+            const cordNode = document.getElementById('triggerCord');
+            if (cordNode) {
+                cordNode.addEventListener('touchstart', window.pullCordAction, {passive: false});
+                cordNode.addEventListener('mousedown', window.pullCordAction);
+            }
+        });
 
         document.addEventListener('click', function(e) {
             const isClickInsideEmojiDrawer = e.target.closest('#systemEmojiMatrixBoxNode') || e.target.closest('#adminSystemEmojiMatrixBoxNode');
@@ -1135,24 +1208,6 @@
 
         let _typingTimer; window.debouncedInputCheck = function() { clearTimeout(_typingTimer); _typingTimer = setTimeout(window.verifyInputIdentityProgress, 300); }
         let _loginTimer; window.debouncedAutoLoginCheck = function() { clearTimeout(_loginTimer); _loginTimer = setTimeout(window.checkAutoLogin, 300); }
-
-        window.pullCordAction = function(event) {
-            if (event) event.preventDefault(); if (isCordPulled) return; isCordPulled = true;
-            const cord = document.getElementById('triggerCord'); if (cord) cord.style.transform = "translateY(40px)";
-            if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
-            setTimeout(() => { if (cord) cord.style.transform = "translateY(0px)"; window.triggerLampActivationOverride(); isCordPulled = false; }, 300);
-        };
-        const triggerCordNode = document.getElementById('triggerCord');
-        if (triggerCordNode) { triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); triggerCordNode.addEventListener('mousedown', window.pullCordAction); }
-
-        window.triggerLampActivationOverride = function() {
-            const mainStage = document.getElementById('mainStage'); const loginTerminal = document.getElementById('loginTerminal'); isAudioContextAllowed = true; 
-            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
-                window.playSynthesizedSound(520, 'sine', 0.3); mainStage.classList.add('activated'); loginTerminal.classList.remove('hidden'); window.speakNaturalHuman("Portal active.");
-                const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-            }
-        };
 
         window.toggleFullScreenEngine = function() {
             const label = document.getElementById('fullScreenLabel');
@@ -1371,13 +1426,6 @@
                     </div>`;
             }).join('');
         };
-
-        onValue(ref(db, 'support_tickets'), (snapshot) => {
-            const data = snapshot.val() ? Object.values(snapshot.val()) : [];
-            MatrixSystemState.set('cachedSupportTicketsArr', data);
-            if(MatrixSystemState.get('currentMode') === 'user' && MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'request') window.renderCustomerTicketHistory();
-            if(MatrixSystemState.get('currentMode') === 'admin' && MatrixSystemState.get('activeAdminSubSection') === 'tickets') window.renderAdminTickets();
-        });
 
         window.submitSupportTicket = function() {
             const uid = MatrixSystemState.get('loggedInCustomerID');
@@ -1809,7 +1857,7 @@
                 else if(channelId === 'notes') { fetchRealtimeNotesCloudData(); }
                 else if(channelId === 'vault') renderCloudVault();
                 else if(channelId === 'gaming') window.bootArcadeSubGame('tom');
-                else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
+                else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.switchChatWallpaperMatrix();}
                 else if(channelId === 'request') window.renderCustomerTicketHistory();
             }
         };
@@ -1918,255 +1966,223 @@
             }
         }
 
-        onValue(ref(db, 'mainframeAdmin'), (snapshot) => { try { const rootData = snapshot.val(); if(rootData && rootData.id && rootData.pass) { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = rootData.id; adminRoute.masterPass = rootData.pass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); } } catch(e) {} });
-        onValue(ref(db, 'system_broadcast'), (snapshot) => { try { const broadcastVal = snapshot.val(); const banner = document.getElementById('customerMarqueeContainer'); const txtNode = document.getElementById('customerMarqueeText'); if(banner && txtNode && MatrixSystemState.get('currentMode') === 'user') { if(broadcastVal && broadcastVal.text) { txtNode.innerText = `🚨 BROADCAST: ${broadcastVal.text}`; banner.style.display = 'block'; } else { banner.style.display = 'none'; } } } catch(e) {} });
-
-        onValue(ref(db, 'users'), (snapshot) => {
-            try {
-                const data = snapshot.val(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const userArr = data ? Object.values(data) : [];
-                MatrixSystemState.set('cachedGlobalUsersArr', userArr);
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                    window.renderUserControlPanel();
-                    if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList();
-                    if(MatrixSystemState.get('activeAdminSubSection') === 'creation') window.renderLiveCreationStatsSummary();
-                }
-                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) window.initializeCrossLinkChatPanel();
-                if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
-                    const myProfile = userArr.find(u => u.id === currentUid);
-                    if(myProfile) {
-                        if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                        if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
-                        if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
-                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
-                        window.enforceCustomerPermissions();
-                    }
-                }
-            } catch (e) {}
-        });
-
-        onValue(ref(db, 'groups'), (snapshot) => { try { const data = snapshot.val(); const groupsArr = data ? Object.values(data) : []; MatrixSystemState.set('cachedGlobalGroupsArr', groupsArr); if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat') window.initializeCrossLinkChatPanel(); if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList(); } catch(e) {} });
-        onValue(ref(db, 'policies'), (snapshot) => { try { const policyArr = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalPolicyArr', policyArr); if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) window.renderPolicyCardsBlock(); if(MatrixSystemState.get('loggedInCustomerID')) { window.renderCustomerLiveTracker(); if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'vault') window.renderCloudVault(); } } catch(e) {} });
-        onValue(ref(db, 'ai_communications'), (snapshot) => { try { const commsData = []; snapshot.forEach(child => { let val = child.val(); val.dbKey = child.key; commsData.push(val); }); MatrixSystemState.set('cachedGlobalAiCommsArr', commsData); if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') window.renderAdminAiInterceptionSpyBlock(); } catch(e) {} });
-        
-        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
-            try {
-                const signalsData = snapshot.val() ? Object.values(snapshot.val()) : []; MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
-                if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin' && isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
-                if(MatrixSystemState.get('activeAdminSubSection') === 'stats') window.renderDynamicServerDiagnosticsDashboard();
-                const alertBanner = document.getElementById('adminPasswordResetAlertBanner');
-                if(alertBanner) { if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin') { alertBanner.innerHTML = `🚨 URGENT: ${signalsData.length} User(s) requested a password reset. Check System Status!`; alertBanner.classList.remove('hidden'); } else { alertBanner.classList.add('hidden'); } }
-            } catch(e){}
-        });
-
-        onValue(ref(db, 'chats'), (snapshot) => {
-            try {
-                const data = snapshot.val(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel'); const adminSub = MatrixSystemState.get('activeAdminSubSection');
-                window.cachedChatsData = data || {};
-                if(activeChan === 'chat' && currentUid) {
-                    window.renderActiveChatConversationLogs();
-                    if(data && MatrixSystemState.get('activeSelectedChatTargetUserId')) {
-                        const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-                        if (!isGroup) { Object.keys(data).forEach(key => { const m = data[key]; if(m.sender === targetUid && m.receiver === currentUid && !m.read) update(ref(db, `chats/${key}`), { read: true }); }); }
-                    }
-                    calculateUnreadBadgeCountersTrack(data);
-                }
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) { if(adminSub === 'spychat') { window.renderAdminSpyChatConsoleLogs(); window.renderAdminSpyUserList(); } }
-                if(activeChan === 'vault') window.renderCloudVault();
-            } catch(e) {}
-        });
-
-        onValue(ref(db, 'typing_states'), (snapshot) => { try { const data = snapshot.val(); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; typingStatusNode.classList.remove('hidden'); } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); } catch(e) {} });
-        onValue(ref(db, 'incident_alerts'), (snapshot) => { try { const alertsData = snapshot.val(); const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `<div class="realtime-alert-banner"><span>🚨 SECURITY LOCKOUT: [@${alertsData[alertRefKey].lockedUID}] Frozen.</span><button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" class="abort-btn" style="padding:6px 12px;">UNLOCK</button></div>`).join(''); } else if(notificationHostNode) notificationHostNode.innerHTML = ""; } catch(e) {} });
-
-        window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase()); alert("Client lock cleared."); }); };
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!chatsSnap || !currentUid) return;
-            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
-                let unreadCount = 0; Object.values(chatsSnap).forEach(msg => { if(msg.sender === user.id && msg.receiver === currentUid && !msg.read && !localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++; });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`); if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
-            });
+        window.triggerLockoutTerminalUI = function(usernameString) {
+            localStorage.setItem('nexus_hard_lockout_flag_' + usernameString.toLowerCase(), 'true');
+            set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, epoch: Date.now() });
+            document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">Access signatures for ID [${usernameString}] locked.</p></div>`;
+            setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); window.speakNaturalHuman("Security violation detected.");
         }
 
-        window.triggerCreateGroupModal = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            let usersHTML = users.map(u => `<label class="cyber-checkbox-label" style="display:flex; margin-bottom:12px; font-size:1rem;"><input type="checkbox" class="cyber-checkbox group-member-checkbox" value="${u.id}"> ${u.clientName} (@${u.id})</label>`).join('');
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>👥 Create WhatsApp Group</h4><input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Enter Group Subject..."><div style="margin-top:15px; text-align:left; max-height:180px; overflow-y:auto; background:var(--wa-bg); padding:15px; border-radius:8px; border:1px solid var(--border-glass);"><p style="color:var(--neon-cyan); font-weight:bold; margin-bottom:15px; font-size:1rem;">Select Participants:</p>${usersHTML}</div><div class="nexus-popup-flex-btns"><button onclick="window.executeCreateGroupMatrix()" class="nexus-popup-btn primary-btn">CREATE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
-            wrapper.classList.remove('hidden');
+        window.loadAdminSubmissions = function(){
+            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
+            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
+            window.renderUserControlPanel(); window.renderPolicyCardsBlock(); window.switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
         };
 
-        window.executeCreateGroupMatrix = function() {
-            const groupName = document.getElementById('newGroupNameInput').value.trim(); if(!groupName) { alert("Group subject is required."); return; }
-            const checkboxes = document.querySelectorAll('.group-member-checkbox:checked'); let members = [MatrixSystemState.get('loggedInCustomerID')]; checkboxes.forEach(cb => members.push(cb.value));
-            const groupId = 'group_' + Date.now(); set(ref(db, 'groups/' + groupId), { id: groupId, name: groupName, members: members, createdBy: MatrixSystemState.get('loggedInCustomerID'), avatar: "", timestamp: Date.now() }).then(() => { window.closeCustomInlinePopupEngine(); alert("✅ Group created successfully!"); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2); });
+        window.renderLiveCreationStatsSummary = function() { 
+            const mini = document.getElementById('liveCreationStatsMiniNode');
+            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
         };
 
-        window.initializeCrossLinkChatPanel = function() {
-            const targetContainer = document.getElementById('chatTargetContainerView'); if(!targetContainer) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            const myGroups = (MatrixSystemState.get('cachedGlobalGroupsArr') || []).filter(g => g.members && (g.members.includes(currentUid) || g.createdBy === currentUid));
-            const formattedGroups = myGroups.map(g => ({ id: g.id, clientName: g.name + " (Group)", avatar: g.avatar, isOnlineNode: false, isGroup: true, bio: `Group • ${g.members.length} participants` }));
-            const fullTargetList = [{ id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true }, ...prospectiveTargets, ...formattedGroups];
-            targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
-                const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.isGroup ? '👥 Group Chat' : '@'+user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
-            }).join('');
-            if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) window.setOperationalChatTargetId(fullTargetList[0].id);
-        };
-
-        window.filterClientChatContactList = function() { const query = document.getElementById('clientContactSearchField').value.toLowerCase(); document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); };
-        window.filterAdminClientChatContactList = function() { const query = document.getElementById('adminClientContactSearchField').value.toLowerCase(); document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); }
-
-        window.setOperationalChatTargetId = function(uid) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
-            let displayTitle = "Pipeline context...", avatarSrc = defaultAvatarSvg, bioText = "";
-
-            if (uid.startsWith('group_')) { 
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid); 
-                if (groupMatch) { 
-                    displayTitle = groupMatch.name; 
-                    avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
-                    bioText = `Group • ${groupMatch.members ? groupMatch.members.length : 0} members`;
-                } 
-            } else {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                if (userMatch) { 
-                    displayTitle = userMatch.clientName; 
-                    avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg; 
-                    bioText = userMatch.bio ? `~ ${userMatch.bio}` : "Available"; 
-                } else if (uid === "MainframeAdmin") { 
-                    displayTitle = "Mainframe Admin Shashi"; 
-                    bioText = "System Administrator"; 
-                }
-            }
-
-            document.getElementById('chatActiveUserHeaderNode').innerText = displayTitle;
-            document.getElementById('chatActiveHeaderAvatarNode').src = avatarSrc;
-            const bioNode = document.getElementById('chatActiveUserBioNode'); 
-            if (bioNode) { bioNode.innerText = bioText; }
-            
-            const pinnedBanner = document.getElementById('chatPinnedMessageBannerNode');
-            if (pinnedBanner) { pinnedBanner.classList.add('hidden'); } 
-            
-            document.getElementById('clientChatGridMatrixWrapper')?.classList.add('mobile-chat-view-active');
-            window.cancelReplyMatrixState(); window.renderActiveChatConversationLogs();
-        };
-        
-        window.setAdminOperationalChatTargetId = function(uid) {
-            MatrixSystemState.set('spyActiveTargetUserContext', uid);
-            let displayTitle = "Pipeline context...";
-            let avatarSrc = defaultAvatarSvg;
-
-            if (uid.startsWith('group_')) {
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid);
-                if (groupMatch) {
-                    displayTitle = groupMatch.name + " (Group)";
-                    avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
-                }
-            } else {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                if (userMatch) {
-                    displayTitle = userMatch.clientName;
-                    avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg;
-                } 
-            }
-
-            document.getElementById('spyActiveHeaderTitle').innerText = displayTitle;
-            document.getElementById('adminChatActiveHeaderAvatarNode').src = avatarSrc;
-            
-            document.getElementById('adminChatGridBox')?.classList.add('mobile-chat-view-active');
-            window.cancelReplyMatrixState(); window.renderAdminSpyChatConsoleLogs();
-        };
-
-        window.renderAdminSpyUserList = function() {
-            const listWrapper = document.getElementById('adminSpyUsersListWrapper'); if(!listWrapper) return;
-            const users = MatrixSystemState.get('cachedGlobalUsersArr');
-            const groups = MatrixSystemState.get('cachedGlobalGroupsArr');
-            const allTargets = [...users, ...groups.map(g => ({...g, isGroup: true, clientName: g.name}))];
-            
-            listWrapper.innerHTML = allTargets.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('spyActiveTargetUserContext')) ? 'active-chat-target' : '';
-                return `<div class="chat-user-item-node ${isActiveCss}" onclick="window.setAdminOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div class="whatsapp-user-id">${user.isGroup ? '👥 Group' : '@'+user.id}</div></div></div>`;
-            }).join('');
-            if(!MatrixSystemState.get('spyActiveTargetUserContext') && allTargets.length > 0) window.setAdminOperationalChatTargetId(allTargets[0].id);
-        }
-
-        window.filterActiveChatMessages = function(query) {
-            const q = query.toLowerCase();
-            const wrappers = document.querySelectorAll('.chat-messages-scroll-stack');
-            wrappers.forEach(wrap => {
-                if (!wrap.classList.contains('hidden')) {
-                    const msgs = wrap.querySelectorAll('.bubble-msg-wrapper');
-                    msgs.forEach(msg => {
-                        const text = msg.querySelector('.bubble-text-content')?.innerText.toLowerCase() || "";
-                        msg.style.display = text.includes(q) ? "" : "none";
-                    });
-                }
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
             });
         };
 
-        window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
-            try {
-                update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => { if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); });
-            } catch(e) {}
-        };
-        
-        window.spawnContextDropdownMenuOverlay = function(event, messageKey, timestamp) {
-            event.stopPropagation(); removeContextDropdownMenuNode(); removeReactionMenuNode();
-            const menu = document.createElement('div');
-            menu.className = "msg-interactive-dropdown-menu"; menu.id = "contextDropdownMenuMatrixOverlay";
-            menu.innerHTML = `<button class="dropdown-action-row-btn" onclick="window.initiateReplyMatrixState('${messageKey}')">↩️ Reply</button>
-            <button class="dropdown-action-row-btn" onclick="window.pinMessageMatrixState('${messageKey}')">📌 Pin Message</button>
-            <button class="dropdown-action-row-btn" onclick="window.executeCopyChatEngine('${messageKey}')">📋 Copy</button>
-            <button class="dropdown-action-row-btn" onclick="window.executeForwardChatEngine('${messageKey}')">➡️ Forward</button>
-            <button class="dropdown-action-row-btn delete-color" onclick="window.executeTargetChatNodeRemoval('${messageKey}', ${timestamp})">🗑️ Delete for me</button>`;
-            document.body.appendChild(menu);
-            menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
-            document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
-        };
-        function removeContextDropdownMenuNode() { document.getElementById('contextDropdownMenuMatrixOverlay')?.remove(); }
+        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
+        window.executeAdminContextClipboardCopy = function(element, extractionValue) { if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.15); const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200); }).catch(() => {}); };
+        window.wipeUserPermanently = function(uid) { if(confirm("Are you sure you want to permanently delete this user?")) remove(ref(db, 'users/' + uid)); };
 
-        window.pinMessageMatrixState = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg && msg.textBody) {
-                const pinnedBanner = document.getElementById('chatPinnedMessageBannerNode');
-                if(pinnedBanner) {
-                    pinnedBanner.innerHTML = `<span style="font-size: 1.2rem;">📌</span> <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><i>${msg.textBody}</i></div>`;
-                    pinnedBanner.classList.remove('hidden');
+        window.renderPolicyCardsBlock = function() {
+            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
+            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr'); if(policyArr.length === 0) { targetStack.innerHTML = "<p>No records mapping.</p>"; return; }
+            targetStack.innerHTML = policyArr.map((d) => {
+                let docPreviewHTML = d.attachment ? `<img src="${d.attachment}" onclick="window.triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; cursor:pointer;">` : "<span>None</span>";
+                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID); let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown";
+                return `<div class="hud-data-card" data-policy-key="${d.policyKey}">
+                    <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
+                    <button onclick="window.copyClientDataToClipboard('${d.policyKey}')" class="nav-btn" style="position:absolute; bottom: 20px; right: 20px; font-size:0.75rem;">📋 COPY DATA</button>
+                    <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID}</span></p>
+                    <p><b>Insurer:</b> ${d.insure}</p><p><b>Policy No:</b> ${d.pol}</p><p><b>Reg No:</b> ${d.reg}</p><p><b>Contact:</b> ${d.phone}</p><p><b>Email:</b> ${d.email}</p><p><b>Notes:</b> ${d.notes}</p><p><b>File:</b> ${docPreviewHTML}</p>
+                    <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5);"><select id="updateStatusSelect_${d.policyKey}" style="width:100%; padding:8px; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f;"><option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option><option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option><option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option><option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option></select><input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Response..." style="width:100%; padding:8px; margin-bottom:8px; color:#fff; background:#020408;"><button onclick="window.transmitAdminResponse('${d.policyKey}')" class="hud-engage-btn" style="padding:10px; font-size:0.9rem;">UPDATE PACKET</button></div>
+                    <button class="wipe-card-btn" onclick="window.purgeRegistryLog('${d.policyKey}')">Purge Record</button>
+                </div>`;
+            }).join("");
+        };
+
+        window.filterCardsEngine = function() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.hud-data-card').forEach(card => { card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
+        };
+
+        window.submitPolicyForm = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
+            if(!insure || !phone) { alert("Please complete required parameters."); return; }
+            const newPolicyRef = push(ref(db, 'policies'));
+            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
+                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); window.renderCustomerLiveTracker();
+            });
+        };
+
+        window.renderCustomerLiveTracker = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
+            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
+            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
+            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
+        };
+
+        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
+        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
+        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
+        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
+
+        window.switchAdminSubSection = function(sectionId) {
+            MatrixSystemState.set('activeAdminSubSection', sectionId); 
+            document.getElementById('adminMainMenuBlock').style.display = 'none';
+            const btnHome = document.getElementById('btnAdminBackToHome');
+            
+            if(sectionId === 'menu') {
+                document.getElementById('adminMainMenuBlock').style.display = 'grid';
+                if(btnHome) btnHome.classList.add('hidden');
+                ['creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'].forEach(id => {
+                    const el = document.getElementById(id); if(el) el.classList.add('hidden');
+                });
+                return;
+            }
+            if(btnHome) btnHome.classList.remove('hidden');
+
+            const mapping = {
+                'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock',
+                'workspace': 'policyWorkspaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock',
+                'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock'
+            };
+
+            Object.keys(mapping).forEach(key => {
+                const node = document.getElementById(mapping[key]);
+                if (node) { 
+                    if(sectionId === key) {
+                        node.classList.remove('hidden');
+                        node.style.display = 'block';
+                    } else {
+                        node.classList.add('hidden');
+                        node.style.display = 'none';
+                    }
+                }
+            });
+
+            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); window.exitMobileChatView(); }
+            if(sectionId === 'aispy') window.renderAdminAiInterceptionSpyBlock();
+            if(sectionId === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+            if(sectionId === 'creation') window.renderLiveCreationStatsSummary();
+            if(sectionId === 'workspace') window.renderPolicyCardsBlock();
+            if(sectionId === 'approvals') window.renderAdminPendingApprovals();
+            if(sectionId === 'tickets') window.renderAdminTickets();
+        };
+
+        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { alert("🔴 Broadcast transmitted!"); }); };
+        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; alert("Broadcast formatted clean."); }); };
+
+        window.generateRandomPassword = function() {
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let pass = "";
+            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
+            document.getElementById('newUserPass').value = pass;
+        };
+
+        window.copyClientDataToClipboard = function(policyKey) {
+            let p = MatrixSystemState.get('cachedGlobalPolicyArr').find(item => item.policyKey === policyKey);
+            if (!p) return;
+            let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
+            navigator.clipboard.writeText(formattedText).then(() => { alert("📋 CLIENT DATA COPIED SUCCESSFULLY!"); });
+        };
+
+        window.renderAdminAiInterceptionSpyBlock = function() {
+            const logsArea = document.getElementById('adminAiSpyLogsWrapper');
+            if(!logsArea) return;
+            const comms = MatrixSystemState.get('cachedGlobalAiCommsArr').reverse();
+            if (comms.length === 0) { logsArea.innerHTML = "<p style='color:var(--text-sub);'>No intercepted AI logs.</p>"; return; }
+            let logsHTML = `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><label class="cyber-checkbox-label" style="background:transparent; border:none; padding:0;"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"><span style="margin-left:8px;">Select All</span></label><button class="abort-btn" onclick="window.executeBatchDeleteAiLogs()">🗑️ Delete Selected</button></div>`;
+            comms.forEach(log => {
+                logsHTML += `<div style="background:rgba(0,0,0,0.5); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:15px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><label class="cyber-checkbox-label" style="background:transparent; border:none; padding:0;"><input type="checkbox" class="cyber-checkbox ai-log-checkbox" data-key="${log.dbKey}"> <b style="margin-left:10px;">Client:</b> ${log.customerName} (@${log.customerID})</label><span style="color:var(--text-sub); font-size:0.85rem;">${log.fullDateString} ${log.timestamp}</span></div>
+                    <p style="color:var(--text-main); margin-bottom:5px;"><b>Query:</b> ${log.query}</p>
+                    <p style="color:var(--neon-pink);"><b>AI Response:</b> ${log.response}</p>
+                </div>`;
+            });
+            logsArea.innerHTML = logsHTML;
+        };
+
+        window.executeBatchDeleteAiLogs = function() {
+            let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
+            if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
+                checkedBoxes.forEach(box => {
+                    let key = box.getAttribute('data-key');
+                    remove(ref(db, `ai_communications/${key}`));
+                });
+                alert("Selected logs purged.");
+            }
+        };
+
+        window.selectAllAiLogs = function(masterBox) { document.querySelectorAll('.ai-log-checkbox').forEach(box => box.checked = masterBox.checked); };
+
+        window.renderDynamicServerDiagnosticsDashboard = function() {
+            const arrUsers = MatrixSystemState.get('cachedGlobalUsersArr'); const arrPolicies = MatrixSystemState.get('cachedGlobalPolicyArr'); const arrSignals = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
+            const totalSysCap = 50; 
+            document.getElementById('barChartUsers').style.width = Math.min((arrUsers.length/totalSysCap)*100, 100) + '%';
+            document.getElementById('barChartUsers').innerText = `${arrUsers.length} Nodes`;
+            document.getElementById('barChartPolicies').style.width = Math.min((arrPolicies.length/totalSysCap)*100, 100) + '%';
+            document.getElementById('barChartPolicies').innerText = `${arrPolicies.length} Documents`;
+            
+            const sigWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
+            if(sigWrapper) {
+                if(arrSignals.length === 0) { sigWrapper.innerHTML = `<p style="color:var(--text-sub);">All secure. No signals.</p>`; }
+                else {
+                    sigWrapper.innerHTML = arrSignals.map(sig => {
+                        let dateStr = new Date(sig.epochTime).toLocaleString();
+                        return `<div style="background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:15px; border-radius:8px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                            <div><label class="cyber-checkbox-label" style="display:inline-flex; background:transparent; border:none; padding:0;"><input type="checkbox" class="cyber-checkbox signal-log-checkbox" data-uid="${sig.targetUID}"> <span style="margin-left:10px; color:#fff;"><b>UID:</b> ${sig.targetUID} | <b>Name:</b> ${sig.clientName} | <b>Contact:</b> ${sig.phone}</span></label><br><span style="color:#e74c3c; font-size:0.8rem; margin-left:35px;">${dateStr}</span></div>
+                            <button onclick="window.dismissLockoutIncidentNode('${sig.signalID}', '${sig.targetUID}')" class="abort-btn" style="padding:6px 12px; font-size:0.8rem;">CLEAR</button>
+                        </div>`;
+                    }).join('');
                 }
             }
         };
 
-        window.executeCopyChatEngine = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg && msg.textBody) { navigator.clipboard.writeText(msg.textBody).then(()=>{ alert("Message copied to clipboard!"); }); }
-        };
-        
-        window.executeForwardChatEngine = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg) { 
-                const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
-                const input = document.getElementById(inputId); 
-                if(input) { input.value = msg.textBody; input.focus(); }
+        window.executeBatchDeleteSignals = function() {
+            let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { alert("No targets selected."); return; }
+            if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
+                get(ref(db, 'password_forget_signals')).then((snap) => {
+                    let data = snap.val();
+                    if (data) {
+                        Object.keys(data).forEach(key => {
+                            checkedBoxes.forEach(box => {
+                                if (data[key].targetUID === box.getAttribute('data-uid')) {
+                                    remove(ref(db, `password_forget_signals/${key}`));
+                                }
+                            });
+                        });
+                        alert("Selected signals removed.");
+                    }
+                });
             }
         };
 
-        window.executeTargetChatNodeRemoval = function(msgId, timestampNum) {
-            removeContextDropdownMenuNode(); const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            localStorage.setItem(`deleted_chat_node_${currentUid}_${timestampNum}`, "purged");
-            if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs();
-        };
+        window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
 
-        window.spawnReactionMenu = function(event, messageKey) {
-            event.stopPropagation(); removeContextDropdownMenuNode(); removeReactionMenuNode();
-            const menu = document.createElement('div'); menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicReactionMenuOverlay"; menu.style.flexDirection = "row"; menu.style.padding = "10px"; menu.style.width = "auto"; menu.style.gap = "15px";
-            menu.innerHTML = `<span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '👍'); removeReactionMenuNode();">👍</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '❤️'); removeReactionMenuNode();">❤️</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '😂'); removeReactionMenuNode();">😂</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '😮'); removeReactionMenuNode();">😮</span>`;
-            document.body.appendChild(menu); menu.style.left = `${event.clientX - 60}px`; menu.style.top = `${event.clientY - 40}px`;
-            document.body.addEventListener('click', removeReactionMenuNode, { once: true });
-        };
-        function removeReactionMenuNode() { document.getElementById('dynamicReactionMenuOverlay')?.remove(); }
+        window.clearAllAiLogs = function() {
+            if(confirm("Wipe all AI Communications?")) {
+                remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped."));
+            }
+        }
 
         setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
     </script>
