@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V15.0 (Ultra Gateway Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V16.0 (Ultra Gateway Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -95,7 +95,9 @@
         .brushed-heavy-base { width: 240px; height: 40px; background: linear-gradient(180deg, #2d3d54, #03050a); border-radius: 50% / 25%; border: 2px solid #475b7a; z-index: 4; box-shadow: 0 20px 35px rgba(0,0,0,0.8); }
         .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.2) 50%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; }
         .cinema-stage.activated .volumetric-beam { opacity: 0.75; height: 600px; width: 900px; filter: drop-shadow(0 0 40px var(--lamp-shadow)); }
-        .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; }
+        
+        /* ROPE FIX: touch-action none added */
+        .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; touch-action: none; }
         .quantum-cord:active { cursor: grabbing; transform: translateY(80px) scale(0.95); transition: transform 0.1s linear; }
         .quantum-cord:hover .luminescent-node { box-shadow: 0 0 60px #f1c40f, 0 0 20px #fff; transform: scale(1.2); }
         .beaded-wire { width: 6px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 6px, #0f172a 6px, #0f172a 12px); box-shadow: 0 0 15px rgba(241,196,15,0.8); }
@@ -477,7 +479,7 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V15</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V16</div>
     </div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
@@ -611,7 +613,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V15</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V16</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
@@ -1124,9 +1126,6 @@
     </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
         /* DISMISS PRELOADER TO FIX FOUC WHEN RESOURCES LOAD */
         window.onload = function() {
             setTimeout(() => {
@@ -1215,7 +1214,8 @@
         let _loginTimer; window.debouncedAutoLoginCheck = function() { clearTimeout(_loginTimer); _loginTimer = setTimeout(window.checkAutoLogin, 300); }
 
         window.pullCordAction = function(event) {
-            if (event) event.preventDefault(); if (isCordPulled) return; isCordPulled = true;
+            if (event && event.cancelable) event.preventDefault(); 
+            if (isCordPulled) return; isCordPulled = true;
             const cord = document.getElementById('triggerCord'); if (cord) cord.style.transform = "translateY(40px)";
             if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
             setTimeout(() => { if (cord) cord.style.transform = "translateY(0px)"; window.triggerLampActivationOverride(); isCordPulled = false; }, 300);
@@ -1267,7 +1267,6 @@
         }
         initiatePrecisionChronometerTick();
 
-        // ------------------ NEW CUSTOMER SIGNUP FLOW ------------------
         window.triggerCustomerSignupModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             wrapper.innerHTML = `
@@ -1521,7 +1520,7 @@
         };
         window.closeTicket = function(tid) { update(ref(db, `support_tickets/${tid}`), { status: 'closed' }); };
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES V15 ------------------
+        // ------------------ UPGRADED PRO NOTEPAD FEATURES V16 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -2044,24 +2043,23 @@
                 const data = snapshot.val(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const userArr = data ? Object.values(data) : [];
                 MatrixSystemState.set('cachedGlobalUsersArr', userArr);
                 if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                        if(MatrixSystemState.get('activeAdminSubSection') === 'credentials') window.renderUserControlPanel();
-                        if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList();
-                        if(MatrixSystemState.get('activeAdminSubSection') === 'creation') window.renderLiveCreationStatsSummary();
+                    if(MatrixSystemState.get('activeAdminSubSection') === 'credentials') window.renderUserControlPanel();
+                    if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList();
+                    if(MatrixSystemState.get('activeAdminSubSection') === 'creation') window.renderLiveCreationStatsSummary();
+                }
+                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) window.initializeCrossLinkChatPanel();
+                if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
+                    const myProfile = userArr.find(u => u.id === currentUid);
+                    if(myProfile) {
+                        if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
+                        if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
+                        if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
+                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
+                        window.enforceCustomerPermissions();
                     }
-                    if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) window.initializeCrossLinkChatPanel();
-                    if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
-                        const myProfile = userArr.find(u => u.id === currentUid);
-                        if(myProfile) {
-                            if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                            if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
-                            if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
-                            document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
-                            // Re-evaluate tabs dynamically in real-time
-                            window.enforceCustomerPermissions();
-                        }
-                    }
-                } catch (e) {}
-            });
+                }
+            } catch (e) {}
+        });
 
         onValue(ref(db, 'groups'), (snapshot) => { 
             try { 
@@ -2254,6 +2252,286 @@
             }
         };
 
+        // ADMIN FUNCTIONS
+        window.switchAdminSubSection = function(sectionId) {
+            MatrixSystemState.set('activeAdminSubSection', sectionId); 
+            
+            // Hide main menu
+            document.getElementById('adminMainMenuBlock').style.display = 'none';
+            
+            const btnHome = document.getElementById('btnAdminBackToHome');
+            if(sectionId === 'menu') {
+                document.getElementById('adminMainMenuBlock').style.display = 'grid';
+                if(btnHome) btnHome.classList.add('hidden');
+                // hide all sections
+                ['creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'].forEach(id => {
+                    const el = document.getElementById(id); if(el) el.classList.add('hidden');
+                });
+                return;
+            }
+            
+            if(btnHome) btnHome.classList.remove('hidden');
+
+            const mapping = {
+                'creation': 'creationBlock',
+                'approvals': 'adminApprovalsBlock',
+                'credentials': 'credentialsBlock',
+                'workspace': 'policyWorkspaceBlock',
+                'spychat': 'adminSpyChatBlock',
+                'tickets': 'adminSupportTicketsBlock',
+                'aispy': 'adminAiSpyChatBlock',
+                'stats': 'adminSystemStatsBlock'
+            };
+
+            Object.keys(mapping).forEach(key => {
+                const node = document.getElementById(mapping[key]);
+                if (node) { 
+                    if(sectionId === key) {
+                        node.classList.remove('hidden');
+                        node.style.display = 'block';
+                    } else {
+                        node.classList.add('hidden');
+                        node.style.display = 'none';
+                    }
+                }
+            });
+
+            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); window.exitMobileChatView(); }
+            if(sectionId === 'aispy') window.renderAdminAiInterceptionSpyBlock();
+            if(sectionId === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+            if(sectionId === 'creation') window.renderLiveCreationStatsSummary();
+            if(sectionId === 'workspace') window.renderPolicyCardsBlock();
+            if(sectionId === 'approvals') window.renderAdminPendingApprovals();
+            if(sectionId === 'tickets') window.renderAdminTickets();
+        };
+
+        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { alert("🔴 Broadcast transmitted!"); }); };
+        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; alert("Broadcast formatted clean."); }); };
+
+        window.generateRandomPassword = function() {
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let pass = "";
+            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
+            document.getElementById('newUserPass').value = pass;
+        };
+
+        window.copyClientDataToClipboard = function(policyKey) {
+            let p = MatrixSystemState.get('cachedGlobalPolicyArr').find(item => item.policyKey === policyKey);
+            if (!p) return;
+            let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
+            navigator.clipboard.writeText(formattedText).then(() => { alert("📋 CLIENT DATA COPIED SUCCESSFULLY!"); });
+        };
+
+        window.renderAdminAiInterceptionSpyBlock = function() {
+            const logsArea = document.getElementById('adminAiSpyLogsWrapper');
+            if(!logsArea) return;
+            const comms = MatrixSystemState.get('cachedGlobalAiCommsArr').reverse();
+            if (comms.length === 0) { logsArea.innerHTML = "<p style='color:var(--text-sub);'>No intercepted AI logs.</p>"; return; }
+            let logsHTML = `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"> Select All</label><button class="abort-btn" onclick="window.executeBatchDeleteAiLogs()">🗑️ Delete Selected</button></div>`;
+            comms.forEach(log => {
+                logsHTML += `<div style="background:rgba(0,0,0,0.5); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:15px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox ai-log-checkbox" data-key="${log.dbKey}"> <b>Client:</b> ${log.customerName} (@${log.customerID})</label><span style="color:var(--text-sub); font-size:0.85rem;">${log.fullDateString} ${log.timestamp}</span></div>
+                    <p style="color:var(--text-main); margin-bottom:5px;"><b>Query:</b> ${log.query}</p>
+                    <p style="color:var(--neon-pink);"><b>AI Response:</b> ${log.response}</p>
+                </div>`;
+            });
+            logsArea.innerHTML = logsHTML;
+        };
+
+        window.executeBatchDeleteAiLogs = function() {
+            let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
+            if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
+                checkedBoxes.forEach(box => {
+                    let key = box.getAttribute('data-key');
+                    remove(ref(db, `ai_communications/${key}`));
+                });
+                alert("Selected logs purged.");
+            }
+        };
+
+        window.selectAllAiLogs = function(masterBox) { document.querySelectorAll('.ai-log-checkbox').forEach(box => box.checked = masterBox.checked); };
+
+        window.renderDynamicServerDiagnosticsDashboard = function() {
+            const arrUsers = MatrixSystemState.get('cachedGlobalUsersArr'); const arrPolicies = MatrixSystemState.get('cachedGlobalPolicyArr'); const arrSignals = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
+            const totalSysCap = 50; 
+            document.getElementById('barChartUsers').style.width = Math.min((arrUsers.length/totalSysCap)*100, 100) + '%';
+            document.getElementById('barChartUsers').innerText = `${arrUsers.length} Nodes`;
+            document.getElementById('barChartPolicies').style.width = Math.min((arrPolicies.length/totalSysCap)*100, 100) + '%';
+            document.getElementById('barChartPolicies').innerText = `${arrPolicies.length} Documents`;
+            
+            const sigWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
+            if(sigWrapper) {
+                if(arrSignals.length === 0) { sigWrapper.innerHTML = `<p style="color:var(--text-sub);">All secure. No signals.</p>`; }
+                else {
+                    sigWrapper.innerHTML = arrSignals.map(sig => {
+                        let dateStr = new Date(sig.epochTime).toLocaleString();
+                        return `<div style="background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:15px; border-radius:8px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                            <div><label class="cyber-checkbox-label" style="display:inline-flex;"><input type="checkbox" class="cyber-checkbox signal-log-checkbox" data-uid="${sig.targetUID}"> <span style="margin-left:10px; color:#fff;"><b>UID:</b> ${sig.targetUID} | <b>Name:</b> ${sig.clientName} | <b>Contact:</b> ${sig.phone}</span></label><br><span style="color:#e74c3c; font-size:0.8rem; margin-left:35px;">${dateStr}</span></div>
+                            <button onclick="window.dismissLockoutIncidentNode('${sig.signalID}', '${sig.targetUID}')" class="abort-btn" style="padding:6px 12px; font-size:0.8rem;">CLEAR</button>
+                        </div>`;
+                    }).join('');
+                }
+            }
+        };
+
+        window.executeBatchDeleteSignals = function() {
+            let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
+            if (checkedBoxes.length === 0) { alert("No targets selected."); return; }
+            if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
+                get(ref(db, 'password_forget_signals')).then((snap) => {
+                    let data = snap.val();
+                    if (data) {
+                        Object.keys(data).forEach(key => {
+                            checkedBoxes.forEach(box => {
+                                if (data[key].targetUID === box.getAttribute('data-uid')) {
+                                    remove(ref(db, `password_forget_signals/${key}`));
+                                }
+                            });
+                        });
+                        alert("Selected signals removed.");
+                    }
+                });
+            }
+        };
+
+        window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
+
+        window.clearAllAiLogs = function() {
+            if(confirm("Wipe all AI Communications?")) {
+                remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped."));
+            }
+        }
+
+        window.loadAdminSubmissions = function(){
+            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
+            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
+            window.renderUserControlPanel(); window.renderPolicyCardsBlock(); window.switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
+        };
+
+        window.renderLiveCreationStatsSummary = function() { 
+            const mini = document.getElementById('liveCreationStatsMiniNode');
+            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            });
+        };
+
+        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
+        window.executeAdminContextClipboardCopy = function(element, extractionValue) { if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.15); const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200); }).catch(() => {}); };
+        window.wipeUserPermanently = function(uid) { if(confirm("Are you sure you want to permanently delete this user?")) remove(ref(db, 'users/' + uid)); };
+
+        window.renderPolicyCardsBlock = function() {
+            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
+            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr'); if(policyArr.length === 0) { targetStack.innerHTML = "<p>No records mapping.</p>"; return; }
+            targetStack.innerHTML = policyArr.map((d) => {
+                let docPreviewHTML = d.attachment ? `<img src="${d.attachment}" onclick="window.triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; cursor:pointer;">` : "<span>None</span>";
+                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID); let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown";
+                return `<div class="hud-data-card" data-policy-key="${d.policyKey}">
+                    <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
+                    <button onclick="window.copyClientDataToClipboard('${d.policyKey}')" class="nav-btn" style="position:absolute; bottom: 20px; right: 20px; font-size:0.75rem;">📋 COPY DATA</button>
+                    <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID}</span></p>
+                    <p><b>Insurer:</b> ${d.insure}</p><p><b>Policy No:</b> ${d.pol}</p><p><b>Reg No:</b> ${d.reg}</p><p><b>Contact:</b> ${d.phone}</p><p><b>Email:</b> ${d.email}</p><p><b>Notes:</b> ${d.notes}</p><p><b>File:</b> ${docPreviewHTML}</p>
+                    <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5);"><select id="updateStatusSelect_${d.policyKey}" style="width:100%; padding:8px; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f;"><option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option><option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option><option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option><option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option></select><input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Response..." style="width:100%; padding:8px; margin-bottom:8px; color:#fff; background:#020408;"><button onclick="window.transmitAdminResponse('${d.policyKey}')" class="hud-engage-btn" style="padding:10px; font-size:0.9rem;">UPDATE PACKET</button></div>
+                    <button class="wipe-card-btn" onclick="window.purgeRegistryLog('${d.policyKey}')">Purge Record</button>
+                </div>`;
+            }).join("");
+        };
+
+        window.filterCardsEngine = function() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.hud-data-card').forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+            });
+        };
+
+        window.submitPolicyForm = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
+            if(!insure || !phone) { alert("Please complete required parameters."); return; }
+            const newPolicyRef = push(ref(db, 'policies'));
+            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
+                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); window.renderCustomerLiveTracker();
+            });
+        };
+
+        window.renderCustomerLiveTracker = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
+            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
+            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
+            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
+        };
+
+        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
+        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
+        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
+        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
+
+        window.uploadUserProfileAvatarEngine = function(event) {
+            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
+            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
+                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
+                set(ref(db, targetDbString), base64Avatar).then(() => { 
+                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    event.target.removeAttribute('data-target-uid'); 
+                }); 
+            }; reader.readAsDataURL(file); }
+        };
+
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            
+            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                MatrixSystemState.set('currentMode', 'admin');
+                window.executeClusterLogin(null);
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                    MatrixSystemState.set('currentMode', 'user');
+                    window.executeClusterLogin(null);
+                }
+            }
+        };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
+            }
+        };
+
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
         window.logoutEngine = function() {
             MatrixSystemState.set('loggedInCustomerID', "");
             localStorage.removeItem('nexus_logged_in_uid');
@@ -2261,7 +2539,6 @@
             window.location.reload();
         };
 
-        // Initialize session check on load
         setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
     </script>
 </body>
