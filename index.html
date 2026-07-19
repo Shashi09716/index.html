@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V14.0 (Ultra Gateway Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V15.0 (Anti-Hack Gateway Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -28,11 +28,16 @@
             --wa-border: #d1d7db; --wa-chat-bg: #efeae2; --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.05);
             --lamp-chamak: 0 6px 24px rgba(0,0,0,0.1); --matrix-3d-shadow-cyan: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
+        
+        /* FLICKER FIX: Critical Initial states */
+        .flicker-protect { display: none !important; }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); }
         input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         ::-webkit-scrollbar { width: 8px; height: 8px; } ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); border-radius: 4px; } ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: var(--neon-pink); }
+        
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 3s infinite; letter-spacing: 2px; text-transform: uppercase; }
@@ -181,14 +186,13 @@
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-pink); transition: all 0.3s ease; display: flex; flex-direction: column; }
         body.light-theme-active .notes-engine-card-surface { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); }
-        .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s;}
+        .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; min-height: 400px; flex: 1;}
         body.light-theme-active .notes-editor-container-shell { background: #ffffff; border-color: #cbd5e1; box-shadow: inset 0 2px 6px rgba(0,0,0,0.05); }
         /* NEW THEME SUPPORT FOR NOTEPAD ONLY */
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         .notes-editor-container-shell.notepad-dark-mode .notes-pad-rich-area { background: #111b21 !important; color: #e9edef !important; }
 
-        .notes-engine-card-surface.fullscreen-active .notes-editor-container-shell { flex: 1; }
-        .notes-pad-rich-area { width: 100%; min-height: 400px; flex: 1; padding: 40px; background: #ffffff; color: #111b21; font-size: 1.15rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; transition: 0.3s; }
+        .notes-pad-rich-area { width: 100%; flex: 1; padding: 40px; background: #ffffff; color: #111b21; font-size: 1.15rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; transition: 0.3s; }
         body.light-theme-active .notes-pad-rich-area { border: 1px solid #cbd5e1; border-top: none; border-bottom: none; }
         .notes-pad-rich-area table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
         .notes-pad-rich-area th, .notes-pad-rich-area td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
@@ -229,9 +233,9 @@
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- 100% REAL WHATSAPP WEB COLOR SPACE PERFECT CLONE --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: calc(100vh - 240px); background: var(--wa-bg); border-radius: 0px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
-        body.light-theme-active .chat-io-grid-matrix { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; }
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 340px 1fr; gap: 0; height: calc(100vh - 200px); background: var(--wa-bg); border-radius: 12px; border: 1px solid var(--wa-border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+        body.light-theme-active .chat-io-grid-matrix { box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #d1d7db; }
+        .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: auto; z-index: 5; height: 100%; }
         .whatsapp-search-box { padding: 10px 14px; background: var(--wa-search-bg); border-bottom: 1px solid var(--wa-border); display: flex; gap: 8px; align-items: center; }
         .whatsapp-search-box input { flex: 1; padding: 8px 14px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; font-family: inherit;}
         body.light-theme-active .whatsapp-search-box input { border: 1px solid #d1d7db; background: #f0f2f5;}
@@ -241,7 +245,7 @@
         .chat-user-item-node.active-chat-target { background: var(--wa-msg-in) !important; }
         body.light-theme-active .chat-user-item-node.active-chat-target { background: #f0f2f5 !important; border-left: 4px solid var(--wa-green); padding-left: 11px; }
         .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 2px solid #2ecc71; padding: 2px; }
-        .whatsapp-avatar { width: 48px; height: 48px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; }
+        .whatsapp-avatar { width: 48px; height: 48px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
         .whatsapp-avatar:hover { transform: scale(1.05); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
         .whatsapp-user-name { font-weight: 500; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
@@ -250,7 +254,7 @@
         body.light-theme-active .nickname-badge-info { color: #b45309; background: #fef9c3; }
         .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: inherit; }
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
-        .chat-stream-header-bar { background: var(--wa-header); padding: 10px 16px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; border-bottom:1px solid var(--wa-border); }
+        .chat-stream-header-bar { background: var(--wa-header); padding: 10px 16px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 2; border-bottom:1px solid var(--wa-border); flex-shrink: 0; }
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.2rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center;}
         .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
         body.light-theme-active .header-actions-btn:hover { background: rgba(0,0,0,0.05); color:#111b21; }
@@ -266,8 +270,10 @@
         .status-dashboard-header { background: var(--wa-header); padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); font-weight: 600; font-size: 1.2rem; }
         .status-dashboard-header button { background:none; border:none; color:var(--wa-text); font-size:1.5rem; cursor:pointer; }
         .status-section-title { padding: 20px 20px 10px 20px; color: var(--wa-green); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .chat-messages-scroll-stack { flex: 1; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; }
-        .bubble-msg-wrapper { max-width: 65%; padding: 6px 7px 8px 9px; border-radius: 7.5px; font-size: 0.88rem; line-height: 19px; position: relative; box-shadow: 0 1px 2px rgba(11,20,26,.3); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; }
+        
+        .chat-messages-scroll-stack { flex: 1 1 0%; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; z-index: 2; scroll-behavior: smooth; min-height: 0; }
+        
+        .bubble-msg-wrapper { max-width: 65%; padding: 6px 7px 8px 9px; border-radius: 7.5px; font-size: 0.88rem; line-height: 19px; position: relative; box-shadow: 0 1px 2px rgba(11,20,26,.3); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; align-self: flex-start; clear: both;}
         .bubble-msg-wrapper.first-in-group { margin-top: 12px; }
         .bubble-text-content { display: inline-block; padding-right: 65px; padding-bottom: 5px; white-space: pre-wrap; min-width: 40px; }
         .group-sender-name { font-size: 0.75rem; font-weight: 700; color: #00f2fe; margin-bottom: 3px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
@@ -287,7 +293,7 @@
         .reply-preview-text { color: var(--wa-text-muted); font-size: 0.9rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin-right: 15px; }
         .msg-reactions-tray { display: flex; gap: 2px; background: var(--wa-msg-in); padding: 2px 6px; border-radius: 12px; position: absolute; bottom: -10px; right: 10px; font-size: 0.85rem; border: 1px solid var(--wa-bg); box-shadow: 0 1px 2px rgba(0,0,0,0.3); pointer-events: none; }
         body.light-theme-active .msg-reactions-tray { background: #ffffff; border-color: #cbd5e1; }
-        .chat-interface-footer-inputs { padding: 10px 16px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; }
+        .chat-interface-footer-inputs { padding: 10px 16px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0; }
         .whatsapp-input-field { flex: 1; padding: 10px 16px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); outline: none; font-size: 0.95rem; font-family: inherit; font-weight: 400; }
         body.light-theme-active .whatsapp-input-field { border: 1px solid #cbd5e1; background: #ffffff; color: #111b21; }
         .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
@@ -363,14 +369,16 @@
         .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
         .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,242,254,0.4); }
         body.light-theme-active .gif-thumb-item:hover { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14,165,233,0.3); }
-        .cyber-checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main); font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; }
-        body.light-theme-active .cyber-checkbox-label { color: #111b21; }
-        .cyber-checkbox { appearance: none; width: 18px; height: 18px; border: 2px solid var(--border-glass); border-radius: 4px; background: transparent; cursor: pointer; position: relative; transition: 0.2s; }
-        body.light-theme-active .cyber-checkbox { border-color: #cbd5e1; }
-        .cyber-checkbox:checked { background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
-        body.light-theme-active .cyber-checkbox:checked { background: #0ea5e9; border-color: #0ea5e9; box-shadow: none; }
-        .cyber-checkbox:checked::after { content: "✓"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #000; font-weight: 900; font-size: 0.8rem; }
-        body.light-theme-active .cyber-checkbox:checked::after { color: #fff; }
+        
+        /* NEW: Cyberpunk Toggle Switch Style */
+        .cyber-toggle-container { display: flex; align-items: center; gap: 10px; color: var(--text-main); font-family: 'Orbitron'; font-size: 0.9rem; font-weight: bold; cursor: pointer; padding: 10px 15px; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid var(--border-glass); transition: 0.3s; }
+        body.light-theme-active .cyber-toggle-container { background: #f1f5f9; color: #0f172a; border-color: #cbd5e1; }
+        .cyber-toggle-container:hover { background: rgba(0,242,254,0.1); border-color: var(--neon-cyan); }
+        .cyber-toggle { position: relative; width: 50px; height: 26px; appearance: none; background: #2a3942; border-radius: 13px; outline: none; cursor: pointer; transition: 0.4s; box-shadow: inset 0 0 5px rgba(0,0,0,0.5); }
+        .cyber-toggle:checked { background: var(--neon-green); box-shadow: 0 0 15px rgba(46,204,113,0.5); }
+        .cyber-toggle::before { content: ""; position: absolute; width: 22px; height: 22px; border-radius: 50%; top: 2px; left: 2px; background: #fff; transition: 0.4s; transform: scale(0.9); box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .cyber-toggle:checked::before { left: 26px; }
+
         .mobile-back-btn { display: none; background: transparent; border: 1px solid var(--wa-border); color: var(--neon-cyan); padding: 6px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-right: 8px; }
         body.light-theme-active .mobile-back-btn { color: #0284c7; border-color: #cbd5e1; }
 
@@ -380,7 +388,7 @@
             .dashboard-panel-core { padding-top: 160px; padding-bottom: 20px; }
             .giant-compiler-grid, .form-grid-layout, #policyCardsStack, #adminUserControlList { grid-template-columns: 1fr !important; gap: 16px !important; }
             .full-width-field { grid-column: span 1; }
-            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 240px) !important; }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 200px) !important; }
             .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
             .chat-stream-message-container { width: 100%; height: 100%; display: none; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none; }
@@ -402,6 +410,13 @@
             .mobile-back-btn { display: none !important; }
         }
     </style>
+    
+    <script>
+        if(localStorage.getItem('nexus_logged_in_uid')) {
+            document.documentElement.classList.add('flicker-protect');
+            window.onload = function() { document.documentElement.classList.remove('flicker-protect'); };
+        }
+    </script>
 </head>
 <body>
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
@@ -535,7 +550,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V14</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 12px;">🧠 PRO WORKSPACE NOTEPAD V15</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
@@ -576,6 +591,8 @@
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
                         <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('subscript')" title="Subscript">X<sub>2</sub></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('superscript')" title="Superscript">X<sup>2</sup></button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="document.execCommand('undo', false, null)" title="Undo">↩️</button>
                         <button class="note-tool-btn" onclick="document.execCommand('redo', false, null)" title="Redo">↪️</button>
@@ -674,6 +691,9 @@
                                 </div>
                             </div>
                             <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                <div style="position:relative; margin-right: 10px;">
+                                    <input type="text" id="internalChatSearchInput" placeholder="🔍 Search inside chat..." style="padding: 6px 12px; border-radius: 20px; background: rgba(0,0,0,0.2); border: 1px solid var(--wa-border); color: var(--text-main); outline:none; font-size:0.8rem; width:140px; transition:0.3s;" oninput="window.filterActiveChatMessages()">
+                                </div>
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
@@ -770,6 +790,15 @@
                         <label>Explain your request / issue...</label>
                         <div class="neon-glow-underline" style="background:#f1c40f;"></div>
                     </div>
+                    
+                    <div class="hud-input-cluster">
+                        <div class="cyber-upload-node" onclick="document.getElementById('supportAttachmentInput').click()" style="border-color:#f1c40f;">
+                            <label style="position:static; pointer-events:all; color:#f1c40f; font-family:'Orbitron'; font-size:1rem; display:block; margin-bottom:8px; font-weight: 900; cursor: pointer;">📎 ATTACH SCREENSHOT / FILE</label>
+                            <input type="file" id="supportAttachmentInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'support')">
+                            <div id="supportAttachmentFeedback" style="color:#2ecc71; font-size:0.9rem; font-weight:bold; margin-top:10px;"></div>
+                        </div>
+                    </div>
+
                     <button onclick="window.submitSupportTicket()" class="hud-engage-btn">SUBMIT REQUEST</button>
                     <div id="customerTicketHistory" style="margin-top:25px; border-top:1px solid var(--border-glass); padding-top:20px;"></div>
                 </div>
@@ -853,7 +882,7 @@
                     <div class="giant-compiler-layout">
                         <h3 style="color:#f1c40f;">✅ PENDING ACCOUNT APPROVALS</h3>
                         <p style="color:var(--text-sub); margin-bottom:15px;">Review user requests for new IDs. (Auto-approves after 48h).</p>
-                        <div id="adminPendingAccountsList" style="display:grid; grid-template-columns:1fr; gap:15px;"></div>
+                        <div id="adminPendingAccountsList" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:15px;"></div>
                     </div>
                 </div>
 
@@ -866,29 +895,44 @@
                             <button onclick="window.executeMainframeAdminSyncRoute()" class="hud-engage-btn" style="background:linear-gradient(135deg,#2ecc71,#27ae60);">SYNC MASTER ROUTE</button>
                         </div>
                     </div>
+                    
                     <div style="background:rgba(231,76,60,0.05); border:2px solid #e74c3c; border-radius:14px; padding:25px; margin-bottom:25px;">
-                        <h4 style="color:#e74c3c;">🔴 GLOBAL BROADCAST</h4>
-                        <input type="text" id="adminBroadcastInputControl" class="giant-compiler-input" style="border-color:#e74c3c; margin-bottom:15px;">
-                        <div style="display:flex; gap:10px;">
-                            <button onclick="window.dispatchMainframeGlobalBroadcast()" class="hud-engage-btn" style="background:#e74c3c; color:#fff;">TRANSMIT</button>
-                            <button onclick="window.clearMainframeGlobalBroadcast()" class="abort-btn">KILL</button>
+                        <h4 style="color:#e74c3c; margin-bottom: 15px;">🔴 GLOBAL BROADCAST / MAINTENANCE</h4>
+                        <input type="text" id="adminBroadcastInputControl" class="giant-compiler-input" placeholder="Enter broadcast message or maintenance reason..." style="border-color:#e74c3c; margin-bottom:15px;">
+                        <div style="display:flex; gap:10px; flex-wrap: wrap;">
+                            <button onclick="window.dispatchMainframeGlobalBroadcast()" class="hud-engage-btn" style="background:#e74c3c; color:#fff; flex: 1;">TRANSMIT ALERT</button>
+                            <label class="cyber-toggle-container" style="border-color: #e74c3c;">
+                                <input type="checkbox" id="maintenanceModeToggle" class="cyber-toggle" onchange="window.toggleMaintenanceMode(this.checked)">
+                                ACTIVATE MAINTENANCE MODE (LOCK OUT USERS)
+                            </label>
+                            <button onclick="window.clearMainframeGlobalBroadcast()" class="abort-btn">KILL BROADCAST</button>
                         </div>
                     </div>
                     
                     <div style="background:rgba(0,242,254,0.05); border:2px solid var(--neon-cyan); border-radius:14px; padding:25px; margin-bottom:25px;">
-                        <h4 style="color:var(--neon-cyan);">🌍 GLOBAL FEATURE TOGGLES</h4>
-                        <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:15px;">
-                            <label class="cyber-checkbox-label"><input type="checkbox" id="globalTog_policy" class="cyber-checkbox" onchange="window.updateGlobalFeatures()"> Enable Policy</label>
-                            <label class="cyber-checkbox-label"><input type="checkbox" id="globalTog_notes" class="cyber-checkbox" onchange="window.updateGlobalFeatures()" checked> Enable Notes</label>
-                            <label class="cyber-checkbox-label"><input type="checkbox" id="globalTog_vault" class="cyber-checkbox" onchange="window.updateGlobalFeatures()" checked> Enable Vault</label>
-                            <label class="cyber-checkbox-label"><input type="checkbox" id="globalTog_gaming" class="cyber-checkbox" onchange="window.updateGlobalFeatures()" checked> Enable Gaming</label>
-                            <label class="cyber-checkbox-label"><input type="checkbox" id="globalTog_chat" class="cyber-checkbox" onchange="window.updateGlobalFeatures()" checked> Enable WhatsApp</label>
+                        <h4 style="color:var(--neon-cyan); margin-bottom:20px;">🌍 GLOBAL FEATURE TOGGLES</h4>
+                        <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                            <label class="cyber-toggle-container">
+                                <input type="checkbox" id="globalTog_policy" class="cyber-toggle" onchange="window.updateGlobalFeatures()"> Policy Portal
+                            </label>
+                            <label class="cyber-toggle-container">
+                                <input type="checkbox" id="globalTog_notes" class="cyber-toggle" onchange="window.updateGlobalFeatures()" checked> Rich Notes
+                            </label>
+                            <label class="cyber-toggle-container">
+                                <input type="checkbox" id="globalTog_vault" class="cyber-toggle" onchange="window.updateGlobalFeatures()" checked> Cloud Vault
+                            </label>
+                            <label class="cyber-toggle-container">
+                                <input type="checkbox" id="globalTog_gaming" class="cyber-toggle" onchange="window.updateGlobalFeatures()" checked> AI Gaming
+                            </label>
+                            <label class="cyber-toggle-container">
+                                <input type="checkbox" id="globalTog_chat" class="cyber-toggle" onchange="window.updateGlobalFeatures()" checked> WhatsApp Matrix
+                            </label>
                         </div>
                     </div>
 
                     <div style="padding:25px; border-radius:14px; border:2px solid var(--border-glass); margin-bottom:20px;">
                         <h4 style="color:#00f2fe; margin-bottom:20px;">🛠 CLIENT ARCHITECTURE & PERMISSIONS</h4>
-                        <div id="adminUserControlList" style="display:grid; grid-template-columns:1fr 1fr; gap:15px;"></div>
+                        <div id="adminUserControlList" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;"></div>
                     </div>
                 </div>
 
@@ -1034,11 +1078,21 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        // ANTI-HACK PROTECTIONS
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
 
         const MatrixSystemState = (() => {
             let state = {
-                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", loadedSupportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
                 globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true }
@@ -1063,11 +1117,8 @@
         // --- Dynamic Emoji Generator (1000+ Emojis) ---
         function generateMassiveEmojiArray() {
             let emojis = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
-            // Emoticons
             for(let i=0x1F600; i<=0x1F64F; i++) emojis.push(String.fromCodePoint(i));
-            // Misc Symbols and Pictographs
             for(let i=0x1F300; i<=0x1F3F0; i++) emojis.push(String.fromCodePoint(i));
-            // Transport / Map
             for(let i=0x1F680; i<=0x1F6C0; i++) emojis.push(String.fromCodePoint(i));
             return [...new Set(emojis)]; // Ensure unique
         }
@@ -1204,7 +1255,7 @@
             });
         };
 
-        // --- NEW ADMIN PENDING APPROVALS ---
+        // --- NEW ADMIN PENDING APPROVALS (GRID UI) ---
         onValue(ref(db, 'pending_accounts'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedPendingUsersArr', data);
@@ -1228,14 +1279,16 @@
             
             list.innerHTML = pendings.map(req => {
                 let dateStr = new Date(req.epoch).toLocaleString();
-                return `<div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; border:1px solid var(--border-glass);">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                        <h4 style="color:var(--neon-cyan);">${req.name}</h4><span style="font-size:0.8rem; color:var(--text-sub);">${dateStr}</span>
+                return `<div style="background:rgba(0,0,0,0.5); padding:20px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow: 0 4px 15px rgba(0,242,254,0.1);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom: 1px dashed var(--border-glass); padding-bottom: 10px;">
+                        <h4 style="color:var(--neon-cyan); font-size:1.2rem;">${req.name}</h4><span style="font-size:0.8rem; color:var(--text-sub);">${dateStr}</span>
                     </div>
-                    <p><b>Contact:</b> ${req.phone} | <b>DOB:</b> ${req.dob} | <b>Pass:</b> ${req.pass}</p>
-                    <div style="margin-top:10px; display:flex; gap:10px;">
-                        <button onclick="window.approvePendingAccount('${req.reqId}')" class="hud-engage-btn" style="padding:10px; background:var(--wa-green); color:#fff;">APPROVE & CREATE</button>
-                        <button onclick="window.rejectPendingAccount('${req.reqId}')" class="abort-btn" style="padding:10px;">REJECT</button>
+                    <p style="font-family:'Segoe UI'; margin-bottom:5px;"><b>Contact:</b> ${req.phone}</p>
+                    <p style="font-family:'Segoe UI'; margin-bottom:5px;"><b>DOB:</b> ${req.dob}</p>
+                    <p style="font-family:'Segoe UI'; margin-bottom:15px; color:var(--neon-pink);"><b>Pass:</b> ${req.pass}</p>
+                    <div style="display:flex; gap:10px;">
+                        <button onclick="window.approvePendingAccount('${req.reqId}')" class="hud-engage-btn" style="padding:10px; background:linear-gradient(135deg, #1abc9c, #16a085); color:#fff; font-size:0.9rem;">APPROVE & CREATE</button>
+                        <button onclick="window.rejectPendingAccount('${req.reqId}')" class="abort-btn" style="padding:10px; font-size:0.9rem;">REJECT</button>
                     </div>
                 </div>`;
             }).join('');
@@ -1251,7 +1304,7 @@
         };
         window.rejectPendingAccount = function(reqId) { if(confirm("Reject this request?")) remove(ref(db, 'pending_accounts/' + reqId)); };
 
-        // ------------------ FEATURE TOGGLES (ADMIN) ------------------
+        // ------------------ FEATURE TOGGLES & MAINTENANCE (ADMIN) ------------------
         onValue(ref(db, 'global_settings/features'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -1263,6 +1316,27 @@
                 if(MatrixSystemState.get('currentMode') === 'user') { window.enforceCustomerPermissions(); }
             }
         });
+
+        onValue(ref(db, 'global_settings/maintenance'), (snapshot) => {
+            const data = snapshot.val();
+            const maintToggle = document.getElementById('maintenanceModeToggle');
+            if (maintToggle) maintToggle.checked = data?.active || false;
+
+            if (data && data.active && MatrixSystemState.get('currentMode') === 'user') {
+                const msg = data.message || "SYSTEM UNDER MAINTENANCE. PLEASE WAIT.";
+                document.body.innerHTML = `<div style="background:#02050e; color:#f1c40f; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px; font-family:'Orbitron';"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #f1c40f; margin-bottom:20px;">🛠️ MAINTENANCE MODE</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">${msg}</p></div>`;
+            }
+        });
+
+        window.toggleMaintenanceMode = function(isActive) {
+            const msg = prompt("Enter Maintenance Message (Shows on all user screens):", "System Under Maintenance");
+            if (msg !== null) {
+                set(ref(db, 'global_settings/maintenance'), { active: isActive, message: msg });
+                alert(isActive ? "Maintenance mode activated. All users locked out." : "Maintenance mode removed.");
+            } else {
+                document.getElementById('maintenanceModeToggle').checked = !isActive;
+            }
+        };
 
         window.updateGlobalFeatures = function() {
             const updates = {
@@ -1295,24 +1369,33 @@
             });
         };
 
+        // UI Upgrade: Better Admin Client Permissions
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
             listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user) => {
                 const isDeact = user.status === 'deactivated';
                 const f = user.features || { policy: false, notes: true, vault: true, chat: true, gaming: true };
-                return `<div style="background:rgba(4,14,33,0.85); padding:18px; border-radius:14px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'};">
-                        <div><b>ID:</b> <span style="color:#00f2fe;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b> ${user.contact}</div>
-                        <div style="display:flex; justify-content:space-between; margin-top:10px;">
-                            <select onchange="window.toggleUserNodeActivationState('${user.id}', this.value)" style="padding:6px; background:var(--bg-prime); color:var(--neon-cyan); border:1px solid var(--border-glass);"><option value="active" ${!isDeact?'selected':''}>🟢 Active</option><option value="deactivated" ${isDeact?'selected':''}>🔴 Deactive</option></select>
-                            <button onclick="window.wipeUserPermanently('${user.id}')" style="color:#e74c3c; font-weight:bold; background:none; border:none; cursor:pointer;">Wipe User</button>
+                return `<div style="background:rgba(4,14,33,0.85); padding:20px; border-radius:14px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'}; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                        <div style="border-bottom: 1px dashed var(--border-glass); padding-bottom:10px; margin-bottom:10px;">
+                            <b style="font-size:1.1rem; color:var(--text-main);">${user.clientName}</b> <span style="color:#00f2fe; float:right;">@${user.id}</span><br>
+                            <span style="color:var(--text-sub); font-size:0.9rem;">Contact: ${user.contact}</span>
                         </div>
-                        <div style="margin-top:10px;"><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:8px 12px; width:100%;"></div>
-                        <div style="margin-top:10px; border-top:1px dashed var(--border-glass); padding-top:10px; display:flex; flex-wrap:wrap; gap:10px; font-size:0.8rem;">
-                            <label><input type="checkbox" onchange="window.updateUserFeature('${user.id}', 'policy', this.checked)" ${f.policy?'checked':''}> Policy</label>
-                            <label><input type="checkbox" onchange="window.updateUserFeature('${user.id}', 'notes', this.checked)" ${f.notes?'checked':''}> Notes</label>
-                            <label><input type="checkbox" onchange="window.updateUserFeature('${user.id}', 'vault', this.checked)" ${f.vault?'checked':''}> Vault</label>
-                            <label><input type="checkbox" onchange="window.updateUserFeature('${user.id}', 'gaming', this.checked)" ${f.gaming?'checked':''}> Gaming</label>
-                            <label><input type="checkbox" onchange="window.updateUserFeature('${user.id}', 'chat', this.checked)" ${f.chat?'checked':''}> Chat</label>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                            <select onchange="window.toggleUserNodeActivationState('${user.id}', this.value)" style="padding:6px; background:var(--bg-prime); color:${isDeact?'#e74c3c':'#2ecc71'}; border:1px solid var(--border-glass); border-radius:6px; outline:none; font-weight:bold;">
+                                <option value="active" ${!isDeact?'selected':''}>🟢 Active</option>
+                                <option value="deactivated" ${isDeact?'selected':''}>🔴 Deactive</option>
+                            </select>
+                            <button onclick="window.wipeUserPermanently('${user.id}')" style="color:#e74c3c; font-weight:bold; background:none; border:none; cursor:pointer; font-size:1.1rem;" title="Wipe User">🗑️</button>
+                        </div>
+                        <div style="margin-top:12px;">
+                            <input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:1px solid var(--border-glass); border-radius:6px; color:#f1c40f; padding:8px 12px; width:100%; font-family:monospace;" placeholder="Password">
+                        </div>
+                        <div style="margin-top:15px; border-top:1px dashed var(--border-glass); padding-top:12px; display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                            <label class="cyber-toggle-container" style="padding:5px 8px; font-size:0.75rem;"><input type="checkbox" class="cyber-toggle" onchange="window.updateUserFeature('${user.id}', 'policy', this.checked)" ${f.policy?'checked':''}> Policy</label>
+                            <label class="cyber-toggle-container" style="padding:5px 8px; font-size:0.75rem;"><input type="checkbox" class="cyber-toggle" onchange="window.updateUserFeature('${user.id}', 'notes', this.checked)" ${f.notes?'checked':''}> Notes</label>
+                            <label class="cyber-toggle-container" style="padding:5px 8px; font-size:0.75rem;"><input type="checkbox" class="cyber-toggle" onchange="window.updateUserFeature('${user.id}', 'vault', this.checked)" ${f.vault?'checked':''}> Vault</label>
+                            <label class="cyber-toggle-container" style="padding:5px 8px; font-size:0.75rem;"><input type="checkbox" class="cyber-toggle" onchange="window.updateUserFeature('${user.id}', 'gaming', this.checked)" ${f.gaming?'checked':''}> Gaming</label>
+                            <label class="cyber-toggle-container" style="padding:5px 8px; font-size:0.75rem; grid-column: span 2;"><input type="checkbox" class="cyber-toggle" onchange="window.updateUserFeature('${user.id}', 'chat', this.checked)" ${f.chat?'checked':''}> WhatsApp Matrix</label>
                         </div>
                     </div>`;
             }).join('');
@@ -1331,11 +1414,13 @@
             const uid = MatrixSystemState.get('loggedInCustomerID');
             const sub = document.getElementById('supportTicketSubject').value.trim();
             const body = document.getElementById('supportTicketBody').value.trim();
+            const attachment = MatrixSystemState.get('loadedSupportAttachmentB64') || "";
             if(!sub || !body) { alert("Please complete subject and body."); return; }
             
             const tRef = push(ref(db, 'support_tickets'));
-            set(tRef, { ticketId: tRef.key, ownerId: uid, subject: sub, body: body, adminReply: "", status: "open", epoch: Date.now() }).then(() => {
-                document.getElementById('supportTicketSubject').value = ""; document.getElementById('supportTicketBody').value = "";
+            set(tRef, { ticketId: tRef.key, ownerId: uid, subject: sub, body: body, attachment: attachment, adminReply: "", status: "open", epoch: Date.now() }).then(() => {
+                document.getElementById('supportTicketSubject').value = ""; document.getElementById('supportTicketBody').value = ""; document.getElementById('supportAttachmentFeedback').innerText = "";
+                MatrixSystemState.set('loadedSupportAttachmentB64', "");
                 alert("Ticket successfully dispatched to Admin Mainframe.");
             });
         };
@@ -1347,9 +1432,11 @@
             
             hist.innerHTML = myTicks.map(t => {
                 let badge = t.status === 'closed' ? `<span class="status-badge status-closed">CLOSED</span>` : `<span class="status-badge status-pending">OPEN</span>`;
+                let attachHtml = t.attachment ? `<div style="margin-top:10px;"><img src="${t.attachment}" style="max-width:100px; max-height:100px; border-radius:6px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${t.attachment}')"></div>` : "";
                 return `<div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:10px; margin-bottom:15px; border-left:4px solid ${t.status==='closed'?'#95a5a6':'#f1c40f'};">
                     <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>${t.subject}</b> ${badge}</div>
                     <p style="color:var(--text-sub); font-size:0.95rem;">${t.body}</p>
+                    ${attachHtml}
                     ${t.adminReply ? `<div style="margin-top:10px; padding:10px; background:rgba(0,242,254,0.1); border-radius:6px; color:#00f2fe;"><b>Admin Reply:</b> ${t.adminReply}</div>` : ''}
                 </div>`;
             }).join('');
@@ -1363,12 +1450,15 @@
             list.innerHTML = allTicks.map(t => {
                 const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === t.ownerId);
                 const uname = user ? user.clientName : t.ownerId;
+                let attachHtml = t.attachment ? `<div style="margin-bottom:10px;"><img src="${t.attachment}" style="max-width:100px; max-height:100px; border-radius:6px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${t.attachment}')"></div>` : "";
+                
                 return `<div style="background:rgba(4,14,33,0.85); padding:15px; border-radius:12px; border:1px solid var(--border-glass);">
                     <div style="display:flex; justify-content:space-between;">
                         <h4 style="color:#f1c40f;">${t.subject}</h4><span style="color:var(--text-sub);">${new Date(t.epoch).toLocaleDateString()}</span>
                     </div>
                     <p style="color:var(--neon-cyan); margin-bottom:5px;">User: ${uname} (@${t.ownerId})</p>
                     <p style="margin-bottom:10px;">${t.body}</p>
+                    ${attachHtml}
                     <div style="display:flex; gap:10px;">
                         <input type="text" id="adminReplyInput_${t.ticketId}" class="giant-compiler-input" placeholder="Type reply..." value="${t.adminReply}">
                         <button onclick="window.replyToTicket('${t.ticketId}')" class="hud-engage-btn" style="width:120px; padding:10px;">REPLY</button>
@@ -1384,7 +1474,7 @@
         };
         window.closeTicket = function(tid) { update(ref(db, `support_tickets/${tid}`), { status: 'closed' }); };
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES V14 ------------------
+        // ------------------ UPGRADED PRO NOTEPAD FEATURES V15 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -1448,7 +1538,15 @@
         window.insertImageToNotepad = function() { const url = prompt("Enter Image URL:", "https://"); if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); } };
         window.toggleFullScreenNoteMode = function() { const card = document.getElementById('notesMainWrapperCard'); const btn = document.getElementById('btnNoteFullScreenToggle'); if(card.classList.contains('fullscreen-active')) { card.classList.remove('fullscreen-active'); btn.innerText = "🔲 Full Screen (Zen)"; } else { card.classList.add('fullscreen-active'); btn.innerText = "🔳 Exit Full Screen"; } };
         window.downloadNoteContent = function(format) { const editor = document.getElementById('richNoteWritingPadEditable'); if(!editor) return; const textContent = format === 'html' ? editor.innerHTML : editor.innerText; if(!textContent.trim()) { alert("Note is empty!"); return; } const blob = new Blob([textContent], { type: format === 'doc' ? 'application/msword' : format === 'html' ? 'text/html' : 'text/plain' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Nexus_Note_${Date.now()}.${format}`; document.body.appendChild(a); a.click(); document.body.removeChild(a); };
-        window.printNoteEditorContent = function() { const printArea = document.getElementById('printAreaNotepad').innerHTML; const originalContent = document.body.innerHTML; document.body.innerHTML = `<div style="padding:40px; color:#000; font-family:sans-serif;">${printArea}</div>`; window.print(); document.body.innerHTML = originalContent; location.reload(); };
+        window.printNoteEditorContent = function() { 
+            const printArea = document.getElementById('printAreaNotepad').innerHTML; 
+            const originalContent = document.body.innerHTML; 
+            // Better print formatting
+            document.body.innerHTML = `<div style="padding:40px; color:#000; background:#fff; font-family:'Segoe UI', sans-serif;"><h2>Professional Matrix Note</h2><hr>${printArea}</div>`; 
+            window.print(); 
+            document.body.innerHTML = originalContent; 
+            location.reload(); 
+        };
         window.triggerEmbeddedNoteFormat = function(styleProperty) { document.execCommand(styleProperty, false, null); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
         window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteFontFamily = function(fontName) { document.execCommand('fontName', false, fontName); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
@@ -1652,7 +1750,7 @@
                 "var(--wa-chat-bg) url('https://i.pinimg.com/originals/97/c0/07/97c00759d90d786d9b6096d274ad3e07.png') center/cover",
                 "var(--wa-chat-bg) url('https://i.pinimg.com/originals/8f/ba/cb/8fbacbd464e996966eb9d4a6b7a9c21e.jpg') center/cover"
             ];
-            const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
+            let currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
             let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
             localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
             document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
@@ -1912,797 +2010,220 @@
                         if (!isGroup) { Object.keys(data).forEach(key => { const m = data[key]; if(m.sender === targetUid && m.receiver === currentUid && !m.read) update(ref(db, `chats/${key}`), { read: true }); }); }
                     }
                     calculateUnreadBadgeCountersTrack(data);
-                }
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) { if(adminSub === 'spychat') { window.renderAdminSpyChatConsoleLogs(); window.renderAdminSpyUserList(); } }
-                if(activeChan === 'vault') window.renderCloudVault();
-            } catch(e) {}
-        });
-
-        onValue(ref(db, 'typing_states'), (snapshot) => { try { const data = snapshot.val(); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; typingStatusNode.classList.remove('hidden'); } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); } catch(e) {} });
-        onValue(ref(db, 'incident_alerts'), (snapshot) => { try { const alertsData = snapshot.val(); const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `<div class="realtime-alert-banner"><span>🚨 SECURITY LOCKOUT: [@${alertsData[alertRefKey].lockedUID}] Frozen.</span><button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" class="abort-btn" style="padding:6px 12px;">UNLOCK</button></div>`).join(''); } else if(notificationHostNode) notificationHostNode.innerHTML = ""; } catch(e) {} });
-
-        window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase()); alert("Client lock cleared."); }); };
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!chatsSnap || !currentUid) return;
-            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
-                let unreadCount = 0; Object.values(chatsSnap).forEach(msg => { if(msg.sender === user.id && msg.receiver === currentUid && !msg.read && !localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++; });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`); if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
+                    }
+                    if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) { 
+                        if(adminSub === 'spychat') { 
+                            window.renderAdminSpyChatConsoleLogs(); 
+                            window.renderAdminSpyUserList(); 
+                        } 
+                    }
+                    if(activeChan === 'vault') window.renderCloudVault();
+                } catch(e) {}
             });
-        }
 
-        window.triggerCreateGroupModal = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            let usersHTML = users.map(u => `<label class="cyber-checkbox-label" style="display:flex; margin-bottom:12px; font-size:1rem;"><input type="checkbox" class="cyber-checkbox group-member-checkbox" value="${u.id}"> ${u.clientName} (@${u.id})</label>`).join('');
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>👥 Create WhatsApp Group</h4><input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Enter Group Subject..."><div style="margin-top:15px; text-align:left; max-height:180px; overflow-y:auto; background:var(--wa-bg); padding:15px; border-radius:8px; border:1px solid var(--border-glass);"><p style="color:var(--neon-cyan); font-weight:bold; margin-bottom:15px; font-size:1rem;">Select Participants:</p>${usersHTML}</div><div class="nexus-popup-flex-btns"><button onclick="window.executeCreateGroupMatrix()" class="nexus-popup-btn primary-btn">CREATE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.executeCreateGroupMatrix = function() {
-            const groupName = document.getElementById('newGroupNameInput').value.trim(); if(!groupName) { alert("Group subject is required."); return; }
-            const checkboxes = document.querySelectorAll('.group-member-checkbox:checked'); let members = [MatrixSystemState.get('loggedInCustomerID')]; checkboxes.forEach(cb => members.push(cb.value));
-            const groupId = 'group_' + Date.now(); set(ref(db, 'groups/' + groupId), { id: groupId, name: groupName, members: members, createdBy: MatrixSystemState.get('loggedInCustomerID'), avatar: "", timestamp: Date.now() }).then(() => { window.closeCustomInlinePopupEngine(); alert("✅ Group created successfully!"); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2); });
-        };
-
-        window.initializeCrossLinkChatPanel = function() {
-            const targetContainer = document.getElementById('chatTargetContainerView'); if(!targetContainer) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
-            const myGroups = (MatrixSystemState.get('cachedGlobalGroupsArr') || []).filter(g => g.members && (g.members.includes(currentUid) || g.createdBy === currentUid));
-            const formattedGroups = myGroups.map(g => ({ id: g.id, clientName: g.name + " (Group)", avatar: g.avatar, isOnlineNode: false, isGroup: true, bio: `Group • ${g.members.length} participants` }));
-            const fullTargetList = [{ id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true }, ...prospectiveTargets, ...formattedGroups];
-            targetContainer.innerHTML = fullTargetList.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
-                const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
-                return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.isGroup ? '👥 Group Chat' : '@'+user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
-            }).join('');
-            if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) window.setOperationalChatTargetId(fullTargetList[0].id);
-        };
-
-        window.filterClientChatContactList = function() { const query = document.getElementById('clientContactSearchField').value.toLowerCase(); document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); };
-        window.filterAdminClientChatContactList = function() { const query = document.getElementById('adminClientContactSearchField').value.toLowerCase(); document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); }
-
-        window.setOperationalChatTargetId = function(uid) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
-            let displayTitle = "Pipeline context...", avatarSrc = defaultAvatarSvg, bioText = "";
-
-            if (uid.startsWith('group_')) { 
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid); 
-                if (groupMatch) { 
-                    displayTitle = groupMatch.name; 
-                    avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
-                    bioText = `Group • ${groupMatch.members ? groupMatch.members.length : 0} members`;
-                } 
-            } else {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                if (userMatch) { 
-                    displayTitle = userMatch.clientName; 
-                    avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg; 
-                    bioText = userMatch.bio ? `~ ${userMatch.bio}` : "Available"; 
-                } else if (uid === "MainframeAdmin") { 
-                    displayTitle = "Mainframe Admin Shashi"; 
-                    bioText = "System Administrator"; 
-                }
-            }
-
-            document.getElementById('chatActiveUserHeaderNode').innerText = displayTitle;
-            document.getElementById('chatActiveHeaderAvatarNode').src = avatarSrc;
-            const bioNode = document.getElementById('chatActiveUserBioNode'); 
-            if (bioNode) { bioNode.innerText = bioText; }
+            onValue(ref(db, 'typing_states'), (snapshot) => { try { const data = snapshot.val(); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; typingStatusNode.classList.remove('hidden'); } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); } catch(e) {} });
             
-            const pinnedBanner = document.getElementById('chatPinnedMessageBannerNode');
-            if (pinnedBanner) { pinnedBanner.classList.add('hidden'); } 
-            
-            document.getElementById('clientChatGridMatrixWrapper')?.classList.add('mobile-chat-view-active');
-            window.cancelReplyMatrixState(); window.renderActiveChatConversationLogs();
-        };
-        
-        window.setAdminOperationalChatTargetId = function(uid) {
-            MatrixSystemState.set('spyActiveTargetUserContext', uid);
-            let displayTitle = "Pipeline context...";
-            let avatarSrc = defaultAvatarSvg;
+            onValue(ref(db, 'incident_alerts'), (snapshot) => { try { const alertsData = snapshot.val(); const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `<div class="realtime-alert-banner"><span>🚨 SECURITY LOCKOUT: [@${alertsData[alertRefKey].lockedUID}] Frozen.</span><button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" class="abort-btn" style="padding:6px 12px;">UNLOCK</button></div>`).join(''); } else if(notificationHostNode) notificationHostNode.innerHTML = ""; } catch(e) {} });
 
-            if (uid.startsWith('group_')) {
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid);
-                if (groupMatch) {
-                    displayTitle = groupMatch.name + " (Group)";
-                    avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
-                }
-            } else {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                if (userMatch) {
-                    displayTitle = userMatch.clientName;
-                    avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg;
-                } 
-            }
+            window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID.toLowerCase()); alert("Client lock cleared."); }); };
 
-            document.getElementById('spyActiveHeaderTitle').innerText = displayTitle;
-            document.getElementById('adminChatActiveHeaderAvatarNode').src = avatarSrc;
-            
-            document.getElementById('adminChatGridBox')?.classList.add('mobile-chat-view-active');
-            window.cancelReplyMatrixState(); window.renderAdminSpyChatConsoleLogs();
-        };
-
-        window.renderAdminSpyUserList = function() {
-            const listWrapper = document.getElementById('adminSpyUsersListWrapper'); if(!listWrapper) return;
-            const users = MatrixSystemState.get('cachedGlobalUsersArr');
-            const groups = MatrixSystemState.get('cachedGlobalGroupsArr');
-            const allTargets = [...users, ...groups.map(g => ({...g, isGroup: true, clientName: g.name}))];
-            
-            listWrapper.innerHTML = allTargets.map(user => {
-                const isActiveCss = (user.id === MatrixSystemState.get('spyActiveTargetUserContext')) ? 'active-chat-target' : '';
-                return `<div class="chat-user-item-node ${isActiveCss}" onclick="window.setAdminOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div class="whatsapp-user-id">${user.isGroup ? '👥 Group' : '@'+user.id}</div></div></div>`;
-            }).join('');
-            if(!MatrixSystemState.get('spyActiveTargetUserContext') && allTargets.length > 0) window.setAdminOperationalChatTargetId(allTargets[0].id);
-        }
-
-        window.addMessageReactionEngine = function(msgKey, reactionEmoji) {
-            try {
-                update(ref(db, `chats/${msgKey}`), { reaction: reactionEmoji }).then(() => { if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs(); });
-            } catch(e) {}
-        };
-        
-        window.spawnContextDropdownMenuOverlay = function(event, messageKey, timestamp) {
-            event.stopPropagation(); removeContextDropdownMenuNode(); removeReactionMenuNode();
-            const menu = document.createElement('div');
-            menu.className = "msg-interactive-dropdown-menu"; menu.id = "contextDropdownMenuMatrixOverlay";
-            menu.innerHTML = `<button class="dropdown-action-row-btn" onclick="window.initiateReplyMatrixState('${messageKey}')">↩️ Reply</button>
-            <button class="dropdown-action-row-btn" onclick="window.pinMessageMatrixState('${messageKey}')">📌 Pin Message</button>
-            <button class="dropdown-action-row-btn" onclick="window.executeCopyChatEngine('${messageKey}')">📋 Copy</button>
-            <button class="dropdown-action-row-btn" onclick="window.executeForwardChatEngine('${messageKey}')">➡️ Forward</button>
-            <button class="dropdown-action-row-btn delete-color" onclick="window.executeTargetChatNodeRemoval('${messageKey}', ${timestamp})">🗑️ Delete for me</button>`;
-            document.body.appendChild(menu);
-            menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
-            document.body.addEventListener('click', removeContextDropdownMenuNode, { once: true });
-        };
-        function removeContextDropdownMenuNode() { document.getElementById('contextDropdownMenuMatrixOverlay')?.remove(); }
-
-        window.pinMessageMatrixState = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg && msg.textBody) {
-                const pinnedBanner = document.getElementById('chatPinnedMessageBannerNode');
-                if(pinnedBanner) {
-                    pinnedBanner.innerHTML = `<span style="font-size: 1.2rem;">📌</span> <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><i>${msg.textBody}</i></div>`;
-                    pinnedBanner.classList.remove('hidden');
-                }
-            }
-        };
-
-        window.executeCopyChatEngine = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg && msg.textBody) { navigator.clipboard.writeText(msg.textBody).then(()=>{ alert("Message copied to clipboard!"); }); }
-        };
-        
-        window.executeForwardChatEngine = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(msg) { 
-                const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
-                const input = document.getElementById(inputId); 
-                if(input) { input.value = msg.textBody; input.focus(); }
-            }
-        };
-
-        window.executeTargetChatNodeRemoval = function(msgId, timestampNum) {
-            removeContextDropdownMenuNode(); const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            localStorage.setItem(`deleted_chat_node_${currentUid}_${timestampNum}`, "purged");
-            if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs();
-        };
-
-        window.spawnReactionMenu = function(event, messageKey) {
-            event.stopPropagation(); removeContextDropdownMenuNode(); removeReactionMenuNode();
-            const menu = document.createElement('div'); menu.className = "msg-interactive-dropdown-menu"; menu.id = "dynamicReactionMenuOverlay"; menu.style.flexDirection = "row"; menu.style.padding = "10px"; menu.style.width = "auto"; menu.style.gap = "15px";
-            menu.innerHTML = `<span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '👍'); removeReactionMenuNode();">👍</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '❤️'); removeReactionMenuNode();">❤️</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '😂'); removeReactionMenuNode();">😂</span><span style="font-size:1.5rem; cursor:pointer;" onclick="window.addMessageReactionEngine('${messageKey}', '😮'); removeReactionMenuNode();">😮</span>`;
-            document.body.appendChild(menu); menu.style.left = `${event.clientX - 60}px`; menu.style.top = `${event.clientY - 40}px`;
-            document.body.addEventListener('click', removeReactionMenuNode, { once: true });
-        };
-        function removeReactionMenuNode() { document.getElementById('dynamicReactionMenuOverlay')?.remove(); }
-
-        window.renderActiveChatConversationLogs = function() {
-            const wrapper = document.getElementById('chatMessagesScrollWrapper'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!wrapper || !targetUid) return;
-            try {
-                get(ref(db, 'chats')).then((snapshot) => {
-                    const data = snapshot.val();
-                    if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted. No one outside of this chat can read them.</div>`; return; }
-                    let htmlCollector = "";
-                    const isGroupChat = targetUid.startsWith('group_');
-
-                    requestAnimationFrame(() => {
-                        let lastSenderId = null;
-                        
-                        Object.keys(data).forEach(key => {
-                            const msg = data[key];
-                            
-                            let isValidDisplay = false;
-                            if (isGroupChat) { isValidDisplay = (msg.receiver === targetUid); } 
-                            else { isValidDisplay = ((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)); }
-
-                            if(isValidDisplay) {
-                                if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
-                                
-                                const isMyMsg = (msg.sender === currentUid); 
-                                const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                                
-                                const isFirstInGroup = (msg.sender !== lastSenderId);
-                                lastSenderId = msg.sender;
-                                
-                                let assetHTML = "";
-                                if(msg.mediaPayload) {
-                                    if(msg.mediaPayload.startsWith("data:audio")) assetHTML = `<audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block; height:35px;"></audio>`;
-                                    else assetHTML = `<img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="max-width:220px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`;
-                                }
-                                
-                                let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-                                let replyMarkup = msg.quotedText ? `<div class="reply-reference-box">${msg.quotedText}</div>` : "";
-                                
-                                let senderNameMarkup = "";
-                                if (isGroupChat && !isMyMsg && isFirstInGroup) {
-                                    let senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === msg.sender);
-                                    let sName = senderProfile ? senderProfile.clientName : (msg.sender === "MainframeAdmin" ? "Mainframe Admin" : `@${msg.sender}`);
-                                    senderNameMarkup = `<div class="group-sender-name">~ ${sName}</div>`;
-                                }
-                                
-                                htmlCollector += `<div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', ${msg.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
-                                    ${senderNameMarkup}
-                                    ${replyMarkup}
-                                    ${assetHTML}
-                                    <div class="bubble-text-content">${msg.textBody}</div>
-                                    <div class="whatsapp-time">${msg.timestamp} ${isMyMsg && !isGroupChat ? ticksVisualString : ''}</div>
-                                    ${reactionMarkup}
-                                </div>`;
-                            }
-                        });
-                        wrapper.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted.</div>`;
-                        wrapper.scrollTop = wrapper.scrollHeight;
-                    });
+            function calculateUnreadBadgeCountersTrack(chatsSnap) {
+                const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!chatsSnap || !currentUid) return;
+                MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
+                    let unreadCount = 0; Object.values(chatsSnap).forEach(msg => { if(msg.sender === user.id && msg.receiver === currentUid && !msg.read && !localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++; });
+                    const pill = document.getElementById(`unreadCounterBadge_${user.id}`); if(pill) { if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } else pill.classList.add('hidden'); }
                 });
-            } catch(e){}
-        };
-
-        window.renderAdminSpyChatConsoleLogs = function() {
-            const wrapper = document.getElementById('adminSpyChatLogsStack'); const targetUid = MatrixSystemState.get('spyActiveTargetUserContext'); const adminId = "MainframeAdmin";
-            if(!wrapper || !targetUid) return;
-            try {
-                get(ref(db, 'chats')).then((snapshot) => {
-                    const data = snapshot.val();
-                    if(!snapshot.exists()) { wrapper.innerHTML = `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted.</div>`; return; }
-                    let htmlCollector = "";
-                    const isGroupChat = targetUid.startsWith('group_');
-
-                    requestAnimationFrame(() => {
-                        let lastSenderId = null;
-                        
-                        Object.keys(data).forEach(key => {
-                            const msg = data[key];
-                            
-                            let isValidDisplay = false;
-                            if (isGroupChat) { isValidDisplay = (msg.receiver === targetUid); } 
-                            else { isValidDisplay = ((msg.sender === adminId && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === adminId)); }
-
-                            if(isValidDisplay) {
-                                if(localStorage.getItem(`deleted_chat_node_${adminId}_${msg.epochTimeNode}`)) return;
-                                
-                                const isMyMsg = (msg.sender === adminId); 
-                                const ticksVisualString = msg.read ? `<span class="whatsapp-tick-space double-blue">✔✔</span>` : `<span class="whatsapp-tick-space">✔✔</span>`;
-                                
-                                const isFirstInGroup = (msg.sender !== lastSenderId);
-                                lastSenderId = msg.sender;
-                                
-                                let assetHTML = "";
-                                if(msg.mediaPayload) {
-                                    if(msg.mediaPayload.startsWith("data:audio")) assetHTML = `<audio src="${msg.mediaPayload}" controls style="max-width:240px; margin-top:6px; display:block; height:35px;"></audio>`;
-                                    else assetHTML = `<img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="max-width:220px; border-radius:8px; margin-top:5px; display:block; cursor:pointer;">`;
-                                }
-                                
-                                let reactionMarkup = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-                                let replyMarkup = msg.quotedText ? `<div class="reply-reference-box">${msg.quotedText}</div>` : "";
-                                
-                                let senderNameMarkup = "";
-                                if (isGroupChat && !isMyMsg && isFirstInGroup) {
-                                    let senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === msg.sender);
-                                    let sName = senderProfile ? senderProfile.clientName : (msg.sender === "MainframeAdmin" ? "Mainframe Admin" : `@${msg.sender}`);
-                                    senderNameMarkup = `<div class="group-sender-name">~ ${sName}</div>`;
-                                }
-                                
-                                htmlCollector += `<div class="bubble-msg-wrapper ${isMyMsg ? 'bubble-outgoing' : 'bubble-incoming'} ${isFirstInGroup ? 'has-tail first-in-group' : ''}" onclick="window.spawnContextDropdownMenuOverlay(event, '${key}', ${msg.epochTimeNode || 0})" ondblclick="window.spawnReactionMenu(event, '${key}')">
-                                    ${senderNameMarkup}
-                                    ${replyMarkup}
-                                    ${assetHTML}
-                                    <div class="bubble-text-content">${msg.textBody}</div>
-                                    <div class="whatsapp-time">${msg.timestamp} ${isMyMsg && !isGroupChat ? ticksVisualString : ''}</div>
-                                    ${reactionMarkup}
-                                </div>`;
-                            }
-                        });
-                        wrapper.innerHTML = htmlCollector || `<div style="color:var(--wa-text-muted); font-size:0.95rem; margin:auto; font-weight: 500; background:var(--wa-header); padding:10px 15px; border-radius:8px;">🔒 Messages are end-to-end encrypted.</div>`;
-                        wrapper.scrollTop = wrapper.scrollHeight;
-                    });
-                });
-            } catch(e){}
-        }
-
-        window.triggerEnlargedAttachmentView = function(imgSrc) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:90%; width:auto; background:transparent; border:none; box-shadow:none;"><img src="${imgSrc}" style="max-width:100%; max-height:80vh; border-radius:12px; border:2px solid var(--border-glass);"><div style="margin-top:15px;"><button onclick="window.executePhysicalAssetDownloadEngine('${imgSrc}')" class="nexus-popup-btn primary-btn" style="width:120px; background:var(--wa-green); margin-right:10px;">💾 SAVE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:120px; background:#e74c3c; color:#fff;">CLOSE</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.initiateReplyMatrixState = function(messageKey) {
-            const msg = window.cachedChatsData[messageKey];
-            if(!msg) return;
-            const messageTextSnippet = msg.textBody;
-            MatrixSystemState.set('activeReplyMessageTextNode', messageTextSnippet);
-            const userReplyPreview = document.getElementById('chatReplyPreviewBanner');
-            if(userReplyPreview && MatrixSystemState.get('currentMode') === 'user') { document.getElementById('replyPreviewTextNode').innerText = `Replying to: ${messageTextSnippet}`; userReplyPreview.classList.remove('hidden'); document.getElementById('chatCoreMessageTextInput').focus(); }
-            const adminReplyPreview = document.getElementById('adminChatReplyPreviewBanner');
-            if(adminReplyPreview && MatrixSystemState.get('currentMode') === 'admin') { document.getElementById('adminReplyPreviewTextNode').innerText = `Replying to: ${messageTextSnippet}`; adminReplyPreview.classList.remove('hidden'); document.getElementById('adminSpyResponseInput').focus(); }
-            removeContextDropdownMenuNode();
-        };
-
-        window.cancelReplyMatrixState = function() { MatrixSystemState.set('activeReplyMessageTextNode', ""); document.getElementById('chatReplyPreviewBanner')?.classList.add('hidden'); document.getElementById('adminChatReplyPreviewBanner')?.classList.add('hidden'); };
-
-        window.triggerHologramCall = function(callType) {
-            const isUserAdmin = MatrixSystemState.get('currentMode') === 'admin'; const targetUid = isUserAdmin ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId'); if(!targetUid) return;
-            const targetUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); const targetName = targetUserObj ? targetUserObj.clientName : "Mainframe Admin Shashi"; const targetAvatar = targetUserObj && targetUserObj.avatar ? targetUserObj.avatar : defaultAvatarSvg;
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-
-            let typeLabel = callType === 'video' ? "📹 END-TO-END ENCRYPTED VIDEO" : "📞 WHATSAPP VOICE CALL";
-            let visualEffectHTML = callType === 'video' ? `<div class="hologram-call-effect" style="border-radius:16px;"><video id="liveHoloVideoStream" autoplay muted playsinline></video><div class="hologram-scanline"></div></div>` : `<div style="position:relative; width:140px; height:140px; margin:0 auto 30px auto; display:flex; justify-content:center; align-items:center;"><div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div><img src="${targetAvatar}" style="width:100px; height:100px; border-radius:50%; object-fit:cover; position:relative; z-index:5; border:3px solid var(--wa-green);"></div>`;
-            
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border: none; box-shadow: 0 0 50px rgba(0,0,0,0.5); max-width:400px; padding:40px 20px;">
-                    <h4 style="color:var(--wa-text-muted); font-size:0.9rem; margin-bottom: 25px; letter-spacing:1px;">${typeLabel}</h4>
-                    ${visualEffectHTML}
-                    <h3 style="color:var(--wa-text); margin-bottom:10px; font-family:'Segoe UI', sans-serif; font-weight:700; font-size:1.8rem;">${targetName}</h3>
-                    <p style="color:var(--wa-green); font-family:inherit; margin-bottom:40px; font-size:1.1rem;" id="hologramCallStatusTxt">Calling...</p>
-                    <div style="display:flex; justify-content:center; gap:30px;">
-                        <button onclick="window.closeCustomInlinePopupEngine()" class="whatsapp-circle-btn" style="background:#e74c3c; color:#fff; width:65px; height:65px; font-size:2rem; border-radius:50%; box-shadow: 0 10px 20px rgba(231,76,60,0.4); transform:rotate(135deg);">📞</button>
-                    </div>
-                </div>`;
-            wrapper.classList.remove('hidden');
-            if(isAudioContextAllowed) window.playSynthesizedSound(440, 'sine', 1.0);
-
-            if(callType === 'video') {
-                navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
-                    liveVideoCallStreamObj = stream; const videoNode = document.getElementById('liveHoloVideoStream'); if(videoNode) videoNode.srcObject = stream;
-                }).catch(() => { document.getElementById('hologramCallStatusTxt').innerText = "Camera Access Denied."; });
             }
-            setTimeout(() => { const statusTxt = document.getElementById('hologramCallStatusTxt'); if(statusTxt && statusTxt.innerText === "Calling...") statusTxt.innerText = "Ringing..."; }, 1500);
-        };
 
-        window.dispatchMatrixChatMessage = function() {
-            const inputField = document.getElementById('chatCoreMessageTextInput'); if(!inputField) return;
-            const textBody = inputField.value.trim(); let liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const activeReplyText = MatrixSystemState.get('activeReplyMessageTextNode');
-            if(!textBody && !liveChatB64) return;
-            let finalMessageText = textBody;
-            if(!finalMessageText && liveChatB64.startsWith("data:audio")) finalMessageText = "🎙 Voice Message";
-            else if(!finalMessageText && liveChatB64) finalMessageText = "📎 Photo Attachment";
-
-            try {
-                set(push(ref(db, 'chats')), { sender: currentUid, receiver: targetUid, textBody: finalMessageText, mediaPayload: liveChatB64, quotedText: activeReplyText, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
-                    inputField.value = ""; document.getElementById('chatInputCharCounter').innerText = "0/250"; MatrixSystemState.resetChatAssets();
-                    document.getElementById('chatAttachmentStatusFeedback').innerText = ""; document.getElementById('systemEmojiMatrixBoxNode').classList.add('hidden'); document.getElementById('mainframeGifContainerBox').classList.add('hidden');
-                    window.cancelReplyMatrixState(); remove(ref(db, `typing_states/${currentUid}`)); window.renderActiveChatConversationLogs(); autoNarrateChatMessage("You", finalMessageText);
-                    if(MatrixSystemState.get('isAIAssistantActiveState') && !targetUid.startsWith('group_')) processAIMatrixAssistantResponseStream(finalMessageText);
+            window.filterActiveChatMessages = function() {
+                const query = document.getElementById('internalChatSearchInput').value.toLowerCase();
+                const messages = document.querySelectorAll('.bubble-msg-wrapper');
+                messages.forEach(msg => {
+                    const textContent = msg.querySelector('.bubble-text-content')?.innerText.toLowerCase() || "";
+                    if(query === "") {
+                        msg.style.display = "inline-block";
+                    } else {
+                        if(textContent.includes(query)) {
+                            msg.style.display = "inline-block";
+                        } else {
+                            msg.style.display = "none";
+                        }
+                    }
                 });
-            } catch(e){}
-        };
-
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const input = document.getElementById('adminSpyResponseInput'); if(!input) return;
-            const val = input.value.trim(); let liveChatB64 = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const targetUID = MatrixSystemState.get('spyActiveTargetUserContext'); const activeReplyText = MatrixSystemState.get('activeReplyMessageTextNode');
-            if(!val && !liveChatB64) return;
-            let finalMessageText = val;
-            if(!finalMessageText && liveChatB64.startsWith("data:audio")) finalMessageText = "🎙 Voice Message";
-            else if(!finalMessageText && liveChatB64) finalMessageText = "📎 Photo Attachment";
-
-            try {
-                set(push(ref(db, 'chats')), { sender: "MainframeAdmin", receiver: targetUID, textBody: finalMessageText, mediaPayload: liveChatB64, quotedText: activeReplyText, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
-                    input.value = ""; MatrixSystemState.resetChatAssets(); window.cancelReplyMatrixState();
-                    document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.add('hidden'); document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
-                    window.renderAdminSpyChatConsoleLogs();
-                });
-            } catch(e) {}
-        };
-
-        window.renderInteractiveDrawersContent = function() {
-            const emojiBox = document.getElementById('systemEmojiMatrixBoxNode'); if(emojiBox) emojiBox.innerHTML = systemEmojisList.map(em => `<div class="emoji-item-node" onclick="window.injectEmojiToInputField('${em}')">${em}</div>`).join('');
-            const gifBox = document.getElementById('mainframeGifContainerBox'); if(gifBox) gifBox.innerHTML = structuralGifMatrixList.map(gUrl => `<img class="gif-thumb-item" src="${gUrl}" onclick="window.transmitDirectGifMessage('${gUrl}')">`).join('');
-            
-            const adminEmojiBox = document.getElementById('adminSystemEmojiMatrixBoxNode'); if(adminEmojiBox) adminEmojiBox.innerHTML = systemEmojisList.map(em => `<div class="emoji-item-node" onclick="window.injectEmojiToInputField('${em}')">${em}</div>`).join('');
-            const adminGifBox = document.getElementById('adminMainframeGifContainerBox'); if(adminGifBox) adminGifBox.innerHTML = structuralGifMatrixList.map(gUrl => `<img class="gif-thumb-item" src="${gUrl}" onclick="window.transmitDirectGifMessage('${gUrl}')">`).join('');
-        };
-
-        window.injectEmojiToInputField = function(emojiText) {
-            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput';
-            const input = document.getElementById(inputId); if(input) { input.value += emojiText; input.focus(); }
-        };
-
-        window.transmitDirectGifMessage = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            const inputId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput'; const input = document.getElementById(inputId); if(input) input.value = "";
-            if(MatrixSystemState.get('currentMode') === 'admin') window.dispatchAdminSpyInterceptionMsg(); else window.dispatchMatrixChatMessage();
-        };
-
-        window.toggleEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('mainframeGifContainerBox')?.classList.add('hidden'); document.getElementById('systemEmojiMatrixBoxNode')?.classList.toggle('hidden'); };
-        window.toggleGifMatrixDropdownPanel = function(event) { event.stopPropagation(); document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden'); document.getElementById('mainframeGifContainerBox')?.classList.toggle('hidden'); };
-        
-        window.toggleAdminEmojiDrawerOverlayPanel = function(event) { event.stopPropagation(); document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden'); document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.toggle('hidden'); };
-
-        window.toggleVoiceAudioRecordingEngine = function() {
-            const btnId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminVoiceRecordingCoreTriggerBtn' : 'voiceRecordingCoreTriggerBtn'; const recBtn = document.getElementById(btnId);
-            if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-                    nativeAudioMediaRecorderInstance = new MediaRecorder(stream); compiledAudioChunksCollectorArr = [];
-                    nativeAudioMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) compiledAudioChunksCollectorArr.push(e.data); };
-                    nativeAudioMediaRecorderInstance.onstop = () => {
-                        const reader = new FileReader();
-                        reader.onload = function(e) { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); if(MatrixSystemState.get('currentMode') === 'admin') window.dispatchAdminSpyInterceptionMsg(); else window.dispatchMatrixChatMessage(); };
-                        reader.readAsDataURL(new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' }));
-                        stream.getTracks().forEach(track => track.stop());
-                    };
-                    nativeAudioMediaRecorderInstance.start(); if(recBtn) recBtn.classList.add('recording-active-pulse');
-                    const feedback = document.getElementById('chatAttachmentStatusFeedback'); if(feedback && MatrixSystemState.get('currentMode') === 'user') feedback.innerHTML = `Live Recording...`;
-                }).catch(() => { alert("Audio device rejected."); });
-            } else { nativeAudioMediaRecorderInstance.stop(); if(recBtn) recBtn.classList.remove('recording-active-pulse'); const feedback = document.getElementById('chatAttachmentStatusFeedback'); if (feedback) feedback.innerText = ""; }
-        };
-
-        // ADMIN FUNCTIONS
-        window.switchAdminSubSection = function(sectionId) {
-            MatrixSystemState.set('activeAdminSubSection', sectionId); 
-            
-            // Hide main menu
-            document.getElementById('adminMainMenuBlock').style.display = 'none';
-            
-            const btnHome = document.getElementById('btnAdminBackToHome');
-            if(sectionId === 'menu') {
-                document.getElementById('adminMainMenuBlock').style.display = 'grid';
-                if(btnHome) btnHome.classList.add('hidden');
-                // hide all sections
-                ['creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'].forEach(id => {
-                    const el = document.getElementById(id); if(el) el.classList.add('hidden');
-                });
-                return;
-            }
-            
-            if(btnHome) btnHome.classList.remove('hidden');
-
-            const mapping = {
-                'creation': 'creationBlock',
-                'approvals': 'adminApprovalsBlock',
-                'credentials': 'credentialsBlock',
-                'workspace': 'policyWorkspaceBlock',
-                'spychat': 'adminSpyChatBlock',
-                'tickets': 'adminSupportTicketsBlock',
-                'aispy': 'adminAiSpyChatBlock',
-                'stats': 'adminSystemStatsBlock'
             };
 
-            Object.keys(mapping).forEach(key => {
-                const node = document.getElementById(mapping[key]);
-                if (node) { 
-                    if(sectionId === key) {
-                        node.classList.remove('hidden');
-                        node.style.display = 'block';
-                    } else {
-                        node.classList.add('hidden');
-                        node.style.display = 'none';
-                    }
-                }
-            });
+            window.triggerCreateGroupModal = function() {
+                const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+                const currentUid = MatrixSystemState.get('loggedInCustomerID'); const users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
+                let usersHTML = users.map(u => `<label class="cyber-checkbox-label" style="display:flex; margin-bottom:12px; font-size:1rem;"><input type="checkbox" class="cyber-checkbox group-member-checkbox" value="${u.id}"> ${u.clientName} (@${u.id})</label>`).join('');
+                wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>👥 Create WhatsApp Group</h4><input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Enter Group Subject..."><div style="margin-top:15px; text-align:left; max-height:180px; overflow-y:auto; background:var(--wa-bg); padding:15px; border-radius:8px; border:1px solid var(--border-glass);"><p style="color:var(--neon-cyan); font-weight:bold; margin-bottom:15px; font-size:1rem;">Select Participants:</p>${usersHTML}</div><div class="nexus-popup-flex-btns"><button onclick="window.executeCreateGroupMatrix()" class="nexus-popup-btn primary-btn">CREATE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
+                wrapper.classList.remove('hidden');
+            };
 
-            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); window.exitMobileChatView(); }
-            if(sectionId === 'aispy') window.renderAdminAiInterceptionSpyBlock();
-            if(sectionId === 'stats') window.renderDynamicServerDiagnosticsDashboard();
-            if(sectionId === 'creation') window.renderLiveCreationStatsSummary();
-            if(sectionId === 'workspace') window.renderPolicyCardsBlock();
-            if(sectionId === 'approvals') window.renderAdminPendingApprovals();
-            if(sectionId === 'tickets') window.renderAdminTickets();
-        };
+            window.executeCreateGroupMatrix = function() {
+                const groupName = document.getElementById('newGroupNameInput').value.trim(); if(!groupName) { alert("Group subject is required."); return; }
+                const checkboxes = document.querySelectorAll('.group-member-checkbox:checked'); let members = [MatrixSystemState.get('loggedInCustomerID')]; checkboxes.forEach(cb => members.push(cb.value));
+                const groupId = 'group_' + Date.now(); set(ref(db, 'groups/' + groupId), { id: groupId, name: groupName, members: members, createdBy: MatrixSystemState.get('loggedInCustomerID'), avatar: "", timestamp: Date.now() }).then(() => { window.closeCustomInlinePopupEngine(); alert("✅ Group created successfully!"); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2); });
+            };
 
-        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { alert("🔴 Broadcast transmitted!"); }); };
-        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; alert("Broadcast formatted clean."); }); };
+            window.initializeCrossLinkChatPanel = function() {
+                const targetContainer = document.getElementById('chatTargetContainerView'); if(!targetContainer) return;
+                const currentUid = MatrixSystemState.get('loggedInCustomerID'); const prospectiveTargets = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid && u.status === 'active');
+                const myGroups = (MatrixSystemState.get('cachedGlobalGroupsArr') || []).filter(g => g.members && (g.members.includes(currentUid) || g.createdBy === currentUid));
+                const formattedGroups = myGroups.map(g => ({ id: g.id, clientName: g.name + " (Group)", avatar: g.avatar, isOnlineNode: false, isGroup: true, bio: `Group • ${g.members.length} participants` }));
+                const fullTargetList = [{ id: "MainframeAdmin", clientName: "Mainframe Admin Shashi", avatar: "", isOnlineNode: true }, ...prospectiveTargets, ...formattedGroups];
+                targetContainer.innerHTML = fullTargetList.map(user => {
+                    const isActiveCss = (user.id === MatrixSystemState.get('activeSelectedChatTargetUserId')) ? 'active-chat-target' : '';
+                    const isChamakCss = (user.isOnlineNode) ? 'online-chamak-active' : '';
+                    return `<div class="chat-user-item-node ${isActiveCss} ${isChamakCss}" onclick="window.setOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;"><span class="whatsapp-user-id">${user.isGroup ? '👥 Group Chat' : '@'+user.id}</span><div id="unreadCounterBadge_${user.id}" class="whatsapp-unread-counter-pill hidden">0</div></div></div></div>`;
+                }).join('');
+                if(!MatrixSystemState.get('activeSelectedChatTargetUserId') && fullTargetList.length > 0) window.setOperationalChatTargetId(fullTargetList[0].id);
+            };
 
-        window.generateRandomPassword = function() {
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-            let pass = "";
-            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
-            document.getElementById('newUserPass').value = pass;
-        };
+            window.filterClientChatContactList = function() { const query = document.getElementById('clientContactSearchField').value.toLowerCase(); document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); };
+            window.filterAdminClientChatContactList = function() { const query = document.getElementById('adminClientContactSearchField').value.toLowerCase(); document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => { node.style.display = node.innerText.toLowerCase().includes(query) ? "" : "none"; }); }
 
-        window.copyClientDataToClipboard = function(policyKey) {
-            let p = MatrixSystemState.get('cachedGlobalPolicyArr').find(item => item.policyKey === policyKey);
-            if (!p) return;
-            let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
-            navigator.clipboard.writeText(formattedText).then(() => { alert("📋 CLIENT DATA COPIED SUCCESSFULLY!"); });
-        };
+            window.setOperationalChatTargetId = function(uid) {
+                MatrixSystemState.set('activeSelectedChatTargetUserId', uid);
+                let displayTitle = "Pipeline context...", avatarSrc = defaultAvatarSvg, bioText = "";
 
-        window.renderAdminAiInterceptionSpyBlock = function() {
-            const logsArea = document.getElementById('adminAiSpyLogsWrapper');
-            if(!logsArea) return;
-            const comms = MatrixSystemState.get('cachedGlobalAiCommsArr').reverse();
-            if (comms.length === 0) { logsArea.innerHTML = "<p style='color:var(--text-sub);'>No intercepted AI logs.</p>"; return; }
-            let logsHTML = `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"> Select All</label><button class="abort-btn" onclick="window.executeBatchDeleteAiLogs()">🗑️ Delete Selected</button></div>`;
-            comms.forEach(log => {
-                logsHTML += `<div style="background:rgba(0,0,0,0.5); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:15px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox ai-log-checkbox" data-key="${log.dbKey}"> <b>Client:</b> ${log.customerName} (@${log.customerID})</label><span style="color:var(--text-sub); font-size:0.85rem;">${log.fullDateString} ${log.timestamp}</span></div>
-                    <p style="color:var(--text-main); margin-bottom:5px;"><b>Query:</b> ${log.query}</p>
-                    <p style="color:var(--neon-pink);"><b>AI Response:</b> ${log.response}</p>
-                </div>`;
-            });
-            logsArea.innerHTML = logsHTML;
-        };
-
-        window.executeBatchDeleteAiLogs = function() {
-            let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
-            if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
-                checkedBoxes.forEach(box => {
-                    let key = box.getAttribute('data-key');
-                    remove(ref(db, `ai_communications/${key}`));
-                });
-                alert("Selected logs purged.");
-            }
-        };
-
-        window.selectAllAiLogs = function(masterBox) { document.querySelectorAll('.ai-log-checkbox').forEach(box => box.checked = masterBox.checked); };
-
-        window.renderDynamicServerDiagnosticsDashboard = function() {
-            const arrUsers = MatrixSystemState.get('cachedGlobalUsersArr'); const arrPolicies = MatrixSystemState.get('cachedGlobalPolicyArr'); const arrSignals = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
-            const totalSysCap = 50; 
-            document.getElementById('barChartUsers').style.width = Math.min((arrUsers.length/totalSysCap)*100, 100) + '%';
-            document.getElementById('barChartUsers').innerText = `${arrUsers.length} Nodes`;
-            document.getElementById('barChartPolicies').style.width = Math.min((arrPolicies.length/totalSysCap)*100, 100) + '%';
-            document.getElementById('barChartPolicies').innerText = `${arrPolicies.length} Documents`;
-            
-            const sigWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
-            if(sigWrapper) {
-                if(arrSignals.length === 0) { sigWrapper.innerHTML = `<p style="color:var(--text-sub);">All secure. No signals.</p>`; }
-                else {
-                    sigWrapper.innerHTML = arrSignals.map(sig => {
-                        let dateStr = new Date(sig.epochTime).toLocaleString();
-                        return `<div style="background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:15px; border-radius:8px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
-                            <div><label class="cyber-checkbox-label" style="display:inline-flex;"><input type="checkbox" class="cyber-checkbox signal-log-checkbox" data-uid="${sig.targetUID}"> <span style="margin-left:10px; color:#fff;"><b>UID:</b> ${sig.targetUID} | <b>Name:</b> ${sig.clientName} | <b>Contact:</b> ${sig.phone}</span></label><br><span style="color:#e74c3c; font-size:0.8rem; margin-left:35px;">${dateStr}</span></div>
-                            <button onclick="window.dismissLockoutIncidentNode('${sig.signalID}', '${sig.targetUID}')" class="abort-btn" style="padding:6px 12px; font-size:0.8rem;">CLEAR</button>
-                        </div>`;
-                    }).join('');
-                }
-            }
-        };
-
-        window.executeBatchDeleteSignals = function() {
-            let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { alert("No targets selected."); return; }
-            if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
-                get(ref(db, 'password_forget_signals')).then((snap) => {
-                    let data = snap.val();
-                    if (data) {
-                        Object.keys(data).forEach(key => {
-                            checkedBoxes.forEach(box => {
-                                if (data[key].targetUID === box.getAttribute('data-uid')) {
-                                    remove(ref(db, `password_forget_signals/${key}`));
-                                }
-                            });
-                        });
-                        alert("Selected signals removed.");
-                    }
-                });
-            }
-        };
-
-        window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
-
-        window.clearAllAiLogs = function() {
-            if(confirm("Wipe all AI Communications?")) {
-                remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped."));
-            }
-        }
-
-        window.loadAdminSubmissions = function(){
-            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
-            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
-            window.renderUserControlPanel(); window.renderPolicyCardsBlock(); window.switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
-        };
-
-        window.renderLiveCreationStatsSummary = function() { 
-            const mini = document.getElementById('liveCreationStatsMiniNode');
-            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
-        };
-
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
-            });
-        };
-
-        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
-        window.executeAdminContextClipboardCopy = function(element, extractionValue) { if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.15); const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200); }).catch(() => {}); };
-        window.wipeUserPermanently = function(uid) { if(confirm("Are you sure you want to permanently delete this user?")) remove(ref(db, 'users/' + uid)); };
-
-        window.renderPolicyCardsBlock = function() {
-            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
-            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr'); if(policyArr.length === 0) { targetStack.innerHTML = "<p>No records mapping.</p>"; return; }
-            targetStack.innerHTML = policyArr.map((d) => {
-                let docPreviewHTML = d.attachment ? `<img src="${d.attachment}" onclick="window.triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; cursor:pointer;">` : "<span>None</span>";
-                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID); let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown";
-                return `<div class="hud-data-card" data-policy-key="${d.policyKey}">
-                    <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
-                    <button onclick="window.copyClientDataToClipboard('${d.policyKey}')" class="nav-btn" style="position:absolute; bottom: 20px; right: 20px; font-size:0.75rem;">📋 COPY DATA</button>
-                    <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID}</span></p>
-                    <p><b>Insurer:</b> ${d.insure}</p><p><b>Policy No:</b> ${d.pol}</p><p><b>Reg No:</b> ${d.reg}</p><p><b>Contact:</b> ${d.phone}</p><p><b>Email:</b> ${d.email}</p><p><b>Notes:</b> ${d.notes}</p><p><b>File:</b> ${docPreviewHTML}</p>
-                    <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5);"><select id="updateStatusSelect_${d.policyKey}" style="width:100%; padding:8px; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f;"><option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option><option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option><option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option><option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option></select><input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Response..." style="width:100%; padding:8px; margin-bottom:8px; color:#fff; background:#020408;"><button onclick="window.transmitAdminResponse('${d.policyKey}')" class="hud-engage-btn" style="padding:10px; font-size:0.9rem;">UPDATE PACKET</button></div>
-                    <button class="wipe-card-btn" onclick="window.purgeRegistryLog('${d.policyKey}')">Purge Record</button>
-                </div>`;
-            }).join("");
-        };
-
-        window.filterCardsEngine = function() {
-            const q = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.hud-data-card').forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
-            });
-        };
-
-        window.submitPolicyForm = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
-            if(!insure || !phone) { alert("Please complete required parameters."); return; }
-            const newPolicyRef = push(ref(db, 'policies'));
-            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
-                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); window.renderCustomerLiveTracker();
-            });
-        };
-
-        window.renderCustomerLiveTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
-            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
-            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
-            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
-        };
-
-        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
-        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
-        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
-        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
-
-        window.uploadUserProfileAvatarEngine = function(event) {
-            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
-            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
-                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
-                set(ref(db, targetDbString), base64Avatar).then(() => { 
-                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    event.target.removeAttribute('data-target-uid'); 
-                }); 
-            }; reader.readAsDataURL(file); }
-        };
-
-        window.checkAutoLogin = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            
-            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
-                MatrixSystemState.set('currentMode', 'admin');
-                window.executeClusterLogin(null);
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    MatrixSystemState.set('currentMode', 'user');
-                    window.executeClusterLogin(null);
-                }
-            }
-        };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) {
-                document.getElementById('accessNodePass').focus();
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
-                if(userMatch) document.getElementById('accessNodePass').focus(); 
-            }
-        };
-
-        window.processBinaryAttachment = function(event, type) {
-            const fileInput = event.target;
-            if(fileInput && fileInput.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
-                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
-
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
-        
-        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
-
-        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-
-        window.triggerLockoutTerminalUI = function(usernameString) {
-            localStorage.setItem('nexus_hard_lockout_flag_' + usernameString.toLowerCase(), 'true');
-            set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, epoch: Date.now() });
-            document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">Access signatures for ID [${usernameString}] locked.</p></div>`;
-            setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); window.speakNaturalHuman("Security violation detected.");
-        }
-
-        window.executeClusterLogin = function(event) {
-            if(event) { event.preventDefault(); event.stopPropagation(); }
-            
-            const u = document.getElementById('accessNodeUser').value.trim(); 
-            const p = document.getElementById('accessNodePass').value.trim(); 
-            if(!u || p === "") return;
-
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            let isSuccess = false;
-            let loggedInId = "";
-            let mode = MatrixSystemState.get('currentMode');
-
-            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
-                isSuccess = true;
-                loggedInId = "MainframeAdmin";
-                mode = 'admin';
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    isSuccess = true;
-                    loggedInId = userMatch.id;
-                    mode = 'user';
-                }
-            }
-
-            if(isSuccess) {
-                MatrixSystemState.set('loggedInCustomerID', loggedInId);
-                MatrixSystemState.set('currentMode', mode);
-                localStorage.setItem('nexus_logged_in_uid', loggedInId);
-                localStorage.setItem('nexus_system_session_mode', mode);
-                
-                document.getElementById('mainStage').style.display = 'none';
-                const nav = document.getElementById('mainCyberNavbar');
-                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                
-                if(mode === 'admin') {
-                    document.getElementById('adminDashboard').classList.remove('hidden');
-                    window.loadAdminSubmissions();
+                if (uid.startsWith('group_')) { 
+                    const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid); 
+                    if (groupMatch) { 
+                        displayTitle = groupMatch.name; 
+                        avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
+                        bioText = `Group • ${groupMatch.members ? groupMatch.members.length : 0} members`;
+                    } 
                 } else {
-                    document.getElementById('customerDashboard').classList.remove('hidden');
-                    window.switchCustomerChannel('menu');
+                    const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+                    if (userMatch) { 
+                        displayTitle = userMatch.clientName; 
+                        avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg; 
+                        bioText = userMatch.bio ? `~ ${userMatch.bio}` : "Available"; 
+                    } else if (uid === "MainframeAdmin") { 
+                        displayTitle = "Mainframe Admin Shashi"; 
+                        bioText = "System Administrator"; 
+                    }
                 }
+
+                document.getElementById('chatActiveUserHeaderNode').innerText = displayTitle;
+                document.getElementById('chatActiveHeaderAvatarNode').src = avatarSrc;
+                const bioNode = document.getElementById('chatActiveUserBioNode'); 
+                if (bioNode) { bioNode.innerText = bioText; }
                 
-                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2);
-            } else {
-                let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
-                fails++;
-                MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
-                if (fails >= 3) {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
-                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
+                const pinnedBanner = document.getElementById('chatPinnedMessageBannerNode');
+                if (pinnedBanner) { pinnedBanner.classList.add('hidden'); } 
+                
+                document.getElementById('clientChatGridMatrixWrapper')?.classList.add('mobile-chat-view-active');
+                window.cancelReplyMatrixState(); window.renderActiveChatConversationLogs();
+            };
+            
+            window.setAdminOperationalChatTargetId = function(uid) {
+                MatrixSystemState.set('spyActiveTargetUserContext', uid);
+                let displayTitle = "Pipeline context...";
+                let avatarSrc = defaultAvatarSvg;
+
+                if (uid.startsWith('group_')) {
+                    const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === uid);
+                    if (groupMatch) {
+                        displayTitle = groupMatch.name + " (Group)";
+                        avatarSrc = groupMatch.avatar ? groupMatch.avatar : defaultAvatarSvg;
+                    }
+                } else {
+                    const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+                    if (userMatch) {
+                        displayTitle = userMatch.clientName;
+                        avatarSrc = userMatch.avatar ? userMatch.avatar : defaultAvatarSvg;
+                    } 
                 }
-                alert("❌ ACCESS DENIED: Invalid System ID or Password.");
-                if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
+
+                document.getElementById('spyActiveHeaderTitle').innerText = displayTitle;
+                document.getElementById('adminChatActiveHeaderAvatarNode').src = avatarSrc;
+                
+                document.getElementById('adminChatGridBox')?.classList.add('mobile-chat-view-active');
+                window.cancelReplyMatrixState(); window.renderAdminSpyChatConsoleLogs();
+            };
+
+            window.renderAdminSpyUserList = function() {
+                const listWrapper = document.getElementById('adminSpyUsersListWrapper'); if(!listWrapper) return;
+                const users = MatrixSystemState.get('cachedGlobalUsersArr');
+                const groups = MatrixSystemState.get('cachedGlobalGroupsArr');
+                const allTargets = [...users, ...groups.map(g => ({...g, isGroup: true, clientName: g.name}))];
+                
+                listWrapper.innerHTML = allTargets.map(user => {
+                    const isActiveCss = (user.id === MatrixSystemState.get('spyActiveTargetUserContext')) ? 'active-chat-target' : '';
+                    return `<div class="chat-user-item-node ${isActiveCss}" onclick="window.setAdminOperationalChatTargetId('${user.id}')"><img class="whatsapp-avatar" src="${user.avatar ? user.avatar : defaultAvatarSvg}" onclick="window.triggerTargetUserContactProfileModal(event, '${user.id}')"><div class="whatsapp-user-info"><div class="whatsapp-user-name"><span>${user.clientName}</span></div><div class="whatsapp-user-id">${user.isGroup ? '👥 Group' : '@'+user.id}</div></div></div>`;
+                }).join('');
+                if(!MatrixSystemState.get('spyActiveTargetUserContext') && allTargets.length > 0) window.setAdminOperationalChatTargetId(allTargets[0].id);
             }
-        };
 
-        window.logoutEngine = function() {
-            MatrixSystemState.set('loggedInCustomerID', "");
-            localStorage.removeItem('nexus_logged_in_uid');
-            localStorage.removeItem('nexus_system_session_mode');
-            window.location.reload();
-        };
+            window.executeClusterLogin = function(event) {
+                if(event) { event.preventDefault(); event.stopPropagation(); }
+                
+                const u = document.getElementById('accessNodeUser').value.trim(); 
+                const p = document.getElementById('accessNodePass').value.trim(); 
+                if(!u || p === "") return;
 
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
-    </script>
-</body>
-</html>
+                let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                let isSuccess = false;
+                let loggedInId = "";
+                let mode = MatrixSystemState.get('currentMode');
+
+                if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                    isSuccess = true;
+                    loggedInId = "MainframeAdmin";
+                    mode = 'admin';
+                } else { 
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                    if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                        if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                        isSuccess = true;
+                        loggedInId = userMatch.id;
+                        mode = 'user';
+                    }
+                }
+
+                if(isSuccess) {
+                    MatrixSystemState.set('loggedInCustomerID', loggedInId);
+                    MatrixSystemState.set('currentMode', mode);
+                    localStorage.setItem('nexus_logged_in_uid', loggedInId);
+                    localStorage.setItem('nexus_system_session_mode', mode);
+                    
+                    document.getElementById('mainStage').style.display = 'none';
+                    const nav = document.getElementById('mainCyberNavbar');
+                    if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                    
+                    if(mode === 'admin') {
+                        document.getElementById('adminDashboard').classList.remove('hidden');
+                        window.loadAdminSubmissions();
+                    } else {
+                        document.getElementById('customerDashboard').classList.remove('hidden');
+                        window.switchCustomerChannel('menu');
+                    }
+                    
+                    if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                    if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2);
+                } else {
+                    let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
+                    fails++;
+                    MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
+                    if (fails >= 3) {
+                        let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                        if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
+                    }
+                    alert("❌ ACCESS DENIED: Invalid System ID or Password.");
+                    if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
+                }
+            };
+
+            window.logoutEngine = function() {
+                MatrixSystemState.set('loggedInCustomerID', "");
+                localStorage.removeItem('nexus_logged_in_uid');
+                localStorage.removeItem('nexus_system_session_mode');
+                window.location.reload();
+            };
+
+            setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
+        </script>
+    </body>
+    </html>
