@@ -1873,8 +1873,11 @@
                 vaultItemsHTML += `<div style="background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; padding: 10px; text-align: center;"><img src="${p.attachment}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; cursor: pointer;" onclick="window.triggerEnlargedAttachmentView('${p.attachment}')"><span style="display:block; font-size:0.8rem; color:#2ecc71; margin-bottom: 5px; font-weight:bold;">Policy Document</span><button onclick="window.executePhysicalAssetDownloadEngine('${p.attachment}')" class="note-tool-btn" style="width: 100%; justify-content: center;">💾 DOWNLOAD</button></div>`;
             });
             try {
-                .get('cachedGlobalGroupsArr').some(g => g.id === msg.receiver); 
-                            const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || (isGroup && msg.receiver === msg.receiver));
+                get(ref(db, 'chats')).then((snap) => {
+                    const data = snap.val();
+                    if(data) {
+                        Object.keys(data).forEach(key => {
+                            const msg = data[key]; const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === msg.receiver); const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || (isGroup && msg.receiver === msg.receiver));
                             if(allowedChat && msg.mediaPayload && !msg.mediaPayload.startsWith("data:audio")) {
                                 if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
                                 vaultItemsHTML += `<div style="background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; padding: 10px; text-align: center;"><img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; cursor: pointer;"><span style="display:block; font-size:0.8rem; color:#00f2fe; margin-bottom: 5px; font-weight:bold;">Chat Asset</span><button onclick="window.executePhysicalAssetDownloadEngine('${msg.mediaPayload}')" class="note-tool-btn" style="width: 100%; justify-content: center;">💾 DOWNLOAD</button></div>`;
@@ -1887,6 +1890,386 @@
         };
         
         window.executePhysicalAssetDownloadEngine = function(srcUrl) { const a = document.createElement('a'); a.href = srcUrl; a.download = `Nexus_Vault_Asset_${Date.now()}.png`; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+
+        window.triggerEnlargedAttachmentView = function(src) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:transparent; border:none; box-shadow:none; max-width:90vw;"><img src="${src}" style="max-width:100%; max-height:80vh; border-radius:12px; border:2px solid var(--neon-cyan); box-shadow:0 0 30px rgba(0,242,254,0.5);"><div style="margin-top:15px; display:flex; justify-content:center; gap:15px;"><button onclick="window.executePhysicalAssetDownloadEngine('${src}')" class="hud-engage-btn" style="width:auto; padding:10px 25px;">💾 DOWNLOAD</button><button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:auto; padding:10px 25px;">✖ CLOSE</button></div></div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        // --- CRITICAL WHATSAPP CHAT FUNCTIONS RE-ADDED FOR PERFECT WORKING ---
+        
+        window.initializeCrossLinkChatPanel = function() {
+            const container = document.getElementById('chatTargetContainerView'); if(!container) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
+            const groups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid));
+            
+            let html = "";
+            
+            // Render Groups
+            groups.forEach(g => {
+                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === g.id ? "active-chat-target" : "";
+                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectClientChatTarget('${g.id}', true)">
+                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${g.name}</div>
+                        <div class="whatsapp-user-id">Group • ${g.members.length} members</div>
+                    </div>
+                </div>`;
+            });
+
+            // Render Users
+            users.forEach(u => {
+                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id ? "active-chat-target" : "";
+                const onlineClass = u.isOnlineNode ? "online-chamak-active" : "";
+                let unreadBadge = `<span id="unreadCounterBadge_${u.id}" class="whatsapp-unread-counter-pill hidden">0</span>`;
+                
+                html += `<div class="chat-user-item-node ${activeClass} ${onlineClass}" onclick="window.selectClientChatTarget('${u.id}', false)">
+                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${u.clientName} ${unreadBadge}</div>
+                        <div class="whatsapp-user-id">${u.bio || "Available"}</div>
+                    </div>
+                </div>`;
+            });
+            
+            container.innerHTML = html;
+        };
+
+        window.selectClientChatTarget = function(targetId, isGroup) {
+            MatrixSystemState.set('activeSelectedChatTargetUserId', targetId);
+            window.initializeCrossLinkChatPanel(); // Update UI Highlighting
+            
+            let name = "Unknown", avatar = defaultAvatarSvg, bio = "Available";
+            if (isGroup) {
+                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
+                if(g) { name = g.name; avatar = g.avatar || defaultAvatarSvg; bio = g.members.join(", "); }
+            } else {
+                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
+                if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; bio = u.isOnlineNode ? "Online" : u.bio; }
+            }
+            
+            document.getElementById('chatActiveHeaderAvatarNode').src = avatar;
+            document.getElementById('chatActiveUserHeaderNode').innerText = name;
+            document.getElementById('chatActiveUserBioNode').innerText = bio;
+            
+            if (window.innerWidth <= 768) {
+                document.getElementById('clientChatGridMatrixWrapper').classList.add('mobile-chat-view-active');
+            }
+            
+            window.renderActiveChatConversationLogs();
+        };
+
+        window.renderActiveChatConversationLogs = function() {
+            const scrollBox = document.getElementById('chatMessagesScrollWrapper'); if(!scrollBox) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
+
+            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
+            const rawData = window.cachedChatsData || {};
+            
+            let msgs = [];
+            Object.keys(rawData).forEach(key => {
+                const m = rawData[key]; m.dbKey = key;
+                if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
+                
+                if (isGroup) {
+                    if (m.receiver === targetUid) msgs.push(m);
+                } else {
+                    if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
+                        msgs.push(m);
+                    }
+                }
+            });
+            
+            msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
+            
+            let html = "";
+            let lastSender = "";
+            msgs.forEach((m, idx) => {
+                const isMe = m.sender === currentUid;
+                const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
+                const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
+                lastSender = m.sender;
+                
+                let mediaHtml = "";
+                if(m.mediaPayload) {
+                    if(m.mediaPayload.startsWith('data:audio')) {
+                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:40px; margin-bottom:5px;"></audio><br>`;
+                    } else if (m.mediaPayload.startsWith('data:image')) {
+                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:200px; border-radius:8px; margin-bottom:5px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
+                    } else {
+                        mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
+                    }
+                }
+                
+                let senderNameHtml = "";
+                if (isGroup && !isMe) {
+                    const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
+                    senderNameHtml = `<div class="group-sender-name">${senderProfile ? senderProfile.clientName : m.sender}</div>`;
+                }
+
+                let tickHtml = "";
+                if (isMe) {
+                    tickHtml = m.read ? `<span class="whatsapp-tick-space double-blue">✓✓</span>` : `<span class="whatsapp-tick-space">✓✓</span>`;
+                }
+                
+                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}">
+                    ${senderNameHtml}
+                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
+                    <div class="whatsapp-time">${m.timestamp} ${tickHtml}</div>
+                </div>`;
+            });
+            
+            scrollBox.innerHTML = html;
+            scrollBox.scrollTop = scrollBox.scrollHeight;
+        };
+
+        window.dispatchMatrixChatMessage = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) { alert("Select a chat pipeline first."); return; }
+            
+            const inputField = document.getElementById('chatCoreMessageTextInput');
+            const text = inputField.value.trim();
+            const media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64') || "";
+            
+            if(!text && !media) return;
+            
+            const msgRef = push(ref(db, 'chats'));
+            set(msgRef, {
+                sender: currentUid,
+                receiver: targetUid,
+                textBody: text,
+                mediaPayload: media,
+                read: false,
+                epochTimeNode: Date.now(),
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => {
+                inputField.value = "";
+                document.getElementById('chatInputCharCounter').innerText = "0/250";
+                MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
+                const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = "";
+                if(isAudioContextAllowed) window.playSynthesizedSound(800, 'sine', 0.1);
+                
+                if (MatrixSystemState.get('isAIAssistantActiveState') && targetUid === "MainframeAdmin") {
+                    processAIMatrixAssistantResponseStream(text);
+                }
+            });
+        };
+
+        // --- ADMIN SPY CHAT FUNCTIONS (For Perfect Spychat Panel working) ---
+        window.renderAdminSpyUserList = function() {
+            const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
+            const users = MatrixSystemState.get('cachedGlobalUsersArr');
+            const groups = MatrixSystemState.get('cachedGlobalGroupsArr');
+            
+            let html = "";
+            groups.forEach(g => {
+                const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === g.id ? "active-chat-target" : "";
+                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${g.id}', true)">
+                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${g.name}</div>
+                        <div class="whatsapp-user-id">Group • Spy Mode</div>
+                    </div>
+                </div>`;
+            });
+
+            users.forEach(u => {
+                const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === u.id ? "active-chat-target" : "";
+                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${u.id}', false)">
+                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${u.clientName}</div>
+                        <div class="whatsapp-user-id">${u.contact}</div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        };
+
+        window.selectAdminSpyChatTarget = function(targetId, isGroup) {
+            MatrixSystemState.set('spyActiveTargetUserContext', targetId);
+            window.renderAdminSpyUserList();
+            
+            let name = "Unknown", avatar = defaultAvatarSvg;
+            if (isGroup) {
+                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
+                if(g) { name = g.name; avatar = g.avatar || defaultAvatarSvg; }
+            } else {
+                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
+                if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; }
+            }
+            
+            document.getElementById('adminChatActiveHeaderAvatarNode').src = avatar;
+            document.getElementById('spyActiveHeaderTitle').innerText = name;
+            
+            if (window.innerWidth <= 768) {
+                document.getElementById('adminChatGridBox').classList.add('mobile-chat-view-active');
+            }
+            window.renderAdminSpyChatConsoleLogs();
+        };
+
+        window.renderAdminSpyChatConsoleLogs = function() {
+            const scrollBox = document.getElementById('adminSpyChatLogsStack'); if(!scrollBox) return;
+            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!targetUid) return;
+
+            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
+            const rawData = window.cachedChatsData || {};
+            
+            let msgs = [];
+            Object.keys(rawData).forEach(key => {
+                const m = rawData[key]; m.dbKey = key;
+                if (isGroup) {
+                    if (m.receiver === targetUid) msgs.push(m);
+                } else {
+                    if (m.sender === targetUid || m.receiver === targetUid) msgs.push(m);
+                }
+            });
+            
+            msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
+            
+            let html = "";
+            let lastSender = "";
+            msgs.forEach(m => {
+                const isMe = m.sender === "MainframeAdmin";
+                const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
+                const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
+                lastSender = m.sender;
+                
+                let mediaHtml = "";
+                if(m.mediaPayload) {
+                    if(m.mediaPayload.startsWith('data:audio')) {
+                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:40px; margin-bottom:5px;"></audio><br>`;
+                    } else if (m.mediaPayload.startsWith('data:image')) {
+                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:200px; border-radius:8px; margin-bottom:5px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
+                    }
+                }
+                
+                let senderNameHtml = `<div class="group-sender-name">${m.sender}</div>`;
+                
+                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
+                    ${!isMe ? senderNameHtml : ''}
+                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
+                    <div class="whatsapp-time">${m.timestamp}</div>
+                </div>`;
+            });
+            
+            scrollBox.innerHTML = html;
+            scrollBox.scrollTop = scrollBox.scrollHeight;
+        };
+
+        window.dispatchAdminSpyInterceptionMsg = function() {
+            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!targetUid) { alert("Select a target user first."); return; }
+            
+            const inputField = document.getElementById('adminSpyResponseInput');
+            const text = inputField.value.trim();
+            const media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64') || "";
+            
+            if(!text && !media) return;
+            
+            const msgRef = push(ref(db, 'chats'));
+            set(msgRef, {
+                sender: "MainframeAdmin",
+                receiver: targetUid,
+                textBody: text,
+                mediaPayload: media,
+                read: false,
+                epochTimeNode: Date.now(),
+                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            }).then(() => {
+                inputField.value = "";
+                MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
+            });
+        };
+
+        // --- UI Drawers, Emojis, GIF & Call Overlays ---
+        window.renderInteractiveDrawersContent = function() {
+            const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
+            document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
+            document.getElementById('adminSystemEmojiMatrixBoxNode').innerHTML = emHTML;
+            
+            const gifHTML = structuralGifMatrixList.map(g => `<img src="${g}" class="gif-thumb-item" onclick="window.insertGifToChat('${g}')">`).join('');
+            document.getElementById('mainframeGifContainerBox').innerHTML = gifHTML;
+            document.getElementById('adminMainframeGifContainerBox').innerHTML = gifHTML;
+        };
+
+        window.toggleEmojiDrawerOverlayPanel = function(e) {
+            e.stopPropagation();
+            document.getElementById('systemEmojiMatrixBoxNode')?.classList.toggle('hidden');
+            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
+        };
+        window.toggleAdminEmojiDrawerOverlayPanel = function(e) {
+            e.stopPropagation();
+            document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.toggle('hidden');
+            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
+        };
+
+        window.insertEmojiToChat = function(emoji) {
+            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
+            const input = document.getElementById(isAdm ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput');
+            if(input) { input.value += emoji; input.focus(); }
+        };
+
+        window.insertGifToChat = function(gifUrl) {
+            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
+            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
+            if(isAdm) { window.dispatchAdminSpyInterceptionMsg(); } else { window.dispatchMatrixChatMessage(); }
+            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
+            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
+        };
+
+        window.triggerHologramCall = function(type) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            const title = type === 'video' ? '📹 ESTABLISHING SECURE VIDEO LINK' : '📞 ESTABLISHING SECURE AUDIO LINK';
+            const callEffect = type === 'video' ? `<div class="hologram-call-effect"><video autoplay loop muted playsinline src="https://media.giphy.com/media/l41YtZOb9EUABnuqA/giphy.mp4"></video><div class="hologram-scanline"></div></div>` : `<div class="hologram-call-effect" style="background:#0a0f18;"><div style="position:relative; display:flex; justify-content:center; align-items:center;"><img src="${defaultAvatarSvg}" style="width:100px; height:100px; border-radius:50%; border:2px solid #00f2fe; position:relative; z-index:5;"><div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div></div></div>`;
+            
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:#02050e; border:2px solid var(--neon-cyan); box-shadow:0 0 50px rgba(0,242,254,0.4); max-width:500px;"><h4 style="color:#00f2fe; text-shadow:0 0 10px #00f2fe; margin-bottom:20px; font-family:'Orbitron'; animation:pulseGlow 1s infinite;">${title}</h4>${callEffect}<div style="color:var(--neon-pink); margin-bottom:20px; font-weight:bold; font-family:monospace;">ENCRYPTING END-TO-END CONNECTION...</div><button onclick="window.closeCustomInlinePopupEngine()" class="hud-engage-btn" style="background:#e74c3c; color:#fff; box-shadow:0 0 20px rgba(231,76,60,0.6);">END CALL</button></div>`;
+            wrapper.classList.remove('hidden');
+            window.playSynthesizedSound(440, 'sine', 1.5);
+        };
+
+        window.filterClientChatContactList = function() {
+            const q = document.getElementById('clientContactSearchField').value.toLowerCase();
+            document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
+                const name = node.querySelector('.whatsapp-user-name').innerText.toLowerCase();
+                node.style.display = name.includes(q) ? 'flex' : 'none';
+            });
+        };
+        
+        window.filterAdminClientChatContactList = function() {
+            const q = document.getElementById('adminClientContactSearchField').value.toLowerCase();
+            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
+                const name = node.querySelector('.whatsapp-user-name').innerText.toLowerCase();
+                node.style.display = name.includes(q) ? 'flex' : 'none';
+            });
+        };
+
+        window.triggerCreateGroupModal = function() {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
+            let userCheckboxes = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== MatrixSystemState.get('loggedInCustomerID')).map(u => `<label style="display:block; text-align:left; color:#fff; margin-bottom:8px;"><input type="checkbox" class="group-member-checkbox" value="${u.id}"> ${u.clientName}</label>`).join('');
+            
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>👥 Create New Group</h4><input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Group Subject"><div style="max-height:150px; overflow-y:auto; background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; margin-bottom:15px; border:1px solid var(--border-glass);">${userCheckboxes}</div><div class="nexus-popup-flex-btns"><button onclick="window.submitCreateGroup()" class="nexus-popup-btn primary-btn">CREATE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.submitCreateGroup = function() {
+            const name = document.getElementById('newGroupNameInput').value.trim();
+            const checked = Array.from(document.querySelectorAll('.group-member-checkbox:checked')).map(cb => cb.value);
+            const myUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!name || checked.length === 0) { alert("Provide a name and select at least 1 member."); return; }
+            checked.push(myUid);
+            
+            const gRef = push(ref(db, 'groups'));
+            set(gRef, { id: 'group_' + gRef.key, name: name, members: checked, admin: myUid, epoch: Date.now() }).then(() => {
+                window.closeCustomInlinePopupEngine(); alert("Group Created successfully.");
+            });
+        };
 
         window.switchCustomerChannel = function(channelId) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
@@ -2009,6 +2392,7 @@
                 else { document.getElementById('customerDashboard').classList.remove('hidden'); window.switchCustomerChannel(savedWorkspaceChan); }
                 if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
             } else {
+                // If not logged in, show login stage.
                 document.getElementById('mainStage').style.display = 'flex';
             }
         }
@@ -2045,6 +2429,7 @@
                         if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
                         if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
+                        // Re-evaluate tabs dynamically in real-time
                         window.enforceCustomerPermissions();
                     }
                 }
@@ -2242,19 +2627,18 @@
             }
         };
 
-        // ==============================================================
-        // ADMIN SPY CHAT & MAIN RESTORED LOGIC SECTION
-        // ==============================================================
-
+        // ADMIN FUNCTIONS
         window.switchAdminSubSection = function(sectionId) {
             MatrixSystemState.set('activeAdminSubSection', sectionId); 
             
+            // Hide main menu
             document.getElementById('adminMainMenuBlock').style.display = 'none';
             
             const btnHome = document.getElementById('btnAdminBackToHome');
             if(sectionId === 'menu') {
                 document.getElementById('adminMainMenuBlock').style.display = 'grid';
                 if(btnHome) btnHome.classList.add('hidden');
+                // hide all sections
                 ['creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'].forEach(id => {
                     const el = document.getElementById(id); if(el) el.classList.add('hidden');
                 });
@@ -2466,551 +2850,71 @@
         window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
         window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
 
-        // ---------------------------------------------------------------------------------------------------------
-        // FULL WHATSAPP LOGIC - INITIALIZE, OPEN, RENDER, DISPATCH & ADMIN SPY (ALL COMPLETELY RESTORED & LINKED)
-        // ---------------------------------------------------------------------------------------------------------
-
-        window.initializeCrossLinkChatPanel = function() {
-            const chatListWrap = document.getElementById('chatTargetContainerView'); 
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!chatListWrap || !currentUid) return;
-
-            let allUsers = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
-            let allGroups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid));
-            
-            let contactHTML = "";
-
-            // Groups First
-            allGroups.forEach(g => {
-                const isSelected = MatrixSystemState.get('activeSelectedChatTargetUserId') === g.id;
-                contactHTML += `<div class="chat-user-item-node group-node-item ${isSelected ? 'active-chat-target' : ''}" onclick="window.openChatWithTargetUser('${g.id}', true)" data-name="${g.name.toLowerCase()}">
-                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${g.name}</div>
-                        <div class="whatsapp-user-id">${g.members.length} members</div>
-                    </div>
-                    <span id="unreadCounterBadge_${g.id}" class="whatsapp-unread-counter-pill hidden">0</span>
-                </div>`;
-            });
-
-            // Users
-            allUsers.forEach(u => {
-                const isSelected = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id;
-                const isOnline = u.isOnlineNode ? 'online-chamak-active' : '';
-                contactHTML += `<div class="chat-user-item-node user-node-item ${isSelected ? 'active-chat-target' : ''} ${isOnline}" onclick="window.openChatWithTargetUser('${u.id}', false)" data-name="${u.clientName.toLowerCase()}">
-                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${u.clientName}</div>
-                        <div class="whatsapp-user-id">@${u.id}</div>
-                    </div>
-                    <span id="unreadCounterBadge_${u.id}" class="whatsapp-unread-counter-pill hidden">0</span>
-                </div>`;
-            });
-
-            if(contactHTML === "") contactHTML = `<div style="color:var(--wa-text-muted); padding:20px; text-align:center;">No contacts found.</div>`;
-            chatListWrap.innerHTML = contactHTML;
-            
-            if (window.cachedChatsData) {
-                calculateUnreadBadgeCountersTrack(window.cachedChatsData);
-            }
+        window.uploadUserProfileAvatarEngine = function(event) {
+            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
+            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
+                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
+                set(ref(db, targetDbString), base64Avatar).then(() => { 
+                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    event.target.removeAttribute('data-target-uid'); 
+                }); 
+            }; reader.readAsDataURL(file); }
         };
 
-        window.filterClientChatContactList = function() {
-            const q = document.getElementById('clientContactSearchField').value.toLowerCase();
-            document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
-                const name = node.getAttribute('data-name');
-                node.style.display = name.includes(q) ? "flex" : "none";
-            });
-        };
-
-        window.openChatWithTargetUser = function(targetId, isGroup = false) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', targetId);
-            MatrixSystemState.resetChatAssets();
-            document.getElementById('chatCoreMessageTextInput').value = "";
-            document.getElementById('chatAttachmentStatusFeedback').innerText = "";
-
-            let displayName = "Unknown";
-            let displayBio = "Available";
-            let avatarSrc = defaultAvatarSvg;
-
-            if (isGroup) {
-                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
-                if(g) { displayName = g.name; displayBio = `${g.members.length} Participants`; avatarSrc = g.avatar || defaultAvatarSvg; }
-            } else {
-                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
-                if(u) { displayName = u.clientName; displayBio = `UID: @${u.id}`; avatarSrc = u.avatar || defaultAvatarSvg; }
-            }
-
-            document.getElementById('chatActiveUserHeaderNode').innerText = displayName;
-            document.getElementById('chatActiveUserBioNode').innerText = displayBio;
-            document.getElementById('chatActiveHeaderAvatarNode').src = avatarSrc;
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
             
-            const searchBar = document.getElementById('waInChatSearchBarNode');
-            if(searchBar) searchBar.classList.remove('active');
-
-            document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
-            if(event && event.currentTarget) event.currentTarget.classList.add('active-chat-target');
-
-            const matrixWrap = document.getElementById('clientChatGridMatrixWrapper');
-            if(matrixWrap) matrixWrap.classList.add('mobile-chat-view-active');
-
-            window.renderActiveChatConversationLogs();
-        };
-
-        window.renderActiveChatConversationLogs = function() {
-            const wrapper = document.getElementById('chatMessagesScrollWrapper');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!wrapper || !currentUid || !targetUid) return;
-
-            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-            const allChats = window.cachedChatsData ? Object.keys(window.cachedChatsData).map(k => ({...window.cachedChatsData[k], keyId: k})) : [];
-            
-            let filteredChats = [];
-            if (isGroup) {
-                filteredChats = allChats.filter(m => m.receiver === targetUid);
-            } else {
-                filteredChats = allChats.filter(m => (m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid));
-            }
-
-            filteredChats = filteredChats.filter(m => !localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`));
-            filteredChats.sort((a, b) => a.epochTimeNode - b.epochTimeNode);
-
-            if(filteredChats.length === 0) {
-                wrapper.innerHTML = `<div style="text-align:center; padding:30px; color:var(--wa-text-muted); font-size:0.95rem; font-weight:500;">🔒 End-to-end encrypted. Send a message to start.</div>`;
-                return;
-            }
-
-            let chatHTML = "";
-            filteredChats.forEach((msg, idx) => {
-                const isMe = msg.sender === currentUid;
-                const bubbleClass = isMe ? "bubble-outgoing" : "bubble-incoming";
-                
-                let hasTail = true;
-                if(idx > 0 && filteredChats[idx-1].sender === msg.sender) hasTail = false;
-                
-                let senderNameHtml = "";
-                if (!isMe && isGroup) {
-                    const senderUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === msg.sender);
-                    senderNameHtml = `<div class="group-sender-name">${senderUser ? senderUser.clientName : msg.sender}</div>`;
-                } else if (!isMe && msg.sender === 'MainframeAdmin') {
-                    senderNameHtml = `<div class="group-sender-name" style="color:var(--neon-pink);">⚡ MAINFRAME AI</div>`;
+            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                MatrixSystemState.set('currentMode', 'admin');
+                window.executeClusterLogin(null);
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                    MatrixSystemState.set('currentMode', 'user');
+                    window.executeClusterLogin(null);
                 }
-
-                let mediaHtml = "";
-                if (msg.mediaPayload) {
-                    if (msg.mediaPayload.startsWith("data:audio")) {
-                        mediaHtml = `<div style="margin-bottom:6px;"><audio src="${msg.mediaPayload}" controls style="max-width:220px; height:35px; outline:none; border-radius:18px;"></audio></div>`;
-                    } else if (msg.mediaPayload.startsWith("data:image")) {
-                        mediaHtml = `<img src="${msg.mediaPayload}" style="max-width:100%; border-radius:8px; margin-bottom:6px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')">`;
-                    }
-                }
-
-                let replyBlock = "";
-                if(msg.replyToText) {
-                    replyBlock = `<div class="reply-reference-box">${msg.replyToText}</div>`;
-                }
-
-                let readTick = isMe ? `<span class="whatsapp-tick-space ${msg.read ? 'double-blue' : ''}">✓${msg.read?'✓':''}</span>` : "";
-                let reactionHtml = msg.reaction ? `<div class="msg-reactions-tray">${msg.reaction}</div>` : "";
-
-                chatHTML += `<div class="bubble-msg-wrapper ${bubbleClass} ${hasTail ? 'has-tail' : ''} ${hasTail ? 'first-in-group' : ''}" oncontextmenu="window.triggerMessageContextDropdown(event, '${msg.keyId}', '${msg.textBody ? msg.textBody.replace(/'/g,"\\'") : 'Media'}', ${isMe})">
-                    ${senderNameHtml}
-                    ${replyBlock}
-                    ${mediaHtml}
-                    <div class="bubble-text-content">${msg.textBody || ""}</div>
-                    <div class="whatsapp-time">${msg.timestamp} ${readTick}</div>
-                    ${reactionHtml}
-                </div>`;
-            });
-
-            wrapper.innerHTML = chatHTML;
-            wrapper.scrollTop = wrapper.scrollHeight;
-        };
-
-        window.dispatchMatrixChatMessage = function() {
-            const textInput = document.getElementById('chatCoreMessageTextInput');
-            const textVal = textInput.value.trim();
-            const b64Media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const replyTo = MatrixSystemState.get('activeReplyMessageTextNode');
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-
-            if((!textVal && !b64Media) || !currentUid || !targetUid) return;
-
-            const msgRef = push(ref(db, 'chats'));
-            set(msgRef, {
-                msgId: msgRef.key,
-                sender: currentUid,
-                receiver: targetUid,
-                textBody: textVal,
-                mediaPayload: b64Media,
-                replyToText: replyTo,
-                read: false,
-                reaction: "",
-                epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                textInput.value = "";
-                MatrixSystemState.resetChatAssets();
-                window.cancelReplyMatrixState();
-                document.getElementById('chatAttachmentStatusFeedback').innerText = "";
-                document.getElementById('chatInputCharCounter').innerText = "0/250";
-                window.playSynthesizedSound(660, 'sine', 0.1);
-                
-                if(MatrixSystemState.get('isAIAssistantActiveState') && !MatrixSystemState.get('cachedGlobalGroupsArr').some(g=>g.id===targetUid) && targetUid !== "MainframeAdmin") {
-                    processAIMatrixAssistantResponseStream(textVal);
-                }
-            });
-        };
-
-        window.renderInteractiveDrawersContent = function() {
-            const emojiDrawer = document.getElementById('systemEmojiMatrixBoxNode');
-            const adminEmojiDrawer = document.getElementById('adminSystemEmojiMatrixBoxNode');
-            let emojiHtml = systemEmojisList.slice(0, 100).map(e => `<div class="emoji-item-node" onclick="window.insertMatrixEmojiToChat('${e}')">${e}</div>`).join('');
-            if(emojiDrawer) emojiDrawer.innerHTML = emojiHtml;
-            if(adminEmojiDrawer) adminEmojiDrawer.innerHTML = emojiHtml.replace(/insertMatrixEmojiToChat/g, "insertMatrixEmojiToAdminChat");
-
-            const gifDrawer = document.getElementById('mainframeGifContainerBox');
-            const adminGifDrawer = document.getElementById('adminMainframeGifContainerBox');
-            let gifHtml = structuralGifMatrixList.map(g => `<img src="${g}" class="gif-thumb-item" onclick="window.dispatchMainframeGifPayload('${g}')">`).join('');
-            if(gifDrawer) gifDrawer.innerHTML = gifHtml;
-            if(adminGifDrawer) adminGifDrawer.innerHTML = gifHtml.replace(/dispatchMainframeGifPayload/g, "dispatchMainframeGifPayloadAdmin");
-        };
-
-        window.toggleEmojiDrawerOverlayPanel = function(event) {
-            event.stopPropagation();
-            const d = document.getElementById('systemEmojiMatrixBoxNode');
-            if(d) {
-                d.classList.toggle('hidden');
-                document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
-                document.getElementById('waAttachmentMenuBox')?.classList.remove('active');
             }
         };
 
-        window.toggleAdminEmojiDrawerOverlayPanel = function(event) {
-            event.stopPropagation();
-            const d = document.getElementById('adminSystemEmojiMatrixBoxNode');
-            if(d) d.classList.toggle('hidden');
-        };
-
-        window.insertMatrixEmojiToChat = function(emoji) {
-            const input = document.getElementById('chatCoreMessageTextInput');
-            if(input) { input.value += emoji; input.focus(); window.handleUserTypingSimulationTracker(); }
-        };
-
-        window.insertMatrixEmojiToAdminChat = function(emoji) {
-            const input = document.getElementById('adminSpyResponseInput');
-            if(input) { input.value += emoji; input.focus(); }
-        };
-
-        window.dispatchMainframeGifPayload = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            document.getElementById('chatAttachmentStatusFeedback').innerText = "📎 GIF Attachment Ready";
-            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
-        };
-
-        window.dispatchMainframeGifPayloadAdmin = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            alert("GIF Ready for Admin Transmission");
-            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
-        };
-
-        window.toggleVoiceAudioRecordingEngine = function() {
-            const btn = document.getElementById('voiceRecordingCoreTriggerBtn') || document.getElementById('adminVoiceRecordingCoreTriggerBtn');
-            if (!nativeAudioMediaRecorderInstance || nativeAudioMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-                    nativeAudioMediaRecorderInstance = new MediaRecorder(stream);
-                    compiledAudioChunksCollectorArr = [];
-                    nativeAudioMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) compiledAudioChunksCollectorArr.push(e.data); };
-                    nativeAudioMediaRecorderInstance.onstop = () => {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result);
-                            if(MatrixSystemState.get('currentMode') === 'admin') window.dispatchAdminSpyInterceptionMsg();
-                            else window.dispatchMatrixChatMessage();
-                        };
-                        reader.readAsDataURL(new Blob(compiledAudioChunksCollectorArr, { type: 'audio/webm' }));
-                        stream.getTracks().forEach(t => t.stop());
-                    };
-                    nativeAudioMediaRecorderInstance.start();
-                    if(btn) btn.classList.add('recording-active-pulse');
-                    window.playSynthesizedSound(440, 'sine', 0.1);
-                }).catch(() => alert("Mic permission denied."));
-            } else {
-                nativeAudioMediaRecorderInstance.stop();
-                if(btn) btn.classList.remove('recording-active-pulse');
-                window.playSynthesizedSound(300, 'triangle', 0.15);
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
             }
         };
 
-        window.triggerHologramCall = function(type) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const activeId = MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
-            let targetName = "Unknown";
-            const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === activeId);
-            if(userObj) targetName = userObj.clientName; else if (activeId === "MainframeAdmin") targetName = "Mainframe Admin";
-
-            let mediaHtml = type === 'video' ? `<video autoplay loop muted playsinline><source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-holographic-planet-earth-31682-large.mp4" type="video/mp4"></video>` : `<div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div><div class="radar-pulse-ring"></div><div style="font-size:3rem;">🎙️</div>`;
-            
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" style="background:#0b141a; border:1px solid #00a884; max-width:350px;">
-                <h4 style="color:#00a884; margin-bottom:5px;">End-to-end Encrypted</h4>
-                <p style="color:var(--wa-text); font-size:1.1rem; margin-bottom:20px; font-weight:600;">Calling ${targetName}...</p>
-                <div class="hologram-call-effect">${mediaHtml}<div class="hologram-scanline"></div></div>
-                <button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:100%; border-radius:20px; padding:15px; font-size:1.1rem; background:#e74c3c;">End Call 📞</button>
-            </div>`;
-            wrapper.classList.remove('hidden');
-            window.playSynthesizedSound(800, 'sine', 0.5);
-        };
-
-        window.triggerEnlargedAttachmentView = function(b64Src) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div style="position:relative; width:90vw; height:90vh; display:flex; justify-content:center; align-items:center; flex-direction:column;" onclick="event.stopPropagation()"><img src="${b64Src}" style="max-width:100%; max-height:85vh; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.8); border:2px solid var(--neon-cyan);"><div style="margin-top:15px; display:flex; gap:15px;"><button onclick="window.executePhysicalAssetDownloadEngine('${b64Src}')" class="hud-engage-btn" style="width:auto; padding:10px 20px; font-size:1rem;">💾 Download</button><button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:auto; padding:10px 20px; font-size:1rem;">✖ Close</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.triggerMessageContextDropdown = function(event, msgId, textStr, isSender) {
-            event.preventDefault(); event.stopPropagation();
-            document.querySelectorAll('.msg-interactive-dropdown-menu').forEach(el => el.remove());
-            const dropdown = document.createElement('div');
-            dropdown.className = 'msg-interactive-dropdown-menu';
-            dropdown.style.left = `${event.pageX}px`; dropdown.style.top = `${event.pageY}px`;
-            
-            let menuHtml = `<button class="dropdown-action-row-btn" onclick="window.executeMessageReplyActionTrigger('${textStr}'); this.parentElement.remove();">↩️ Reply</button>`;
-            if (isSender || MatrixSystemState.get('currentMode') === 'admin') {
-                menuHtml += `<button class="dropdown-action-row-btn delete-color" onclick="window.executeMessageDeleteActionTrigger('${msgId}'); this.parentElement.remove();">🗑️ Delete for everyone</button>`;
-            }
-            dropdown.innerHTML = menuHtml;
-            document.body.appendChild(dropdown);
-            
-            document.addEventListener('click', function closeMenu() {
-                dropdown.remove(); document.removeEventListener('click', closeMenu);
-            }, {once:true});
-        };
-
-        window.executeMessageReplyActionTrigger = function(textStr) {
-            const mode = MatrixSystemState.get('currentMode');
-            MatrixSystemState.set('activeReplyMessageTextNode', textStr);
-            const bannerId = mode === 'admin' ? 'adminChatReplyPreviewBanner' : 'chatReplyPreviewBanner';
-            const textNodeId = mode === 'admin' ? 'adminReplyPreviewTextNode' : 'replyPreviewTextNode';
-            const banner = document.getElementById(bannerId);
-            if(banner) { document.getElementById(textNodeId).innerText = textStr; banner.classList.remove('hidden'); }
-        };
-
-        window.cancelReplyMatrixState = function() {
-            MatrixSystemState.set('activeReplyMessageTextNode', "");
-            document.getElementById('chatReplyPreviewBanner')?.classList.add('hidden');
-            document.getElementById('adminChatReplyPreviewBanner')?.classList.add('hidden');
-        };
-
-        window.executeMessageDeleteActionTrigger = function(msgId) {
-            if(confirm("Delete this message?")) {
-                remove(ref(db, `chats/${msgId}`)).then(() => {
-                    window.playSynthesizedSound(200, 'sawtooth', 0.2);
-                });
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
             }
         };
 
-        window.triggerCreateGroupModal = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
-            
-            let checkboxHtml = users.map(u => `<label style="display:flex; align-items:center; gap:10px; color:var(--text-main); font-size:0.95rem; margin-bottom:8px; padding:6px; background:rgba(0,0,0,0.3); border-radius:6px; border:1px solid var(--border-glass);"><input type="checkbox" class="group-member-checkbox" value="${u.id}" style="width:18px; height:18px;"> ${u.clientName} (@${u.id})</label>`).join('');
-            
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-height:80vh; display:flex; flex-direction:column;">
-                <h4 style="color:#00a884;">👥 Create New Group</h4>
-                <input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Group Subject Name *">
-                <div style="flex:1; overflow-y:auto; margin:10px 0; text-align:left; border:1px solid var(--border-glass); padding:10px; border-radius:8px;">
-                    <p style="color:var(--neon-cyan); margin-bottom:10px; font-weight:bold; position:sticky; top:0; background:#202c33; padding-bottom:5px; z-index:2;">Select Participants:</p>
-                    ${checkboxHtml}
-                </div>
-                <div class="nexus-popup-flex-btns">
-                    <button onclick="window.executeCreateNewGroupNode()" class="nexus-popup-btn primary-btn">CREATE GROUP</button>
-                    <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button>
-                </div>
-            </div>`;
-            wrapper.classList.remove('hidden');
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
+        window.logoutEngine = function() {
+            MatrixSystemState.set('loggedInCustomerID', "");
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            window.location.reload();
         };
 
-        window.executeCreateNewGroupNode = function() {
-            const name = document.getElementById('newGroupNameInput').value.trim();
-            if(!name) { alert("Group name required."); return; }
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            let selectedMembers = [currentUid];
-            document.querySelectorAll('.group-member-checkbox:checked').forEach(cb => selectedMembers.push(cb.value));
-            if(selectedMembers.length < 2) { alert("Select at least 1 other participant."); return; }
-            
-            const gRef = push(ref(db, 'groups'));
-            set(gRef, { id: `group_${gRef.key}`, name: name, members: selectedMembers, adminId: currentUid, avatar: "", createdEpoch: Date.now() }).then(() => {
-                window.closeCustomInlinePopupEngine();
-                alert(`✅ Group "${name}" created successfully.`);
-            });
-        };
-
-        window.renderAdminSpyUserList = function() {
-            const listWrap = document.getElementById('adminSpyUsersListWrapper'); if(!listWrap) return;
-            let html = "";
-            let allUsers = MatrixSystemState.get('cachedGlobalUsersArr');
-            let allGroups = MatrixSystemState.get('cachedGlobalGroupsArr');
-
-            allGroups.forEach(g => {
-                const isSelected = MatrixSystemState.get('spyActiveTargetUserContext') === g.id;
-                html += `<div class="chat-user-item-node group-node-item ${isSelected ? 'active-chat-target' : ''}" onclick="window.openAdminSpyChatWithTargetUser('${g.id}', true)" data-name="${g.name.toLowerCase()}">
-                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${g.name} <span style="color:#e74c3c; font-size:0.75rem;">[GROUP]</span></div>
-                        <div class="whatsapp-user-id">${g.members.length} members</div>
-                    </div>
-                </div>`;
-            });
-
-            allUsers.forEach(u => {
-                const isSelected = MatrixSystemState.get('spyActiveTargetUserContext') === u.id;
-                const isOnline = u.isOnlineNode ? 'online-chamak-active' : '';
-                html += `<div class="chat-user-item-node user-node-item ${isSelected ? 'active-chat-target' : ''} ${isOnline}" onclick="window.openAdminSpyChatWithTargetUser('${u.id}', false)" data-name="${u.clientName.toLowerCase()}">
-                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${u.clientName}</div>
-                        <div class="whatsapp-user-id">@${u.id}</div>
-                    </div>
-                </div>`;
-            });
-
-            if(html === "") html = `<div style="color:var(--wa-text-muted); padding:20px; text-align:center;">No clients registered in matrix.</div>`;
-            listWrap.innerHTML = html;
-        };
-
-        window.filterAdminClientChatContactList = function() {
-            const q = document.getElementById('adminClientContactSearchField').value.toLowerCase();
-            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
-                const name = node.getAttribute('data-name');
-                node.style.display = name.includes(q) ? "flex" : "none";
-            });
-        };
-
-        window.openAdminSpyChatWithTargetUser = function(targetId, isGroup = false) {
-            MatrixSystemState.set('spyActiveTargetUserContext', targetId);
-            MatrixSystemState.resetChatAssets();
-            
-            let displayName = "Unknown";
-            let avatarSrc = defaultAvatarSvg;
-
-            if (isGroup) {
-                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
-                if(g) { displayName = g.name + " (Group Intercept)"; avatarSrc = g.avatar || defaultAvatarSvg; }
-            } else {
-                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
-                if(u) { displayName = `${u.clientName} (@${u.id})`; avatarSrc = u.avatar || defaultAvatarSvg; }
-            }
-
-            document.getElementById('spyActiveHeaderTitle').innerText = displayName;
-            document.getElementById('adminChatActiveHeaderAvatarNode').src = avatarSrc;
-            
-            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(el => el.classList.remove('active-chat-target'));
-            if(event && event.currentTarget) event.currentTarget.classList.add('active-chat-target');
-
-            const matrixWrap = document.getElementById('adminChatGridBox');
-            if(matrixWrap) matrixWrap.classList.add('mobile-chat-view-active');
-
-            window.renderAdminSpyChatConsoleLogs();
-        };
-
-        window.renderAdminSpyChatConsoleLogs = function() {
-            const wrapper = document.getElementById('adminSpyChatLogsStack');
-            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
-            if(!wrapper || !targetUid) return;
-
-            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-            const allChats = window.cachedChatsData ? Object.keys(window.cachedChatsData).map(k => ({...window.cachedChatsData[k], keyId: k})) : [];
-            
-            let filteredChats = [];
-            if (isGroup) {
-                filteredChats = allChats.filter(m => m.receiver === targetUid);
-            } else {
-                filteredChats = allChats.filter(m => m.sender === targetUid || m.receiver === targetUid);
-            }
-
-            filteredChats.sort((a, b) => a.epochTimeNode - b.epochTimeNode);
-
-            if(filteredChats.length === 0) {
-                wrapper.innerHTML = `<div style="text-align:center; padding:30px; color:var(--wa-text-muted); font-size:0.95rem;">No intelligence logs intercepted.</div>`;
-                return;
-            }
-
-            let chatHTML = "";
-            filteredChats.forEach((msg, idx) => {
-                const isFromAdmin = msg.sender === 'MainframeAdmin';
-                const isFromTarget = msg.sender === targetUid;
-                let bubbleClass = "bubble-incoming";
-                if(isFromAdmin) bubbleClass = "bubble-outgoing";
-                
-                let senderNameHtml = "";
-                if(isFromAdmin) senderNameHtml = `<div class="group-sender-name" style="color:var(--neon-pink);">SYSTEM ADMIN</div>`;
-                else {
-                    const senderUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === msg.sender);
-                    senderNameHtml = `<div class="group-sender-name" style="color:#2ecc71;">${senderUser ? senderUser.clientName : msg.sender}</div>`;
-                }
-
-                let mediaHtml = "";
-                if (msg.mediaPayload) {
-                    if (msg.mediaPayload.startsWith("data:audio")) {
-                        mediaHtml = `<div style="margin-bottom:6px;"><audio src="${msg.mediaPayload}" controls style="max-width:220px; height:35px;"></audio></div>`;
-                    } else if (msg.mediaPayload.startsWith("data:image")) {
-                        mediaHtml = `<img src="${msg.mediaPayload}" style="max-width:100%; border-radius:8px; margin-bottom:6px; cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')">`;
-                    }
-                }
-
-                let replyBlock = msg.replyToText ? `<div class="reply-reference-box">${msg.replyToText}</div>` : "";
-                
-                chatHTML += `<div class="bubble-msg-wrapper ${bubbleClass}" style="margin-top:8px;" oncontextmenu="window.triggerMessageContextDropdown(event, '${msg.keyId}', '${msg.textBody ? msg.textBody.replace(/'/g,"\\'") : 'Media'}', true)">
-                    ${senderNameHtml}
-                    ${replyBlock}
-                    ${mediaHtml}
-                    <div class="bubble-text-content">${msg.textBody || ""}</div>
-                    <div class="whatsapp-time">${msg.timestamp}</div>
-                </div>`;
-            });
-
-            wrapper.innerHTML = chatHTML;
-            wrapper.scrollTop = wrapper.scrollHeight;
-        };
-
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const textInput = document.getElementById('adminSpyResponseInput');
-            const textVal = textInput.value.trim();
-            const b64Media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64');
-            const replyTo = MatrixSystemState.get('activeReplyMessageTextNode');
-            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
-
-            if((!textVal && !b64Media) || !targetUid) return;
-
-            const msgRef = push(ref(db, 'chats'));
-            set(msgRef, {
-                msgId: msgRef.key,
-                sender: "MainframeAdmin",
-                receiver: targetUid,
-                textBody: textVal,
-                mediaPayload: b64Media,
-                replyToText: replyTo,
-                read: false,
-                reaction: "",
-                epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                textInput.value = "";
-                MatrixSystemState.resetChatAssets();
-                window.cancelReplyMatrixState();
-                window.playSynthesizedSound(880, 'sine', 0.15);
-            });
-        };
-
-        function executeFinalizeStateIntegrity() {
-            console.log("[NEXUS OS] Integrity validation successful. All engine sub-modules loaded.");
-            if (MatrixSystemState.get('currentMode') === 'admin') window.loadAdminSubmissions();
-        }
-        setTimeout(executeFinalizeStateIntegrity, 1500);
-
+        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
     </script>
 </body>
 </html>
