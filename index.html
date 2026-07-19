@@ -1126,6 +1126,9 @@
     </div>
 
     <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
         /* DISMISS PRELOADER TO FIX FOUC WHEN RESOURCES LOAD */
         window.onload = function() {
             setTimeout(() => {
@@ -1213,6 +1216,7 @@
         let _typingTimer; window.debouncedInputCheck = function() { clearTimeout(_typingTimer); _typingTimer = setTimeout(window.verifyInputIdentityProgress, 300); }
         let _loginTimer; window.debouncedAutoLoginCheck = function() { clearTimeout(_loginTimer); _loginTimer = setTimeout(window.checkAutoLogin, 300); }
 
+        // ROPE FIX: preventDefault added to stop scrolling while pulling
         window.pullCordAction = function(event) {
             if (event && event.cancelable) event.preventDefault(); 
             if (isCordPulled) return; isCordPulled = true;
@@ -1309,12 +1313,10 @@
             });
         };
 
-        // --- NEW ADMIN PENDING APPROVALS ---
         onValue(ref(db, 'pending_accounts'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedPendingUsersArr', data);
             
-            // Auto Approve Logic (if > 48 hours)
             if (MatrixSystemState.get('currentMode') === 'admin') {
                 const now = Date.now();
                 data.forEach(req => {
@@ -1360,7 +1362,6 @@
         };
         window.rejectPendingAccount = function(reqId) { if(confirm("Reject this request?")) remove(ref(db, 'pending_accounts/' + reqId)); };
 
-        // ------------------ FEATURE TOGGLES (ADMIN) ------------------
         onValue(ref(db, 'global_settings/features'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -1396,7 +1397,6 @@
                 if(card) {
                     const isEnabled = globalFeats[feat] && userFeats[feat];
                     card.style.display = isEnabled ? 'flex' : 'none';
-                    // If user is currently in a disabled tab, kick them to menu
                     if (!isEnabled && MatrixSystemState.get('activeCustomerWorkspaceChannel') === feat) {
                         window.switchCustomerChannel('menu');
                     }
@@ -1428,8 +1428,6 @@
             }).join('');
         };
 
-
-        // ------------------ NEW CUSTOMER SUPPORT TICKET ENGINE (WITH ATTACHMENTS) ------------------
         onValue(ref(db, 'support_tickets'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedSupportTicketsArr', data);
@@ -1520,7 +1518,6 @@
         };
         window.closeTicket = function(tid) { update(ref(db, `support_tickets/${tid}`), { status: 'closed' }); };
 
-        // ------------------ UPGRADED PRO NOTEPAD FEATURES V16 ------------------
         window.addEventListener('load', () => {
             const savedNote = localStorage.getItem('nexus_autosave_note');
             const editor = document.getElementById('richNoteWritingPadEditable');
@@ -1589,8 +1586,6 @@
         window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteFontFamily = function(fontName) { document.execCommand('fontName', false, fontName); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
         window.triggerNoteFontSizeChange = function(sizeVal) { document.execCommand('fontSize', false, sizeVal); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
-
-        // --------------------------------------------------------------
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
@@ -1779,7 +1774,6 @@
             }
         };
 
-        // Custom Wallpaper Functionality Expansion
         window.switchChatWallpaperMatrix = function() {
             const wallpapersArr = [
                 "var(--wa-chat-bg)", 
@@ -1794,7 +1788,6 @@
             document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
         };
 
-        // Whatsapp Message Search functionality
         window.toggleInChatSearch = function() {
             const searchBar = document.getElementById('waInChatSearchBarNode');
             if (searchBar) {
@@ -2025,6 +2018,7 @@
         }
 
         onValue(ref(db, 'mainframeAdmin'), (snapshot) => { try { const rootData = snapshot.val(); if(rootData && rootData.id && rootData.pass) { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = rootData.id; adminRoute.masterPass = rootData.pass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); } } catch(e) {} });
+        
         onValue(ref(db, 'system_broadcast'), (snapshot) => { 
             try { 
                 const broadcastVal = snapshot.val(); const banner = document.getElementById('customerMarqueeContainer'); const txtNode = document.getElementById('customerMarqueeText'); 
@@ -2055,6 +2049,7 @@
                         if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
                         if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
                         document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
+                        // Re-evaluate tabs dynamically in real-time
                         window.enforceCustomerPermissions();
                     }
                 }
@@ -2543,3 +2538,4 @@
     </script>
 </body>
 </html>
+      
