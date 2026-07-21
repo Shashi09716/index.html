@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V17.5 (Realtime Thunder Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V18.0 (No Lag & Ultra UI Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -42,17 +42,20 @@
         input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         
-        /* PRELOADER FIX - FOUC DESTROYED */
-        #systemPreloader { position: fixed; inset: 0; background: var(--bg-prime); z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.4s ease; }
+        /* PRELOADER FIX - FOUC DESTROYED FOREVER */
+        #systemPreloader { position: fixed; inset: 0; background: var(--bg-prime); z-index: 99999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.5s ease; }
         .loader-spinner { width: 80px; height: 80px; border: 6px solid var(--border-glass); border-top-color: var(--neon-cyan); border-radius: 50%; animation: spin 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; box-shadow: 0 0 20px var(--neon-cyan); }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .preloader-text { color: var(--neon-cyan); margin-top: 25px; font-family: 'Orbitron'; font-weight: 900; letter-spacing: 4px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 15px var(--neon-cyan); }
         @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
 
         /* HIDE UI ELEMENTS INITIALLY TO PREVENT REFRESH GLITCH */
-.dashboard-panel-core, #mainStage, #mainCyberNavbar { display: none; }
+        .dashboard-panel-core, #mainStage, #mainCyberNavbar { display: none !important; }
+        .ui-ready .dashboard-panel-core.active-flex { display: flex !important; }
+        .ui-ready #mainStage.active-flex { display: flex !important; }
+        .ui-ready #mainCyberNavbar { display: flex !important; opacity: 1; pointer-events: all; }
 
-        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
+        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); justify-content: space-between; align-items: center; padding: 0 20px; z-index: 99999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 3s infinite; letter-spacing: 2px; text-transform: uppercase; }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
@@ -62,16 +65,16 @@
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
         body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* ADVANCED CYBER TOGGLE SWITCHES (UPGRADED FOR BETTER LOOKS) */
-        .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 900; font-family: 'Orbitron', sans-serif; font-size: 1rem; background: linear-gradient(145deg, rgba(10,20,35,0.8), rgba(5,10,20,0.9)); padding: 18px 24px; border-radius: 16px; border: 1px solid var(--border-glass); border-left: 5px solid var(--neon-cyan); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
-        .toggle-switch-wrapper:hover { background: linear-gradient(145deg, rgba(0,242,254,0.15), rgba(5,10,20,0.9)); box-shadow: 0 10px 30px rgba(0,242,254,0.3); transform: translateY(-3px); border-left-color: #f1c40f; }
-        body.light-theme-active .toggle-switch-wrapper { color: #111b21; background: linear-gradient(145deg, #ffffff, #f0f2f5); border-color: #cbd5e1; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
-        .toggle-switch { appearance: none; width: 60px; height: 32px; background: rgba(0,0,0,0.8); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 15px rgba(0,0,0,0.9); flex-shrink:0;}
-        body.light-theme-active .toggle-switch { background: #e2e8f0; border-color: #cbd5e1; }
-        .toggle-switch::before { content: ''; position: absolute; width: 22px; height: 22px; background: #fff; border-radius: 50%; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        /* 🌍 MASSIVE UPGRADE: GLOBAL TOGGLES */
+        .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 900; font-family: 'Orbitron', sans-serif; font-size: 1.05rem; background: linear-gradient(145deg, rgba(10,20,35,0.9), rgba(2,5,14,0.95)); padding: 20px 25px; border-radius: 16px; border: 1px solid var(--border-glass); border-left: 6px solid var(--neon-cyan); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 25px rgba(0,0,0,0.6); position: relative; overflow: hidden;}
+        .toggle-switch-wrapper::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.15), transparent); transform: skewX(-25deg); transition: 0.6s; z-index:0; }
+        .toggle-switch-wrapper:hover::before { left: 150%; }
+        .toggle-switch-wrapper:hover { box-shadow: 0 15px 35px rgba(0,242,254,0.3); transform: translateY(-4px); border-left-color: #f1c40f; }
+        .toggle-switch-wrapper span { position: relative; z-index: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); letter-spacing: 1px;}
+        .toggle-switch { appearance: none; width: 65px; height: 34px; background: rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.2); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 15px rgba(0,0,0,0.9); flex-shrink:0; z-index: 1;}
+        .toggle-switch::before { content: ''; position: absolute; width: 24px; height: 24px; background: #fff; border-radius: 50%; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 8px rgba(0,0,0,0.8); }
         .toggle-switch:checked { background: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 25px rgba(0,242,254,0.6); }
-        body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #10b981; box-shadow: 0 0 15px rgba(16,185,129,0.4);}
-        .toggle-switch:checked::before { transform: translateX(28px); background: #000; }
+        .toggle-switch:checked::before { transform: translateX(31px); background: #000; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 
         .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
         .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
@@ -79,21 +82,14 @@
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
         @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
         
-        /* UPGRADED REALISTIC BLACKOUT THUNDER EFFECT */
-        .thunder-overlay { position: fixed; inset: 0; background: #000; z-index: 99999; pointer-events: none; opacity: 0; transition: opacity 0.1s; display: none; }
-        .thunder-overlay.flash { display: block; animation: massiveThunderStrike 1.2s ease-out; }
-        @keyframes massiveThunderStrike {
-            0% { background: #000; opacity: 1; }
-            5% { background: #fff; opacity: 1; }  /* Mega Bright Flash */
-            10% { background: #000; opacity: 1; }
-            15% { background: #fff; opacity: 0.9; } /* Second smaller flash */
-            25% { background: #000; opacity: 1; }
-            35% { background: #fff; opacity: 0.4; } /* Ripple */
-            50% { background: #000; opacity: 1; }
-            100% { background: #000; opacity: 0; }
+        /* --- OLD PURE WHITE LIGHTNING EFFECT RESTORED --- */
+        .thunder-overlay { position: fixed; inset: 0; background: #fff; z-index: 9999; pointer-events: none; opacity: 0; mix-blend-mode: overlay; transition: opacity 0.1s; display: none; }
+        .thunder-overlay.flash { display: block; animation: thunderStrike 0.6s ease-out; }
+        @keyframes thunderStrike {
+            0% { opacity: 0; } 10% { opacity: 0.9; } 20% { opacity: 0; } 30% { opacity: 0.6; } 40% { opacity: 0; } 100% { opacity: 0; }
         }
 
-        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; }
+        .cinema-stage { position: relative; width: 100vw; height: 100vh; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; }
         @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
         
@@ -139,6 +135,7 @@
         .hud-engage-btn { width: 100%; padding: 20px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 10px 30px rgba(241,196,15,0.5); text-transform: uppercase; transform: translateZ(25px);}
         .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.9); transform: translateZ(30px) scale(1.02); }
         
+        /* 🛠️ BOUNDS & SCROLL FIX FOR DASHBOARD */
         .dashboard-panel-core { position: fixed; inset: 0; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 100px; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 35px 30px; border-radius: 24px; width: 100%; max-width: 1400px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
         
@@ -197,6 +194,7 @@
         .hidden { display: none !important; }
         .text-left { text-align: left; }
         
+        /* ATTACHMENT PREVIEW FIX */
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.6); border-radius: 14px; padding: 25px; background: rgba(0,0,0,0.3); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4); position:relative; overflow:hidden;}
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.05); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
         .cyber-upload-preview { max-width: 100%; max-height: 120px; border-radius: 8px; margin-top: 15px; border: 2px solid var(--neon-cyan); display: none;}
@@ -205,7 +203,7 @@
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: var(--matrix-3d-shadow-cyan); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 80vh; max-height: 800px; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         
-        .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1; min-height: 0; /* Important for flex child scrolling */ }
+        .notes-editor-container-shell { position: relative; margin-top: 15px; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1; min-height: 0; }
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         .notes-editor-container-shell.notepad-dark-mode .notes-pad-rich-area { background: #111b21 !important; color: #e9edef !important; }
 
@@ -997,7 +995,7 @@
     </div>
 
     <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="window.closeCustomInlinePopupEngine()"></div>
-    
+     
     <div id="statusViewerOverlayWrapper" class="status-viewer-overlay hidden">
         <div class="status-viewer-header" style="background:var(--wa-header); padding:15px; display:flex; align-items:center; gap:15px; width:100%; border-bottom:1px solid var(--wa-border);">
             <div style="display:flex; align-items:center; gap:12px; flex:1;">
@@ -1032,15 +1030,13 @@
         };
 
         // PRELOADER FIX: सर्कल को हटाकर मेन स्क्रीन दिखाने के लिए
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('systemPreloader');
-                if(preloader) { 
-                    preloader.style.opacity = "0"; 
-                    setTimeout(() => preloader.style.display = "none", 500); 
-                }
-            }, 600);
-        });
+        setTimeout(() => {
+            const preloader = document.getElementById('systemPreloader');
+            if(preloader) { 
+                preloader.style.opacity = "0"; 
+                setTimeout(() => preloader.style.display = "none", 500); 
+            }
+        }, 800);
 
         const firebaseConfig = {
             apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
@@ -1077,7 +1073,7 @@
         let typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
-        
+         
         function generateMassiveEmojiArray() {
             let emojis = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
             for(let i=0x1F600; i<=0x1F64F; i++) emojis.push(String.fromCodePoint(i));
@@ -1086,7 +1082,7 @@
             return [...new Set(emojis)];
         }
         const systemEmojisList = generateMassiveEmojiArray();
-        
+         
         const structuralGifMatrixList = [
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
             "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif",
@@ -1103,7 +1099,7 @@
             const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
             const isClickOnToggleBtn = e.target.closest('.toggle-emoji-btn-ref') || e.target.closest('.toggle-gif-btn-ref');
             const isAttachMenu = e.target.closest('#waAttachmentMenuBox');
-            
+             
             if (!isClickInsideEmojiDrawer && !isClickOnToggleBtn) {
                 document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden');
                 document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.add('hidden');
@@ -1228,7 +1224,7 @@
             const name = document.getElementById('reqSignupName').value.trim(); const dob = document.getElementById('reqSignupDOB').value;
             const phone = document.getElementById('reqSignupPhone').value.trim(); const pass = document.getElementById('reqSignupPass').value.trim();
             if(!name || phone.length !== 10 || !pass) { alert("Please complete required fields (10-digit phone)."); return; }
-            
+             
             const reqRef = push(ref(db, 'pending_accounts'));
             set(reqRef, { reqId: reqRef.key, name: name, dob: dob, phone: phone, pass: pass, epoch: Date.now() }).then(() => {
                 const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1248,7 +1244,7 @@
         onValue(ref(db, 'pending_accounts'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedPendingUsersArr', data);
-            
+             
             if (MatrixSystemState.get('currentMode') === 'admin') {
                 const now = Date.now();
                 data.forEach(req => {
@@ -1266,7 +1262,7 @@
             const list = document.getElementById('adminPendingAccountsList'); if(!list) return;
             const pendings = MatrixSystemState.get('cachedPendingUsersArr');
             if(pendings.length === 0) { list.innerHTML = `<p style="color:var(--text-sub); background:rgba(0,0,0,0.3); padding:25px; border-radius:12px; text-align:center; font-size:1.1rem;">No pending account requests.</p>`; return; }
-            
+             
             list.innerHTML = pendings.map(req => {
                 let dateStr = new Date(req.epoch).toLocaleString();
                 return `<div style="background:rgba(0,0,0,0.6); padding:25px; border-radius:16px; border:1px solid var(--border-glass); transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
@@ -1321,9 +1317,9 @@
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!currentUid) return;
             const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
             const globalFeats = MatrixSystemState.get('globalFeatures');
-            
+             
             const userFeats = user && user.features ? user.features : { policy: false, notes: true, vault: true, chat: true, gaming: true };
-            
+             
             ['policy', 'notes', 'vault', 'gaming', 'chat'].forEach(feat => {
                 const card = document.getElementById(`menuCard_${feat}`);
                 if(card) {
