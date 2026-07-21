@@ -2357,8 +2357,15 @@
                 if (localStorage.getItem('nexus_hard_lockout_flag_' + savedUserToken.toLowerCase()) === 'true') { window.triggerLockoutTerminalUI(savedUserToken); return; }
                 MatrixSystemState.set('loggedInCustomerID', savedUserToken); MatrixSystemState.set('currentMode', savedMode); MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
                 document.getElementById('mainStage').style.display = 'none'; const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                if(savedMode === 'admin') { document.getElementById('adminDashboard').classList.remove('hidden'); window.loadAdminSubmissions(); } 
-                else { document.getElementById('customerDashboard').classList.remove('hidden'); window.switchCustomerChannel(savedWorkspaceChan); }
+                if(savedMode === 'admin') { 
+                    document.getElementById('adminDashboard').classList.remove('hidden'); 
+                    document.getElementById('adminDashboard').style.display = 'flex';
+                    window.loadAdminSubmissions(); 
+                } else { 
+                    document.getElementById('customerDashboard').classList.remove('hidden'); 
+                    document.getElementById('customerDashboard').style.display = 'flex';
+                    window.switchCustomerChannel(savedWorkspaceChan); 
+                }
                 if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
             } else {
                 document.getElementById('mainStage').style.display = 'flex';
@@ -2573,9 +2580,11 @@
                 
                 if(mode === 'admin') {
                     document.getElementById('adminDashboard').classList.remove('hidden');
+                    document.getElementById('adminDashboard').style.display = 'flex';
                     window.loadAdminSubmissions();
                 } else {
                     document.getElementById('customerDashboard').classList.remove('hidden');
+                    document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel('menu');
                 }
                 
