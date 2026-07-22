@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V18.0 (Realtime Thunder Edition)</title>
+    <title>Ultimate Nexus Matrix V19.0 (Real WhatsApp Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
-        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
+        /* --- ULTRA-REALISTIC CYBERPUNK & WHATSAPP ENGINE PALETTE --- */
         :root {
             --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71;
-            --wa-bg: #111b21; --wa-header: #202c33; --wa-search-bg: #111b21; --wa-search-input: #2a3942;
+            
+            /* REAL WHATSAPP WEB COLORS */
+            --wa-bg: #111b21; --wa-header: #202c33; --wa-search-bg: #111b21; --wa-search-input: #202c33;
             --wa-msg-in: #202c33; --wa-msg-out: #005c4b; --wa-text: #e9edef; --wa-text-muted: #8696a0;
-            --wa-green: #00a884; --wa-border: rgba(255,255,255,0.08); --wa-chat-bg: #0b141a;
+            --wa-green: #00a884; --wa-border: #222d34; --wa-chat-bg: #0b141a; --wa-blue-tick: #53bdeb;
+            --wa-deleted-bg: rgba(231, 76, 60, 0.15); --wa-deleted-border: #e74c3c;
+            
             --bg-prime: #02050e; --panel-glass: rgba(6, 17, 38, 0.95); --border-glass: rgba(0, 242, 254, 0.4); 
             --text-main: #ffffff; --text-sub: #f8fafc; --input-bg: #1a2536; --card-bg: rgba(4, 14, 33, 0.85);
             --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(0, 242, 254, 0.2);
-            --lamp-chamak: 0 0 60px #f1c40f, 0 0 120px rgba(241, 196, 15, 0.8);
             --chat-wallpaper: var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
-            --matrix-3d-shadow-cyan: 0 20px 40px rgba(0, 242, 254, 0.25);
-            --admin-glass: rgba(10, 18, 30, 0.95);
+            --admin-glass: rgba(10, 18, 30, 0.98);
         }
         body.light-theme-active {
             --bg-prime: #f0f4f8; --panel-glass: rgba(255, 255, 255, 0.98); --border-glass: #cbd5e1; 
@@ -27,7 +29,6 @@
             --wa-bg: #ffffff; --wa-header: #f0f2f5; --wa-search-bg: #ffffff; --wa-search-input: #f0f2f5;
             --wa-msg-in: #ffffff; --wa-msg-out: #d9fdd3; --wa-text: #111b21; --wa-text-muted: #667781;
             --wa-border: #d1d7db; --wa-chat-bg: #efeae2; --cyber-glow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            --lamp-chamak: 0 6px 24px rgba(0,0,0,0.1); --matrix-3d-shadow-cyan: 0 10px 20px rgba(0, 0, 0, 0.05);
             --admin-glass: rgba(255, 255, 255, 0.95);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; background-color: transparent; }
@@ -39,56 +40,53 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--neon-pink); }
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
-        input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; }
-        .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
+        input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; font-family: inherit;}
+        button, .nav-btn, .hud-tab, .channel-tab-btn, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn { user-select: none; -webkit-user-select: none; }
         
         /* SYSTEM PRELOADER - FOUC BUG KILLED COMPLETELY */
-        #systemPreloader { position: fixed; inset: 0; background: #02050e; z-index: 999999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.6s ease-out, visibility 0.6s ease-out; opacity: 1; visibility: visible;}
+        #systemPreloader { position: fixed; inset: 0; background: #02050e; z-index: 999999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.8s ease-out, visibility 0.8s ease-out; opacity: 1; visibility: visible;}
         #systemPreloader.engine-ready { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader-spinner { width: 80px; height: 80px; border: 6px solid rgba(0, 242, 254, 0.2); border-top-color: var(--neon-cyan); border-radius: 50%; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite, cyberPulse 2s infinite alternate; }
+        .loader-spinner { width: 90px; height: 90px; border: 6px solid rgba(0, 242, 254, 0.1); border-top-color: var(--neon-cyan); border-bottom-color: var(--neon-pink); border-radius: 50%; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite, cyberPulse 2s infinite alternate; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes cyberPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); } }
-        .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
-        @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
+        @keyframes cyberPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 50px var(--neon-cyan), inset 0 0 20px var(--neon-pink); } }
+        .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.5rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
+        @keyframes pulseGlow { 0% { opacity: 0.5; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
 
-        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 70px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 25px; z-index: 99999; backdrop-filter: blur(20px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
-        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff; position: relative; animation: glitchTextAnim 3s infinite; letter-spacing: 2px; text-transform: uppercase; }
-        body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
-        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 15px rgba(241, 196, 15, 0.9); } }
+        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 75px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(25px); box-shadow: 0 4px 30px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
+        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+        
+        .navbar-brand-container { display: flex; align-items: center; gap: 15px; }
+        .nexus-core-logo { width: 45px; height: 45px; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink)); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-family: 'Orbitron'; font-weight: 900; font-size: 1.5rem; color: #fff; box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); animation: logoFloat 3s infinite ease-in-out; border: 2px solid #fff; }
+        @keyframes logoFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(5deg); } }
+        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.6rem; color: #fff; position: relative; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0,242,254,0.8); }
+
         .navbar-controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; z-index: 100000; }
-        .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 10px 18px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; text-transform: uppercase;}
-        .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 20px rgba(0, 242, 254, 0.5); transform: translateY(-2px); }
-        body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--neon-cyan); padding: 10px 20px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.95rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); display: flex; align-items: center; gap: 8px;}
+        .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 25px rgba(0, 242, 254, 0.5); transform: translateY(-2px); }
         
         /* EXCLUSIVE UPGRADED TOGGLE SWITCHES */
-        .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-        .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 1.05rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 18px 22px; border-radius: 14px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
-        .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 8px 25px rgba(0,242,254,0.3); border-color: var(--neon-cyan); transform: translateY(-3px); }
-        body.light-theme-active .toggle-switch-wrapper { color: #111b21; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-color:#cbd5e1; }
-        .toggle-switch { appearance: none; width: 60px; height: 32px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
-        body.light-theme-active .toggle-switch { background: #cbd5e1; border-color: #94a3b8; }
-        .toggle-switch::before { content: ''; position: absolute; width: 22px; height: 22px; background: var(--text-sub); border-radius: 50%; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+        .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 1.05rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 20px 25px; border-radius: 14px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 8px 25px rgba(0,242,254,0.4); border-color: var(--neon-cyan); transform: translateY(-3px); }
+        .toggle-switch { appearance: none; width: 65px; height: 34px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
+        .toggle-switch::before { content: ''; position: absolute; width: 24px; height: 24px; background: var(--text-sub); border-radius: 50%; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .toggle-switch:checked { background: var(--neon-green); border-color: #27ae60; box-shadow: 0 0 25px rgba(46,204,113,0.6); }
-        body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #059669; }
-        .toggle-switch:checked::before { transform: translateX(28px); background: #fff; box-shadow: 0 0 10px #fff; }
+        .toggle-switch:checked::before { transform: translateX(31px); background: #fff; box-shadow: 0 0 10px #fff; }
 
-        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
-        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
         @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
         
-        /* NEW DYNAMIC THUNDER EFFECT ENGINE */
+        /* ADVANCED DYNAMIC THUNDER EFFECT ENGINE */
         .thunder-overlay { position: fixed; inset: 0; background: #fff; z-index: 9999; pointer-events: none; opacity: 0; mix-blend-mode: overlay; transition: opacity 0.1s; display: none; }
         .thunder-overlay.flash { display: block; animation: thunderStrike 0.5s ease-out forwards; }
-        @keyframes thunderStrike {
-            0% { opacity: 0; } 10% { opacity: 0.95; } 20% { opacity: 0; } 30% { opacity: 0.7; } 40% { opacity: 0; } 100% { opacity: 0; }
-        }
+        @keyframes thunderStrike { 0% { opacity: 0; } 10% { opacity: 0.95; } 20% { opacity: 0; } 30% { opacity: 0.7; } 40% { opacity: 0; } 100% { opacity: 0; } }
 
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; }
         @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
-        .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
+        .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 150px rgba(0, 242, 254, 0.15); }
         
         /* 3D LAMP ENHANCEMENTS */
         .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transform: scale(1.1) translateZ(50px); transition: transform 0.2s ease-out, opacity 1.2s; will-change: transform; transform-style: preserve-3d;}
@@ -118,7 +116,7 @@
         /* 3D TERMINAL WITH MOUSEMOVE EFFECTS */
         .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 500px; background: var(--panel-glass); border: 2px solid var(--border-glass); border-left: 8px solid #f1c40f; padding: 45px 35px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); }
         .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; transform: translate3d(-50%, 0, 0) scale(1); }
-        body.light-theme-active .hud-glass-terminal { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; transform: translateZ(20px); }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
@@ -134,9 +132,20 @@
         .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.9); transform: translateZ(30px) scale(1.02); }
         
         /* DASHBOARD CORE FIXES & OVERFLOW CONTROLS */
-        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 100px; }
+        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: flex-start; align-items: center; flex-direction: column; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 100px; }
         .dashboard-panel-core.active-view { display: flex; }
-        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 24px; width: 100%; max-width: 1500px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
+        
+        /* UNIQUE SLIDER / CAROUSEL */
+        .cyber-hero-slider { width: 100%; max-width: 1500px; height: 160px; background: linear-gradient(90deg, rgba(0,242,254,0.1), rgba(255,0,127,0.1)); border: 2px solid var(--border-glass); border-radius: 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .slider-content { position: absolute; width: 100%; text-align: center; opacity: 0; animation: slideShow 15s infinite; font-family: 'Orbitron'; }
+        .slider-content:nth-child(1) { animation-delay: 0s; }
+        .slider-content:nth-child(2) { animation-delay: 5s; }
+        .slider-content:nth-child(3) { animation-delay: 10s; }
+        @keyframes slideShow { 0%, 25% { opacity: 1; transform: scale(1); } 30%, 100% { opacity: 0; transform: scale(1.05); } }
+        .slider-content h2 { color: #fff; font-size: 2.2rem; text-shadow: 0 0 15px var(--neon-cyan); letter-spacing: 2px; margin-bottom: 10px; }
+        .slider-content p { color: var(--neon-cyan); font-size: 1.1rem; font-weight: bold; }
+
+        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 24px; width: 100%; max-width: 1500px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-bottom: 20px; transition: transform 0.5s ease; }
         
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; padding: 10px; margin-top: 25px; }
         .menu-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 40px 25px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
@@ -200,11 +209,11 @@
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 30px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.15); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 85vh; max-height: 900px; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         
-        .notes-editor-container-shell { position: relative; margin-top: 20px; background: var(--input-bg); border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 5px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
+        .notes-editor-container-shell { position: relative; margin-top: 20px; background: var(--input-bg); border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 5px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1; }
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         .notes-editor-container-shell.notepad-dark-mode .notes-pad-rich-area { background: #111b21 !important; color: #e9edef !important; }
 
-        .notes-pad-rich-area { width: 100%; height: 100%; flex: 1 1 auto; padding: 35px; background: #ffffff; color: #111b21; font-size: 1.2rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; transition: 0.3s; }
+        .notes-pad-rich-area { width: 100%; height: 100%; flex: 1; padding: 35px; background: #ffffff; color: #111b21; font-size: 1.2rem; border: none; outline: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.7; overflow-y: auto; text-align: left; transition: 0.3s; }
         
         .notes-toolbar-ribbon { background: rgba(0,0,0,0.8); padding: 14px 20px; border-bottom: 1px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; }
         .note-tool-btn { background: rgba(4,15,36,0.6); border: 1px solid var(--border-glass); color: var(--text-main); padding: 10px 14px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
@@ -227,8 +236,9 @@
         /* --- 100% REAL WHATSAPP WEB COLOR SPACE PERFECT CLONE WITH STRICT CONSTRAINTS --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 380px 1fr; gap: 0; width: 100%; height: 85vh; max-height: 900px; background: var(--wa-bg); border-radius: 16px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.7); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: hidden; z-index: 5; height: 100%; }
-        .whatsapp-search-box { padding: 14px 16px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
-        .whatsapp-search-box input { flex: 1; padding: 12px 16px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); font-size: 1rem; outline: none; font-family: inherit;}
+        
+        .whatsapp-search-box { padding: 10px 16px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .whatsapp-search-box input { flex: 1; padding: 10px 16px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); font-size: 1rem; outline: none; font-family: inherit;}
         #chatTargetContainerView { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
         
         .whatsapp-in-chat-search { display: none; padding: 12px 20px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); transition: 0.3s ease; flex-shrink: 0;}
@@ -239,7 +249,7 @@
         .chat-user-item-node:hover { background: var(--wa-search-input); }
         .chat-user-item-node.active-chat-target { background: var(--wa-msg-in) !important; border-left: 5px solid var(--wa-green); padding-left: 13px;}
         .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 3px solid #2ecc71; padding: 2px; }
-        .whatsapp-avatar { width: 54px; height: 54px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
+        .whatsapp-avatar { width: 50px; height: 50px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
         .whatsapp-avatar:hover { transform: scale(1.08); }
         .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
         .whatsapp-user-name { font-weight: 600; font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
@@ -248,15 +258,13 @@
         
         /* RESTRICTED CHAT STREAM CONTAINER */
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
-        .chat-stream-header-bar { background: var(--wa-header); padding: 14px 20px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 15px; z-index: 2; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
+        .chat-stream-header-bar { background: var(--wa-header); padding: 12px 20px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 15px; z-index: 2; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:10px; border-radius:50%; cursor:pointer; font-size:1.3rem; transition: 0.3s; margin-left: 6px; display:flex; align-items:center; justify-content:center;}
         .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
-        .header-call-btn { color: var(--wa-green); font-family:'Orbitron'; font-size:0.9rem; border:1px solid var(--wa-green); padding:6px 12px; border-radius:8px; font-weight: bold;}
         
-        .wa-status-circle-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px dashed var(--wa-text-muted); display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--wa-text-muted); font-size: 1.2rem; transition: 0.3s; flex-shrink: 0;}
-        .wa-status-circle-icon:hover { border-color: var(--wa-green); color: var(--wa-green); }
-        .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
-        @keyframes statusPulse { 0% { box-shadow: 0 0 0 0 rgba(0,168,132,0.5); } 70% { box-shadow: 0 0 0 12px rgba(0,168,132,0); } 100% { box-shadow: 0 0 0 0 rgba(0,168,132,0); } }
+        /* UI Feature Icons */
+        .wa-top-icon-bar { padding: 10px 16px; background: var(--wa-header); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--wa-border); }
+        .wa-top-icon-bar .icon-group { display: flex; gap: 15px; }
         
         .chat-pinned-message-banner { background: rgba(32, 44, 51, 0.95); padding: 10px 20px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); font-size: 0.95rem; display: flex; align-items: center; gap: 12px; cursor: pointer; border-left: 5px solid var(--wa-green); backdrop-filter: blur(5px); flex-shrink: 0;}
         
@@ -267,22 +275,47 @@
         .status-section-title { padding: 25px 25px 12px 25px; color: var(--wa-green); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
         .chat-messages-scroll-stack { flex: 1 1 auto; padding: 25px 6%; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; z-index: 2; scroll-behavior: smooth; }
-        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; }
-        .bubble-msg-wrapper.first-in-group { margin-top: 15px; }
-        .bubble-text-content { display: inline-block; padding-right: 70px; padding-bottom: 6px; white-space: pre-wrap; min-width: 50px; }
-        .group-sender-name { font-size: 0.9rem; font-weight: 700; color: #00f2fe; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
-        .whatsapp-time { font-size: 0.75rem; color: rgba(255,255,255,0.7); position: absolute; bottom: 8px; right: 10px; display: flex; align-items: center; gap: 4px; margin: 0; line-height: 1; }
-        .whatsapp-tick-space { color: var(--wa-text-muted); font-weight: 900; font-size: 0.8rem; letter-spacing: -2px; margin-left: 3px; display:inline-block; transform:translateY(1px);}
-        .whatsapp-tick-space.double-blue { color: #53bdeb; }
         
-        .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); align-self: flex-end; border-top-right-radius: 0;}
+        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 25px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; font-family: inherit; word-wrap: break-word; margin-bottom: 3px; display: inline-block; transition: background 0.2s;}
+        .bubble-msg-wrapper:hover .wa-msg-dropdown-btn { opacity: 1; }
+        
+        .bubble-msg-wrapper.first-in-group { margin-top: 15px; }
+        .bubble-text-content { display: inline-block; padding-right: 20px; white-space: pre-wrap; min-width: 50px; color: var(--wa-text); }
+        .group-sender-name { font-size: 0.9rem; font-weight: 700; color: #00f2fe; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
+        
+        .whatsapp-time { font-size: 0.75rem; color: rgba(255,255,255,0.7); position: absolute; bottom: 6px; right: 10px; display: flex; align-items: center; gap: 4px; margin: 0; line-height: 1; }
+        .whatsapp-tick-space { color: var(--wa-text-muted); font-weight: 900; font-size: 0.8rem; letter-spacing: -2px; margin-left: 3px; display:inline-block; transform:translateY(1px);}
+        .whatsapp-tick-space.double-blue { color: var(--wa-blue-tick); }
+        
+        .bubble-outgoing { background: var(--wa-msg-out); align-self: flex-end; border-top-right-radius: 0;}
         .bubble-outgoing.has-tail::before { content: ""; position: absolute; top: 0; right: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-left: 15px solid var(--wa-msg-out); }
-        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
+        
+        .bubble-incoming { background: var(--wa-msg-in); align-self: flex-start; border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-right: 15px solid var(--wa-msg-in); }
         
-        .chat-interface-footer-inputs { padding: 14px 20px; background: var(--wa-header); display: flex; gap: 12px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
-        .whatsapp-input-field { flex: 1; padding: 15px 20px; background: var(--wa-search-input); border: none; border-radius: 14px; color: var(--wa-text); outline: none; font-size: 1.1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);}
-        .whatsapp-circle-btn { width: 48px; height: 48px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.6rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
+        /* 10x ADVANCED ADMIN DELETED HIGHLIGHT */
+        .bubble-deleted-admin { background: var(--wa-deleted-bg) !important; border: 1px solid var(--wa-deleted-border) !important; }
+        .bubble-deleted-admin.has-tail::before { border-left-color: var(--wa-deleted-bg) !important; border-right-color: var(--wa-deleted-bg) !important; }
+        .deleted-text-stamp { color: #e74c3c; font-size: 0.85rem; font-weight: bold; font-style: italic; margin-bottom: 4px; display: block; }
+        
+        /* WHATSAPP DROPDOWN MENU & REACTIONS */
+        .wa-msg-dropdown-btn { position: absolute; top: 5px; right: 5px; color: var(--wa-text-muted); background: linear-gradient(90deg, transparent, rgba(0,0,0,0.4) 40%); padding: 5px 8px; border-radius: 0 10px 0 10px; cursor: pointer; opacity: 0; transition: 0.2s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        .wa-msg-menu { position: absolute; top: 30px; right: 0; background: var(--wa-header); border: 1px solid var(--wa-border); border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.6); z-index: 1000; width: 160px; overflow: hidden; display: none; }
+        .wa-msg-menu.active { display: block; }
+        .wa-menu-item { padding: 12px 16px; color: var(--wa-text); font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .wa-menu-item:hover { background: var(--wa-search-input); }
+        .wa-menu-item.danger { color: #e74c3c; }
+        
+        /* REACTIONS BAR */
+        .wa-reaction-bar { position: absolute; top: -35px; left: 50%; transform: translateX(-50%); background: var(--wa-header); border-radius: 20px; padding: 5px 10px; display: flex; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.6); z-index: 100; border: 1px solid var(--wa-border); opacity: 0; pointer-events: none; transition: 0.2s; }
+        .bubble-msg-wrapper:hover .wa-reaction-bar { opacity: 1; pointer-events: all; }
+        .wa-reaction-emoji { font-size: 1.4rem; cursor: pointer; transition: transform 0.2s; }
+        .wa-reaction-emoji:hover { transform: scale(1.3); }
+        .active-reaction-badge { position: absolute; bottom: -10px; right: 20px; background: var(--wa-header); border: 1px solid var(--wa-border); border-radius: 12px; padding: 2px 6px; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 10; }
+
+        .chat-interface-footer-inputs { padding: 12px 20px; background: var(--wa-header); display: flex; gap: 12px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
+        .whatsapp-input-field { flex: 1; padding: 14px 20px; background: var(--wa-search-input); border: none; border-radius: 14px; color: var(--wa-text); outline: none; font-size: 1.1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);}
+        .whatsapp-circle-btn { width: 44px; height: 44px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
         .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
         .whatsapp-circle-btn.recording-active-pulse { color: #e74c3c !important; animation: recPulse 1s infinite alternate; }
         
@@ -296,20 +329,9 @@
         .hologram-call-effect { width: 100%; height: 280px; border-radius: 18px; margin: 0 auto 25px auto; border: 2px solid var(--neon-cyan); box-shadow: 0 0 35px rgba(0,242,254,0.4), inset 0 0 45px rgba(0,242,254,0.5); background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: #0b141a; display:flex; justify-content:center; align-items:center; }
         .hologram-call-effect video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; filter: contrast(1.1) saturate(1.2) hue-rotate(2deg); }
         .hologram-scanline { position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: rgba(0,242,254,0.85); box-shadow: 0 0 20px #00f2fe; animation: scanHolo 2.5s infinite linear; pointer-events: none;}
-        @keyframes scanHolo { 0% { top: -10%; opacity:0; } 10% { opacity:1; } 90% { opacity:1; } 100% { top: 110%; opacity:0; } }
         
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.92); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(18px); }
         .nexus-popup-card-box { background: var(--wa-header); border: 2px solid var(--border-glass); padding: 40px; border-radius: 24px; width: 90%; max-width: 500px; text-align: center; color: var(--wa-text); box-shadow: 0 30px 60px rgba(0,0,0,0.8); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
-        @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.8) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: var(--neon-cyan); margin-bottom: 25px; font-size: 1.7rem; font-weight:800; text-shadow: 0 0 15px rgba(0,242,254,0.5);}
-        .nexus-popup-input-field { width: 100%; padding: 16px; background: var(--wa-bg); border: 1px solid var(--border-glass); border-radius: 12px; color: var(--wa-text); font-size: 1.1rem; outline: none; font-weight: 600; margin-top: 12px; margin-bottom: 12px; transition: 0.3s; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5);}
-        .nexus-popup-input-field:focus { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.4); }
-        .nexus-popup-flex-btns { display: flex; gap: 18px; margin-top: 30px; }
-        .nexus-popup-btn { flex: 1; padding: 16px; font-family: 'Rajdhani', sans-serif; font-weight: 800; border-radius: 12px; border: none; cursor: pointer; transition: 0.3s; font-size:1.15rem; text-transform: uppercase; letter-spacing: 1px;}
-        .nexus-popup-btn.primary-btn { background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000; box-shadow: 0 6px 20px rgba(0,242,254,0.5);}
-        .nexus-popup-btn.primary-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,242,254,0.7);}
-        .nexus-popup-btn.cancel-btn { background: #2a3942; color: #e9edef; }
-        .nexus-popup-btn.cancel-btn:hover { background: #3a4b56; }
         
         .giant-compiler-layout { background: var(--card-bg); padding: 40px 35px; border-radius: 24px; border: 1px solid var(--border-glass); margin-bottom: 30px; box-shadow: 0 25px 55px rgba(0,0,0,0.6); }
         .giant-compiler-layout h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 25px; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 20px rgba(0,242,254,0.5); }
@@ -321,7 +343,6 @@
 
         .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 18px; border-radius: 14px; margin-bottom: 25px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 6px 20px rgba(231,76,60,0.4); font-size:1.1rem; }
         #adminPasswordResetAlertBanner { background: linear-gradient(90deg, #e74c3c, #c0392b); color: white; padding: 18px 25px; text-align: center; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem; border-radius: 14px; border: 2px solid #fff; margin-bottom: 30px; box-shadow: 0 0 40px rgba(231, 76, 60, 0.9); animation: adminAlertBlink 1s infinite alternate; letter-spacing: 1.5px;}
-        @keyframes adminAlertBlink { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.85; transform: scale(1.02); box-shadow: 0 0 60px rgba(231, 76, 60, 1);} }
         
         .analytics-grid-host { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
         .analytics-node-card { background: var(--card-bg); border: 2px solid var(--border-glass); border-radius: 18px; padding: 30px; text-align: left; width: 100%; box-shadow: 0 12px 30px rgba(0,0,0,0.6); position:relative;}
@@ -372,15 +393,19 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V18.0</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V19.0</div>
     </div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
-        <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
+        <div class="navbar-brand-container">
+            <div class="nexus-core-logo">NX</div>
+            <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
+        </div>
         <div class="navbar-controls">
             <button id="systemAudioToggleBtn" class="nav-btn" onclick="window.toggleGlobalSystemAudio()">🔊 SOUND: ON</button>
+            <button id="systemVibrationToggleBtn" class="nav-btn" onclick="window.toggleGlobalVibration()">📳 VIBE: ON</button>
             <button class="nav-btn" onclick="window.executeCosmicThemeToggle()"><span id="themeToggleBtnLabel">🌓 DARK MODE</span></button>
             <button id="fullScreenBtn" class="nav-btn" onclick="window.toggleFullScreenEngine()"><span id="fullScreenLabel">🔲 FULL SCREEN</span></button>
         </div>
@@ -437,6 +462,13 @@
     </div>
     
     <div class="dashboard-panel-core" id="customerDashboard">
+        
+        <div class="cyber-hero-slider">
+            <div class="slider-content"><h2>NEXUS V19.0 ACTIVE</h2><p>End-to-End Encrypted Cloud Network</p></div>
+            <div class="slider-content"><h2>WHATSAPP CLONE 10X</h2><p>Delete for everyone, HD Media & Status</p></div>
+            <div class="slider-content"><h2>SHASHI TIWARI</h2><p>Ultimate System Architecture Designer</p></div>
+        </div>
+
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:12px; border-radius:12px; margin-bottom:25px; font-family:'Orbitron'; font-size:1.1rem; color:#fff; font-weight:bold; display:none;">
                 <marquee id="customerMarqueeText" scrollamount="5">⚡ SYSTEM BROADCAST VECTOR ACTIVE</marquee>
@@ -485,152 +517,22 @@
                 </div>
             </div>
 
-            <div id="customerUploadInterfaceBlock" class="hidden">
-                <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">📁 SECURE POLICY SYSTEM</h3>
-                <div id="customerLiveTrackerSection" style="margin-bottom: 30px; padding: 25px; background: rgba(0,0,0,0.6); border-radius: 18px; border: 2px solid rgba(0,242,254,0.4); box-shadow: inset 0 3px 15px rgba(0,0,0,0.7);"></div>
-                <div class="form-grid-layout">
-                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address</label><div class="neon-glow-underline"></div></div>
-                    <div class="hud-input-cluster full-width-field">
-                        <div class="cyber-upload-node" onclick="document.getElementById('clientAttachment').click()">
-                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1.3rem; display:block; margin-bottom:12px; font-weight: 900; cursor: pointer;">📎 UPLOAD DOCUMENT / PHOTO</label>
-                            <input type="file" id="clientAttachment" style="display:none;" onchange="window.processBinaryAttachment(event, 'policy')">
-                            <div id="policyAttachmentFeedback" style="color:var(--wa-green); font-size:1.1rem; font-weight:bold; margin-top:14px;"></div>
-                        </div>
-                    </div>
-                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" " style="height:120px;"></textarea><label>Additional System Notes</label><div class="neon-glow-underline"></div></div>
-                </div>
-                <button onclick="window.submitPolicyForm()" class="hud-engage-btn" style="margin-top: 20px;">TRANSMIT SECURE DATA</button>
-            </div>
-
-            <div id="customerNotesInterfaceBlock" class="hidden">
-                <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">🧠 PRO WORKSPACE NOTEPAD V18.0</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom: 25px;">
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
-                    </div>
-                    
-                    <div class="notes-toolbar-ribbon">
-                        <select class="note-tool-select" onchange="window.applyNoteTemplate(this.value); this.value='';" style="font-weight:900; color:var(--neon-pink);">
-                            <option value="">📋 Insert Auto-Template</option>
-                            <option value="meeting">📝 Meeting Notes</option>
-                            <option value="todo">☑️ To-Do List</option>
-                            <option value="project">📊 Project Plan</option>
-                        </select>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Color Mode</button>
-                        <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
-                            <option value="p">Paragraph</option>
-                            <option value="h1">Heading 1</option>
-                            <option value="h2">Heading 2</option>
-                            <option value="h3">Heading 3</option>
-                            <option value="blockquote">Quote block</option>
-                        </select>
-                        <select class="note-tool-select" onchange="window.triggerNoteFontFamily(this.value)">
-                            <option value="Segoe UI">Segoe UI</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Courier New">Courier</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Times New Roman">Times Roman</option>
-                        </select>
-                        <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
-                            <option value="3">Size: Normal</option>
-                            <option value="1">Size: Small</option>
-                            <option value="5">Size: Large</option>
-                            <option value="7">Size: Huge</option>
-                        </select>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="document.execCommand('undo', false, null)" title="Undo">↩️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('redo', false, null)" title="Redo">↪️</button>
-                        <button class="note-tool-btn" onclick="window.executeFindAndReplaceEngine()" title="Find & Replace">🔍 Replace</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyRight', false, '')" title="Align Right">➡️</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')" title="Bullet List">⏺ List</button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertOrderedList')" title="Numbered List">🔢 List</button>
-                        <button class="note-tool-btn" onclick="window.insertChecklistToNotepad()" title="Insert Checklist">☑ Task</button>
-                        <div class="toolbar-divider"></div>
-                        <div class="color-picker-wrapper" title="Text Color">
-                            🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000">
-                        </div>
-                        <div class="color-picker-wrapper" title="Highlight Color">
-                            🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f">
-                        </div>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
-                        <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
-                        <button class="note-tool-btn" onclick="window.insertCodeBlock()" title="Insert Code Block">💻 Code</button>
-                        <button class="note-tool-btn" onclick="window.insertProfessionalTable()" title="Insert Table">📊 Table</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.downloadNoteContent('txt')" style="color:#00f2fe; border-color:#00f2fe;">📄 TXT</button>
-                        <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
-                        <button class="note-tool-btn" onclick="window.printNoteEditorContent()" title="Print / PDF">🖨️ PDF</button>
-                        <button class="note-tool-btn" onclick="window.toggleFullScreenNoteMode()" id="btnNoteFullScreenToggle">🔲 Full Screen</button>
-                        <div class="toolbar-divider"></div>
-                        <button id="noteDictationBtn" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;" onclick="window.toggleNotepadDictation()">🎙️ SPEAK TO TYPE</button>
-                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🔴 RECORD VOICE</button>
-                    </div>
-                    
-                    <div class="notes-editor-container-shell" id="printAreaNotepad">
-                        <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Start typing your professional document here... Data is auto-saved locally." oninput="window.updateNotepadLiveCounters()"></div>
-                        <div class="notes-status-bar">
-                            <span id="noteLiveWordCount">Words: 0</span>
-                            <span id="noteLiveReadTime" style="color: #ff007f;">Read time: 0 min</span>
-                            <span id="noteLiveAutoSaveStatus" style="color:#2ecc71;">✅ Synced locally</span>
-                            <span id="noteLiveCharCount">Characters: 0</span>
-                        </div>
-                    </div>
-
-                    <div style="display:flex; gap:25px; margin-top:30px; flex-shrink:0;">
-                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
-                        <button class="abort-btn" style="flex:1; padding:22px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
-                    </div>
-                    <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
-                </div>
-            </div>
-
-            <div id="customerVaultInterfaceBlock" class="hidden">
-                <div class="giant-compiler-layout">
-                    <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
-                    <p style="color:var(--text-sub); margin-bottom: 30px; font-size:1.15rem;">Synchronized policy documents & media assets.</p>
-                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px;"></div>
-                </div>
-            </div>
-
-            <div id="customerGamingInterfaceBlock" class="hidden">
-                <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 2.2rem; margin-bottom:25px; text-shadow:0 0 25px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
-                    <div class="gaming-canvas-container-box">
-                        <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="650" height="380"></canvas>
-                        <div id="virtualTomTalkOverlay" style="position:absolute; bottom:25px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:18px; border-radius:14px; border:2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100; box-shadow: 0 8px 20px rgba(0,0,0,0.8);">
-                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="width:55%; padding:14px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-weight:700; outline:none; border-radius:10px; font-size:1.05rem;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
-                            <button id="virtualTomLiveVoiceRecBtn" onclick="window.toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:14px; background:var(--neon-pink); border:none; color:#fff; font-weight:900; cursor:pointer; border-radius:10px; font-size:0.95rem; box-shadow: 0 4px 10px rgba(255,0,127,0.5);">🎙️ LISTEN</button>
-                            <button onclick="window.executeVirtualTomSpeechLoop()" style="width:20%; padding:14px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-weight:900; cursor:pointer; border-radius:10px; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,242,254,0.5);">SAY</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div id="customerChatInterfaceBlock" class="hidden">
-                <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
+                <div class="wa-top-icon-bar">
+                    <h3 style="color:var(--wa-text); font-size:1.2rem;">WhatsApp</h3>
+                    <div class="icon-group">
+                        <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Communities">👥</span>
+                        <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Status" onclick="window.openStatusDashboardOverlay()">⭕</span>
+                        <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Channels">📢</span>
+                        <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="New Chat" onclick="window.triggerCreateGroupModal()">💬</span>
+                    </div>
+                </div>
+
+                <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper" style="border-top-left-radius:0; border-top-right-radius:0;">
                     <div class="chat-target-userlist-pane">
                         <div class="whatsapp-search-box">
                             <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
-                            <div class="wa-status-circle-icon" title="View / Upload Status" onclick="window.openStatusDashboardOverlay()">⭕</div>
                             <input type="file" id="statusUploadInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserStatusMatrixEngine(event)">
-                            <button class="nav-btn" style="padding: 10px 14px; font-size: 1.2rem; border-radius: 10px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
                         <div id="chatTargetContainerView"></div>
                     </div>
@@ -652,18 +554,12 @@
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
-                                <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
                             </div>
                         </div>
 
                         <div class="whatsapp-in-chat-search" id="waInChatSearchBarNode">
                             <input type="text" id="waMessageSearchInput" placeholder="Search current messages..." oninput="window.filterActiveChatMessages()">
                             <button onclick="window.toggleInChatSearch()" class="header-actions-btn" style="color: #e74c3c; font-weight:bold;">✖</button>
-                        </div>
-                        
-                        <div class="chat-pinned-message-banner hidden" id="chatPinnedMessageBannerNode">
-                            <span style="font-size: 1.3rem;">📌</span> 
-                            <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><i>Pinned Message Feature Upgrade</i></div>
                         </div>
 
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
@@ -729,7 +625,89 @@
                 </div>
                 <div id="chatAttachmentStatusFeedback" style="margin-top:12px; font-size:1.1rem; color:#f1c40f; padding-left:18px; font-family:monospace; font-weight: bold;"></div>
             </div>
+            
+            <div id="customerUploadInterfaceBlock" class="hidden">
+                <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">📁 SECURE POLICY SYSTEM</h3>
+                <div id="customerLiveTrackerSection" style="margin-bottom: 30px; padding: 25px; background: rgba(0,0,0,0.6); border-radius: 18px; border: 2px solid rgba(0,242,254,0.4); box-shadow: inset 0 3px 15px rgba(0,0,0,0.7);"></div>
+                <div class="form-grid-layout">
+                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field">
+                        <div class="cyber-upload-node" onclick="document.getElementById('clientAttachment').click()">
+                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1.3rem; display:block; margin-bottom:12px; font-weight: 900; cursor: pointer;">📎 UPLOAD DOCUMENT / PHOTO</label>
+                            <input type="file" id="clientAttachment" style="display:none;" onchange="window.processBinaryAttachment(event, 'policy')">
+                            <div id="policyAttachmentFeedback" style="color:var(--wa-green); font-size:1.1rem; font-weight:bold; margin-top:14px;"></div>
+                        </div>
+                    </div>
+                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" " style="height:120px;"></textarea><label>Additional System Notes</label><div class="neon-glow-underline"></div></div>
+                </div>
+                <button onclick="window.submitPolicyForm()" class="hud-engage-btn" style="margin-top: 20px;">TRANSMIT SECURE DATA</button>
+            </div>
 
+            <div id="customerNotesInterfaceBlock" class="hidden">
+                <div class="notes-engine-card-surface" id="notesMainWrapperCard">
+                    <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">🧠 PRO WORKSPACE NOTEPAD V19.0</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom: 25px;">
+                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
+                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
+                    </div>
+                    <div class="notes-toolbar-ribbon">
+                        <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Color Mode</button>
+                        <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
+                            <option value="p">Paragraph</option><option value="h1">Heading 1</option><option value="h2">Heading 2</option><option value="h3">Heading 3</option><option value="blockquote">Quote block</option>
+                        </select>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
+                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
+                        <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
+                        <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
+                        <button class="note-tool-btn" onclick="window.downloadNoteContent('txt')" style="color:#00f2fe; border-color:#00f2fe;">📄 TXT</button>
+                        <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
+                        <button class="note-tool-btn" onclick="window.printNoteEditorContent()" title="Print / PDF">🖨️ PDF</button>
+                        <button id="noteDictationBtn" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;" onclick="window.toggleNotepadDictation()">🎙️ SPEAK TO TYPE</button>
+                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🔴 RECORD VOICE</button>
+                    </div>
+                    <div class="notes-editor-container-shell" id="printAreaNotepad">
+                        <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Start typing your professional document here... Data is auto-saved locally." oninput="window.updateNotepadLiveCounters()"></div>
+                        <div class="notes-status-bar">
+                            <span id="noteLiveWordCount">Words: 0</span>
+                            <span id="noteLiveReadTime" style="color: #ff007f;">Read time: 0 min</span>
+                            <span id="noteLiveAutoSaveStatus" style="color:#2ecc71;">✅ Synced locally</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:25px; margin-top:30px; flex-shrink:0;">
+                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
+                        <button class="abort-btn" style="flex:1; padding:22px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
+                    </div>
+                    <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
+                </div>
+            </div>
+
+            <div id="customerVaultInterfaceBlock" class="hidden">
+                <div class="giant-compiler-layout">
+                    <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
+                    <p style="color:var(--text-sub); margin-bottom: 30px; font-size:1.15rem;">Synchronized policy documents & media assets.</p>
+                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px;"></div>
+                </div>
+            </div>
+
+            <div id="customerGamingInterfaceBlock" class="hidden">
+                <div class="gaming-bar-nexus-wrapper">
+                    <h2 class="neon-cyan-text" style="font-size: 2.2rem; margin-bottom:25px; text-shadow:0 0 25px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
+                    <div class="gaming-canvas-container-box">
+                        <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="650" height="380"></canvas>
+                        <div id="virtualTomTalkOverlay" style="position:absolute; bottom:25px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:18px; border-radius:14px; border:2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100; box-shadow: 0 8px 20px rgba(0,0,0,0.8);">
+                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="width:55%; padding:14px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-weight:700; outline:none; border-radius:10px; font-size:1.05rem;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
+                            <button id="virtualTomLiveVoiceRecBtn" onclick="window.toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:14px; background:var(--neon-pink); border:none; color:#fff; font-weight:900; cursor:pointer; border-radius:10px; font-size:0.95rem; box-shadow: 0 4px 10px rgba(255,0,127,0.5);">🎙️ LISTEN</button>
+                            <button onclick="window.executeVirtualTomSpeechLoop()" style="width:20%; padding:14px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-weight:900; cursor:pointer; border-radius:10px; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,242,254,0.5);">SAY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div id="customerRequestInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 20px rgba(241,196,15,0.5);">🎫 SUPPORT & REQUESTS</h3>
@@ -744,7 +722,6 @@
                         <label>Explain your request / issue...</label>
                         <div class="neon-glow-underline" style="background:#f1c40f;"></div>
                     </div>
-                    
                     <div class="hud-input-cluster" style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 2px dashed rgba(241,196,15,0.5);">
                         <div class="cyber-upload-node" onclick="document.getElementById('supportTicketFile').click()" style="border:none; box-shadow:none; padding:10px;">
                             <label style="position:static; pointer-events:all; color:#f1c40f; font-family:'Orbitron'; font-size:1.2rem; display:block; margin-bottom:12px; font-weight: 900; cursor: pointer;">📎 ATTACH SCREENSHOT / FILE (Optional)</label>
@@ -752,7 +729,6 @@
                             <div id="supportAttachmentFeedback" style="color:var(--wa-green); font-size:1.1rem; font-weight:bold; margin-top:14px;"></div>
                         </div>
                     </div>
-                    
                     <button onclick="window.submitSupportTicket()" class="hud-engage-btn" style="background:linear-gradient(135deg, #e67e22, #d35400);">SUBMIT REQUEST</button>
                     <div id="customerTicketHistory" style="margin-top:40px; border-top:2px solid var(--border-glass); padding-top:30px;"></div>
                 </div>
@@ -761,11 +737,17 @@
             <div class="matrix-system-controller-dock">
                 <div class="auto-pulse-refresh-badge"><span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE</div>
             </div>
-            <div class="ai-helper-banner" style="margin-top: 25px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
     
     <div class="dashboard-panel-core" id="adminDashboard">
+        
+        <div class="cyber-hero-slider">
+            <div class="slider-content"><h2>NEXUS V19.0 ACTIVE</h2><p>End-to-End Encrypted Cloud Network</p></div>
+            <div class="slider-content"><h2>WHATSAPP CLONE 10X</h2><p>Delete for everyone, HD Media & Status</p></div>
+            <div class="slider-content"><h2>SHASHI TIWARI</h2><p>Ultimate System Architecture Designer</p></div>
+        </div>
+
         <div class="hud-container-panel" style="text-align: left; max-width:1600px;">
             <div id="adminPasswordResetAlertBanner" class="hidden"></div>
             
@@ -907,11 +889,20 @@
                 </div>
 
                 <div id="adminSpyChatBlock" class="hidden">
-                    <div class="chat-io-grid-matrix" id="adminChatGridBox">
+                    
+                    <div class="wa-top-icon-bar">
+                        <h3 style="color:var(--wa-text); font-size:1.2rem;">WhatsApp Admin Multi-Spy</h3>
+                        <div class="icon-group">
+                            <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Communities">👥</span>
+                            <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Status" onclick="window.openStatusViewerEngine()">⭕</span>
+                            <span class="wa-status-circle-icon" style="width:35px; height:35px; font-size:1rem;" title="Channels">📢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-io-grid-matrix" id="adminChatGridBox" style="border-top-left-radius:0; border-top-right-radius:0;">
                         <div class="chat-target-userlist-pane">
                             <div class="whatsapp-search-box">
                                 <input type="text" id="adminClientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterAdminClientChatContactList()">
-                                <div class="wa-status-circle-icon" title="View Statuses" onclick="window.openStatusViewerEngine()">⭕</div>
                             </div>
                             <div id="adminSpyUsersListWrapper" style="flex:1; overflow-y:auto;"></div>
                         </div>
@@ -1028,7 +1019,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // EXTREME ANTI-HACK DEPLOYMENT V18 (Blocks DevTools / ContextMenu / Inspection)
+        // EXTREME ANTI-HACK DEPLOYMENT V19 (Blocks DevTools / ContextMenu / Inspection)
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
             if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
@@ -1050,7 +1041,7 @@
 
         const MatrixSystemState = (() => {
             let state = {
-                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isVibrationEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
                 globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, thunderMode: "medium" }
@@ -1092,6 +1083,20 @@
 
         window.MatrixSystemState = MatrixSystemState;
 
+        // --- VIBRATION ENGINE ---
+        window.triggerDeviceVibration = function(pattern) {
+            if (MatrixSystemState.get('isVibrationEnabled') && "vibrate" in navigator) {
+                navigator.vibrate(pattern);
+            }
+        };
+
+        window.toggleGlobalVibration = function() {
+            let vibeEnabled = !MatrixSystemState.get('isVibrationEnabled'); 
+            MatrixSystemState.set('isVibrationEnabled', vibeEnabled); 
+            document.getElementById('systemVibrationToggleBtn').innerHTML = vibeEnabled ? `📳 VIBE: ON` : `📴 VIBE: OFF`; 
+            if(vibeEnabled) window.triggerDeviceVibration(50);
+        };
+
         document.addEventListener('click', function(e) {
             const isClickInsideEmojiDrawer = e.target.closest('#systemEmojiMatrixBoxNode') || e.target.closest('#adminSystemEmojiMatrixBoxNode');
             const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
@@ -1119,6 +1124,7 @@
             if (isCordPulled) return; isCordPulled = true;
             const cord = document.getElementById('triggerCord'); if (cord) cord.style.transform = "translateY(50px) scale(0.95)";
             if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            window.triggerDeviceVibration(100);
             setTimeout(() => { if (cord) cord.style.transform = "translateY(0px) scale(1)"; window.triggerLampActivationOverride(); isCordPulled = false; }, 300);
         };
         const triggerCordNode = document.getElementById('triggerCord');
@@ -1372,7 +1378,7 @@
                 const f = user.features || { policy: false, notes: true, vault: true, chat: true, gaming: true };
                 return `<div style="background:rgba(4,14,33,0.9); padding:30px; border-radius:18px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'}; position:relative; overflow:hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.6);">
                         ${isDeact ? '<div style="position:absolute; top:0; left:0; width:100%; height:8px; background:#e74c3c;"></div>' : ''}
-                        <div style="font-size:1.15rem; line-height:1.7;"><b>ID:</b> <span style="color:#00f2fe; font-size:1.3rem;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b>${user.contact}</div>
+                        <div style="font-size:1.15rem; line-height:1.7;"><b>ID:</b> <span style="color:#00f2fe; font-size:1.3rem;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b> ${user.contact}</div>
                         <div style="display:flex; justify-content:space-between; margin-top:25px; gap:15px;">
                             <select onchange="window.toggleUserNodeActivationState('${user.id}', this.value)" style="flex:1; padding:12px; background:var(--bg-prime); color:var(--neon-cyan); border:1px solid var(--border-glass); border-radius:10px; outline:none; font-weight:bold; font-size:1.05rem;"><option value="active" ${!isDeact?'selected':''}>🟢 Active</option><option value="deactivated" ${isDeact?'selected':''}>🔴 Deactivated</option></select>
                             <button onclick="window.wipeUserPermanently('${user.id}')" class="abort-btn" style="padding:12px 20px;">Wipe User</button>
@@ -1383,7 +1389,7 @@
                             <label class="toggle-switch-wrapper" style="padding:12px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.85);" onchange="window.updateUserFeature('${user.id}', 'notes', this.checked)" ${f.notes?'checked':''}> Notes</label>
                             <label class="toggle-switch-wrapper" style="padding:12px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.85);" onchange="window.updateUserFeature('${user.id}', 'vault', this.checked)" ${f.vault?'checked':''}> Vault</label>
                             <label class="toggle-switch-wrapper" style="padding:12px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.85);" onchange="window.updateUserFeature('${user.id}', 'gaming', this.checked)" ${f.gaming?'checked':''}> Gaming</label>
-                            <label class="toggle-switch-wrapper" style="grid-column:span 2; justify-content:center; padding:15px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.9);" onchange="window.updateUserFeature('${user.id}', 'chat', this.checked)" ${f.chat?'checked':''}> WhatsApp Chat Multi</label>
+                            <label class="toggle-switch-wrapper" style="grid-column:span 2; justify-content:center; padding:15px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.9);" onchange="window.updateUserFeature('${user.id}', 'chat', this.checked)" ${f.chat?'checked':''}> WhatsApp Chat</label>
                         </div>
                     </div>`;
             }).join('');
@@ -1451,10 +1457,11 @@
                 
                 return `<div style="background:rgba(0,0,0,0.6); padding:30px; border-radius:18px; margin-bottom:25px; border-left:6px solid ${t.status==='closed'?'#95a5a6':'#f1c40f'}; box-shadow:0 8px 20px rgba(0,0,0,0.5);">
                     <div style="display:flex; justify-content:space-between; margin-bottom:18px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 15px;">
-                        <b style="font-size:1.4rem; color:var(--text-main);">${t.subject}</b>${badge}
+                        <b style="font-size:1.4rem; color:var(--text-main);">${t.subject}</b> ${badge}
                     </div>
                     <p style="color:var(--text-sub); font-size:1.1rem; line-height:1.7;">${t.body}</p>
-                    ${attachHtml}${t.adminReply ? `<div style="margin-top:25px; padding:22px; background:rgba(0,242,254,0.1); border-left: 4px solid #00f2fe; border-radius:14px; color:#00f2fe; font-size:1.15rem;"><b style="color:#fff;">Admin Reply:</b><br><br>${t.adminReply}</div>` : ''}
+                    ${attachHtml}
+                    ${t.adminReply ? `<div style="margin-top:25px; padding:22px; background:rgba(0,242,254,0.1); border-left: 4px solid #00f2fe; border-radius:14px; color:#00f2fe; font-size:1.15rem;"><b style="color:#fff;">Admin Reply:</b><br><br>${t.adminReply}</div>` : ''}
                 </div>`;
             }).join('');
         };
@@ -1571,7 +1578,7 @@
 
         function autoNarrateChatMessage(senderName, textBody) {
             if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌|📌/g, '');
+            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌|📌|🗑/g, '');
             if(cleanText.trim().length > 0) { try { window.speakNaturalHuman(`${senderName} says: ${cleanText}`); } catch(e) {} }
         }
 
@@ -1585,8 +1592,8 @@
             const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value; const resNode = document.getElementById('forgotIdResultNode');
             if(!phone || !dob) { alert("Please complete both parameters."); return; }
             let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
-            if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:6px 14px; border-radius:8px; display:inline-block; margin-top:15px;">${matchedUser.id}</span>`; window.playSynthesizedSound(880, 'sine', 0.15); } 
-            else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); }
+            if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:6px 14px; border-radius:8px; display:inline-block; margin-top:15px;">${matchedUser.id}</span>`; window.playSynthesizedSound(880, 'sine', 0.15); window.triggerDeviceVibration(100); } 
+            else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); window.triggerDeviceVibration([100,50,100]); }
         };
 
         window.triggerForgotPasswordMatrixModal = function() {
@@ -1660,8 +1667,8 @@
         window.toggleAIMatrixAssistantChannel = function() {
             let activeState = !MatrixSystemState.get('isAIAssistantActiveState'); MatrixSystemState.set('isAIAssistantActiveState', activeState);
             const toggleBtn = document.getElementById('btnAIAssistantToggle');
-            if(activeState) { toggleBtn.innerText = "🤖 AI CORE: ON"; toggleBtn.style.color = "var(--neon-pink)"; window.speakNaturalHuman("AI system online."); } 
-            else { toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "var(--wa-text-muted)"; }
+            if(activeState) { toggleBtn.innerText = "🤖 AI CORE: ON"; toggleBtn.style.color = "var(--neon-pink)"; window.speakNaturalHuman("AI system online."); window.triggerDeviceVibration([50,50,50]); } 
+            else { toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "var(--wa-text-muted)"; window.triggerDeviceVibration(50); }
         };
 
         function processAIMatrixAssistantResponseStream(userPromptText) {
@@ -1674,6 +1681,7 @@
                 set(aiPacketRef, { sender: "MainframeAdmin", receiver: currentUid, textBody: aiMsgBody, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
                     try { const interceptRef = push(ref(db, 'ai_communications')); set(interceptRef, { logId: interceptRef.key, customerID: currentUid, customerName: clientNameLabel, query: userPromptText, response: aiMsgBody, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), fullDateString: new Date().toLocaleDateString() }); } catch(e) {}
                     autoNarrateChatMessage("AI Engine", pseudoResponse);
+                    window.triggerDeviceVibration(150);
                 });
             }, 1000);
         }
@@ -1731,6 +1739,7 @@
                     audioAnalyserNode.fftSize = 64; visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
                     tomSpeechRecognitionInstance.start(); isTomListeningStateActive = true;
                     document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING"; document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
+                    window.triggerDeviceVibration(50);
                 }).catch(() => { alert("Mic access rejected."); });
             } else { tomSpeechRecognitionInstance.stop(); }
         };
@@ -1742,7 +1751,7 @@
                 if(bestVoice) syntaxUtterance.voice = bestVoice; window.speechSynthesis.speak(syntaxUtterance); } catch(e){}
         }
 
-        window.executeVirtualTomSpeechLoop = function() { const txt = document.getElementById('virtualTomTextInput').value.trim(); if(!txt) return; window.executeHighPitchTomVoiceEchoPlayback(txt); document.getElementById('virtualTomTextInput').value = ""; };
+        window.executeVirtualTomSpeechLoop = function() { const txt = document.getElementById('virtualTomTextInput').value.trim(); if(!txt) return; window.executeHighPitchTomVoiceEchoPlayback(txt); document.getElementById('virtualTomTextInput').value = ""; window.triggerDeviceVibration(50); };
 
         window.clearCurrentChatConversation = function() {
             const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
@@ -1758,196 +1767,45 @@
             }
         };
 
-        window.switchChatWallpaperMatrix = function() {
-            const wallpapersArr = [
-                "var(--wa-chat-bg)", 
-                "linear-gradient(135deg, #111b21, #202c33)", 
-                "var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover",
-                "var(--wa-chat-bg) url('https://i.pinimg.com/originals/97/c0/07/97c00759d90d786d9b6096d274ad3e07.png') center/cover",
-                "var(--wa-chat-bg) url('https://i.pinimg.com/originals/8f/ba/cb/8fbacbd464e996966eb9d4a6b7a9c21e.jpg') center/cover"
-            ];
-            const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
-            let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
-            localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
-            document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
-        };
-
-        window.toggleInChatSearch = function() {
-            const searchBar = document.getElementById('waInChatSearchBarNode');
-            if (searchBar) {
-                searchBar.classList.toggle('active');
-                if (searchBar.classList.contains('active')) {
-                    document.getElementById('waMessageSearchInput').focus();
-                } else {
-                    document.getElementById('waMessageSearchInput').value = "";
-                    window.filterActiveChatMessages();
-                }
-            }
-        }
-        
-        window.filterActiveChatMessages = function() {
-            const q = document.getElementById('waMessageSearchInput').value.toLowerCase();
-            document.querySelectorAll('.bubble-msg-wrapper').forEach(msg => {
-                if (msg.innerText.toLowerCase().includes(q)) {
-                    msg.style.display = "inline-block";
-                } else {
-                    msg.style.display = "none";
-                }
-            });
-        }
-
-        window.handleUserTypingSimulationTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const inputField = document.getElementById('chatCoreMessageTextInput');
-            if (inputField) { document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`; }
-            if(!currentUid || !targetUid) return;
-            try { set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid }); clearTimeout(typingTimeoutTrackerNode); typingTimeoutTrackerNode = setTimeout(() => { remove(ref(db, `typing_states/${currentUid}`)); }, 1000); } catch(e) {}
-        };
-
-        window.closeCustomInlinePopupEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(wrapper) wrapper.classList.add('hidden');
-            if(liveVideoCallStreamObj) { liveVideoCallStreamObj.getTracks().forEach(track => track.stop()); liveVideoCallStreamObj = null; }
-        };
-
-        window.wipeNoteInterfaceToBlankTrigger = function() {
-            const editor = document.getElementById('richNoteWritingPadEditable'); if (editor) editor.innerHTML = "";
-            notesVoicePayloadBase64Node = ""; autoGeneratedVoiceDurationString = ""; window.updateNotepadLiveCounters(); window.playSynthesizedSound(880, 'sine', 0.1);
-        };
-
-        window.toggleRichNotesVoiceStreamRecorder = function() {
-            const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
-            if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
-                    notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj); notesAudioChunksCollectorArr = []; notesRecordingStartEpoch = Date.now();
-                    notesMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) notesAudioChunksCollectorArr.push(e.data); };
-                    notesMediaRecorderInstance.onstop = () => {
-                        const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000); autoGeneratedVoiceDurationString = `${computationDuration} Seconds`;
-                        const storageReader = new FileReader(); storageReader.onload = function(readerEvent) { notesVoicePayloadBase64Node = readerEvent.target.result; }; storageReader.readAsDataURL(new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' }));
-                        mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
-                    };
-                    notesMediaRecorderInstance.start(); if (pulseNode) pulseNode.classList.remove('hidden'); if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Microphone access denied."); });
-            } else { notesMediaRecorderInstance.stop(); if (pulseNode) pulseNode.classList.add('hidden'); if (recBtnNode) recBtnNode.style.background = "rgba(4,15,36,0.6)"; }
-        };
-
-        window.dispatchCompiledNoteToCloudMatrix = function() {
-            const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim(); const dateLogSelected = document.getElementById('noteManualDateSelector').value; const timeLogSelected = document.getElementById('noteManualTimeSelector').value; const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
-            try { const cloudNoteReferenceNode = push(ref(db, `users_notes/${currentUid}`)); set(cloudNoteReferenceNode, { noteId: cloudNoteReferenceNode.key, ownerId: currentUid, richTextHtml: parsedHtmlPayload || "[ Audio Stream Payload ]", voicePayloadB64: notesVoicePayloadBase64Node, mappedDate: dateLogSelected, mappedTime: timeLogSelected, voiceDuration: autoGeneratedVoiceDurationString, epochStamp: Date.now() }).then(() => { window.wipeNoteInterfaceToBlankTrigger(); window.playSynthesizedSound(1100, 'sine', 0.15); fetchRealtimeNotesCloudData(); localStorage.removeItem('nexus_autosave_note'); }); } catch(e) {}
-        };
-
-        function fetchRealtimeNotesCloudData() {
-            const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!interfaceWrapper || !currentUid) return;
-            try {
-                get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
-                    if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); text-align:center; padding:25px; font-weight:bold; font-size:1.1rem; background:rgba(0,0,0,0.4); border-radius:12px;"> Repository empty.</div>`; return; }
-                    interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
-                        let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
-                        return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime}</span><span style="cursor:pointer; color:var(--neon-pink); padding:4px 8px; border-radius:4px; background:rgba(255,0,127,0.1);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ Delete</span></div><div style="color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">${noteItem.richTextHtml}</div>${voiceAttachmentMarkup}</div></div>`;
-                    }).join('');
-                });
-            } catch(e){}
-        }
-
-        window.executeCloudNotePurgeMatrix = function(noteIdSignature) { remove(ref(db, `users_notes/${MatrixSystemState.get('loggedInCustomerID')}/${noteIdSignature}`)).then(fetchRealtimeNotesCloudData); };
-
-        window.renderCloudVault = function() {
-            const vaultContainer = document.getElementById('cloudVaultGridContainer'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!vaultContainer || !currentUid) return;
-            let vaultItemsHTML = "";
-            MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid && p.attachment).forEach(p => {
-                vaultItemsHTML += `<div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.6);"><img src="${p.attachment}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; cursor: pointer; border: 2px solid var(--neon-cyan);" onclick="window.triggerEnlargedAttachmentView('${p.attachment}')"><span style="display:block; font-size:1rem; color:#2ecc71; margin-bottom: 12px; font-weight:bold;">Policy Document</span><button onclick="window.executePhysicalAssetDownloadEngine('${p.attachment}')" class="note-tool-btn" style="width: 100%; justify-content: center; background:#2ecc71; color:#000;">💾 DOWNLOAD</button></div>`;
-            });
-            try {
-                get(ref(db, 'chats')).then((snap) => {
-                    const data = snap.val();
-                    if(data) {
-                        Object.keys(data).forEach(key => {
-                            const msg = data[key]; const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === msg.receiver); const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || (isGroup && msg.receiver === msg.receiver));
-                            if(allowedChat && msg.mediaPayload && !msg.mediaPayload.startsWith("data:audio")) {
-                                if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
-                                vaultItemsHTML += `<div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.6);"><img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; cursor: pointer; border: 2px solid #00f2fe;"><span style="display:block; font-size:1rem; color:#00f2fe; margin-bottom: 12px; font-weight:bold;">Chat Asset</span><button onclick="window.executePhysicalAssetDownloadEngine('${msg.mediaPayload}')" class="note-tool-btn" style="width: 100%; justify-content: center; background:#00f2fe; color:#000;">💾 DOWNLOAD</button></div>`;
-                            }
-                        });
-                    }
-                    vaultContainer.innerHTML = vaultItemsHTML || `<p style="color:var(--text-sub); grid-column: 1 / -1; font-weight:bold; text-align:center; font-size:1.25rem; background:rgba(0,0,0,0.4); padding:30px; border-radius:12px;">No media found in vault.</p>`;
-                });
-            } catch(e) {}
-        };
-        
-        window.executePhysicalAssetDownloadEngine = function(srcUrl) { const a = document.createElement('a'); a.href = srcUrl; a.download = `Nexus_Vault_Asset_${Date.now()}.png`; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
-
-        window.triggerEnlargedAttachmentView = function(src) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:transparent; border:none; box-shadow:none; max-width:90vw;"><img src="${src}" style="max-width:100%; max-height:85vh; border-radius:16px; border:2px solid var(--neon-cyan); box-shadow:0 0 50px rgba(0,242,254,0.6);"><div style="margin-top:25px; display:flex; justify-content:center; gap:25px;"><button onclick="window.executePhysicalAssetDownloadEngine('${src}')" class="hud-engage-btn" style="width:auto; padding:18px 35px;">💾 DOWNLOAD</button><button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:auto; padding:18px 35px;">✖ CLOSE</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        // --- FIXED REAL-TIME WHATSAPP ENGINE ---
-        
-        window.initializeCrossLinkChatPanel = function() {
-            const container = document.getElementById('chatTargetContainerView'); if(!container) return;
+        // NEW: DELETE FOR EVERYONE LOGIC
+        window.deleteMessageForEveryone = function(dbKey, senderId, epoch) {
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if (currentUid !== senderId) { alert("You can only delete your own messages."); return; }
             
-            // Allow User to explicitly chat with MainframeAdmin
-            let users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
-            users.unshift({ id: "MainframeAdmin", clientName: "Support Admin (Mainframe)", avatar: defaultAvatarSvg, bio: "System Support", isOnlineNode: true });
-            
-            const groups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid));
-            
-            let html = "";
-            groups.forEach(g => {
-                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === g.id ? "active-chat-target" : "";
-                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectClientChatTarget('${g.id}', true)">
-                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${g.name}</div>
-                        <div class="whatsapp-user-id">Group • ${g.members.length} members</div>
-                    </div>
-                </div>`;
-            });
-
-            users.forEach(u => {
-                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id ? "active-chat-target" : "";
-                const onlineClass = u.isOnlineNode ? "online-chamak-active" : "";
-                let unreadBadge = `<span id="unreadCounterBadge_${u.id}" class="whatsapp-unread-counter-pill hidden">0</span>`;
-                
-                html += `<div class="chat-user-item-node ${activeClass} ${onlineClass}" onclick="window.selectClientChatTarget('${u.id}', false)">
-                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${u.clientName} ${unreadBadge}</div>
-                        <div class="whatsapp-user-id">${u.bio || "Available"}</div>
-                    </div>
-                </div>`;
-            });
-            
-            container.innerHTML = html;
-        };
-
-        window.selectClientChatTarget = function(targetId, isGroup) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', targetId);
-            window.initializeCrossLinkChatPanel(); // Update UI Highlighting
-            
-            let name = "Unknown", avatar = defaultAvatarSvg, bio = "Available";
-            if (isGroup) {
-                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
-                if(g) { name = g.name; avatar = g.avatar || defaultAvatarSvg; bio = g.members.join(", "); }
-            } else if (targetId === "MainframeAdmin") {
-                name = "Support Admin (Mainframe)"; avatar = defaultAvatarSvg; bio = "System Support";
-            } else {
-                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
-                if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; bio = u.isOnlineNode ? "Online" : u.bio; }
+            // Check 60 hours limit
+            const hoursDiff = (Date.now() - epoch) / (1000 * 60 * 60);
+            if (hoursDiff > 60) {
+                alert("Time limit exceeded. Messages can only be deleted within 60 hours (2.5 days).");
+                return;
             }
             
-            document.getElementById('chatActiveHeaderAvatarNode').src = avatar;
-            document.getElementById('chatActiveUserHeaderNode').innerText = name;
-            document.getElementById('chatActiveUserBioNode').innerText = bio;
-            
-            if (window.innerWidth <= 768) {
-                document.getElementById('clientChatGridMatrixWrapper').classList.add('mobile-chat-view-active');
+            if(confirm("Delete this message for everyone?")) {
+                update(ref(db, `chats/${dbKey}`), { isDeleted: true }).then(() => {
+                    window.triggerDeviceVibration([50, 50, 50]);
+                });
             }
-            
-            window.renderActiveChatConversationLogs();
         };
 
+        window.applyReactionToMessage = function(dbKey, emoji) {
+            update(ref(db, `chats/${dbKey}`), { reaction: emoji }).then(() => {
+                window.triggerDeviceVibration(50);
+            });
+        };
+
+        window.toggleChatDropdownMenu = function(e, menuId) {
+            e.stopPropagation();
+            document.querySelectorAll('.wa-msg-menu').forEach(menu => {
+                if(menu.id !== menuId) menu.classList.remove('active');
+            });
+            document.getElementById(menuId)?.classList.toggle('active');
+            window.triggerDeviceVibration(30);
+        };
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.wa-msg-menu').forEach(menu => menu.classList.remove('active'));
+        });
+
+        // 10X ADMIN AND USER CHAT RENDERER
         window.renderActiveChatConversationLogs = function() {
             const scrollBox = document.getElementById('chatMessagesScrollWrapper'); if(!scrollBox) return;
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -1972,27 +1830,60 @@
             });
             
             msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
-            
-            // ANTI-LAG: Only render the last 150 messages if it gets too large
             if(msgs.length > 150) msgs = msgs.slice(-150);
             
             let html = "";
             let lastSender = "";
+            let lastDateStr = "";
+
             msgs.forEach((m, idx) => {
+                const msgDate = new Date(m.epochTimeNode).toLocaleDateString();
+                if(msgDate !== lastDateStr) {
+                    html += `<div style="text-align:center; margin: 15px 0;"><span style="background:var(--wa-search-input); color:var(--wa-text-muted); padding:6px 14px; border-radius:12px; font-size:0.85rem; box-shadow:0 1px 3px rgba(0,0,0,0.5);">${msgDate}</span></div>`;
+                    lastDateStr = msgDate;
+                }
+
                 const isMe = m.sender === currentUid;
                 const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
                 const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
                 lastSender = m.sender;
                 
+                // Handling "Delete for Everyone" Display Logic
+                let displayText = m.textBody;
+                let isDeletedAdminGlow = "";
+                let menuHtml = "";
+
+                if (m.isDeleted) {
+                    if (MatrixSystemState.get('currentMode') === 'admin') {
+                        // Admin sees everything with a red glow
+                        isDeletedAdminGlow = "bubble-deleted-admin";
+                        displayText = `<span class="deleted-text-stamp">🚫 [DELETED BY USER]</span>` + m.textBody;
+                    } else {
+                        // Normal user sees generic delete message
+                        displayText = `<span style="color:var(--wa-text-muted); font-style:italic;">🚫 This message was deleted</span>`;
+                    }
+                } else {
+                    if(isMe) {
+                        menuHtml = `<div class="wa-msg-dropdown-btn" onclick="window.toggleChatDropdownMenu(event, 'menu_${m.dbKey}')">⌄</div>
+                                    <div class="wa-msg-menu" id="menu_${m.dbKey}">
+                                        <div class="wa-menu-item" onclick="alert('Edit within 15 mins available soon.')">✎ Edit</div>
+                                        <div class="wa-menu-item danger" onclick="window.deleteMessageForEveryone('${m.dbKey}', '${m.sender}', ${m.epochTimeNode})">🗑 Delete for everyone</div>
+                                    </div>`;
+                    }
+                }
+                
                 let mediaHtml = "";
-                if(m.mediaPayload) {
+                if(m.mediaPayload && !m.isDeleted) {
                     if(m.mediaPayload.startsWith('data:audio')) {
-                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
+                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>
+                        <div style="font-size:0.75rem; color:var(--neon-cyan); cursor:pointer;" onclick="this.previousElementSibling.playbackRate = 1.5; window.triggerDeviceVibration(20);">1.5x Speed</div>`;
                     } else if (m.mediaPayload.startsWith('data:image')) {
                         mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
                     } else {
                         mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
                     }
+                } else if (m.mediaPayload && m.isDeleted && MatrixSystemState.get('currentMode') === 'admin') {
+                     mediaHtml = `<span class="deleted-text-stamp">🚫 [MEDIA DELETED]</span>`;
                 }
                 
                 let senderNameHtml = "";
@@ -2004,19 +1895,31 @@
                 }
 
                 let tickHtml = "";
-                if (isMe) {
-                    tickHtml = m.read ? `<span class="whatsapp-tick-space double-blue">✓✓</span>` : `<span class="whatsapp-tick-space">✓✓</span>`;
-                }
+                if (isMe) { tickHtml = m.read ? `<span class="whatsapp-tick-space double-blue">✓✓</span>` : `<span class="whatsapp-tick-space">✓✓</span>`; }
                 
-                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}">
+                let reactionBadge = m.reaction ? `<div class="active-reaction-badge">${m.reaction}</div>` : '';
+                
+                let reactionBarHtml = !m.isDeleted ? `
+                    <div class="wa-reaction-bar">
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '👍')">👍</span>
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '❤️')">❤️</span>
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '😂')">😂</span>
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '😮')">😮</span>
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '😢')">😢</span>
+                        <span class="wa-reaction-emoji" onclick="window.applyReactionToMessage('${m.dbKey}', '🙏')">🙏</span>
+                    </div>` : '';
+
+                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail} ${isDeletedAdminGlow}">
+                    ${reactionBarHtml}
+                    ${menuHtml}
                     ${senderNameHtml}
-                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
+                    <div class="bubble-text-content">${mediaHtml}${displayText}</div>
                     <div class="whatsapp-time">${m.timestamp} ${tickHtml}</div>
+                    ${reactionBadge}
                 </div>`;
             });
             
             scrollBox.innerHTML = html;
-            // Prevent forced layout thrashing by wrapping scroll in timeout
             setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
         };
 
@@ -2038,6 +1941,8 @@
                 textBody: text,
                 mediaPayload: media,
                 read: false,
+                isDeleted: false,
+                reaction: "",
                 epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
@@ -2046,6 +1951,7 @@
                 MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
                 const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = "";
                 if(isAudioContextAllowed) window.playSynthesizedSound(800, 'sine', 0.1);
+                window.triggerDeviceVibration(50);
                 
                 if (MatrixSystemState.get('isAIAssistantActiveState') && targetUid === "MainframeAdmin") {
                     processAIMatrixAssistantResponseStream(text);
@@ -2053,7 +1959,7 @@
             });
         };
 
-        // --- ADMIN SPY CHAT FUNCTIONS (For Perfect Spychat Panel working) ---
+        // --- ADMIN SPY CHAT FUNCTIONS (10X ADVANCED) ---
         window.renderAdminSpyUserList = function() {
             const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
             const users = MatrixSystemState.get('cachedGlobalUsersArr');
@@ -2125,8 +2031,6 @@
             });
             
             msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
-            
-            // ANTI-LAG SYSTEM: Limit Admin rendering to latest 150 messages to prevent browser freezing
             if(msgs.length > 150) msgs = msgs.slice(-150);
             
             let html = "";
@@ -2137,20 +2041,30 @@
                 const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
                 lastSender = m.sender;
                 
+                let displayText = m.textBody;
+                let isDeletedAdminGlow = "";
+
+                if (m.isDeleted) {
+                    isDeletedAdminGlow = "bubble-deleted-admin";
+                    displayText = `<span class="deleted-text-stamp">🚫 [DELETED BY USER]</span>` + m.textBody;
+                }
+
                 let mediaHtml = "";
-                if(m.mediaPayload) {
+                if(m.mediaPayload && !m.isDeleted) {
                     if(m.mediaPayload.startsWith('data:audio')) {
                         mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
                     } else if (m.mediaPayload.startsWith('data:image')) {
                         mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
                     }
+                } else if (m.mediaPayload && m.isDeleted) {
+                     mediaHtml = `<span class="deleted-text-stamp">🚫 [MEDIA DELETED]</span>`;
                 }
                 
                 let senderNameHtml = `<div class="group-sender-name">${m.sender}</div>`;
                 
-                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
+                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail} ${isDeletedAdminGlow}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
                     ${!isMe ? senderNameHtml : ''}
-                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
+                    <div class="bubble-text-content">${mediaHtml}${displayText}</div>
                     <div class="whatsapp-time">${m.timestamp}</div>
                 </div>`;
             });
@@ -2176,11 +2090,13 @@
                 textBody: text,
                 mediaPayload: media,
                 read: false,
+                isDeleted: false,
                 epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
                 inputField.value = "";
                 MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
+                window.triggerDeviceVibration(50);
             });
         };
 
@@ -2199,17 +2115,19 @@
             e.stopPropagation();
             document.getElementById('systemEmojiMatrixBoxNode')?.classList.toggle('hidden');
             document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
+            window.triggerDeviceVibration(20);
         };
         window.toggleAdminEmojiDrawerOverlayPanel = function(e) {
             e.stopPropagation();
             document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.toggle('hidden');
             document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
+            window.triggerDeviceVibration(20);
         };
 
         window.insertEmojiToChat = function(emoji) {
             const isAdm = MatrixSystemState.get('currentMode') === 'admin';
             const input = document.getElementById(isAdm ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput');
-            if(input) { input.value += emoji; input.focus(); }
+            if(input) { input.value += emoji; input.focus(); window.triggerDeviceVibration(20);}
         };
 
         window.insertGifToChat = function(gifUrl) {
@@ -2228,6 +2146,7 @@
             wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:#02050e; border:2px solid var(--neon-cyan); box-shadow:0 0 50px rgba(0,242,254,0.4); max-width:500px;"><h4 style="color:#00f2fe; text-shadow:0 0 10px #00f2fe; margin-bottom:20px; font-family:'Orbitron'; animation:pulseGlow 1s infinite;">${title}</h4>${callEffect}<div style="color:var(--neon-pink); margin-bottom:20px; font-weight:bold; font-family:monospace;">ENCRYPTING END-TO-END CONNECTION...</div><button onclick="window.closeCustomInlinePopupEngine()" class="hud-engage-btn" style="background:#e74c3c; color:#fff; box-shadow:0 0 20px rgba(231,76,60,0.6);">END CALL</button></div>`;
             wrapper.classList.remove('hidden');
             window.playSynthesizedSound(440, 'sine', 1.5);
+            window.triggerDeviceVibration([500, 200, 500, 200, 500]);
         };
 
         window.filterClientChatContactList = function() {
@@ -2270,11 +2189,15 @@
         window.switchCustomerChannel = function(channelId) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
             document.getElementById('customerMainMenuBlock').style.display = 'none';
+            document.querySelector('.cyber-hero-slider').style.display = 'none'; // Hide slider inside channels
+            
             ['upload', 'notes', 'vault', 'gaming', 'chat', 'request'].forEach(id => { document.getElementById(`customer${id.charAt(0).toUpperCase()+id.slice(1)}InterfaceBlock`)?.classList.add('hidden'); });
             const btnHome = document.getElementById('btnBackToHome');
             
             if (channelId === 'menu') {
-                document.getElementById('customerMainMenuBlock').style.display = 'grid'; if(btnHome) btnHome.classList.add('hidden');
+                document.getElementById('customerMainMenuBlock').style.display = 'grid'; 
+                document.querySelector('.cyber-hero-slider').style.display = 'flex'; // Show slider on menu
+                if(btnHome) btnHome.classList.add('hidden');
                 window.enforceCustomerPermissions();
             } else {
                 if(btnHome) btnHome.classList.remove('hidden');
@@ -2300,7 +2223,7 @@
                 const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
                 if(groupMatch) { targetAvatarPath = groupMatch.avatar || defaultAvatarSvg; displayName = groupMatch.name || "Group"; displayContact = "Group Chat"; displayBio = `${groupMatch.members.length} Participants`; }
             } else if (targetUserId === "MainframeAdmin") {
-                displayName = "Mainframe Admin Shashi"; displayContact = "System Admin"; displayBio = "Managing Matrix Cloud";
+                displayName = "Support Admin"; displayContact = "Mainframe Systems"; displayBio = "Official Support Account";
             }
             wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:380px;"><div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;"><img src="${targetAvatarPath}" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 10px 20px rgba(0,0,0,0.5);"><h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.6rem; margin-top:15px;">${displayName}</h2><div style="color:var(--wa-text-muted); font-size:1rem; margin-top:5px;">${displayContact}</div></div><div style="padding:25px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;"><h4 style="color:var(--wa-green); font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4><div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.1rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Close</button></div></div>`;
             wrapper.classList.remove('hidden');
@@ -2310,7 +2233,7 @@
             try {
                 const data = snapshot.val(); let statusesArr = data ? Object.values(data) : []; const now = Date.now();
                 statusesArr = statusesArr.filter(s => (now - s.epochTime) < (24 * 60 * 60 * 1000)); MatrixSystemState.set('cachedGlobalStatusesArr', statusesArr);
-                const statusIcons = document.querySelectorAll('.wa-status-circle-icon');
+                const statusIcons = document.querySelectorAll('.wa-status-circle-icon[title="Status"], .wa-status-circle-icon[title="View / Upload Status"], .wa-status-circle-icon[title="View Statuses"]');
                 if(statusesArr.length > 0) { statusIcons.forEach(icon => icon.classList.add('has-status')); } else { statusIcons.forEach(icon => icon.classList.remove('has-status')); }
                 const myUid = MatrixSystemState.get('loggedInCustomerID'); const myLatest = statusesArr.filter(s => s.ownerId === myUid).sort((a,b)=>b.epochTime-a.epochTime)[0];
                 const thumb = document.getElementById('myStatusPreviewAvatar');
