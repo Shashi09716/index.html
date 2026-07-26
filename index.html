@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V19.0 (WordPad & WA Pro Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V19.0 (WordPad & WA Pro Realtime)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -41,7 +41,6 @@
         input, textarea, select, [contenteditable="true"] { user-select: auto !important; -webkit-user-select: auto !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         
-        /* SYSTEM PRELOADER */
         #systemPreloader { position: fixed; inset: 0; background: #02050e; z-index: 999999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.6s ease-out, visibility 0.6s ease-out; opacity: 1; visibility: visible;}
         #systemPreloader.engine-ready { opacity: 0; visibility: hidden; pointer-events: none; }
         .loader-spinner { width: 80px; height: 80px; border: 6px solid rgba(0, 242, 254, 0.2); border-top-color: var(--neon-cyan); border-radius: 50%; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite, cyberPulse 2s infinite alternate; }
@@ -63,9 +62,12 @@
         .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
         .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 1.05rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 18px 22px; border-radius: 14px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
         .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 8px 25px rgba(0,242,254,0.3); border-color: var(--neon-cyan); transform: translateY(-3px); }
-        .toggle-switch { appearance: none; width: 60px; height: 32px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s; box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
-        .toggle-switch::before { content: ''; position: absolute; width: 22px; height: 22px; background: var(--text-sub); border-radius: 50%; top: 3px; left: 4px; transition: 0.4s; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        body.light-theme-active .toggle-switch-wrapper { color: #111b21; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-color:#cbd5e1; }
+        .toggle-switch { appearance: none; width: 60px; height: 32px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
+        body.light-theme-active .toggle-switch { background: #cbd5e1; border-color: #94a3b8; }
+        .toggle-switch::before { content: ''; position: absolute; width: 22px; height: 22px; background: var(--text-sub); border-radius: 50%; top: 3px; left: 4px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .toggle-switch:checked { background: var(--neon-green); border-color: #27ae60; box-shadow: 0 0 25px rgba(46,204,113,0.6); }
+        body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #059669; }
         .toggle-switch:checked::before { transform: translateX(28px); background: #fff; box-shadow: 0 0 10px #fff; }
 
         .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
@@ -106,9 +108,9 @@
         .beaded-wire { width: 8px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 8px, #0f172a 8px, #0f172a 16px); box-shadow: 0 0 20px rgba(241,196,15,0.9); border-radius:4px;}
         .luminescent-node { width: 44px; height: 44px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 50px #f1c40f; border: 3px solid #000; transition: 0.3s; margin-top: -5px;}
         
-        /* 3D TERMINAL */
         .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 500px; background: var(--panel-glass); border: 2px solid var(--border-glass); border-left: 8px solid #f1c40f; padding: 45px 35px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); }
         .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; transform: translate3d(-50%, 0, 0) scale(1); }
+        body.light-theme-active .hud-glass-terminal { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; transform: translateZ(20px); }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
@@ -123,40 +125,42 @@
         .hud-engage-btn { width: 100%; padding: 22px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 10px 30px rgba(241,196,15,0.5); text-transform: uppercase; transform: translateZ(25px);}
         .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.9); transform: translateZ(30px) scale(1.02); }
         
-        /* DASHBOARD CORE & ADVANCED MENU BAR */
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 100px; }
         .dashboard-panel-core.active-view { display: flex; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 24px; width: 100%; max-width: 1500px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
         
-        /* 🔥 UPGRADED ADVANCED MENU BAR 🔥 */
-        .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; padding: 10px; margin-top: 25px; perspective: 1000px; }
+        /* 🔥 HIGH ADVANCED 3D MENU CARDS GRID 🔥 */
+        .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; padding: 10px; margin-top: 25px; transform-style: preserve-3d; }
         .menu-card { 
-            background: linear-gradient(145deg, rgba(10, 20, 40, 0.9), rgba(4, 10, 20, 0.95)); 
-            border: 1px solid var(--border-glass); 
-            border-top: 3px solid var(--neon-cyan);
-            border-radius: 20px; padding: 40px 25px; text-align: center; cursor: pointer; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 15px rgba(0, 242, 254, 0.1); 
+            background: linear-gradient(135deg, rgba(6,22,48,0.9), rgba(4,11,28,0.95)); 
+            border: 2px solid var(--border-glass); 
+            border-radius: 24px; padding: 40px 25px; text-align: center; cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(0,242,254,0.15); 
             position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; 
-            backdrop-filter: blur(10px);
+            transform: translateZ(0px);
         }
-        .menu-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%); transform: scale(0); transition: 0.6s; z-index:1; }
-        .menu-card:hover::before { transform: scale(1); }
-        .menu-card:hover { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); box-shadow: 0 25px 50px rgba(0,242,254,0.4), inset 0 0 25px rgba(0, 242, 254, 0.3); border-color: var(--neon-cyan); border-top: 3px solid #ff007f; }
-        .menu-card .icon { font-size: 4.5rem; margin-bottom: 20px; text-shadow: 0 0 25px var(--neon-cyan); position:relative; z-index:2; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-        .menu-card:hover .icon { transform: scale(1.25) rotate(10deg); text-shadow: 0 0 35px #ff007f; }
-        .menu-card h3 { font-family: 'Orbitron'; color: #fff; font-size: 1.5rem; margin-bottom: 12px; font-weight:900; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.8); letter-spacing: 1px;}
+        .menu-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(0,242,254,0.2), transparent); transform: translateX(-100%); transition: transform 0.6s ease; }
+        .menu-card:hover::before { transform: translateX(100%); }
+        .menu-card:hover { 
+            transform: translateY(-12px) scale(1.04) rotateX(4deg) rotateY(4deg); 
+            box-shadow: 0 30px 60px rgba(0,242,254,0.35), inset 0 0 25px rgba(0,242,254,0.3); 
+            border-color: var(--neon-cyan);
+        }
+        .menu-card .icon { font-size: 4.2rem; margin-bottom: 20px; text-shadow: 0 0 25px var(--neon-cyan); transition: transform 0.4s ease; }
+        .menu-card:hover .icon { transform: scale(1.2) translateZ(20px); text-shadow: 0 0 35px var(--neon-pink); }
+        .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.45rem; margin-bottom: 12px; font-weight:800; text-shadow: 0 2px 5px rgba(0,0,0,0.6); letter-spacing:1px;}
         .menu-card:hover h3 { color: var(--neon-cyan); }
-        .menu-card p { font-size: 1.05rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.5; font-weight: 500;}
+        .menu-card p { font-size: 1.05rem; color: var(--text-sub); line-height: 1.5; font-weight: 500;}
         
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border-glass); padding-bottom: 20px; gap: 15px; flex-wrap: wrap; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.4rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
         .neon-cyan-text span { font-size: 1.7rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 12px; text-shadow: none; font-weight: 600; animation: none; }
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2.4rem; text-shadow: 0 0 25px rgba(46,204,113,0.6); font-weight: 900; animation: glitchTextAnim 3s infinite reverse; }
         
         .matrix-system-controller-dock { margin-top: 30px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); padding: 18px 25px; border-radius: 14px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 10px rgba(0,0,0,0.6); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.9rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 10px; }
         .refresh-spinner-node { width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
-        @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 15px #2ecc71; } }
         
         .form-grid-layout, .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
         .full-width-field { grid-column: span 2; }
@@ -166,105 +170,146 @@
         .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 25px var(--neon-cyan); transform: scale(1.05); }
         
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 2.2rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.9); border: 2px solid #00f2fe; padding: 18px 40px; border-radius: 14px; display: inline-block; box-shadow: 0 0 30px rgba(0,242,254,0.6), inset 0 0 15px rgba(0,242,254,0.4); margin-bottom: 25px; text-align: center; position: relative; text-shadow: 0 0 15px #f1c40f; letter-spacing: 2px;}
+        .ai-helper-banner { padding: 18px; margin-top: 25px; border-radius: 14px; background: rgba(0,242,254,0.1); border: 2px solid rgba(0,242,254,0.4); color: #00f2fe; text-align: center; font-size: 1.15rem; font-weight: 700; box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.15); letter-spacing: 0.5px;}
+        
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 20px; background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.2rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 4px 10px rgba(0,0,0,0.6); transition: 0.3s; }
-        .giant-compiler-input:focus, .search-terminal-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.4); }
         
-        /* 🔥 UPGRADED WORDPAD (NOTEPAD) ENGINE 🔥 */
-        .notes-engine-card-surface { background: #e9eef2; border: 1px solid var(--border-glass); border-radius: 12px; padding: 0; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.4); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 85vh; max-height: 900px; overflow: hidden; }
-        .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; max-height: 100vh;}
+        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
+        .hud-data-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 30px; border-radius: 18px; display: flex; flex-direction: column; gap: 16px; word-break: break-all; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.6); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hud-data-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0, 242, 254, 0.3); }
+        .hud-data-card p { color: var(--text-sub); font-size: 1.1rem; display: flex; flex-flow: row wrap; gap: 10px; font-weight: 600; line-height: 1.6; }
+        .hud-data-card b { color: var(--text-main); display: inline-block; width: 120px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; letter-spacing: 0.5px; }
         
-        /* WordPad Ribbon Menu */
-        .wordpad-ribbon { background: #f3f4f6; border-bottom: 1px solid #cbd5e1; padding: 8px 15px; display: flex; gap: 15px; flex-wrap: wrap; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .wordpad-ribbon-group { display: flex; align-items: center; gap: 5px; border-right: 1px solid #cbd5e1; padding-right: 15px; }
-        .wordpad-ribbon-group:last-child { border-right: none; }
-        .wordpad-btn { background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 6px 10px; cursor: pointer; color: #334155; font-size: 0.95rem; display: flex; align-items: center; gap: 5px; transition: 0.2s; font-weight: 600;}
-        .wordpad-btn:hover { background: #e2e8f0; border-color: #cbd5e1; color: #0f172a; }
-        .wordpad-select { padding: 6px; border: 1px solid #cbd5e1; border-radius: 4px; background: #fff; color: #334155; font-size: 0.9rem; outline: none; cursor: pointer; }
-        .wordpad-select:focus { border-color: #3b82f6; }
+        .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.7); padding: 6px 12px; border-radius: 8px; font-family: monospace; font-size: 1.1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.4); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .hud-data-card .owner-name-tag-right { position: absolute; top: 25px; right: 25px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 1rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         
-        /* WordPad Document Area */
-        .wordpad-workspace { background: #e2e8f0; flex: 1; display: flex; justify-content: center; padding: 40px 20px; overflow-y: auto; }
-        .wordpad-page { background: #ffffff; width: 100%; max-width: 850px; min-height: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 60px 80px; color: #000; font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; line-height: 1.6; outline: none; }
+        .status-badge { font-family: 'Orbitron'; font-size: 0.95rem; padding: 8px 16px; border-radius: 8px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
         
-        /* WordPad Document Library Viewer */
-        .wordpad-library-panel { width: 320px; background: #f8fafc; border-left: 1px solid #cbd5e1; display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; }
-        .wordpad-library-header { background: #1e293b; color: #fff; padding: 15px; font-weight: bold; font-family: 'Orbitron'; font-size: 1.1rem; text-align: center; }
-        .wordpad-doc-list { flex: 1; overflow-y: auto; padding: 10px; display:flex; flex-direction:column; gap:10px; }
-        .wordpad-doc-item { background: #fff; border: 1px solid #cbd5e1; padding: 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative;}
-        .wordpad-doc-item:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #3b82f6; }
-        .wordpad-doc-title { font-weight: bold; color: #0f172a; margin-bottom: 5px; font-size: 1.05rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-        .wordpad-doc-meta { font-size: 0.85rem; color: #64748b; }
-        .wordpad-doc-action { position: absolute; right: 10px; top: 15px; background: #ef4444; color: #fff; border: none; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; cursor: pointer; }
+        .wipe-card-btn { width: 100%; padding: 14px; background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.6); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 1rem; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        
+        .hidden { display: none !important; }
+        .text-left { text-align: left; }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 16px; padding: 30px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5); }
+        
+        /* 🔥 UPGRADED PROFESSIONAL WORDPAD WORKSPACE UI 🔥 */
+        .notes-engine-card-surface { background: #1e2530; border: 1px solid var(--border-glass); border-radius: 20px; padding: 0; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(0,0,0,0.5); display: flex; flex-direction: row !important; width: 100%; height: 85vh; max-height: 900px; overflow: hidden; }
+        .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; max-height: 100vh;}
+        
+        .wordpad-main-container { flex: 1; display: flex; flex-direction: column; height: 100%; border-right: 2px solid var(--border-glass); }
+        .notes-toolbar-ribbon { background: #111622; padding: 10px 15px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 8px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; }
+        .note-tool-btn { background: rgba(4,15,36,0.8); border: 1px solid var(--border-glass); color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+        .note-tool-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
+        .note-tool-select { background: #0b0f19; border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 6px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; cursor: pointer; outline: none; font-weight:bold; }
+        
+        .wordpad-page-scroll-bg { background: #0b0f17; flex: 1; overflow-y: auto; padding: 40px 20px; display: flex; justify-content: center; }
+        .notes-pad-rich-area { width: 100%; max-width: 800px; min-height: 842px; padding: 50px 60px; background: #ffffff !important; color: #111b21 !important; font-size: 1.15rem; border: 1px solid #cbd5e1; border-radius: 4px; outline: none; font-family: 'Segoe UI', sans-serif; font-weight: 400; line-height: 1.6; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        
+        .wordpad-sidebar-library { width: 340px; background: #111622; display: flex; flex-direction: column; height: 100%; }
+        .wordpad-sidebar-title { font-family: 'Orbitron'; color: var(--neon-pink); padding: 15px; font-size: 1.1rem; border-bottom: 2px solid var(--border-glass); text-align: center; font-weight: 900; letter-spacing: 1px; }
+        .notes-realtime-logs-wrapper { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 14px; background: #0b0f17; }
+        
+        /* Real WordPad Saved Document Cards */
+        .note-structural-card { background: #161d2d; border-left: 5px solid var(--neon-pink); padding: 15px; border-radius: 10px; border: 1px solid var(--border-glass); position: relative; text-align: left; cursor: pointer; transition: 0.2s; }
+        .note-structural-card:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(255,0,127,0.3); background: #1e273a; }
+        .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.75rem; color: var(--neon-pink); margin-bottom: 8px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.2); padding-bottom: 6px; }
+        .note-card-excerpt { color: #8696a0; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.4; max-height: 2.8em; }
+        
+        .notes-status-bar { padding: 10px 20px; background: #0b0f17; border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 0.85rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;}
+        .locked-anchor-input { background: rgba(15,23,42,0.7) !important; border-color: rgba(255,0,127,0.5) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
 
-        .notes-status-bar { padding: 10px 20px; background: #f1f5f9; border-top: 1px solid #cbd5e1; font-family: monospace; font-size: 0.95rem; color: #334155; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;}
-
-        /* --- 🔥 100% REAL WHATSAPP WEB CLONE SETTINGS 🔥 --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 380px 1fr; gap: 0; width: 100%; height: 85vh; max-height: 900px; background: var(--wa-bg); border-radius: 16px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.7); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+        /* --- 100% REAL WHATSAPP WEB COLOR SPACE PERFECT CLONE WITH ADVANCED UI --- */
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 380px 1fr; gap: 0; width: 100%; height: 85vh; max-height: 900px; background: var(--wa-bg); border-radius: 16px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.7); position: relative; font-family: 'Segoe UI', sans-serif !important; }
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow-y: hidden; z-index: 5; height: 100%; }
         .whatsapp-search-box { padding: 14px 16px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
-        .whatsapp-search-box input { flex: 1; padding: 12px 16px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); font-size: 1rem; outline: none; font-family: inherit;}
+        .whatsapp-search-box input { flex: 1; padding: 12px 16px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); font-size: 1rem; outline: none; }
         #chatTargetContainerView { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
         
         .chat-user-item-node { padding: 14px 18px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); cursor: pointer; transition: background 0.2s ease; position: relative; }
         .chat-user-item-node:hover { background: var(--wa-search-input); }
         .chat-user-item-node.active-chat-target { background: var(--wa-msg-in) !important; border-left: 5px solid var(--wa-green); padding-left: 13px;}
-        .whatsapp-avatar { width: 54px; height: 54px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
-        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
-        .whatsapp-user-name { font-weight: 600; font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
-        .whatsapp-user-id { font-size: 0.95rem; color: var(--wa-text-muted); font-family: inherit; margin-top:3px; }
+        .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 3px solid #2ecc71; padding: 2px; }
+        .whatsapp-avatar { width: 54px; height: 54px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; flex-shrink: 0;}
+        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; display:flex; flex-direction:column; justify-content:center; }
+        .whatsapp-user-name { font-weight: 600; font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; color: var(--wa-text); }
+        .whatsapp-user-id { font-size: 0.95rem; color: var(--wa-text-muted); margin-top:3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.8rem; font-weight: bold; min-width: 24px; height: 24px; padding: 0 8px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
         
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
         .chat-stream-header-bar { background: var(--wa-header); padding: 14px 20px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 15px; z-index: 2; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:10px; border-radius:50%; cursor:pointer; font-size:1.3rem; transition: 0.3s; margin-left: 6px; display:flex; align-items:center; justify-content:center;}
         .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
+        .header-call-btn { color: var(--wa-green); font-family:'Orbitron'; font-size:0.9rem; border:1px solid var(--wa-green); padding:6px 12px; border-radius:8px; font-weight: bold;}
         
-        .chat-messages-scroll-stack { flex: 1 1 auto; padding: 25px 6%; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; z-index: 2; scroll-behavior: smooth; }
-        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; font-family: inherit; word-wrap: break-word; margin-bottom: 3px; display: inline-block; }
-        .bubble-msg-wrapper:hover .msg-dropdown-trigger { display: block; }
+        .wa-status-circle-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px dashed var(--wa-text-muted); display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--wa-text-muted); font-size: 1.2rem; flex-shrink: 0;}
+        .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
+        
+        .chat-messages-scroll-stack { flex: 1 1 auto; padding: 25px 6%; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; z-index: 2; scroll-behavior: smooth; }
+        
+        /* Advanced Bubble Action Menu Engine */
+        .bubble-msg-wrapper { max-width: 65%; padding: 8px 12px 10px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; }
+        .bubble-msg-wrapper.first-in-group { margin-top: 15px; }
+        .bubble-text-content { display: inline-block; padding-right: 70px; padding-bottom: 6px; white-space: pre-wrap; min-width: 50px; }
+        
         .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); align-self: flex-end; border-top-right-radius: 0;}
         .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
-        .whatsapp-time { font-size: 0.75rem; color: rgba(255,255,255,0.7); position: absolute; bottom: 8px; right: 10px; display: flex; align-items: center; gap: 4px; margin: 0; line-height: 1; }
+        .whatsapp-time { font-size: 0.72rem; color: rgba(255,255,255,0.6); position: absolute; bottom: 6px; right: 10px; display: flex; align-items: center; gap: 4px; }
         
-        /* New WhatsApp Feature Additions */
-        .msg-dropdown-trigger { display: none; position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.5); border-radius: 50%; padding: 2px 6px; cursor: pointer; font-size: 0.8rem; color: #fff; }
-        .msg-dropdown-menu { display: none; position: absolute; top: 25px; right: 5px; background: var(--wa-header); border: 1px solid var(--wa-border); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 100; min-width: 120px; overflow: hidden; }
-        .msg-dropdown-menu div { padding: 10px 15px; font-size: 0.95rem; cursor: pointer; color: var(--wa-text); border-bottom: 1px solid var(--wa-border); }
-        .msg-dropdown-menu div:hover { background: var(--wa-search-input); }
-        .msg-dropdown-menu div:last-child { border-bottom: none; color: #ef4444; }
-        .bubble-msg-wrapper.deleted { font-style: italic; color: var(--wa-text-muted); background: transparent; border: 1px solid var(--wa-border); }
-        .bubble-msg-wrapper.edited::after { content: '(edited)'; font-size: 0.7rem; color: rgba(255,255,255,0.5); position: absolute; bottom: 8px; right: 65px; }
-        
-        .reaction-bar { position: absolute; bottom: -15px; right: 10px; background: var(--wa-header); border-radius: 12px; padding: 2px 6px; font-size: 0.9rem; box-shadow: 0 2px 5px rgba(0,0,0,0.4); display: flex; gap: 4px; z-index: 10;}
-        .pinned-banner { background: var(--wa-header); border-left: 5px solid var(--wa-green); padding: 10px 20px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; cursor: pointer; border-bottom: 1px solid var(--wa-border); flex-shrink:0; color: var(--wa-text);}
-        
+        /* New Feature Action Overlay elements */
+        .bubble-reaction-container { position: absolute; bottom: -12px; left: 10px; display: flex; gap: 2px; background: #202c33; border: 1px solid var(--wa-border); padding: 2px 6px; border-radius: 10px; font-size: 0.85rem; box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 5; }
+        .edited-marker-tag { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-left: 5px; font-style: italic; }
+        .undo-snackbar-container { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); background: #1e293b; border: 1px solid var(--border-glass); color: #fff; padding: 12px 24px; border-radius: 12px; z-index: 99999; display: flex; gap: 20px; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: sans-serif; font-weight: 600; }
+        .undo-action-trigger-btn { color: var(--neon-cyan); font-weight: bold; background: none; border: none; cursor: pointer; font-size: 1rem; text-transform: uppercase; }
+
         .chat-interface-footer-inputs { padding: 14px 20px; background: var(--wa-header); display: flex; gap: 12px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
-        .whatsapp-input-field { flex: 1; padding: 15px 20px; background: var(--wa-search-input); border: none; border-radius: 14px; color: var(--wa-text); outline: none; font-size: 1.1rem; font-family: inherit; font-weight: 400;}
+        .whatsapp-input-field { flex: 1; padding: 15px 20px; background: var(--wa-search-input); border: none; border-radius: 14px; color: var(--wa-text); outline: none; font-size: 1.1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);}
         .whatsapp-circle-btn { width: 48px; height: 48px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.6rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
         .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
 
-        .undo-snackbar { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); background: #323232; color: #fff; padding: 12px 24px; border-radius: 8px; display: flex; gap: 15px; align-items: center; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Segoe UI', sans-serif; transition: 0.3s opacity; opacity:0; pointer-events: none;}
-        .undo-snackbar.show { opacity: 1; pointer-events: all; }
-        .undo-snackbar button { background: none; border: none; color: var(--neon-cyan); font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .wa-attachment-popover { position: absolute; bottom: 85px; left: 20px; background: var(--wa-header); border-radius: 18px; padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.7); z-index: 10000; transform: scale(0.8); opacity: 0; transform-origin: bottom left; transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; border: 1px solid var(--border-glass);}
+        .wa-attachment-popover.active { transform: scale(1); opacity: 1; pointer-events: all; }
+        .attach-icon-wrapper { display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; }
+        .attach-circle { width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; color: #fff; transition: 0.3s; box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
+        .attach-icon-wrapper:hover .attach-circle { transform: scale(1.15); box-shadow: 0 10px 25px rgba(0,0,0,0.7); }
+        .attach-icon-wrapper span { font-size: 1rem; color: var(--wa-text); font-weight: 600; }
+        
+        .status-dashboard-overlay { position: absolute; inset: 0; background: var(--wa-bg); z-index: 10000; display: flex; flex-direction: column; animation: slideInLeft 0.3s forwards; }
+        .status-dashboard-header { background: var(--wa-header); padding: 18px 25px; display: flex; align-items: center; gap: 18px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); font-weight: 600; font-size: 1.3rem; flex-shrink: 0;}
+        .status-dashboard-header button { background:none; border:none; color:var(--wa-text); font-size:1.6rem; cursor:pointer; }
+        .status-section-title { padding: 25px 25px 12px 25px; color: var(--wa-green); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Lock Chat Screen */
-        .chat-lock-screen { position: absolute; inset: 0; background: var(--wa-bg); z-index: 500; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--wa-text); backdrop-filter: blur(10px); }
-        
-        .hidden { display: none !important; }
-        
-        /* Mobile fixes */
         @media (max-width: 768px) {
+            .top-cyber-navbar { padding: 12px; height: auto; flex-direction: column; gap: 10px; position: absolute; }
+            .navbar-controls { justify-content: center; }
+            .dashboard-panel-core { padding-top: 180px; padding-bottom: 25px; }
             .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 220px) !important; max-height: none;}
             .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
             .chat-stream-message-container { width: 100%; height: 100%; display: none; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none; }
             .chat-io-grid-matrix.mobile-chat-view-active .chat-stream-message-container { display: flex; }
-            .wordpad-library-panel { display: none; } /* Hide on mobile to save space */
+            .mobile-back-btn { display: inline-block; }
+            .notes-engine-card-surface { flex-direction: column !important; }
+            .wordpad-sidebar-library { width: 100%; height: 250px; border-top: 2px solid var(--border-glass); }
+        }
+        @media (min-width: 769px) {
+            .chat-io-grid-matrix { grid-template-columns: 380px 1fr !important; }
+            .chat-target-userlist-pane { display: flex !important; }
+            .chat-stream-message-container { display: flex !important; }
+            .mobile-back-btn { display: none !important; }
         }
     </style>
 </head>
 <body>
-    <div id="systemPreloader"><div class="loader-spinner"></div><div class="preloader-text">NEXUS SECURE GATEWAY V19.0</div></div>
+    <div id="systemPreloader">
+        <div class="loader-spinner"></div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V19.0</div>
+    </div>
 
+    <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
+    
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
         <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
         <div class="navbar-controls">
@@ -274,385 +319,716 @@
         </div>
     </nav>
 
+    <div class="smoke-container">
+        <div class="smoke-cloud smoke-left"></div>
+        <div class="smoke-cloud smoke-right"></div>
+    </div>
+    
     <div class="cinema-stage" id="mainStage" style="display: flex;">
-        <div class="hud-glass-terminal" id="loginTerminal" style="opacity:1; pointer-events:all; transform: scale(1);">
-            <div class="hud-top-bar"><div class="hud-status-chip">AI CORE: LIVE</div></div>
-            <h1 class="hud-logo">NEXUS V19.0</h1>
-            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin(event);">
-                <div class="hud-input-cluster"><input type="text" id="accessNodeUser" required placeholder=" "><label>User ID</label><div class="neon-glow-underline"></div></div>
-                <div class="hud-input-cluster"><input type="password" id="accessNodePass" required placeholder=" "><label>Password</label><div class="neon-glow-underline"></div></div>
+        <div id="thunderEffect" class="thunder-overlay"></div>
+
+        <div class="cyber-lamp-core" id="lampDevice">
+            <div class="metallic-shutter-head">
+                <div class="blinding-core-light"></div>
+                <div class="mechanical-gate gate-left"></div>
+                <div class="mechanical-gate gate-right"></div>
+            </div>
+            <div class="hydraulic-stem"><div class="laser-conduit"></div></div>
+            <div class="brushed-heavy-base"></div>
+            <div class="volumetric-beam" id="lightBeam"></div>
+            <div class="quantum-cord" id="triggerCord">
+                <div class="beaded-wire"></div>
+                <div class="luminescent-node"></div>
+            </div>
+        </div>
+        
+        <div class="hud-glass-terminal" id="loginTerminal" onclick="event.stopPropagation()">
+            <div class="hud-top-bar">
+                <div class="hud-status-chip">AI CORE: LIVE</div>
+                <div class="hud-status-chip cyan-pulse">UNIVERSAL SYNC: OK</div>
+            </div>
+            <h1 class="hud-logo">NEXUS GATEWAY</h1>
+            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin && window.executeClusterLogin(event);">
+                <div class="hud-input-cluster">
+                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="window.debouncedInputCheck()">
+                    <label id="hudInputLabel">User ID / Admin ID</label>
+                    <div class="neon-glow-underline"></div>
+                </div>
+                <div class="hud-input-cluster">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.debouncedAutoLoginCheck()">
+                    <label>Secure Access Password Key</label>
+                    <div class="neon-glow-underline"></div>
+                </div>
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
+                <div style="display:flex; justify-content:space-between; margin-top:25px; font-family:'Orbitron'; font-size:1rem;">
+                    <span onclick="window.triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT ID ]</span>
+                    <span onclick="window.triggerForgotPasswordMatrixModal()" style="color:var(--neon-pink); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT PASS ]</span>
+                    <span onclick="window.triggerCustomerSignupModal()" style="color:#2ecc71; cursor:pointer; font-weight:bold; transition:0.2s;">[ CREATE NEW ID ]</span>
+                </div>
             </form>
         </div>
     </div>
     
     <div class="dashboard-panel-core" id="customerDashboard">
         <div class="hud-container-panel text-left">
+            <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:12px; border-radius:12px; margin-bottom:25px; font-family:'Orbitron'; font-size:1.1rem; color:#fff; font-weight:bold; display:none;">
+                <marquee id="customerMarqueeText" scrollamount="5">⚡ SYSTEM BROADCAST VECTOR ACTIVE</marquee>
+            </div>
+
             <div class="panel-header-flex">
-                <h2 class="neon-cyan-text">Customer Terminal<span id="clientDisplayLabel"></span></h2>
+                <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
                 <div style="display: flex; gap: 15px;">
                     <button onclick="window.switchCustomerChannel('menu')" class="home-action-btn hidden" id="btnBackToHome">🏠 HOME</button>
                     <button onclick="window.logoutEngine()" class="abort-btn">LOGOUT</button>
                 </div>
             </div>
 
-            <div id="customerMainMenuBlock" class="main-menu-grid">
-                <div class="menu-card" id="menuCard_notes" onclick="window.switchCustomerChannel('notes')">
-                    <div class="icon">📝</div><h3>WordPad Pro</h3><p>Professional document creator & library.</p>
-                </div>
-                <div class="menu-card" id="menuCard_chat" onclick="window.switchCustomerChannel('chat')">
-                    <div class="icon">💬</div><h3>WhatsApp Web</h3><p>Pro messaging, Lock, Edit, Undo & More.</p>
-                </div>
-                <div class="menu-card" id="menuCard_gaming" onclick="window.switchCustomerChannel('gaming')">
-                    <div class="icon">🎮</div><h3>Gaming</h3><p>Play AI talking games.</p>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div id="userPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div>
+            </div>
+            
+            <div class="avatar-upload-mini-pane" style="display:flex; align-items:center; gap:25px; margin-bottom:30px; background: rgba(0,0,0,0.5); padding: 25px; border-radius: 18px; border: 1px solid var(--border-glass); box-shadow: inset 0 3px 15px rgba(0,0,0,0.6);">
+                <img id="customerLiveAvatarPreview" class="whatsapp-avatar" style="cursor:pointer; width:95px; height:95px; border:3px solid var(--neon-cyan);" onclick="window.triggerUserProfileAvatarDropdownEngine()" src="">
+                <div style="flex:1;">
+                    <label style="color:#00f2fe; font-size:1.2rem; font-family:'Orbitron'; font-weight:bold; display:block; margin-bottom:10px; cursor:pointer;" onclick="window.triggerUserProfileAvatarDropdownEngine()">📷 Set Profile Photo</label>
+                    <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserProfileAvatarEngine(event)">
+                    <input type="text" id="customerNameInput" class="giant-compiler-input" style="padding: 14px; font-size: 1.1rem; border-color: rgba(0, 242, 254, 0.5); margin-bottom: 10px;" placeholder="Update your Full Name..." onchange="window.updateCustomerProfileEngine()">
+                    <input type="text" id="customerBioInput" class="giant-compiler-input" style="padding: 14px; font-size: 1.1rem; border-color: rgba(0, 242, 254, 0.5);" placeholder="Update your Bio / About status..." onchange="window.updateCustomerProfileEngine()">
                 </div>
             </div>
 
+            <div id="customerMainMenuBlock" class="main-menu-grid">
+                <div class="menu-card" id="menuCard_policy" onclick="window.switchCustomerChannel('upload')" style="display:none;">
+                    <div class="icon">📁</div><h3>Policy Column</h3><p>Manage and upload your secure policies.</p>
+                </div>
+                <div class="menu-card" id="menuCard_notes" onclick="window.switchCustomerChannel('notes')">
+                    <div class="icon">📝</div><h3>WordPad Workspace</h3><p>Professional high-end rich note editor.</p>
+                </div>
+                <div class="menu-card" id="menuCard_vault" onclick="window.switchCustomerChannel('vault')">
+                    <div class="icon">📂</div><h3>Cloud Vault</h3><p>Access your synchronized documents.</p>
+                </div>
+                <div class="menu-card" id="menuCard_gaming" onclick="window.switchCustomerChannel('gaming')">
+                    <div class="icon">🎮</div><h3>Gaming Nexus</h3><p>Play AI talking games.</p>
+                </div>
+                <div class="menu-card" id="menuCard_chat" onclick="window.switchCustomerChannel('chat')">
+                    <div class="icon">💬</div><h3>WhatsApp Web</h3><p>Chat & Status management.</p>
+                </div>
+                <div class="menu-card" id="menuCard_request" onclick="window.switchCustomerChannel('request')">
+                    <div class="icon" style="text-shadow: 0 0 25px #f1c40f;">🎫</div><h3 style="color:#f1c40f;">Support Request</h3><p>Send direct requests to Admin.</p>
+                </div>
+            </div>
+
+            <div id="customerUploadInterfaceBlock" class="hidden">
+                <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">📁 SECURE POLICY SYSTEM</h3>
+                <div id="customerLiveTrackerSection" style="margin-bottom: 30px; padding: 25px; background: rgba(0,0,0,0.6); border-radius: 18px; border: 2px solid rgba(0,242,254,0.4); box-shadow: inset 0 3px 15px rgba(0,0,0,0.7);"></div>
+                <div class="form-grid-layout">
+                    <div class="hud-input-cluster"><input type="text" id="regNo" placeholder=" "><label>Registration Number</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="insurerName" required placeholder=" "><label>Insurer Name *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="policyNo" placeholder=" "><label>Policy Number</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster"><input type="text" id="contactNo" inputmode="tel" maxlength="10" required placeholder=" " oninput="this.value=this.value.replace(/[^0-9]/g,'');"><label>Contact Number *</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field"><input type="email" id="email" placeholder=" "><label>Email Address</label><div class="neon-glow-underline"></div></div>
+                    <div class="hud-input-cluster full-width-field">
+                        <div class="cyber-upload-node" onclick="document.getElementById('clientAttachment').click()">
+                            <label style="position:static; pointer-events:all; color:#00f2fe; font-family:'Orbitron'; font-size:1.3rem; display:block; margin-bottom:12px; font-weight: 900; cursor: pointer;">📎 UPLOAD DOCUMENT / PHOTO</label>
+                            <input type="file" id="clientAttachment" style="display:none;" onchange="window.processBinaryAttachment(event, 'policy')">
+                            <div id="policyAttachmentFeedback" style="color:var(--wa-green); font-size:1.1rem; font-weight:bold; margin-top:14px;"></div>
+                        </div>
+                    </div>
+                    <div class="hud-input-cluster full-width-field"><textarea id="notesReal" placeholder=" " style="height:120px;"></textarea><label>Additional System Notes</label><div class="neon-glow-underline"></div></div>
+                </div>
+                <button onclick="window.submitPolicyForm()" class="hud-engage-btn" style="margin-top: 20px;">TRANSMIT SECURE DATA</button>
+            </div>
+
             <div id="customerNotesInterfaceBlock" class="hidden">
-                <div class="notes-engine-card-surface" id="notesMainWrapperCard" style="flex-direction: row;">
+                <div class="notes-engine-card-surface" id="notesMainWrapperCard">
                     
-                    <div style="flex:1; display:flex; flex-direction:column; height: 100%;">
-                        <div class="wordpad-ribbon">
-                            <div class="wordpad-ribbon-group">
-                                <button class="wordpad-btn" onclick="window.wipeNoteInterfaceToBlankTrigger()">📄 New</button>
-                                <button class="wordpad-btn" onclick="window.dispatchCompiledNoteToCloudMatrix()" style="color:#059669;">💾 Save</button>
-                                <button class="wordpad-btn" onclick="window.downloadNoteContent('doc')">⬇️ Export</button>
-                            </div>
-                            <div class="wordpad-ribbon-group">
-                                <select class="wordpad-select" onchange="document.execCommand('fontName', false, this.value)">
-                                    <option value="Arial">Arial</option><option value="Courier New">Courier</option><option value="Georgia">Georgia</option>
-                                </select>
-                                <select class="wordpad-select" onchange="document.execCommand('fontSize', false, this.value)">
-                                    <option value="3">11pt</option><option value="5">16pt</option><option value="7">24pt</option>
-                                </select>
-                            </div>
-                            <div class="wordpad-ribbon-group">
-                                <button class="wordpad-btn" onclick="document.execCommand('bold', false, null)"><b>B</b></button>
-                                <button class="wordpad-btn" onclick="document.execCommand('italic', false, null)"><i>I</i></button>
-                                <button class="wordpad-btn" onclick="document.execCommand('underline', false, null)"><u>U</u></button>
-                            </div>
-                            <div class="wordpad-ribbon-group">
-                                <input type="text" id="noteDocTitle" placeholder="Document Title..." style="padding:6px; border:1px solid #cbd5e1; border-radius:4px; font-weight:bold; color:#0f172a; outline:none; background:#fff;">
-                            </div>
+                    <div class="wordpad-main-container">
+                        <div class="notes-toolbar-ribbon">
+                            <select class="note-tool-select" onchange="window.applyNoteTemplate(this.value); this.value='';" style="font-weight:900; color:var(--neon-pink);">
+                                <option value="">📋 Template</option>
+                                <option value="meeting">📝 Meeting Notes</option>
+                                <option value="todo">☑️ To-Do List</option>
+                                <option value="project">📊 Project Plan</option>
+                            </select>
+                            <div class="toolbar-divider"></div>
+                            <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Mode</button>
+                            <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
+                                <option value="p">Paragraph</option>
+                                <option value="h1">Heading 1</option>
+                                <option value="h2">Heading 2</option>
+                                <option value="h3">Heading 3</option>
+                            </select>
+                            <select class="note-tool-select" onchange="window.triggerNoteFontFamily(this.value)">
+                                <option value="Segoe UI">Segoe UI</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Courier New">Courier</option>
+                                <option value="Georgia">Georgia</option>
+                            </select>
+                            <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
+                                <option value="3">Normal</option>
+                                <option value="1">Small</option>
+                                <option value="5">Large</option>
+                                <option value="7">Huge</option>
+                            </select>
+                            <div class="toolbar-divider"></div>
+                            <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')"><b>B</b></button>
+                            <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')"><i>I</i></button>
+                            <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')"><u>U</u></button>
+                            <div class="toolbar-divider"></div>
+                            <button class="note-tool-btn" onclick="window.executeFindAndReplaceEngine()">🔍 Replace</button>
+                            <button class="note-tool-btn" onclick="window.insertProfessionalTable()">📊 Table</button>
+                            <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
+                            <button class="note-tool-btn" onclick="window.printNoteEditorContent()">🖨️ PDF</button>
+                            <button class="note-tool-btn" onclick="window.toggleFullScreenNoteMode()" id="btnNoteFullScreenToggle">🔲 Fullscreen</button>
                         </div>
-                        <div class="wordpad-workspace">
-                            <div id="richNoteWritingPadEditable" class="wordpad-page" contenteditable="true" placeholder="Start typing your professional document here..."></div>
+                        
+                        <div class="wordpad-page-scroll-bg" id="printAreaNotepad">
+                            <div id="richNoteWritingPadEditable" class="notes-pad-rich-area" contenteditable="true" placeholder="Start typing your document... Saved safely to server matrices." oninput="window.updateNotepadLiveCounters()"></div>
                         </div>
+
                         <div class="notes-status-bar">
                             <span id="noteLiveWordCount">Words: 0</span>
-                            <span id="noteLiveAutoSaveStatus">State: Ready</span>
+                            <span id="noteLiveCharCount">Characters: 0</span>
+                            <span id="noteLiveReadTime" style="color: #ff007f;">Read: 0 min</span>
+                            <span id="noteLiveAutoSaveStatus" style="color:#2ecc71;">✅ Ready</span>
+                        </div>
+
+                        <div style="display:flex; gap:15px; padding:15px; background:#111622; border-top:2px solid var(--border-glass);">
+                            <button class="hud-engage-btn" style="padding:15px; font-size:1.1rem; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
+                            <button class="abort-btn" style="padding:15px; font-size:1.1rem;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW</button>
                         </div>
                     </div>
 
-                    <div class="wordpad-library-panel">
-                        <div class="wordpad-library-header">📂 Saved Documents</div>
-                        <div class="wordpad-doc-list" id="realtimeCloudNotesViewStack">
-                            </div>
+                    <div class="wordpad-sidebar-library">
+                        <div class="wordpad-sidebar-title">📄 Cloud Documents</div>
+                        <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="customerVaultInterfaceBlock" class="hidden">
+                <div class="giant-compiler-layout">
+                    <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
+                    <p style="color:var(--text-sub); margin-bottom: 30px; font-size:1.15rem;">Synchronized policy documents & media assets.</p>
+                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px;"></div>
+                </div>
+            </div>
+
+            <div id="customerGamingInterfaceBlock" class="hidden">
+                <div class="gaming-bar-nexus-wrapper">
+                    <h2 class="neon-cyan-text" style="font-size: 2.2rem; margin-bottom:25px; text-shadow:0 0 25px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
+                    <div class="gaming-canvas-container-box">
+                        <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="650" height="380"></canvas>
+                        <div id="virtualTomTalkOverlay" style="position:absolute; bottom:25px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:18px; border-radius:14px; border:2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100; box-shadow: 0 8px 20px rgba(0,0,0,0.8);">
+                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="width:55%; padding:14px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-weight:700; outline:none; border-radius:10px; font-size:1.05rem;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
+                            <button id="virtualTomLiveVoiceRecBtn" onclick="window.toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:14px; background:var(--neon-pink); border:none; color:#fff; font-weight:900; cursor:pointer; border-radius:10px; font-size:0.95rem; box-shadow: 0 4px 10px rgba(255,0,127,0.5);">🎙️ LISTEN</button>
+                            <button onclick="window.executeVirtualTomSpeechLoop()" style="width:20%; padding:14px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-weight:900; cursor:pointer; border-radius:10px; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,242,254,0.5);">SAY</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
-                    
                     <div class="chat-target-userlist-pane">
                         <div class="whatsapp-search-box">
-                            <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat">
-                            <button class="header-actions-btn" onclick="window.toggleUnreadFilter()" title="Unread Filter" id="unreadFilterBtn">🟢</button>
+                            <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
+                            <button class="header-actions-btn" id="waUnreadFilterBtn" onclick="window.toggleUnreadChatsFilter()" title="Filter Unread Chats" style="font-size:1.1rem; margin:0 5px;">📥</button>
+                            <div class="wa-status-circle-icon" title="View / Upload Status" onclick="window.openStatusDashboardOverlay()">⭕</div>
+                            <input type="file" id="statusUploadInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserStatusMatrixEngine(event)">
+                            <button class="nav-btn" style="padding: 10px 14px; font-size: 1.2rem; border-radius: 10px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
-                        <div id="chatTargetContainerView">
-                            </div>
+                        <div id="chatTargetContainerView"></div>
                     </div>
                     
-                    <div class="chat-stream-message-container" id="chatStreamBox">
-                        
-                        <div id="chatLockScreen" class="chat-lock-screen hidden">
-                            <h2>🔒 Chat Locked</h2>
-                            <p style="margin-bottom:15px;">Enter Secret Code / PIN</p>
-                            <input type="password" id="chatLockPin" style="padding:10px; border-radius:8px; border:none; outline:none; margin-bottom:15px; text-align:center; color:#000;">
-                            <button class="hud-engage-btn" onclick="window.unlockChat()">UNLOCK</button>
-                        </div>
-
+                    <div class="chat-stream-message-container" id="chatStreamWindowShell">
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:14px;">
                                 <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
-                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
-                                <div class="whatsapp-user-info">
+                                <img id="chatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
+                                <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div>
-                                    <div id="chatActiveUserBioNode" style="font-size: 0.9rem; color: var(--wa-text-muted); font-family: inherit;"></div>
+                                    <div id="chatActiveUserBioNode" style="font-size: 0.9rem; color: var(--wa-text-muted); font-family: inherit; margin-top: 3px;"></div>
+                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.9rem; color:var(--wa-green); font-family:inherit; font-weight:bold;" class="hidden">typing...</div>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 8px; align-items: center;">
-                                <button onclick="window.toggleChatLockPrompt()" class="header-actions-btn" title="Lock Chat">🔒</button>
-                                <button onclick="window.triggerSimulatedCall('Video')" class="header-actions-btn" title="Video Call">📹</button>
-                                <button onclick="window.triggerSimulatedCall('Voice')" class="header-actions-btn" title="Voice Call">📞</button>
-                                <button class="header-actions-btn" title="Search by Date" onclick="alert('Feature mapping: UI Calendar popup will appear here.')">📅</button>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                <button onclick="window.toggleChatPipelineSecureLock()" class="header-actions-btn" title="Chat Lock Secure PIN">🔒</button>
+                                <button onclick="window.toggleInChatSearch()" class="header-actions-btn" title="Search Message">🔍</button>
+                                <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
+                                <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
+                                <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
+                                <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
                             </div>
                         </div>
 
-                        <div class="pinned-banner hidden" id="chatPinnedMessageBannerNode">
-                            <span>📌</span> <div id="pinnedMsgText" style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
-                            <button onclick="window.unpinMessage()" style="background:none;border:none;color:#ef4444;cursor:pointer;">✖</button>
+                        <div class="whatsapp-in-chat-search" id="waInChatSearchBarNode">
+                            <input type="text" id="waMessageSearchInput" placeholder="Search current messages..." oninput="window.filterActiveChatMessages()">
+                            <button onclick="window.toggleInChatSearch()" class="header-actions-btn" style="color: #e74c3c; font-weight:bold;">✖</button>
+                        </div>
+                        
+                        <div class="chat-pinned-message-banner hidden" id="chatPinnedMessageBannerNode">
+                            <span style="font-size: 1.3rem;">📌</span> 
+                            <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" id="waGlobalPinnedContainerNode"><i>Pinned Message...</i></div>
                         </div>
 
-                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
+                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
+                        
+                        <div id="undoSnackbarPopup" class="undo-snackbar-container hidden">
+                            <span>Message deleted locally.</span>
+                            <button class="undo-action-trigger-btn" onclick="window.executeUndoChatDeleteAction()">Undo</button>
+                        </div>
+                        
+                        <div style="position:relative; z-index:100;">
+                            <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
+                            <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
+                            
+                            <div class="wa-attachment-popover" id="waAttachmentMenuBox">
+                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
+                                    <div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span>
+                                </div>
+                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
+                                    <div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span>
+                                </div>
+                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
+                                    <div class="attach-circle" style="background: linear-gradient(135deg, #a73ec9, #c863e4);">🖼️</div><span>Gallery</span>
+                                </div>
                             </div>
-
-                        <div id="undoSnackbar" class="undo-snackbar">
-                            Message deleted for me <button onclick="window.undoDelete()">UNDO</button>
                         </div>
 
                         <div class="chat-interface-footer-inputs">
-                            <button class="whatsapp-circle-btn" onclick="alert('Stickers & Avatar integration placeholder.')">😀</button>
-                            <button class="whatsapp-circle-btn" title="Attach (HD Media, Docs)" onclick="alert('HD Media & Large File Attach popup placeholder.')">📎</button>
-                            <div style="flex: 1; display:flex; align-items:center;">
-                                <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
+                            <button class="whatsapp-circle-btn toggle-emoji-btn-ref" onclick="window.toggleEmojiDrawerOverlayPanel(event)">😀</button>
+                            <input type="file" id="chatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
+                            <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="window.toggleWaAttachmentMenu(event)">📎</button>
+                            
+                            <div style="flex: 1; position: relative; min-width: 160px; display:flex; align-items:center;">
+                                <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
                             </div>
-                            <button class="whatsapp-circle-btn" onclick="alert('Hold to record voice/video note placeholder.')">🎙️</button>
-                            <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-green); transform:rotate(-45deg);">➤</button>
+                            <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
+                            <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-green); transform:rotate(-45deg); font-size:1.9rem;">➤</button>
+                        </div>
+                    </div>
+
+                    <div id="whatsappStatusDashboardPanel" class="status-dashboard-overlay hidden">
+                        <div class="status-dashboard-header">
+                            <button onclick="window.closeStatusDashboardOverlay()">⬅️</button> Status
+                        </div>
+                        <div style="overflow-y:auto; flex:1;">
+                            <div class="status-section-title">My Status</div>
+                            <div class="chat-user-item-node" onclick="document.getElementById('statusUploadInputNode').click()">
+                                <img class="whatsapp-avatar" id="myStatusPreviewAvatar" src="">
+                                <div class="whatsapp-user-info">
+                                    <div class="whatsapp-user-name">My status</div>
+                                    <div class="whatsapp-user-id">Tap to add status update</div>
+                                </div>
+                            </div>
+                            <div class="status-section-title">Recent updates</div>
+                            <div id="recentStatusUpdatesContainer"></div>
                         </div>
                     </div>
                 </div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:12px; font-size:1.1rem; color:#f1c40f; padding-left:18px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
-            <div id="customerGamingInterfaceBlock" class="hidden">
-                 <h2 class="neon-cyan-text" style="text-align:center;">🎮 VIRTUAL GAMES</h2>
-                 <p style="text-align:center; color:#8696a0;">Gaming module placeholder active.</p>
+            <div id="customerRequestInterfaceBlock" class="hidden">
+                <div class="giant-compiler-layout">
+                    <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 20px rgba(241,196,15,0.5);">🎫 SUPPORT & REQUESTS</h3>
+                    <p style="color:var(--text-sub); margin-bottom: 30px; font-size: 1.15rem;">Send a direct support ticket or feature request to the Mainframe Admin.</p>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="supportTicketSubject" placeholder=" ">
+                        <label>Ticket Subject</label>
+                        <div class="neon-glow-underline" style="background:#f1c40f;"></div>
+                    </div>
+                    <div class="hud-input-cluster">
+                        <textarea id="supportTicketBody" placeholder=" " style="height:140px;"></textarea>
+                        <label>Explain your request / issue...</label>
+                        <div class="neon-glow-underline" style="background:#f1c40f;"></div>
+                    </div>
+                    
+                    <div class="hud-input-cluster" style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; border: 2px dashed rgba(241,196,15,0.5);">
+                        <div class="cyber-upload-node" onclick="document.getElementById('supportTicketFile').click()" style="border:none; box-shadow:none; padding:10px;">
+                            <label style="position:static; pointer-events:all; color:#f1c40f; font-family:'Orbitron'; font-size:1.2rem; display:block; margin-bottom:12px; font-weight: 900; cursor: pointer;">📎 ATTACH SCREENSHOT / FILE (Optional)</label>
+                            <input type="file" id="supportTicketFile" style="display:none;" onchange="window.processSupportAttachment(event)">
+                            <div id="supportAttachmentFeedback" style="color:var(--wa-green); font-size:1.1rem; font-weight:bold; margin-top:14px;"></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="window.submitSupportTicket()" class="hud-engage-btn" style="background:linear-gradient(135deg, #e67e22, #d35400);">SUBMIT REQUEST</button>
+                    <div id="customerTicketHistory" style="margin-top:40px; border-top:2px solid var(--border-glass); padding-top:30px;"></div>
+                </div>
             </div>
-            
+
+            <div class="matrix-system-controller-dock">
+                <div class="auto-pulse-refresh-badge"><span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE</div>
+            </div>
+            <div class="ai-helper-banner" style="margin-top: 25px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
+        </div>
+    </div>
+    
+    <div class="dashboard-panel-core" id="adminDashboard">
+        <div class="hud-container-panel" style="text-align: left; max-width:1600px;">
+            <div id="adminPasswordResetAlertBanner" class="hidden"></div>
+            <div id="exclusiveAccountMatrixControlBar" style="background: linear-gradient(135deg, #09152e, #030814); border: 2px solid var(--neon-cyan); border-radius: 18px; padding: 25px; margin-bottom: 30px;"><div id="adminIntrusionNotificationArea"></div></div>
+            <div class="panel-header-flex">
+                <h2 class="neon-green-text" style="font-size:2.8rem;">Mainframe Core Admin</h2>
+                <div style="display: flex; gap: 18px;"><button onclick="window.switchAdminSubSection('menu')" class="home-action-btn hidden" id="btnAdminBackToHome">🏠 HOME</button><button onclick="window.logoutEngine()" class="abort-btn">DISCONNECT</button></div>
+            </div>
+            <div style="text-align: center; margin-bottom: 35px;"><div id="adminPrecisionTimeNode" class="hyper-clock-ticker">00:00:00</div></div>
+            <div id="adminMainMenuBlock" class="main-menu-grid">
+                <div class="menu-card" onclick="window.switchAdminSubSection('creation')"><div class="icon">🆔</div><h3>ID Create</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('approvals')"><div class="icon">✅</div><h3>Approvals</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('credentials')"><div class="icon">🔑</div><h3>Global Toggles</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('workspace')"><div class="icon">💼</div><h3>Workspace</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('spychat')"><div class="icon">💬</div><h3>Spychat Web</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('tickets')"><div class="icon">🎫</div><h3>Support</h3></div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('stats')"><div class="icon">📊</div><h3>System Status</h3></div>
+            </div>
+            <div class="customerCardsContainer" id="adminStaticContainer">
+                <div id="creationBlock" class="hidden"><div class="modern-glass-panel"><div id="liveCreationStatsMiniNode"></div><div class="giant-compiler-grid"><input type="text" id="newClientName" class="giant-compiler-input" placeholder="Name"><input type="date" id="newClientDOB" class="giant-compiler-input"><input type="text" id="newClientContact" class="giant-compiler-input" placeholder="Contact"><input type="text" id="newUserPass" class="giant-compiler-input" placeholder="Pass"></div><button onclick="window.createNewCustomerNode()" class="hud-engage-btn" style="margin-top:20px;">COMPILE NODE</button></div></div>
+                <div id="adminApprovalsBlock" class="hidden"><div id="adminPendingAccountsList" style="display:grid; gap:20px;"></div></div>
+                <div id="credentialsBlock" class="hidden"><div class="modern-glass-panel"><input type="text" id="mainframeAdminIdInput" class="giant-compiler-input"><input type="text" id="mainframeAdminPassInput" class="giant-compiler-input"><button onclick="window.executeMainframeAdminSyncRoute()" class="hud-engage-btn">SYNC</button></div><div class="modern-glass-panel"><input type="text" id="adminBroadcastInputControl" class="giant-compiler-input"><button onclick="window.dispatchMainframeGlobalBroadcast()" class="hud-engage-btn">BROADCAST</button><button onclick="window.clearMainframeGlobalBroadcast()" class="abort-btn">KILL</button></div><div class="modern-glass-panel"><select id="adminThunderControl" onchange="window.updateGlobalFeatures()"><option value="off">Off</option><option value="medium">Medium</option></select><div class="cyber-toggle-container"><input type="checkbox" id="globalTog_policy" onchange="window.updateGlobalFeatures()"><input type="checkbox" id="globalTog_notes" onchange="window.updateGlobalFeatures()"><input type="checkbox" id="globalTog_vault" onchange="window.updateGlobalFeatures()"><input type="checkbox" id="globalTog_gaming" onchange="window.updateGlobalFeatures()"><input type="checkbox" id="globalTog_chat" onchange="window.updateGlobalFeatures()"></div></div><div id="adminUserControlList" style="display:grid; gap:20px;"></div></div>
+                <div id="policyWorkspaceBlock" class="hidden"><input type="text" id="searchInput" class="search-terminal-input" oninput="window.filterCardsEngine()"><div id="policyCardsStack" style="margin-top:20px;"></div></div>
+                <div id="adminSpyChatBlock" class="hidden"><div class="chat-io-grid-matrix" id="adminChatGridBox"><div class="chat-target-userlist-pane"><div id="adminSpyUsersListWrapper"></div></div><div class="chat-stream-message-container"><div class="chat-stream-header-bar"><div id="spyActiveHeaderTitle">Select...</div></div><div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div><div class="chat-interface-footer-inputs"><input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()"><button onclick="window.dispatchAdminSpyInterceptionMsg()">➤</button></div></div></div></div>
+                <div id="adminSupportTicketsBlock" class="hidden"><div id="adminSupportTicketsList" style="display:grid; gap:20px;"></div></div>
+                <div id="adminSystemStatsBlock" class="hidden"><div class="chart-mock-container"><div class="chart-mock-bar" id="barChartUsers">0</div><div class="chart-mock-bar" id="barChartPolicies">0</div></div><div id="adminStatsForgetSignalsLogsWrapper" style="margin-top:20px;"></div><button onclick="window.clearAllAiLogs()" class="abort-btn">Purge AI Memory</button></div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // --- CORE STATE & MOCK DATA ---
-        const MatrixSystemState = {
-            state: { mode: 'user', currentUid: 'demo_user', activeChat: 'demo_chat', unreadFilter: false },
-            get(k) { return this.state[k]; },
-            set(k, v) { this.state[k] = v; }
-        };
-        
-        let mockChats = [
-            { id: 1, text: "Hello! Welcome to WhatsApp PRO MAX.", sender: "demo_chat", time: "10:00 AM" },
-            { id: 2, text: "I have added new features like Edit and Undo.", sender: "demo_user", time: "10:05 AM" }
-        ];
-        
-        let deletedForMeTimeout = null;
-        let lastDeletedMsg = null;
-        let editingMsgId = null;
+    <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="window.closeCustomInlinePopupEngine()"></div>
+    <div id="statusViewerOverlayWrapper" class="status-viewer-overlay hidden"></div>
 
-        window.executeClusterLogin = function(e) {
-            e.preventDefault();
-            document.getElementById('mainStage').style.display = 'none';
-            document.getElementById('customerDashboard').classList.remove('hidden');
-            document.getElementById('customerDashboard').style.display = 'flex';
-            window.switchCustomerChannel('menu');
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) { if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false; };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
+            authDomain: "pikachu-nexus.firebaseapp.com",
+            projectId: "pikachu-nexus",
+            databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
         };
 
-        window.logoutEngine = function() { location.reload(); };
-        window.switchCustomerChannel = function(id) {
-            document.getElementById('customerMainMenuBlock').style.display = 'none';
-            ['notes', 'chat', 'gaming'].forEach(c => document.getElementById('customer'+c.charAt(0).toUpperCase()+c.slice(1)+'InterfaceBlock').classList.add('hidden'));
-            const homeBtn = document.getElementById('btnBackToHome');
-            
-            if(id === 'menu') {
-                document.getElementById('customerMainMenuBlock').style.display = 'grid';
-                if(homeBtn) homeBtn.classList.add('hidden');
-            } else {
-                if(homeBtn) homeBtn.classList.remove('hidden');
-                document.getElementById('customer'+id.charAt(0).toUpperCase()+id.slice(1)+'InterfaceBlock').classList.remove('hidden');
-                if(id === 'chat') { window.renderMockChatList(); window.renderMessages(); }
-                if(id === 'notes') { window.renderWordpadLibrary(); }
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
+
+        const MatrixSystemState = (() => {
+            let state = {
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
+                cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
+                cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
+                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, thunderMode: "medium" },
+                isUnreadChatsOnly: false, chatSafetyPINDialState: {}
+            };
+            return {
+                get: (key) => state[key],
+                set: (key, val) => { state[key] = val; },
+                resetChatAssets: () => { state.globalLiveChatBinaryStreamBase64 = ""; state.activeReplyMessageTextNode = ""; },
+                purgeStateReferences: () => { state.cachedGlobalUsersArr = []; state.cachedGlobalPolicyArr = []; state.cachedGlobalAiCommsArr = []; state.cachedGlobalForgetSignalsArr = []; state.cachedGlobalGroupsArr = []; state.cachedGlobalStatusesArr = []; }
+            };
+        })();
+
+        window.cachedChatsData = {}; window.activeStatusFeedQueue = []; window.currentStatusViewingIndex = 0;
+        let requestArcadeFrameToken = null, ambientParticleToken = null, tomSpeechRecognitionInstance = null, isTomListeningStateActive = false, audioVisualizerContextNode = null, audioAnalyserNode = null, audioMicStreamNode = null;
+        let visualizerDataArray = new Uint8Array(0), virtualTomTalkingAnimationCycle = 0;
+        let nativeAudioMediaRecorderInstance = null, compiledAudioChunksCollectorArr = [], notesMediaRecorderInstance = null, notesAudioChunksCollectorArr = [];
+        let notesVoicePayloadBase64Node = "", notesVoiceTimerIntervalTracker = null, notesRecordingStartEpoch = 0, autoGeneratedVoiceDurationString = "";
+        let typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
+        let cachedDeletedNodeReference = null, undoTimerObjectTracker = null;
+
+        const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
+        const systemEmojisList = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
+        const structuralGifMatrixList = ["https://media.giphy.com/media/3o7Tn335IfX10CqAae/giphy.gif", "https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif"];
+
+        window.MatrixSystemState = MatrixSystemState;
+
+        // Auto triggers sound & system variables configuration setup
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('#systemEmojiMatrixBoxNode')) document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden');
+            if (!e.target.closest('#waAttachmentMenuBox') && !e.target.closest('.toggle-gif-btn-ref')) document.getElementById('waAttachmentMenuBox')?.classList.remove('active');
+        });
+
+        ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
+
+        let _typingTimer; window.debouncedInputCheck = function() { clearTimeout(_typingTimer); _typingTimer = setTimeout(window.verifyInputIdentityProgress, 300); }
+        let _loginTimer; window.debouncedAutoLoginCheck = function() { clearTimeout(_loginTimer); _loginTimer = setTimeout(window.checkAutoLogin, 300); }
+
+        window.pullCordAction = function(event) {
+            if (event && event.cancelable) event.preventDefault(); 
+            if (isCordPulled) return; isCordPulled = true;
+            const cord = document.getElementById('triggerCord'); if (cord) cord.style.transform = "translateY(50px) scale(0.95)";
+            if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            setTimeout(() => { if (cord) cord.style.transform = "translateY(0px) scale(1)"; window.triggerLampActivationOverride(); isCordPulled = false; }, 300);
+        };
+        const triggerCordNode = document.getElementById('triggerCord');
+        if (triggerCordNode) { triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); triggerCordNode.addEventListener('mousedown', window.pullCordAction); }
+
+        window.triggerLampActivationOverride = function() {
+            const mainStage = document.getElementById('mainStage'); const loginTerminal = document.getElementById('loginTerminal'); isAudioContextAllowed = true; 
+            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
+                window.playSynthesizedSound(520, 'sine', 0.3); mainStage.classList.add('activated'); 
+                loginTerminal.style.pointerEvents = 'all'; 
+                window.speakNaturalHuman("Portal active.");
+                const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
             }
         };
 
-        // --- WORDPAD LOGIC ---
-        let mockDocs = [{ id: 'doc1', title: "Meeting Notes", text: "Discussion points for today.", date: "Just now" }];
-        
-        window.wipeNoteInterfaceToBlankTrigger = function() {
-            document.getElementById('noteDocTitle').value = "";
-            document.getElementById('richNoteWritingPadEditable').innerHTML = "";
-        };
-        
-        window.dispatchCompiledNoteToCloudMatrix = function() {
-            let title = document.getElementById('noteDocTitle').value || "Untitled Document";
-            let text = document.getElementById('richNoteWritingPadEditable').innerHTML;
-            if(!text.trim()) return;
-            mockDocs.push({ id: 'doc'+Date.now(), title: title, text: text, date: new Date().toLocaleTimeString() });
-            window.renderWordpadLibrary();
-            alert("Document Saved to Library!");
-        };
-        
-        window.renderWordpadLibrary = function() {
-            const list = document.getElementById('realtimeCloudNotesViewStack');
-            list.innerHTML = mockDocs.map(d => `
-                <div class="wordpad-doc-item" onclick="window.openDoc('${d.id}')">
-                    <div class="wordpad-doc-title">📄 ${d.title}</div>
-                    <div class="wordpad-doc-meta">${d.date}</div>
-                    <button class="wordpad-doc-action" onclick="event.stopPropagation(); window.deleteDoc('${d.id}')">Del</button>
-                </div>
-            `).join('');
-        };
-
-        window.openDoc = function(id) {
-            let doc = mockDocs.find(d => d.id === id);
-            if(doc) {
-                document.getElementById('noteDocTitle').value = doc.title;
-                document.getElementById('richNoteWritingPadEditable').innerHTML = doc.text;
-            }
-        };
-        window.deleteDoc = function(id) { mockDocs = mockDocs.filter(d => d.id !== id); window.renderWordpadLibrary(); window.wipeNoteInterfaceToBlankTrigger(); };
-
-
-        // --- WHATSAPP PRO MAX LOGIC ---
-        window.renderMockChatList = function() {
-            const list = document.getElementById('chatTargetContainerView');
-            let isFiltered = MatrixSystemState.get('unreadFilter');
-            let html = `
-                <div class="chat-user-item-node active-chat-target" onclick="window.renderMessages()">
-                    <img class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">Shashi (Admin) ${!isFiltered ? '<span class="whatsapp-unread-counter-pill">2</span>' : ''}</div>
-                        <div class="whatsapp-user-id">Online</div>
-                    </div>
-                </div>`;
-            if(!isFiltered) {
-                html += `
-                <div class="chat-user-item-node">
-                    <img class="whatsapp-avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">College Group</div>
-                        <div class="whatsapp-user-id">Rahul: Send notes</div>
-                    </div>
-                </div>`;
-            }
-            list.innerHTML = html;
-        };
-
-        window.toggleUnreadFilter = function() {
-            let state = !MatrixSystemState.get('unreadFilter');
-            MatrixSystemState.set('unreadFilter', state);
-            document.getElementById('unreadFilterBtn').innerText = state ? '🔘' : '🟢';
-            window.renderMockChatList();
-        };
-
-        window.renderMessages = function() {
-            const box = document.getElementById('chatMessagesScrollWrapper');
-            box.innerHTML = mockChats.map(m => {
-                const isMe = m.sender === 'demo_user';
-                let editedTag = m.edited ? 'edited' : '';
-                
-                let reactionHtml = m.reaction ? `<div class="reaction-bar">${m.reaction}</div>` : '';
-                
-                return `
-                <div class="bubble-msg-wrapper ${isMe ? 'bubble-outgoing' : 'bubble-incoming'} ${editedTag}" id="msg_${m.id}">
-                    <div class="bubble-text-content">${m.text}</div>
-                    <div class="whatsapp-time">${m.time} ${isMe?'✓✓':''}</div>
-                    ${reactionHtml}
-                    <div class="msg-dropdown-trigger" onclick="window.toggleMsgMenu(${m.id})">▼</div>
-                    <div class="msg-dropdown-menu" id="menu_${m.id}">
-                        <div onclick="window.reactMessage(${m.id}, '❤️')">React ❤️</div>
-                        <div onclick="window.reactMessage(${m.id}, '👍')">React 👍</div>
-                        <div onclick="window.pinMessage(${m.id})">📌 Pin Message</div>
-                        ${isMe ? `<div onclick="window.prepareEdit(${m.id})">✏️ Edit</div>` : ''}
-                        <div onclick="window.deleteForMe(${m.id})">🗑️ Delete for me</div>
-                    </div>
-                </div>`;
-            }).join('');
-            box.scrollTop = box.scrollHeight;
-        };
-
-        window.toggleMsgMenu = function(id) {
-            document.querySelectorAll('.msg-dropdown-menu').forEach(m => m.style.display = 'none');
-            document.getElementById('menu_'+id).style.display = 'block';
-        };
-        
-        document.addEventListener('click', (e) => {
-            if(!e.target.classList.contains('msg-dropdown-trigger')) {
-                document.querySelectorAll('.msg-dropdown-menu').forEach(m => m.style.display = 'none');
+        // 3D Lamp tilt logic
+        document.addEventListener('mousemove', (e) => {
+            if (MatrixSystemState.get('loggedInCustomerID') === "") {
+                const terminal = document.getElementById('loginTerminal'); const lamp = document.getElementById('lampDevice');
+                if (terminal || lamp) {
+                    const xAxis = Math.max(-6, Math.min(6, (window.innerWidth / 2 - e.pageX) / 40));
+                    const yAxis = Math.max(-6, Math.min(6, (window.innerHeight / 2 - e.pageY) / 40));
+                    if (terminal && terminal.style.opacity === "1") terminal.style.transform = `translate3d(-50%, 0, 0) scale(1) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    if (lamp) lamp.style.transform = document.getElementById('mainStage').classList.contains('activated') ? `translateX(400px) scale(0.85) rotateY(${xAxis*0.8}deg) rotateX(${yAxis*0.8}deg)` : `scale(1.1) rotateY(${xAxis*0.8}deg) rotateX(${yAxis*0.8}deg)`;
+                }
             }
         });
 
-        window.dispatchMatrixChatMessage = function() {
-            let input = document.getElementById('chatCoreMessageTextInput');
-            let text = input.value.trim();
-            if(!text) return;
+        // Precision chronometer ticker engine
+        function initiatePrecisionChronometerTick() {
+            setInterval(() => {
+                const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');
+                const hh = padData(clock.getHours()); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); const pureTimeString = `${hh}:${mm}:${ss}`;
+                ['userPrecisionTimeNode', 'adminPrecisionTimeNode'].forEach(id => { const node = document.getElementById(id); if(node) node.innerHTML = pureTimeString; });
+                const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()} (${["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][clock.getDay()]})`;
+                const manualDateField = document.getElementById('noteManualDateSelector'); if(manualDateField) manualDateField.value = dateText;
+                const manualTimeField = document.getElementById('noteManualTimeSelector'); if(manualTimeField) manualTimeField.value = pureTimeString;
+            }, 1000); 
+        }
+        initiatePrecisionChronometerTick();
+
+        // Account management setup routes & loops
+        window.executeClusterLogin = function(event) {
+            if(event) event.preventDefault();
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+            if(masterRoute.masterId && u.toLowerCase() === masterRoute.masterId.toLowerCase() && p === masterRoute.masterPass) {
+                MatrixSystemState.set('loggedInCustomerID', "MainframeAdmin"); MatrixSystemState.set('currentMode', 'admin');
+                localStorage.setItem('nexus_logged_in_uid', "MainframeAdmin"); localStorage.setItem('nexus_system_session_mode', 'admin');
+                document.getElementById('mainStage').style.display = 'none'; document.getElementById('adminDashboard').classList.remove('hidden'); document.getElementById('adminDashboard').style.display = 'flex'; window.loadAdminSubmissions();
+            } else {
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                if(userMatch && String(userMatch.pass) === String(p)) {
+                    MatrixSystemState.set('loggedInCustomerID', userMatch.id); MatrixSystemState.set('currentMode', 'user');
+                    localStorage.setItem('nexus_logged_in_uid', userMatch.id); localStorage.setItem('nexus_system_session_mode', 'user');
+                    document.getElementById('mainStage').style.display = 'none'; document.getElementById('customerDashboard').classList.remove('hidden'); document.getElementById('customerDashboard').style.display = 'flex'; window.switchCustomerChannel('menu');
+                } else { alert("Access Denied."); }
+            }
+        };
+
+        window.switchCustomerChannel = function(channelId) {
+            MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
+            document.getElementById('customerMainMenuBlock').style.display = 'none';
+            ['upload', 'notes', 'vault', 'gaming', 'chat', 'request'].forEach(id => { document.getElementById(`customer${id.charAt(0).toUpperCase()+id.slice(1)}InterfaceBlock`)?.classList.add('hidden'); });
+            const btnHome = document.getElementById('btnBackToHome');
+            if (channelId === 'menu') {
+                document.getElementById('customerMainMenuBlock').style.display = 'grid'; if(btnHome) btnHome.classList.add('hidden'); window.enforceCustomerPermissions();
+            } else {
+                if(btnHome) btnHome.classList.remove('hidden');
+                document.getElementById(`customer${channelId.charAt(0).toUpperCase()+channelId.slice(1)}InterfaceBlock`).classList.remove('hidden');
+                if(channelId === 'notes') fetchRealtimeNotesCloudData();
+                else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); }
+            }
+        };
+
+        // 🔥 REALTIME CLOUD WORDPAD LOGIC (READABLE & LOADABLE ON CLICK) 🔥
+        window.updateNotepadLiveCounters = function() {
+            const editor = document.getElementById('richNoteWritingPadEditable'); if(!editor) return;
+            const textContent = editor.innerText || "";
+            document.getElementById('noteLiveWordCount').innerText = `Words: ${textContent.trim().split(/\s+/).filter(w => w.length > 0).length}`;
+            document.getElementById('noteLiveCharCount').innerText = `Characters: ${textContent.length}`;
+        };
+
+        window.dispatchCompiledNoteToCloudMatrix = function() {
+            const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim();
+            const dateLogSelected = document.getElementById('noteManualDateSelector').value;
+            const timeLogSelected = document.getElementById('noteManualTimeSelector').value;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!parsedHtmlPayload) return;
+            const cloudNoteReferenceNode = push(ref(db, `users_notes/${currentUid}`));
+            set(cloudNoteReferenceNode, { noteId: cloudNoteReferenceNode.key, ownerId: currentUid, richTextHtml: parsedHtmlPayload, mappedDate: dateLogSelected, mappedTime: timeLogSelected, epochStamp: Date.now() }).then(() => {
+                window.wipeNoteInterfaceToBlankTrigger(); fetchRealtimeNotesCloudData(); alert("Document Securely Synced to Cloud Matrix!");
+            });
+        };
+
+        function fetchRealtimeNotesCloudData() {
+            const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!interfaceWrapper || !currentUid) return;
+            get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
+                if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<p style="color:#8696a0; text-align:center;">No records.</p>`; return; }
+                interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
+                    // Extract safe string text excerpt to display in document summary listing card
+                    let tempDiv = document.createElement('div'); tempDiv.innerHTML = noteItem.richTextHtml; let textPlain = tempDiv.innerText || "Empty Content";
+                    return `<div class="note-structural-card" onclick="window.loadSavedDocumentToWorkspace('${noteItem.noteId}')">
+                        <div class="note-structural-meta"><span>📅 ${noteItem.mappedDate}</span><span style="color:var(--neon-cyan);" onclick="event.stopPropagation(); window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">✖ Delete</span></div>
+                        <div class="note-card-excerpt"><b>Content:</b> ${textPlain}</div>
+                    </div>`;
+                }).join('');
+            });
+        }
+
+        window.loadSavedDocumentToWorkspace = function(noteId) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            get(ref(db, `users_notes/${currentUid}/${noteId}`)).then((snap) => {
+                if(snap.exists()) {
+                    document.getElementById('richNoteWritingPadEditable').innerHTML = snap.val().richTextHtml;
+                    window.updateNotepadLiveCounters();
+                    document.getElementById('noteLiveAutoSaveStatus').innerText = "✅ Loaded from Cloud Matrix";
+                }
+            });
+        };
+        window.executeCloudNotePurgeMatrix = function(noteIdSignature) { remove(ref(db, `users_notes/${MatrixSystemState.get('loggedInCustomerID')}/${noteIdSignature}`)).then(fetchRealtimeNotesCloudData); };
+        window.wipeNoteInterfaceToBlankTrigger = function() { document.getElementById('richNoteWritingPadEditable').innerHTML = ""; window.updateNotepadLiveCounters(); document.getElementById('noteLiveAutoSaveStatus').innerText = "✅ Formatted Clean"; };
+
+        // Wordpad layout actions mapping
+        window.applyNoteTemplate = function(type) {
+            let templateHTML = "";
+            if (type === 'meeting') templateHTML = `<h3>📅 Meeting Notes Agenda</h3><hr><p><b>Attendees:</b> Admin, Client</p><p><b>Points:</b></p><ul><li>System Architecture parameters upgrade</li></ul>`;
+            else if (type === 'todo') templateHTML = `<h3>☑️ Daily Operations Checklist</h3><hr><p>[ ] Complete secure portal checks</p><p>[ ] Test high-frequency syncing parameters</p>`;
+            if(templateHTML) { document.execCommand('insertHTML', false, templateHTML); window.updateNotepadLiveCounters(); }
+        };
+        window.triggerEmbeddedNoteFormat = function(prop) { document.execCommand(styleProperty, false, null); document.getElementById('richNoteWritingPadEditable').focus(); };
+        window.triggerNoteFormatBlock = function(tag) { document.execCommand('formatBlock', false, `<${tag}>`); };
+        window.triggerNoteFontFamily = function(font) { document.execCommand('fontName', false, font); };
+        window.triggerNoteFontSizeChange = function(sz) { document.execCommand('fontSize', false, sz); };
+        window.executeFindAndReplaceEngine = function() { let f = prompt("Find word:"); let r = prompt("Replace with:"); if(f && r) { let area = document.getElementById('richNoteWritingPadEditable'); area.innerHTML = area.innerHTML.replace(new RegExp(f, 'g'), r); } };
+        window.insertProfessionalTable = function() { document.execCommand('insertHTML', false, `<table border="1" style="width:100%; border-collapse:collapse; color:#000;"><tr><th>Parameter</th><th>Value</th></tr><tr><td>Status</td><td>Active Matrix</td></tr></table>`); };
+
+        // --- ADVANCED REALTIME WHATSAPP ENGINE & FEATURES MODIFIERS ---
+        window.initializeCrossLinkChatPanel = function() {
+            const container = document.getElementById('chatTargetContainerView'); if(!container) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            let users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
+            users.unshift({ id: "MainframeAdmin", clientName: "Support Admin (Mainframe)", avatar: defaultAvatarSvg, bio: "System Support Matrix Core", isOnlineNode: true });
             
-            if(editingMsgId) {
-                let msg = mockChats.find(m => m.id === editingMsgId);
-                if(msg) { msg.text = text; msg.edited = true; }
-                editingMsgId = null;
-            } else {
-                mockChats.push({ id: Date.now(), text: text, sender: "demo_user", time: new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}) });
+            let html = "";
+            users.forEach(u => {
+                let safetyMap = MatrixSystemState.get('chatSafetyPINDialState') || {};
+                let isLocked = safetyMap[u.id] ? " 🔒" : "";
+                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id ? "active-chat-target" : "";
+                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectClientChatTarget('${u.id}')">
+                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${u.clientName}${isLocked}</div>
+                        <div class="whatsapp-user-id">${u.bio || "Available Secure Signal"}</div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        };
+
+        window.selectClientChatTarget = function(targetId) {
+            let safetyMap = MatrixSystemState.get('chatSafetyPINDialState') || {};
+            if (safetyMap[targetId]) {
+                let pinCheck = prompt("🔐 Enter 4-Digit Secret Chat Lock PIN:");
+                if (pinCheck !== "1234") { alert("Access Denied! Mismatched Lock Key Signature."); return; }
             }
-            input.value = "";
-            window.renderMessages();
-        };
-
-        window.prepareEdit = function(id) {
-            let msg = mockChats.find(m => m.id === id);
-            if(msg) {
-                document.getElementById('chatCoreMessageTextInput').value = msg.text;
-                editingMsgId = id;
+            MatrixSystemState.set('activeSelectedChatTargetUserId', targetId);
+            window.initializeCrossLinkChatPanel();
+            let matchedUser = targetId === "MainframeAdmin" ? {clientName: "Support Admin (Mainframe)", bio: "System Support Matrix Core"} : MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
+            if(matchedUser) {
+                document.getElementById('chatActiveUserHeaderNode').innerText = matchedUser.clientName;
+                document.getElementById('chatActiveUserBioNode').innerText = matchedUser.bio || "Available";
             }
+            window.renderActiveChatConversationLogs();
         };
 
-        window.reactMessage = function(id, emoji) {
-            let msg = mockChats.find(m => m.id === id);
-            if(msg) msg.reaction = emoji;
-            window.renderMessages();
+        window.renderActiveChatConversationLogs = function() {
+            const scrollBox = document.getElementById('chatMessagesScrollWrapper'); if(!scrollBox) return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
+            
+            let html = "";
+            Object.keys(window.cachedChatsData).forEach(key => {
+                const m = window.cachedChatsData[key];
+                if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
+                    if (m.isDeletedLocallyForMe) return;
+                    const isMe = m.sender === currentUid;
+                    let editMarkup = m.isEditedMsgNode ? `<span class="edited-marker-tag">(edited)</span>` : "";
+                    let reactionMarkup = m.messageReactionEmoji ? `<div class="bubble-reaction-container">${m.messageReactionEmoji}</div>` : "";
+                    
+                    html += `<div class="bubble-msg-wrapper ${isMe?'bubble-outgoing':'bubble-incoming'}" onclick="window.triggerAdvancedBubbleContextActionMenu('${key}', '${m.sender}', '${m.textBody}')">
+                        <div class="bubble-text-content">${m.textBody} ${editMarkup}</div>
+                        ${reactionMarkup}
+                        <div class="whatsapp-time">${m.timestamp}</div>
+                    </div>`;
+                }
+            });
+            scrollBox.innerHTML = html; scrollBox.scrollTop = scrollBox.scrollHeight;
         };
 
-        window.deleteForMe = function(id) {
-            let index = mockChats.findIndex(m => m.id === id);
-            if(index > -1) {
-                lastDeletedMsg = { index: index, data: mockChats[index] };
-                mockChats.splice(index, 1);
-                window.renderMessages();
-                
-                // Show Undo Snackbar
-                const snack = document.getElementById('undoSnackbar');
-                snack.classList.add('show');
-                clearTimeout(deletedForMeTimeout);
-                deletedForMeTimeout = setTimeout(() => { snack.classList.remove('show'); lastDeletedMsg = null; }, 5000);
+        window.triggerAdvancedBubbleContextActionMenu = function(msgKey, sender, currentText) {
+            let choice = prompt("💬 ADVANCED MSG MODIFIER:\n1. React 👍\n2. React ❤️\n3. Edit Message (Within 15 Mins)\n4. Locally Delete for Me\n5. Pin inside Chat Pipeline\nEnter option number:");
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(choice === "1") update(ref(db, `chats/${msgKey}`), { messageReactionEmoji: "👍" });
+            else if(choice === "2") update(ref(db, `chats/${msgKey}`), { messageReactionEmoji: "❤️" });
+            else if(choice === "3" && sender === currentUid) {
+                let nextText = prompt("Modify text packet content:", currentText);
+                if(nextText) update(ref(db, `chats/${msgKey}`), { textBody: nextText, isEditedMsgNode: true });
             }
-        };
-
-        window.undoDelete = function() {
-            if(lastDeletedMsg) {
-                mockChats.splice(lastDeletedMsg.index, 0, lastDeletedMsg.data);
-                window.renderMessages();
-                document.getElementById('undoSnackbar').classList.remove('show');
-                lastDeletedMsg = null;
+            else if(choice === "4") {
+                cachedDeletedNodeReference = msgKey;
+                update(ref(db, `chats/${msgKey}`), { isDeletedLocallyForMe: true }).then(() => {
+                    const box = document.getElementById('undoSnackbarPopup'); box.classList.remove('hidden');
+                    clearTimeout(undoTimerObjectTracker); undoTimerObjectTracker = setTimeout(() => { box.classList.add('hidden'); }, 5000);
+                });
             }
-        };
-
-        window.pinMessage = function(id) {
-            let msg = mockChats.find(m => m.id === id);
-            if(msg) {
+            else if(choice === "5") {
                 document.getElementById('chatPinnedMessageBannerNode').classList.remove('hidden');
-                document.getElementById('pinnedMsgText').innerText = msg.text;
+                document.getElementById('waGlobalPinnedContainerNode').innerHTML = `📌 <b>Pinned:</b> ${currentText}`;
             }
         };
-        
-        window.unpinMessage = function() { document.getElementById('chatPinnedMessageBannerNode').classList.add('hidden'); };
 
-        window.toggleChatLockPrompt = function() {
-            document.getElementById('chatLockScreen').classList.remove('hidden');
+        window.executeUndoChatDeleteAction = function() {
+            if(cachedDeletedNodeReference) {
+                update(ref(db, `chats/${cachedDeletedNodeReference}`), { isDeletedLocallyForMe: false });
+                document.getElementById('undoSnackbarPopup').classList.add('hidden'); cachedDeletedNodeReference = null;
+            }
         };
-        
-        window.unlockChat = function() {
-            let pin = document.getElementById('chatLockPin').value;
-            if(pin) {
-                document.getElementById('chatLockScreen').classList.add('hidden');
-                document.getElementById('chatLockPin').value = "";
+
+        window.toggleChatPipelineSecureLock = function() {
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); if(!targetUid) return;
+            let safetyMap = MatrixSystemState.get('chatSafetyPINDialState') || {};
+            if(safetyMap[targetUid]) {
+                safetyMap[targetUid] = false; alert("Chat Pipeline Lock Released.");
             } else {
-                alert("Enter Secret Code");
+                safetyMap[targetUid] = true; alert("Chat Pipeline Locked under Key Signature: '1234'");
             }
+            MatrixSystemState.set('chatSafetyPINDialState', safetyMap); window.initializeCrossLinkChatPanel();
         };
 
-        window.triggerSimulatedCall = function(type) {
-            alert(`[Simulation] Encrypted ${type} Call ring initiated... WebRTC pipeline would connect here for 32 members.`);
+        window.toggleUnreadChatsFilter = function() {
+            let state = !MatrixSystemState.get('isUnreadChatsOnly'); MatrixSystemState.set('isUnreadChatsOnly', state);
+            document.getElementById('waUnreadFilterBtn').style.background = state ? "var(--neon-green)" : "transparent";
+            alert(state ? "Unread filter simulation active on user stream clusters." : "Filter removed.");
         };
+
+        window.dispatchMatrixChatMessage = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); if(!currentUid || !targetUid) return;
+            const inputField = document.getElementById('chatCoreMessageTextInput'); const text = inputField.value.trim(); if(!text) return;
+            const msgRef = push(ref(db, 'chats'));
+            set(msgRef, { sender: currentUid, receiver: targetUid, textBody: text, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
+                inputField.value = ""; if(isAudioContextAllowed) window.playSynthesizedSound(800, 'sine', 0.1);
+            });
+        };
+
+        // Standard System Listeners Mapping
+        onValue(ref(db, 'chats'), (snapshot) => { window.cachedChatsData = snapshot.val() || {}; window.renderActiveChatConversationLogs(); });
+        onValue(ref(db, 'users'), (snapshot) => { const data = snapshot.val(); MatrixSystemState.set('cachedGlobalUsersArr', data ? Object.values(data) : []); window.initializeCrossLinkChatPanel(); });
+        
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+        window.executeCosmicThemeToggle = function() { document.body.classList.toggle('light-theme-active'); };
+        window.toggleFullScreenEngine = function() { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); };
+        window.logoutEngine = function() { localStorage.clear(); location.reload(); };
+
+        setTimeout(() => { document.getElementById('systemPreloader').classList.add('engine-ready'); }, 800);
     </script>
 </body>
 </html>
