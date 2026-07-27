@@ -1124,7 +1124,82 @@
                     const yAxis = Math.max(-6, Math.min(6, (window.innerHeight / 2 - e.pageY) / 40));
                     
                     if (terminal && terminal.style.opacity === "1") {
-                        terminal.style.transform = `translate3d(-50%, 0, 0) scale(1) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;                     }                     if (lamp && document.getElementById('mainStage').classList.contains('activated')) {                         lamp.style.transform = `translateX(400px) scale(0.85) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;                     } else if (lamp) {                         lamp.style.transform = `scale(1.1) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;                     }                 }             }         });          let activeThunderIntervalObj = null;         window.applyThunderModeEngine = function(modeValue) {             if(activeThunderIntervalObj) clearInterval(activeThunderIntervalObj);             let msTime = 2000;             if(modeValue === 'off') return;             if(modeValue === 'low') msTime = 5000;             if(modeValue === 'medium') msTime = 2000;             if(modeValue === 'ultra') msTime = 500;                          const adminSelect = document.getElementById('adminThunderControl');             if(adminSelect) adminSelect.value = modeValue;              activeThunderIntervalObj = setInterval(() => {                 if(MatrixSystemState.get('loggedInCustomerID') === "") {                     const thunder = document.getElementById('thunderEffect');                     if(thunder && document.getElementById('mainStage').classList.contains('activated')) {                         thunder.classList.remove('flash');                         void thunder.offsetWidth;                          thunder.classList.add('flash');                         if(isAudioContextAllowed && MatrixSystemState.get('isSystemAudioEnabled')) {                             try {                                 if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();                                 if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume();                                 const osc = globalAudioCtx.createOscillator();                                 const gain = globalAudioCtx.createGain();                                 osc.type = 'sawtooth';                                 osc.frequency.setValueAtTime(60, globalAudioCtx.currentTime);                                 osc.frequency.exponentialRampToValueAtTime(30, globalAudioCtx.currentTime + 0.5);                                 gain.gain.setValueAtTime(0.5, globalAudioCtx.currentTime);                                 gain.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + 0.6);                                 osc.connect(gain); gain.connect(globalAudioCtx.destination);                                 osc.start(); osc.stop(globalAudioCtx.currentTime + 0.6);                             } catch(e) {}                         }                     }                 }             }, msTime);         }          window.toggleFullScreenEngine = function() {             const label = document.getElementById('fullScreenLabel');             if (!document.fullscreenElement) { document.documentElement.requestFullscreen().then(() => { label.innerText = "🔳 EXIT SCREEN"; }).catch(()=>{}); }              else { if (document.exitFullscreen) { document.exitFullscreen().then(() => { label.innerText = "🔲 FULL SCREEN"; }); } }         };          function runAmbientCanvasMatrixSystem() {             const canvas = document.getElementById('ambientParticleSpaceNode'); if(!canvas) return; const ctx = canvas.getContext('2d'); let particles = [];             const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }; window.addEventListener('resize', resize); resize();             for(let i=0; i<30; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, alpha: Math.random() * 0.5 + 0.1 }); }             function draw() {                 if(document.hidden \vert{}\vert{} MatrixSystemState.get('loggedInCustomerID') !== "") return;                  ctx.clearRect(0,0, canvas.width, canvas.height); const isLight = document.body.classList.contains('light-theme-active');                 ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.1)' : 'rgba(0, 242, 254, 0.2)';                 particles.forEach(p => { p.x += p.vx; p.y += p.vy; if(p.x < 0 \vert{}\vert{} p.x > canvas.width) p.vx *= -1; if(p.y < 0 \vert{}\vert{} p.y > canvas.height) p.vy *= -1;                     ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.save(); ctx.globalAlpha = p.alpha; ctx.fill(); ctx.restore(); });                 ambientParticleToken = requestAnimationFrame(draw);             }             ambientParticleToken = requestAnimationFrame(draw);         }         runAmbientCanvasMatrixSystem();          function initiatePrecisionChronometerTick() {             setInterval(() => {                 const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');                 const hh = padData(clock.getHours()); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); const pureTimeString = `${hh}:${mm}:${ss}`;
+                        terminal.style.transform = `translate3d(-50%, 0, 0) scale(1) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    }
+                    if (lamp && document.getElementById('mainStage').classList.contains('activated')) {
+                        lamp.style.transform = `translateX(400px) scale(0.85) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
+                    } else if (lamp) {
+                        lamp.style.transform = `scale(1.1) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
+                    }
+                }
+            }
+        });
+        
+        let activeThunderIntervalObj = null;
+        window.applyThunderModeEngine = function(modeValue) {
+            if(activeThunderIntervalObj) clearInterval(activeThunderIntervalObj);
+            let msTime = 2000;
+            if(modeValue === 'off') return;
+            if(modeValue === 'low') msTime = 5000;
+            if(modeValue === 'medium') msTime = 2000;
+            if(modeValue === 'ultra') msTime = 500;
+            
+            const adminSelect = document.getElementById('adminThunderControl');
+            if(adminSelect) adminSelect.value = modeValue;
+            
+            activeThunderIntervalObj = setInterval(() => {
+                if(MatrixSystemState.get('loggedInCustomerID') === "") {
+                    const thunder = document.getElementById('thunderEffect');
+                    if(thunder && document.getElementById('mainStage').classList.contains('activated')) {
+                        thunder.classList.remove('flash');
+                        void thunder.offsetWidth;
+                        thunder.classList.add('flash');
+                        if(isAudioContextAllowed && MatrixSystemState.get('isSystemAudioEnabled')) {
+                            try {
+                                if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                                if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume();
+                                const osc = globalAudioCtx.createOscillator();
+                                const gain = globalAudioCtx.createGain();
+                                osc.type = 'sawtooth';
+                                osc.frequency.setValueAtTime(60, globalAudioCtx.currentTime);
+                                osc.frequency.exponentialRampToValueAtTime(30, globalAudioCtx.currentTime + 0.5);
+                                gain.gain.setValueAtTime(0.5, globalAudioCtx.currentTime);
+                                gain.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + 0.6);
+                                osc.connect(gain); gain.connect(globalAudioCtx.destination);
+                                osc.start(); osc.stop(globalAudioCtx.currentTime + 0.6);
+                            } catch(e) {}
+                        }
+                    }
+                }
+            }, msTime);
+        }
+        
+        window.toggleFullScreenEngine = function() {
+            const label = document.getElementById('fullScreenLabel');
+            if (!document.fullscreenElement) { document.documentElement.requestFullscreen().then(() => { label.innerText = "🔳 EXIT SCREEN"; }).catch(()=>{}); }
+            else { if (document.exitFullscreen) { document.exitFullscreen().then(() => { label.innerText = "🔲 FULL SCREEN"; }); } }
+        };
+        
+        function runAmbientCanvasMatrixSystem() {
+            const canvas = document.getElementById('ambientParticleSpaceNode'); if(!canvas) return; const ctx = canvas.getContext('2d'); let particles = [];
+            const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }; window.addEventListener('resize', resize); resize();
+            for(let i=0; i<30; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.5 + 1, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, alpha: Math.random() * 0.5 + 0.1 }); }
+            function draw() {
+                if(document.hidden || MatrixSystemState.get('loggedInCustomerID') !== "") return;
+                ctx.clearRect(0,0, canvas.width, canvas.height); const isLight = document.body.classList.contains('light-theme-active');
+                ctx.fillStyle = isLight ? 'rgba(15, 23, 42, 0.1)' : 'rgba(0, 242, 254, 0.2)';
+                particles.forEach(p => { p.x += p.vx; p.y += p.vy; if(p.x < 0 || p.x > canvas.width) p.vx *= -1; if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.save(); ctx.globalAlpha = p.alpha; ctx.fill(); ctx.restore(); });
+                ambientParticleToken = requestAnimationFrame(draw);
+            }
+            ambientParticleToken = requestAnimationFrame(draw);
+        }
+        runAmbientCanvasMatrixSystem();
+        
+        function initiatePrecisionChronometerTick() {
+            setInterval(() => {
+                const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');
+                const hh = padData(clock.getHours()); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); const pureTimeString = `${hh}:${mm}:${ss}`;
                 ['userPrecisionTimeNode', 'adminPrecisionTimeNode'].forEach(id => { const node = document.getElementById(id); if(node) node.innerHTML = pureTimeString; });
                 const manualTimeField = document.getElementById('noteManualTimeSelector'); if(manualTimeField) manualTimeField.value = pureTimeString;
                 const daysOfWeekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
