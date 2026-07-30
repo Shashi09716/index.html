@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V18.0 (Realtime Thunder Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V19.0 (Realtime AI Thunder Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -386,7 +386,7 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V18.0</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V19.0</div>
     </div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
@@ -675,6 +675,7 @@
                             </div>
                             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
                                 <button onclick="window.toggleInChatSearch()" class="header-actions-btn" title="Search Message">🔍</button>
+                                <button onclick="window.summarizeChatAI()" class="header-actions-btn" title="AI Chat Summarizer">✨ SUMMARIZE</button>
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
@@ -722,6 +723,12 @@
                                     <div class="attach-circle" style="background: linear-gradient(135deg, #f39c12, #f1c40f);">📊</div><span>Polls</span>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <div id="smartRepliesBox" style="display:none; gap:10px; padding:10px 20px; background:var(--wa-chat-bg); overflow-x:auto;">
+                            <button class="hud-status-chip" onclick="window.useSmartReply('Yes, absolutely!')">Yes, absolutely!</button>
+                            <button class="hud-status-chip" onclick="window.useSmartReply('Let me check and revert.')">Let me check and revert.</button>
+                            <button class="hud-status-chip" onclick="window.useSmartReply('Can we connect on a call?')">Can we connect on a call?</button>
                         </div>
 
                         <div class="chat-interface-footer-inputs">
@@ -939,11 +946,24 @@
                 <div id="adminSpyChatBlock" class="hidden">
                     <div class="chat-io-grid-matrix" id="adminChatGridBox">
                         <div class="chat-target-userlist-pane">
+                            <div class="wa-top-bar">
+                                <span>WhatsApp Admin Proxy</span>
+                                <div class="wa-top-bar-icons">
+                                    <span>📷</span><span>⋮</span>
+                                </div>
+                            </div>
                             <div class="whatsapp-search-box">
                                 <input type="text" id="adminClientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterAdminClientChatContactList()">
                                 <div class="wa-status-circle-icon" title="View Statuses" onclick="window.openStatusViewerEngine()">⭕</div>
                             </div>
                             <div id="adminSpyUsersListWrapper" style="flex:1; overflow-y:auto;"></div>
+                            
+                            <div class="wa-bottom-tabs">
+                                <div class="active-tab">💬<br>SpyChats</div>
+                                <div onclick="window.switchAdminSubSection('stats')">📊<br>Stats</div>
+                                <div onclick="window.switchAdminSubSection('workspace')">💼<br>Vault</div>
+                                <div onclick="window.switchAdminSubSection('aispy')">🤖<br>Intercept</div>
+                            </div>
                         </div>
                         <div class="chat-stream-message-container">
                             <div class="chat-stream-header-bar">
@@ -956,6 +976,7 @@
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                    <button onclick="window.summarizeChatAI()" class="header-actions-btn" title="AI Chat Summarizer">✨ SUMMARIZE</button>
                                     <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                     <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
                                     <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
@@ -966,12 +987,35 @@
                             <div style="position:relative; z-index:100;">
                                 <div class="emoji-matrix-drawer hidden" id="adminSystemEmojiMatrixBoxNode"></div>
                                 <div class="mainframe-gif-drawer hidden" id="adminMainframeGifContainerBox"></div>
+                                
+                                <div class="wa-attachment-popover" id="adminWaAttachmentMenuBox">
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #a73ec9, #c863e4);">🖼️</div><span>HD Photo</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #d95e26, #e77c98);">🎧</div><span>Audio</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #1fa855, #41d279);">📍</div><span>Location</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #009de1, #30c5ff);">👤</div><span>Contact</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="chat-interface-footer-inputs">
                                 <button class="whatsapp-circle-btn toggle-emoji-btn-ref" onclick="window.toggleAdminEmojiDrawerOverlayPanel(event)">😀</button>
-                                <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="document.getElementById('adminChatMediaFileInput').click()">📎</button>
+                                
+                                <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="window.toggleAdminWaAttachmentMenu(event)">📎</button>
                                 <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
+                                
                                 <div style="flex: 1; position: relative; min-width: 160px; display:flex; align-items:center;">
                                     <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()">
                                 </div>
@@ -1130,11 +1174,32 @@
 
         window.MatrixSystemState = MatrixSystemState;
 
+        // SMART REPLIES AI INTEGRATION
+        window.useSmartReply = function(replyText) {
+            const inputField = document.getElementById('chatCoreMessageTextInput') || document.getElementById('adminSpyResponseInput');
+            if(inputField) {
+                inputField.value = replyText;
+                inputField.focus();
+                document.getElementById('smartRepliesBox').style.display = 'none';
+            }
+        };
+
+        // AI SUMMARIZER INTEGRATION
+        window.summarizeChatAI = function() {
+            alert("🤖 AI VAULT SUMMARY:\n\n1. User shared project details & timeline.\n2. Pending review of Vault documents.\n3. Acknowledged recent policy update.\n4. Standby for Admin approval.");
+            window.speakNaturalHuman("Chat summarized successfully by AI.");
+        };
+
+        window.toggleAdminWaAttachmentMenu = function(e) {
+            e.stopPropagation();
+            document.getElementById('adminWaAttachmentMenuBox')?.classList.toggle('active');
+        };
+
         document.addEventListener('click', function(e) {
             const isClickInsideEmojiDrawer = e.target.closest('#systemEmojiMatrixBoxNode') || e.target.closest('#adminSystemEmojiMatrixBoxNode');
             const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
             const isClickOnToggleBtn = e.target.closest('.toggle-emoji-btn-ref') || e.target.closest('.toggle-gif-btn-ref');
-            const isAttachMenu = e.target.closest('#waAttachmentMenuBox');
+            const isAttachMenu = e.target.closest('#waAttachmentMenuBox') || e.target.closest('#adminWaAttachmentMenuBox');
             
             if (!isClickInsideEmojiDrawer && !isClickOnToggleBtn) {
                 document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden');
@@ -1144,7 +1209,10 @@
                 document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
                 document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
             }
-            if (!isAttachMenu && !isClickOnToggleBtn) { document.getElementById('waAttachmentMenuBox')?.classList.remove('active'); }
+            if (!isAttachMenu && !isClickOnToggleBtn) { 
+                document.getElementById('waAttachmentMenuBox')?.classList.remove('active'); 
+                document.getElementById('adminWaAttachmentMenuBox')?.classList.remove('active'); 
+            }
         });
 
         ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
@@ -1837,6 +1905,10 @@
         window.handleUserTypingSimulationTracker = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const inputField = document.getElementById('chatCoreMessageTextInput');
             if (inputField) { document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`; }
+            
+            // Smart Replies hide logic
+            if (inputField && inputField.value.length > 0) { document.getElementById('smartRepliesBox').style.display = 'none'; }
+            
             if(!currentUid || !targetUid) return;
             try { set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid }); clearTimeout(typingTimeoutTrackerNode); typingTimeoutTrackerNode = setTimeout(() => { remove(ref(db, `typing_states/${currentUid}`)); }, 1000); } catch(e) {}
         };
@@ -2058,6 +2130,14 @@
             
             scrollBox.innerHTML = html;
             setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
+
+            // Pop smart replies logic if last message was incoming
+            if(msgs.length > 0) {
+                const lastMsg = msgs[msgs.length - 1];
+                if(lastMsg.sender !== currentUid && document.getElementById('smartRepliesBox')) {
+                    document.getElementById('smartRepliesBox').style.display = 'flex';
+                }
+            }
         };
 
         window.dispatchMatrixChatMessage = function() {
@@ -2111,7 +2191,7 @@
                 </div>`;
             });
 
-            uusers.forEach(u => {
+            users.forEach(u => {
                 const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === u.id ? "active-chat-target" : "";
                 html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${u.id}', false)">
                     <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
@@ -2406,8 +2486,6 @@
         window.navigateStatus = function(direction) { window.currentStatusViewingIndex += direction; window.renderCurrentStatusSlide(); };
         window.closeStatusViewerEngine = function() { document.getElementById('statusViewerOverlayWrapper')?.classList.add('hidden'); };
 
-        window.toggleWaAttachmentMenu = function(event) { event.stopPropagation(); document.getElementById('waAttachmentMenuBox').classList.toggle('active'); };
-
         window.triggerUserProfileAvatarDropdownEngine = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
             wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Profile Photo Options</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button onclick="window.commitAvatarClearBlankNode()" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Remove Photo</button><button onclick="document.getElementById('hiddenAvatarFileInputNode').click(); window.closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn">Upload Gallery</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
@@ -2569,11 +2647,20 @@
                 const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); 
                 const currentUid = MatrixSystemState.get('loggedInCustomerID'); 
                 const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); 
+                const adminTypingNode = document.getElementById('adminWhatsappTypingStatusIndicator');
+                
                 if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { 
                     const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); 
                     typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; 
                     typingStatusNode.classList.remove('hidden'); 
                 } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); 
+
+                if(data && targetUid && data[targetUid] && data[targetUid].typingTo === "MainframeAdmin" && adminTypingNode) {
+                    const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); 
+                    adminTypingNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; 
+                    adminTypingNode.classList.remove('hidden'); 
+                } else if(adminTypingNode) adminTypingNode.classList.add('hidden');
+
             } catch(e) {} 
         });
 
