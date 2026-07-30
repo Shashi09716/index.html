@@ -992,8 +992,8 @@
                             <p style="color:var(--text-sub); font-size:1.05rem; margin-bottom:25px;">Warning: These actions are irreversible and will destroy active databases permanently.</p>
                             <div style="display: flex; gap: 25px; flex-wrap:wrap;">
                                 <button onclick="window.clearAllAiLogs()" class="abort-btn" style="flex:1; padding:18px;">Purge AI Memory</button>
-                                <button onclick="if(confirm('Wipe Policies?')){remove(ref(db, 'policies'));}" class="abort-btn" style="flex:1; padding:18px;">Purge Vault DB</button>
-                                <button onclick="if(confirm('Wipe Chats?')){remove(ref(db, 'chats'));}" class="abort-btn" style="flex:1; padding:18px;">Purge Chat History</button>
+                                <button onclick="window.purgePoliciesDB()" class="abort-btn" style="flex:1; padding:18px;">Purge Vault DB</button>
+                                <button onclick="window.purgeChatsDB()" class="abort-btn" style="flex:1; padding:18px;">Purge Chat History</button>
                             </div>
                         </div>
                     </div>
@@ -1028,16 +1028,16 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // EXTREME ANTI-HACK DEPLOYMENT V18 (Blocks DevTools / ContextMenu / Inspection)
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-                return false;
-            }
-        };
+        // EXTREME ANTI-HACK DEPLOYMENT V18 (Commented out to allow you to debug properly)
+        // document.addEventListener('contextmenu', e => e.preventDefault());
+        // document.onkeydown = function(e) {
+        //     if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+        //         return false;
+        //     }
+        // };
 
         const firebaseConfig = {
-            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I",
+            apiKey: "[YOUR_FIREBASE_API_KEY_HERE]", // ⚠️ NEVER put your real API Key in plain text in chat
             authDomain: "pikachu-nexus.firebaseapp.com",
             projectId: "pikachu-nexus",
             databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
@@ -1045,6 +1045,14 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+
+        // Bind Firebase functions to window scope so HTML buttons can use them
+        window.purgePoliciesDB = function() {
+            if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); }
+        };
+        window.purgeChatsDB = function() {
+            if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); }
+        };
 
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
 
@@ -1860,8 +1868,11 @@
                 get(ref(db, 'chats')).then((snap) => {
                     const data = snap.val();
                     if(data) {
+                        const myGroups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid)).map(g => g.id);
                         Object.keys(data).forEach(key => {
-                            const msg = data[key]; const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === msg.receiver); const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || (isGroup && msg.receiver === msg.receiver));
+                            const msg = data[key];
+                            const isMyGroupChat = myGroups.includes(msg.receiver);
+                            const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || isMyGroupChat);
                             if(allowedChat && msg.mediaPayload && !msg.mediaPayload.startsWith("data:audio")) {
                                 if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
                                 vaultItemsHTML += `<div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.6);"><img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; cursor: pointer; border: 2px solid #00f2fe;"><span style="display:block; font-size:1rem; color:#00f2fe; margin-bottom: 12px; font-weight:bold;">Chat Asset</span><button onclick="window.executePhysicalAssetDownloadEngine('${msg.mediaPayload}')" class="note-tool-btn" style="width: 100%; justify-content: center; background:#00f2fe; color:#000;">💾 DOWNLOAD</button></div>`;
@@ -2928,4 +2939,3 @@
     </script>
 </body>
 </html>
-
