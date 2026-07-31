@@ -1046,7 +1046,7 @@
         };
 
         const firebaseConfig = {
-            apiKey: "[YOUR_FIREBASE_API_KEY_HERE]", 
+            apiKey: "AIzaSyBFI1ls4inVNU0iLrtd5tRAsv0vANoWG6I", 
             authDomain: "pikachu-nexus.firebaseapp.com",
             projectId: "pikachu-nexus",
             databaseURL: "https://pikachu-nexus-default-rtdb.firebaseio.com/"
@@ -2903,5 +2903,15 @@
 
         setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
     </script>
-</body>
+
+    <script>
+        setTimeout(() => {
+            const preloader = document.getElementById('systemPreloader');
+            if(preloader) {
+                preloader.style.opacity = "0"; 
+                setTimeout(() => preloader.style.display = "none", 500);
+            }
+        }, 2000); // 2 second baad round loader automatically hat jayega
+    </script>
+    </body>
 </html>
