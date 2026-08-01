@@ -2777,14 +2777,18 @@
             if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
         };
 
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
+        window.submitAccountCreationRequest = function() {
+            const name = document.getElementById('reqSignupName').value.trim(); const dob = document.getElementById('reqSignupDOB').value;
+            const phone = document.getElementById('reqSignupPhone').value.trim(); const pass = document.getElementById('reqSignupPass').value.trim();
+            if(!name || phone.length !== 10 || !pass) { alert("Please complete required fields. Contact No exactly 10 digits ka hona chahiye."); return; }
+            
+            const reqRef = push(ref(db, 'pending_accounts'));
+            set(reqRef, { reqId: reqRef.key, name: name, dob: dob, phone: phone, pass: pass, epoch: Date.now() }).then(() => {
+                const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+                wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपकी नई आईडी शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
+                window.speakNaturalHuman("Request submitted successfully.");
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message + "\n\nIska matlab aapke Firebase Rules sahi se update nahi hue hain. Please Firebase mein .read aur .write dono ko 'true' karein!");
             });
         };
 
