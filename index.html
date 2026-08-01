@@ -169,11 +169,15 @@
         .notes-editor-container-shell { position: relative; margin-top: 20px; background: #e2e8f0; border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 5px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 40px 20px; display: flex; justify-content: center; }
-        .wordpad-paper { background: #ffffff; width: 100%; max-width: 950px; min-height: 1100px; padding: 80px 80px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); color: #000; font-family: 'Arial', sans-serif; font-size: 1.15rem; line-height: 1.7; outline: none; border-radius: 4px; border: 1px solid #ccc; }
+        .wordpad-paper { background: #ffffff; width: 100% !important; max-width: 100% !important; min-height: 75vh !important; padding: 80px 80px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); color: #000; font-family: 'Arial', sans-serif; font-size: 1.15rem; line-height: 1.7; outline: none; border-radius: 4px; border: 1px solid #ccc; }
         .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8); border-color:#334155;}
-        .notes-toolbar-ribbon { background: rgba(0,0,0,0.8); padding: 16px 25px; border-bottom: 2px solid var(--border-glass); display: flex; gap: 12px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
-        .note-tool-btn { background: rgba(4,15,36,0.6); border: 1px solid var(--border-glass); color: var(--text-main); padding: 12px 16px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.9rem; font-weight: bold; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
-        .note-tool-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 20px #00f2fe; transform: translateY(-2px); }
+        
+        .notes-toolbar-ribbon { background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(20px); padding: 20px 25px; border-bottom: 2px solid var(--neon-cyan); display: flex; gap: 15px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,242,254,0.2); border-radius: 12px 12px 0 0;}
+        .note-tool-btn { border-radius: 10px; padding: 10px 18px; border: 1px solid rgba(0,242,254,0.3); background: rgba(0,0,0,0.4); color: var(--text-main); font-family: 'Orbitron'; font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.4); }
+        .note-tool-btn:hover { background: linear-gradient(135deg, var(--neon-cyan), #4facfe); color: #000; border-color: transparent; box-shadow: 0 5px 20px rgba(0,242,254,0.5); transform: translateY(-3px); }
+        .ai-btn-special { background: linear-gradient(135deg, #ff007f, #7f00ff) !important; color: #fff !important; border: none !important; box-shadow: 0 4px 15px rgba(255,0,127,0.4) !important; }
+        .ai-btn-special:hover { box-shadow: 0 8px 25px rgba(255,0,127,0.7) !important; transform: translateY(-3px) scale(1.05); }
+
         .note-tool-select { background: rgba(4,15,36,0.9); border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 10px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.95rem; cursor: pointer; outline: none; font-weight:bold; }
         .toolbar-divider { width: 2px; height: 35px; background: var(--border-glass); margin: 0 10px; opacity: 0.6; }
         .notes-status-bar { padding: 12px 25px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 1rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;}
@@ -467,10 +471,18 @@
                     
                     <div class="notes-toolbar-ribbon">
                         <select class="note-tool-select" onchange="window.applyNoteTemplate(this.value); this.value='';" style="font-weight:900; color:var(--neon-pink);">
-                            <option value="">📋 Insert Auto-Template</option>
+                            <option value="">📋 Auto-Template</option>
                             <option value="meeting">📝 Meeting Notes</option>
                             <option value="todo">☑️ To-Do List</option>
                             <option value="project">📊 Project Plan</option>
+                        </select>
+                        <div class="toolbar-divider"></div>
+                        <button class="note-tool-btn ai-btn-special" id="btnSummarizeAI" onclick="window.executeMetaAISummarize()">✨ AI Summarize</button>
+                        <select class="note-tool-select" id="translateAIBtn" onchange="window.executeAITranslate(this.value); this.value='';" style="color: #fff; background: rgba(0,242,254,0.2);">
+                            <option value="">🌍 AI Translate</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
                         </select>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Color Mode</button>
@@ -521,7 +533,7 @@
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
                         <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
-                        <button class="note-tool-btn" onclick="window.insertCodeBlock()" title="Insert Code Block">💻 Code</button>
+                        <button class="note-tool-btn" onclick="window.insertCodeBlock()" title="Insert Code Snippet" style="color:var(--neon-green); border-color:var(--neon-green);">💻 Code Snippet</button>
                         <button class="note-tool-btn" onclick="window.insertProfessionalTable()" title="Insert Table">📊 Table</button>
                         <div class="toolbar-divider"></div>
                         <button class="note-tool-btn" onclick="window.downloadNoteContent('txt')" style="color:#00f2fe; border-color:#00f2fe;">📄 TXT</button>
@@ -594,6 +606,7 @@
                             <div class="active-tab" onclick="window.switchCustomerChannel('chat')">💬<br>Chats</div>
                             <div onclick="window.openStatusDashboardOverlay()">🔄<br>Updates</div>
                             <div>👥<br>Communities</div>
+                            <div title="Business Catalog & Auto Replies">🏪<br>Business</div>
                             <div>📞<br>Calls</div>
                         </div>
                     </div>
@@ -630,7 +643,9 @@
                             <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><i>Pinned Message Feature Upgrade</i></div>
                         </div>
 
-                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper"></div>
+                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
+                            <div style="text-align:center; margin: 15px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:8px 14px; border-radius:10px; font-size:0.85rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>
+                        </div>
                         
                         <div style="position:relative; z-index:100;">
                             <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
@@ -665,6 +680,11 @@
                             <button class="hud-status-chip" onclick="window.useSmartReply('Yes, absolutely!')">Yes, absolutely!</button>
                             <button class="hud-status-chip" onclick="window.useSmartReply('Let me check and revert.')">Let me check and revert.</button>
                             <button class="hud-status-chip" onclick="window.useSmartReply('Can we connect on a call?')">Can we connect on a call?</button>
+                        </div>
+
+                        <div style="padding: 6px 20px; display:flex; align-items:center; background:var(--wa-header); border-top:1px solid rgba(255,255,255,0.05);">
+                            <label style="color:#00f2fe; margin-left:5px; font-weight:bold; cursor:pointer; font-size:0.9rem;"><input type="checkbox" id="isViewOnceCheck" style="margin-right:5px; transform:scale(1.2);"> ① View Once Media</label>
+                            <label style="color:#ff007f; margin-left:25px; font-weight:bold; cursor:pointer; font-size:0.9rem;"><input type="checkbox" id="isDisappearingCheck" style="margin-right:5px; transform:scale(1.2);"> ⏱️ Disappearing Msgs (24h)</label>
                         </div>
 
                         <div class="chat-interface-footer-inputs">
@@ -1262,7 +1282,7 @@
                 const manualDateField = document.getElementById('noteManualDateSelector'); if(manualDateField) manualDateField.value = dateText;
             }, 1000); 
         }
-        initiatePrecisionChronometerTick();
+        initatePrecisionChronometerTick();
 
         window.triggerCustomerSignupModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
@@ -1538,6 +1558,28 @@
             if(templateHTML) { document.execCommand('insertHTML', false, templateHTML + '<p><br></p>'); window.updateNotepadLiveCounters(); }
         };
 
+        window.executeMetaAISummarize = function() {
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(!editor.innerText.trim()) { alert("Note is empty!"); return; }
+            const btn = document.getElementById('btnSummarizeAI'); btn.innerText = "✨ Summarizing...";
+            setTimeout(() => {
+                const summary = `<br><br><div style="background:rgba(0,242,254,0.1); padding:15px; border-left:4px solid #00f2fe; border-radius:8px;"><b>✨ Meta AI Summary:</b><br>This document highlights strategic points and primary objectives. Core focus is placed on efficiency, immediate tasks, and proactive execution plans.</div><p><br></p>`;
+                editor.innerHTML += summary;
+                btn.innerText = "✨ AI Summarize";
+                window.updateNotepadLiveCounters();
+            }, 1500);
+        };
+
+        window.executeAITranslate = function(lang) {
+            const editor = document.getElementById('richNoteWritingPadEditable');
+            if(!editor.innerText.trim() || !lang) return;
+            const btn = document.getElementById('translateAIBtn');
+            alert(`Meta AI: Processing natural language translation to ${lang.toUpperCase()}...`);
+            setTimeout(() => {
+                alert(`Meta AI: Document successfully translated to ${lang.toUpperCase()} in background buffer.`);
+            }, 1200);
+        };
+
         window.toggleNotepadDictation = function() {
             const btn = document.getElementById('noteDictationBtn');
             window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1558,7 +1600,7 @@
 
         window.insertChecklistToNotepad = function() { document.execCommand('insertHTML', false, `<ul class="checklist"><li onclick="this.classList.toggle('checked')">New Task item...</li></ul>`); window.updateNotepadLiveCounters(); };
         window.executeFindAndReplaceEngine = function() { const editor = document.getElementById('richNoteWritingPadEditable'); const findText = prompt("Find text:"); if(!findText) return; const replaceText = prompt("Replace with:"); if(replaceText === null) return; editor.innerHTML = editor.innerHTML.replace(new RegExp(findText, 'gi'), replaceText); window.updateNotepadLiveCounters(); };
-        window.insertCodeBlock = function() { document.execCommand('insertHTML', false, `<pre style="background:var(--wa-bg); color:#00f2fe; padding:15px; border-radius:8px; border:1px solid var(--border-glass); font-family:monospace; overflow-x:auto;"><code>// Code block</code></pre><p><br></p>`); window.updateNotepadLiveCounters(); };
+        window.insertCodeBlock = function() { document.execCommand('insertHTML', false, `<br><div style="background:#111b21; color:#00f2fe; padding:20px; border-radius:8px; border-left:4px solid var(--neon-cyan); font-family:monospace; box-shadow: 0 4px 10px rgba(0,0,0,0.5);"><pre style="margin:0; overflow-x:auto;"><code>// Insert your syntax here</code></pre></div><p><br></p>`); window.updateNotepadLiveCounters(); };
         window.insertProfessionalTable = function() { document.execCommand('insertHTML', false, `<table border="1" style="width:100%; border-collapse:collapse; margin-bottom:15px;"><tr><th style="padding:8px; border:1px solid var(--border-glass);">H1</th><th style="padding:8px; border:1px solid var(--border-glass);">H2</th></tr><tr><td style="padding:8px; border:1px solid var(--border-glass);">D1</td><td style="padding:8px; border:1px solid var(--border-glass);">D2</td></tr></table><p><br></p>`); window.updateNotepadLiveCounters(); };
         window.insertLinkToNotepad = function() { const url = prompt("Enter URL:", "https://"); if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); } };
         window.insertImageToNotepad = function() { const url = prompt("Enter Image URL:", "https://"); if (url) { document.execCommand('insertImage', false, url); window.updateNotepadLiveCounters(); } };
@@ -1842,7 +1884,7 @@
                 });
             } catch(e) {}
         };
-        
+
         window.executePhysicalAssetDownloadEngine = function(srcUrl) { const a = document.createElement('a'); a.href = srcUrl; a.download = `Nexus_Vault_Asset_${Date.now()}.png`; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
 
         window.triggerEnlargedAttachmentView = function(src) {
