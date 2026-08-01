@@ -1048,8 +1048,8 @@
         const firebaseConfig = {
             apiKey: "AIzaSyBPtFTFkSIjwxA34b5T8sB2Ja6Ll2azlb4",
             authDomain: "nexus-portal-db.firebaseapp.com",
-            projectId: "nexus-portal-db",
             databaseURL: "https://nexus-portal-db-default-rtdb.firebaseio.com",
+            projectId: "nexus-portal-db",
             storageBucket: "nexus-portal-db.firebasestorage.app",
             messagingSenderId: "983518772619",
             appId: "1:983518772619:web:87b17895b6098e293d438e",
@@ -2278,7 +2278,7 @@
             } else if (targetUserId === "MainframeAdmin") {
                 displayName = "Mainframe Admin Shashi"; displayContact = "System Admin"; displayBio = "Managing Matrix Cloud";
             }
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:380px;"><div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;"><img src="${targetAvatarPath}" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 10px 20px rgba(0,0,0,0.5);"><h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.6rem; margin-top:15px;">${displayName}</h2><div style="color:var(--wa-text-muted); font-size:1rem; margin-top:5px;">${displayContact}</div></div><div style="padding:25px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;"><h4 style="color warm-green; font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4><div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.1rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Close</button></div></div>`;
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:380px;"><div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;"><img src="${targetAvatarPath}" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 10px 20px rgba(0,0,0,0.5);"><h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.6rem; margin-top:15px;">${displayName}</h2><div style="color:var(--wa-text-muted); font-size:1rem; margin-top:5px;">${displayContact}</div></div><div style="padding:25px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;"><h4 style="color:var(--wa-green); font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4><div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.1rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Close</button></div></div>`;
             wrapper.classList.remove('hidden');
         };
 
@@ -2355,6 +2355,7 @@
         function checkActiveStateSessionRetentionOnLaunch() {
             const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'menu'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
             
+            // SYSTEM PRELOADER ENGINE - Hides preloader only when Firebase validation finishes
             const clearPreloader = () => {
                 const preloader = document.getElementById('systemPreloader');
                 if(preloader) preloader.classList.add('engine-ready');
@@ -2678,7 +2679,7 @@
         window.generateRandomPassword = function() {
             const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
             let pass = "";
-            for (let i = 0; i < 8; i++) { pass += chars.charAt(chars.length)); }
+            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
             document.getElementById('newUserPass').value = pass;
         };
 
@@ -2790,7 +2791,7 @@
             const reqRef = push(ref(db, 'pending_accounts'));
             set(reqRef, { reqId: reqRef.key, name: name, dob: dob, phone: phone, pass: pass, epoch: Date.now() }).then(() => {
                 const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-                wrapper.innerHTML = `<div class="nexus-popup-card-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपकी नई आईडी शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
+                wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपकी नई आईडी शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
                 window.speakNaturalHuman("Request submitted successfully.");
             }).catch((error) => {
                 alert("❌ DATABASE ERROR: " + error.message + "\n\nIska matlab aapke Firebase Rules sahi se update nahi hue hain. Please Firebase mein .read aur .write dono ko 'true' karein!");
