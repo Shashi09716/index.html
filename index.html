@@ -1271,7 +1271,7 @@
         }
         runAmbientCanvasMatrixSystem();
 
-        function initiatePrecisionChronometerTick() {
+        function initatePrecisionChronometerTick() {
             setInterval(() => {
                 const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');
                 const hh = padData(clock.getHours()); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); const pureTimeString = `${hh}:${mm}:${ss}`;
@@ -1625,9 +1625,7 @@
         };
 
         window.executeForgotIdVerificationSearch = function() {
-            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value; const resNode = document.getElementById('forgotIdResultNode');
-            if(!phone || !dob) { alert("Please complete both parameters."); return; }
-            let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
+            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
             if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:6px 14px; border-radius:8px; display:inline-block; margin-top:15px;">${matchedUser.id}</span>`; window.playSynthesizedSound(880, 'sine', 0.15); } 
             else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); }
         };
@@ -1648,7 +1646,7 @@
         window.executeDispatchPasswordResetSignalToAdmin = function() {
             const uid = document.getElementById('reqPassUID').value.trim(); const phone = document.getElementById('reqPassPhone').value.trim(); const dob = document.getElementById('reqPassDOB').value;
             if(!uid || !phone || !dob) { alert("All verification parameters required."); return; }
-            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u && u.id && typeof u.id === 'string' && u.id.toLowerCase() === uid.toLowerCase() && String(u.contact) === String(phone) && String(u.dob) === String(dob));
             if(userMatch) {
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
                 set(reqNodeRef, { signalID: reqNodeRef.key, targetUID: userMatch.id, clientName: userMatch.clientName, phone: userMatch.contact, epochTime: Date.now() }).then(() => {
@@ -1662,7 +1660,7 @@
         window.executeDirectPasswordCredentialsSwap = function() {
             const uid = document.getElementById('changePassUID').value.trim(); const oldPass = document.getElementById('changePassOld').value.trim(); const newPass = document.getElementById('changePassNew').value.trim();
             if(!uid || oldPass === "" || !newPass) { alert("Complete all fields."); return; }
-            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
+            let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u && u.id && typeof u.id === 'string' && u.id.toLowerCase() === uid.toLowerCase() && String(u.pass) === String(oldPass));
             if(userMatch) { update(ref(db, `users/${userMatch.id}`), { pass: newPass }).then(() => { window.closeCustomInlinePopupEngine(); alert("✅ Password updated completely."); window.playSynthesizedSound(1000, 'sine', 0.2); }); } 
             else { alert("❌ Invalid current password signature."); }
         };
@@ -2620,7 +2618,7 @@
                 loggedInId = "MainframeAdmin";
                 mode = 'admin';
             } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && typeof user.id === 'string' && user.id.toLowerCase() === u.toLowerCase()); 
                 if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
                     if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
                     isSuccess = true;
@@ -2656,7 +2654,7 @@
                 fails++;
                 MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
                 if (fails >= 3) {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase());
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && typeof user.id === 'string' && user.id.toLowerCase() === u.toLowerCase()); 
                     if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
                 }
                 alert("❌ ACCESS DENIED: Invalid System ID or Password.");
@@ -2909,7 +2907,7 @@
                 MatrixSystemState.set('currentMode', 'admin');
                 window.executeClusterLogin(null);
             } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && typeof user.id === 'string' && user.id.toLowerCase() === u.toLowerCase()); 
                 if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
                     if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
                     MatrixSystemState.set('currentMode', 'user');
@@ -2923,7 +2921,7 @@
             if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u.toLowerCase() === MatrixSystemState.get('cachedAdminMainframeRoute').masterId.toLowerCase()) {
                 document.getElementById('accessNodePass').focus();
             } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user.id.toLowerCase() === u.toLowerCase()); 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && typeof user.id === 'string' && user.id.toLowerCase() === u.toLowerCase()); 
                 if(userMatch) document.getElementById('accessNodePass').focus(); 
             }
         };
