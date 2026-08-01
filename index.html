@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V20.0 (Realtime AI Thunder Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V20.1 (Realtime AI Thunder Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -45,15 +45,18 @@
         @keyframes cyberPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); } }
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
-        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 70px; background: rgba(2, 5, 14, 0.95); border-bottom: 2px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; padding: 0 25px; z-index: 99999; backdrop-filter: blur(20px); box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2); transition: all 0.3s ease; }
-        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.95); border-color: var(--border-glass); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff; position: relative; animation: glitchTextAnim 3s infinite; letter-spacing: 2px; text-transform: uppercase; }
+        
+        /* UPGRADED MENU BAR - Premium Glassmorphism */
+        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; height: 75px; background: rgba(2, 5, 14, 0.7); border-bottom: 1px solid rgba(0, 242, 254, 0.3); display: flex; justify-content: space-between; align-items: center; padding: 0 35px; z-index: 99999; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 -2px 15px rgba(0, 242, 254, 0.1); transition: all 0.4s ease; }
+        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.85); border-color: var(--border-glass); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.6rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
-        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 15px rgba(241, 196, 15, 0.9); } }
-        .navbar-controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; z-index: 100000; }
-        .nav-btn { background: rgba(6, 17, 38, 0.95); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--neon-cyan); padding: 10px 18px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); pointer-events: all; text-transform: uppercase;}
-        .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 20px rgba(0, 242, 254, 0.5); transform: translateY(-2px); }
-        body.light-theme-active .nav-btn { background: #ffffff; color: #0f172a; border-color: #0f172a; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
+        .navbar-controls { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; z-index: 100000; }
+        .nav-btn { background: linear-gradient(135deg, rgba(6, 17, 38, 0.9), rgba(15, 30, 60, 0.9)); border: 1px solid rgba(0, 242, 254, 0.5); border-radius: 10px; color: var(--neon-cyan); padding: 12px 22px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 0.95rem; letter-spacing: 1.5px; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8); pointer-events: all; text-transform: uppercase;}
+        .nav-btn:hover { background: rgba(0, 242, 254, 0.2); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6), inset 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-3px) scale(1.05); color: #fff; border-color: #fff; }
+        body.light-theme-active .nav-btn { background: linear-gradient(135deg, #ffffff, #f1f5f9); color: #0f172a; border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
         .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
         .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 1.05rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 18px 22px; border-radius: 14px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
         .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 8px 25px rgba(0,242,254,0.3); border-color: var(--neon-cyan); transform: translateY(-3px); }
@@ -116,15 +119,18 @@
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 100px; }
         .dashboard-panel-core.active-view { display: flex; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 24px; width: 100%; max-width: 1500px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 20px; transition: transform 0.5s ease; }
+        
+        /* UPGRADED DASHBOARD CARDS */
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; padding: 10px; margin-top: 25px; }
-        .menu-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 40px 25px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
-        .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.15), transparent); transform: skewX(-25deg); transition: 0.6s; z-index:1; }
+        .menu-card { background: linear-gradient(145deg, rgba(4, 14, 33, 0.9), rgba(10, 22, 45, 0.9)); border: 1px solid var(--border-glass); border-radius: 20px; padding: 40px 25px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 2px 15px rgba(0, 242, 254, 0.05); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+        .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.2), transparent); transform: skewX(-25deg); transition: 0.6s; z-index:1; }
         .menu-card:hover::before { left: 150%; }
-        .menu-card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px rgba(0,242,254,0.3); border-color: var(--neon-cyan); }
-        .menu-card .icon { font-size: 4rem; margin-bottom: 20px; text-shadow: 0 0 25px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
-        .menu-card:hover .icon { transform: scale(1.15) rotate(5deg); }
-        .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.4rem; margin-bottom: 12px; font-weight:800; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-        .menu-card p { font-size: 1.05rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.5; font-weight: 500;}
+        .menu-card:hover { transform: translateY(-12px) scale(1.05); box-shadow: 0 25px 50px rgba(0,242,254,0.4), inset 0 0 20px rgba(0,242,254,0.2); border-color: var(--neon-cyan); z-index: 10; }
+        .menu-card .icon { font-size: 4.5rem; margin-bottom: 20px; text-shadow: 0 0 30px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
+        .menu-card:hover .icon { transform: scale(1.2) rotate(8deg); }
+        .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.5rem; margin-bottom: 12px; font-weight:900; position:relative; z-index:2; text-shadow: 0 2px 10px rgba(0,0,0,0.8); letter-spacing: 1px;}
+        .menu-card p { font-size: 1.1rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.5; font-weight: 600; opacity: 0.9;}
+        
         .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border-glass); padding-bottom: 20px; gap: 15px; flex-wrap: wrap; }
         .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 2.4rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
         .neon-cyan-text span { font-size: 1.7rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 12px; text-shadow: none; font-weight: 600; animation: none; }
@@ -163,13 +169,13 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 16px; padding: 30px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 20px rgba(0,242,254,0.3); }
 
-        /* UPGRADED NOTEPAD PRO ENGINE */
-        .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 30px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.15); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 95vh; max-height: none; }
+        /* UPGRADED NOTEPAD PRO ENGINE - LARGER SIZE */
+        .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 20px; padding: 30px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.15); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 100vh; max-height: none; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         .notes-editor-container-shell { position: relative; margin-top: 20px; background: #e2e8f0; border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 5px 20px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 40px 20px; display: flex; justify-content: center; }
-        .wordpad-paper { background: #ffffff; width: 100% !important; max-width: 100% !important; min-height: 75vh !important; padding: 80px 80px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); color: #000; font-family: 'Arial', sans-serif; font-size: 1.15rem; line-height: 1.7; outline: none; border-radius: 4px; border: 1px solid #ccc; }
+        .wordpad-paper { background: #ffffff; width: 100% !important; max-width: 100% !important; min-height: calc(100vh - 200px) !important; padding: 50px 70px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); color: #000; font-family: 'Arial', sans-serif; font-size: 1.4rem; line-height: 1.8; outline: none; border-radius: 4px; border: 1px solid #ccc; }
         .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8); border-color:#334155;}
         
         .notes-toolbar-ribbon { background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(20px); padding: 20px 25px; border-bottom: 2px solid var(--neon-cyan); display: flex; gap: 15px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,242,254,0.2); border-radius: 12px 12px 0 0;}
@@ -235,7 +241,9 @@
         .status-dashboard-header button { background:none; border:none; color:var(--wa-text); font-size:1.6rem; cursor:pointer; }
         .status-section-title { padding: 25px 25px 12px 25px; color: var(--wa-green); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .chat-messages-scroll-stack { flex: 1 1 auto; padding: 25px 6%; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; z-index: 2; scroll-behavior: smooth; }
-        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; }
+        
+        /* MSG BUBBLES AND ACTIONS */
+        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1rem; line-height: 22px; position: relative; box-shadow: 0 2px 4px rgba(11,20,26,.4); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; group; }
         .bubble-msg-wrapper.first-in-group { margin-top: 15px; }
         .bubble-text-content { display: inline-block; padding-right: 70px; padding-bottom: 6px; white-space: pre-wrap; min-width: 50px; }
         .group-sender-name { font-size: 0.9rem; font-weight: 700; color: #00f2fe; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
@@ -246,6 +254,13 @@
         .bubble-outgoing.has-tail::before { content: ""; position: absolute; top: 0; right: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-left: 15px solid var(--wa-msg-out); }
         .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-right: 15px solid var(--wa-msg-in); }
+        
+        /* MSG HOVER ACTIONS (Edit/Delete) */
+        .msg-action-menu { position:absolute; top:-15px; right:-10px; background:var(--wa-header); border:1px solid var(--border-glass); border-radius:12px; padding:6px 10px; display:none; gap:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); z-index:10; }
+        .bubble-msg-wrapper:hover .msg-action-menu { display:flex; }
+        .msg-action-icon { font-size: 1.1rem; cursor:pointer; transition: 0.2s; }
+        .msg-action-icon:hover { transform: scale(1.2); }
+
         .chat-interface-footer-inputs { padding: 14px 20px; background: var(--wa-header); display: flex; gap: 12px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
         .whatsapp-input-field { flex: 1; padding: 15px 20px; background: var(--wa-search-input); border: none; border-radius: 14px; color: var(--wa-text); outline: none; font-size: 1.1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);}
         .whatsapp-circle-btn { width: 48px; height: 48px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.6rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
@@ -326,7 +341,7 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V20.0</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V20.1</div>
     </div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
@@ -462,7 +477,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">🧠 PRO WORKSPACE NOTEPAD V20.0</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 2rem; margin-bottom: 25px;">🧠 PRO WORKSPACE NOTEPAD V20.1</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom: 25px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
@@ -1079,6 +1094,9 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        // Making Firebase functions globally available for inline onclick attributes
+        window.db = db; window.get = get; window.ref = ref; window.update = update; window.remove = remove; window.set = set; window.push = push;
+
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
@@ -1127,6 +1145,70 @@
         ];
 
         window.MatrixSystemState = MatrixSystemState;
+
+        // ------------- NEW CHAT EDIT & DELETE FUNCTIONS -------------
+
+        window.deleteChatMessage = function(dbKey, epochTime) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4 style="color:#e74c3c;">Delete Message</h4>
+                    <p style="color:var(--text-sub); margin-bottom:20px;">What do you want to do with this message?</p>
+                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
+                        <button onclick="window.commitChatDelete('${dbKey}', 'everyone')" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Delete for Everyone</button>
+                        <button onclick="window.commitChatDelete('${dbKey}', 'me')" class="nexus-popup-btn primary-btn" style="background:#f1c40f; color:#000;">Delete for Me</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button>
+                    </div>
+                </div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitChatDelete = function(dbKey, type) {
+            if(type === 'me') {
+                localStorage.setItem('del_for_me_' + dbKey, 'true');
+                window.closeCustomInlinePopupEngine();
+                if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs();
+            } else if (type === 'everyone') {
+                update(ref(db, 'chats/' + dbKey), { isDeletedForEveryone: true }).then(() => {
+                    window.closeCustomInlinePopupEngine();
+                });
+            }
+        };
+
+        window.editChatMessage = function(dbKey, oldText, epochTime) {
+            const timeDiff = Date.now() - epochTime;
+            if(timeDiff > 15 * 60 * 1000) { alert('⏳ Time limit exceeded! Edit is only allowed within 15 minutes.'); return; }
+            
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4 style="color:var(--neon-cyan);">✏️ Edit Message</h4>
+                    <input type="text" id="editChatInputVal" class="nexus-popup-input-field" value="${oldText}" style="margin-bottom:20px;">
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="window.commitChatEdit('${dbKey}', '${oldText.replace(/'/g, "\\'")}')" class="nexus-popup-btn primary-btn">Update</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button>
+                    </div>
+                </div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitChatEdit = function(dbKey, oldTextFallback) {
+            const newText = document.getElementById('editChatInputVal').value.trim();
+            if(!newText) return;
+            get(ref(db, 'chats/' + dbKey)).then(snap => {
+                let data = snap.val();
+                if(data) {
+                    let original = data.originalText ? data.originalText : data.textBody;
+                    update(ref(db, 'chats/' + dbKey), { textBody: newText, isEdited: true, originalText: original }).then(() => {
+                        window.closeCustomInlinePopupEngine();
+                    });
+                }
+            });
+        };
+
+        // ------------------------------------------------------------
 
         window.useSmartReply = function(replyText) {
             const inputField = document.getElementById('chatCoreMessageTextInput') || document.getElementById('adminSpyResponseInput');
@@ -1625,7 +1707,9 @@
         };
 
         window.executeForgotIdVerificationSearch = function() {
-            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
+            const phone = document.getElementById('recoverIdPhone').value.trim(); const dob = document.getElementById('recoverIdDOB').value;
+            const resNode = document.getElementById('forgotIdResultNode');
+            let matchedUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.contact === phone && u.dob === dob);
             if(matchedUser) { resNode.innerHTML = `MATCH FOUND! <br> Your Identifier ID is: <span style="color:#ffffff; background:#00a884; padding:6px 14px; border-radius:8px; display:inline-block; margin-top:15px;">${matchedUser.id}</span>`; window.playSynthesizedSound(880, 'sine', 0.15); } 
             else { resNode.innerText = "❌ No identity match inside cloud matrix."; window.playSynthesizedSound(140, 'sawtooth', 0.3); }
         };
@@ -1891,7 +1975,7 @@
             wrapper.classList.remove('hidden');
         };
 
-        // --- FIXED REAL-TIME WHATSAPP ENGINE ---
+        // --- FIXED REAL-TIME WHATSAPP ENGINE WITH EDIT & DELETE ---
         
         window.initializeCrossLinkChatPanel = function() {
             const container = document.getElementById('chatTargetContainerView'); if(!container) return;
@@ -1970,7 +2054,16 @@
             let msgs = [];
             Object.keys(rawData).forEach(key => {
                 const m = rawData[key]; m.dbKey = key;
+                
+                // Exclude messages deleted by current user exclusively
                 if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
+                if(localStorage.getItem(`del_for_me_${key}`)) return;
+
+                // Handle Delete For Everyone
+                if(m.isDeletedForEveryone) {
+                    m.textBody = "🚫 This message was deleted";
+                    m.mediaPayload = "";
+                }
                 
                 if (isGroup) {
                     if (m.receiver === targetUid) msgs.push(m);
@@ -2016,11 +2109,24 @@
                     if (m.read) tickHtml = `<span class="whatsapp-tick-space double-blue" style="color:#53bdeb;">✓✓</span>`;
                     else tickHtml = `<span class="whatsapp-tick-space">✓✓</span>`; 
                 }
+
+                let editedTag = m.isEdited && !m.isDeletedForEveryone ? `<span style="font-size:0.7rem; color:rgba(255,255,255,0.5); font-style:italic; margin-right:4px;">(Edited)</span>` : "";
+
+                // EDIT AND DELETE ACTIONS
+                let actionsHtml = "";
+                if(isMe && !m.isDeletedForEveryone) {
+                    actionsHtml = `
+                    <div class="msg-action-menu">
+                        <span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span>
+                        <span class="msg-action-icon" title="Delete" onclick="window.deleteChatMessage('${m.dbKey}', ${m.epochTimeNode})">🗑️</span>
+                    </div>`;
+                }
                 
                 html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}">
+                    ${actionsHtml}
                     ${senderNameHtml}
                     <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
-                    <div class="whatsapp-time">${m.timestamp} ${tickHtml}</div>
+                    <div class="whatsapp-time">${editedTag}${m.timestamp} ${tickHtml}</div>
                 </div>`;
             });
             
@@ -2054,6 +2160,9 @@
                 textBody: text,
                 mediaPayload: media,
                 read: false,
+                isEdited: false,
+                isDeletedForEveryone: false,
+                originalText: text,
                 epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
@@ -2069,7 +2178,7 @@
             });
         };
 
-        // --- ADMIN SPY CHAT FUNCTIONS (For Perfect Spychat Panel working) ---
+        // --- ADMIN SPY CHAT FUNCTIONS (For Perfect Spychat Panel working + Superpowers) ---
         window.renderAdminSpyUserList = function() {
             const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
             const users = MatrixSystemState.get('cachedGlobalUsersArr');
@@ -2142,7 +2251,6 @@
             
             msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
             
-            // ANTI-LAG SYSTEM: Limit Admin rendering to latest 150 messages to prevent browser freezing
             if(msgs.length > 150) msgs = msgs.slice(-150);
             
             let html = "";
@@ -2154,7 +2262,7 @@
                 lastSender = m.sender;
                 
                 let mediaHtml = "";
-                if(m.mediaPayload) {
+                if(m.mediaPayload && !m.isDeletedForEveryone) {
                     if(m.mediaPayload.startsWith('data:audio')) {
                         mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
                     } else if (m.mediaPayload.startsWith('data:image')) {
@@ -2162,11 +2270,24 @@
                     }
                 }
                 
+                // ADMIN SUPERPOWER: SEE DELETED & EDITED TEXTS
+                let adminSuperPowerInfo = "";
+                let displayBody = m.textBody;
+                
+                if(m.isDeletedForEveryone) {
+                    displayBody = `<strike>${m.originalText || m.textBody}</strike>`;
+                    adminSuperPowerInfo += `<div style="background:rgba(231,76,60,0.2); color:#e74c3c; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #e74c3c; font-weight:bold;">🚨 USER DELETED THIS (Spying)</div>`;
+                }
+                if(m.isEdited && m.originalText && !m.isDeletedForEveryone) {
+                    adminSuperPowerInfo += `<div style="background:rgba(241,196,15,0.2); color:#f1c40f; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #f1c40f;">⚠️ Original text: ${m.originalText}</div>`;
+                }
+
                 let senderNameHtml = `<div class="group-sender-name">${m.sender}</div>`;
                 
                 html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
                     ${!isMe ? senderNameHtml : ''}
-                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
+                    ${adminSuperPowerInfo}
+                    <div class="bubble-text-content">${mediaHtml}${displayBody}</div>
                     <div class="whatsapp-time">${m.timestamp}</div>
                 </div>`;
             });
@@ -2192,6 +2313,9 @@
                 textBody: text,
                 mediaPayload: media,
                 read: false,
+                isEdited: false,
+                isDeletedForEveryone: false,
+                originalText: text,
                 epochTimeNode: Date.now(),
                 timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
             }).then(() => {
@@ -2821,21 +2945,6 @@
         window.renderLiveCreationStatsSummary = function() { 
             const mini = document.getElementById('liveCreationStatsMiniNode');
             if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
-        };
-
-        window.submitAccountCreationRequest = function() {
-            const name = document.getElementById('reqSignupName').value.trim(); const dob = document.getElementById('reqSignupDOB').value;
-            const phone = document.getElementById('reqSignupPhone').value.trim(); const pass = document.getElementById('reqSignupPass').value.trim();
-            if(!name || phone.length !== 10 || !pass) { alert("Please complete required fields. Contact No exactly 10 digits ka hona chahiye."); return; }
-            
-            const reqRef = push(ref(db, 'pending_accounts'));
-            set(reqRef, { reqId: reqRef.key, name: name, dob: dob, phone: phone, pass: pass, epoch: Date.now() }).then(() => {
-                const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-                wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपकी नई आईडी शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
-                window.speakNaturalHuman("Request submitted successfully.");
-            }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message + "\n\nIska matlab aapke Firebase Rules sahi se update nahi hue hain. Please Firebase mein .read aur .write dono ko 'true' karein!");
-            });
         };
 
         window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
