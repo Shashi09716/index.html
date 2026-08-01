@@ -2010,7 +2010,9 @@
             const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!interfaceWrapper || !currentUid) return;
             try {
                 get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
-                    let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
+                    if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); text-align:center; padding:25px; font-weight:bold; font-size:1.1rem; background:rgba(0,0,0,0.4); border-radius:12px;"> Repository empty.</div>`; return; }
+                    interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
+                        let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
                         return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime}</span><span style="cursor:pointer; color:var(--neon-pink); padding:4px 8px; border-radius:4px; background:rgba(255,0,127,0.1);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ Delete</span></div><div style="color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">${noteItem.richTextHtml}</div>${voiceAttachmentMarkup}</div></div>`;
                     }).join('');
                 });
