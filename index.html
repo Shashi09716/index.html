@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V21.0 (Strict Lock & Pro Editor)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V22.0 (Ultimate Lock & Pro Editor)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -38,7 +38,17 @@
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
         
-        /* 1000% PERFECT FULL SCREEN LOCK AREA - ABSOLUTE TAKEOVER */
+        /* 1000% PERFECT FULL SCREEN LOCK AREA - ABSOLUTE ROOT TAKEOVER */
+        body.ultimate-lock {
+            overflow: hidden !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            position: fixed !important;
+            touch-action: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
         .locked-area-active {
             position: fixed !important;
             top: 0 !important;
@@ -49,20 +59,15 @@
             height: 100vh !important;
             max-width: 100vw !important;
             max-height: 100vh !important;
-            z-index: 2147483647 !important;
+            z-index: 2147483647 !important; /* Absolute Top */
             border-radius: 0 !important;
             margin: 0 !important;
             border: none !important;
             box-sizing: border-box !important;
             transform: none !important;
-            background: var(--wa-bg) !important;
-        }
-
-        /* 100% STRICT SCROLL FREEZE CLASS (Applied dynamically to kill outer scroll) */
-        .no-scroll-view {
-            overflow: hidden !important;
-            padding-top: 90px !important;
-            padding-bottom: 0 !important;
+            background: var(--bg-prime) !important;
+            display: flex !important;
+            flex-direction: column !important;
         }
 
         input, textarea, select, [contenteditable="true"] { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
@@ -213,8 +218,8 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 14px; padding: 30px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 15px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 20px rgba(0,242,254,0.2); }
 
-        /* UPGRADED NOTEPAD PRO ENGINE - 100% FIXED VISIBILITY & NO WHITE BOXES */
-        .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: calc(100vh - 140px); max-height: none; }
+        /* UPGRADED NOTEPAD PRO ENGINE - COMPACT, SLEEK & VISIBLE */
+        .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 85vh; max-height: 900px; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         
         /* ZEN MODE STYLES */
@@ -223,28 +228,28 @@
         .zen-mode-exit-btn { display: none; position: fixed; top: 20px; right: 20px; z-index: 1000000; padding: 15px 30px; background: #ff007f; color: #fff; font-weight: 900; font-family: 'Orbitron'; border-radius: 8px; border: none; cursor: pointer; }
         .zen-mode-active ~ .zen-mode-exit-btn { display: block; }
         
-        .notes-editor-container-shell { position: relative; background: rgba(10, 18, 30, 0.6); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex-grow: 1; min-height: 350px; }
-        .notes-editor-container-shell.notepad-dark-mode { background: #050a12 !important; border-color: #334155; }
+        .notes-editor-container-shell { position: relative; background: rgba(10, 15, 30, 0.4); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 2px 15px rgba(0,0,0,0.6); display: flex; flex-direction: column; transition: 0.3s; flex-grow: 1; }
         
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 20px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; }
         
-        /* THE PERFECT VISIBLE PROFESSIONAL PAPER */
+        /* THE PERFECT COMPACT CYBERPUNK PAPER */
         .wordpad-paper { 
-            background: transparent !important; 
-            border: none !important; 
-            box-shadow: none !important; 
-            color: var(--text-main) !important; 
+            background: rgba(4, 10, 20, 0.8) !important; 
+            border: 1px solid rgba(0, 242, 254, 0.5) !important; 
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1) !important; 
+            color: #00f2fe !important; 
             width: 100% !important; 
-            max-width: 100% !important;
-            min-height: 100% !important; 
-            height: auto !important;
-            padding: 10px !important; 
+            max-width: 900px !important;
+            height: 55vh !important; /* Fixed height for scroll inside */
+            min-height: 350px !important; 
+            padding: 25px !important; 
             box-sizing: border-box !important; 
             font-family: 'Segoe UI', Arial, sans-serif !important; 
             font-size: 1.15rem !important; 
             line-height: 1.6 !important; 
             outline: none !important; 
-            overflow-x: hidden !important; 
+            border-radius: 8px !important; 
+            overflow-y: auto !important; 
             word-wrap: break-word !important;
             user-select: text !important;
             -webkit-user-select: text !important;
@@ -254,7 +259,8 @@
             visibility: visible !important;
             opacity: 1 !important;
         }
-        .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: var(--text-muted); pointer-events: none; }
+        .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: rgba(0, 242, 254, 0.4); pointer-events: none; }
+        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: inset 0 0 25px rgba(255,0,127,0.2) !important; color: #fff !important; }
         
         .notes-toolbar-ribbon { background: rgba(6, 11, 22, 0.85); backdrop-filter: blur(20px); padding: 12px 20px; border-bottom: 1px solid var(--border-glass); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; border-radius: 12px 12px 0 0;}
         .note-tool-btn { border-radius: 8px; padding: 8px 14px; border: 1px solid rgba(0,242,254,0.3); background: rgba(0,0,0,0.4); color: var(--text-main); font-family: 'Orbitron'; font-size: 0.9rem; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); }
@@ -265,7 +271,7 @@
         .note-tool-select { background: rgba(4,15,36,0.9); border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 8px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.9rem; cursor: pointer; outline: none; font-weight:bold; }
         .toolbar-divider { width: 1px; height: 24px; background: var(--border-glass); margin: 0 8px; opacity: 0.6; }
         .notes-status-bar { padding: 10px 20px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 0.95rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;}
-        .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 20px; max-height: 250px; overflow-y: auto; padding-right: 15px;}
+        .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 20px; max-height: 200px; overflow-y: auto; padding-right: 15px;}
         .note-structural-card { background: var(--input-bg); border-left: 6px solid var(--neon-pink); padding: 20px; border-radius: 12px; border: 1px solid var(--border-glass); position: relative; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; overflow: hidden;}
         .note-structural-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,0,127,0.3); }
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.9rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.3); padding-bottom: 8px; }
@@ -277,7 +283,7 @@
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
 
         /* --- 100% REAL WHATSAPP WEB STICKY LAYOUT --- */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 380px 1fr; gap: 0; width: 100%; height: calc(100vh - 140px) !important; margin: 0 !important; max-height: none; background: var(--wa-bg); border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 55px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 380px 1fr; gap: 0; width: 100%; height: calc(100vh - 160px) !important; margin: 0 !important; max-height: none; background: var(--wa-bg); border-radius: 14px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 25px 55px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
         
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow: hidden; z-index: 5; height: 100%; }
         .wa-top-bar { display:flex; justify-content:space-between; align-items:center; padding:15px 20px; background:var(--wa-header); color:var(--wa-text); font-size:1.3rem; font-weight:bold; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
@@ -424,7 +430,7 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V21.0</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V22.0</div>
     </div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
@@ -656,7 +662,7 @@
                     
                     <div class="notes-editor-container-shell" id="printAreaNotepad">
                         <div class="wordpad-container">
-                            <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" placeholder="Start typing your professional document here... Data is auto-saved locally. White paper is fully visible now." oninput="window.updateNotepadLiveCounters()"></div>
+                            <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" placeholder="Start typing your professional document here... Background is matched, clear and compact." oninput="window.updateNotepadLiveCounters()"></div>
                         </div>
                         <div class="notes-status-bar">
                             <span id="noteLiveWordCount">Words: 0</span>
@@ -802,6 +808,7 @@
                         <div class="chat-interface-footer-inputs">
                             <button class="whatsapp-circle-btn toggle-emoji-btn-ref" onclick="window.toggleEmojiDrawerOverlayPanel(event)">😀</button>
                             <input type="file" id="chatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
+                            
                             <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="window.toggleWaAttachmentMenu(event)">📎</button>
                             
                             <div style="flex: 1; position: relative; min-width: 140px; display:flex; align-items:center;">
@@ -957,26 +964,47 @@
                         </div>
                     </div>
 
-                    <div class="modern-glass-panel" style="border: 2px solid #e74c3c; box-shadow: 0 0 30px rgba(231,76,60,0.2);">
-                        <h4 style="color:#e74c3c; font-family:'Orbitron'; font-size:1.6rem; margin-bottom:25px; text-shadow:0 0 15px rgba(231,76,60,0.4);">🔴 GLOBAL BROADCAST NODE (1 CLICK PUSH)</h4>
-                        <input type="text" id="adminBroadcastInputControl" class="giant-compiler-input" placeholder="Enter broadcast message here..." style="border-color:#e74c3c; margin-bottom:20px; font-size: 1.2rem; padding: 18px;">
-                        <div style="display:flex; gap:20px;">
-                            <button onclick="window.dispatchMainframeGlobalBroadcast()" class="hud-engage-btn" style="background:linear-gradient(135deg, #e74c3c, #c0392b); color:#fff; border-radius:12px; flex:2; font-size:1.3rem;">TRANSMIT BROADCAST</button>
-                            <button onclick="window.clearMainframeGlobalBroadcast()" class="abort-btn" style="flex:1; background:#2a3942; box-shadow:none;">KILL BROADCAST</button>
-                        </div>
-                    </div>
-                    
                     <div class="modern-glass-panel" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.15);">
                         <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.6rem; margin-bottom:25px; text-shadow:0 0 15px rgba(0,242,254,0.3);">🌍 GLOBAL FEATURE TOGGLES & CONFIGS</h4>
                         
-                        <div style="margin-bottom:25px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 14px; border: 1px dashed var(--neon-cyan);">
-                            <h5 style="color:#fff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom: 12px;">⚡ LOGIN SCREEN THUNDER INTENSITY</h5>
-                            <select id="adminThunderControl" onchange="window.updateGlobalFeatures()" class="giant-compiler-input" style="font-size: 1.05rem; padding: 12px; border-color: #f1c40f; color:#f1c40f;">
-                                <option value="off">Off (Disabled)</option>
-                                <option value="low">Low (Every 5 seconds)</option>
-                                <option value="medium">Medium (Every 2 seconds)</option>
-                                <option value="ultra">Ultra Max (Every 0.5 seconds)</option>
-                            </select>
+                        <div style="margin-bottom:25px; background: rgba(0,0,0,0.5); padding: 25px; border-radius: 14px; border: 1px dashed var(--neon-cyan); display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div>
+                                <h5 style="color:#fff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom: 12px;">⚡ THUNDER INTENSITY</h5>
+                                <div style="display:flex; gap:10px;">
+                                    <select id="adminThunderControl" onchange="window.handleThunderSelectChange()" class="giant-compiler-input" style="font-size: 1.05rem; padding: 12px; border-color: #f1c40f; color:#f1c40f;">
+                                        <option value="off">Off (Disabled)</option>
+                                        <option value="30000">Every 30 Sec</option>
+                                        <option value="60000">Every 1 Min</option>
+                                        <option value="120000">Every 2 Min</option>
+                                        <option value="300000">Every 5 Min</option>
+                                        <option value="600000">Every 10 Min</option>
+                                        <option value="900000">Every 15 Min</option>
+                                        <option value="1200000">Every 20 Min</option>
+                                        <option value="1800000">Every 30 Min</option>
+                                        <option value="3600000">Every 1 Hour</option>
+                                        <option value="custom">Customize...</option>
+                                    </select>
+                                    <input type="number" id="customThunderInput" class="giant-compiler-input hidden" placeholder="Secs..." style="width:100px; padding:12px;" onchange="window.updateGlobalFeatures()">
+                                </div>
+                            </div>
+                            <div>
+                                <h5 style="color:#fff; font-family:'Orbitron'; font-size:1.1rem; margin-bottom: 12px;">⏱️ AUTO-LOGOUT DURATION</h5>
+                                <div style="display:flex; gap:10px;">
+                                    <select id="adminLogoutControl" onchange="window.handleLogoutSelectChange()" class="giant-compiler-input" style="font-size: 1.05rem; padding: 12px; border-color: #ff007f; color:#ff007f;">
+                                        <option value="30000">30 Sec</option>
+                                        <option value="60000">1 Min</option>
+                                        <option value="120000">2 Min</option>
+                                        <option value="300000">5 Min</option>
+                                        <option value="600000">10 Min</option>
+                                        <option value="900000">15 Min</option>
+                                        <option value="1200000">20 Min</option>
+                                        <option value="1800000">30 Min</option>
+                                        <option value="3600000">1 Hour</option>
+                                        <option value="custom">Customize...</option>
+                                    </select>
+                                    <input type="number" id="customLogoutInput" class="giant-compiler-input hidden" placeholder="Mins..." style="width:100px; padding:12px;" onchange="window.updateGlobalFeatures()">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="cyber-toggle-container">
@@ -995,6 +1023,15 @@
                             <label class="toggle-switch-wrapper" style="grid-column: 1 / -1; border-color:#00a884;">
                                 <span style="color:#00a884; font-size:1.15rem;">ENABLE WHATSAPP WEB MULTIPLAYER</span> <input type="checkbox" id="globalTog_chat" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
                             </label>
+                        </div>
+                    </div>
+
+                    <div class="modern-glass-panel" style="border: 2px solid #e74c3c; box-shadow: 0 0 30px rgba(231,76,60,0.2);">
+                        <h4 style="color:#e74c3c; font-family:'Orbitron'; font-size:1.6rem; margin-bottom:25px; text-shadow:0 0 15px rgba(231,76,60,0.4);">🔴 GLOBAL BROADCAST NODE (1 CLICK PUSH)</h4>
+                        <input type="text" id="adminBroadcastInputControl" class="giant-compiler-input" placeholder="Enter broadcast message here..." style="border-color:#e74c3c; margin-bottom:20px; font-size: 1.2rem; padding: 18px;">
+                        <div style="display:flex; gap:20px;">
+                            <button onclick="window.dispatchMainframeGlobalBroadcast()" class="hud-engage-btn" style="background:linear-gradient(135deg, #e74c3c, #c0392b); color:#fff; border-radius:12px; flex:2; font-size:1.3rem;">TRANSMIT BROADCAST</button>
+                            <button onclick="window.clearMainframeGlobalBroadcast()" class="abort-btn" style="flex:1; background:#2a3942; box-shadow:none;">KILL BROADCAST</button>
                         </div>
                     </div>
 
@@ -1210,7 +1247,7 @@
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
-                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, thunderMode: "medium" }
+                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, thunderMode: "2000", logoutDuration: "60000" }
             };
             return {
                 get: (key) => state[key],
@@ -1228,23 +1265,24 @@
         let typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
         let pomodoroInterval = null, isZenModeActive = false;
 
-        const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
-        
-        function executeAutoLogoutTracker() {
-            let activityTimeout;
+        let activityTimeout;
+        window.executeAutoLogoutTracker = function() {
             const resetInactivityTimer = () => {
                 clearTimeout(activityTimeout);
                 if (MatrixSystemState.get('loggedInCustomerID') !== "") {
+                    let globalFeats = MatrixSystemState.get('globalFeatures');
+                    let dynamicDuration = globalFeats && globalFeats.logoutDuration ? parseInt(globalFeats.logoutDuration) : 60000;
+                    
                     activityTimeout = setTimeout(() => {
                         window.playSynthesizedSound(300, 'sawtooth', 0.5);
-                        alert("⏳ 1 MINUTE INACTIVITY DETECTED.\nFor security reasons, your portal has been automatically logged out.");
+                        alert("⏳ INACTIVITY DETECTED.\nFor security reasons, your portal has been automatically logged out.");
                         window.logoutEngine();
-                    }, 60000); 
+                    }, dynamicDuration); 
                 }
             };
             window.onload = resetInactivityTimer; document.onmousemove = resetInactivityTimer; document.onkeydown = resetInactivityTimer; document.ontouchstart = resetInactivityTimer; document.onclick = resetInactivityTimer;
-        }
-        executeAutoLogoutTracker();
+        };
+        window.executeAutoLogoutTracker();
 
         /* --- 1000% FIXED BRUTE FORCE SCROLL LOCK --- */
         window.toggleWaAreaLock = function(matrixId, btnId) {
@@ -1254,11 +1292,8 @@
             if(matrixNode && btnNode) {
                 matrixNode.classList.toggle('locked-area-active');
                 if(matrixNode.classList.contains('locked-area-active')) {
-                    document.body.style.setProperty('overflow', 'hidden', 'important');
-                    document.documentElement.style.setProperty('overflow', 'hidden', 'important');
-                    document.body.style.setProperty('position', 'fixed', 'important');
-                    document.body.style.setProperty('width', '100%', 'important');
-                    document.body.style.setProperty('height', '100%', 'important');
+                    document.body.classList.add('ultimate-lock');
+                    document.documentElement.classList.add('ultimate-lock');
                     window.scrollTo(0, 0); 
                     if(navBar) navBar.style.display = 'none';
                     btnNode.innerHTML = '🔒 Locked (100% Fixed)';
@@ -1266,11 +1301,8 @@
                     btnNode.style.borderColor = '#ff007f';
                     btnNode.style.boxShadow = '0 0 15px rgba(255,0,127,0.5)';
                 } else {
-                    document.body.style.removeProperty('overflow');
-                    document.documentElement.style.removeProperty('overflow');
-                    document.body.style.removeProperty('position');
-                    document.body.style.removeProperty('width');
-                    document.body.style.removeProperty('height');
+                    document.body.classList.remove('ultimate-lock');
+                    document.documentElement.classList.remove('ultimate-lock');
                     if(navBar) navBar.style.display = 'flex';
                     btnNode.innerHTML = '🔓 Unlock View';
                     btnNode.style.color = matrixId.includes('notes') ? '#00f2fe' : 'var(--wa-text-muted)';
@@ -1308,7 +1340,7 @@
         };
 
         window.translateActiveChat = function() {
-            alert("🌐 Translating all chat messages to Hindi via Matrix AI...");
+            alert("🌐 Translating all chat messages via Matrix AI...");
         };
 
         window.toggleVoiceChanger = function() {
@@ -1332,8 +1364,6 @@
             "https://media.giphy.com/media/3o7rc0qU6m5hneMsuc/giphy.gif", "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
             "https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif", "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
         ];
-
-        window.MatrixSystemState = MatrixSystemState;
 
         window.deleteChatMessage = function(dbKey, epochTime) {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1482,9 +1512,13 @@
             if(activeThunderIntervalObj) clearInterval(activeThunderIntervalObj);
             let msTime = 2000;
             if(modeValue === 'off') return;
-            if(modeValue === 'low') msTime = 5000;
-            if(modeValue === 'medium') msTime = 2000;
-            if(modeValue === 'ultra') msTime = 500;
+            if(!isNaN(modeValue)) {
+                msTime = parseInt(modeValue);
+            } else {
+                if(modeValue === 'low') msTime = 5000;
+                if(modeValue === 'medium') msTime = 2000;
+                if(modeValue === 'ultra') msTime = 500;
+            }
             
             const adminSelect = document.getElementById('adminThunderControl');
             if(adminSelect) adminSelect.value = modeValue;
@@ -1606,6 +1640,29 @@
         };
         window.rejectPendingAccount = function(reqId) { if(confirm("Reject this request?")) remove(ref(db, 'pending_accounts/' + reqId)); };
 
+        // HANDLING NEW ADMIN CUSTOM DROPDOWNS
+        window.handleThunderSelectChange = function() {
+            let val = document.getElementById('adminThunderControl').value;
+            let customInput = document.getElementById('customThunderInput');
+            if(val === 'custom') {
+                customInput.classList.remove('hidden');
+            } else {
+                customInput.classList.add('hidden');
+                window.updateGlobalFeatures();
+            }
+        };
+
+        window.handleLogoutSelectChange = function() {
+            let val = document.getElementById('adminLogoutControl').value;
+            let customInput = document.getElementById('customLogoutInput');
+            if(val === 'custom') {
+                customInput.classList.remove('hidden');
+            } else {
+                customInput.classList.add('hidden');
+                window.updateGlobalFeatures();
+            }
+        };
+
         onValue(ref(db, 'global_settings/features'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -1614,16 +1671,55 @@
                     const cb = document.getElementById(`globalTog_${feat}`);
                     if(cb) cb.checked = data[feat];
                 });
+
+                const tc = document.getElementById('adminThunderControl');
+                const tci = document.getElementById('customThunderInput');
+                if(tc) {
+                    if (["off", "30000", "60000", "120000", "300000", "600000", "900000", "1200000", "1800000", "3600000"].includes(data.thunderMode)) {
+                        tc.value = data.thunderMode; tci.classList.add('hidden');
+                    } else {
+                        tc.value = "custom"; tci.value = data.thunderMode; tci.classList.remove('hidden');
+                    }
+                }
+
+                const lc = document.getElementById('adminLogoutControl');
+                const lci = document.getElementById('customLogoutInput');
+                if(lc) {
+                    if (["30000", "60000", "120000", "300000", "600000", "900000", "1200000", "1800000", "3600000"].includes(data.logoutDuration)) {
+                        lc.value = data.logoutDuration; lci.classList.add('hidden');
+                    } else {
+                        lc.value = "custom"; 
+                        lci.value = String(parseFloat(data.logoutDuration || 60000) / 60000); 
+                        lci.classList.remove('hidden');
+                    }
+                }
+
                 if(data.thunderMode) { window.applyThunderModeEngine(data.thunderMode); }
                 if(MatrixSystemState.get('currentMode') === 'user') { window.enforceCustomerPermissions(); }
+                
+                // Re-trigger logout tracker with new duration
+                window.executeAutoLogoutTracker();
             }
         });
 
         window.updateGlobalFeatures = function() {
+            let thunderVal = document.getElementById('adminThunderControl').value;
+            if(thunderVal === 'custom') thunderVal = document.getElementById('customThunderInput').value || "2000";
+
+            let logoutVal = document.getElementById('adminLogoutControl').value;
+            if(logoutVal === 'custom') {
+                let mins = parseFloat(document.getElementById('customLogoutInput').value || "1");
+                logoutVal = String(mins * 60000);
+            }
+
             const updates = {
-                policy: document.getElementById('globalTog_policy').checked, notes: document.getElementById('globalTog_notes').checked,
-                vault: document.getElementById('globalTog_vault').checked, gaming: document.getElementById('globalTog_gaming').checked,
-                chat: document.getElementById('globalTog_chat').checked, thunderMode: document.getElementById('adminThunderControl').value
+                policy: document.getElementById('globalTog_policy').checked, 
+                notes: document.getElementById('globalTog_notes').checked,
+                vault: document.getElementById('globalTog_vault').checked, 
+                gaming: document.getElementById('globalTog_gaming').checked,
+                chat: document.getElementById('globalTog_chat').checked, 
+                thunderMode: thunderVal,
+                logoutDuration: logoutVal
             };
             set(ref(db, 'global_settings/features'), updates);
         };
@@ -2181,7 +2277,6 @@
             wrapper.classList.remove('hidden');
         };
 
-        // --- FIXED REAL-TIME WHATSAPP ENGINE ---
         window.initializeCrossLinkChatPanel = function() {
             const container = document.getElementById('chatTargetContainerView'); if(!container) return;
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2400,7 +2495,6 @@
             });
         };
 
-        // --- ADMIN SPY CHAT FUNCTIONS ---
         window.renderAdminSpyUserList = function() {
             const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
             const users = MatrixSystemState.get('cachedGlobalUsersArr');
@@ -2554,7 +2648,7 @@
             });
         };
 
-        // --- UI Drawers, Emojis, GIF & Call Overlays ---
+        // UI Drawers
         window.renderInteractiveDrawersContent = function() {
             const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
             document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
@@ -2945,7 +3039,6 @@
             window.speakNaturalHuman("Security violation detected.");
         };
 
-        // Strict Case-Sensitive Exact Match Login Engine
         window.executeClusterLogin = function(event) {
             if(event) { event.preventDefault(); event.stopPropagation(); }
             
@@ -2958,7 +3051,6 @@
             let loggedInId = "";
             let mode = MatrixSystemState.get('currentMode');
 
-            // Strictly checking without lowercasing IDs and Passwords
             if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
                 isSuccess = true;
                 loggedInId = "MainframeAdmin";
@@ -2979,7 +3071,6 @@
                 localStorage.setItem('nexus_logged_in_uid', loggedInId);
                 localStorage.setItem('nexus_system_session_mode', mode);
                 
-                // Feature Inbuilt: Hide Brand Title globally immediately upon login
                 const brandNode = document.getElementById('shashiBrandTitle');
                 if (brandNode) brandNode.style.display = 'none';
 
@@ -3012,7 +3103,6 @@
             }
         };
 
-        // ADMIN FUNCTIONS
         window.switchAdminSubSection = function(sectionId) {
             MatrixSystemState.set('activeAdminSubSection', sectionId); 
             
@@ -3031,26 +3121,16 @@
             if(btnHome) btnHome.classList.remove('hidden');
 
             const mapping = {
-                'creation': 'creationBlock',
-                'approvals': 'adminApprovalsBlock',
-                'credentials': 'credentialsBlock',
-                'workspace': 'policyWorkspaceBlock',
-                'spychat': 'adminSpyChatBlock',
-                'tickets': 'adminSupportTicketsBlock',
-                'aispy': 'adminAiSpyChatBlock',
-                'stats': 'adminSystemStatsBlock'
+                'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock',
+                'workspace': 'policyWorkspaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock',
+                'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock'
             };
 
             Object.keys(mapping).forEach(key => {
                 const node = document.getElementById(mapping[key]);
                 if (node) { 
-                    if(sectionId === key) {
-                        node.classList.remove('hidden');
-                        node.style.display = 'block';
-                    } else {
-                        node.classList.add('hidden');
-                        node.style.display = 'none';
-                    }
+                    if(sectionId === key) { node.classList.remove('hidden'); node.style.display = 'block'; } 
+                    else { node.classList.add('hidden'); node.style.display = 'none'; }
                 }
             });
 
@@ -3081,8 +3161,7 @@
         };
 
         window.renderAdminAiInterceptionSpyBlock = function() {
-            const logsArea = document.getElementById('adminAiSpyLogsWrapper');
-            if(!logsArea) return;
+            const logsArea = document.getElementById('adminAiSpyLogsWrapper'); if(!logsArea) return;
             const comms = MatrixSystemState.get('cachedGlobalAiCommsArr').reverse();
             if (comms.length === 0) { logsArea.innerHTML = "<p style='color:var(--text-sub);'>No intercepted AI logs.</p>"; return; }
             let logsHTML = `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"> Select All</label><button class="abort-btn" onclick="window.executeBatchDeleteAiLogs()">🗑️ Delete Selected</button></div>`;
@@ -3100,10 +3179,7 @@
             let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
             if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
             if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
-                checkedBoxes.forEach(box => {
-                    let key = box.getAttribute('data-key');
-                    remove(ref(db, `ai_communications/${key}`));
-                });
+                checkedBoxes.forEach(box => { let key = box.getAttribute('data-key'); remove(ref(db, `ai_communications/${key}`)); });
                 alert("Selected logs purged.");
             }
         };
@@ -3141,11 +3217,7 @@
                     let data = snap.val();
                     if (data) {
                         Object.keys(data).forEach(key => {
-                            checkedBoxes.forEach(box => {
-                                if (data[key].targetUID === box.getAttribute('data-uid')) {
-                                    remove(ref(db, `password_forget_signals/${key}`));
-                                }
-                            });
+                            checkedBoxes.forEach(box => { if (data[key].targetUID === box.getAttribute('data-uid')) { remove(ref(db, `password_forget_signals/${key}`)); } });
                         });
                         alert("Selected signals removed.");
                     }
@@ -3154,12 +3226,7 @@
         };
 
         window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
-
-        window.clearAllAiLogs = function() {
-            if(confirm("Wipe all AI Communications?")) {
-                remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped."));
-            }
-        };
+        window.clearAllAiLogs = function() { if(confirm("Wipe all AI Communications?")) { remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped.")); } };
 
         window.loadAdminSubmissions = function(){
             const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
@@ -3169,8 +3236,7 @@
         };
 
         window.renderLiveCreationStatsSummary = function() { 
-            const mini = document.getElementById('liveCreationStatsMiniNode');
-            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
+            const mini = document.getElementById('liveCreationStatsMiniNode'); if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
         };
 
         window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
@@ -3196,9 +3262,7 @@
 
         window.filterCardsEngine = function() {
             const q = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.hud-data-card').forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
-            });
+            document.querySelectorAll('.hud-data-card').forEach(card => { card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
         };
 
         window.submitPolicyForm = function() {
