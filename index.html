@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V20.4 (Realtime AI Thunder Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V20.5 (Realtime AI & Premium Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
             --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
-            --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71;
+            --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71; --neon-purple: #a73ec9;
             --wa-bg: #111b21; --wa-header: #202c33; --wa-search-bg: #111b21; --wa-search-input: #2a3942;
             --wa-msg-in: #202c33; --wa-msg-out: #005c4b; --wa-text: #e9edef; --wa-text-muted: #8696a0;
             --wa-green: #00a884; --wa-border: rgba(255,255,255,0.08); --wa-chat-bg: #0b141a;
@@ -38,33 +38,30 @@
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
         
-        /* STRICT SCROLL LOCK SYSTEM (NO BACKGROUND SCROLLING) */
+        /* STRICT SCROLL LOCK SYSTEM (100% FIXED) */
         body.strict-scroll-lock, html.strict-scroll-lock { 
-            overflow: hidden !important; 
-            height: 100vh !important; 
-            width: 100vw !important; 
-            position: fixed !important; 
-            touch-action: none !important; 
+            overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; 
         }
+
+        /* GEN-Z ANIMATED CYBER GRID BACKDROP FOR LOCK VIEW */
+        #matrixAnimatedBackdrop {
+            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none;
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.1) 0%, rgba(2, 5, 14, 0.95) 80%);
+            background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px);
+        }
+        @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
         
-        /* PERFECT LOCK AREA - 100% FIX (WhatsApp & Notes) Centered with Gap */
+        /* PERFECT LOCK AREA - CENTERED WITH GLOW */
         .locked-area-active {
-            position: fixed !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: 95vw !important;
-            height: 95vh !important;
-            max-width: 1800px !important;
-            z-index: 1000000 !important;
-            border-radius: 16px !important;
-            margin: 0 !important;
-            border: 2px solid var(--neon-cyan) !important;
-            box-sizing: border-box !important;
-            background: var(--wa-bg) !important;
-            box-shadow: 0 0 0 100vmax rgba(0,0,0,0.9), 0 0 60px rgba(0,242,254,0.5) !important;
-            overflow: hidden !important;
+            position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important;
+            width: 90vw !important; height: 90vh !important; max-width: 1600px !important; z-index: 1000000 !important;
+            border-radius: 16px !important; margin: 0 !important; border: 2px solid var(--neon-cyan) !important;
+            box-sizing: border-box !important; background: var(--wa-bg) !important;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(0,242,254,0.3) !important; overflow: hidden !important;
+            animation: popUpGenZ 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
         }
+        @keyframes popUpGenZ { 0% { opacity:0; transform: translate(-50%, -45%) scale(0.9); } 100% { opacity:1; transform: translate(-50%, -50%) scale(1); } }
 
         input, textarea, select, [contenteditable="true"] { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
@@ -163,19 +160,20 @@
         .hud-engage-btn { width: 100%; padding: 22px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 10px 30px rgba(241,196,15,0.5); text-transform: uppercase; transform: translateZ(25px);}
         .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.9); transform: translateZ(30px) scale(1.02); }
         
-        /* DASHBOARD SPACING & LAYOUT FIXES */
-        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 30px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 110px; }
-        .dashboard-panel-core.active-view { display: flex; }
-        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 20px; width: 100%; max-width: 1400px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 40px; transition: transform 0.5s ease; }
+        /* DASHBOARD SPACING & LAYOUT FIXES (SMOOTH TRANSITIONS) */
+        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 30px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 110px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
+        .dashboard-panel-core.active-view { display: flex; opacity: 1; }
+        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 20px; width: 100%; max-width: 1400px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 40px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .hud-container-panel:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,242,254,0.1); }
         
         /* UPGRADED COMPACT MAIN MENU */
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; padding: 10px; margin-top: 25px; }
         .menu-card { background: linear-gradient(145deg, rgba(4, 14, 33, 0.9), rgba(10, 22, 45, 0.9)); border: 1px solid var(--border-glass); border-radius: 16px; padding: 25px 20px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 25px rgba(0,0,0,0.6), inset 0 2px 15px rgba(0, 242, 254, 0.05); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
         .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.2), transparent); transform: skewX(-25deg); transition: 0.6s; z-index:1; }
         .menu-card:hover::before { left: 150%; }
-        .menu-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 35px rgba(0,242,254,0.3), inset 0 0 15px rgba(0,242,254,0.1); border-color: var(--neon-cyan); z-index: 10; }
-        .menu-card .icon { font-size: 3rem; margin-bottom: 15px; text-shadow: 0 0 20px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
-        .menu-card:hover .icon { transform: scale(1.15) rotate(5deg); }
+        .menu-card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 20px 45px rgba(0,242,254,0.4), inset 0 0 20px rgba(0,242,254,0.2); border-color: var(--neon-cyan); z-index: 10; }
+        .menu-card .icon { font-size: 3rem; margin-bottom: 15px; text-shadow: 0 0 20px var(--neon-cyan); position:relative; z-index:2; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .menu-card:hover .icon { transform: scale(1.2) rotate(10deg); text-shadow: 0 0 40px var(--neon-cyan); }
         .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.3rem; margin-bottom: 8px; font-weight:900; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.8); letter-spacing: 1px;}
         .menu-card p { font-size: 1rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.4; font-weight: 600; opacity: 0.9;}
         
@@ -199,8 +197,8 @@
         .giant-compiler-input:focus, .search-terminal-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.4); }
         
         #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 100%; }
-        .hud-data-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 30px; border-radius: 16px; display: flex; flex-direction: column; gap: 15px; word-break: break-all; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hud-data-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 242, 254, 0.2); }
+        .hud-data-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 6px solid #f1c40f; padding: 30px; border-radius: 16px; display: flex; flex-direction: column; gap: 15px; word-break: break-all; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; }
+        .hud-data-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 45px rgba(0, 242, 254, 0.3); border-color: var(--neon-cyan); }
         .hud-data-card p { color: var(--text-sub); font-size: 1.05rem; display: flex; flex-flow: row wrap; gap: 8px; font-weight: 600; line-height: 1.5; }
         .hud-data-card b { color: var(--text-main); display: inline-block; width: 120px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; letter-spacing: 0.5px; }
         .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.7); padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 1rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.4); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.4); }
@@ -232,11 +230,11 @@
             background: #ffffff !important; 
             width: 100% !important; 
             max-width: 900px !important;
-            min-height: 500px !important; /* Force visibility so it doesn't collapse to 2 lines */
+            min-height: 600px !important; /* Force visibility so it doesn't collapse to 2 lines */
             height: auto !important;
             padding: 40px !important; 
             box-sizing: border-box !important; 
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important; 
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important; 
             color: #000 !important; 
             font-family: 'Segoe UI', Arial, sans-serif !important; 
             font-size: 1.25rem !important; 
@@ -251,11 +249,12 @@
             cursor: text !important;
             pointer-events: auto !important;
             position: relative;
+            transition: all 0.3s ease;
         }
-        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 25px rgba(255,0,127,0.3) !important; }
+        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 35px rgba(255,0,127,0.4) !important; transform: translateY(-2px); }
         .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: #888; pointer-events: none; }
         
-        .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important; border-color: #334155 !important; }
+        .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8) !important; border-color: #334155 !important; }
         
         /* SLASH COMMAND MENU GEN-Z FEATURE */
         .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 250px; z-index: 1000; display: none; padding: 10px; }
@@ -278,7 +277,8 @@
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.95rem; color: var(--neon-pink); margin-bottom: 12px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.3); padding-bottom: 10px; }
         .locked-anchor-input { background: rgba(15,23,42,0.7) !important; border-color: rgba(255,0,127,0.5) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
         
-        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 2px dashed var(--neon-pink); border-radius: 20px; padding: 35px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(255,0,127,0.15); }
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 2px dashed var(--neon-pink); border-radius: 20px; padding: 35px 25px; text-align: center; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(255,0,127,0.15); transition: 0.4s;}
+        .gaming-bar-nexus-wrapper:hover { box-shadow: 0 20px 50px rgba(255,0,127,0.3); transform: translateY(-5px); border-color: var(--neon-cyan);}
         .gaming-canvas-container-box { width: 100%; max-width: 650px; height: 380px; background: #000; border: 3px solid var(--neon-cyan); border-radius: 14px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,242,254,0.4); }
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 12px; height: 12px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 10px; animation: recPulse 0.8s infinite alternate; }
@@ -314,7 +314,7 @@
         /* WHATSAPP RIGHT SIDE - PERFECT FLEX LAYOUT */
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
         .chat-stream-header-bar { background: var(--wa-header); padding: 14px 20px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 15px; z-index: 10; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
-        .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:10px; border-radius:50%; cursor:pointer; font-size:1.3rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center;}
+        .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:10px; border-radius:50%; cursor:pointer; font-size:1.3rem; transition: 0.3s; margin-left: 5px; display:flex; align-items:center; justify-content:center; position:relative;}
         .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
         .header-call-btn { color: var(--wa-green); font-family:'Orbitron'; font-size:0.95rem; border:1px solid var(--wa-green); padding:6px 12px; border-radius:8px; font-weight: bold;}
         .wa-status-circle-icon { width: 40px; height: 40px; border-radius: 50%; border: 2px dashed var(--wa-text-muted); display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--wa-text-muted); font-size: 1.2rem; transition: 0.3s; flex-shrink: 0;}
@@ -342,6 +342,13 @@
         .bubble-outgoing.has-tail::before { content: ""; position: absolute; top: 0; right: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-left: 15px solid var(--wa-msg-out); }
         .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-right: 15px solid var(--wa-msg-in); }
+        
+        /* PREMIUM TOOLS MENU (WHATSAPP) */
+        .premium-tools-menu { position:absolute; top: 50px; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 220px; z-index: 10000; display: none; flex-direction: column; padding: 10px; }
+        .premium-tools-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .premium-tool-btn { padding: 12px; color: #fff; background: transparent; border: none; text-align: left; font-family: 'Rajdhani'; font-weight: bold; font-size: 1.05rem; cursor: pointer; border-radius: 8px; transition: 0.3s; display:flex; align-items:center; gap:10px; }
+        .premium-tool-btn:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
         
         /* MSG HOVER ACTIONS (Edit/Delete) */
         .msg-action-menu { position:absolute; top:-15px; right:-10px; background:var(--wa-header); border:1px solid var(--border-glass); border-radius:12px; padding:6px 10px; display:none; gap:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); z-index:10; }
@@ -420,6 +427,7 @@
             .chat-interface-footer-inputs { flex-wrap: wrap; gap: 10px; }
             .whatsapp-input-field { min-width: 140px; }
             .wa-attachment-popover { grid-template-columns: repeat(3, 1fr); gap: 15px; padding:20px; left: 10px; right: 10px; bottom: 130px;}
+            .locked-area-active { width: 100vw !important; height: 100vh !important; border-radius:0 !important; border:none !important;}
         }
         @media (min-width: 769px) {
             .chat-io-grid-matrix { grid-template-columns: 380px 1fr !important; }
@@ -432,8 +440,10 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V20.4</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V20.5</div>
     </div>
+
+    <div id="matrixAnimatedBackdrop" class="hidden"></div>
 
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
@@ -569,7 +579,7 @@
 
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V20.4</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V20.5</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom: 20px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
@@ -747,6 +757,18 @@
                                 <button onclick="window.summarizeChatAI()" class="header-actions-btn" title="AI Chat Summarizer">✨ SUMMARIZE</button>
                                 <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
                                 <button onclick="window.triggerHologramCall('video')" class="header-actions-btn header-call-btn" title="Video Call">📹 VIDEO</button>
+                                
+                                <div style="position:relative;">
+                                    <button class="header-actions-btn" title="Premium Tools" onclick="window.toggleWaPremiumTools()">💎</button>
+                                    <div id="waPremiumToolsMenu" class="premium-tools-menu">
+                                        <button class="premium-tool-btn" id="btnPremiumStealth" onclick="window.toggleUserPremiumFeatureSelf('stealthMode')">👻 Ghost/Stealth Mode: <span style="color:#e74c3c;">OFF</span></button>
+                                        <button class="premium-tool-btn" id="btnPremiumAutoReply" onclick="window.toggleUserPremiumFeatureSelf('autoReply')">🤖 Auto-Reply Bot: <span style="color:#e74c3c;">OFF</span></button>
+                                        <button class="premium-tool-btn" onclick="alert('Mass Broadcast UI initializing...')">📢 Mass Broadcast</button>
+                                        <button class="premium-tool-btn" onclick="alert('Message Scheduler initializing...')">⏰ Schedule Message</button>
+                                        <button class="premium-tool-btn" onclick="window.triggerMassMediaDownloader()">📥 Download All Media</button>
+                                    </div>
+                                </div>
+
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖 AI</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
@@ -909,7 +931,7 @@
                     <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">✅</div><h3 style="color: #f1c40f;">Approvals</h3><p>Manage ID creation requests.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('credentials')" style="border-color:#00f2fe;">
-                    <div class="icon" style="text-shadow: 0 0 20px #00f2fe;">⚙️</div><h3 style="color: #00f2fe;">Global Toggles</h3><p>Advanced system feature switches.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #00f2fe;">⚙️</div><h3 style="color: #00f2fe;">User & Global Control</h3><p>Deep matrix control & permissions.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('workspace')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Workspace</h3><p>Review & update customer policies.</p>
@@ -1011,7 +1033,8 @@
                     </div>
 
                     <div class="modern-glass-panel">
-                        <h4 style="color:#00f2fe; margin-bottom:25px; font-family:'Orbitron'; font-size:1.6rem;">🛠 CLIENT ARCHITECTURE & PERMISSIONS</h4>
+                        <h4 style="color:#00f2fe; margin-bottom:25px; font-family:'Orbitron'; font-size:1.6rem;">🛠 INDIVIDUAL USER ARCHITECTURE & PREMIUM PERMISSIONS</h4>
+                        <p style="color:var(--text-sub); margin-bottom:20px;">Control which user gets access to premium tools (Stealth, Anti-Delete, Bot, Mass Broadcast) independently.</p>
                         <div id="adminUserControlList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(400px, 1fr)); gap:25px;"></div>
                     </div>
                 </div>
@@ -1245,7 +1268,6 @@
             const resetInactivityTimer = () => {
                 clearTimeout(activityTimeout);
                 if (MatrixSystemState.get('loggedInCustomerID') !== "") {
-                    // Get timeout value from global states. Enforce 10s Min and 7200s (2 Hours) Max Limits
                     let timeoutSec = parseInt(MatrixSystemState.get('globalFeatures').autoLogoutTime) || 60;
                     timeoutSec = Math.max(10, Math.min(7200, timeoutSec));
 
@@ -1263,6 +1285,73 @@
             document.onclick = resetInactivityTimer;
         }
         executeAutoLogoutTracker();
+
+        // --- NEW: WHATSAPP PREMIUM TOOLS MENU TOGGLE ---
+        window.toggleWaPremiumTools = function() {
+            const menu = document.getElementById('waPremiumToolsMenu');
+            if(menu) { menu.classList.toggle('active'); }
+        };
+
+        // --- NEW: PREMIUM FEATURE LOCAL TOGGLES ---
+        window.toggleUserPremiumFeatureSelf = function(featureKey) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            if(!user || !user.premium || !user.premium[featureKey]) {
+                alert("❌ ACCESS DENIED: You don't have premium permission for this feature. Contact Admin.");
+                return;
+            }
+            
+            // Logic to locally toggle the state
+            let currentLocalState = localStorage.getItem(`local_prem_${featureKey}_${currentUid}`) === 'true';
+            let newState = !currentLocalState;
+            localStorage.setItem(`local_prem_${featureKey}_${currentUid}`, newState.toString());
+            
+            // Update UI
+            if(featureKey === 'stealthMode') {
+                const btn = document.getElementById('btnPremiumStealth');
+                if(btn) btn.innerHTML = `👻 Ghost/Stealth Mode: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+                if(newState) update(ref(db, `users/${currentUid}`), { isOnlineNode: false }); // Stealth instantly goes offline
+            }
+            if(featureKey === 'autoReply') {
+                const btn = document.getElementById('btnPremiumAutoReply');
+                if(btn) btn.innerHTML = `🤖 Auto-Reply Bot: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+            }
+        };
+
+        // --- NEW: MASS MEDIA DOWNLOADER ---
+        window.triggerMassMediaDownloader = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
+            if(!currentUid || !targetUid) return;
+
+            const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            if(!user || !user.premium || !user.premium.massDownload) {
+                alert("❌ ACCESS DENIED: Mass Media Downloader requires Admin Permission.");
+                return;
+            }
+
+            alert("📥 Initiating Secure Mass Media Extraction...\nThis feature gathers all images/audio from this chat pipeline. Since this is a browser environment, it will prompt download for the most recent 5 files to prevent browser crashing.");
+            
+            const rawData = window.cachedChatsData || {};
+            let medias = [];
+            Object.keys(rawData).forEach(key => {
+                const m = rawData[key];
+                if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
+                    if(m.mediaPayload && !m.isDeletedForEveryone) medias.push(m.mediaPayload);
+                }
+            });
+
+            if(medias.length === 0) { alert("No media found in this chat."); return; }
+            
+            let downloadCount = Math.min(medias.length, 5);
+            for(let i=0; i<downloadCount; i++) {
+                setTimeout(() => {
+                    const a = document.createElement('a'); a.href = medias[i]; a.download = `Nexus_Mass_Extract_${Date.now()}_${i}.png`; 
+                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                }, i * 500);
+            }
+        };
 
         // --- NEW: WHATSAPP SMART DATE JUMP LOGIC ---
         window.jumpToWhatsAppDate = function(dateStr) {
@@ -1295,7 +1384,6 @@
                     const slashMenu = document.getElementById('slashCommandMenu');
                     if (e.key === '/') {
                         slashMenu.style.display = 'block';
-                        // Keep menu visible next to text
                     } else if (e.key === 'Escape' || e.key === 'Backspace' || e.key === ' ') {
                         slashMenu.style.display = 'none';
                     }
@@ -1355,6 +1443,7 @@
                     document.body.classList.add('strict-scroll-lock');
                     document.documentElement.classList.add('strict-scroll-lock');
                     if(navBar) navBar.style.display = 'none'; // Hide navbar completely for full lock
+                    document.getElementById('matrixAnimatedBackdrop').classList.remove('hidden'); // Show animated backdrop
                     btnNode.innerHTML = '🔒 Locked (Fixed Center)';
                     btnNode.style.color = '#ff007f';
                     btnNode.style.borderColor = '#ff007f';
@@ -1362,6 +1451,7 @@
                     document.body.classList.remove('strict-scroll-lock');
                     document.documentElement.classList.remove('strict-scroll-lock');
                     if(navBar) navBar.style.display = 'flex'; // Bring navbar back
+                    document.getElementById('matrixAnimatedBackdrop').classList.add('hidden'); // Hide animated backdrop
                     btnNode.innerHTML = '🔓 Unlock View';
                     btnNode.style.color = matrixId.includes('notes') ? '#00f2fe' : 'var(--wa-text-muted)';
                     btnNode.style.borderColor = matrixId.includes('notes') ? '#00f2fe' : 'var(--wa-border)';
@@ -1470,6 +1560,7 @@
             const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
             const isClickOnToggleBtn = e.target.closest('.toggle-emoji-btn-ref') || e.target.closest('.toggle-gif-btn-ref');
             const isAttachMenu = e.target.closest('#waAttachmentMenuBox') || e.target.closest('#adminWaAttachmentMenuBox');
+            const isPremiumMenu = e.target.closest('.premium-tools-menu') || e.target.closest('.header-actions-btn[title="Premium Tools"]');
             
             if (!isClickInsideEmojiDrawer && !isClickOnToggleBtn) {
                 document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden');
@@ -1482,6 +1573,9 @@
             if (!isAttachMenu && !isClickOnToggleBtn) { 
                 document.getElementById('waAttachmentMenuBox')?.classList.remove('active'); 
                 document.getElementById('adminWaAttachmentMenuBox')?.classList.remove('active'); 
+            }
+            if (!isPremiumMenu) {
+                document.getElementById('waPremiumToolsMenu')?.classList.remove('active');
             }
         });
 
@@ -1664,7 +1758,7 @@
         window.approvePendingAccount = function(reqId, isAuto = false) {
             const req = MatrixSystemState.get('cachedPendingUsersArr').find(r => r.reqId === reqId); if(!req) return;
             const userId = req.name.replace(/\s+/g, '') + req.phone.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => {
+            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => {
                 remove(ref(db, 'pending_accounts/' + reqId));
                 if(!isAuto) { alert(`✅ User Approved!\nID: ${userId}`); window.renderAdminPendingApprovals(); }
             });
@@ -1709,6 +1803,9 @@
         };
 
         window.updateUserFeature = function(uid, feature, state) { update(ref(db, `users/${uid}/features`), { [feature]: state }); };
+        
+        // NEW: ADMIN TOGGLE FOR PREMIUM FEATURES
+        window.updateUserPremiumFeature = function(uid, premiumFeature, state) { update(ref(db, `users/${uid}/premium`), { [premiumFeature]: state }); };
 
         window.enforceCustomerPermissions = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!currentUid) return;
@@ -1734,6 +1831,8 @@
             listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user) => {
                 const isDeact = user.status === 'deactivated';
                 const f = user.features || { policy: false, notes: true, vault: true, chat: true, gaming: true };
+                const p = user.premium || { stealthMode: false, autoReply: false, broadcast: false, antiDelete: false, scheduler: false, massDownload: false };
+                
                 return `<div style="background:rgba(4,14,33,0.9); padding:30px; border-radius:18px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'}; position:relative; overflow:hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
                         ${isDeact ? '<div style="position:absolute; top:0; left:0; width:100%; height:8px; background:#e74c3c;"></div>' : ''}
                         <div style="font-size:1.1rem; line-height:1.6;"><b>ID:</b> <span style="color:#00f2fe; font-size:1.2rem;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b>${user.contact}</div>
@@ -1742,12 +1841,23 @@
                             <button onclick="window.wipeUserPermanently('${user.id}')" class="abort-btn" style="padding:10px 15px;">Wipe User</button>
                         </div>
                         <div style="margin-top:15px;"><input type="text" id="userPasswordInputInline_${user.id}" value="${user.pass}" onchange="window.alterClientCredentialsOverrideData('${user.id}')" style="background:var(--bg-prime); border:2px solid var(--border-glass); color:#f1c40f; padding:12px; width:100%; border-radius:8px; font-weight:bold; text-align:center; font-size:1.05rem;"></div>
+                        
                         <div style="margin-top:20px; border-top:1px dashed var(--border-glass); padding-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:15px; font-size:0.95rem;">
                             <label class="toggle-switch-wrapper" style="padding:10px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.75);" onchange="window.updateUserFeature('${user.id}', 'policy', this.checked)" ${f.policy?'checked':''}> Policy</label>
                             <label class="toggle-switch-wrapper" style="padding:10px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.75);" onchange="window.updateUserFeature('${user.id}', 'notes', this.checked)" ${f.notes?'checked':''}> Notes</label>
                             <label class="toggle-switch-wrapper" style="padding:10px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.75);" onchange="window.updateUserFeature('${user.id}', 'vault', this.checked)" ${f.vault?'checked':''}> Vault</label>
                             <label class="toggle-switch-wrapper" style="padding:10px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.75);" onchange="window.updateUserFeature('${user.id}', 'gaming', this.checked)" ${f.gaming?'checked':''}> Gaming</label>
                             <label class="toggle-switch-wrapper" style="grid-column:span 2; justify-content:center; padding:12px;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.8);" onchange="window.updateUserFeature('${user.id}', 'chat', this.checked)" ${f.chat?'checked':''}> WhatsApp Chat</label>
+                        </div>
+
+                        <h5 style="margin-top:20px; color:#ff007f; font-family:'Orbitron'; padding-top:15px; border-top:1px solid rgba(255,0,127,0.3);">💎 WHATSAPP PREMIUM ACCESS</h5>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:15px; font-size:0.9rem;">
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'stealthMode', this.checked)" ${p.stealthMode?'checked':''}> Ghost/Stealth Mode</label>
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'autoReply', this.checked)" ${p.autoReply?'checked':''}> Auto-Reply Bot</label>
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'broadcast', this.checked)" ${p.broadcast?'checked':''}> Mass Broadcast</label>
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'antiDelete', this.checked)" ${p.antiDelete?'checked':''}> Anti-Delete Msgs</label>
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'scheduler', this.checked)" ${p.scheduler?'checked':''}> Msg Scheduler</label>
+                            <label class="toggle-switch-wrapper" style="padding:8px; border-color:#ff007f;"><input type="checkbox" class="toggle-switch" style="transform:scale(0.6);" onchange="window.updateUserPremiumFeature('${user.id}', 'massDownload', this.checked)" ${p.massDownload?'checked':''}> Mass Downloader</label>
                         </div>
                     </div>`;
             }).join('');
@@ -2102,7 +2212,7 @@
             try { 
                 window.speechSynthesis.cancel(); 
                 const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg); 
-                syntaxUtterance.pitch = 2.0; // High pitch for Tom voice effect
+                syntaxUtterance.pitch = 2.0; 
                 syntaxUtterance.rate = 1.1; 
                 let voices = window.speechSynthesis.getVoices(); 
                 let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US"));
@@ -2261,7 +2371,6 @@
             wrapper.classList.remove('hidden');
         };
 
-        // --- FIXED REAL-TIME WHATSAPP ENGINE ---
         window.initializeCrossLinkChatPanel = function() {
             const container = document.getElementById('chatTargetContainerView'); if(!container) return;
             const currentUid = MatrixSystemState.get('loggedInCustomerID');
@@ -2482,7 +2591,6 @@
             });
         };
 
-        // --- ADMIN SPY CHAT FUNCTIONS ---
         window.renderAdminSpyUserList = function() {
             const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
             const users = MatrixSystemState.get('cachedGlobalUsersArr');
@@ -2638,7 +2746,6 @@
             });
         };
 
-        // --- UI Drawers, Emojis, GIF & Call Overlays ---
         window.renderInteractiveDrawersContent = function() {
             const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
             document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
@@ -3375,7 +3482,7 @@
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
             if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
             const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true } }).then(() => { 
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
                 alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
                 document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
                 window.loadAdminSubmissions(); 
