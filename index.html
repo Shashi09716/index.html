@@ -1447,27 +1447,34 @@
             }
         }, 1500);
 
-        // --- NEW: CHAT AREA PERFECT LOCK ENGINE ---
+        // --- NEW: CHAT AREA PERFECT LOCK ENGINE (FIXED BLUR ISSUE) ---
         window.toggleWaAreaLock = function(matrixId, btnId) {
             const matrixNode = document.getElementById(matrixId);
             const btnNode = document.getElementById(btnId);
             const navBar = document.getElementById('mainCyberNavbar');
             const isNotes = matrixId.includes('notes');
-            const dashId = MatrixSystemState.get('currentMode') === 'admin' ? 'adminDashboard' : 'customerDashboard';
-            const dash = document.getElementById(dashId);
             const backdrop = document.getElementById('matrixAnimatedBackdrop');
             
             if(matrixNode && btnNode) {
-                matrixNode.classList.toggle('locked-area-active');
-                if(matrixNode.classList.contains('locked-area-active')) {
+                if(!matrixNode.classList.contains('locked-area-active')) {
+                    // 1. LOCKING THE VIEW
+                    // Create a hidden placeholder to remember original position
+                    let placeholder = document.createElement('div');
+                    placeholder.id = matrixId + '-placeholder';
+                    placeholder.style.display = 'none';
+                    matrixNode.parentNode.insertBefore(placeholder, matrixNode);
+
+                    // 🔥 MAIN FIX: Move WhatsApp out of the Dashboard trap directly to Body!
+                    document.body.appendChild(matrixNode);
+
+                    matrixNode.classList.add('locked-area-active');
                     document.body.classList.add('strict-scroll-lock');
                     document.documentElement.classList.add('strict-scroll-lock');
                     if(navBar) navBar.style.display = 'none';
-                    if(dash) dash.style.zIndex = 'auto'; // FIX FOR STACKING CONTEXT BLUR
                     
-                    // Move backdrop inside dashboard to prevent stacking issues
-                    if(!isNotes && dash && backdrop) {
-                        dash.appendChild(backdrop);
+                    // Show Animated Backdrop
+                    if(!isNotes && backdrop) {
+                        document.body.appendChild(backdrop); // keep it behind WhatsApp
                         backdrop.classList.remove('hidden');
                     }
                     
@@ -1475,14 +1482,22 @@
                     btnNode.style.color = '#ff007f';
                     btnNode.style.borderColor = '#ff007f';
                 } else {
+                    // 2. UNLOCKING THE VIEW
+                    matrixNode.classList.remove('locked-area-active');
                     document.body.classList.remove('strict-scroll-lock');
                     document.documentElement.classList.remove('strict-scroll-lock');
                     if(navBar) navBar.style.display = 'flex';
-                    if(dash) dash.style.zIndex = '100'; // Restore
                     
+                    // Hide Animated Backdrop
                     if(!isNotes && backdrop) {
                         backdrop.classList.add('hidden');
-                        document.body.appendChild(backdrop);
+                    }
+                    
+                    // 🔥 Restore WhatsApp to its original position
+                    let placeholder = document.getElementById(matrixId + '-placeholder');
+                    if(placeholder) {
+                        placeholder.parentNode.insertBefore(matrixNode, placeholder);
+                        placeholder.parentNode.removeChild(placeholder);
                     }
                     
                     btnNode.innerHTML = '🔓 Unlock View';
