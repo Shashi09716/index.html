@@ -74,15 +74,20 @@
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
         
-        /* UPGRADED MENU BAR */
-        .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; width: 100%; height: 70px; background: rgba(10, 18, 30, 0.98); border-bottom: 2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 5px 25px rgba(0, 242, 254, 0.15); transition: all 0.4s ease; border-radius: 0; }
-        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.98); border-color: var(--neon-cyan); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
-        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
+        /* UPGRADED MENU BAR - CUTE FLOATING GLASS PILL DESIGN */
+        .top-cyber-navbar { 
+            position: fixed; top: 15px; left: 50%; transform: translateX(-50%); width: 96%; max-width: 1600px; height: 75px; 
+            background: rgba(6, 17, 38, 0.65); border: 1px solid rgba(0, 242, 254, 0.3); display: flex; justify-content: space-between; 
+            align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(35px); -webkit-backdrop-filter: blur(35px); 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.15); transition: all 0.4s ease; border-radius: 20px; 
+        }
+        body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.85); border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
         @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
-        .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
-        .nav-btn { background: rgba(10, 20, 40, 0.8); border: 1px solid rgba(0, 242, 254, 0.5); border-radius: 8px; color: var(--neon-cyan); padding: 8px 15px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); text-transform: uppercase;}
-        .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 20px rgba(0, 242, 254, 0.5); transform: translateY(-2px); color: #fff; border-color: #fff; }
+        .navbar-controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; z-index: 100000; }
+        .nav-btn { background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02)); border: 1px solid rgba(0, 242, 254, 0.4); border-radius: 12px; color: var(--neon-cyan); padding: 10px 18px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-transform: uppercase;}
+        .nav-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px); color: #fff; border-color: #fff; }
         body.light-theme-active .nav-btn { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
         .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
@@ -115,7 +120,7 @@
         
         @keyframes floatLamp { 0%, 100% { transform: scale(1.1) translateZ(50px) translateY(0); } 50% { transform: scale(1.1) translateZ(50px) translateY(-15px); } }
         .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d;}
-        .cinema-stage.activated .cyber-lamp-core { animation: none; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); transform: translateX(400px) scale(0.85) translateZ(50px); }
+        .cinema-stage.activated .cyber-lamp-core { animation: none; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); transform: translateX(500px) scale(0.85) translateZ(50px); } /* Pushed further right */
         
         .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px);}
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
@@ -145,22 +150,31 @@
         .beaded-wire { width: 8px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 8px, #0f172a 8px, #0f172a 16px); box-shadow: 0 0 20px rgba(241,196,15,0.9); border-radius:4px;}
         .luminescent-node { width: 44px; height: 44px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 50px #f1c40f; border: 3px solid #000; transition: 0.3s; margin-top: -5px;}
         
-        .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 500px; background: var(--panel-glass); border: 2px solid var(--border-glass); border-left: 8px solid #f1c40f; padding: 45px 35px; border-radius: 24px; backdrop-filter: blur(40px); box-shadow: var(--matrix-3d-shadow-cyan), inset 0 0 30px rgba(0,242,254,0.1); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); }
+        /* UPGRADED LOGIN SCREEN (Futuristic, Full and Advanced) */
+        .hud-glass-terminal { 
+            position: absolute; left: 50%; width: 95%; max-width: 650px; /* Made bigger */
+            background: rgba(4, 12, 26, 0.85); border: 2px solid var(--border-glass); 
+            border-left: 8px solid #f1c40f; padding: 55px 45px; border-radius: 28px; 
+            backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(0,242,254,0.15); 
+            opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; 
+            z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); 
+        }
         .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; transform: translate3d(-50%, 0, 0) scale(1); }
-        body.light-theme-active .hud-glass-terminal { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
-        .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; transform: translateZ(20px); }
-        .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
+        body.light-theme-active .hud-glass-terminal { background: rgba(255, 255, 255, 0.9); border-color: #cbd5e1; box-shadow: 0 15px 50px rgba(0,0,0,0.15); }
+        .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 30px; transform: translateZ(20px); }
+        .hud-status-chip { font-family: 'Orbitron'; font-size: 0.85rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
-        .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 3rem; text-align: center; margin-bottom: 30px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.6); animation: glitchTextAnim 4s infinite alternate; transform: translateZ(30px); }
-        .hud-input-cluster { position: relative; margin-bottom: 30px; width: 100%; transform: translateZ(10px); }
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 20px 18px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.15rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-        .hud-input-cluster input:focus, .hud-input-cluster textarea:focus { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.4); }
-        .hud-input-cluster label { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1.05rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
-        .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label, .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -16px; left: 12px; background: var(--bg-prime); padding: 2px 10px; font-size: 0.9rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; border-radius:6px; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+        .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 3.2rem; text-align: center; margin-bottom: 35px; font-weight: 900; letter-spacing: 3px; text-shadow: 0 10px 25px rgba(0,0,0,0.8); animation: glitchTextAnim 4s infinite alternate; transform: translateZ(30px); }
+        .hud-input-cluster { position: relative; margin-bottom: 35px; width: 100%; transform: translateZ(10px); }
+        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 22px 20px; background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(0, 242, 254, 0.3); border-radius: 14px; color: var(--text-main); font-size: 1.25rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
+        .hud-input-cluster input:focus, .hud-input-cluster textarea:focus { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.2); }
+        .hud-input-cluster label { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1.15rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+        .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label, .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -16px; left: 12px; background: var(--bg-prime); padding: 2px 12px; font-size: 0.95rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; border-radius:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.8);}
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
         .hud-input-cluster input:focus ~ .neon-glow-underline, .hud-input-cluster textarea:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
-        .hud-engage-btn { width: 100%; padding: 22px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 10px 30px rgba(241,196,15,0.5); text-transform: uppercase; transform: translateZ(25px);}
-        .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.9); transform: translateZ(30px) scale(1.02); }
+        .hud-engage-btn { width: 100%; padding: 24px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 15px 40px rgba(241,196,15,0.4); text-transform: uppercase; transform: translateZ(25px);}
+        .hud-engage-btn:hover { box-shadow: 0 0 60px rgba(241, 196, 15, 0.8); transform: translateZ(30px) scale(1.03); }
         
         /* DASHBOARD SPACING & LAYOUT FIXES (SMOOTH TRANSITIONS) - Z-INDEX 100 */
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 30px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 110px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
@@ -219,7 +233,7 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 14px; padding: 30px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 15px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 20px rgba(0,242,254,0.2); }
 
-        /* UPGRADED NOTEPAD PRO ENGINE - FIXED COLLAPSE ISSUE */
+        /* UPGRADED NOTEPAD PRO ENGINE - FIXED COLLAPSE ISSUE & ADDED WRITING SYSTEM */
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 35px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 85vh; max-height: none; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         .notes-editor-container-shell { position: relative; margin-top: 20px; background: #e2e8f0; border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
@@ -227,23 +241,23 @@
         
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 30px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; position: relative; }
         
-        /* CLEANED UP PAPER BOX - MIN HEIGHT 60vh TO PREVENT COLLAPSE */
+        /* CLEANED UP PAPER BOX - MIN HEIGHT 60vh TO PREVENT COLLAPSE + ADVANCED SYSTEM */
         .wordpad-paper { 
             background: #ffffff !important; 
             width: 100% !important; 
             max-width: 900px !important;
             min-height: 60vh !important; /* THIS FIXES THE NOTEPAD COLLAPSE ISSUE */
             height: auto !important;
-            padding: 40px !important; 
+            padding: 50px !important; 
             box-sizing: border-box !important; 
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important; 
-            color: #000 !important; 
+            color: #111 !important; 
             font-family: 'Segoe UI', Arial, sans-serif !important; 
-            font-size: 1.25rem !important; 
-            line-height: 1.7 !important; 
+            font-size: 1.3rem !important; 
+            line-height: 1.8 !important; 
             outline: none !important; 
-            border-radius: 8px !important; 
-            border: 1px solid #ccc !important;
+            border-radius: 16px !important; 
+            border: 2px solid #cbd5e1 !important;
             overflow-x: hidden !important; 
             word-wrap: break-word !important;
             user-select: text !important;
@@ -254,10 +268,17 @@
             transition: all 0.3s ease;
             display: block !important;
         }
-        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 35px rgba(255,0,127,0.4) !important; transform: translateY(-2px); }
-        .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: #888; pointer-events: none; display:block; }
+        .wordpad-paper:focus { border-color: #00f2fe !important; box-shadow: 0 0 35px rgba(0,242,254,0.3) !important; transform: translateY(-2px); }
         
-        .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8) !important; border-color: #334155 !important; }
+        /* THE ADVANCED WRITING SYSTEM PLACEHOLDER */
+        .wordpad-paper:empty::before { 
+            content: "✍️ Click here to start typing your professional notes..."; 
+            color: #888; pointer-events: none; display:block; font-style: italic; opacity: 0.8;
+            animation: pulsePlaceholder 2s infinite alternate;
+        }
+        @keyframes pulsePlaceholder { from { opacity: 0.5; } to { opacity: 0.9; } }
+        
+        .notepad-dark-mode .wordpad-paper { background: #0b141a !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8) !important; border-color: rgba(0,242,254,0.3) !important; }
         
         /* SLASH COMMAND MENU GEN-Z FEATURE */
         .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 250px; z-index: 1000; display: none; padding: 10px; }
@@ -341,9 +362,9 @@
         .whatsapp-time { font-size: 0.75rem; color: rgba(255,255,255,0.7); position: absolute; bottom: 8px; right: 10px; display: flex; align-items: center; gap: 4px; margin: 0; line-height: 1; }
         .whatsapp-tick-space { color: var(--wa-text-muted); font-weight: 900; font-size: 0.85rem; letter-spacing: -2px; margin-left: 3px; display:inline-block; transform:translateY(1px);}
         .whatsapp-tick-space.double-blue { color: #53bdeb; }
-        .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); align-self: flex-end; border-top-right-radius: 0;}
+        .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); border-top-right-radius: 0;}
         .bubble-outgoing.has-tail::before { content: ""; position: absolute; top: 0; right: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-left: 15px solid var(--wa-msg-out); }
-        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
+        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-right: 15px solid var(--wa-msg-in); }
         
         /* PREMIUM TOOLS MENU (WHATSAPP) */
@@ -413,7 +434,7 @@
         .status-section-title { padding: 25px 25px 12px 25px; color: var(--wa-green); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
-            .top-cyber-navbar { padding: 12px; height: auto; flex-direction: column; gap: 12px; position: absolute; }
+            .top-cyber-navbar { padding: 12px; height: auto; flex-direction: column; gap: 12px; position: absolute; border-radius: 0; width: 100%; top: 0;}
             .navbar-controls { justify-content: center; }
             .dashboard-panel-core { padding-top: 170px; padding-bottom: 25px; padding-left: 15px; padding-right: 15px; }
             .giant-compiler-grid, .form-grid-layout, #policyCardsStack, #adminUserControlList, .analytics-grid-host { grid-template-columns: 1fr !important; gap: 20px !important; }
@@ -509,6 +530,120 @@
             </form>
         </div>
     </div>
+
+    <div id="masterNotesInterfaceBlock" class="hidden">
+        <div class="notes-engine-card-surface" id="notesMainWrapperCard">
+            <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V20.7</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom: 20px;">
+                <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
+                <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
+            </div>
+            
+            <div class="notes-toolbar-ribbon">
+                <button id="waLockBtn_notes" onclick="window.toggleWaAreaLock('notesMainWrapperCard', 'waLockBtn_notes')" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900; margin-right: 10px;">🔓 Unlock View</button>
+                <select class="note-tool-select" onchange="window.applyNoteTemplate(this.value); this.value='';" style="font-weight:900; color:var(--neon-pink);">
+                    <option value="">📋 Auto-Template</option>
+                    <option value="meeting">📝 Meeting Notes</option>
+                    <option value="todo">☑️ To-Do List</option>
+                    <option value="project">📊 Project Plan</option>
+                </select>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn ai-btn-special" id="btnSummarizeAI" onclick="window.executeMetaAISummarize()">✨ AI Summarize</button>
+                <select class="note-tool-select" id="translateAIBtn" onchange="window.executeAITranslate(this.value); this.value='';" style="color: #fff; background: rgba(0,242,254,0.2);">
+                    <option value="">🌍 AI Translate</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                </select>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Color Mode</button>
+                <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
+                    <option value="p">Paragraph</option>
+                    <option value="h1">Heading 1</option>
+                    <option value="h2">Heading 2</option>
+                    <option value="h3">Heading 3</option>
+                    <option value="blockquote">Quote block</option>
+                </select>
+                <select class="note-tool-select" onchange="window.triggerNoteFontFamily(this.value)">
+                    <option value="Segoe UI">Segoe UI</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Courier New">Courier</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times Roman</option>
+                </select>
+                <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
+                    <option value="3">Size: Normal</option>
+                    <option value="1">Size: Small</option>
+                    <option value="5">Size: Large</option>
+                    <option value="7">Size: Huge</option>
+                </select>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="document.execCommand('undo', false, null)" title="Undo">↩️</button>
+                <button class="note-tool-btn" onclick="document.execCommand('redo', false, null)" title="Redo">↪️</button>
+                <button class="note-tool-btn" onclick="window.executeFindAndReplaceEngine()" title="Find & Replace">🔍 Replace</button>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
+                <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
+                <button class="note-tool-btn" onclick="document.execCommand('justifyRight', false, '')" title="Align Right">➡️</button>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')" title="Bullet List">⏺ List</button>
+                <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertOrderedList')" title="Numbered List">🔢 List</button>
+                <button class="note-tool-btn" onclick="window.insertChecklistToNotepad()" title="Insert Checklist">☑ Task</button>
+                <div class="toolbar-divider"></div>
+                <div class="color-picker-wrapper" title="Text Color">
+                    🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000">
+                </div>
+                <div class="color-picker-wrapper" title="Highlight Color">
+                    🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f">
+                </div>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
+                <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
+                <button class="note-tool-btn" onclick="window.insertCodeBlock()" title="Insert Code Snippet" style="color:var(--neon-green); border-color:var(--neon-green);">💻 Code Snippet</button>
+                <button class="note-tool-btn" onclick="window.insertProfessionalTable()" title="Insert Table">📊 Table</button>
+                <div class="toolbar-divider"></div>
+                <button class="note-tool-btn" onclick="window.downloadNoteContent('txt')" style="color:#00f2fe; border-color:#00f2fe;">📄 TXT</button>
+                <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
+                <button class="note-tool-btn" onclick="window.printNoteEditorContent()" title="Print / PDF">🖨️ PDF</button>
+                <button class="note-tool-btn" onclick="window.toggleFullScreenNoteMode()" id="btnNoteFullScreenToggle">🔲 Full Screen</button>
+                <div class="toolbar-divider"></div>
+                <button id="noteDictationBtn" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;" onclick="window.toggleNotepadDictation()">🎙️ SPEAK TO TYPE</button>
+                <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🔴 RECORD VOICE</button>
+            </div>
+            
+            <div class="notes-editor-container-shell" id="printAreaNotepad">
+                <div class="wordpad-container">
+                    <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" oninput="window.updateNotepadLiveCounters()"></div>
+                    
+                    <div id="slashCommandMenu" class="slash-command-menu">
+                        <div class="slash-cmd-item" onclick="window.triggerNoteFormatBlock('h1'); document.getElementById('slashCommandMenu').style.display='none';">🔠 Heading 1</div>
+                        <div class="slash-cmd-item" onclick="window.triggerNoteFormatBlock('h2'); document.getElementById('slashCommandMenu').style.display='none';">🔡 Heading 2</div>
+                        <div class="slash-cmd-item" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList'); document.getElementById('slashCommandMenu').style.display='none';">⏺ Bullet List</div>
+                        <div class="slash-cmd-item" onclick="window.insertChecklistToNotepad(); document.getElementById('slashCommandMenu').style.display='none';">☑ To-Do Task</div>
+                        <div class="slash-cmd-item" onclick="window.insertProfessionalTable(); document.getElementById('slashCommandMenu').style.display='none';">📊 Insert Table</div>
+                    </div>
+                </div>
+                <div class="notes-status-bar">
+                    <span id="noteLiveWordCount">Words: 0</span>
+                    <span id="noteLiveReadTime" style="color: #ff007f;">Read time: 0 min</span>
+                    <span id="noteLiveAutoSaveStatus" style="color:#2ecc71;">✅ Synced locally</span>
+                    <span id="noteLiveCharCount">Characters: 0</span>
+                </div>
+            </div>
+
+            <div style="display:flex; gap:20px; margin-top:25px; flex-shrink:0;">
+                <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
+                <button class="abort-btn" style="flex:1; padding:20px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
+            </div>
+            <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
+        </div>
+    </div>
     
     <div class="dashboard-panel-core" id="customerDashboard">
         <div class="hud-container-panel text-left">
@@ -580,118 +715,7 @@
                 <button onclick="window.submitPolicyForm()" class="hud-engage-btn" style="margin-top: 15px;">TRANSMIT SECURE DATA</button>
             </div>
 
-            <div id="customerNotesInterfaceBlock" class="hidden">
-                <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V20.7</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom: 20px;">
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
-                        <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualTimeSelector" class="locked-anchor-input" readonly></div>
-                    </div>
-                    
-                    <div class="notes-toolbar-ribbon">
-                        <button id="waLockBtn_notes" onclick="window.toggleWaAreaLock('notesMainWrapperCard', 'waLockBtn_notes')" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900; margin-right: 10px;">🔓 Unlock View</button>
-                        <select class="note-tool-select" onchange="window.applyNoteTemplate(this.value); this.value='';" style="font-weight:900; color:var(--neon-pink);">
-                            <option value="">📋 Auto-Template</option>
-                            <option value="meeting">📝 Meeting Notes</option>
-                            <option value="todo">☑️ To-Do List</option>
-                            <option value="project">📊 Project Plan</option>
-                        </select>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn ai-btn-special" id="btnSummarizeAI" onclick="window.executeMetaAISummarize()">✨ AI Summarize</button>
-                        <select class="note-tool-select" id="translateAIBtn" onchange="window.executeAITranslate(this.value); this.value='';" style="color: #fff; background: rgba(0,242,254,0.2);">
-                            <option value="">🌍 AI Translate</option>
-                            <option value="hindi">Hindi</option>
-                            <option value="spanish">Spanish</option>
-                            <option value="french">French</option>
-                        </select>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.toggleNotepadDarkMode()" style="color:#f1c40f; border-color:#f1c40f;">🎨 Color Mode</button>
-                        <select class="note-tool-select" onchange="window.triggerNoteFormatBlock(this.value)">
-                            <option value="p">Paragraph</option>
-                            <option value="h1">Heading 1</option>
-                            <option value="h2">Heading 2</option>
-                            <option value="h3">Heading 3</option>
-                            <option value="blockquote">Quote block</option>
-                        </select>
-                        <select class="note-tool-select" onchange="window.triggerNoteFontFamily(this.value)">
-                            <option value="Segoe UI">Segoe UI</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Courier New">Courier</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Times New Roman">Times Roman</option>
-                        </select>
-                        <select class="note-tool-select" onchange="window.triggerNoteFontSizeChange(this.value)">
-                            <option value="3">Size: Normal</option>
-                            <option value="1">Size: Small</option>
-                            <option value="5">Size: Large</option>
-                            <option value="7">Size: Huge</option>
-                        </select>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('bold')" title="Bold"><b>B</b></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('italic')" title="Italic"><i>I</i></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('strikeThrough')" title="Strike Through"><strike>S</strike></button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="document.execCommand('undo', false, null)" title="Undo">↩️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('redo', false, null)" title="Redo">↪️</button>
-                        <button class="note-tool-btn" onclick="window.executeFindAndReplaceEngine()" title="Find & Replace">🔍 Replace</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
-                        <button class="note-tool-btn" onclick="document.execCommand('justifyRight', false, '')" title="Align Right">➡️</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')" title="Bullet List">⏺ List</button>
-                        <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertOrderedList')" title="Numbered List">🔢 List</button>
-                        <button class="note-tool-btn" onclick="window.insertChecklistToNotepad()" title="Insert Checklist">☑ Task</button>
-                        <div class="toolbar-divider"></div>
-                        <div class="color-picker-wrapper" title="Text Color">
-                            🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000">
-                        </div>
-                        <div class="color-picker-wrapper" title="Highlight Color">
-                            🖌️ <input type="color" class="color-picker-input" onchange="document.execCommand('hiliteColor', false, this.value); window.updateNotepadLiveCounters();" value="#f1c40f">
-                        </div>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.insertLinkToNotepad()" title="Insert Link">🔗</button>
-                        <button class="note-tool-btn" onclick="window.insertImageToNotepad()" title="Insert Image">🖼️</button>
-                        <button class="note-tool-btn" onclick="window.insertCodeBlock()" title="Insert Code Snippet" style="color:var(--neon-green); border-color:var(--neon-green);">💻 Code Snippet</button>
-                        <button class="note-tool-btn" onclick="window.insertProfessionalTable()" title="Insert Table">📊 Table</button>
-                        <div class="toolbar-divider"></div>
-                        <button class="note-tool-btn" onclick="window.downloadNoteContent('txt')" style="color:#00f2fe; border-color:#00f2fe;">📄 TXT</button>
-                        <button class="note-tool-btn" onclick="window.downloadNoteContent('doc')" style="color:#2ecc71; border-color:#2ecc71;">📝 DOC</button>
-                        <button class="note-tool-btn" onclick="window.printNoteEditorContent()" title="Print / PDF">🖨️ PDF</button>
-                        <button class="note-tool-btn" onclick="window.toggleFullScreenNoteMode()" id="btnNoteFullScreenToggle">🔲 Full Screen</button>
-                        <div class="toolbar-divider"></div>
-                        <button id="noteDictationBtn" class="note-tool-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;" onclick="window.toggleNotepadDictation()">🎙️ SPEAK TO TYPE</button>
-                        <button id="noteAudioRecCoreBtn" class="note-tool-btn" style="border-color:var(--neon-pink); color:var(--neon-pink);" onclick="window.toggleRichNotesVoiceStreamRecorder()"><span id="noteRecPulseIndicator" class="gaming-pulse-node-core hidden"></span>🔴 RECORD VOICE</button>
-                    </div>
-                    
-                    <div class="notes-editor-container-shell" id="printAreaNotepad">
-                        <div class="wordpad-container">
-                            <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" placeholder="Start typing your professional document here... Press '/' for quick menu. Or Paste/Drop Image & Audio directly!" oninput="window.updateNotepadLiveCounters()"></div>
-                            <div id="slashCommandMenu" class="slash-command-menu">
-                                <div class="slash-cmd-item" onclick="window.triggerNoteFormatBlock('h1'); document.getElementById('slashCommandMenu').style.display='none';">🔠 Heading 1</div>
-                                <div class="slash-cmd-item" onclick="window.triggerNoteFormatBlock('h2'); document.getElementById('slashCommandMenu').style.display='none';">🔡 Heading 2</div>
-                                <div class="slash-cmd-item" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList'); document.getElementById('slashCommandMenu').style.display='none';">⏺ Bullet List</div>
-                                <div class="slash-cmd-item" onclick="window.insertChecklistToNotepad(); document.getElementById('slashCommandMenu').style.display='none';">☑ To-Do Task</div>
-                                <div class="slash-cmd-item" onclick="window.insertProfessionalTable(); document.getElementById('slashCommandMenu').style.display='none';">📊 Insert Table</div>
-                            </div>
-                        </div>
-                        <div class="notes-status-bar">
-                            <span id="noteLiveWordCount">Words: 0</span>
-                            <span id="noteLiveReadTime" style="color: #ff007f;">Read time: 0 min</span>
-                            <span id="noteLiveAutoSaveStatus" style="color:#2ecc71;">✅ Synced locally</span>
-                            <span id="noteLiveCharCount">Characters: 0</span>
-                        </div>
-                    </div>
-
-                    <div style="display:flex; gap:20px; margin-top:25px; flex-shrink:0;">
-                        <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe);" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
-                        <button class="abort-btn" style="flex:1; padding:20px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
-                    </div>
-                    <div class="notes-realtime-logs-wrapper" id="realtimeCloudNotesViewStack"></div>
-                </div>
-            </div>
+            <div id="customerNotesInterfaceBlock" class="hidden"></div>
 
             <div id="customerVaultInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
@@ -753,8 +777,12 @@
                             <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
                                 <button id="waLockBtn_user" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', 'waLockBtn_user')" class="header-actions-btn" title="Lock Area" style="font-size:1rem; border:1px solid var(--wa-border); border-radius:8px; padding:6px 10px; font-weight:bold;">🔓 Unlock View</button>
                                 
-                                <input type="date" id="waSmartDateJump_User" style="display:none;" onchange="window.jumpToWhatsAppDate(this.value)">
-                                <button onclick="document.getElementById('waSmartDateJump_User').showPicker()" class="header-actions-btn" title="Jump to Date">📅</button>
+                                <div class="modern-date-picker-container" style="position:relative; display:inline-flex; align-items:center;">
+                                    <button onclick="document.getElementById('waSmartDateJump_User').showPicker()" class="header-actions-btn" title="Jump to Date" style="background: rgba(0,242,254,0.1); border: 1px solid rgba(0,242,254,0.4); border-radius: 8px; padding: 6px 12px; font-family: 'Orbitron'; font-weight: bold; color: var(--neon-cyan); font-size: 0.9rem; transition: 0.3s; display: flex; align-items: center; gap: 6px; box-shadow: 0 0 10px rgba(0,242,254,0.2);">
+                                        📅 <span style="letter-spacing: 0.5px;">JUMP DATE</span>
+                                    </button>
+                                    <input type="date" id="waSmartDateJump_User" style="position:absolute; opacity:0; pointer-events:none; width:1px; height:1px;" onchange="window.jumpToWhatsAppDate(this.value)">
+                                </div>
 
                                 <button onclick="window.toggleInChatSearch()" class="header-actions-btn" title="Search Message">🔍</button>
                                 <button onclick="window.summarizeChatAI()" class="header-actions-btn" title="AI Chat Summarizer">✨ SUMMARIZE</button>
@@ -821,12 +849,6 @@
                             </div>
                         </div>
                         
-                        <div id="smartRepliesBox" style="display:none; gap:8px; padding:8px 15px; background:var(--wa-chat-bg); overflow-x:auto;">
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Yes, absolutely!')">Yes, absolutely!</button>
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Let me check and revert.')">Let me check and revert.</button>
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Can we connect on a call?')">Can we connect on a call?</button>
-                        </div>
-
                         <div style="padding: 5px 15px; display:flex; align-items:center; background:var(--wa-header); border-top:1px solid rgba(255,255,255,0.05);">
                             <label style="color:#00f2fe; margin-left:5px; font-weight:bold; cursor:pointer; font-size:0.85rem;"><input type="checkbox" id="isViewOnceCheck" style="margin-right:4px; transform:scale(1.1);"> ① View Once Media</label>
                             <label style="color:#ff007f; margin-left:20px; font-weight:bold; cursor:pointer; font-size:0.85rem;"><input type="checkbox" id="isDisappearingCheck" style="margin-right:4px; transform:scale(1.1);"> ⏱️ Disappearing Msgs (24h)</label>
@@ -936,6 +958,9 @@
                 <div class="menu-card" onclick="window.switchAdminSubSection('credentials')" style="border-color:#00f2fe;">
                     <div class="icon" style="text-shadow: 0 0 20px #00f2fe;">⚙️</div><h3 style="color: #00f2fe;">User & Global Control</h3><p>Deep matrix control & permissions.</p>
                 </div>
+                <div class="menu-card" onclick="window.switchAdminSubSection('notes')" style="border-color:#f1c40f;">
+                    <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">📝</div><h3 style="color: #f1c40f;">Notes Pro</h3><p>Admin Workspace Notepad.</p>
+                </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('workspace')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Workspace</h3><p>Review & update customer policies.</p>
                 </div>
@@ -1042,6 +1067,8 @@
                     </div>
                 </div>
 
+                <div id="adminNotesInterfaceBlock" class="hidden"></div>
+
                 <div id="policyWorkspaceBlock" class="hidden">
                     <div style="margin-bottom:25px;">
                         <input type="text" id="searchInput" class="search-terminal-input" placeholder="🔍 Scan system data parameters..." oninput="window.filterCardsEngine()" style="font-size: 1.15rem; padding:18px;">
@@ -1084,8 +1111,12 @@
                                 <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
                                     <button id="waLockBtn_admin" onclick="window.toggleWaAreaLock('adminChatGridBox', 'waLockBtn_admin')" class="header-actions-btn" title="Lock Area" style="font-size:1rem; border:1px solid var(--wa-border); border-radius:8px; padding:6px 10px; font-weight:bold;">🔓 Unlock View</button>
                                     
-                                    <input type="date" id="waSmartDateJump_Admin" style="display:none;" onchange="window.jumpToWhatsAppDate(this.value)">
-                                    <button onclick="document.getElementById('waSmartDateJump_Admin').showPicker()" class="header-actions-btn" title="Jump to Date">📅</button>
+                                    <div class="modern-date-picker-container" style="position:relative; display:inline-flex; align-items:center;">
+                                        <button onclick="document.getElementById('waSmartDateJump_Admin').showPicker()" class="header-actions-btn" title="Jump to Date" style="background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.4); border-radius: 8px; padding: 6px 12px; font-family: 'Orbitron'; font-weight: bold; color: var(--neon-green); font-size: 0.9rem; transition: 0.3s; display: flex; align-items: center; gap: 6px; box-shadow: 0 0 10px rgba(46,204,113,0.2);">
+                                            📅 <span style="letter-spacing: 0.5px;">JUMP DATE</span>
+                                        </button>
+                                        <input type="date" id="waSmartDateJump_Admin" style="position:absolute; opacity:0; pointer-events:none; width:1px; height:1px;" onchange="window.jumpToWhatsAppDate(this.value)">
+                                    </div>
 
                                     <button onclick="window.summarizeChatAI()" class="header-actions-btn" title="AI Chat Summarizer">✨ SUMMARIZE</button>
                                     <button onclick="window.triggerHologramCall('audio')" class="header-actions-btn header-call-btn" title="Voice Call">📞 CALL</button>
@@ -1587,13 +1618,6 @@
             });
         };
 
-        window.useSmartReply = function(replyText) {
-            const inputField = document.getElementById('chatCoreMessageTextInput') || document.getElementById('adminSpyResponseInput');
-            if(inputField) {
-                inputField.value = replyText; inputField.focus(); document.getElementById('smartRepliesBox').style.display = 'none';
-            }
-        };
-
         window.summarizeChatAI = function() {
             alert("🤖 AI VAULT SUMMARY:\n\n1. User shared project details & timeline.\n2. Pending review of Vault documents.\n3. Acknowledged recent policy update.\n4. Standby for Admin approval.");
             window.speakNaturalHuman("Chat summarized successfully by AI.");
@@ -1671,7 +1695,7 @@
                         terminal.style.transform = `translate3d(-50%, 0, 0) scale(1) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
                     }
                     if (lamp && document.getElementById('mainStage').classList.contains('activated')) {
-                        lamp.style.transform = `translateX(400px) scale(0.85) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
+                        lamp.style.transform = `translateX(500px) scale(0.85) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
                     } else if (lamp) {
                         lamp.style.transform = `scale(1.1) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
                     }
@@ -2597,12 +2621,7 @@
             scrollBox.innerHTML = html;
             setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
 
-            if(msgs.length > 0) {
-                const lastMsg = msgs[msgs.length - 1];
-                if(lastMsg.sender !== currentUid && document.getElementById('smartRepliesBox')) {
-                    document.getElementById('smartRepliesBox').style.display = 'flex';
-                }
-            }
+            // Removed smart reply trigger logic to fully clean up Yellow suggestions
         };
 
         window.dispatchMatrixChatMessage = function() {
@@ -2818,622 +2837,6 @@
             if(isAdm) { window.dispatchAdminSpyInterceptionMsg(); } else { window.dispatchMatrixChatMessage(); }
             document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
             document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
-        };
-
-        window.triggerHologramCall = function(type) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            const title = type === 'video' ? '📹 ESTABLISHING SECURE VIDEO LINK' : '📞 ESTABLISHING SECURE AUDIO LINK';
-            const callEffect = type === 'video' ? `<div class="hologram-call-effect"><video autoplay loop muted playsinline src="https://media.giphy.com/media/l41YtZOb9EUABnuqA/giphy.mp4"></video><div class="hologram-scanline"></div></div>` : `<div class="hologram-call-effect" style="background:#0a0f18;"><div style="position:relative; display:flex; justify-content:center; align-items:center;"><img src="${defaultAvatarSvg}" style="width:100px; height:100px; border-radius:50%; border:2px solid #00f2fe; position:relative; z-index:5;"><div class="radar-pulse-ring" style="width:100px; height:100px; border:2px solid #00f2fe; border-radius:50%; position:absolute; animation: radarPing 2s infinite ease-out;"></div></div></div>`;
-            
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:#02050e; border:2px solid var(--neon-cyan); box-shadow:0 0 50px rgba(0,242,254,0.4); max-width:500px;"><h4 style="color:#00f2fe; text-shadow:0 0 10px #00f2fe; margin-bottom:20px; font-family:'Orbitron'; animation:pulseGlow 1s infinite;">${title}</h4>${callEffect}<div style="color:var(--neon-pink); margin-bottom:20px; font-weight:bold; font-family:monospace;">ENCRYPTING END-TO-END CONNECTION...</div><button onclick="window.closeCustomInlinePopupEngine()" class="hud-engage-btn" style="background:#e74c3c; color:#fff; box-shadow:0 0 20px rgba(231,76,60,0.6);">END CALL</button></div>`;
-            wrapper.classList.remove('hidden');
-            window.playSynthesizedSound(440, 'sine', 1.5);
-        };
-
-        window.filterClientChatContactList = function() {
-            const q = document.getElementById('clientContactSearchField').value.toLowerCase();
-            document.querySelectorAll('#chatTargetContainerView .chat-user-item-node').forEach(node => {
-                const name = node.querySelector('.whatsapp-user-name').innerText.toLowerCase();
-                node.style.display = name.includes(q) ? 'flex' : 'none';
-            });
-        };
-        
-        window.filterAdminClientChatContactList = function() {
-            const q = document.getElementById('adminClientContactSearchField').value.toLowerCase();
-            document.querySelectorAll('#adminSpyUsersListWrapper .chat-user-item-node').forEach(node => {
-                const name = node.querySelector('.whatsapp-user-name').innerText.toLowerCase();
-                node.style.display = name.includes(q) ? 'flex' : 'none';
-            });
-        };
-
-        window.triggerCreateGroupModal = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            let userCheckboxes = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== MatrixSystemState.get('loggedInCustomerID')).map(u => `<label style="display:block; text-align:left; color:#fff; margin-bottom:8px;"><input type="checkbox" class="group-member-checkbox" value="${u.id}"> ${u.clientName}</label>`).join('');
-            
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>👥 Create New Group</h4><input type="text" id="newGroupNameInput" class="nexus-popup-input-field" placeholder="Group Subject"><div style="max-height:150px; overflow-y:auto; background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; margin-bottom:15px; border:1px solid var(--border-glass);">${userCheckboxes}</div><div class="nexus-popup-flex-btns"><button onclick="window.submitCreateGroup()" class="nexus-popup-btn primary-btn">CREATE</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">CANCEL</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.submitCreateGroup = function() {
-            const name = document.getElementById('newGroupNameInput').value.trim();
-            const checked = Array.from(document.querySelectorAll('.group-member-checkbox:checked')).map(cb => cb.value);
-            const myUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!name || checked.length === 0) { alert("Provide a name and select at least 1 member."); return; }
-            checked.push(myUid);
-            
-            const gRef = push(ref(db, 'groups'));
-            set(gRef, { id: 'group_' + gRef.key, name: name, members: checked, admin: myUid, epoch: Date.now() }).then(() => {
-                window.closeCustomInlinePopupEngine(); alert("Group Created successfully.");
-            });
-        };
-
-        window.switchCustomerChannel = function(channelId) {
-            MatrixSystemState.set('activeCustomerWorkspaceChannel', channelId); localStorage.setItem('nexus_active_chan_route', channelId);
-            document.getElementById('customerMainMenuBlock').style.display = 'none';
-            ['upload', 'notes', 'vault', 'gaming', 'chat', 'request'].forEach(id => { document.getElementById(`customer${id.charAt(0).toUpperCase()+id.slice(1)}InterfaceBlock`)?.classList.add('hidden'); });
-            const btnHome = document.getElementById('btnBackToHome');
-            
-            if (channelId === 'menu') {
-                document.getElementById('customerMainMenuBlock').style.display = 'grid'; if(btnHome) btnHome.classList.add('hidden');
-                window.enforceCustomerPermissions();
-            } else {
-                if(btnHome) btnHome.classList.remove('hidden');
-                document.getElementById(`customer${channelId.charAt(0).toUpperCase()+channelId.slice(1)}InterfaceBlock`).classList.remove('hidden');
-                
-                if(channelId === 'upload') window.renderCustomerLiveTracker();
-                else if(channelId === 'notes') { fetchRealtimeNotesCloudData(); }
-                else if(channelId === 'vault') window.renderCloudVault();
-                else if(channelId === 'gaming') window.bootArcadeSubGame('tom');
-                else if(channelId === 'chat') { window.initializeCrossLinkChatPanel(); window.renderInteractiveDrawersContent(); window.switchChatWallpaperMatrix();}
-                else if(channelId === 'request') window.renderCustomerTicketHistory();
-            }
-        };
-
-        window.triggerTargetUserContactProfileModal = function(event, targetUserId) {
-            if (event) event.stopPropagation(); const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            let targetAvatarPath = defaultAvatarSvg; let displayName = "Unknown"; let displayContact = "Private"; let displayBio = "Available"; let isGroupNode = targetUserId.startsWith('group_');
-
-            if(targetUserId !== "MainframeAdmin" && !isGroupNode) {
-                const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
-                if(userMatch) { targetAvatarPath = userMatch.avatar || defaultAvatarSvg; displayName = userMatch.clientName || "Unknown"; displayContact = userMatch.contact || "Private"; displayBio = userMatch.bio || "Available"; }
-            } else if (isGroupNode) {
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
-                if(groupMatch) { targetAvatarPath = groupMatch.avatar || defaultAvatarSvg; displayName = groupMatch.name || "Group"; displayContact = "Group Chat"; displayBio = `${groupMatch.members.length} Participants`; }
-            } else if (targetUserId === "MainframeAdmin") {
-                displayName = "Support Admin (Mainframe)"; displayContact = "System Admin"; displayBio = "Managing Matrix Cloud";
-            }
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:380px;"><div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;"><img src="${targetAvatarPath}" style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 10px 20px rgba(0,0,0,0.5);"><h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.6rem; margin-top:15px;">${displayName}</h2><div style="color:var(--wa-text-muted); font-size:1rem; margin-top:5px;">${displayContact}</div></div><div style="padding:25px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;"><h4 style="color:var(--wa-green); font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4><div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.1rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%;">Close</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        onValue(ref(db, 'statuses'), (snapshot) => {
-            try {
-                const data = snapshot.val(); let statusesArr = data ? Object.values(data) : []; const now = Date.now();
-                statusesArr = statusesArr.filter(s => (now - s.epochTime) < (24 * 60 * 60 * 1000)); MatrixSystemState.set('cachedGlobalStatusesArr', statusesArr);
-                const statusIcons = document.querySelectorAll('.wa-status-circle-icon');
-                if(statusesArr.length > 0) { statusIcons.forEach(icon => icon.classList.add('has-status')); } else { statusIcons.forEach(icon => icon.classList.remove('has-status')); }
-                const myUid = MatrixSystemState.get('loggedInCustomerID'); const myLatest = statusesArr.filter(s => s.ownerId === myUid).sort((a,b)=>b.epochTime-a.epochTime)[0];
-                const thumb = document.getElementById('myStatusPreviewAvatar');
-                if(thumb) { if(myLatest) { thumb.src = myLatest.mediaPayload; thumb.style.border = "2px solid #00a884"; } else { thumb.src = defaultAvatarSvg; thumb.style.border = "none"; } }
-            } catch(e) {}
-        });
-
-        window.openStatusDashboardOverlay = function() {
-            const dashboard = document.getElementById('whatsappStatusDashboardPanel'); if(!dashboard) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr');
-            let grouped = {}; allStatuses.forEach(s => { if(!grouped[s.ownerId]) grouped[s.ownerId] = []; grouped[s.ownerId].push(s); });
-            const recentContainer = document.getElementById('recentStatusUpdatesContainer'); let recentHtml = "";
-            Object.keys(grouped).forEach(uid => {
-                if(uid === currentUid) return;
-                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid); const name = userObj ? userObj.clientName : "Admin"; const avatar = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg;
-                const latestTime = new Date(Math.max(...grouped[uid].map(s=>s.epochTime))).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                recentHtml += `<div class="chat-user-item-node" onclick="window.openStatusViewerEngineForUser('${uid}')"><img class="whatsapp-avatar" src="${avatar}" style="border: 2px solid #00a884; padding:2px;"><div class="whatsapp-user-info"><div class="whatsapp-user-name">${name}</div><div class="whatsapp-user-id">${latestTime}</div></div></div>`;
-            });
-            if(recentHtml === "") { recentHtml = "<div style='color:var(--wa-text-muted); padding:20px; text-align:center;'>No recent updates</div>"; }
-            recentContainer.innerHTML = recentHtml; dashboard.classList.remove('hidden');
-        };
-        
-        window.closeStatusDashboardOverlay = function() { document.getElementById('whatsappStatusDashboardPanel')?.classList.add('hidden'); };
-
-        window.openStatusViewerEngineForUser = function(targetUid) {
-            const allStatuses = MatrixSystemState.get('cachedGlobalStatusesArr'); const userStatuses = allStatuses.filter(s => s.ownerId === targetUid).sort((a,b)=>a.epochTime-b.epochTime);
-            if(userStatuses.length === 0) return; window.activeStatusFeedQueue = userStatuses; window.currentStatusViewingIndex = 0; window.renderCurrentStatusSlide();
-        };
-
-        window.openStatusViewerEngine = function() {
-            if(MatrixSystemState.get('currentMode') === 'user') { window.openStatusDashboardOverlay(); return; }
-            window.activeStatusFeedQueue = MatrixSystemState.get('cachedGlobalStatusesArr'); window.currentStatusViewingIndex = 0;
-            if(window.activeStatusFeedQueue.length === 0) { alert("No active statuses in the system."); return; }
-            window.renderCurrentStatusSlide();
-        };
-
-        window.uploadUserStatusMatrixEngine = function(event) {
-            const file = event.target.files[0]; const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(file && currentUid) { const reader = new FileReader(); reader.onload = function(e) { const b64 = e.target.result; const statusRef = push(ref(db, 'statuses')); set(statusRef, { id: statusRef.key, ownerId: currentUid, mediaPayload: b64, epochTime: Date.now() }).then(() => { alert("✅ Status Update Sent!"); window.playSynthesizedSound(880, 'sine', 0.1); }); }; reader.readAsDataURL(file); }
-        };
-
-        window.renderCurrentStatusSlide = function() {
-            const overlay = document.getElementById('statusViewerOverlayWrapper'); if(!overlay) return;
-            if(window.activeStatusFeedQueue.length === 0 || window.currentStatusViewingIndex >= window.activeStatusFeedQueue.length || window.currentStatusViewingIndex < 0) { window.closeStatusViewerEngine(); return; }
-            const currentStatus = window.activeStatusFeedQueue[window.currentStatusViewingIndex]; const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentStatus.ownerId);
-            document.getElementById('statusActiveAvatar').src = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg; document.getElementById('statusActiveName').innerText = userObj ? userObj.clientName : "Admin";
-            const diff = Math.floor((Date.now() - currentStatus.epochTime) / 60000); let timeStr = diff < 60 ? `${diff} minutes ago` : `${Math.floor(diff/60)} hours ago`; document.getElementById('statusActiveTime').innerText = timeStr;
-            document.getElementById('statusActiveImageDisplay').src = currentStatus.mediaPayload;
-            document.getElementById('statusProgressBarContainer').innerHTML = window.activeStatusFeedQueue.map((_, idx) => { let w = (idx <= window.currentStatusViewingIndex) ? '100%' : '0%'; return `<div class="status-progress-segment"><div class="status-progress-fill" style="width:${w}; transition: width 0.3s;"></div></div>`; }).join('');
-            overlay.classList.remove('hidden');
-        };
-
-        window.navigateStatus = function(direction) { window.currentStatusViewingIndex += direction; window.renderCurrentStatusSlide(); };
-        window.closeStatusViewerEngine = function() { document.getElementById('statusViewerOverlayWrapper')?.classList.add('hidden'); };
-
-        window.triggerUserProfileAvatarDropdownEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4>Profile Photo Options</h4><div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;"><button onclick="window.commitAvatarClearBlankNode()" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Remove Photo</button><button onclick="document.getElementById('hiddenAvatarFileInputNode').click(); window.closeCustomInlinePopupEngine();" class="nexus-popup-btn primary-btn">Upload Gallery</button><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.commitAvatarClearBlankNode = function() { window.closeCustomInlinePopupEngine(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(currentUid) { set(ref(db, `users/${currentUid}/avatar`), "").then(() => { document.getElementById('customerLiveAvatarPreview').src = defaultAvatarSvg; document.getElementById('chatActiveHeaderAvatarNode').src = defaultAvatarSvg; }); } };
-        window.executeCosmicThemeToggle = function() { document.body.classList.toggle('light-theme-active'); const label = document.getElementById('themeToggleBtnLabel'); if(document.body.classList.contains('light-theme-active')) { label.innerText = "🌑 DARK MODE"; window.speakNaturalHuman("Light theme active."); } else { label.innerText = "🌓 LIGHT MODE"; window.speakNaturalHuman("Dark theme active."); } };
-        window.exitMobileChatView = function() { document.getElementById('clientChatGridMatrixWrapper')?.classList.remove('mobile-chat-view-active'); document.getElementById('adminChatGridBox')?.classList.remove('mobile-chat-view-active'); };
-
-        function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUserToken = localStorage.getItem('nexus_logged_in_uid'); const savedWorkspaceChan = localStorage.getItem('nexus_active_chan_route') || 'menu'; const savedMode = localStorage.getItem('nexus_system_session_mode') || 'user';
-            
-            const clearPreloader = () => {
-                const preloader = document.getElementById('systemPreloader');
-                if(preloader) preloader.classList.add('engine-ready');
-            };
-
-            if(savedUserToken) {
-                if (localStorage.getItem('nexus_hard_lockout_flag_' + savedUserToken) === 'true') { window.triggerLockoutTerminalUI(savedUserToken); clearPreloader(); return; }
-                MatrixSystemState.set('loggedInCustomerID', savedUserToken); MatrixSystemState.set('currentMode', savedMode); MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
-                document.getElementById('mainStage').style.display = 'none'; const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                
-                // Hide Brand Header Globally On Valid Session Restored
-                const brandNode = document.getElementById('shashiBrandTitle'); if (brandNode) brandNode.style.display = 'none';
-
-                if(savedMode === 'admin') { 
-                    document.getElementById('adminDashboard').classList.remove('hidden'); 
-                    document.getElementById('adminDashboard').style.display = 'flex';
-                    window.loadAdminSubmissions(); 
-                } else { 
-                    document.getElementById('customerDashboard').classList.remove('hidden'); 
-                    document.getElementById('customerDashboard').style.display = 'flex';
-                    window.switchCustomerChannel(savedWorkspaceChan); 
-                }
-                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                setTimeout(clearPreloader, 800);
-            } else {
-                document.getElementById('mainStage').style.display = 'flex';
-                setTimeout(clearPreloader, 800);
-            }
-        }
-
-        onValue(ref(db, 'mainframeAdmin'), (snapshot) => { try { const rootData = snapshot.val(); if(rootData && rootData.id && rootData.pass) { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = rootData.id; adminRoute.masterPass = rootData.pass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); } } catch(e) {} });
-        
-        onValue(ref(db, 'system_broadcast'), (snapshot) => { 
-            try { 
-                const broadcastVal = snapshot.val(); const banner = document.getElementById('customerMarqueeContainer'); const txtNode = document.getElementById('customerMarqueeText'); 
-                if(banner && txtNode && MatrixSystemState.get('currentMode') === 'user') { 
-                    if(broadcastVal && broadcastVal.text) { txtNode.innerText = `🚨 BROADCAST: ${broadcastVal.text}`; banner.style.display = 'block'; } else { banner.style.display = 'none'; } 
-                } 
-                if(MatrixSystemState.get('currentMode') === 'admin') {
-                    const inputAdmin = document.getElementById('adminBroadcastInputControl');
-                    if(inputAdmin) inputAdmin.value = (broadcastVal && broadcastVal.text) ? broadcastVal.text : "";
-                }
-            } catch(e) {} 
-        });
-
-        onValue(ref(db, 'users'), (snapshot) => {
-            try {
-                const data = snapshot.val(); const currentUid = MatrixSystemState.get('loggedInCustomerID'); const userArr = data ? Object.values(data) : [];
-                MatrixSystemState.set('cachedGlobalUsersArr', userArr);
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) {
-                    if(MatrixSystemState.get('activeAdminSubSection') === 'credentials') window.renderUserControlPanel();
-                    if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList();
-                    if(MatrixSystemState.get('activeAdminSubSection') === 'creation') window.renderLiveCreationStatsSummary();
-                }
-                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat' && currentUid) window.initializeCrossLinkChatPanel();
-                if(currentUid && MatrixSystemState.get('currentMode') === 'user') {
-                    const myProfile = userArr.find(u => u.id === currentUid);
-                    if(myProfile) {
-                        if(myProfile.avatar) document.getElementById('customerLiveAvatarPreview').src = myProfile.avatar;
-                        if(myProfile.bio) document.getElementById('customerBioInput').value = myProfile.bio;
-                        if(myProfile.clientName) document.getElementById('customerNameInput').value = myProfile.clientName;
-                        document.getElementById('clientDisplayLabel').innerHTML = ` // <span style="color:var(--text-main); font-weight:700;">${myProfile.clientName}</span>`;
-                        window.enforceCustomerPermissions();
-                    }
-                }
-            } catch (e) {}
-        });
-
-        onValue(ref(db, 'groups'), (snapshot) => { 
-            try { 
-                const data = snapshot.val(); const groupsArr = data ? Object.values(data) : []; 
-                MatrixSystemState.set('cachedGlobalGroupsArr', groupsArr); 
-                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'chat') window.initializeCrossLinkChatPanel(); 
-                if(MatrixSystemState.get('activeAdminSubSection') === 'spychat') window.renderAdminSpyUserList(); 
-            } catch(e) {} 
-        });
-        
-        onValue(ref(db, 'policies'), (snapshot) => { 
-            try { 
-                const policyArr = snapshot.val() ? Object.values(snapshot.val()) : []; 
-                MatrixSystemState.set('cachedGlobalPolicyArr', policyArr); 
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) window.renderPolicyCardsBlock(); 
-                if(MatrixSystemState.get('loggedInCustomerID')) { 
-                    window.renderCustomerLiveTracker(); 
-                    if(MatrixSystemState.get('activeCustomerWorkspaceChannel') === 'vault') window.renderCloudVault(); 
-                } 
-            } catch(e) {} 
-        });
-        
-        onValue(ref(db, 'ai_communications'), (snapshot) => { 
-            try { 
-                const commsData = []; 
-                snapshot.forEach(child => { let val = child.val(); val.dbKey = child.key; commsData.push(val); }); 
-                MatrixSystemState.set('cachedGlobalAiCommsArr', commsData); 
-                if(MatrixSystemState.get('activeAdminSubSection') === 'aispy') window.renderAdminAiInterceptionSpyBlock(); 
-            } catch(e) {} 
-        });
-        
-        onValue(ref(db, 'password_forget_signals'), (snapshot) => {
-            try {
-                const signalsData = snapshot.val() ? Object.values(snapshot.val()) : []; 
-                MatrixSystemState.set('cachedGlobalForgetSignalsArr', signalsData);
-                if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin' && isAudioContextAllowed) window.playSynthesizedSound(587, 'sawtooth', 0.25);
-                if(MatrixSystemState.get('activeAdminSubSection') === 'stats') window.renderDynamicServerDiagnosticsDashboard();
-                const alertBanner = document.getElementById('adminPasswordResetAlertBanner');
-                if(alertBanner) { 
-                    if(signalsData.length > 0 && MatrixSystemState.get('currentMode') === 'admin') { 
-                        alertBanner.innerHTML = `🚨 URGENT: ${signalsData.length} User(s) requested a password reset. Check System Status!`; 
-                        alertBanner.classList.remove('hidden'); 
-                    } else { 
-                        alertBanner.classList.add('hidden'); 
-                    } 
-                }
-            } catch(e){}
-        });
-
-        onValue(ref(db, 'chats'), (snapshot) => {
-            try {
-                const data = snapshot.val(); 
-                const currentUid = MatrixSystemState.get('loggedInCustomerID'); 
-                const activeChan = MatrixSystemState.get('activeCustomerWorkspaceChannel'); 
-                const adminSub = MatrixSystemState.get('activeAdminSubSection');
-                window.cachedChatsData = data || {};
-                
-                if(activeChan === 'chat' && currentUid) {
-                    window.renderActiveChatConversationLogs();
-                    if(data && MatrixSystemState.get('activeSelectedChatTargetUserId')) {
-                        const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); 
-                        const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-                        if (!isGroup) { 
-                            Object.keys(data).forEach(key => { 
-                                const m = data[key]; 
-                                if(m.sender === targetUid && m.receiver === currentUid && !m.read) update(ref(db, `chats/${key}`), { read: true }); 
-                            }); 
-                        }
-                    }
-                    calculateUnreadBadgeCountersTrack(data);
-                }
-                if(document.getElementById('adminDashboard') && !document.getElementById('adminDashboard').classList.contains('hidden')) { 
-                    if(adminSub === 'spychat') { window.renderAdminSpyChatConsoleLogs(); window.renderAdminSpyUserList(); } 
-                }
-                if(activeChan === 'vault') window.renderCloudVault();
-            } catch(e) {}
-        });
-
-        onValue(ref(db, 'typing_states'), (snapshot) => { 
-            try { 
-                const data = snapshot.val(); 
-                const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); 
-                const currentUid = MatrixSystemState.get('loggedInCustomerID'); 
-                const typingStatusNode = document.getElementById('whatsappTypingStatusIndicator'); 
-                const adminTypingNode = document.getElementById('adminWhatsappTypingStatusIndicator');
-                
-                if(data && targetUid && data[targetUid] && data[targetUid].typingTo === currentUid && typingStatusNode) { 
-                    const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); 
-                    typingStatusNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; 
-                    typingStatusNode.classList.remove('hidden'); 
-                } else if(typingStatusNode) typingStatusNode.classList.add('hidden'); 
-
-                if(data && targetUid && data[targetUid] && data[targetUid].typingTo === "MainframeAdmin" && adminTypingNode) {
-                    const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); 
-                    adminTypingNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; 
-                    adminTypingNode.classList.remove('hidden'); 
-                } else if(adminTypingNode) adminTypingNode.classList.add('hidden');
-            } catch(e) {} 
-        });
-
-        onValue(ref(db, 'incident_alerts'), (snapshot) => { 
-            try { 
-                const alertsData = snapshot.val(); 
-                const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); 
-                if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { 
-                    notificationHostNode.innerHTML = Object.keys(alertsData).map(alertRefKey => `<div class="realtime-alert-banner"><span>🚨 SECURITY LOCKOUT: [@${alertsData[alertRefKey].lockedUID}] Frozen.</span><button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertsData[alertRefKey].lockedUID}')" class="abort-btn" style="padding:6px 12px;">UNLOCK</button></div>`).join(''); 
-                } else if(notificationHostNode) notificationHostNode.innerHTML = ""; 
-            } catch(e) {} 
-        });
-
-        window.dismissLockoutIncidentNode = function(alertKey, originalUserUID) { 
-            remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { 
-                update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); 
-                localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID); 
-                alert("Client lock cleared."); 
-            }); 
-        };
-
-        function calculateUnreadBadgeCountersTrack(chatsSnap) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!chatsSnap || !currentUid) return;
-            MatrixSystemState.get('cachedGlobalUsersArr').forEach(user => {
-                let unreadCount = 0; 
-                Object.values(chatsSnap).forEach(msg => { 
-                    if(msg.sender === user.id && msg.receiver === currentUid && !msg.read && !localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) unreadCount++; 
-                });
-                const pill = document.getElementById(`unreadCounterBadge_${user.id}`); 
-                if(pill) { 
-                    if(unreadCount > 0) { pill.innerText = unreadCount; pill.classList.remove('hidden'); } 
-                    else pill.classList.add('hidden'); 
-                }
-            });
-        }
-
-        window.triggerLockoutTerminalUI = function(usernameString) {
-            localStorage.setItem('nexus_hard_lockout_flag_' + usernameString, 'true');
-            set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, epoch: Date.now() });
-            document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px;">Access signatures for ID [${usernameString}] locked.</p></div>`;
-            setInterval(() => { if(isAudioContextAllowed) window.playSynthesizedSound(180, 'sawtooth', 0.4); }, 2000); 
-            window.speakNaturalHuman("Security violation detected.");
-        };
-
-        // Strict Case-Sensitive Exact Match Login Engine
-        window.executeClusterLogin = function(event) {
-            if(event) { event.preventDefault(); event.stopPropagation(); }
-            
-            const u = document.getElementById('accessNodeUser').value.trim(); 
-            const p = document.getElementById('accessNodePass').value.trim(); 
-            if(!u || p === "") return;
-
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            let isSuccess = false;
-            let loggedInId = "";
-            let mode = MatrixSystemState.get('currentMode');
-
-            // Strictly checking without lowercasing IDs and Passwords
-            if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
-                isSuccess = true;
-                loggedInId = "MainframeAdmin";
-                mode = 'admin';
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    isSuccess = true;
-                    loggedInId = userMatch.id;
-                    mode = 'user';
-                }
-            }
-
-            if(isSuccess) {
-                MatrixSystemState.set('loggedInCustomerID', loggedInId);
-                MatrixSystemState.set('currentMode', mode);
-                localStorage.setItem('nexus_logged_in_uid', loggedInId);
-                localStorage.setItem('nexus_system_session_mode', mode);
-                
-                // Feature Inbuilt: Hide Brand Title globally immediately upon login
-                const brandNode = document.getElementById('shashiBrandTitle');
-                if (brandNode) brandNode.style.display = 'none';
-
-                document.getElementById('mainStage').style.display = 'none';
-                const nav = document.getElementById('mainCyberNavbar');
-                if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-                
-                if(mode === 'admin') {
-                    document.getElementById('adminDashboard').classList.remove('hidden');
-                    document.getElementById('adminDashboard').style.display = 'flex';
-                    window.loadAdminSubmissions();
-                } else {
-                    document.getElementById('customerDashboard').classList.remove('hidden');
-                    document.getElementById('customerDashboard').style.display = 'flex';
-                    window.switchCustomerChannel('menu');
-                }
-                
-                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
-                if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.2);
-            } else {
-                let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
-                fails++;
-                MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
-                if (fails >= 3) {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
-                }
-                alert("❌ ACCESS DENIED: Invalid System ID or Password (Case-Sensitive Match Failed).");
-                if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
-            }
-        };
-
-        // ADMIN FUNCTIONS
-        window.switchAdminSubSection = function(sectionId) {
-            MatrixSystemState.set('activeAdminSubSection', sectionId); 
-            
-            document.getElementById('adminMainMenuBlock').style.display = 'none';
-            
-            const btnHome = document.getElementById('btnAdminBackToHome');
-            if(sectionId === 'menu') {
-                document.getElementById('adminMainMenuBlock').style.display = 'grid';
-                if(btnHome) btnHome.classList.add('hidden');
-                ['creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'].forEach(id => {
-                    const el = document.getElementById(id); if(el) el.classList.add('hidden');
-                });
-                return;
-            }
-            
-            if(btnHome) btnHome.classList.remove('hidden');
-
-            const mapping = {
-                'creation': 'creationBlock',
-                'approvals': 'adminApprovalsBlock',
-                'credentials': 'credentialsBlock',
-                'workspace': 'policyWorkspaceBlock',
-                'spychat': 'adminSpyChatBlock',
-                'tickets': 'adminSupportTicketsBlock',
-                'aispy': 'adminAiSpyChatBlock',
-                'stats': 'adminSystemStatsBlock'
-            };
-
-            Object.keys(mapping).forEach(key => {
-                const node = document.getElementById(mapping[key]);
-                if (node) { 
-                    if(sectionId === key) {
-                        node.classList.remove('hidden');
-                        node.style.display = 'block';
-                    } else {
-                        node.classList.add('hidden');
-                        node.style.display = 'none';
-                    }
-                }
-            });
-
-            if(sectionId === 'spychat') { window.renderAdminSpyUserList(); window.renderInteractiveDrawersContent(); window.exitMobileChatView(); }
-            if(sectionId === 'aispy') window.renderAdminAiInterceptionSpyBlock();
-            if(sectionId === 'stats') window.renderDynamicServerDiagnosticsDashboard();
-            if(sectionId === 'creation') window.renderLiveCreationStatsSummary();
-            if(sectionId === 'workspace') window.renderPolicyCardsBlock();
-            if(sectionId === 'approvals') window.renderAdminPendingApprovals();
-            if(sectionId === 'tickets') window.renderAdminTickets();
-        };
-
-        window.dispatchMainframeGlobalBroadcast = function() { set(ref(db, 'system_broadcast'), { text: document.getElementById('adminBroadcastInputControl').value.trim(), epoch: Date.now() }).then(() => { alert("🔴 Broadcast transmitted!"); }); };
-        window.clearMainframeGlobalBroadcast = function() { remove(ref(db, 'system_broadcast')).then(() => { document.getElementById('adminBroadcastInputControl').value = ""; alert("Broadcast formatted clean."); }); };
-
-        window.generateRandomPassword = function() {
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-            let pass = "";
-            for (let i = 0; i < 8; i++) { pass += chars.charAt(Math.floor(Math.random() * chars.length)); }
-            document.getElementById('newUserPass').value = pass;
-        };
-
-        window.copyClientDataToClipboard = function(policyKey) {
-            let p = MatrixSystemState.get('cachedGlobalPolicyArr').find(item => item.policyKey === policyKey);
-            if (!p) return;
-            let formattedText = `OWNER ID: ${p.ownerNodeID}\nNAME: ${p.insure}\nCONTACT: ${p.phone}\nEMAIL: ${p.email}\nPOLICY DETAILS: ${p.notes || 'None'}`;
-            navigator.clipboard.writeText(formattedText).then(() => { alert("📋 CLIENT DATA COPIED SUCCESSFULLY!"); });
-        };
-
-        window.renderAdminAiInterceptionSpyBlock = function() {
-            const logsArea = document.getElementById('adminAiSpyLogsWrapper');
-            if(!logsArea) return;
-            const comms = MatrixSystemState.get('cachedGlobalAiCommsArr').reverse();
-            if (comms.length === 0) { logsArea.innerHTML = "<p style='color:var(--text-sub);'>No intercepted AI logs.</p>"; return; }
-            let logsHTML = `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox" onchange="window.selectAllAiLogs(this)"> Select All</label><button class="abort-btn" onclick="window.executeBatchDeleteAiLogs()">🗑️ Delete Selected</button></div>`;
-            comms.forEach(log => {
-                logsHTML += `<div style="background:rgba(0,0,0,0.5); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:15px; border-top:1px solid var(--border-glass); border-right:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><label class="cyber-checkbox-label"><input type="checkbox" class="cyber-checkbox ai-log-checkbox" data-key="${log.dbKey}"> <b>Client:</b> ${log.customerName} (@${log.customerID})</label><span style="color:var(--text-sub); font-size:0.85rem;">${log.fullDateString} ${log.timestamp}</span></div>
-                    <p style="color:var(--text-main); margin-bottom:5px;"><b>Query:</b> ${log.query}</p>
-                    <p style="color:var(--neon-pink);"><b>AI Response:</b> ${log.response}</p>
-                </div>`;
-            });
-            logsArea.innerHTML = logsHTML;
-        };
-
-        window.executeBatchDeleteAiLogs = function() {
-            let checkedBoxes = document.querySelectorAll('.ai-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { alert("No logs selected."); return; }
-            if (confirm(`Delete ${checkedBoxes.length} selected logs permanently?`)) {
-                checkedBoxes.forEach(box => {
-                    let key = box.getAttribute('data-key');
-                    remove(ref(db, `ai_communications/${key}`));
-                });
-                alert("Selected logs purged.");
-            }
-        };
-
-        window.selectAllAiLogs = function(masterBox) { document.querySelectorAll('.ai-log-checkbox').forEach(box => box.checked = masterBox.checked); };
-
-        window.renderDynamicServerDiagnosticsDashboard = function() {
-            const arrUsers = MatrixSystemState.get('cachedGlobalUsersArr'); const arrPolicies = MatrixSystemState.get('cachedGlobalPolicyArr'); const arrSignals = MatrixSystemState.get('cachedGlobalForgetSignalsArr');
-            const totalSysCap = 50; 
-            document.getElementById('barChartUsers').style.width = Math.min((arrUsers.length/totalSysCap)*100, 100) + '%';
-            document.getElementById('barChartUsers').innerText = `${arrUsers.length} Nodes`;
-            document.getElementById('barChartPolicies').style.width = Math.min((arrPolicies.length/totalSysCap)*100, 100) + '%';
-            document.getElementById('barChartPolicies').innerText = `${arrPolicies.length} Documents`;
-            
-            const sigWrapper = document.getElementById('adminStatsForgetSignalsLogsWrapper');
-            if(sigWrapper) {
-                if(arrSignals.length === 0) { sigWrapper.innerHTML = `<p style="color:var(--text-sub);">All secure. No signals.</p>`; }
-                else {
-                    sigWrapper.innerHTML = arrSignals.map(sig => {
-                        let dateStr = new Date(sig.epochTime).toLocaleString();
-                        return `<div style="background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:15px; border-radius:8px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
-                            <div><label class="cyber-checkbox-label" style="display:inline-flex;"><input type="checkbox" class="cyber-checkbox signal-log-checkbox" data-uid="${sig.targetUID}"> <span style="margin-left:10px; color:#fff;"><b>UID:</b> ${sig.targetUID} | <b>Name:</b> ${sig.clientName} | <b>Contact:</b> ${sig.phone}</span></label><br><span style="color:#e74c3c; font-size:0.8rem; margin-left:35px;">${dateStr}</span></div>
-                            <button onclick="window.dismissLockoutIncidentNode('${sig.signalID}', '${sig.targetUID}')" class="abort-btn" style="padding:6px 12px; font-size:0.8rem;">CLEAR</button>
-                        </div>`;
-                    }).join('');
-                }
-            }
-        };
-
-        window.executeBatchDeleteSignals = function() {
-            let checkedBoxes = document.querySelectorAll('.signal-log-checkbox:checked');
-            if (checkedBoxes.length === 0) { alert("No targets selected."); return; }
-            if (confirm(`Purge ${checkedBoxes.length} signal links?`)) {
-                get(ref(db, 'password_forget_signals')).then((snap) => {
-                    let data = snap.val();
-                    if (data) {
-                        Object.keys(data).forEach(key => {
-                            checkedBoxes.forEach(box => {
-                                if (data[key].targetUID === box.getAttribute('data-uid')) {
-                                    remove(ref(db, `password_forget_signals/${key}`));
-                                }
-                            });
-                        });
-                        alert("Selected signals removed.");
-                    }
-                });
-            }
-        };
-
-        window.selectAllSignals = function(masterBox) { document.querySelectorAll('.signal-log-checkbox').forEach(box => box.checked = masterBox.checked); };
-
-        window.clearAllAiLogs = function() {
-            if(confirm("Wipe all AI Communications?")) {
-                remove(ref(db, 'ai_communications')).then(()=> alert("AI Memory Wiped."));
-            }
-        };
-
-        window.loadAdminSubmissions = function(){
-            const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
-            document.getElementById('mainframeAdminIdInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterId || "";
-            document.getElementById('mainframeAdminPassInput').value = MatrixSystemState.get('cachedAdminMainframeRoute').masterPass || "";
-            window.renderUserControlPanel(); window.renderPolicyCardsBlock(); window.switchAdminSubSection(MatrixSystemState.get('activeAdminSubSection'));
-        };
-
-        window.renderLiveCreationStatsSummary = function() { 
-            const mini = document.getElementById('liveCreationStatsMiniNode');
-            if (mini) mini.innerText = `Registered Signatures: ${MatrixSystemState.get('cachedGlobalUsersArr').length} Compiled Accounts`; 
-        };
-
-        window.toggleUserNodeActivationState = function(uid, selectValue) { update(ref(db, `users/${uid}`), { status: selectValue }).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(600, 'sine', 0.2); }); };
-        window.executeAdminContextClipboardCopy = function(element, extractionValue) { if(!extractionValue) return; navigator.clipboard.writeText(extractionValue).then(() => { if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.15); const originalText = element.innerText; element.innerText = "COPIED ✔"; setTimeout(() => { element.innerText = originalText; }, 1200); }).catch(() => {}); };
-        window.wipeUserPermanently = function(uid) { if(confirm("Are you sure you want to permanently delete this user?")) remove(ref(db, 'users/' + uid)); };
-
-        window.renderPolicyCardsBlock = function() {
-            const targetStack = document.getElementById('policyCardsStack'); if(!targetStack) return;
-            let policyArr = MatrixSystemState.get('cachedGlobalPolicyArr'); if(policyArr.length === 0) { targetStack.innerHTML = "<p>No records mapping.</p>"; return; }
-            targetStack.innerHTML = policyArr.map((d) => {
-                let docPreviewHTML = d.attachment ? `<img src="${d.attachment}" onclick="window.triggerEnlargedAttachmentView('${d.attachment}')" style="max-width:100%; max-height:130px; border-radius:6px; cursor:pointer;">` : "<span>None</span>";
-                let clientProfileMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === d.ownerNodeID); let ownerNicknameString = clientProfileMatch ? clientProfileMatch.clientName : "Unknown";
-                return `<div class="hud-data-card" data-policy-key="${d.policyKey}">
-                    <div class="owner-name-tag-right">👤 Profile: ${ownerNicknameString}</div>
-                    <button onclick="window.copyClientDataToClipboard('${d.policyKey}')" class="nav-btn" style="position:absolute; bottom: 20px; right: 20px; font-size:0.75rem;">📋 COPY DATA</button>
-                    <p style="margin-top:25px;"><b>Owner ID:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${d.ownerNodeID}')">${d.ownerNodeID}</span></p>
-                    <p><b>Insurer:</b> ${d.insure}</p><p><b>Policy No:</b> ${d.pol}</p><p><b>Reg No:</b> ${d.reg}</p><p><b>Contact:</b> ${d.phone}</p><p><b>Email:</b> ${d.email}</p><p><b>Notes:</b> ${d.notes}</p><p><b>File:</b> ${docPreviewHTML}</p>
-                    <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5);"><select id="updateStatusSelect_${d.policyKey}" style="width:100%; padding:8px; margin-bottom:8px; background:var(--bg-prime); color:#f1c40f;"><option value="pending" ${d.status === 'pending' ? 'selected' : ''}>⏳ Pending</option><option value="uploaded" ${d.status === 'uploaded' ? 'selected' : ''}>✅ Uploaded</option><option value="error" ${d.status === 'error' ? 'selected' : ''}>❌ Error</option><option value="closed" ${d.status === 'closed' ? 'selected' : ''}>🔒 Closed</option></select><input type="text" id="adminCommentInput_${d.policyKey}" value="${d.adminComment || ''}" placeholder="Response..." style="width:100%; padding:8px; margin-bottom:8px; color:#fff; background:#020408;"><button onclick="window.transmitAdminResponse('${d.policyKey}')" class="hud-engage-btn" style="padding:10px; font-size:0.9rem;">UPDATE PACKET</button></div>
-                    <button class="wipe-card-btn" onclick="window.purgeRegistryLog('${d.policyKey}')">Purge Record</button>
-                </div>`;
-            }).join("");
         };
 
         window.filterCardsEngine = function() {
