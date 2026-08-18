@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V22.0 (Compact UI, Secured Notes & Gen-Z Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V21.0 (Compact UI, Secured Notes & Gen-Z Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -40,54 +40,6 @@
         
         body.strict-scroll-lock, html.strict-scroll-lock { overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; }
 
-        /* ================= NEW: HACKER FEATURES & UPGRADES CSS ================= */
-        /* 1. BOSS KEY OVERLAY */
-        #bossKeyOverlay { position: fixed; inset: 0; width: 100vw; height: 100vh; background: #fff url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png') no-repeat center center; background-size: 300px; z-index: 9999999999; display: none; }
-        #bossKeyOverlay.active { display: block; }
-
-        /* 2. CRT FLASH & HOLOGRAM EFFECTS */
-        .crt-flash-effect { position: fixed; inset: 0; background: #fff; z-index: 9999999; animation: crtPowerOn 0.6s ease-out forwards; pointer-events: none; }
-        @keyframes crtPowerOn { 0% { opacity: 1; filter: brightness(5) contrast(2); } 50% { opacity: 0.8; background: repeating-linear-gradient(0deg, #fff, #ccc 2px, transparent 4px); } 100% { opacity: 0; } }
-        
-        /* 3. LOGIN AVATAR & VOICE LOGIN */
-        .login-avatar-popup { position: absolute; top: -70px; left: 50%; transform: translateX(-50%) scale(0); width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.6); z-index: 30; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; object-fit: cover; }
-        .login-avatar-popup.show { transform: translateX(-50%) scale(1); opacity: 1; }
-        .voice-login-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s; filter: grayscale(1); z-index: 10; }
-        .voice-login-btn:hover { filter: grayscale(0); transform: translateY(-50%) scale(1.2); }
-        .voice-login-btn.listening { animation: cyberPulse 1s infinite alternate; filter: grayscale(0); border-radius: 50%; }
-
-        /* 4. NOTEPAD PRO UPGRADES (Categories, Focus, Burn) */
-        .category-tab-container { display: flex; gap: 10px; border-bottom: 2px solid var(--border-glass); margin-bottom: 20px; padding-bottom: 10px; overflow-x: auto; }
-        .category-tab { padding: 8px 16px; font-family: 'Orbitron'; font-weight: bold; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: 0.3s; font-size: 0.9rem; white-space: nowrap; }
-        .category-tab:hover { background: rgba(0, 242, 254, 0.1); color: var(--neon-cyan); }
-        .category-tab.active { background: rgba(0, 242, 254, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
-        
-        .hyper-focus-active .wordpad-paper p, .hyper-focus-active .wordpad-paper div, .hyper-focus-active .wordpad-paper li { filter: blur(4px); opacity: 0.4; transition: 0.3s; }
-        .hyper-focus-active .wordpad-paper .focus-line { filter: blur(0px); opacity: 1; transform: scale(1.01); color: var(--neon-cyan); }
-        
-        @keyframes burnToAshes { 0% { filter: brightness(1) drop-shadow(0 0 0px red); opacity: 1; transform: translateY(0); } 50% { filter: brightness(3) drop-shadow(0 -10px 20px #ff4500) blur(2px); opacity: 0.8; transform: translateY(-5px); color: #ff4500; } 100% { filter: brightness(0) drop-shadow(0 -20px 40px #000) blur(10px); opacity: 0; transform: translateY(-20px) scale(0.9); } }
-        .burn-active { animation: burnToAshes 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; pointer-events: none; }
-
-        /* 5. WHATSAPP UI UPGRADES (Dots, Parallax, Bubbles) */
-        .typing-dots-container { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--wa-msg-in); border-radius: 15px; width: fit-content; }
-        .typing-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; animation: bounceDots 1.4s infinite ease-in-out both; }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; } .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounceDots { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-        
-        .parallax-bg-layer { position: absolute; inset: 0; background: var(--chat-wallpaper); z-index: 0; transform: translateZ(-1px) scale(2); pointer-events: none; transition: transform 0.1s ease-out; }
-        
-        .bubble-outgoing { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-        .bubble-incoming { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
-        .first-in-group.bubble-outgoing { border-top-right-radius: 12px; margin-top: 10px; }
-        .last-in-group.bubble-outgoing { border-bottom-right-radius: 12px; }
-        .first-in-group.bubble-incoming { border-top-left-radius: 12px; margin-top: 10px; }
-        .last-in-group.bubble-incoming { border-bottom-left-radius: 12px; }
-
-        /* 6. ADMIN GOD-EYE GRAPH */
-        #adminGodEyeNetworkContainer { width: 100%; height: 300px; background: #000; border: 2px solid var(--neon-pink); border-radius: 12px; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(255,0,127,0.3); position: relative; overflow: hidden; display: none;}
-        #adminGodEyeNetworkContainer.active { display: block; }
-        /* ================= END NEW UPGRADES CSS ================= */
-
         /* ZEN MODE FOR NOTEPAD */
         body.zen-mode-active .top-cyber-navbar, 
         body.zen-mode-active .panel-header-flex, 
@@ -121,7 +73,7 @@
         @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02)); border: 1px solid rgba(0, 242, 254, 0.4); border-radius: 10px; color: var(--neon-cyan); padding: 8px 15px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-transform: uppercase;}
-        .nav-btn:hover, .hud-engage-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px) scale(0.98); color: #fff; border-color: #fff; } /* Haptic Squish added */
+        .nav-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px); color: #fff; border-color: #fff; }
         body.light-theme-active .nav-btn { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
         .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
@@ -152,10 +104,10 @@
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
         
         @keyframes floatLamp { 0%, 100% { transform: scale(1.1) translateZ(50px) translateY(0); } 50% { transform: scale(1.1) translateZ(50px) translateY(-15px); } }
-        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d; transition: transform 0.1s ease-out;}
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d;}
         .cinema-stage.activated .cyber-lamp-core { animation: none; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); transform: translateX(500px) scale(0.85) translateZ(50px); }
         
-        .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px); transition: transform 0.2s ease-out;}
+        .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px);}
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
         .scanner-laser-ring { position: absolute; width: 100%; height: 3px; background: #ff007f; box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f; top: 0; animation: scanUpDown 2.5s infinite alternate ease-in-out; z-index: 7; opacity: 0; transition: opacity 0.3s; }
         .cinema-stage:not(.activated) .scanner-laser-ring { opacity: 1; }
@@ -171,7 +123,7 @@
         .laser-conduit { position: absolute; width: 10px; height: 100%; background: #0b111c; left: 50%; transform: translateX(-50%); transition: background 0.5s, box-shadow 0.5s; }
         .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 45px var(--lamp-color); }
         .brushed-heavy-base { width: 260px; height: 45px; background: linear-gradient(180deg, #394b66, #020408); border-radius: 50% / 25%; border: 3px solid #5a739c; z-index: 4; box-shadow: 0 25px 45px rgba(0,0,0,0.9); transform: translateZ(10px);}
-        .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.1) 60%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; transform: translateZ(5px); transform-origin: top center;}
+        .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.1) 60%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; transform: translateZ(5px);}
         .cinema-stage.activated .volumetric-beam { opacity: 0.85; height: 650px; width: 950px; filter: drop-shadow(0 0 40px var(--lamp-shadow)); }
         
         .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; touch-action: none; transform: translateZ(150px); }
@@ -179,17 +131,13 @@
         .beaded-wire { width: 8px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 8px, #0f172a 8px, #0f172a 16px); box-shadow: 0 0 20px rgba(241,196,15,0.9); border-radius:4px;}
         .luminescent-node { width: 44px; height: 44px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 50px #f1c40f; border: 3px solid #000; transition: 0.3s; margin-top: -5px;}
         
-        /* UPGRADED POWERFUL LOGIN SCREEN (WITH FROSTED GLASS & MATRIX FX) */
-        .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 550px; background: rgba(4, 12, 26, 0.75); border: none; border-left: 8px solid var(--neon-cyan); padding: 50px 40px; border-radius: 20px; backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 20px 40px rgba(0,0,0,0.8); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); overflow: visible;}
-        
-        .hud-glass-terminal::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.08"/></svg>'); opacity: 0.15; pointer-events: none; border-radius: 20px; z-index: -1; }
-
-        .hud-glass-terminal::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #00f2fe; box-shadow: 0 0 20px #00f2fe, 0 0 40px #00f2fe; animation: scanLogin 3s infinite linear; pointer-events: none; opacity: 0.7; border-radius: 20px 20px 0 0;}
+        /* UPGRADED POWERFUL LOGIN SCREEN */
+        .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 550px; background: rgba(4, 12, 26, 0.85); border: 2px solid var(--border-glass); border-left: 8px solid var(--neon-cyan); padding: 50px 40px; border-radius: 20px; backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(0,242,254,0.15); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); overflow: hidden;}
+        /* Scanning Laser for Login Vault */
+        .hud-glass-terminal::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #00f2fe; box-shadow: 0 0 20px #00f2fe, 0 0 40px #00f2fe; animation: scanLogin 3s infinite linear; pointer-events: none; opacity: 0.7;}
         @keyframes scanLogin { 0% { top: 0%; opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { top: 100%; opacity: 0; } }
 
-        .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; animation: hologramSpawn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes hologramSpawn { 0% { transform: translate3d(-50%, 50px, -100px) scale(0.8); opacity: 0; filter: blur(10px) hue-rotate(90deg); } 100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; filter: blur(0) hue-rotate(0deg); } }
-
+        .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; transform: translate3d(-50%, 0, 0) scale(1); }
         body.light-theme-active .hud-glass-terminal { background: rgba(255, 255, 255, 0.9); border-color: #cbd5e1; box-shadow: 0 15px 50px rgba(0,0,0,0.15); }
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; transform: translateZ(20px); }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 12px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
@@ -203,58 +151,9 @@
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
         .hud-input-cluster input:focus ~ .neon-glow-underline, .hud-input-cluster textarea:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
         .hud-engage-btn { width: 100%; padding: 20px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 15px 40px rgba(241,196,15,0.4); text-transform: uppercase; transform: translateZ(25px);}
-        .hud-engage-btn:active { transform: scale(0.95) translateZ(25px) !important; }
-        .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.8); transform: translateZ(30px) scale(0.98); }
+        .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.8); transform: translateZ(30px) scale(1.02); }
         
-        /* ================= NEW: HACKER FEATURES & UPGRADES CSS ================= */
-        
-        /* 1. BOSS KEY OVERLAY */
-        #bossKeyOverlay { position: fixed; inset: 0; width: 100vw; height: 100vh; background: #fff url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png') no-repeat center center; background-size: 300px; z-index: 9999999999; display: none; }
-        #bossKeyOverlay.active { display: block; }
-        
-        /* 2. CRT FLASH & HOLOGRAM EFFECTS */
-        .crt-flash-effect { position: fixed; inset: 0; background: #fff; z-index: 9999999; animation: crtPowerOn 0.6s ease-out forwards; pointer-events: none; }
-        @keyframes crtPowerOn { 0% { opacity: 1; filter: brightness(5) contrast(2); } 50% { opacity: 0.8; background: repeating-linear-gradient(0deg, #fff, #ccc 2px, transparent 4px); } 100% { opacity: 0; } }
-        
-        /* 3. LOGIN AVATAR & VOICE LOGIN */
-        .login-avatar-popup { position: absolute; top: -70px; left: 50%; transform: translateX(-50%) scale(0); width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.6); z-index: 30; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; object-fit: cover; }
-        .login-avatar-popup.show { transform: translateX(-50%) scale(1); opacity: 1; }
-        .voice-login-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s; filter: grayscale(1); z-index: 10; }
-        .voice-login-btn:hover { filter: grayscale(0); transform: translateY(-50%) scale(1.2); }
-        .voice-login-btn.listening { animation: cyberPulse 1s infinite alternate; filter: grayscale(0); border-radius: 50%; }
-
-        /* 4. NOTEPAD PRO UPGRADES (Categories, Focus, Burn) */
-        .category-tab-container { display: flex; gap: 10px; border-bottom: 2px solid var(--border-glass); margin-bottom: 20px; padding-bottom: 10px; overflow-x: auto; }
-        .category-tab { padding: 8px 16px; font-family: 'Orbitron'; font-weight: bold; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: 0.3s; font-size: 0.9rem; white-space: nowrap; }
-        .category-tab:hover { background: rgba(0, 242, 254, 0.1); color: var(--neon-cyan); }
-        .category-tab.active { background: rgba(0, 242, 254, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
-        
-        .hyper-focus-active .wordpad-paper p, .hyper-focus-active .wordpad-paper div, .hyper-focus-active .wordpad-paper li { filter: blur(4px); opacity: 0.4; transition: 0.3s; }
-        .hyper-focus-active .wordpad-paper .focus-line { filter: blur(0px); opacity: 1; transform: scale(1.01); color: var(--neon-cyan); }
-        
-        @keyframes burnToAshes { 0% { filter: brightness(1) drop-shadow(0 0 0px red); opacity: 1; transform: translateY(0); } 50% { filter: brightness(3) drop-shadow(0 -10px 20px #ff4500) blur(2px); opacity: 0.8; transform: translateY(-5px); color: #ff4500; } 100% { filter: brightness(0) drop-shadow(0 -20px 40px #000) blur(10px); opacity: 0; transform: translateY(-20px) scale(0.9); } }
-        .burn-active { animation: burnToAshes 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; pointer-events: none; }
-
-        /* 5. WHATSAPP UI UPGRADES (Dots, Parallax, Bubbles) */
-        .typing-dots-container { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--wa-msg-in); border-radius: 15px; width: fit-content; }
-        .typing-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; animation: bounceDots 1.4s infinite ease-in-out both; }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; } .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounceDots { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-        
-        .parallax-bg-layer { position: absolute; inset: 0; background: var(--chat-wallpaper); z-index: 0; transform: translateZ(-1px) scale(2); pointer-events: none; transition: transform 0.1s ease-out; }
-        
-        .bubble-outgoing { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-        .bubble-incoming { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
-        .first-in-group.bubble-outgoing { border-top-right-radius: 12px; margin-top: 10px; }
-        .last-in-group.bubble-outgoing { border-bottom-right-radius: 12px; }
-        .first-in-group.bubble-incoming { border-top-left-radius: 12px; margin-top: 10px; }
-        .last-in-group.bubble-incoming { border-bottom-left-radius: 12px; }
-
-        /* 6. ADMIN GOD-EYE GRAPH */
-        #adminGodEyeNetworkContainer { width: 100%; height: 300px; background: #000; border: 2px solid var(--neon-pink); border-radius: 12px; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(255,0,127,0.3); position: relative; overflow: hidden; display: none;}
-        #adminGodEyeNetworkContainer.active { display: block; }
-
-        /* ================= ORIGINAL DASHBOARD & COMMON CSS ================= */
+        /* DASHBOARD SPACING COMPACT UI */
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 40px; padding-top: 100px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
         .dashboard-panel-core.active-view { display: flex; opacity: 1; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 5px solid var(--neon-cyan); padding: 30px 25px; border-radius: 16px; width: 100%; max-width: 1050px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 5px; margin-bottom: 20px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
@@ -310,6 +209,221 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 12px; padding: 25px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 12px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
 
+        /* ADVANCED & COMPACT NOTEPAD PRO ENGINE */
+        .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 75vh; max-height: 800px; }
+        .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 30px; max-height: 100vh;}
+        .notes-editor-container-shell { position: relative; margin-top: 15px; background: #e2e8f0; border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
+        .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
+        
+        .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 20px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; position: relative; }
+        
+        /* CLEAN, BEAUTIFUL, CENTERED WHITE PAPER SPACE */
+        .wordpad-paper { 
+            background: #ffffff !important; 
+            width: 100% !important; 
+            max-width: 850px !important;
+            min-height: 500px !important; /* Forces it to look like a page */
+            height: auto !important;
+            padding: 40px !important; 
+            margin: 0 auto !important; /* Centers the paper in the container */
+            box-sizing: border-box !important; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important; 
+            color: #111 !important; 
+            font-family: 'Segoe UI', Arial, sans-serif !important; 
+            font-size: 1.15rem !important; 
+            line-height: 1.7 !important; 
+            outline: none !important; 
+            border-radius: 12px !important; 
+            border: 1px solid #cbd5e1 !important;
+            overflow-x: hidden !important; 
+            word-wrap: break-word !important;
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            cursor: text !important;
+            pointer-events: auto !important;
+            position: relative;
+            transition: all 0.3s ease;
+            display: block !important;
+        }
+        .wordpad-paper:focus { border-color: #00f2fe !important; box-shadow: 0 0 25px rgba(0,242,254,0.3) !important; transform: translateY(-2px); }
+        
+        /* ✍️ WRITING SPACE PLACEHOLDER */
+        .wordpad-paper:empty::before { 
+            content: "✍️ Click here to start typing your professional notes..."; 
+            color: #888; pointer-events: none; display:block; font-style: italic; opacity: 0.8;
+            animation: pulsePlaceholder 2s infinite alternate; font-size: 1.2rem; margin-top: 10px;
+        }
+        @keyframes pulsePlaceholder { from { opacity: 0.5; } to { opacity: 0.9; } }
+        
+        .notepad-dark-mode .wordpad-paper { background: #0b141a !important; color: #fff !important; box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important; border-color: rgba(0,242,254,0.3) !important; }
+        
+        /* SLASH COMMAND MENU */
+        .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.8); width: 220px; z-index: 1000; display: none; padding: 8px; }
+        .slash-cmd-item { padding: 8px 12px; color: #fff; cursor: pointer; border-radius: 6px; font-family: 'Rajdhani'; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: 0.2s; font-size:0.95rem; }
+        .slash-cmd-item:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
+        .note-inline-audio { width: 100%; border-radius: 6px; margin-top: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.5); }
+
+        .notes-toolbar-ribbon { background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(20px); padding: 12px 20px; border-bottom: 2px solid var(--neon-cyan); display: flex; gap: 10px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; flex-shrink: 0; box-shadow: 0 6px 20px rgba(0,242,254,0.15); border-radius: 10px 10px 0 0;}
+        .note-tool-btn { border-radius: 6px; padding: 8px 12px; border: 1px solid rgba(0,242,254,0.3); background: rgba(0,0,0,0.4); color: var(--text-main); font-family: 'Orbitron'; font-size: 0.85rem; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .note-tool-btn:hover { background: linear-gradient(135deg, var(--neon-cyan), #4facfe); color: #000; border-color: transparent; box-shadow: 0 3px 12px rgba(0,242,254,0.4); transform: translateY(-2px); }
+        .ai-btn-special { background: linear-gradient(135deg, #ff007f, #7f00ff) !important; color: #fff !important; border: none !important; box-shadow: 0 3px 10px rgba(255,0,127,0.3) !important; }
+        .ai-btn-special:hover { box-shadow: 0 5px 15px rgba(255,0,127,0.6) !important; transform: translateY(-2px) scale(1.05); }
+
+        .note-tool-select { background: rgba(4,15,36,0.9); border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 8px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; cursor: pointer; outline: none; font-weight:bold; }
+        .toolbar-divider { width: 1px; height: 25px; background: var(--border-glass); margin: 0 8px; opacity: 0.6; }
+        .notes-status-bar { padding: 10px 20px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 0.9rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;}
+        .notes-realtime-logs-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 25px; max-height: 350px; overflow-y: auto; padding-right: 12px;}
+        .note-structural-card { background: var(--input-bg); border-left: 5px solid var(--neon-pink); padding: 20px; border-radius: 12px; border: 1px solid var(--border-glass); position: relative; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.2s ease; overflow: hidden;}
+        .note-structural-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,0,127,0.3); }
+        .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.85rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.3); padding-bottom: 8px; align-items:center; }
+        .locked-anchor-input { background: rgba(15,23,42,0.7) !important; border-color: rgba(255,0,127,0.5) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
+        
+        /* SECURE PASSWORD FIELD FOR NOTEPAD */
+        .note-password-input { padding: 12px 18px; border-radius: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--neon-cyan); color: #fff; font-family: 'Orbitron'; font-size: 0.9rem; outline: none; transition: 0.3s; flex: 1;}
+        .note-password-input:focus { box-shadow: 0 0 15px rgba(0,242,254,0.4); border-color: #fff;}
+        .unlock-note-btn { background: var(--neon-green); color: #000; font-weight: bold; padding: 8px 15px; border-radius: 6px; border: none; cursor: pointer; font-family: 'Orbitron'; transition: 0.3s; }
+        .unlock-note-btn:hover { background: #fff; box-shadow: 0 0 15px #2ecc71;}
+
+        .gaming-bar-nexus-wrapper { background: linear-gradient(145deg, #020614, #0b0212); border: 2px dashed var(--neon-pink); border-radius: 16px; padding: 25px 20px; text-align: center; margin-bottom: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(255,0,127,0.15); transition: 0.4s;}
+        .gaming-bar-nexus-wrapper:hover { box-shadow: 0 15px 40px rgba(255,0,127,0.3); transform: translateY(-3px); border-color: var(--neon-cyan);}
+        .gaming-canvas-container-box { width: 100%; max-width: 550px; height: 320px; background: #000; border: 2px solid var(--neon-cyan); border-radius: 12px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,242,254,0.4); }
+        .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
+        .gaming-pulse-node-core { width: 10px; height: 10px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 8px; animation: recPulse 0.8s infinite alternate; }
+
+        /* --- COMPACT WHATSAPP WEB STICKY LAYOUT --- */
+        .chat-io-grid-matrix { display: grid; grid-template-columns: 320px 1fr; gap: 0; width: 100%; height: 75vh; max-height: 800px; background: var(--wa-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
+        
+        .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow: hidden; z-index: 5; height: 100%; }
+        .wa-top-bar { display:flex; justify-content:space-between; align-items:center; padding:12px 15px; background:var(--wa-header); color:var(--wa-text); font-size:1.15rem; font-weight:bold; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
+        .wa-top-bar-icons span { cursor:pointer; transition:0.3s; margin-left:12px;}
+        .wa-top-bar-icons span:hover { color: #fff; }
+        .whatsapp-search-box { padding: 10px 15px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+        .whatsapp-search-box input { flex: 1; padding: 10px 14px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; font-family: inherit;}
+        #chatTargetContainerView, #adminSpyUsersListWrapper { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        .wa-bottom-tabs { display:flex; justify-content:space-around; align-items:center; padding:10px 8px; background:var(--wa-header); border-top:1px solid var(--wa-border); font-size:0.8rem; color:var(--wa-text-muted); flex-shrink:0;}
+        .wa-bottom-tabs div { text-align:center; cursor:pointer; transition:0.3s;}
+        .wa-bottom-tabs div:hover { color:#fff;}
+        .wa-bottom-tabs .active-tab { color: var(--wa-green); }
+        .whatsapp-in-chat-search { display: none; padding: 10px 15px; background: var(--wa-header); border-bottom: 1px solid var(--wa-border); transition: 0.3s ease; flex-shrink: 0;}
+        .whatsapp-in-chat-search.active { display: flex; gap: 10px; align-items: center; }
+        .whatsapp-in-chat-search input { flex: 1; padding: 8px 12px; background: var(--wa-search-input); border: none; border-radius: 8px; color: var(--wa-text); font-size: 0.95rem; outline: none; }
+        .chat-user-item-node { padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); cursor: pointer; transition: background 0.2s ease; position: relative; }
+        .chat-user-item-node:hover { background: var(--wa-search-input); }
+        .chat-user-item-node.active-chat-target { background: var(--wa-msg-in) !important; border-left: 4px solid var(--wa-green); padding-left: 11px;}
+        .chat-user-item-node.online-chamak-active .whatsapp-avatar { border: 2px solid #2ecc71; padding: 2px; }
+        .whatsapp-avatar { width: 45px; height: 45px; border-radius: 50%; background: #dfe5e7; object-fit: cover; z-index: 5; cursor: pointer; transition: transform 0.2s ease; flex-shrink: 0;}
+        .whatsapp-avatar:hover { transform: scale(1.08); }
+        .whatsapp-user-info { flex: 1; overflow: hidden; text-align: left; position: relative; z-index: 1; display:flex; flex-direction:column; justify-content:center; }
+        .whatsapp-user-name { font-weight: 600; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
+        .whatsapp-user-id { font-size: 0.85rem; color: var(--wa-text-muted); font-family: inherit; margin-top:3px; }
+        .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: inherit; }
+        
+        /* WHATSAPP RIGHT SIDE - PERFECT FLEX LAYOUT */
+        .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
+        .chat-stream-header-bar { background: var(--wa-header); padding: 10px 15px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 10; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
+        .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.15rem; transition: 0.3s; margin-left: 4px; display:flex; align-items:center; justify-content:center; position:relative;}
+        .header-actions-btn:hover { background: rgba(255,255,255,0.1); color:var(--wa-text);}
+        .header-call-btn { color: var(--wa-green); font-family:'Orbitron'; font-size:0.85rem; border:1px solid var(--wa-green); padding:5px 10px; border-radius:6px; font-weight: bold;}
+        .wa-status-circle-icon { width: 35px; height: 35px; border-radius: 50%; border: 2px dashed var(--wa-text-muted); display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--wa-text-muted); font-size: 1rem; transition: 0.3s; flex-shrink: 0;}
+        .wa-status-circle-icon:hover { border-color: var(--wa-green); color: var(--wa-green); }
+        .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
+        
+        .chat-messages-scroll-stack { flex: 1 1 auto; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; z-index: 2; scroll-behavior: smooth; }
+        
+        .chat-interface-footer-inputs { padding: 12px 15px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
+        .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); outline: none; font-size: 1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);}
+        .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
+        .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
+        
+        /* MSG BUBBLES AND ACTIONS */
+        .bubble-msg-wrapper { max-width: 65%; padding: 6px 8px 8px 10px; border-radius: 8px; font-size: 0.95rem; line-height: 20px; position: relative; box-shadow: 0 1px 3px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; group; }
+        .bubble-msg-wrapper.first-in-group { margin-top: 10px; }
+        .bubble-text-content { display: inline-block; padding-right: 65px; padding-bottom: 4px; white-space: pre-wrap; min-width: 45px; }
+        .group-sender-name { font-size: 0.8rem; font-weight: 700; color: #00f2fe; margin-bottom: 4px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
+        .whatsapp-time { font-size: 0.7rem; color: rgba(255,255,255,0.7); position: absolute; bottom: 6px; right: 8px; display: flex; align-items: center; gap: 3px; margin: 0; line-height: 1; }
+        .whatsapp-tick-space { color: var(--wa-text-muted); font-weight: 900; font-size: 0.8rem; letter-spacing: -2px; margin-left: 2px; display:inline-block; transform:translateY(1px);}
+        .whatsapp-tick-space.double-blue { color: #53bdeb; }
+        .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); align-self: flex-end; border-top-right-radius: 0;}
+        .bubble-outgoing.has-tail::before { content: ""; position: absolute; top: 0; right: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 12px solid transparent; border-left: 12px solid var(--wa-msg-out); }
+        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
+        .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid var(--wa-msg-in); }
+        
+        /* PREMIUM TOOLS MENU (WHATSAPP) */
+        .premium-tools-menu { position:absolute; top: 45px; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.8); width: 200px; z-index: 10000; display: none; flex-direction: column; padding: 8px; }
+        .premium-tools-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .premium-tool-btn { padding: 10px; color: #fff; background: transparent; border: none; text-align: left; font-family: 'Rajdhani'; font-weight: bold; font-size: 0.95rem; cursor: pointer; border-radius: 6px; transition: 0.3s; display:flex; align-items:center; gap:8px; }
+        .premium-tool-btn:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
+        
+        /* NEW GEN-Z REACTIONS & ACTIONS MENU */
+        .msg-action-menu { position:absolute; top:-20px; right:-15px; background:var(--wa-header); border:1px solid var(--border-glass); border-radius:20px; padding:4px 8px; display:none; gap:10px; box-shadow:0 5px 15px rgba(0,0,0,0.7); z-index:10; white-space: nowrap;}
+        .bubble-msg-wrapper:hover .msg-action-menu { display:flex; animation: popAction 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes popAction { 0% { transform: scale(0.5); opacity:0;} 100% { transform: scale(1); opacity:1;} }
+        .msg-action-icon { font-size: 1.1rem; cursor:pointer; transition: 0.2s; filter: grayscale(0.2); }
+        .msg-action-icon:hover { transform: scale(1.3); filter: grayscale(0); }
+
+        .wa-attachment-popover { position: absolute; bottom: 75px; left: 15px; background: var(--wa-header); border-radius: 14px; padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 10000; transform: scale(0.8); opacity: 0; transform-origin: bottom left; transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; border: 1px solid var(--border-glass);}
+        .wa-attachment-popover.active { transform: scale(1); opacity: 1; pointer-events: all; }
+        .attach-icon-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+        .attach-circle { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: #fff; transition: 0.3s; box-shadow: 0 5px 12px rgba(0,0,0,0.5); }
+        .attach-icon-wrapper:hover .attach-circle { transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.7); }
+        .attach-icon-wrapper span { font-size: 0.9rem; color: var(--wa-text); font-weight: 600; }
+        
+        .hologram-call-effect { width: 100%; height: 220px; border-radius: 14px; margin: 0 auto 20px auto; border: 2px solid var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.4), inset 0 0 30px rgba(0,242,254,0.5); background-size: cover; background-position: center; position: relative; overflow: hidden; background-color: #0b141a; display:flex; justify-content:center; align-items:center; }
+        .hologram-call-effect video { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; filter: contrast(1.1) saturate(1.2) hue-rotate(2deg); }
+        .hologram-scanline { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: rgba(0,242,254,0.85); box-shadow: 0 0 15px #00f2fe; animation: scanHolo 2.5s infinite linear; pointer-events: none;}
+        
+        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.92); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); }
+        .nexus-popup-card-box { background: var(--wa-header); border: 2px solid var(--border-glass); padding: 30px; border-radius: 18px; width: 90%; max-width: 450px; text-align: center; color: var(--wa-text); box-shadow: 0 20px 50px rgba(0,0,0,0.7); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
+        
+        /* NEW CUSTOM CYBER CALENDAR MODAL */
+        #cyberCalendarOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .cyber-calendar-box { background: #111b21; border: 2px solid #00f2fe; border-radius: 16px; padding: 25px; width: 320px; box-shadow: 0 0 40px rgba(0,242,254,0.3); text-align: center; font-family: 'Orbitron'; }
+        .cal-header { display: flex; justify-content: space-between; align-items: center; color: #00f2fe; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold; }
+        .cal-header button { background: none; border: none; color: #00f2fe; font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+        .cal-header button:hover { color: #fff; transform: scale(1.2); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; color: #fff; }
+        .cal-day-header { color: #ff007f; font-size: 0.8rem; padding-bottom: 10px; }
+        .cal-day-cell { padding: 8px 0; border-radius: 6px; cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
+        .cal-day-cell:hover { background: rgba(0,242,254,0.3); }
+        .cal-day-cell.active { background: #00f2fe; color: #000; font-weight: bold; }
+        .cal-day-cell.empty { pointer-events: none; }
+
+        .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: var(--neon-cyan); margin-bottom: 20px; font-size: 1.5rem; font-weight:800; text-shadow: 0 0 10px rgba(0,242,254,0.4);}
+        .nexus-popup-input-field { width: 100%; padding: 14px; background: var(--wa-bg); border: 1px solid var(--border-glass); border-radius: 10px; color: var(--wa-text); font-size: 1rem; outline: none; font-weight: 600; margin-top: 10px; margin-bottom: 10px; transition: 0.3s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);}
+        .nexus-popup-input-field:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,242,254,0.3); }
+        .nexus-popup-flex-btns { display: flex; gap: 12px; margin-top: 25px; }
+        .nexus-popup-btn { flex: 1; padding: 12px; font-family: 'Rajdhani', sans-serif; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; transition: 0.3s; font-size:1.05rem; text-transform: uppercase; letter-spacing: 1px;}
+        .nexus-popup-btn.primary-btn { background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000; box-shadow: 0 4px 15px rgba(0,242,254,0.4);}
+        .nexus-popup-btn.cancel-btn { background: #2a3942; color: #e9edef; }
+        
+        .giant-compiler-layout { background: var(--card-bg); padding: 30px 25px; border-radius: 18px; border: 1px solid var(--border-glass); margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .giant-compiler-layout h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
+        
+        /* Modern Glass Panel for Admin UI - Compact */
+        .modern-glass-panel { background: var(--admin-glass); border-radius: 18px; border: 1px solid var(--border-glass); padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,242,254,0.1); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); margin-bottom: 25px; position: relative; overflow: hidden; transition: all 0.4s ease; }
+        .modern-glass-panel::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%); z-index: 0; pointer-events: none; }
+        .modern-glass-panel:hover { border-color: var(--neon-cyan); box-shadow: 0 20px 45px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,242,254,0.2); transform: translateY(-3px); }
+        .modern-glass-panel > * { position: relative; z-index: 1; }
+
+        .realtime-alert-banner { background: rgba(231,76,60,0.25); border: 2px solid #e74c3c; color: #e74c3c; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-family: 'Orbitron'; font-weight: bold; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(231,76,60,0.3); font-size:1rem; }
+        #adminPasswordResetAlertBanner { background: linear-gradient(90deg, #e74c3c, #c0392b); color: white; padding: 15px 20px; text-align: center; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.1rem; border-radius: 10px; border: 2px solid #fff; margin-bottom: 25px; box-shadow: 0 0 30px rgba(231, 76, 60, 0.8); animation: adminAlertBlink 1s infinite alternate; letter-spacing: 1px;}
+        @keyframes adminAlertBlink { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.85; transform: scale(1.02); box-shadow: 0 0 45px rgba(231, 76, 60, 1);} }
+        .analytics-grid-host { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+        .analytics-node-card { background: var(--card-bg); border: 2px solid var(--border-glass); border-radius: 12px; padding: 20px; text-align: left; width: 100%; box-shadow: 0 8px 20px rgba(0,0,0,0.5); position:relative;}
+        .analytics-node-card h5 { font-family: 'Orbitron'; font-size: 1.05rem; color: var(--neon-cyan); margin-bottom: 15px; letter-spacing: 0.5px; }
+        .chart-mock-container { width: 100%; height: 40px; border: 1px solid rgba(0,242,254,0.4); position: relative; margin-top: 15px; display: flex; align-items: center; justify-content: flex-start; background: rgba(0,0,0,0.6); box-shadow: inset 0 2px 8px rgba(0,0,0,0.7); border-radius: 8px; overflow: hidden; }
+        .chart-mock-bar { height: 100%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink)); box-shadow: 0 0 20px rgba(0,242,254,0.6); transition: width 1.2s cubic-bezier(0.075, 0.82, 0.165, 1); display: flex; align-items: center; padding-left: 15px; font-family: 'Orbitron'; font-weight: 900; font-size: 0.95rem; color: #fff; width: 0%; text-shadow: 0 1px 3px rgba(0,0,0,0.8);}
+        .matrix-ambient-particle-space { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        .char-counter-badge { font-size: 0.8rem; color: var(--wa-text-muted); position:absolute; right:15px; top:50%; transform:translateY(-50%); font-family: monospace; font-weight:bold;}
+        .emoji-matrix-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 15px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; max-height: 200px; overflow-y: auto; z-index: 5; box-shadow: 0 -8px 25px rgba(0,0,0,0.6); position: absolute; bottom: 100%; left: 0; width: 100%; }
+        .emoji-item-node { font-size: 1.8rem; text-align: center; cursor: pointer; transition: transform 0.1s ease; }
+        .emoji-item-node:hover { transform: scale(1.3); }
+        .mainframe-gif-drawer { background: #182229; border-top: 2px solid var(--wa-border); padding: 15px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 200px; overflow-y: auto; z-index: 5; box-shadow: 0 -8px 25px rgba(0,0,0,0.6); position: absolute; bottom: 100%; left: 0; width: 100%; }
+        .gif-thumb-item { width: 100%; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; }
+        .gif-thumb-item:hover { border-color: #00f2fe; transform: scale(1.05); box-shadow: 0 0 15px rgba(0,242,254,0.6); }
+        .mobile-back-btn { display: none; background: transparent; border: 1px solid var(--wa-border); color: var(--neon-cyan); padding: 8px 12px; border-radius: 8px; font-family: 'Orbitron'; font-size: 0.9rem; font-weight: bold; cursor: pointer; margin-right: 10px; }
+
         @media (max-width: 768px) {
             .top-cyber-navbar { padding: 10px; height: auto; flex-direction: column; gap: 10px; position: absolute; border-radius: 0; width: 100%; top: 0;}
             .navbar-controls { justify-content: center; }
@@ -339,15 +453,9 @@
     </style>
 </head>
 <body>
-    <!-- NEW: BOSS KEY FAKE SCREEN -->
-    <div id="bossKeyOverlay"></div>
-
-    <!-- NEW: CRT FLASH EFFECT DIV -->
-    <div id="crtFlash" class="crt-flash-effect hidden"></div>
-
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V22.0</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V21.0</div>
     </div>
 
     <div id="matrixAnimatedBackdrop" class="hidden"></div>
@@ -372,8 +480,7 @@
         <div id="thunderEffect" class="thunder-overlay"></div>
 
         <div class="cyber-lamp-core" id="lampDevice">
-            <!-- LAMP HEAD ID ADDED FOR TRACKING -->
-            <div class="metallic-shutter-head" id="lampHead">
+            <div class="metallic-shutter-head">
                 <div class="blinding-core-light"></div>
                 <div class="scanner-laser-ring"></div>
                 <div class="mechanical-gate gate-left"></div>
@@ -389,9 +496,6 @@
         </div>
         
         <div class="hud-glass-terminal" id="loginTerminal" onclick="event.stopPropagation()">
-            <!-- AVATAR POPUP -->
-            <img id="loginAvatarPopup" src="" class="login-avatar-popup">
-
             <div class="hud-top-bar">
                 <div class="hud-status-chip">AI CORE: LIVE</div>
                 <div class="hud-status-chip cyan-pulse">UNIVERSAL SYNC: OK</div>
@@ -404,12 +508,9 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <!-- PASSWORD MATRIX DECRYPTION EFFECT IN JS -->
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.matrixDecryptionTypingEffect(this)">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.debouncedAutoLoginCheck()">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
-                    <!-- VOICE LOGIN BUTTON -->
-                    <button type="button" class="voice-login-btn" id="voiceBiometricBtn" onclick="window.triggerVoiceBiometricLogin()" title="Use Voice Recognition">🎙️</button>
                 </div>
                 <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
                 <div style="display:flex; justify-content:space-between; margin-top:20px; font-family:'Orbitron'; font-size:0.9rem;">
@@ -421,25 +522,12 @@
         </div>
     </div>
 
-    <!-- ==================== PRO NOTEPAD INTERFACE ==================== -->
     <div id="masterNotesInterfaceBlock" class="hidden">
         <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-            
-            <!-- SMART CATEGORIZATION FOR NOTEPAD -->
-            <div class="category-tab-container zen-exempt" id="notepadCategoryTabs">
-                <div class="category-tab active" onclick="window.switchNoteCategory('all', this)">All Notes 📚</div>
-                <div class="category-tab" onclick="window.switchNoteCategory('work', this)">Work 💼</div>
-                <div class="category-tab" onclick="window.switchNoteCategory('personal', this)">Personal 🏠</div>
-                <div class="category-tab" onclick="window.switchNoteCategory('ideas', this)">Ideas 💡</div>
-                <div class="category-tab" onclick="window.switchNoteCategory('vent', this)" style="color:#ff007f; border-color:#ff007f;">🔥 Vent (Burn Mode)</div>
-            </div>
-
             <div class="panel-header-flex" style="border-bottom:none; margin-bottom:10px; padding-bottom:0;">
-                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 0;">🧠 PRO WORKSPACE NOTEPAD V22.0</h3>
+                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 0;">🧠 PRO WORKSPACE NOTEPAD V21.0</h3>
                 <div style="display: flex; gap: 10px;">
                     <button class="nav-btn" onclick="window.toggleZenMode()" style="color:var(--neon-green); border-color:var(--neon-green);">🧘‍♂️ ZEN MODE</button>
-                    <!-- NEW: HYPER-FOCUS TOGGLE -->
-                    <button class="nav-btn" onclick="window.toggleHyperFocusMode()" style="color:var(--neon-purple); border-color:var(--neon-purple);">🎯 HYPER-FOCUS</button>
                     <button class="nav-btn" onclick="window.closeMasterNotepad()" style="color:#e74c3c; border-color:#e74c3c;">✖ CLOSE</button>
                 </div>
             </div>
@@ -494,8 +582,6 @@
                 <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertUnorderedList')" title="Bullet List">⏺</button>
                 <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('insertOrderedList')" title="Numbered List">🔢</button>
                 <button class="note-tool-btn" onclick="window.insertChecklistToNotepad()" title="Insert Checklist">☑</button>
-                <!-- NEW: AUTO-CHECKLIST EXTRACTOR -->
-                <button class="note-tool-btn" onclick="window.extractAutoChecklist()" title="Auto-Extract To-Do List" style="color:#2ecc71; border-color:#2ecc71;">🤖 Smart Task</button>
                 <div class="toolbar-divider"></div>
                 <div class="color-picker-wrapper" title="Text Color">
                     🎨 <input type="color" class="color-picker-input" onchange="document.execCommand('foreColor', false, this.value); window.updateNotepadLiveCounters();" value="#000000">
@@ -514,7 +600,7 @@
             
             <div class="notes-editor-container-shell zen-exempt" id="printAreaNotepad">
                 <div class="wordpad-container">
-                    <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" oninput="window.updateNotepadLiveCounters(); window.handleHyperFocusLine(event);"></div>
+                    <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" oninput="window.updateNotepadLiveCounters()"></div>
                     
                     <div id="slashCommandMenu" class="slash-command-menu">
                         <div class="slash-cmd-item" onclick="window.triggerNoteFormatBlock('h1'); document.getElementById('slashCommandMenu').style.display='none';">🔠 Heading 1</div>
@@ -533,23 +619,17 @@
             </div>
 
             <div style="display:flex; gap:15px; margin-top:20px; flex-shrink:0;">
-                <div style="flex:1; display:flex; background:rgba(0,0,0,0.4); border-radius:10px; border:1px solid var(--neon-cyan); padding:5px;" id="noteLockWrapper">
+                <div style="flex:1; display:flex; background:rgba(0,0,0,0.4); border-radius:10px; border:1px solid var(--neon-cyan); padding:5px;">
                     <span style="padding:10px; font-size:1.2rem;">🔒</span>
                     <input type="password" id="noteLockPasswordInput" class="note-password-input" placeholder="Set Lock Password (Optional)">
                 </div>
-                <button class="hud-engage-btn" id="btnTransmitNote" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe); padding:15px;" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
-                <!-- NEW BURN THERAPY BUTTON (Hidden by default) -->
-                <button class="hud-engage-btn hidden" id="btnBurnNote" style="flex:2; background:linear-gradient(135deg, #ff4500, #c0392b); color:#fff; padding:15px; text-shadow: 0 0 10px #000;" onclick="window.executeBurnTherapyProtocol()">🔥 BURN IT (PERMANENT DELETE)</button>
-                
+                <button class="hud-engage-btn" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe); padding:15px;" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
                 <button class="abort-btn" style="flex:1; padding:15px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
             </div>
-            <input type="hidden" id="currentNoteCategoryInput" value="all">
-
             <div class="notes-realtime-logs-wrapper zen-exempt" id="realtimeCloudNotesViewStack"></div>
         </div>
     </div>
     
-    <!-- ==================== CUSTOMER DASHBOARD CORE ==================== -->
     <div class="dashboard-panel-core" id="customerDashboard">
         <div class="hud-container-panel text-left">
             <div id="customerMarqueeContainer" style="background:rgba(231,76,60,0.15); border:1px solid #e74c3c; padding:10px; border-radius:10px; margin-bottom:20px; font-family:'Orbitron'; font-size:1rem; color:#fff; font-weight:bold; display:none;">
@@ -642,7 +722,6 @@
                 </div>
             </div>
 
-            <!-- ==================== UPGRADED WHATSAPP INTERFACE ==================== -->
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
                     <div class="chat-target-userlist-pane">
@@ -668,8 +747,6 @@
                     </div>
                     
                     <div class="chat-stream-message-container">
-                        <div class="parallax-bg-layer" id="chatParallaxBg"></div>
-
                         <div class="chat-stream-header-bar">
                             <div style="display:flex; align-items:center; gap:10px;">
                                 <button class="mobile-back-btn" onclick="window.exitMobileChatView()">⬅️ Back</button>
@@ -677,9 +754,7 @@
                                 <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div>
                                     <div id="chatActiveUserBioNode" style="font-size: 0.75rem; color: var(--wa-text-muted); font-family: inherit; margin-top: 2px;"></div>
-                                    <div id="whatsappTypingStatusIndicator" class="typing-dots-container hidden">
-                                        <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
-                                    </div>
+                                    <div id="whatsappTypingStatusIndicator" style="font-size:0.75rem; color:var(--wa-green); font-family:inherit; font-weight:bold;" class="hidden">typing...</div>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
@@ -722,7 +797,7 @@
                             <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:0.9rem;"><i>Pinned Message Feature Upgrade</i></div>
                         </div>
 
-                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper" onscroll="window.handleParallaxScroll(this)">
+                        <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
                             <div style="text-align:center; margin: 8px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:4px 10px; border-radius:6px; font-size:0.75rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>
                         </div>
                         
@@ -749,20 +824,12 @@
                                 <div class="attach-icon-wrapper">
                                     <div class="attach-circle" style="background: linear-gradient(135deg, #009de1, #30c5ff);">👤</div><span>Contact</span>
                                 </div>
-                                <div class="attach-icon-wrapper" onclick="window.createInteractivePoll()">
+                                <div class="attach-icon-wrapper">
                                     <div class="attach-circle" style="background: linear-gradient(135deg, #f39c12, #f1c40f);">📊</div><span>Polls</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div id="waReplyBanner" class="hidden" style="padding:10px 15px; background:var(--wa-search-input); border-left:4px solid var(--wa-green); display:flex; justify-content:space-between; align-items:center;">
-                            <div style="display:flex; flex-direction:column; gap:4px;">
-                                <span id="waReplyName" style="color:var(--wa-green); font-weight:bold; font-size:0.9rem;">Replying to...</span>
-                                <span id="waReplyText" style="color:var(--wa-text-muted); font-size:0.85rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:200px;">Message text</span>
-                            </div>
-                            <span style="cursor:pointer; color:var(--wa-text-muted);" onclick="window.cancelSwipeReply()">✖</span>
-                        </div>
-
                         <div style="padding: 4px 12px; display:flex; align-items:center; background:var(--wa-header); border-top:1px solid rgba(255,255,255,0.05);">
                             <label style="color:#00f2fe; margin-left:5px; font-weight:bold; cursor:pointer; font-size:0.75rem;"><input type="checkbox" id="isViewOnceCheck" style="margin-right:4px;"> ① View Once Media</label>
                             <label style="color:#ff007f; margin-left:15px; font-weight:bold; cursor:pointer; font-size:0.75rem;"><input type="checkbox" id="isDisappearingCheck" style="margin-right:4px;"> ⏱️ Disappearing Msgs (24h)</label>
@@ -775,13 +842,8 @@
                             <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="window.toggleWaAttachmentMenu(event)">📎</button>
                             
                             <div style="flex: 1; position: relative; min-width: 120px; display:flex; align-items:center;">
-                                <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message or / for commands..." oninput="window.handleUserTypingSimulationTracker(); window.checkQuickCommands(this);" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
+                                <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message..." oninput="window.handleUserTypingSimulationTracker()" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
                                 <span id="chatInputCharCounter" class="char-counter-badge hidden">0/250</span>
-                                <div id="quickCommandMenu" style="position:absolute; bottom:100%; left:0; width:100%; background:var(--wa-header); border:1px solid var(--wa-border); border-radius:10px; display:none; flex-direction:column; padding:5px; z-index:100;">
-                                    <div class="slash-cmd-item" onclick="window.insertQuickReply('/address')">/address - Insert Home Address</div>
-                                    <div class="slash-cmd-item" onclick="window.insertQuickReply('/email')">/email - Insert Email ID</div>
-                                    <div class="slash-cmd-item" onclick="window.insertQuickReply('/thanks')">/thanks - Thank you message</div>
-                                </div>
                             </div>
                             <button id="voiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
                             <button onclick="window.dispatchMatrixChatMessage()" class="whatsapp-circle-btn" style="color:var(--wa-green); transform:rotate(-45deg); font-size:1.5rem;">➤</button>
@@ -789,12 +851,17 @@
                     </div>
 
                     <div id="whatsappStatusDashboardPanel" class="status-dashboard-overlay hidden">
-                        <div class="status-dashboard-header"><button onclick="window.closeStatusDashboardOverlay()">⬅️</button> Status</div>
+                        <div class="status-dashboard-header">
+                            <button onclick="window.closeStatusDashboardOverlay()">⬅️</button> Status
+                        </div>
                         <div style="overflow-y:auto; flex:1;">
                             <div class="status-section-title">My Status</div>
                             <div class="chat-user-item-node" onclick="document.getElementById('statusUploadInputNode').click()">
                                 <img class="whatsapp-avatar" id="myStatusPreviewAvatar" src="">
-                                <div class="whatsapp-user-info"><div class="whatsapp-user-name">My status</div><div class="whatsapp-user-id">Tap to add status update</div></div>
+                                <div class="whatsapp-user-info">
+                                    <div class="whatsapp-user-name">My status</div>
+                                    <div class="whatsapp-user-id">Tap to add status update</div>
+                                </div>
                             </div>
                             <div class="status-section-title">Recent updates</div>
                             <div id="recentStatusUpdatesContainer"></div>
@@ -808,8 +875,16 @@
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
                     <p style="color:var(--text-sub); margin-bottom: 20px; font-size: 0.95rem;">Send a direct support ticket or feature request to the Mainframe Admin.</p>
-                    <div class="hud-input-cluster"><input type="text" id="supportTicketSubject" placeholder=" "><label>Ticket Subject</label><div class="neon-glow-underline" style="background:#f1c40f;"></div></div>
-                    <div class="hud-input-cluster"><textarea id="supportTicketBody" placeholder=" " style="height:100px;"></textarea><label>Explain your request / issue...</label><div class="neon-glow-underline" style="background:#f1c40f;"></div></div>
+                    <div class="hud-input-cluster">
+                        <input type="text" id="supportTicketSubject" placeholder=" ">
+                        <label>Ticket Subject</label>
+                        <div class="neon-glow-underline" style="background:#f1c40f;"></div>
+                    </div>
+                    <div class="hud-input-cluster">
+                        <textarea id="supportTicketBody" placeholder=" " style="height:100px;"></textarea>
+                        <label>Explain your request / issue...</label>
+                        <div class="neon-glow-underline" style="background:#f1c40f;"></div>
+                    </div>
                     
                     <div class="hud-input-cluster" style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; border: 2px dashed rgba(241,196,15,0.5);">
                         <div class="cyber-upload-node" onclick="document.getElementById('supportTicketFile').click()" style="border:none; box-shadow:none; padding:5px;">
@@ -830,8 +905,7 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
-
-    <!-- ==================== ADMIN DASHBOARD CORE (GOD MODE) ==================== -->
+    
     <div class="dashboard-panel-core" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left; max-width:1200px;">
             <div id="adminPasswordResetAlertBanner" class="hidden"></div>
@@ -869,26 +943,24 @@
                     <div class="icon" style="text-shadow: 0 0 15px #f1c40f;">📝</div><h3 style="color: #f1c40f;">Notes Pro</h3><p>Admin Workspace Notepad.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('workspace')" style="border-color:#2ecc71;">
-                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Vault / Policy</h3><p>Review & update customer documents.</p>
+                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Workspace</h3><p>Review & update customer policies.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('spychat')" style="border-color:#2ecc71;">
-                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">💬</div><h3 style="color: #2ecc71;">Spychat Web</h3><p>Silent Monitor & Live Intercept.</p>
+                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">💬</div><h3 style="color: #2ecc71;">Spychat Web</h3><p>Admin WhatsApp interface.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('tickets')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">🎫</div><h3 style="color: #2ecc71;">Support</h3><p>View & Reply to User Tickets.</p>
-                </div>
-                <div class="menu-card" onclick="window.switchAdminSubSection('godeye')" style="border-color:#ff007f;">
-                    <div class="icon" style="text-shadow: 0 0 15px #ff007f;">🕸️</div><h3 style="color: #ff007f;">God-Eye Graph</h3><p>3D Matrix Connection Map.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('aispy')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">🤖</div><h3 style="color: #2ecc71;">AI Monitor</h3><p>Intercept & review AI comms.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('stats')" style="border-color:#2ecc71;">
-                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">📊</div><h3 style="color: #2ecc71;">System Status</h3><p>Diagnostics & Purge controls.</p>
+                    <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">📊</div><h3 style="color: #2ecc71;">System Status</h3><p>Server diagnostics & wipe controls.</p>
                 </div>
             </div>
 
             <div class="customerCardsContainer" id="adminStaticContainer">
+                
                 <div id="creationBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: rgba(0, 242, 254, 0.6); box-shadow: var(--cyber-glow);">
                         <h3 class="neon-cyan-text" style="font-size: 1.5rem; margin-bottom: 20px;">⚡ ACCOUNT ENGINE IDENTITY</h3>
@@ -935,6 +1007,7 @@
                     
                     <div class="modern-glass-panel" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.15);">
                         <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.4rem; margin-bottom:20px; text-shadow:0 0 12px rgba(0,242,254,0.3);">🌍 GLOBAL FEATURE TOGGLES & CONFIGS</h4>
+                        
                         <div style="margin-bottom:20px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; border: 1px dashed var(--neon-cyan); display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div>
                                 <h5 style="color:#fff; font-family:'Orbitron'; font-size:1rem; margin-bottom: 10px;">⚡ LOGIN THUNDER INTENSITY</h5>
@@ -948,12 +1021,23 @@
                                 <input type="range" id="adminLogoutControl" min="10" max="7200" step="10" value="60" class="cyber-range" oninput="document.getElementById('lblAdminLogoutControl').innerText = this.value; window.updateGlobalFeatures();">
                             </div>
                         </div>
+
                         <div class="cyber-toggle-container">
-                            <label class="toggle-switch-wrapper" style="border-color:#2ecc71;"><span style="color:#2ecc71;">ENABLE POLICY VAULT</span> <input type="checkbox" id="globalTog_policy" class="toggle-switch" onchange="window.updateGlobalFeatures()"></label>
-                            <label class="toggle-switch-wrapper" style="border-color:#00f2fe;"><span style="color:#00f2fe;">ENABLE NOTES PRO</span> <input type="checkbox" id="globalTog_notes" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked></label>
-                            <label class="toggle-switch-wrapper" style="border-color:#f1c40f;"><span style="color:#f1c40f;">ENABLE CLOUD VAULT</span> <input type="checkbox" id="globalTog_vault" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked></label>
-                            <label class="toggle-switch-wrapper" style="border-color:#ff007f;"><span style="color:#ff007f;">ENABLE GAMING NEXUS</span> <input type="checkbox" id="globalTog_gaming" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked></label>
-                            <label class="toggle-switch-wrapper" style="grid-column: 1 / -1; border-color:#00a884;"><span style="color:#00a884; font-size:1rem;">ENABLE WHATSAPP WEB MULTIPLAYER</span> <input type="checkbox" id="globalTog_chat" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked></label>
+                            <label class="toggle-switch-wrapper" style="border-color:#2ecc71;">
+                                <span style="color:#2ecc71;">ENABLE POLICY VAULT</span> <input type="checkbox" id="globalTog_policy" class="toggle-switch" onchange="window.updateGlobalFeatures()">
+                            </label>
+                            <label class="toggle-switch-wrapper" style="border-color:#00f2fe;">
+                                <span style="color:#00f2fe;">ENABLE NOTES PRO</span> <input type="checkbox" id="globalTog_notes" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked> 
+                            </label>
+                            <label class="toggle-switch-wrapper" style="border-color:#f1c40f;">
+                                <span style="color:#f1c40f;">ENABLE CLOUD VAULT</span> <input type="checkbox" id="globalTog_vault" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                            </label>
+                            <label class="toggle-switch-wrapper" style="border-color:#ff007f;">
+                                <span style="color:#ff007f;">ENABLE GAMING NEXUS</span> <input type="checkbox" id="globalTog_gaming" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                            </label>
+                            <label class="toggle-switch-wrapper" style="grid-column: 1 / -1; border-color:#00a884;">
+                                <span style="color:#00a884; font-size:1rem;">ENABLE WHATSAPP WEB MULTIPLAYER</span> <input type="checkbox" id="globalTog_chat" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                            </label>
                         </div>
                     </div>
 
@@ -971,32 +1055,24 @@
                     <div id="policyCardsStack"></div>
                 </div>
 
-                <div id="adminGodEyeBlock" class="hidden">
-                    <div class="modern-glass-panel" style="border-color: #ff007f; box-shadow: 0 0 25px rgba(255,0,127,0.2);">
-                        <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.5rem; margin-bottom:15px; text-shadow:0 0 10px rgba(255,0,127,0.4);">🕸️ GOD-EYE NETWORK MAP</h3>
-                        <p style="color:var(--text-sub); margin-bottom:20px; font-size:0.95rem;">Live Neural Visualization: Track who is talking to whom across the Matrix.</p>
-                        <div id="adminGodEyeNetworkContainer" class="active">
-                            <canvas id="godEyeCanvas" style="width:100%; height:100%;"></canvas>
-                        </div>
-                        <button onclick="window.renderGodEyeGraph()" class="hud-engage-btn" style="background:#ff007f; color:#fff; padding:10px; margin-top: 10px;">REFRESH GRAPH</button>
-                    </div>
-                </div>
-
                 <div id="adminSpyChatBlock" class="hidden">
                     <div class="chat-io-grid-matrix" id="adminChatGridBox">
                         <div class="chat-target-userlist-pane">
                             <div class="wa-top-bar">
                                 <span>WhatsApp Admin Proxy</span>
-                                <div class="wa-top-bar-icons"><span>📷</span><span>⋮</span></div>
+                                <div class="wa-top-bar-icons">
+                                    <span>📷</span><span>⋮</span>
+                                </div>
                             </div>
                             <div class="whatsapp-search-box">
                                 <input type="text" id="adminClientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterAdminClientChatContactList()">
                                 <div class="wa-status-circle-icon" title="View Statuses" onclick="window.openStatusViewerEngine()">⭕</div>
                             </div>
                             <div id="adminSpyUsersListWrapper" style="flex:1; overflow-y:auto;"></div>
+                            
                             <div class="wa-bottom-tabs">
                                 <div class="active-tab">💬<br>SpyChats</div>
-                                <div onclick="window.switchAdminSubSection('godeye')">🕸️<br>God-Eye</div>
+                                <div onclick="window.switchAdminSubSection('stats')">📊<br>Stats</div>
                                 <div onclick="window.switchAdminSubSection('workspace')">💼<br>Vault</div>
                                 <div onclick="window.switchAdminSubSection('aispy')">🤖<br>Intercept</div>
                             </div>
@@ -1008,16 +1084,10 @@
                                     <img id="adminChatActiveHeaderAvatarNode" class="whatsapp-avatar" src="" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('spyActiveTargetUserContext'))">
                                     <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('spyActiveTargetUserContext'))">
                                         <div class="whatsapp-user-name" id="spyActiveHeaderTitle" style="color:var(--wa-text);">Select Pipeline...</div>
-                                        <div id="adminWhatsappTypingStatusIndicator" class="typing-dots-container hidden">
-                                            <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
-                                        </div>
+                                        <div id="adminWhatsappTypingStatusIndicator" style="font-size:0.75rem; color:var(--wa-green); font-family:inherit; font-weight:bold;" class="hidden">typing...</div>
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
-                                    <label style="color:#e74c3c; font-family:'Orbitron'; font-weight:bold; margin-right:10px; font-size:0.8rem; border:1px solid #e74c3c; padding:4px 8px; border-radius:6px; cursor:pointer;" title="Read messages without giving Blue Ticks">
-                                        <input type="checkbox" id="adminGhostReadToggle" checked> 👻 Stealth Read
-                                    </label>
-
                                     <button id="waLockBtn_admin" onclick="window.toggleWaAreaLock('adminChatGridBox', 'waLockBtn_admin')" class="header-actions-btn" title="Lock Area" style="font-size:0.9rem; border:1px solid var(--wa-border); border-radius:6px; padding:5px 8px; font-weight:bold;">🔓 Unlock</button>
                                     
                                     <button onclick="window.openCyberCalendar('waSmartDateJump_Admin')" class="header-actions-btn" title="Jump to Date" style="background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.4); border-radius: 6px; padding: 5px 10px; font-family: 'Orbitron'; font-weight: bold; color: var(--neon-green); font-size: 0.8rem; transition: 0.3s; display: flex; align-items: center; gap: 4px; box-shadow: 0 0 8px rgba(46,204,113,0.2);">
@@ -1037,36 +1107,49 @@
                                             <button class="premium-tool-btn" onclick="window.triggerMassMediaDownloader()">📥 Download All Media</button>
                                         </div>
                                     </div>
+
                                     <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
                                 </div>
                             </div>
-                            
-                            <div class="parallax-bg-layer" id="adminParallaxBg"></div>
-                            <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack" onscroll="window.handleParallaxScroll(this)"></div>
+                            <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
                             
                             <div style="position:relative; z-index:100;">
                                 <div class="emoji-matrix-drawer hidden" id="adminSystemEmojiMatrixBoxNode"></div>
                                 <div class="mainframe-gif-drawer hidden" id="adminMainframeGifContainerBox"></div>
+                                
                                 <div class="wa-attachment-popover" id="adminWaAttachmentMenuBox">
-                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()"><div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span></div>
-                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()"><div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span></div>
-                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()"><div class="attach-circle" style="background: linear-gradient(135deg, #a73ec9, #c863e4);">🖼️</div><span>HD Photo</span></div>
-                                    <div class="attach-icon-wrapper"><div class="attach-circle" style="background: linear-gradient(135deg, #d95e26, #e77c98);">🎧</div><span>Audio</span></div>
-                                    <div class="attach-icon-wrapper"><div class="attach-circle" style="background: linear-gradient(135deg, #1fa855, #41d279);">📍</div><span>Location</span></div>
-                                    <div class="attach-icon-wrapper"><div class="attach-circle" style="background: linear-gradient(135deg, #009de1, #30c5ff);">👤</div><span>Contact</span></div>
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #a73ec9, #c863e4);">🖼️</div><span>HD Photo</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #d95e26, #e77c98);">🎧</div><span>Audio</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #1fa855, #41d279);">📍</div><span>Location</span>
+                                    </div>
+                                    <div class="attach-icon-wrapper">
+                                        <div class="attach-circle" style="background: linear-gradient(135deg, #009de1, #30c5ff);">👤</div><span>Contact</span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="chat-interface-footer-inputs">
                                 <button class="whatsapp-circle-btn toggle-emoji-btn-ref" onclick="window.toggleAdminEmojiDrawerOverlayPanel(event)">😀</button>
+                                
                                 <button class="whatsapp-circle-btn toggle-gif-btn-ref" onclick="window.toggleAdminWaAttachmentMenu(event)">📎</button>
                                 <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
                                 
                                 <div style="flex: 1; position: relative; min-width: 120px; display:flex; align-items:center;">
-                                    <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="[LIVE INTERCEPT] Alter or Send Message as User..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()" style="border: 1px solid #ff007f; color: #ff007f; font-family: 'Orbitron'; font-weight: bold; box-shadow: inset 0 0 10px rgba(255,0,127,0.2);">
+                                    <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()">
                                 </div>
                                 <button id="adminVoiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
-                                <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="padding:8px 12px; background:#ff007f; border-radius:50%; color:#fff; font-weight:bold; cursor:pointer; border:none; transform:rotate(-45deg); font-size:1.2rem; box-shadow: 0 0 10px #ff007f;">➤</button>
+                                <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="padding:8px 12px; background:var(--wa-green); border-radius:50%; color:#111b21; font-weight:bold; cursor:pointer; border:none; transform:rotate(-45deg); font-size:1.2rem;">➤</button>
                             </div>
                         </div>
                     </div>
@@ -1122,7 +1205,6 @@
         </div>
     </div>
 
-    <!-- ==================== UNIVERSAL POPUPS & MODALS ==================== -->
     <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="window.closeCustomInlinePopupEngine()"></div>
 
     <div id="cyberCalendarOverlay" class="hidden" onclick="window.closeCyberCalendar()">
@@ -1160,23 +1242,12 @@
         </div>
     </div>
 
-    <!-- ==================== JAVASCRIPT CORE ENGINE (FIREBASE + LOGIC) ==================== -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // Security & Boss Key (Double ESC)
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
-            // NEW: THE BOSS KEY (DOUBLE ESCAPE)
-            if (e.key === 'Escape') {
-                const now = Date.now();
-                if (window.lastEscPress && (now - window.lastEscPress < 400)) {
-                    const bossKeyNode = document.getElementById('bossKeyOverlay');
-                    if(bossKeyNode) bossKeyNode.classList.toggle('active');
-                }
-                window.lastEscPress = now;
-            }
              if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
                  return false;
              }
@@ -1203,7 +1274,6 @@
 
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
 
-        // --- GLOBAL MATRIX SYSTEM STATE ---
         const MatrixSystemState = (() => {
             let state = {
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
@@ -1235,6 +1305,7 @@
                 if (MatrixSystemState.get('loggedInCustomerID') !== "") {
                     let timeoutSec = parseInt(MatrixSystemState.get('globalFeatures').autoLogoutTime) || 60;
                     timeoutSec = Math.max(10, Math.min(7200, timeoutSec));
+
                     activityTimeout = setTimeout(() => {
                         window.playSynthesizedSound(300, 'sawtooth', 0.5);
                         alert(`⏳ ${timeoutSec} SECONDS INACTIVITY DETECTED.\nFor security reasons, your portal has been automatically logged out.`);
@@ -1250,152 +1321,436 @@
         }
         executeAutoLogoutTracker();
 
-        // --- NEW: LOGIN DECRYPTION & VOICE BIOMETRICS ---
-        window.matrixDecryptionTypingEffect = function(inputElement) {
-            const val = inputElement.value;
-            if(val.length > 0) {
-                const matrixChars = "!@#$%^&*()_+-=[]{}|;':,./<>?";
-                let glitch = "";
-                for(let i=0; i<val.length; i++) { glitch += matrixChars.charAt(Math.floor(Math.random() * matrixChars.length)); }
-                window.playSynthesizedSound(800 + Math.random()*200, 'square', 0.05);
-            }
-            window.debouncedAutoLoginCheck();
-        };
-
-        window.triggerVoiceBiometricLogin = function() {
-            const btn = document.getElementById('voiceBiometricBtn');
-            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!window.SpeechRecognition) { alert("Voice Login not supported in your browser."); return; }
-            
-            const recognition = new window.SpeechRecognition();
-            recognition.continuous = false;
-            
-            recognition.onstart = function() {
-                btn.classList.add('listening');
-                document.getElementById('accessNodePass').placeholder = "Listening... Speak Password";
-                window.playSynthesizedSound(600, 'sine', 0.2);
-            };
-            recognition.onresult = function(e) {
-                const voicePass = e.results[0][0].transcript.trim().replace(/\s/g, "");
-                document.getElementById('accessNodePass').value = voicePass;
-                window.checkAutoLogin();
-            };
-            recognition.onend = function() {
-                btn.classList.remove('listening');
-                document.getElementById('accessNodePass').placeholder = " ";
-            };
-            recognition.start();
-        };
-
-        // --- NEW: BURN THERAPY PROTOCOL (VENT MODE) ---
-        window.executeBurnTherapyProtocol = function() {
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if(!editor.innerText.trim()) return;
-            
-            window.playSynthesizedSound(100, 'sawtooth', 1.5); // Low rumble sound
-            editor.classList.add('burn-active');
-            
-            setTimeout(() => {
-                editor.innerHTML = "";
-                editor.classList.remove('burn-active');
-                window.updateNotepadLiveCounters();
-            }, 1500);
-        };
-
-        // --- NEW: HYPER-FOCUS MODE LOGIC ---
-        window.toggleHyperFocusMode = function() {
-            const shell = document.getElementById('printAreaNotepad');
-            if(shell) shell.classList.toggle('hyper-focus-active');
-        };
-
-        window.handleHyperFocusLine = function(e) {
-            const shell = document.getElementById('printAreaNotepad');
-            if(!shell || !shell.classList.contains('hyper-focus-active')) return;
-            
-            const selection = window.getSelection();
-            if(!selection.focusNode) return;
-            
-            let currentNode = selection.focusNode;
-            if(currentNode.nodeType === 3) currentNode = currentNode.parentNode;
-            
-            document.querySelectorAll('#richNoteWritingPadEditable *').forEach(el => el.classList.remove('focus-line'));
-            
-            const blockElement = currentNode.closest('p, div, h1, h2, h3, li');
-            if(blockElement) blockElement.classList.add('focus-line');
-        };
-
         // 🧘‍♂️ ZEN MODE TOGGLE
         window.toggleZenMode = function() {
             document.body.classList.toggle('zen-mode-active');
         };
-        
-        // EYE OF GOD LAMP TRACKING LOGIC
-        document.addEventListener('mousemove', (e) => {
-            if (MatrixSystemState.get('loggedInCustomerID') === "") {
-                const head = document.getElementById('lampHead');
-                if (head && document.getElementById('mainStage').classList.contains('activated')) {
-                    const rect = head.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-                    
-                    const angleX = (e.clientY - centerY) / 30; // Pitch
-                    const angleY = (e.clientX - centerX) / -30; // Yaw
-                    
-                    head.style.transform = `translateZ(30px) rotateX(${Math.max(-20, Math.min(20, angleX))}deg) rotateY(${Math.max(-30, Math.min(30, angleY))}deg)`;
+
+        window.toggleWaPremiumTools = function() {
+            const menu = document.getElementById('waPremiumToolsMenu');
+            if(menu) { menu.classList.toggle('active'); }
+        };
+
+        window.toggleUserPremiumFeatureSelf = function(featureKey) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            if(!user || !user.premium || !user.premium[featureKey]) {
+                alert("❌ ACCESS DENIED: You don't have premium permission for this feature. Contact Admin.");
+                return;
+            }
+            
+            let currentLocalState = localStorage.getItem(`local_prem_${featureKey}_${currentUid}`) === 'true';
+            let newState = !currentLocalState;
+            localStorage.setItem(`local_prem_${featureKey}_${currentUid}`, newState.toString());
+            
+            if(featureKey === 'stealthMode') {
+                const btn = document.getElementById('btnPremiumStealth');
+                if(btn) btn.innerHTML = `👻 Ghost/Stealth Mode: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+                if(newState) update(ref(db, `users/${currentUid}`), { isOnlineNode: false }); 
+            }
+            if(featureKey === 'autoReply') {
+                const btn = document.getElementById('btnPremiumAutoReply');
+                if(btn) btn.innerHTML = `🤖 Auto-Reply Bot: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+            }
+        };
+
+        window.triggerMassMediaDownloader = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId') || MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!currentUid || !targetUid) return;
+
+            if(MatrixSystemState.get('currentMode') === 'user') {
+                const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+                if(!user || !user.premium || !user.premium.massDownload) {
+                    alert("❌ ACCESS DENIED: Mass Media Downloader requires Admin Permission.");
+                    return;
                 }
+            }
+
+            alert("📥 Initiating Secure Mass Media Extraction...\nThis feature gathers all images/audio from this chat pipeline.");
+            
+            const rawData = window.cachedChatsData || {};
+            let medias = [];
+            Object.keys(rawData).forEach(key => {
+                const m = rawData[key];
+                if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
+                    if(m.mediaPayload && !m.isDeletedForEveryone) medias.push(m.mediaPayload);
+                }
+            });
+
+            if(medias.length === 0) { alert("No media found in this chat."); return; }
+            
+            let downloadCount = Math.min(medias.length, 5);
+            for(let i=0; i<downloadCount; i++) {
+                setTimeout(() => {
+                    const a = document.createElement('a'); a.href = medias[i]; a.download = `Nexus_Mass_Extract_${Date.now()}_${i}.png`; 
+                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                }, i * 500);
+            }
+        };
+
+        // 📅 CYBER CALENDAR ENGINE
+        let currentCalMonth = new Date().getMonth();
+        let currentCalYear = new Date().getFullYear();
+        let targetCalInputId = "";
+
+        window.openCyberCalendar = function(inputId) {
+            targetCalInputId = inputId;
+            currentCalMonth = new Date().getMonth();
+            currentCalYear = new Date().getFullYear();
+            renderCyberCalendarGrid();
+            document.getElementById('cyberCalendarOverlay').classList.remove('hidden');
+        };
+
+        window.closeCyberCalendar = function() {
+            document.getElementById('cyberCalendarOverlay').classList.add('hidden');
+        };
+
+        window.changeCalendarMonth = function(dir) {
+            currentCalMonth += dir;
+            if(currentCalMonth > 11) { currentCalMonth = 0; currentCalYear++; }
+            else if(currentCalMonth < 0) { currentCalMonth = 11; currentCalYear--; }
+            renderCyberCalendarGrid();
+        };
+
+        function renderCyberCalendarGrid() {
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            document.getElementById('cyberCalMonthYearDisplay').innerText = `${monthNames[currentCalMonth]} ${currentCalYear}`;
+            
+            const firstDay = new Date(currentCalYear, currentCalMonth, 1).getDay();
+            const daysInMonth = new Date(currentCalYear, currentCalMonth + 1, 0).getDate();
+            const grid = document.getElementById('cyberCalDaysGrid');
+            grid.innerHTML = "";
+
+            for(let i=0; i<firstDay; i++) {
+                grid.innerHTML += `<div class="cal-day-cell empty"></div>`;
+            }
+            for(let i=1; i<=daysInMonth; i++) {
+                const dayStr = String(i).padStart(2, '0');
+                const monStr = String(currentCalMonth + 1).padStart(2, '0');
+                const fullDate = `${currentCalYear}-${monStr}-${dayStr}`;
+                const todayClass = (i === new Date().getDate() && currentCalMonth === new Date().getMonth() && currentCalYear === new Date().getFullYear()) ? 'active' : '';
+                
+                grid.innerHTML += `<div class="cal-day-cell ${todayClass}" onclick="window.selectCyberDate('${fullDate}')">${i}</div>`;
+            }
+        }
+
+        window.selectCyberDate = function(dateStr) {
+            const input = document.getElementById(targetCalInputId);
+            if(input) {
+                input.value = dateStr;
+                // Manually trigger the onchange event
+                const event = new Event('change');
+                input.dispatchEvent(event);
+            }
+            window.closeCyberCalendar();
+        };
+
+        window.jumpToWhatsAppDate = function(dateStr) {
+            if(!dateStr) return;
+            const targetDate = new Date(dateStr);
+            const formattedDate = targetDate.toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+            
+            const badges = document.querySelectorAll('.chat-date-badge');
+            let found = false;
+            for(let b of badges) {
+                if(b.innerText.includes(formattedDate) || b.dataset.date === dateStr) {
+                    b.scrollIntoView({behavior: 'smooth', block: 'center'});
+                    b.style.boxShadow = "0 0 20px #00f2fe, inset 0 0 10px #00f2fe";
+                    setTimeout(() => { b.style.boxShadow = "none"; }, 3000);
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) {
+                alert(`No chat history found for the selected date: ${formattedDate}`);
+            }
+        };
+
+        // --- SMART NOTEPAD LOGIC ---
+        setTimeout(() => {
+            const editorNode = document.getElementById('richNoteWritingPadEditable');
+            if (editorNode) {
+                editorNode.addEventListener('keyup', (e) => {
+                    const slashMenu = document.getElementById('slashCommandMenu');
+                    if (e.key === '/') {
+                        slashMenu.style.display = 'block';
+                    } else if (e.key === 'Escape' || e.key === 'Backspace' || e.key === ' ') {
+                        slashMenu.style.display = 'none';
+                    }
+                });
+
+                editorNode.addEventListener('dragover', (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+                editorNode.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const file = e.dataTransfer.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (readerEvent) => {
+                            const b64 = readerEvent.target.result;
+                            if (file.type.startsWith('image/')) {
+                                document.execCommand('insertHTML', false, `<br><img src="${b64}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-cyan); box-shadow:0 10px 20px rgba(0,242,254,0.3);"><br>`);
+                            } else if (file.type.startsWith('audio/')) {
+                                document.execCommand('insertHTML', false, `<br><div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; margin:10px 0; border-left:5px solid var(--neon-pink);"><audio controls src="${b64}" class="note-inline-audio"></audio></div><br>`);
+                            } else {
+                                alert("Drop supported for Images and Audio only right now.");
+                            }
+                            window.updateNotepadLiveCounters();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                editorNode.addEventListener('paste', (e) => {
+                    if (e.clipboardData && e.clipboardData.items) {
+                        const items = e.clipboardData.items;
+                        for (let i = 0; i < items.length; i++) {
+                            if (items[i].type.indexOf("image") !== -1) {
+                                e.preventDefault();
+                                const file = items[i].getAsFile();
+                                const reader = new FileReader();
+                                reader.onload = (readerEvent) => {
+                                    document.execCommand('insertHTML', false, `<img src="${readerEvent.target.result}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-pink);"><br>`);
+                                    window.updateNotepadLiveCounters();
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        }
+                    }
+                });
+            }
+        }, 1500);
+
+        window.toggleWaAreaLock = function(matrixId, btnId) {
+            const matrixNode = document.getElementById(matrixId);
+            const btnNode = document.getElementById(btnId);
+            const navBar = document.getElementById('mainCyberNavbar');
+            const isNotes = matrixId.includes('notes');
+            const backdrop = document.getElementById('matrixAnimatedBackdrop');
+            
+            if(matrixNode && btnNode) {
+                if(!matrixNode.classList.contains('locked-area-active')) {
+                    let placeholder = document.createElement('div');
+                    placeholder.id = matrixId + '-placeholder';
+                    placeholder.style.display = 'none';
+                    matrixNode.parentNode.insertBefore(placeholder, matrixNode);
+
+                    document.body.appendChild(matrixNode);
+
+                    matrixNode.classList.add('locked-area-active');
+                    document.body.classList.add('strict-scroll-lock');
+                    document.documentElement.classList.add('strict-scroll-lock');
+                    if(navBar) navBar.style.display = 'none';
+                    
+                    if(!isNotes && backdrop) {
+                        document.body.appendChild(backdrop); 
+                        backdrop.classList.remove('hidden');
+                    }
+                    
+                    btnNode.innerHTML = '🔒 Locked';
+                    btnNode.style.color = '#ff007f';
+                    btnNode.style.borderColor = '#ff007f';
+                } else {
+                    matrixNode.classList.remove('locked-area-active');
+                    document.body.classList.remove('strict-scroll-lock');
+                    document.documentElement.classList.remove('strict-scroll-lock');
+                    if(navBar) navBar.style.display = 'flex';
+                    
+                    if(!isNotes && backdrop) {
+                        backdrop.classList.add('hidden');
+                    }
+                    
+                    let placeholder = document.getElementById(matrixId + '-placeholder');
+                    if(placeholder) {
+                        placeholder.parentNode.insertBefore(matrixNode, placeholder);
+                        placeholder.parentNode.removeChild(placeholder);
+                    }
+                    
+                    btnNode.innerHTML = '🔓 Unlock';
+                    btnNode.style.color = isNotes ? '#00f2fe' : 'var(--wa-text-muted)';
+                    btnNode.style.borderColor = isNotes ? '#00f2fe' : 'var(--wa-border)';
+                }
+            }
+        };
+
+        function generateMassiveEmojiArray() {
+            let emojis = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
+            for(let i=0x1F600; i<=0x1F64F; i++) emojis.push(String.fromCodePoint(i));
+            for(let i=0x1F300; i<=0x1F3F0; i++) emojis.push(String.fromCodePoint(i));
+            for(let i=0x1F680; i<=0x1F6C0; i++) emojis.push(String.fromCodePoint(i));
+            return [...new Set(emojis)];
+        }
+        const systemEmojisList = generateMassiveEmojiArray();
+        
+        const structuralGifMatrixList = [
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
+            "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d3mlE7uhX8KFgEmY/giphy.gif",
+            "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif", "https://media.giphy.com/media/26tn33aiTi1jIGsO4/giphy.gif",
+            "https://media.giphy.com/media/l41YtZOb9EUABnuqA/giphy.gif", "https://media.giphy.com/media/3oKIPnAiaCRi8INsWc/giphy.gif",
+            "https://media.giphy.com/media/3o7rc0qU6m5hneMsuc/giphy.gif", "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
+            "https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif", "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+        ];
+
+        window.MatrixSystemState = MatrixSystemState;
+
+        // ❤️ REACTION ENGINE
+        window.reactToMessage = function(dbKey, reactionStr) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid || !dbKey) return;
+            get(ref(db, 'chats/' + dbKey)).then(snap => {
+                let data = snap.val();
+                if(data) {
+                    let reactions = data.reactions || {};
+                    reactions[currentUid] = reactionStr;
+                    update(ref(db, 'chats/' + dbKey), { reactions: reactions });
+                }
+            });
+        };
+
+        window.deleteChatMessage = function(dbKey, epochTime) {
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4 style="color:#e74c3c;">Delete Message</h4>
+                    <p style="color:var(--text-sub); margin-bottom:20px;">What do you want to do with this message?</p>
+                    <div class="nexus-popup-flex-btns" style="flex-direction:column; gap:10px;">
+                        <button onclick="window.commitChatDelete('${dbKey}', 'everyone')" class="nexus-popup-btn" style="background:#e74c3c; color:#fff;">Delete for Everyone</button>
+                        <button onclick="window.commitChatDelete('${dbKey}', 'me')" class="nexus-popup-btn primary-btn" style="background:#f1c40f; color:#000;">Delete for Me</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button>
+                    </div>
+                </div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitChatDelete = function(dbKey, type) {
+            if(type === 'me') {
+                localStorage.setItem('del_for_me_' + dbKey, 'true');
+                window.closeCustomInlinePopupEngine();
+                if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs();
+            } else if (type === 'everyone') {
+                update(ref(db, 'chats/' + dbKey), { isDeletedForEveryone: true }).then(() => {
+                    window.closeCustomInlinePopupEngine();
+                });
+            }
+        };
+
+        window.editChatMessage = function(dbKey, oldText, epochTime) {
+            const timeDiff = Date.now() - epochTime;
+            if(timeDiff > 15 * 60 * 1000) { alert('⏳ Time limit exceeded! Edit is only allowed within 15 minutes.'); return; }
+            
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            if(!wrapper) return;
+            wrapper.innerHTML = `
+                <div class="nexus-popup-card-box" onclick="event.stopPropagation()">
+                    <h4 style="color:var(--neon-cyan);">✏️ Edit Message</h4>
+                    <input type="text" id="editChatInputVal" class="nexus-popup-input-field" value="${oldText}" style="margin-bottom:20px;">
+                    <div class="nexus-popup-flex-btns">
+                        <button onclick="window.commitChatEdit('${dbKey}', '${oldText.replace(/'/g, "\\'")}')" class="nexus-popup-btn primary-btn">Update</button>
+                        <button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn">Cancel</button>
+                    </div>
+                </div>`;
+            wrapper.classList.remove('hidden');
+        };
+
+        window.commitChatEdit = function(dbKey, oldTextFallback) {
+            const newText = document.getElementById('editChatInputVal').value.trim();
+            if(!newText) return;
+            get(ref(db, 'chats/' + dbKey)).then(snap => {
+                let data = snap.val();
+                if(data) {
+                    let original = data.originalText ? data.originalText : data.textBody;
+                    update(ref(db, 'chats/' + dbKey), { textBody: newText, isEdited: true, originalText: original }).then(() => {
+                        window.closeCustomInlinePopupEngine();
+                    });
+                }
+            });
+        };
+
+        window.summarizeChatAI = function() {
+            alert("🤖 AI VAULT SUMMARY:\n\n1. User shared project details & timeline.\n2. Pending review of Vault documents.\n3. Acknowledged recent policy update.\n4. Standby for Admin approval.");
+            window.speakNaturalHuman("Chat summarized successfully by AI.");
+        };
+
+        window.toggleAdminWaAttachmentMenu = function(e) {
+            e.stopPropagation(); document.getElementById('adminWaAttachmentMenuBox')?.classList.toggle('active');
+        };
+
+        document.addEventListener('click', function(e) {
+            const isClickInsideEmojiDrawer = e.target.closest('#systemEmojiMatrixBoxNode') || e.target.closest('#adminSystemEmojiMatrixBoxNode');
+            const isClickInsideGifDrawer = e.target.closest('#mainframeGifContainerBox') || e.target.closest('#adminMainframeGifContainerBox');
+            const isClickOnToggleBtn = e.target.closest('.toggle-emoji-btn-ref') || e.target.closest('.toggle-gif-btn-ref');
+            const isAttachMenu = e.target.closest('#waAttachmentMenuBox') || e.target.closest('#adminWaAttachmentMenuBox');
+            const isPremiumMenu = e.target.closest('.premium-tools-menu') || e.target.closest('.header-actions-btn[title="Premium Tools"]');
+            
+            if (!isClickInsideEmojiDrawer && !isClickOnToggleBtn) {
+                document.getElementById('systemEmojiMatrixBoxNode')?.classList.add('hidden');
+                document.getElementById('adminSystemEmojiMatrixBoxNode')?.classList.add('hidden');
+            }
+            if (!isClickInsideGifDrawer && !isClickOnToggleBtn) {
+                document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
+                document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
+            }
+            if (!isAttachMenu && !isClickOnToggleBtn) { 
+                document.getElementById('waAttachmentMenuBox')?.classList.remove('active'); 
+                document.getElementById('adminWaAttachmentMenuBox')?.classList.remove('active'); 
+            }
+            if (!isPremiumMenu) {
+                document.getElementById('waPremiumToolsMenu')?.classList.remove('active');
             }
         });
 
-        // --- NEW: ADMIN GOD-EYE NETWORK GRAPH RENDERING ---
-        window.renderGodEyeGraph = function() {
-            const canvas = document.getElementById('godEyeCanvas');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = 300;
+        ['click', 'touchstart', 'keydown'].forEach(evt => document.body.addEventListener(evt, () => { isAudioContextAllowed = true; }, { once: true }));
 
-            const users = MatrixSystemState.get('cachedGlobalUsersArr');
-            if (users.length === 0) return;
+        let _typingTimer; window.debouncedInputCheck = function() { clearTimeout(_typingTimer); _typingTimer = setTimeout(window.verifyInputIdentityProgress, 300); }
+        let _loginTimer; window.debouncedAutoLoginCheck = function() { clearTimeout(_loginTimer); _loginTimer = setTimeout(window.checkAutoLogin, 300); }
 
-            let nodes = [];
-            users.forEach((u, i) => {
-                nodes.push({
-                    x: Math.random() * (canvas.width - 40) + 20,
-                    y: Math.random() * (canvas.height - 40) + 20,
-                    name: u.clientName,
-                    id: u.id,
-                    online: u.isOnlineNode
-                });
-            });
+        window.pullCordAction = function(event) {
+            if (event && event.cancelable) event.preventDefault(); 
+            if (isCordPulled) return; isCordPulled = true;
+            const cord = document.getElementById('triggerCord'); 
+            if (cord) cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
+            if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            setTimeout(() => { 
+                if (cord) cord.style.transform = "translateY(0px) scale(1) translateZ(150px)"; 
+                window.triggerLampActivationOverride(); 
+                isCordPulled = false; 
+            }, 300);
+        };
+        const triggerCordNode = document.getElementById('triggerCord');
+        if (triggerCordNode) { triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); triggerCordNode.addEventListener('mousedown', window.pullCordAction); }
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.lineWidth = 1;
-            for(let i=0; i<nodes.length; i++) {
-                for(let j=i+1; j<nodes.length; j++) {
-                    if (Math.random() > 0.6) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(255, 0, 127, ${Math.random() * 0.5})`;
-                        ctx.stroke();
+        window.triggerLampActivationOverride = function() {
+            const mainStage = document.getElementById('mainStage'); const loginTerminal = document.getElementById('loginTerminal'); isAudioContextAllowed = true; 
+            if(mainStage && loginTerminal && !mainStage.classList.contains('activated')) {
+                window.playSynthesizedSound(520, 'sine', 0.3); mainStage.classList.add('activated'); 
+                loginTerminal.style.pointerEvents = 'all'; 
+                window.speakNaturalHuman("Portal active.");
+                const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+            }
+        };
+
+        document.addEventListener('mousemove', (e) => {
+            if (MatrixSystemState.get('loggedInCustomerID') === "") {
+                const terminal = document.getElementById('loginTerminal');
+                const lamp = document.getElementById('lampDevice');
+                if (terminal || lamp) {
+                    const xAxis = Math.max(-6, Math.min(6, (window.innerWidth / 2 - e.pageX) / 40));
+                    const yAxis = Math.max(-6, Math.min(6, (window.innerHeight / 2 - e.pageY) / 40));
+                    
+                    if (terminal && terminal.style.opacity === "1") {
+                        terminal.style.transform = `translate3d(-50%, 0, 0) scale(1) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    }
+                    if (lamp && document.getElementById('mainStage').classList.contains('activated')) {
+                        lamp.style.transform = `translateX(500px) scale(0.85) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
+                    } else if (lamp) {
+                        lamp.style.transform = `scale(1.1) translateZ(50px) rotateY(${xAxis * 0.8}deg) rotateX(${yAxis * 0.8}deg)`;
                     }
                 }
             }
-
-            nodes.forEach(n => {
-                ctx.beginPath();
-                ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
-                ctx.fillStyle = n.online ? '#2ecc71' : '#00f2fe';
-                ctx.fill();
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = n.online ? '#2ecc71' : '#00f2fe';
-
-                ctx.font = "10px Orbitron";
-                ctx.fillStyle = "#fff";
-                ctx.fillText(n.name, n.x + 10, n.y + 4);
-            });
-        };
+        });
 
         let activeThunderIntervalObj = null;
         window.applyThunderModeEngine = function(modeValue) {
@@ -1498,7 +1853,9 @@
                 const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
                 wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT</h4><p style="margin-bottom:25px; text-align:left; font-size: 1rem; color:var(--text-sub); line-height: 1.6;">Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button></div>`;
                 window.speakNaturalHuman("Request submitted successfully.");
-            }).catch((error) => { alert("❌ DATABASE ERROR: " + error.message); });
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message);
+            });
         };
 
         onValue(ref(db, 'pending_accounts'), (snapshot) => {
@@ -1555,6 +1912,7 @@
                     if(logoutNode) logoutNode.value = data.autoLogoutTime;
                     if(lblNode) lblNode.innerText = data.autoLogoutTime;
                 }
+
                 if(MatrixSystemState.get('currentMode') === 'user') { window.enforceCustomerPermissions(); }
             }
         });
@@ -1780,23 +2138,6 @@
             if(templateHTML) { document.execCommand('insertHTML', false, templateHTML + '<p><br></p>'); window.updateNotepadLiveCounters(); }
         };
 
-        window.extractAutoChecklist = function() {
-            const editor = document.getElementById('richNoteWritingPadEditable');
-            if(!editor) return;
-            const text = editor.innerText;
-            const tasks = text.split(/[.,\n]+/).filter(s => s.toLowerCase().includes('need to') || s.toLowerCase().includes('have to') || s.toLowerCase().includes('must '));
-            if(tasks.length > 0) {
-                let html = '<br><div style="background:rgba(46,204,113,0.1); padding:15px; border-left:4px solid #2ecc71; border-radius:8px;"><b>🤖 Smart To-Do List (Auto-Extracted):</b><br><ul class="checklist">';
-                tasks.forEach(t => html += `<li onclick="this.classList.toggle('checked')">${t.trim()}</li>`);
-                html += '</ul></div><p><br></p>';
-                document.execCommand('insertHTML', false, html);
-                window.updateNotepadLiveCounters();
-                alert('✅ AI successfully extracted tasks to a Checklist!');
-            } else {
-                alert('🤖 AI could not find any clear tasks (e.g. sentences with "need to", "have to") in the text.');
-            }
-        };
-
         window.executeMetaAISummarize = function() {
             const editor = document.getElementById('richNoteWritingPadEditable');
             if(!editor.innerText.trim()) { alert("Note is empty!"); return; }
@@ -1892,7 +2233,7 @@
                 const reqNodeRef = push(ref(db, 'password_forget_signals'));
                 set(reqNodeRef, { signalID: reqNodeRef.key, targetUID: userMatch.id, clientName: userMatch.clientName, phone: userMatch.contact, epochTime: Date.now() }).then(() => {
                     const nextWrap = document.getElementById('nexusCustomInlineModalWrapper');
-                    nextWrap.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">⏳ REQUEST LOGGED</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;">Your request has been securely sent.</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD</button></div>`;
+                    nextWrap.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">⏳ REQUEST LOGGED / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new password on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपका नया पासवर्ड शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
                     window.speakNaturalHuman("Request logged smoothly.");
                 });
             } else { alert("❌ Verification mismatch."); }
@@ -1994,7 +2335,7 @@
             try { 
                 window.speechSynthesis.cancel(); 
                 const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg); 
-                syntaxUtterance.pitch = 2.0; 
+                syntaxUtterance.pitch = 2.0; // High pitch for Tom voice effect
                 syntaxUtterance.rate = 1.1; 
                 let voices = window.speechSynthesis.getVoices(); 
                 let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US"));
@@ -2043,35 +2384,7 @@
             const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
             let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
             localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
-            document.querySelectorAll('.parallax-bg-layer').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
-        };
-
-        // --- NEW: PARALLAX SCROLL LOGIC ---
-        window.handleParallaxScroll = function(element) {
-            const bg = element.parentElement.querySelector('.parallax-bg-layer');
-            if(bg) {
-                const scrollPos = element.scrollTop;
-                bg.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPos * 0.15}px)`;
-            }
-        };
-
-        // --- NEW: SLASH COMMANDS FOR CHAT ---
-        window.checkQuickCommands = function(inputElement) {
-            const menu = document.getElementById('quickCommandMenu');
-            if(inputElement.value.startsWith('/')) {
-                menu.style.display = 'flex';
-            } else {
-                menu.style.display = 'none';
-            }
-        };
-
-        window.insertQuickReply = function(cmd) {
-            const input = document.getElementById('chatCoreMessageTextInput');
-            if(cmd === '/address') input.value = "123 Cyberpunk Street, Matrix City, 101010";
-            if(cmd === '/email') input.value = "admin@nexusgateway.com";
-            if(cmd === '/thanks') input.value = "Thank you so much! Have a great day. 😊";
-            document.getElementById('quickCommandMenu').style.display = 'none';
-            input.focus();
+            document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
         };
 
         window.toggleInChatSearch = function() {
@@ -2103,6 +2416,11 @@
             if(liveVideoCallStreamObj) { liveVideoCallStreamObj.getTracks().forEach(track => track.stop()); liveVideoCallStreamObj = null; }
         };
 
+        window.wipeNoteInterfaceToBlankTrigger = function() {
+            const editor = document.getElementById('richNoteWritingPadEditable'); if (editor) editor.innerHTML = "";
+            notesVoicePayloadBase64Node = ""; autoGeneratedVoiceDurationString = ""; window.updateNotepadLiveCounters(); window.playSynthesizedSound(880, 'sine', 0.1);
+        };
+
         window.toggleRichNotesVoiceStreamRecorder = function() {
             const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
             if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
@@ -2121,10 +2439,11 @@
 
         window.dispatchCompiledNoteToCloudMatrix = function() {
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim(); const dateLogSelected = document.getElementById('noteManualDateSelector').value; const timeLogSelected = document.getElementById('noteManualTimeSelector').value; const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            
+            // Handle Password Lock for Note
             const pwdInput = document.getElementById('noteLockPasswordInput');
-            let noteLockPass = ""; if(pwdInput) { noteLockPass = pwdInput.value.trim(); }
-            const catInput = document.getElementById('currentNoteCategoryInput');
-            const noteCategory = catInput ? catInput.value : 'all';
+            let noteLockPass = "";
+            if(pwdInput) { noteLockPass = pwdInput.value.trim(); }
 
             if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
             try { 
@@ -2132,14 +2451,13 @@
                 set(cloudNoteReferenceNode, { 
                     noteId: cloudNoteReferenceNode.key, 
                     ownerId: currentUid, 
-                    category: noteCategory,
                     richTextHtml: parsedHtmlPayload || "[ Audio Stream Payload ]", 
                     voicePayloadB64: notesVoicePayloadBase64Node, 
                     mappedDate: dateLogSelected, 
                     mappedTime: timeLogSelected, 
                     voiceDuration: autoGeneratedVoiceDurationString, 
                     epochStamp: Date.now(),
-                    lockPassword: noteLockPass 
+                    lockPassword: noteLockPass // Save the password
                 }).then(() => { 
                     window.wipeNoteInterfaceToBlankTrigger(); 
                     if(pwdInput) pwdInput.value = "";
@@ -2150,54 +2468,45 @@
             } catch(e) {}
         };
 
-        window.switchNoteCategory = function(cat, element) {
-            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
-            const catInput = document.getElementById('currentNoteCategoryInput');
-            if(catInput) catInput.value = cat;
-            
-            const burnBtn = document.getElementById('btnBurnNote');
-            const transBtn = document.getElementById('btnTransmitNote');
-            const lockWrap = document.getElementById('noteLockWrapper');
-            
-            if(cat === 'vent') {
-                burnBtn.classList.remove('hidden'); transBtn.classList.add('hidden'); lockWrap.classList.add('hidden');
-                document.getElementById('richNoteWritingPadEditable').style.color = '#ff007f';
-            } else {
-                burnBtn.classList.add('hidden'); transBtn.classList.remove('hidden'); lockWrap.classList.remove('hidden');
-                document.getElementById('richNoteWritingPadEditable').style.color = 'var(--text-main)';
-            }
-            fetchRealtimeNotesCloudData();
-        };
-
         window.unlockSecureNoteEngine = function(noteIdSignature, truePass) {
             const userAttempt = prompt("🔒 This note is locked. Please enter the password to view:");
             if (userAttempt === truePass) {
                 const blurDiv = document.getElementById(`blur_overlay_${noteIdSignature}`);
                 const contentDiv = document.getElementById(`hidden_content_${noteIdSignature}`);
-                if(blurDiv && contentDiv) { blurDiv.style.display = 'none'; contentDiv.style.display = 'block'; }
-            } else { alert("❌ Incorrect Password!"); }
+                if(blurDiv && contentDiv) {
+                    blurDiv.style.display = 'none';
+                    contentDiv.style.display = 'block';
+                }
+            } else {
+                alert("❌ Incorrect Password!");
+            }
         };
 
         function fetchRealtimeNotesCloudData() {
             const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!interfaceWrapper || !currentUid) return;
-            const activeCat = document.getElementById('currentNoteCategoryInput') ? document.getElementById('currentNoteCategoryInput').value : 'all';
-            
             try {
                 get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
                     if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); text-align:center; padding:20px; font-weight:bold; font-size:1.05rem; background:rgba(0,0,0,0.4); border-radius:10px;"> Repository empty.</div>`; return; }
-                    
-                    let allNotes = Object.values(snapshotData.val()).reverse();
-                    if(activeCat !== 'all') { allNotes = allNotes.filter(n => n.category === activeCat); }
-
-                    interfaceWrapper.innerHTML = allNotes.map(noteItem => {
+                    interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
                         let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
+                        
+                        // Handle Locked Content Display
                         let displayHtml = "";
                         if(noteItem.lockPassword) {
-                            displayHtml = `<div id="blur_overlay_${noteItem.noteId}" style="text-align:center; padding:30px; background:rgba(0,0,0,0.4); border-radius:8px; border:1px dashed var(--neon-pink);"><div style="font-size:2rem; margin-bottom:10px;">🔒</div><p style="color:var(--text-sub); margin-bottom:15px;">This note is secured with a password.</p><button class="unlock-note-btn" onclick="window.unlockSecureNoteEngine('${noteItem.noteId}', '${noteItem.lockPassword}')">Unlock Content</button></div><div id="hidden_content_${noteItem.noteId}" style="display:none; color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">${noteItem.richTextHtml}</div>`;
+                            displayHtml = `
+                                <div id="blur_overlay_${noteItem.noteId}" style="text-align:center; padding:30px; background:rgba(0,0,0,0.4); border-radius:8px; border:1px dashed var(--neon-pink);">
+                                    <div style="font-size:2rem; margin-bottom:10px;">🔒</div>
+                                    <p style="color:var(--text-sub); margin-bottom:15px;">This note is secured with a password.</p>
+                                    <button class="unlock-note-btn" onclick="window.unlockSecureNoteEngine('${noteItem.noteId}', '${noteItem.lockPassword}')">Unlock Content</button>
+                                </div>
+                                <div id="hidden_content_${noteItem.noteId}" style="display:none; color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">
+                                    ${noteItem.richTextHtml}
+                                </div>
+                            `;
                         } else {
                             displayHtml = `<div style="color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">${noteItem.richTextHtml}</div>`;
                         }
+
                         return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime} ${noteItem.lockPassword ? '🔒 Secured' : ''}</span><span style="cursor:pointer; color:var(--neon-pink); padding:4px 8px; border-radius:4px; background:rgba(255,0,127,0.1);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ Delete</span></div>${displayHtml}${voiceAttachmentMarkup}</div></div>`;
                     }).join('');
                 });
@@ -2247,6 +2556,7 @@
             
             let users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
             users.unshift({ id: "MainframeAdmin", clientName: "Support Admin (Mainframe)", avatar: defaultAvatarSvg, bio: "System Support", isOnlineNode: true });
+            
             const groups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid));
             
             let html = "";
@@ -2265,6 +2575,7 @@
                 const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id ? "active-chat-target" : "";
                 const onlineClass = u.isOnlineNode ? "online-chamak-active" : "";
                 let unreadBadge = `<span id="unreadCounterBadge_${u.id}" class="whatsapp-unread-counter-pill hidden">0</span>`;
+                
                 html += `<div class="chat-user-item-node ${activeClass} ${onlineClass}" onclick="window.selectClientChatTarget('${u.id}', false)">
                     <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
                     <div class="whatsapp-user-info">
@@ -2273,6 +2584,7 @@
                     </div>
                 </div>`;
             });
+            
             container.innerHTML = html;
         };
 
@@ -2295,15 +2607,26 @@
             document.getElementById('chatActiveUserHeaderNode').innerText = name;
             document.getElementById('chatActiveUserBioNode').innerText = bio;
             
-            if (window.innerWidth <= 768) { document.getElementById('clientChatGridMatrixWrapper').classList.add('mobile-chat-view-active'); }
+            if (window.innerWidth <= 768) {
+                document.getElementById('clientChatGridMatrixWrapper').classList.add('mobile-chat-view-active');
+            }
+            
             window.renderActiveChatConversationLogs();
         };
 
         function getMessageDateDividerString(epochTime) {
-            const msgDate = new Date(epochTime); const today = new Date(); const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
-            if(msgDate.toDateString() === today.toDateString()) return "TODAY";
-            else if(msgDate.toDateString() === yesterday.toDateString()) return "YESTERDAY";
-            else return msgDate.toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+            const msgDate = new Date(epochTime);
+            const today = new Date();
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+
+            if(msgDate.toDateString() === today.toDateString()) {
+                return "TODAY";
+            } else if(msgDate.toDateString() === yesterday.toDateString()) {
+                return "YESTERDAY";
+            } else {
+                return msgDate.toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+            }
         }
 
         window.renderActiveChatConversationLogs = function() {
@@ -2321,22 +2644,16 @@
                 if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
                 if(localStorage.getItem(`del_for_me_${key}`)) return;
 
-                if(m.isDeletedForEveryone) { m.textBody = "🚫 This message was deleted"; m.mediaPayload = ""; }
+                if(m.isDeletedForEveryone) {
+                    m.textBody = "🚫 This message was deleted";
+                    m.mediaPayload = "";
+                }
                 
                 if (isGroup) {
                     if (m.receiver === targetUid) msgs.push(m);
                 } else {
                     if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
                         msgs.push(m);
-                        if(m.receiver === currentUid && !m.read) {
-                            const myUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
-                            const isGhost = myUser && myUser.premium && myUser.premium.stealthMode;
-                            const adminGhost = document.getElementById('adminGhostReadToggle') ? document.getElementById('adminGhostReadToggle').checked : false;
-                            
-                            if (!isGhost && !(MatrixSystemState.get('currentMode') === 'admin' && adminGhost)) {
-                                update(ref(db, 'chats/' + key), { read: true });
-                            }
-                        }
                     }
                 }
             });
@@ -2344,7 +2661,9 @@
             msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
             if(msgs.length > 150) msgs = msgs.slice(-150);
             
-            let html = ""; let lastSender = ""; let lastDateStr = "";
+            let html = "";
+            let lastSender = "";
+            let lastDateStr = "";
 
             msgs.forEach((m, idx) => {
                 let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
@@ -2352,7 +2671,7 @@
                 
                 if(currentDateStr !== lastDateStr) {
                     lastDateStr = currentDateStr;
-                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block; position:relative; z-index:2;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); box-shadow: 0 2px 4px rgba(0,0,0,0.2); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
+                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); box-shadow: 0 2px 4px rgba(0,0,0,0.2); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
                 }
 
                 const isMe = m.sender === currentUid;
@@ -2362,16 +2681,22 @@
                 
                 let mediaHtml = "";
                 if(m.mediaPayload) {
-                    if(m.mediaPayload.startsWith('data:audio')) { mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`; } 
-                    else if (m.mediaPayload.startsWith('data:image')) { mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`; } 
-                    else { mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`; }
+                    if(m.mediaPayload.startsWith('data:audio')) {
+                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
+                    } else if (m.mediaPayload.startsWith('data:image')) {
+                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
+                    } else {
+                        mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
+                    }
                 }
                 
                 let senderNameHtml = "";
                 if (isGroup && !isMe) {
                     const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
                     senderNameHtml = `<div class="group-sender-name">${senderProfile ? senderProfile.clientName : m.sender}</div>`;
-                } else if (!isGroup && !isMe && m.sender === "MainframeAdmin") { senderNameHtml = `<div class="group-sender-name" style="color:#ff007f;">Admin</div>`; }
+                } else if (!isGroup && !isMe && m.sender === "MainframeAdmin") {
+                    senderNameHtml = `<div class="group-sender-name" style="color:#ff007f;">Admin</div>`;
+                }
 
                 let tickHtml = "";
                 if (isMe) {
@@ -2383,9 +2708,18 @@
 
                 let actionsHtml = "";
                 if(isMe && !m.isDeletedForEveryone) {
-                    actionsHtml = `<div class="msg-action-menu"><span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span><span class="msg-action-icon" title="Delete" onclick="window.deleteChatMessage('${m.dbKey}', ${m.epochTimeNode})">🗑️</span></div>`;
+                    actionsHtml = `
+                    <div class="msg-action-menu">
+                        <span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span>
+                        <span class="msg-action-icon" title="Delete" onclick="window.deleteChatMessage('${m.dbKey}', ${m.epochTimeNode})">🗑️</span>
+                    </div>`;
                 } else if (!m.isDeletedForEveryone) {
-                    actionsHtml = `<div class="msg-action-menu"><span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '❤️')">❤️</span><span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '👍')">👍</span><span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '😂')">😂</span></div>`;
+                    actionsHtml = `
+                    <div class="msg-action-menu">
+                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '❤️')">❤️</span>
+                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '👍')">👍</span>
+                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '😂')">😂</span>
+                    </div>`;
                 }
                 
                 let reactionsDisplay = "";
@@ -2403,9 +2737,7 @@
                 </div>`;
             });
             
-            let lockHtml = `<div style="text-align:center; margin: 8px 0; position:relative; z-index:2;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:4px 10px; border-radius:6px; font-size:0.75rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>`;
-            
-            scrollBox.innerHTML = lockHtml + html;
+            scrollBox.innerHTML = html;
             setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
         };
 
@@ -2455,14 +2787,21 @@
                 const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === g.id ? "active-chat-target" : "";
                 html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${g.id}', true)">
                     <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info"><div class="whatsapp-user-name">${g.name}</div><div class="whatsapp-user-id">Group • Spy Mode</div></div>
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${g.name}</div>
+                        <div class="whatsapp-user-id">Group • Spy Mode</div>
+                    </div>
                 </div>`;
             });
+
             users.forEach(u => {
                 const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === u.id ? "active-chat-target" : "";
                 html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${u.id}', false)">
                     <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info"><div class="whatsapp-user-name">${u.clientName}</div><div class="whatsapp-user-id">${u.contact}</div></div>
+                    <div class="whatsapp-user-info">
+                        <div class="whatsapp-user-name">${u.clientName}</div>
+                        <div class="whatsapp-user-id">${u.contact}</div>
+                    </div>
                 </div>`;
             });
             container.innerHTML = html;
@@ -2480,10 +2819,13 @@
                 const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
                 if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; }
             }
+            
             document.getElementById('adminChatActiveHeaderAvatarNode').src = avatar;
             document.getElementById('spyActiveHeaderTitle').innerText = name;
             
-            if (window.innerWidth <= 768) { document.getElementById('adminChatGridBox').classList.add('mobile-chat-view-active'); }
+            if (window.innerWidth <= 768) {
+                document.getElementById('adminChatGridBox').classList.add('mobile-chat-view-active');
+            }
             window.renderAdminSpyChatConsoleLogs();
         };
 
@@ -2498,14 +2840,19 @@
             let msgs = [];
             Object.keys(rawData).forEach(key => {
                 const m = rawData[key]; m.dbKey = key;
-                if (isGroup) { if (m.receiver === targetUid) msgs.push(m); } 
-                else { if (m.sender === targetUid || m.receiver === targetUid) msgs.push(m); }
+                if (isGroup) {
+                    if (m.receiver === targetUid) msgs.push(m);
+                } else {
+                    if (m.sender === targetUid || m.receiver === targetUid) msgs.push(m);
+                }
             });
             
             msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
             if(msgs.length > 150) msgs = msgs.slice(-150);
             
-            let html = ""; let lastSender = ""; let lastDateStr = "";
+            let html = "";
+            let lastSender = "";
+            let lastDateStr = "";
 
             msgs.forEach(m => {
                 let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
@@ -2513,7 +2860,7 @@
 
                 if(currentDateStr !== lastDateStr) {
                     lastDateStr = currentDateStr;
-                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block; position:relative; z-index:2;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
+                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
                 }
 
                 const isMe = m.sender === "MainframeAdmin";
@@ -2523,12 +2870,17 @@
                 
                 let mediaHtml = "";
                 if(m.mediaPayload && !m.isDeletedForEveryone) {
-                    if(m.mediaPayload.startsWith('data:audio')) { mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`; } 
-                    else if (m.mediaPayload.startsWith('data:image')) { mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`; } 
-                    else { mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`; }
+                    if(m.mediaPayload.startsWith('data:audio')) {
+                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
+                    } else if (m.mediaPayload.startsWith('data:image')) {
+                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
+                    } else {
+                        mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
+                    }
                 }
                 
-                let adminSuperPowerInfo = ""; let displayBody = m.textBody;
+                let adminSuperPowerInfo = "";
+                let displayBody = m.textBody;
                 
                 if(m.isDeletedForEveryone) {
                     displayBody = `<strike>${m.originalText || m.textBody}</strike>`;
@@ -2547,6 +2899,7 @@
                     <div class="whatsapp-time">${m.timestamp}</div>
                 </div>`;
             });
+            
             scrollBox.innerHTML = html;
             setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
         };
@@ -2558,6 +2911,7 @@
             const inputField = document.getElementById('adminSpyResponseInput');
             const text = inputField.value.trim();
             const media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64') || "";
+            
             if(!text && !media) return;
             
             const msgRef = push(ref(db, 'chats'));
@@ -2578,146 +2932,139 @@
             });
         };
 
-        window.executeClusterLogin = function(event) {
-            if(event) event.preventDefault();
-            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim();
-            const masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+        window.renderInteractiveDrawersContent = function() {
+            const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
+            document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
+            document.getElementById('adminSystemEmojiMatrixBoxNode').innerHTML = emHTML;
+            
+            const gifHTML = structuralGifMatrixList.map(g => `<img src="${g}" class="gif-thumb-item" onclick="window.insertGifToChat('${g}')">`).join('');
+            document.getElementById('mainframeGifContainerBox').innerHTML = gifHTML;
+            document.getElementById('adminMainframeGifContainerBox').innerHTML = gifHTML;
+        };
+
+        window.insertEmojiToChat = function(emoji) {
+            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
+            const input = document.getElementById(isAdm ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput');
+            if(input) { input.value += emoji; input.focus(); }
+        };
+
+        window.insertGifToChat = function(gifUrl) {
+            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
+            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
+            if(isAdm) { window.dispatchAdminSpyInterceptionMsg(); } else { window.dispatchMatrixChatMessage(); }
+            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
+            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
+        };
+
+        window.filterCardsEngine = function() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.hud-data-card').forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+            });
+        };
+
+        window.submitPolicyForm = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
+            if(!insure || !phone) { alert("Please complete required parameters."); return; }
+            const newPolicyRef = push(ref(db, 'policies'));
+            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
+                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); window.renderCustomerLiveTracker();
+            });
+        };
+
+        window.renderCustomerLiveTracker = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
+            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
+            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
+            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
+        };
+
+        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
+        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
+        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
+        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
+
+        window.uploadUserProfileAvatarEngine = function(event) {
+            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
+            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
+                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
+                set(ref(db, targetDbString), base64Avatar).then(() => { 
+                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
+                    event.target.removeAttribute('data-target-uid'); 
+                }); 
+            }; reader.readAsDataURL(file); }
+        };
+
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
             
             if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
                 MatrixSystemState.set('currentMode', 'admin');
-                finalizeLoginSequence("MainframeAdmin", "ADMIN");
-            } else {
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u && String(user.pass) === String(p));
-                if(userMatch) {
+                window.executeClusterLogin(null);
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
                     if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    if(userMatch.status === "deactivated") { alert("🚫 ACCOUNT DEACTIVATED."); return; }
                     MatrixSystemState.set('currentMode', 'user');
-                    finalizeLoginSequence(userMatch.id, userMatch.clientName);
-                } else {
-                    MatrixSystemState.set('consecutiveBruteFailuresCount', MatrixSystemState.get('consecutiveBruteFailuresCount') + 1);
-                    window.playSynthesizedSound(100, 'sawtooth', 0.5);
-                    alert("❌ Invalid Identity or Password.");
-                    if(MatrixSystemState.get('consecutiveBruteFailuresCount') > 3) { document.getElementById('secureGatewayForm').style.display = 'none'; alert("🚨 BRUTE FORCE DETECTED. Portal locked."); }
+                    window.executeClusterLogin(null);
                 }
             }
         };
 
-        function finalizeLoginSequence(id, name) {
-            MatrixSystemState.set('loggedInCustomerID', id);
-            localStorage.setItem('nexus_logged_in_uid', id);
-            localStorage.setItem('nexus_system_session_mode', MatrixSystemState.get('currentMode'));
-            
-            document.getElementById('mainStage').style.display = 'none';
-            document.getElementById('mainCyberNavbar').style.opacity = '1';
-            document.getElementById('mainCyberNavbar').style.pointerEvents = 'all';
-            
-            window.playSynthesizedSound(1200, 'sine', 0.3); window.speakNaturalHuman(`Welcome back, ${name}`);
-            
-            if(MatrixSystemState.get('currentMode') === 'admin') {
-                document.getElementById('adminDashboard').classList.add('active-view');
-                window.switchAdminSubSection('menu');
-            } else {
-                document.getElementById('customerDashboard').classList.add('active-view');
-                document.getElementById('dashboardIdentityHeadingNode').innerHTML = `Customer Terminal <span style="color:#00f2fe;">[ ${name} ]</span>`;
-                window.switchCustomerChannel('menu');
-                window.enforceCustomerPermissions();
-                const avatar = MatrixSystemState.get('cachedGlobalUsersArr').find(u=>u.id===id)?.avatar || defaultAvatarSvg;
-                document.getElementById('customerLiveAvatarPreview').src = avatar;
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
             }
-        }
+        };
 
-        function checkActiveStateSessionRetentionOnLaunch() {
-            const savedUID = localStorage.getItem('nexus_logged_in_uid');
-            const savedMode = localStorage.getItem('nexus_system_session_mode');
-            
-            onValue(ref(db, 'users'), (snapshot) => {
-                const data = snapshot.val();
-                let arr = data ? Object.values(data) : [];
-                MatrixSystemState.set('cachedGlobalUsersArr', arr);
-                if(savedUID && savedMode && MatrixSystemState.get('loggedInCustomerID') === "") {
-                    if(savedMode === 'admin' && savedUID === "MainframeAdmin") { MatrixSystemState.set('currentMode', 'admin'); finalizeLoginSequence(savedUID, "ADMIN"); }
-                    else if(savedMode === 'user' && arr.find(u=>u.id===savedUID)) { MatrixSystemState.set('currentMode', 'user'); finalizeLoginSequence(savedUID, arr.find(u=>u.id===savedUID).clientName); }
-                }
-                if(MatrixSystemState.get('currentMode') === 'admin') { window.renderUserControlPanel(); window.renderAdminSpyUserList(); window.renderGodEyeGraph(); }
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
+        window.logoutEngine = function() {
+            MatrixSystemState.set('loggedInCustomerID', "");
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            window.location.reload();
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
             });
-
-            onValue(ref(db, 'policies'), (snapshot) => { MatrixSystemState.set('cachedGlobalPolicyArr', snapshot.val() ? Object.values(snapshot.val()) : []); if(MatrixSystemState.get('currentMode') === 'user') { window.renderCustomerLiveTracker(); window.renderCloudVault(); } });
-            onValue(ref(db, 'chats'), (snapshot) => { window.cachedChatsData = snapshot.val() || {}; if(MatrixSystemState.get('currentMode') === 'user') window.renderActiveChatConversationLogs(); else if (MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); });
-            onValue(ref(db, 'mainframeAdmin'), (snapshot) => { if(snapshot.val()) MatrixSystemState.set('cachedAdminMainframeRoute', snapshot.val()); });
-
-            window.renderInteractiveDrawersContent();
-        }
-
-        window.switchCustomerChannel = function(ch) {
-            MatrixSystemState.set('activeCustomerWorkspaceChannel', ch);
-            document.getElementById('customerMainMenuBlock').style.display = ch === 'menu' ? 'grid' : 'none';
-            document.getElementById('btnBackToHome').classList.toggle('hidden', ch === 'menu');
-            document.getElementById('customerUploadInterfaceBlock').classList.toggle('hidden', ch !== 'upload');
-            document.getElementById('customerVaultInterfaceBlock').classList.toggle('hidden', ch !== 'vault');
-            document.getElementById('customerGamingInterfaceBlock').classList.toggle('hidden', ch !== 'gaming');
-            document.getElementById('customerChatInterfaceBlock').classList.toggle('hidden', ch !== 'chat');
-            document.getElementById('customerRequestInterfaceBlock').classList.toggle('hidden', ch !== 'request');
-            
-            if(ch === 'notes') { document.getElementById('masterNotesInterfaceBlock').classList.remove('hidden'); document.getElementById('notesMainWrapperCard').classList.add('locked-area-active'); document.body.classList.add('strict-scroll-lock'); document.documentElement.classList.add('strict-scroll-lock'); document.getElementById('matrixAnimatedBackdrop').classList.remove('hidden'); fetchRealtimeNotesCloudData(); }
-            if(ch === 'chat') { window.initializeCrossLinkChatPanel(); }
-            if(ch === 'gaming') { window.bootArcadeSubGame('tom'); } else { if(requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken); if(tomSpeechRecognitionInstance) tomSpeechRecognitionInstance.stop(); }
-            if(ch === 'upload') { window.renderCustomerLiveTracker(); }
-            if(ch === 'vault') { window.renderCloudVault(); }
-            if(ch === 'request') { window.renderCustomerTicketHistory(); }
         };
 
-        window.closeMasterNotepad = function() {
-            document.getElementById('masterNotesInterfaceBlock').classList.add('hidden');
-            document.getElementById('notesMainWrapperCard').classList.remove('locked-area-active');
-            document.body.classList.remove('strict-scroll-lock'); document.documentElement.classList.remove('strict-scroll-lock');
-            document.getElementById('matrixAnimatedBackdrop').classList.add('hidden');
-            if(MatrixSystemState.get('currentMode') === 'user') window.switchCustomerChannel('menu');
-            else window.switchAdminSubSection('menu');
-        };
-
-        window.switchAdminSubSection = function(sec) {
-            MatrixSystemState.set('activeAdminSubSection', sec);
-            document.getElementById('adminMainMenuBlock').style.display = sec === 'menu' ? 'grid' : 'none';
-            document.getElementById('btnAdminBackToHome').classList.toggle('hidden', sec === 'menu');
-            
-            document.getElementById('creationBlock').classList.toggle('hidden', sec !== 'creation');
-            document.getElementById('adminApprovalsBlock').classList.toggle('hidden', sec !== 'approvals');
-            document.getElementById('credentialsBlock').classList.toggle('hidden', sec !== 'credentials');
-            document.getElementById('policyWorkspaceBlock').classList.toggle('hidden', sec !== 'workspace');
-            document.getElementById('adminSpyChatBlock').classList.toggle('hidden', sec !== 'spychat');
-            document.getElementById('adminSupportTicketsBlock').classList.toggle('hidden', sec !== 'tickets');
-            document.getElementById('adminAiSpyChatBlock').classList.toggle('hidden', sec !== 'aispy');
-            document.getElementById('adminSystemStatsBlock').classList.toggle('hidden', sec !== 'stats');
-            document.getElementById('adminGodEyeBlock').classList.toggle('hidden', sec !== 'godeye');
-            
-            if(sec === 'approvals') window.renderAdminPendingApprovals();
-            if(sec === 'spychat') window.renderAdminSpyUserList();
-            if(sec === 'tickets') window.renderAdminTickets();
-            if(sec === 'godeye') setTimeout(window.renderGodEyeGraph, 100);
-            if(sec === 'notes') { document.getElementById('masterNotesInterfaceBlock').classList.remove('hidden'); document.getElementById('notesMainWrapperCard').classList.add('locked-area-active'); document.body.classList.add('strict-scroll-lock'); document.documentElement.classList.add('strict-scroll-lock'); document.getElementById('matrixAnimatedBackdrop').classList.remove('hidden'); fetchRealtimeNotesCloudData(); }
-        };
-
+        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
     </script>
 
     <script>
-        // SMART AVATAR POPUP LOGIC FOR LOGIN
-        document.getElementById('accessNodeUser').addEventListener('input', function() {
-            const val = this.value.trim();
-            const avatarImg = document.getElementById('loginAvatarPopup');
-            if(val && window.MatrixSystemState) {
-                const users = window.MatrixSystemState.get('cachedGlobalUsersArr');
-                const user = users.find(u => u.id === val);
-                if(user && user.avatar) {
-                    avatarImg.src = user.avatar;
-                    avatarImg.classList.add('show');
-                } else {
-                    avatarImg.classList.remove('show');
-                }
-            } else {
-                avatarImg.classList.remove('show');
-            }
-        });
-
         setTimeout(() => {
             const preloader = document.getElementById('systemPreloader');
             if(preloader) {
