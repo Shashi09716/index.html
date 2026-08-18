@@ -501,18 +501,18 @@
                 <div class="hud-status-chip cyan-pulse">UNIVERSAL SYNC: OK</div>
             </div>
             <h1 class="hud-logo">NEXUS GATEWAY</h1>
-            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin && window.executeClusterLogin(event);">
+            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.checkAutoLogin();">
                 <div class="hud-input-cluster">
                     <input type="text" id="accessNodeUser" required placeholder=" " oninput="window.debouncedInputCheck()">
                     <label id="hudInputLabel">User ID / Admin ID</label>
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.debouncedAutoLoginCheck()">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.handlePasswordTypingEffects(this)">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
-                <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
+                <button type="submit" id="engageBtnCore" class="hud-engage-btn">ENGAGE MAINFRAME</button>
                 <div style="display:flex; justify-content:space-between; margin-top:20px; font-family:'Orbitron'; font-size:0.9rem;">
                     <span onclick="window.triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT ID ]</span>
                     <span onclick="window.triggerForgotPasswordMatrixModal()" style="color:var(--neon-pink); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT PASS ]</span>
@@ -3090,6 +3090,29 @@
         window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
 
         window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+        
+        // Typo Fixed Here ('indow' -> 'window')
+        window.handlePasswordTypingEffects = function(inputElement) {
+            if(!inputElement) return;
+            const len = inputElement.value.length;
+            const glowLine = document.getElementById('passwordGlowLine');
+            
+            if(len > 0 && isAudioContextAllowed) window.playSynthesizedSound(800 + (Math.random() * 200), 'triangle', 0.05);
+
+            if (len === 0) {
+                if(glowLine) { glowLine.style.background = '#f1c40f'; glowLine.style.boxShadow = '0 0 15px #f1c40f'; }
+                inputElement.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+            } else if (len < 5) {
+                if(glowLine) { glowLine.style.background = '#e74c3c'; glowLine.style.boxShadow = '0 0 15px #e74c3c'; }
+                inputElement.style.borderColor = '#e74c3c';
+            } else if (len < 8) {
+                if(glowLine) { glowLine.style.background = '#00f2fe'; glowLine.style.boxShadow = '0 0 15px #00f2fe'; }
+                inputElement.style.borderColor = '#00f2fe';
+            } else {
+                if(glowLine) { glowLine.style.background = '#2ecc71'; glowLine.style.boxShadow = '0 0 20px #2ecc71'; }
+                inputElement.style.borderColor = '#2ecc71';
+            }
+        };
 
         window.checkAutoLogin = function() {
             const u = document.getElementById('accessNodeUser').value.trim();
