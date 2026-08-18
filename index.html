@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V22.0 (God-Level Gen-Z Edition)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V22.0 (Compact UI, Secured Notes & Gen-Z Edition)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
-        /* --- ORIGINAL CYBERPUNK PALETTE (100% UNTOUCHED) --- */
+        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
             --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71; --neon-purple: #a73ec9;
@@ -37,13 +37,58 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--neon-pink); }
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
+        
         body.strict-scroll-lock, html.strict-scroll-lock { overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; }
 
-        /* --- NEW: THE BOSS KEY (PANIC SWITCH) OVERLAY --- */
+        /* ================= NEW: HACKER FEATURES & UPGRADES CSS ================= */
+        /* 1. BOSS KEY OVERLAY */
         #bossKeyOverlay { position: fixed; inset: 0; width: 100vw; height: 100vh; background: #fff url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png') no-repeat center center; background-size: 300px; z-index: 9999999999; display: none; }
         #bossKeyOverlay.active { display: block; }
 
-        /* ZEN MODE & HYPER-FOCUS FOR NOTEPAD */
+        /* 2. CRT FLASH & HOLOGRAM EFFECTS */
+        .crt-flash-effect { position: fixed; inset: 0; background: #fff; z-index: 9999999; animation: crtPowerOn 0.6s ease-out forwards; pointer-events: none; }
+        @keyframes crtPowerOn { 0% { opacity: 1; filter: brightness(5) contrast(2); } 50% { opacity: 0.8; background: repeating-linear-gradient(0deg, #fff, #ccc 2px, transparent 4px); } 100% { opacity: 0; } }
+        
+        /* 3. LOGIN AVATAR & VOICE LOGIN */
+        .login-avatar-popup { position: absolute; top: -70px; left: 50%; transform: translateX(-50%) scale(0); width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.6); z-index: 30; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; object-fit: cover; }
+        .login-avatar-popup.show { transform: translateX(-50%) scale(1); opacity: 1; }
+        .voice-login-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s; filter: grayscale(1); z-index: 10; }
+        .voice-login-btn:hover { filter: grayscale(0); transform: translateY(-50%) scale(1.2); }
+        .voice-login-btn.listening { animation: cyberPulse 1s infinite alternate; filter: grayscale(0); border-radius: 50%; }
+
+        /* 4. NOTEPAD PRO UPGRADES (Categories, Focus, Burn) */
+        .category-tab-container { display: flex; gap: 10px; border-bottom: 2px solid var(--border-glass); margin-bottom: 20px; padding-bottom: 10px; overflow-x: auto; }
+        .category-tab { padding: 8px 16px; font-family: 'Orbitron'; font-weight: bold; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: 0.3s; font-size: 0.9rem; white-space: nowrap; }
+        .category-tab:hover { background: rgba(0, 242, 254, 0.1); color: var(--neon-cyan); }
+        .category-tab.active { background: rgba(0, 242, 254, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
+        
+        .hyper-focus-active .wordpad-paper p, .hyper-focus-active .wordpad-paper div, .hyper-focus-active .wordpad-paper li { filter: blur(4px); opacity: 0.4; transition: 0.3s; }
+        .hyper-focus-active .wordpad-paper .focus-line { filter: blur(0px); opacity: 1; transform: scale(1.01); color: var(--neon-cyan); }
+        
+        @keyframes burnToAshes { 0% { filter: brightness(1) drop-shadow(0 0 0px red); opacity: 1; transform: translateY(0); } 50% { filter: brightness(3) drop-shadow(0 -10px 20px #ff4500) blur(2px); opacity: 0.8; transform: translateY(-5px); color: #ff4500; } 100% { filter: brightness(0) drop-shadow(0 -20px 40px #000) blur(10px); opacity: 0; transform: translateY(-20px) scale(0.9); } }
+        .burn-active { animation: burnToAshes 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; pointer-events: none; }
+
+        /* 5. WHATSAPP UI UPGRADES (Dots, Parallax, Bubbles) */
+        .typing-dots-container { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--wa-msg-in); border-radius: 15px; width: fit-content; }
+        .typing-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; animation: bounceDots 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; } .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounceDots { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        
+        .parallax-bg-layer { position: absolute; inset: 0; background: var(--chat-wallpaper); z-index: 0; transform: translateZ(-1px) scale(2); pointer-events: none; transition: transform 0.1s ease-out; }
+        
+        .bubble-outgoing { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+        .bubble-incoming { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+        .first-in-group.bubble-outgoing { border-top-right-radius: 12px; margin-top: 10px; }
+        .last-in-group.bubble-outgoing { border-bottom-right-radius: 12px; }
+        .first-in-group.bubble-incoming { border-top-left-radius: 12px; margin-top: 10px; }
+        .last-in-group.bubble-incoming { border-bottom-left-radius: 12px; }
+
+        /* 6. ADMIN GOD-EYE GRAPH */
+        #adminGodEyeNetworkContainer { width: 100%; height: 300px; background: #000; border: 2px solid var(--neon-pink); border-radius: 12px; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(255,0,127,0.3); position: relative; overflow: hidden; display: none;}
+        #adminGodEyeNetworkContainer.active { display: block; }
+        /* ================= END NEW UPGRADES CSS ================= */
+
+        /* ZEN MODE FOR NOTEPAD */
         body.zen-mode-active .top-cyber-navbar, 
         body.zen-mode-active .panel-header-flex, 
         body.zen-mode-active .notes-toolbar-ribbon:not(.zen-exempt),
@@ -51,20 +96,7 @@
         body.zen-mode-active #dashboardIdentityHeadingNode { display: none !important; opacity: 0; pointer-events: none; }
         body.zen-mode-active .dashboard-panel-core { padding-top: 20px !important; }
         body.zen-mode-active .notes-engine-card-surface { border: none; box-shadow: none; background: transparent; }
-        
-        /* HYPER-FOCUS MODE */
-        .hyper-focus-active .wordpad-paper p { filter: blur(4px); opacity: 0.4; transition: 0.3s; }
-        .hyper-focus-active .wordpad-paper p.focus-line { filter: blur(0px); opacity: 1; transform: scale(1.02); color: var(--neon-cyan); }
 
-        /* BURN THERAPY ANIMATION */
-        @keyframes burnToAshes {
-            0% { filter: brightness(1) drop-shadow(0 0 0px red); opacity: 1; transform: translateY(0); }
-            50% { filter: brightness(3) drop-shadow(0 -10px 20px #ff4500) blur(2px); opacity: 0.8; transform: translateY(-5px); color: #ff4500; }
-            100% { filter: brightness(0) drop-shadow(0 -20px 40px #000) blur(10px); opacity: 0; transform: translateY(-20px) scale(0.9); }
-        }
-        .burn-active { animation: burnToAshes 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; pointer-events: none; }
-
-        /* MATRIX GLITCH EFFECTS & NEW BACKGROUNDS */
         #matrixAnimatedBackdrop { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.15) 0%, rgba(2, 5, 14, 0.98) 80%); background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px); background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px); }
         @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
         
@@ -74,10 +106,6 @@
         input, textarea, select, [contenteditable="true"] { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
         
-        /* CRT FLASH ON LAMP PULL */
-        .crt-flash-effect { position: fixed; inset: 0; background: #fff; z-index: 9999999; animation: crtPowerOn 0.6s ease-out forwards; pointer-events: none; }
-        @keyframes crtPowerOn { 0% { opacity: 1; filter: brightness(5) contrast(2); } 50% { opacity: 0.8; background: repeating-linear-gradient(0deg, #fff, #ccc 2px, transparent 4px); } 100% { opacity: 0; } }
-
         #systemPreloader { position: fixed; inset: 0; background: #02050e; z-index: 999999999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.6s ease-out, visibility 0.6s ease-out; opacity: 1; visibility: visible;}
         #systemPreloader.engine-ready { opacity: 0; visibility: hidden; pointer-events: none; }
         .loader-spinner { width: 80px; height: 80px; border: 6px solid rgba(0, 242, 254, 0.2); border-top-color: var(--neon-cyan); border-radius: 50%; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite, cyberPulse 2s infinite alternate; }
@@ -86,59 +114,64 @@
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
         
-        /* --- DYNAMIC AVATAR POPUP (LOGIN) --- */
-        .login-avatar-popup { position: absolute; top: -70px; left: 50%; transform: translateX(-50%) scale(0); width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.6); z-index: 30; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; object-fit: cover; }
-        .login-avatar-popup.show { transform: translateX(-50%) scale(1); opacity: 1; }
-
         .top-cyber-navbar { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); width: 96%; max-width: 1200px; height: 65px; background: rgba(6, 17, 38, 0.65); border: 1px solid rgba(0, 242, 254, 0.3); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(35px); -webkit-backdrop-filter: blur(35px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.15); transition: all 0.4s ease; border-radius: 16px; }
-        /* Keeping all original Navbar, Smoke, Stage CSS untouched */
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.85); border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
+        body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
         @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
-        
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02)); border: 1px solid rgba(0, 242, 254, 0.4); border-radius: 10px; color: var(--neon-cyan); padding: 8px 15px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-transform: uppercase;}
-        /* ADDED HAPTIC/SQUISH EFFECT TO BUTTONS */
-        .nav-btn:active, .hud-engage-btn:active { transform: scale(0.95) !important; }
-        .nav-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px); color: #fff; border-color: #fff; }
+        .nav-btn:hover, .hud-engage-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px) scale(0.98); color: #fff; border-color: #fff; } /* Haptic Squish added */
+        body.light-theme-active .nav-btn { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
+        .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+        .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 12px 15px; border-radius: 10px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 6px 20px rgba(0,242,254,0.3); border-color: var(--neon-cyan); transform: translateY(-2px); }
+        body.light-theme-active .toggle-switch-wrapper { color: #111b21; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-color:#cbd5e1; }
+        .toggle-switch { appearance: none; width: 44px; height: 22px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
+        body.light-theme-active .toggle-switch { background: #cbd5e1; border-color: #94a3b8; }
+        .toggle-switch::before { content: ''; position: absolute; width: 14px; height: 14px; background: var(--text-sub); border-radius: 50%; top: 2px; left: 3px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .toggle-switch:checked { background: var(--neon-green); border-color: #27ae60; box-shadow: 0 0 20px rgba(46,204,113,0.6); }
+        body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #059669; }
+        .toggle-switch:checked::before { transform: translateX(22px); background: #fff; box-shadow: 0 0 10px #fff; }
+        
+        .cyber-range { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(0,0,0,0.8); border-radius: 5px; outline: none; border: 1px solid var(--border-glass); box-shadow: inset 0 0 5px rgba(0,0,0,0.5); margin-top: 8px; }
+        .cyber-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--neon-cyan); cursor: pointer; box-shadow: 0 0 15px var(--neon-cyan); transition: 0.3s; }
+        .cyber-range::-webkit-slider-thumb:hover { transform: scale(1.3); background: #fff; }
+
         .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
         .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
         @keyframes smokeDrift { 0% { transform: translateY(-2%) scale(1) rotate(0deg); } 100% { transform: translateY(2%) scale(1.06) rotate(8deg); } }
-        
-        /* 👁️ THE CYBER LAMP (EYE OF GOD UPGRADES) */
+        .thunder-overlay { position: fixed; inset: 0; background: #fff; z-index: 9999; pointer-events: none; opacity: 0; mix-blend-mode: overlay; transition: opacity 0.1s; display: none; }
+        .thunder-overlay.flash { display: block; animation: thunderStrike 0.5s ease-out forwards; }
+        @keyframes thunderStrike { 0% { opacity: 0; } 10% { opacity: 0.95; } 20% { opacity: 0; } 30% { opacity: 0.7; } 40% { opacity: 0; } 100% { opacity: 0; } }
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; }
         @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.95); } 33% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 66% { --lamp-color: #2ecc71; --lamp-shadow: rgba(46, 204, 113, 0.95); } }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(241, 196, 15, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
         
         @keyframes floatLamp { 0%, 100% { transform: scale(1.1) translateZ(50px) translateY(0); } 50% { transform: scale(1.1) translateZ(50px) translateY(-15px); } }
-        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d; transition: transform 0.1s ease-out;} /* Added smooth tracking transition */
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d; transition: transform 0.1s ease-out;}
+        .cinema-stage.activated .cyber-lamp-core { animation: none; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); transform: translateX(500px) scale(0.85) translateZ(50px); }
         
-        .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px); transition: transform 0.2s ease-out;} /* Head tracking */
+        .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid #00f2fe; box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px); transition: transform 0.2s ease-out;}
         .cinema-stage.activated .metallic-shutter-head { border-color: var(--lamp-color); box-shadow: var(--lamp-chamak); }
-        
-        /* Laser Scanner */
         .scanner-laser-ring { position: absolute; width: 100%; height: 3px; background: #ff007f; box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f; top: 0; animation: scanUpDown 2.5s infinite alternate ease-in-out; z-index: 7; opacity: 0; transition: opacity 0.3s; }
         .cinema-stage:not(.activated) .scanner-laser-ring { opacity: 1; }
         @keyframes scanUpDown { 0% { top: 10%; } 100% { top: 90%; } }
-        
         .mechanical-gate { position: absolute; top: 0; width: 50%; height: 100%; background: repeating-linear-gradient(90deg, #0a0d14, #0a0d14 10px, #2a3546 10px, #2a3546 20px); border: 2px solid #00f2fe; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s; z-index: 6; }
         .gate-left { left: 0; border-right: 1px solid rgba(0, 242, 254, 0.5); transform-origin: left center; }
         .gate-right { right: 0; border-left: 1px solid rgba(0, 242, 254, 0.5); transform-origin: right center; }
         .cinema-stage.activated .gate-left { transform: translateX(-100%); opacity: 0; }
         .cinema-stage.activated .gate-right { transform: translateX(100%); opacity: 0; }
-        
         .blinding-core-light { position: absolute; width: 110px; height: 110px; background: radial-gradient(circle, #ffffff 30%, var(--lamp-color) 80%); border-radius: 50%; left: 50%; top: 35px; transform: translateX(-50%); filter: blur(5px); opacity: 0; transition: opacity 0.4s ease, background 0.4s ease; box-shadow: 0 0 80px #ffffff, 0 0 150px var(--lamp-color); }
         .cinema-stage.activated .blinding-core-light { opacity: 1; }
-        
         .hydraulic-stem { width: 32px; height: 260px; background: linear-gradient(90deg, #121a2f, #2a3b59, #080c14); z-index: 3; position: relative; border-radius: 6px; box-shadow: inset 0 0 15px rgba(0,0,0,0.9); }
         .laser-conduit { position: absolute; width: 10px; height: 100%; background: #0b111c; left: 50%; transform: translateX(-50%); transition: background 0.5s, box-shadow 0.5s; }
         .cinema-stage.activated .laser-conduit { background: var(--lamp-color); box-shadow: 0 0 45px var(--lamp-color); }
         .brushed-heavy-base { width: 260px; height: 45px; background: linear-gradient(180deg, #394b66, #020408); border-radius: 50% / 25%; border: 3px solid #5a739c; z-index: 4; box-shadow: 0 25px 45px rgba(0,0,0,0.9); transform: translateZ(10px);}
-        
-        .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.1) 60%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s, transform 0.2s ease-out; transform: translateZ(5px); transform-origin: top center;}
+        .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.1) 60%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; transform: translateZ(5px); transform-origin: top center;}
         .cinema-stage.activated .volumetric-beam { opacity: 0.85; height: 650px; width: 950px; filter: drop-shadow(0 0 40px var(--lamp-shadow)); }
         
         .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; touch-action: none; transform: translateZ(150px); }
@@ -146,80 +179,163 @@
         .beaded-wire { width: 8px; height: 180px; background: repeating-linear-gradient(to bottom, #f1c40f, #f1c40f 8px, #0f172a 8px, #0f172a 16px); box-shadow: 0 0 20px rgba(241,196,15,0.9); border-radius:4px;}
         .luminescent-node { width: 44px; height: 44px; background: radial-gradient(circle, #fff, #f1c40f); border-radius: 50%; box-shadow: 0 0 50px #f1c40f; border: 3px solid #000; transition: 0.3s; margin-top: -5px;}
         
-        /* 🔐 UPGRADED LOGIN SCREEN: Frosted Glass Noise + Matrix Decryption */
-        .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 550px; background: rgba(4, 12, 26, 0.75); border: none; border-left: 8px solid var(--neon-cyan); padding: 50px 40px; border-radius: 20px; backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 20px 40px rgba(0,0,0,0.8); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); overflow: visible;} /* Changed border & overflow */
+        /* UPGRADED POWERFUL LOGIN SCREEN (WITH FROSTED GLASS & MATRIX FX) */
+        .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 550px; background: rgba(4, 12, 26, 0.75); border: none; border-left: 8px solid var(--neon-cyan); padding: 50px 40px; border-radius: 20px; backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 20px 40px rgba(0,0,0,0.8); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); overflow: visible;}
         
-        /* SVG Noise Texture for realistic glass */
         .hud-glass-terminal::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.08"/></svg>'); opacity: 0.15; pointer-events: none; border-radius: 20px; z-index: -1; }
 
-        /* Hologram spawn effect */
+        .hud-glass-terminal::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #00f2fe; box-shadow: 0 0 20px #00f2fe, 0 0 40px #00f2fe; animation: scanLogin 3s infinite linear; pointer-events: none; opacity: 0.7; border-radius: 20px 20px 0 0;}
+        @keyframes scanLogin { 0% { top: 0%; opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { top: 100%; opacity: 0; } }
+
         .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; animation: hologramSpawn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         @keyframes hologramSpawn { 0% { transform: translate3d(-50%, 50px, -100px) scale(0.8); opacity: 0; filter: blur(10px) hue-rotate(90deg); } 100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: 1; filter: blur(0) hue-rotate(0deg); } }
 
+        body.light-theme-active .hud-glass-terminal { background: rgba(255, 255, 255, 0.9); border-color: #cbd5e1; box-shadow: 0 15px 50px rgba(0,0,0,0.15); }
         .hud-top-bar { display: flex; justify-content: space-between; margin-bottom: 25px; transform: translateZ(20px); }
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 6px 12px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
         .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 2.8rem; text-align: center; margin-bottom: 30px; font-weight: 900; letter-spacing: 3px; text-shadow: 0 10px 25px rgba(0,0,0,0.8); animation: glitchTextAnim 4s infinite alternate; transform: translateZ(30px); }
-        
         .hud-input-cluster { position: relative; margin-bottom: 25px; width: 100%; transform: translateZ(10px); }
-        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 20px; background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(0, 242, 254, 0.3); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); font-family: monospace; letter-spacing: 2px; }
-        .hud-input-cluster input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.2); background: rgba(0, 0, 0, 0.8); }
-        
-        /* Focus blur effect on background */
-        body.login-focus-active #matrixAnimatedBackdrop { filter: blur(20px) saturate(150%); opacity: 0.8; }
-
-        .hud-input-cluster label { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1.05rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); font-family: 'Rajdhani'; letter-spacing: 0;}
-        .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label { top: -14px; left: 12px; background: var(--bg-prime); padding: 2px 10px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.8);}
+        .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 18px 20px; background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(0, 242, 254, 0.3); border-radius: 12px; color: var(--text-main); font-size: 1.1rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: inset 0 4px 15px rgba(0,0,0,0.6); }
+        .hud-input-cluster input:focus, .hud-input-cluster textarea:focus { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.5), inset 0 0 10px rgba(0,242,254,0.2); }
+        .hud-input-cluster label { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-sub); pointer-events: none; transition: 0.3s; font-size: 1.05rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+        .hud-input-cluster input:focus ~ label, .hud-input-cluster input:not(:placeholder-shown) ~ label, .hud-input-cluster textarea:focus ~ label, .hud-input-cluster textarea:not(:placeholder-shown) ~ label { top: -14px; left: 12px; background: var(--bg-prime); padding: 2px 10px; font-size: 0.85rem; color: #f1c40f; font-family: 'Orbitron', sans-serif; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.8);}
         .neon-glow-underline { position: absolute; bottom: 0; left: 50%; width: 0; height: 3px; background: #f1c40f; transition: 0.4s ease; transform: translateX(-50%); }
-        .hud-input-cluster input:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
-        
+        .hud-input-cluster input:focus ~ .neon-glow-underline, .hud-input-cluster textarea:focus ~ .neon-glow-underline { width: 100%; box-shadow: 0 0 15px #f1c40f; }
         .hud-engage-btn { width: 100%; padding: 20px; background: linear-gradient(135deg, #f1c40f, #d4ac0d); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 15px 40px rgba(241,196,15,0.4); text-transform: uppercase; transform: translateZ(25px);}
-        .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.8); transform: translateZ(30px) scale(0.98); } /* Premium scale down */
-
-        /* Secret Voice Login Button */
-        .voice-login-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s; filter: grayscale(1); }
+        .hud-engage-btn:active { transform: scale(0.95) translateZ(25px) !important; }
+        .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(241, 196, 15, 0.8); transform: translateZ(30px) scale(0.98); }
+        
+        /* ================= NEW: HACKER FEATURES & UPGRADES CSS ================= */
+        
+        /* 1. BOSS KEY OVERLAY */
+        #bossKeyOverlay { position: fixed; inset: 0; width: 100vw; height: 100vh; background: #fff url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png') no-repeat center center; background-size: 300px; z-index: 9999999999; display: none; }
+        #bossKeyOverlay.active { display: block; }
+        
+        /* 2. CRT FLASH & HOLOGRAM EFFECTS */
+        .crt-flash-effect { position: fixed; inset: 0; background: #fff; z-index: 9999999; animation: crtPowerOn 0.6s ease-out forwards; pointer-events: none; }
+        @keyframes crtPowerOn { 0% { opacity: 1; filter: brightness(5) contrast(2); } 50% { opacity: 0.8; background: repeating-linear-gradient(0deg, #fff, #ccc 2px, transparent 4px); } 100% { opacity: 0; } }
+        
+        /* 3. LOGIN AVATAR & VOICE LOGIN */
+        .login-avatar-popup { position: absolute; top: -70px; left: 50%; transform: translateX(-50%) scale(0); width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0,242,254,0.6); z-index: 30; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; object-fit: cover; }
+        .login-avatar-popup.show { transform: translateX(-50%) scale(1); opacity: 1; }
+        .voice-login-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; transition: 0.3s; filter: grayscale(1); z-index: 10; }
         .voice-login-btn:hover { filter: grayscale(0); transform: translateY(-50%) scale(1.2); }
         .voice-login-btn.listening { animation: cyberPulse 1s infinite alternate; filter: grayscale(0); border-radius: 50%; }
 
-        /* Dashboard & Common CSS remaining the same visually */
-        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 40px; padding-top: 100px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
-        .dashboard-panel-core.active-view { display: flex; opacity: 1; }
-        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 5px solid var(--neon-cyan); padding: 30px 25px; border-radius: 16px; width: 100%; max-width: 1050px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 5px; margin-bottom: 20px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        
-        /* Category Tabs for Notepad/WhatsApp (WhatsApp Web Style) */
+        /* 4. NOTEPAD PRO UPGRADES (Categories, Focus, Burn) */
         .category-tab-container { display: flex; gap: 10px; border-bottom: 2px solid var(--border-glass); margin-bottom: 20px; padding-bottom: 10px; overflow-x: auto; }
         .category-tab { padding: 8px 16px; font-family: 'Orbitron'; font-weight: bold; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: 0.3s; font-size: 0.9rem; white-space: nowrap; }
         .category-tab:hover { background: rgba(0, 242, 254, 0.1); color: var(--neon-cyan); }
         .category-tab.active { background: rgba(0, 242, 254, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
-
-        /* WHATSAPP UPGRADES CSS */
-        .chat-io-grid-matrix { display: grid; grid-template-columns: 320px 1fr; gap: 0; width: 100%; height: 75vh; max-height: 800px; background: var(--wa-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
-        .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow: hidden; z-index: 5; height: 100%; }
         
-        /* Bouncing Dots Typing Indicator */
+        .hyper-focus-active .wordpad-paper p, .hyper-focus-active .wordpad-paper div, .hyper-focus-active .wordpad-paper li { filter: blur(4px); opacity: 0.4; transition: 0.3s; }
+        .hyper-focus-active .wordpad-paper .focus-line { filter: blur(0px); opacity: 1; transform: scale(1.01); color: var(--neon-cyan); }
+        
+        @keyframes burnToAshes { 0% { filter: brightness(1) drop-shadow(0 0 0px red); opacity: 1; transform: translateY(0); } 50% { filter: brightness(3) drop-shadow(0 -10px 20px #ff4500) blur(2px); opacity: 0.8; transform: translateY(-5px); color: #ff4500; } 100% { filter: brightness(0) drop-shadow(0 -20px 40px #000) blur(10px); opacity: 0; transform: translateY(-20px) scale(0.9); } }
+        .burn-active { animation: burnToAshes 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important; pointer-events: none; }
+
+        /* 5. WHATSAPP UI UPGRADES (Dots, Parallax, Bubbles) */
         .typing-dots-container { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; background: var(--wa-msg-in); border-radius: 15px; width: fit-content; }
         .typing-dot { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; animation: bounceDots 1.4s infinite ease-in-out both; }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; } .typing-dot:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounceDots { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-
-        /* Parallax Wallpaper Effect */
-        .chat-messages-scroll-stack { flex: 1 1 auto; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; z-index: 2; scroll-behavior: smooth; perspective: 1px; transform-style: preserve-3d; }
-        .parallax-bg-layer { position: absolute; inset: 0; background: var(--chat-wallpaper); z-index: 0; transform: translateZ(-1px) scale(2); pointer-events: none; }
-
-        /* Dynamic Bubbles (Smooth Corners) */
-        .bubble-msg-wrapper { max-width: 65%; padding: 6px 8px 8px 10px; border-radius: 12px; font-size: 0.95rem; line-height: 20px; position: relative; box-shadow: 0 1px 3px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; z-index: 2;}
-        .bubble-outgoing { background: var(--wa-msg-out); color: var(--wa-text); align-self: flex-end; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
-        .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+        
+        .parallax-bg-layer { position: absolute; inset: 0; background: var(--chat-wallpaper); z-index: 0; transform: translateZ(-1px) scale(2); pointer-events: none; transition: transform 0.1s ease-out; }
+        
+        .bubble-outgoing { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+        .bubble-incoming { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
         .first-in-group.bubble-outgoing { border-top-right-radius: 12px; margin-top: 10px; }
         .last-in-group.bubble-outgoing { border-bottom-right-radius: 12px; }
         .first-in-group.bubble-incoming { border-top-left-radius: 12px; margin-top: 10px; }
         .last-in-group.bubble-incoming { border-bottom-left-radius: 12px; }
 
-        /* Admin Graph Node Container */
+        /* 6. ADMIN GOD-EYE GRAPH */
         #adminGodEyeNetworkContainer { width: 100%; height: 300px; background: #000; border: 2px solid var(--neon-pink); border-radius: 12px; margin-bottom: 20px; box-shadow: inset 0 0 20px rgba(255,0,127,0.3); position: relative; overflow: hidden; display: none;}
         #adminGodEyeNetworkContainer.active { display: block; }
+
+        /* ================= ORIGINAL DASHBOARD & COMMON CSS ================= */
+        .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 20px; overflow-y: auto; overflow-x: hidden; padding-bottom: 40px; padding-top: 100px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
+        .dashboard-panel-core.active-view { display: flex; opacity: 1; }
+        .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 5px solid var(--neon-cyan); padding: 30px 25px; border-radius: 16px; width: 100%; max-width: 1050px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 5px; margin-bottom: 20px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .hud-container-panel:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 15px rgba(0,242,254,0.1); }
         
+        .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; padding: 5px; margin-top: 20px; }
+        .menu-card { background: linear-gradient(145deg, rgba(4, 14, 33, 0.9), rgba(10, 22, 45, 0.9)); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 2px 10px rgba(0, 242, 254, 0.05); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; transform-style: preserve-3d;}
+        .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.2), transparent); transform: skewX(-25deg); transition: 0.5s; z-index:1; }
+        .menu-card:hover::before { left: 150%; }
+        .menu-card:hover { transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-5px) scale3d(1.03, 1.03, 1.03); box-shadow: 0 20px 40px rgba(0,242,254,0.4), inset 0 0 15px rgba(0,242,254,0.3); border-color: var(--neon-cyan); z-index: 10; }
+        .menu-card .icon { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 15px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
+        .menu-card:hover .icon { transform: scale(1.15) rotate(8deg) translateZ(15px); text-shadow: 0 0 30px var(--neon-cyan); }
+        .menu-card h3 { font-family: 'Orbitron'; color: var(--text-main); font-size: 1.15rem; margin-bottom: 6px; font-weight:900; position:relative; z-index:2; text-shadow: 0 2px 4px rgba(0,0,0,0.8); letter-spacing: 0.5px;}
+        .menu-card p { font-size: 0.9rem; color: var(--text-sub); position:relative; z-index:2; line-height: 1.3; font-weight: 600; opacity: 0.9;}
+        
+        .panel-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--border-glass); padding-bottom: 15px; gap: 15px; flex-wrap: wrap; }
+        .neon-cyan-text { font-family: 'Orbitron'; color: #00f2fe; font-size: 1.8rem; text-shadow: var(--cyber-glow); font-weight: 900; letter-spacing: 1px; animation: glitchTextAnim 4s infinite; }
+        .neon-cyan-text span { font-size: 1.2rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 10px; text-shadow: none; font-weight: 600; animation: none; }
+        .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 1.8rem; text-shadow: 0 0 15px rgba(46,204,113,0.5); font-weight: 900; animation: glitchTextAnim 3s infinite reverse; }
+        .matrix-system-controller-dock { margin-top: 25px; display: flex; gap: 12px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); padding: 15px 20px; border-radius: 10px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 8px rgba(0,0,0,0.6); }
+        .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.85rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .refresh-spinner-node { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
+        @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 10px #2ecc71; } }
+        .form-grid-layout, .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width-field { grid-column: span 2; }
+        .abort-btn { padding: 10px 20px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.85rem; transition: 0.3s; box-shadow: 0 4px 12px rgba(231,76,60,0.4); letter-spacing: 1px; display:inline-flex; align-items:center; justify-content:center; gap:6px; text-transform: uppercase;}
+        .abort-btn:hover { background: #e74c3c; box-shadow: 0 0 20px rgba(231,76,60,0.8); transform: scale(1.05); }
+        .home-action-btn { background: rgba(0,242,254,0.1); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 0.85rem;}
+        .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); transform: scale(1.05); }
+        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.6rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.9); border: 2px solid #00f2fe; padding: 12px 25px; border-radius: 10px; display: inline-block; box-shadow: 0 0 20px rgba(0,242,254,0.5), inset 0 0 8px rgba(0,242,254,0.3); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 8px #f1c40f; letter-spacing: 1.5px;}
+        .ai-helper-banner { padding: 15px; margin-top: 20px; border-radius: 10px; background: rgba(0,242,254,0.1); border: 2px solid rgba(0,242,254,0.4); color: #00f2fe; text-align: center; font-size: 1rem; font-weight: 700; box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1); letter-spacing: 0.5px;}
+        .search-terminal-input, .giant-compiler-input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 10px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 3px 8px rgba(0,0,0,0.5); transition: 0.3s; }
+        .giant-compiler-input:focus, .search-terminal-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,242,254,0.4); }
+        
+        #policyCardsStack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+        .hud-data-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-left: 5px solid #f1c40f; padding: 25px; border-radius: 14px; display: flex; flex-direction: column; gap: 12px; word-break: break-all; position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease; }
+        .hud-data-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 35px rgba(0, 242, 254, 0.3); border-color: var(--neon-cyan); }
+        .hud-data-card p { color: var(--text-sub); font-size: 0.95rem; display: flex; flex-flow: row wrap; gap: 6px; font-weight: 600; line-height: 1.4; }
+        .hud-data-card b { color: var(--text-main); display: inline-block; width: 100px; flex-shrink: 0; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .admin-clickable-badge { color: #f1c40f; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px; font-family: monospace; font-size: 0.9rem; font-weight: bold; border: 1px solid rgba(241,196,15,0.4); cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+        .admin-clickable-badge:hover { background: #f1c40f; color: #000; transform: scale(1.05); box-shadow: 0 0 12px #f1c40f; }
+        .hud-data-card .owner-name-tag-right { position: absolute; top: 15px; right: 15px; font-family: 'Orbitron', sans-serif; color: #00f2fe; font-size: 0.85rem; font-weight: 900; background: rgba(0, 242, 254, 0.2); padding: 6px 12px; border-radius: 6px; border: 2px solid rgba(0, 242, 254, 0.5); box-shadow: 0 3px 8px rgba(0,0,0,0.4); }
+        
+        .status-badge { font-family: 'Orbitron'; font-size: 0.85rem; padding: 6px 12px; border-radius: 5px; font-weight: 900; display: inline-block; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+        .status-pending { background: rgba(241,196,15,0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+        .status-uploaded { background: rgba(46,204,113,0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .status-error { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .status-closed { background: rgba(149,165,166,0.2); color: #95a5a6; border: 1px solid #95a5a6; }
+        .wipe-card-btn { width: 100%; padding: 12px; background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.6); color: #e74c3c; font-family: 'Orbitron'; font-weight: 900; font-size: 0.9rem; border-radius: 8px; cursor: pointer; margin-top: 8px; transition: 0.3s; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
+        .wipe-card-btn:hover { background: rgba(231,76,60,0.4); color: #fff; box-shadow: 0 0 15px rgba(231,76,60,0.6); transform: scale(1.02); }
+        .hidden { display: none !important; }
+        .text-left { text-align: left; }
+        .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 12px; padding: 25px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 12px rgba(0,0,0,0.4); }
+        .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
+
+        @media (max-width: 768px) {
+            .top-cyber-navbar { padding: 10px; height: auto; flex-direction: column; gap: 10px; position: absolute; border-radius: 0; width: 100%; top: 0;}
+            .navbar-controls { justify-content: center; }
+            .dashboard-panel-core { padding-top: 140px; padding-bottom: 20px; padding-left: 10px; padding-right: 10px; }
+            .giant-compiler-grid, .form-grid-layout, #policyCardsStack, #adminUserControlList, .analytics-grid-host { grid-template-columns: 1fr !important; gap: 15px !important; }
+            .full-width-field { grid-column: span 1; }
+            .chat-io-grid-matrix { grid-template-columns: 1fr !important; height: calc(100vh - 160px) !important; max-height: none;}
+            .chat-target-userlist-pane { width: 100%; height: 100%; display: flex; }
+            .chat-stream-message-container { width: 100%; height: 100%; display: none; }
+            .chat-io-grid-matrix.mobile-chat-view-active .chat-target-userlist-pane { display: none; }
+            .chat-io-grid-matrix.mobile-chat-view-active .chat-stream-message-container { display: flex; }
+            .mobile-back-btn { display: inline-block; }
+            .cinema-stage.activated .cyber-lamp-core { transform: translateY(-100px) scale(0.6) translateZ(0); }
+            .emoji-matrix-drawer { grid-template-columns: repeat(5, 1fr); }
+            .mainframe-gif-drawer { grid-template-columns: repeat(2, 1fr); }
+            .chat-interface-footer-inputs { flex-wrap: wrap; gap: 8px; }
+            .whatsapp-input-field { min-width: 120px; }
+            .wa-attachment-popover { grid-template-columns: repeat(3, 1fr); gap: 10px; padding:15px; left: 5px; right: 5px; bottom: 110px;}
+            .locked-area-active { width: 100vw !important; height: 100vh !important; border-radius:0 !important; border:none !important;}
+        }
+        @media (min-width: 769px) {
+            .chat-io-grid-matrix { grid-template-columns: 320px 1fr !important; }
+            .chat-target-userlist-pane { display: flex !important; }
+            .chat-stream-message-container { display: flex !important; }
+            .mobile-back-btn { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -256,6 +372,7 @@
         <div id="thunderEffect" class="thunder-overlay"></div>
 
         <div class="cyber-lamp-core" id="lampDevice">
+            <!-- LAMP HEAD ID ADDED FOR TRACKING -->
             <div class="metallic-shutter-head" id="lampHead">
                 <div class="blinding-core-light"></div>
                 <div class="scanner-laser-ring"></div>
@@ -287,6 +404,7 @@
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
+                    <!-- PASSWORD MATRIX DECRYPTION EFFECT IN JS -->
                     <input type="password" id="accessNodePass" required placeholder=" " oninput="window.matrixDecryptionTypingEffect(this)">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
@@ -302,6 +420,7 @@
             </form>
         </div>
     </div>
+
     <!-- ==================== PRO NOTEPAD INTERFACE ==================== -->
     <div id="masterNotesInterfaceBlock" class="hidden">
         <div class="notes-engine-card-surface" id="notesMainWrapperCard">
@@ -395,7 +514,6 @@
             
             <div class="notes-editor-container-shell zen-exempt" id="printAreaNotepad">
                 <div class="wordpad-container">
-                    <!-- ADDED ID for Focus Mode logic -->
                     <div id="richNoteWritingPadEditable" class="wordpad-paper" contenteditable="true" oninput="window.updateNotepadLiveCounters(); window.handleHyperFocusLine(event);"></div>
                     
                     <div id="slashCommandMenu" class="slash-command-menu">
@@ -419,14 +537,12 @@
                     <span style="padding:10px; font-size:1.2rem;">🔒</span>
                     <input type="password" id="noteLockPasswordInput" class="note-password-input" placeholder="Set Lock Password (Optional)">
                 </div>
-                <!-- ORIGINAL TRANSMIT BUTTON -->
                 <button class="hud-engage-btn" id="btnTransmitNote" style="flex:2; background:linear-gradient(135deg, #00f2fe, #4facfe); padding:15px;" onclick="window.dispatchCompiledNoteToCloudMatrix()">TRANSMIT PACKET TO CLOUD</button>
-                <!-- NEW BURN THERAPY BUTTON (Hidden by default, shown in Vent mode) -->
+                <!-- NEW BURN THERAPY BUTTON (Hidden by default) -->
                 <button class="hud-engage-btn hidden" id="btnBurnNote" style="flex:2; background:linear-gradient(135deg, #ff4500, #c0392b); color:#fff; padding:15px; text-shadow: 0 0 10px #000;" onclick="window.executeBurnTherapyProtocol()">🔥 BURN IT (PERMANENT DELETE)</button>
                 
                 <button class="abort-btn" style="flex:1; padding:15px;" onclick="window.wipeNoteInterfaceToBlankTrigger()">🆕 NEW NOTE</button>
             </div>
-            <!-- NOTE CATEGORY HIDDEN INPUT -->
             <input type="hidden" id="currentNoteCategoryInput" value="all">
 
             <div class="notes-realtime-logs-wrapper zen-exempt" id="realtimeCloudNotesViewStack"></div>
@@ -483,7 +599,6 @@
                 </div>
             </div>
 
-            <!-- Upload, Vault, Gaming blocks remain exactly same -->
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <h3 class="neon-cyan-text" style="font-size: 1.5rem; margin-bottom: 15px;">📁 SECURE POLICY SYSTEM</h3>
                 <div id="customerLiveTrackerSection" style="margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.6); border-radius: 12px; border: 2px solid rgba(0,242,254,0.4); box-shadow: inset 0 3px 10px rgba(0,0,0,0.7);"></div>
@@ -543,7 +658,6 @@
                             <button class="nav-btn" style="padding: 6px 10px; font-size: 1rem; border-radius: 6px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
                         <div id="chatTargetContainerView"></div>
-                        <!-- UI TABS ALREADY ORGANIZED -->
                         <div class="wa-bottom-tabs">
                             <div class="active-tab" onclick="window.switchCustomerChannel('chat')">💬<br>Chats</div>
                             <div onclick="window.openStatusDashboardOverlay()">🔄<br>Updates</div>
@@ -554,7 +668,6 @@
                     </div>
                     
                     <div class="chat-stream-message-container">
-                        <!-- PARALLAX WALLPAPER EFFECT CONTAINER -->
                         <div class="parallax-bg-layer" id="chatParallaxBg"></div>
 
                         <div class="chat-stream-header-bar">
@@ -564,7 +677,6 @@
                                 <div class="whatsapp-user-info" style="cursor:pointer;" onclick="window.triggerTargetUserContactProfileModal(event, MatrixSystemState.get('activeSelectedChatTargetUserId'))">
                                     <div class="whatsapp-user-name" id="chatActiveUserHeaderNode">Select Pipeline...</div>
                                     <div id="chatActiveUserBioNode" style="font-size: 0.75rem; color: var(--wa-text-muted); font-family: inherit; margin-top: 2px;"></div>
-                                    <!-- BOUNCING DOTS TYPING INDICATOR ADDED -->
                                     <div id="whatsappTypingStatusIndicator" class="typing-dots-container hidden">
                                         <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
                                     </div>
@@ -614,7 +726,6 @@
                             <div style="text-align:center; margin: 8px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:4px 10px; border-radius:6px; font-size:0.75rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>
                         </div>
                         
-                        <!-- Attachments, Emojis, Stickers overlay structures -->
                         <div style="position:relative; z-index:100;">
                             <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
                             <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
@@ -644,7 +755,6 @@
                             </div>
                         </div>
                         
-                        <!-- Reply / Quote Banner -->
                         <div id="waReplyBanner" class="hidden" style="padding:10px 15px; background:var(--wa-search-input); border-left:4px solid var(--wa-green); display:flex; justify-content:space-between; align-items:center;">
                             <div style="display:flex; flex-direction:column; gap:4px;">
                                 <span id="waReplyName" style="color:var(--wa-green); font-weight:bold; font-size:0.9rem;">Replying to...</span>
@@ -667,7 +777,6 @@
                             <div style="flex: 1; position: relative; min-width: 120px; display:flex; align-items:center;">
                                 <input type="text" id="chatCoreMessageTextInput" class="whatsapp-input-field" placeholder="Type a message or / for commands..." oninput="window.handleUserTypingSimulationTracker(); window.checkQuickCommands(this);" onkeydown="if(event.key==='Enter') window.dispatchMatrixChatMessage()">
                                 <span id="chatInputCharCounter" class="char-counter-badge hidden">0/250</span>
-                                <!-- Quick Command Dropdown -->
                                 <div id="quickCommandMenu" style="position:absolute; bottom:100%; left:0; width:100%; background:var(--wa-header); border:1px solid var(--wa-border); border-radius:10px; display:none; flex-direction:column; padding:5px; z-index:100;">
                                     <div class="slash-cmd-item" onclick="window.insertQuickReply('/address')">/address - Insert Home Address</div>
                                     <div class="slash-cmd-item" onclick="window.insertQuickReply('/email')">/email - Insert Email ID</div>
@@ -679,9 +788,7 @@
                         </div>
                     </div>
 
-                    <!-- Status Viewer -->
                     <div id="whatsappStatusDashboardPanel" class="status-dashboard-overlay hidden">
-                        <!-- Remained identical, functionality is pure -->
                         <div class="status-dashboard-header"><button onclick="window.closeStatusDashboardOverlay()">⬅️</button> Status</div>
                         <div style="overflow-y:auto; flex:1;">
                             <div class="status-section-title">My Status</div>
@@ -697,7 +804,6 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.9rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
-            <!-- Request Interface remains unchanged -->
             <div id="customerRequestInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
@@ -724,6 +830,7 @@
             <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
+
     <!-- ==================== ADMIN DASHBOARD CORE (GOD MODE) ==================== -->
     <div class="dashboard-panel-core" id="adminDashboard">
         <div class="hud-container-panel" style="text-align: left; max-width:1200px;">
@@ -758,7 +865,6 @@
                 <div class="menu-card" onclick="window.switchAdminSubSection('credentials')" style="border-color:#00f2fe;">
                     <div class="icon" style="text-shadow: 0 0 15px #00f2fe;">⚙️</div><h3 style="color: #00f2fe;">User & Global Control</h3><p>Deep matrix control & permissions.</p>
                 </div>
-                <!-- ADMIN NOTEPAD (PRO WORKSPACE) -->
                 <div class="menu-card" onclick="window.switchAdminSubSection('notes')" style="border-color:#f1c40f;">
                     <div class="icon" style="text-shadow: 0 0 15px #f1c40f;">📝</div><h3 style="color: #f1c40f;">Notes Pro</h3><p>Admin Workspace Notepad.</p>
                 </div>
@@ -771,7 +877,6 @@
                 <div class="menu-card" onclick="window.switchAdminSubSection('tickets')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 15px #2ecc71;">🎫</div><h3 style="color: #2ecc71;">Support</h3><p>View & Reply to User Tickets.</p>
                 </div>
-                <!-- NEW: GOD-EYE NETWORK GRAPH -->
                 <div class="menu-card" onclick="window.switchAdminSubSection('godeye')" style="border-color:#ff007f;">
                     <div class="icon" style="text-shadow: 0 0 15px #ff007f;">🕸️</div><h3 style="color: #ff007f;">God-Eye Graph</h3><p>3D Matrix Connection Map.</p>
                 </div>
@@ -784,8 +889,6 @@
             </div>
 
             <div class="customerCardsContainer" id="adminStaticContainer">
-                
-                <!-- CREATION, APPROVALS, CREDENTIALS (UNCHANGED) -->
                 <div id="creationBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: rgba(0, 242, 254, 0.6); box-shadow: var(--cyber-glow);">
                         <h3 class="neon-cyan-text" style="font-size: 1.5rem; margin-bottom: 20px;">⚡ ACCOUNT ENGINE IDENTITY</h3>
@@ -832,7 +935,6 @@
                     
                     <div class="modern-glass-panel" style="border: 2px solid var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.15);">
                         <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.4rem; margin-bottom:20px; text-shadow:0 0 12px rgba(0,242,254,0.3);">🌍 GLOBAL FEATURE TOGGLES & CONFIGS</h4>
-                        
                         <div style="margin-bottom:20px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; border: 1px dashed var(--neon-cyan); display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div>
                                 <h5 style="color:#fff; font-family:'Orbitron'; font-size:1rem; margin-bottom: 10px;">⚡ LOGIN THUNDER INTENSITY</h5>
@@ -846,7 +948,6 @@
                                 <input type="range" id="adminLogoutControl" min="10" max="7200" step="10" value="60" class="cyber-range" oninput="document.getElementById('lblAdminLogoutControl').innerText = this.value; window.updateGlobalFeatures();">
                             </div>
                         </div>
-
                         <div class="cyber-toggle-container">
                             <label class="toggle-switch-wrapper" style="border-color:#2ecc71;"><span style="color:#2ecc71;">ENABLE POLICY VAULT</span> <input type="checkbox" id="globalTog_policy" class="toggle-switch" onchange="window.updateGlobalFeatures()"></label>
                             <label class="toggle-switch-wrapper" style="border-color:#00f2fe;"><span style="color:#00f2fe;">ENABLE NOTES PRO</span> <input type="checkbox" id="globalTog_notes" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked></label>
@@ -870,7 +971,6 @@
                     <div id="policyCardsStack"></div>
                 </div>
 
-                <!-- NEW: GOD-EYE NETWORK GRAPH HTML -->
                 <div id="adminGodEyeBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: #ff007f; box-shadow: 0 0 25px rgba(255,0,127,0.2);">
                         <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.5rem; margin-bottom:15px; text-shadow:0 0 10px rgba(255,0,127,0.4);">🕸️ GOD-EYE NETWORK MAP</h3>
@@ -882,7 +982,6 @@
                     </div>
                 </div>
 
-                <!-- ==================== SPYCHAT WITH NEW HACKER FEATURES ==================== -->
                 <div id="adminSpyChatBlock" class="hidden">
                     <div class="chat-io-grid-matrix" id="adminChatGridBox">
                         <div class="chat-target-userlist-pane">
@@ -895,7 +994,6 @@
                                 <div class="wa-status-circle-icon" title="View Statuses" onclick="window.openStatusViewerEngine()">⭕</div>
                             </div>
                             <div id="adminSpyUsersListWrapper" style="flex:1; overflow-y:auto;"></div>
-                            
                             <div class="wa-bottom-tabs">
                                 <div class="active-tab">💬<br>SpyChats</div>
                                 <div onclick="window.switchAdminSubSection('godeye')">🕸️<br>God-Eye</div>
@@ -916,7 +1014,6 @@
                                     </div>
                                 </div>
                                 <div style="display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
-                                    <!-- NEW: SILENT GHOST READ TOGGLE -->
                                     <label style="color:#e74c3c; font-family:'Orbitron'; font-weight:bold; margin-right:10px; font-size:0.8rem; border:1px solid #e74c3c; padding:4px 8px; border-radius:6px; cursor:pointer;" title="Read messages without giving Blue Ticks">
                                         <input type="checkbox" id="adminGhostReadToggle" checked> 👻 Stealth Read
                                     </label>
@@ -944,15 +1041,12 @@
                                 </div>
                             </div>
                             
-                            <!-- PARALLAX BG -->
                             <div class="parallax-bg-layer" id="adminParallaxBg"></div>
-                            
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack" onscroll="window.handleParallaxScroll(this)"></div>
                             
                             <div style="position:relative; z-index:100;">
                                 <div class="emoji-matrix-drawer hidden" id="adminSystemEmojiMatrixBoxNode"></div>
                                 <div class="mainframe-gif-drawer hidden" id="adminMainframeGifContainerBox"></div>
-                                
                                 <div class="wa-attachment-popover" id="adminWaAttachmentMenuBox">
                                     <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()"><div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span></div>
                                     <div class="attach-icon-wrapper" onclick="document.getElementById('adminChatMediaFileInput').click()"><div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span></div>
@@ -969,7 +1063,6 @@
                                 <input type="file" id="adminChatMediaFileInput" style="display:none;" onchange="window.processBinaryAttachment(event, 'chat')">
                                 
                                 <div style="flex: 1; position: relative; min-width: 120px; display:flex; align-items:center;">
-                                    <!-- NEW: LIVE INTERCEPTION INPUT (Hacker Style) -->
                                     <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="[LIVE INTERCEPT] Alter or Send Message as User..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()" style="border: 1px solid #ff007f; color: #ff007f; font-family: 'Orbitron'; font-weight: bold; box-shadow: inset 0 0 10px rgba(255,0,127,0.2);">
                                 </div>
                                 <button id="adminVoiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
@@ -1032,7 +1125,6 @@
     <!-- ==================== UNIVERSAL POPUPS & MODALS ==================== -->
     <div id="nexusCustomInlineModalWrapper" class="nexus-custom-popup-overlay hidden" onclick="window.closeCustomInlinePopupEngine()"></div>
 
-    <!-- NEW CUSTOM CYBER CALENDAR MODAL -->
     <div id="cyberCalendarOverlay" class="hidden" onclick="window.closeCyberCalendar()">
         <div class="cyber-calendar-box" onclick="event.stopPropagation()">
             <div class="cal-header">
@@ -1048,7 +1140,6 @@
         </div>
     </div>
 
-    <!-- STATUS VIEWER OVERLAY -->
     <div id="statusViewerOverlayWrapper" class="status-viewer-overlay hidden" style="position:fixed; inset:0; background:#0b141a; z-index:250000; display:flex; flex-direction:column;">
         <div class="status-viewer-header" style="padding:15px; display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.5);">
             <div style="display:flex; align-items:center; gap:12px; flex:1;">
@@ -1074,14 +1165,15 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, remove, push, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // Security
+        // Security & Boss Key (Double ESC)
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = function(e) {
             // NEW: THE BOSS KEY (DOUBLE ESCAPE)
             if (e.key === 'Escape') {
                 const now = Date.now();
                 if (window.lastEscPress && (now - window.lastEscPress < 400)) {
-                    document.getElementById('bossKeyOverlay').classList.toggle('active');
+                    const bossKeyNode = document.getElementById('bossKeyOverlay');
+                    if(bossKeyNode) bossKeyNode.classList.toggle('active');
                 }
                 window.lastEscPress = now;
             }
@@ -1162,13 +1254,9 @@
         window.matrixDecryptionTypingEffect = function(inputElement) {
             const val = inputElement.value;
             if(val.length > 0) {
-                // Creates a glitchy typing feel before resolving
                 const matrixChars = "!@#$%^&*()_+-=[]{}|;':,./<>?";
                 let glitch = "";
                 for(let i=0; i<val.length; i++) { glitch += matrixChars.charAt(Math.floor(Math.random() * matrixChars.length)); }
-                
-                // We don't overwrite the actual value, just create a visual cue if possible, 
-                // but since it's type="password", we can play a sound.
                 window.playSynthesizedSound(800 + Math.random()*200, 'square', 0.05);
             }
             window.debouncedAutoLoginCheck();
@@ -1188,7 +1276,7 @@
                 window.playSynthesizedSound(600, 'sine', 0.2);
             };
             recognition.onresult = function(e) {
-                const voicePass = e.results[0][0].transcript.trim().replace(/\s/g, ""); // Remove spaces
+                const voicePass = e.results[0][0].transcript.trim().replace(/\s/g, "");
                 document.getElementById('accessNodePass').value = voicePass;
                 window.checkAutoLogin();
             };
@@ -1228,12 +1316,10 @@
             if(!selection.focusNode) return;
             
             let currentNode = selection.focusNode;
-            if(currentNode.nodeType === 3) currentNode = currentNode.parentNode; // Get element
+            if(currentNode.nodeType === 3) currentNode = currentNode.parentNode;
             
-            // Remove focus class from all
             document.querySelectorAll('#richNoteWritingPadEditable *').forEach(el => el.classList.remove('focus-line'));
             
-            // Add focus class to current block element (p, div, h1, etc)
             const blockElement = currentNode.closest('p, div, h1, h2, h3, li');
             if(blockElement) blockElement.classList.add('focus-line');
         };
@@ -1259,6 +1345,57 @@
                 }
             }
         });
+
+        // --- NEW: ADMIN GOD-EYE NETWORK GRAPH RENDERING ---
+        window.renderGodEyeGraph = function() {
+            const canvas = document.getElementById('godEyeCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = 300;
+
+            const users = MatrixSystemState.get('cachedGlobalUsersArr');
+            if (users.length === 0) return;
+
+            let nodes = [];
+            users.forEach((u, i) => {
+                nodes.push({
+                    x: Math.random() * (canvas.width - 40) + 20,
+                    y: Math.random() * (canvas.height - 40) + 20,
+                    name: u.clientName,
+                    id: u.id,
+                    online: u.isOnlineNode
+                });
+            });
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.lineWidth = 1;
+            for(let i=0; i<nodes.length; i++) {
+                for(let j=i+1; j<nodes.length; j++) {
+                    if (Math.random() > 0.6) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = `rgba(255, 0, 127, ${Math.random() * 0.5})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            nodes.forEach(n => {
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = n.online ? '#2ecc71' : '#00f2fe';
+                ctx.fill();
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = n.online ? '#2ecc71' : '#00f2fe';
+
+                ctx.font = "10px Orbitron";
+                ctx.fillStyle = "#fff";
+                ctx.fillText(n.name, n.x + 10, n.y + 4);
+            });
+        };
 
         let activeThunderIntervalObj = null;
         window.applyThunderModeEngine = function(modeValue) {
@@ -1491,60 +1628,6 @@
             }).join('');
         };
 
-        // --- NEW: GOD-EYE NETWORK GRAPH RENDERING ---
-        window.renderGodEyeGraph = function() {
-            const canvas = document.getElementById('godEyeCanvas');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = 300;
-
-            const users = MatrixSystemState.get('cachedGlobalUsersArr');
-            if (users.length === 0) return;
-
-            let nodes = [];
-            users.forEach((u, i) => {
-                nodes.push({
-                    x: Math.random() * (canvas.width - 40) + 20,
-                    y: Math.random() * (canvas.height - 40) + 20,
-                    name: u.clientName,
-                    id: u.id,
-                    online: u.isOnlineNode
-                });
-            });
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw Connection Lines (Matrix Web)
-            ctx.lineWidth = 1;
-            for(let i=0; i<nodes.length; i++) {
-                for(let j=i+1; j<nodes.length; j++) {
-                    // Simulated connection strength
-                    if (Math.random() > 0.6) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(255, 0, 127, ${Math.random() * 0.5})`;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            // Draw Nodes
-            nodes.forEach(n => {
-                ctx.beginPath();
-                ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
-                ctx.fillStyle = n.online ? '#2ecc71' : '#00f2fe';
-                ctx.fill();
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = n.online ? '#2ecc71' : '#00f2fe';
-
-                ctx.font = "10px Orbitron";
-                ctx.fillStyle = "#fff";
-                ctx.fillText(n.name, n.x + 10, n.y + 4);
-            });
-        };
-
         onValue(ref(db, 'support_tickets'), (snapshot) => {
             const data = snapshot.val() ? Object.values(snapshot.val()) : [];
             MatrixSystemState.set('cachedSupportTicketsArr', data);
@@ -1697,7 +1780,6 @@
             if(templateHTML) { document.execCommand('insertHTML', false, templateHTML + '<p><br></p>'); window.updateNotepadLiveCounters(); }
         };
 
-        // --- NEW: AUTO-CHECKLIST EXTRACTOR ---
         window.extractAutoChecklist = function() {
             const editor = document.getElementById('richNoteWritingPadEditable');
             if(!editor) return;
@@ -2021,12 +2103,6 @@
             if(liveVideoCallStreamObj) { liveVideoCallStreamObj.getTracks().forEach(track => track.stop()); liveVideoCallStreamObj = null; }
         };
 
-        window.wipeNoteInterfaceToBlankTrigger = function() {
-            const editor = document.getElementById('richNoteWritingPadEditable'); if (editor) editor.innerHTML = "";
-            notesVoicePayloadBase64Node = ""; autoGeneratedVoiceDurationString = ""; window.updateNotepadLiveCounters(); window.playSynthesizedSound(880, 'sine', 0.1);
-        };
-
-        // ... (REST OF ALL ORIGINAL FUNCTIONS LIKE NOTES RECORDING, DISPATCH NOTE, UNLOCK NOTE ETC)
         window.toggleRichNotesVoiceStreamRecorder = function() {
             const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
             if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
@@ -2047,7 +2123,6 @@
             const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim(); const dateLogSelected = document.getElementById('noteManualDateSelector').value; const timeLogSelected = document.getElementById('noteManualTimeSelector').value; const currentUid = MatrixSystemState.get('loggedInCustomerID');
             const pwdInput = document.getElementById('noteLockPasswordInput');
             let noteLockPass = ""; if(pwdInput) { noteLockPass = pwdInput.value.trim(); }
-            // NEW: Note Category Support
             const catInput = document.getElementById('currentNoteCategoryInput');
             const noteCategory = catInput ? catInput.value : 'all';
 
@@ -2081,7 +2156,6 @@
             const catInput = document.getElementById('currentNoteCategoryInput');
             if(catInput) catInput.value = cat;
             
-            // Toggle Burn Mode UI
             const burnBtn = document.getElementById('btnBurnNote');
             const transBtn = document.getElementById('btnTransmitNote');
             const lockWrap = document.getElementById('noteLockWrapper');
@@ -2254,12 +2328,9 @@
                 } else {
                     if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
                         msgs.push(m);
-                        // MARK READ LOGIC WITH GHOST MODE CHECK
                         if(m.receiver === currentUid && !m.read) {
-                            // Check if I have ghost mode enabled
                             const myUser = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
                             const isGhost = myUser && myUser.premium && myUser.premium.stealthMode;
-                            // Also check Admin's global ghost toggle if admin is logged in
                             const adminGhost = document.getElementById('adminGhostReadToggle') ? document.getElementById('adminGhostReadToggle').checked : false;
                             
                             if (!isGhost && !(MatrixSystemState.get('currentMode') === 'admin' && adminGhost)) {
@@ -2332,7 +2403,6 @@
                 </div>`;
             });
             
-            // Keep the static lock message at the top
             let lockHtml = `<div style="text-align:center; margin: 8px 0; position:relative; z-index:2;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:4px 10px; border-radius:6px; font-size:0.75rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>`;
             
             scrollBox.innerHTML = lockHtml + html;
@@ -2508,40 +2578,6 @@
             });
         };
 
-        window.renderInteractiveDrawersContent = function() {
-            let emojis = ["😀","😂","😍","👍","🔥","⚡","🎉","🚀","💡","⭐","✅","❌","👽","🤖","😎","💯"];
-            for(let i=0x1F600; i<=0x1F64F; i++) emojis.push(String.fromCodePoint(i));
-            const systemEmojisList = [...new Set(emojis)];
-            
-            const structuralGifMatrixList = [
-                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B0djF4cXp5cXc4bXl4d3p5cXc4bXl4d3p5cXc4bXl4d3p5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tn335IfX10CqAae/giphy.gif",
-                "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif", "https://media.giphy.com/media/26tn33aiTi1jIGsO4/giphy.gif",
-                "https://media.giphy.com/media/l41YtZOb9EUABnuqA/giphy.gif", "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
-            ];
-
-            const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
-            document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
-            document.getElementById('adminSystemEmojiMatrixBoxNode').innerHTML = emHTML;
-            
-            const gifHTML = structuralGifMatrixList.map(g => `<img src="${g}" class="gif-thumb-item" onclick="window.insertGifToChat('${g}')">`).join('');
-            document.getElementById('mainframeGifContainerBox').innerHTML = gifHTML;
-            document.getElementById('adminMainframeGifContainerBox').innerHTML = gifHTML;
-        };
-
-        window.insertEmojiToChat = function(emoji) {
-            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
-            const input = document.getElementById(isAdm ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput');
-            if(input) { input.value += emoji; input.focus(); }
-        };
-
-        window.insertGifToChat = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
-            if(isAdm) { window.dispatchAdminSpyInterceptionMsg(); } else { window.dispatchMatrixChatMessage(); }
-            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
-            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
-        };
-
         window.executeClusterLogin = function(event) {
             if(event) event.preventDefault();
             const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim();
@@ -2553,7 +2589,7 @@
             } else {
                 let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u && String(user.pass) === String(p));
                 if(userMatch) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED."); return; }
+                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
                     if(userMatch.status === "deactivated") { alert("🚫 ACCOUNT DEACTIVATED."); return; }
                     MatrixSystemState.set('currentMode', 'user');
                     finalizeLoginSequence(userMatch.id, userMatch.clientName);
@@ -2594,7 +2630,6 @@
             const savedUID = localStorage.getItem('nexus_logged_in_uid');
             const savedMode = localStorage.getItem('nexus_system_session_mode');
             
-            // Listeners for Data
             onValue(ref(db, 'users'), (snapshot) => {
                 const data = snapshot.val();
                 let arr = data ? Object.values(data) : [];
@@ -2653,7 +2688,7 @@
             document.getElementById('adminSupportTicketsBlock').classList.toggle('hidden', sec !== 'tickets');
             document.getElementById('adminAiSpyChatBlock').classList.toggle('hidden', sec !== 'aispy');
             document.getElementById('adminSystemStatsBlock').classList.toggle('hidden', sec !== 'stats');
-            document.getElementById('adminGodEyeBlock').classList.toggle('hidden', sec !== 'godeye'); // GOD EYE
+            document.getElementById('adminGodEyeBlock').classList.toggle('hidden', sec !== 'godeye');
             
             if(sec === 'approvals') window.renderAdminPendingApprovals();
             if(sec === 'spychat') window.renderAdminSpyUserList();
