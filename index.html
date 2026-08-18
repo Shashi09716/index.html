@@ -6,7 +6,6 @@
     <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V21.0</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <style>
-        /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
             --lamp-color: #f1c40f; --lamp-glow: #f1c40f; --lamp-shadow: rgba(241, 196, 15, 0.9);
             --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71; --neon-purple: #a73ec9;
@@ -37,7 +36,6 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--neon-pink); }
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
-        
         body.strict-scroll-lock, html.strict-scroll-lock { overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; }
 
         /* ZEN MODE FOR NOTEPAD */
@@ -66,12 +64,10 @@
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         @keyframes pulseGlow { 0% { opacity: 0.6; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1.02); } }
         
-        /* 🚀 FULL SCREEN TOP NAVBAR */
         .top-cyber-navbar { position: fixed; top: 0; left: 0; width: 100%; height: 65px; background: rgba(6, 17, 38, 0.85); border-bottom: 1px solid rgba(0, 242, 254, 0.3); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(35px); -webkit-backdrop-filter: blur(35px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.15); transition: all 0.4s ease; border-radius: 0; }
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.85); border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
-        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(0, 242, 254, 0.02)); border: 1px solid rgba(0, 242, 254, 0.4); border-radius: 10px; color: var(--neon-cyan); padding: 8px 15px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); text-transform: uppercase;}
         .nav-btn:hover { background: rgba(0, 242, 254, 0.25); box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); transform: translateY(-3px); color: #fff; border-color: #fff; }
@@ -134,7 +130,8 @@
         
         /* UPGRADED POWERFUL LOGIN SCREEN */
         .hud-glass-terminal { position: absolute; left: 50%; width: 95%; max-width: 550px; background: rgba(4, 12, 26, 0.85); border: 2px solid var(--border-glass); border-left: 8px solid var(--neon-cyan); padding: 50px 40px; border-radius: 20px; backdrop-filter: blur(45px); -webkit-backdrop-filter: blur(45px); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(0,242,254,0.15); opacity: 0; pointer-events: none; transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.1s ease-out; z-index: 20; transform-style: preserve-3d; transform: translate3d(-50%, 0, 0) scale(0.9); overflow: hidden;}
-        /* Scanning Laser for Login Vault - REMOVED AS REQUESTED */
+        
+        /* FIX 1: Scanning Laser for Login Vault Removed */
         .hud-glass-terminal::after { content: none !important; display: none !important; animation: none !important; }
 
         .cinema-stage.activated .hud-glass-terminal { opacity: 1; pointer-events: all; transform: translate3d(-50%, 0, 0) scale(1); }
@@ -157,7 +154,6 @@
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 0; overflow-y: auto; overflow-x: hidden; padding-top: 65px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
         .dashboard-panel-core.active-view { display: flex; opacity: 1; }
         
-        /* 🚀 FULL SCREEN CONTAINER */
         .hud-container-panel { background: var(--panel-glass); border: none; border-top: 5px solid var(--neon-cyan); padding: 30px 40px; border-radius: 0; width: 100%; max-width: 100%; min-height: 100vh; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin: 0; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
         
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 5px; margin-top: 25px; }
@@ -210,7 +206,10 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 12px; padding: 25px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 12px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
 
-        /* ADVANCED & COMPACT NOTEPAD PRO ENGINE */
+        /* ADVANCED & COMPACT NOTEPAD PRO ENGINE (FIX 4: Added Z-Index & Position to make it clickable) */
+        #masterNotesInterfaceBlock { position: fixed !important; inset: 0 !important; z-index: 500000 !important; background: var(--bg-prime) !important; padding: 85px 20px 20px 20px !important; overflow-y: auto !important; display: flex; flex-direction: column; }
+        #richNoteWritingPadEditable { cursor: text !important; pointer-events: auto !important; z-index: 500001 !important; }
+
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 75vh; max-height: 800px; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 30px; max-height: 100vh;}
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: #e2e8f0; border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 3px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex: 1 1 auto; }
@@ -218,47 +217,14 @@
         
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 20px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; position: relative; }
         
-        /* CLEAN, BEAUTIFUL, CENTERED WHITE PAPER SPACE */
-        .wordpad-paper { 
-            background: #ffffff !important; 
-            width: 100% !important; 
-            max-width: 850px !important;
-            min-height: 500px !important; /* Forces it to look like a page */
-            height: auto !important;
-            padding: 40px !important; 
-            margin: 0 auto !important; /* Centers the paper in the container */
-            box-sizing: border-box !important; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important; 
-            color: #111 !important; 
-            font-family: 'Segoe UI', Arial, sans-serif !important; 
-            font-size: 1.15rem !important; 
-            line-height: 1.7 !important; 
-            outline: none !important; 
-            border-radius: 12px !important; 
-            border: 1px solid #cbd5e1 !important;
-            overflow-x: hidden !important; 
-            word-wrap: break-word !important;
-            user-select: text !important;
-            -webkit-user-select: text !important;
-            cursor: text !important;
-            pointer-events: auto !important;
-            position: relative;
-            transition: all 0.3s ease;
-            display: block !important;
-        }
+        .wordpad-paper { background: #ffffff !important; width: 100% !important; max-width: 850px !important; min-height: 500px !important; height: auto !important; padding: 40px !important; margin: 0 auto !important; box-sizing: border-box !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important; color: #111 !important; font-family: 'Segoe UI', Arial, sans-serif !important; font-size: 1.15rem !important; line-height: 1.7 !important; outline: none !important; border-radius: 12px !important; border: 1px solid #cbd5e1 !important; overflow-x: hidden !important; word-wrap: break-word !important; user-select: text !important; -webkit-user-select: text !important; cursor: text !important; pointer-events: auto !important; position: relative; transition: all 0.3s ease; display: block !important; }
         .wordpad-paper:focus { border-color: #00f2fe !important; box-shadow: 0 0 25px rgba(0,242,254,0.3) !important; transform: translateY(-2px); }
         
-        /* ✍️ WRITING SPACE PLACEHOLDER */
-        .wordpad-paper:empty::before { 
-            content: "✍️ Click here to start typing your professional notes..."; 
-            color: #888; pointer-events: none; display:block; font-style: italic; opacity: 0.8;
-            animation: pulsePlaceholder 2s infinite alternate; font-size: 1.2rem; margin-top: 10px;
-        }
+        .wordpad-paper:empty::before { content: "✍️ Click here to start typing your professional notes..."; color: #888; pointer-events: none; display:block; font-style: italic; opacity: 0.8; animation: pulsePlaceholder 2s infinite alternate; font-size: 1.2rem; margin-top: 10px; }
         @keyframes pulsePlaceholder { from { opacity: 0.5; } to { opacity: 0.9; } }
         
         .notepad-dark-mode .wordpad-paper { background: #0b141a !important; color: #fff !important; box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important; border-color: rgba(0,242,254,0.3) !important; }
         
-        /* SLASH COMMAND MENU */
         .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.8); width: 220px; z-index: 1000; display: none; padding: 8px; }
         .slash-cmd-item { padding: 8px 12px; color: #fff; cursor: pointer; border-radius: 6px; font-family: 'Rajdhani'; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: 0.2s; font-size:0.95rem; }
         .slash-cmd-item:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
@@ -279,7 +245,6 @@
         .note-structural-meta { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.85rem; color: var(--neon-pink); margin-bottom: 10px; font-weight: bold; border-bottom: 1px dashed rgba(255,0,127,0.3); padding-bottom: 8px; align-items:center; }
         .locked-anchor-input { background: rgba(15,23,42,0.7) !important; border-color: rgba(255,0,127,0.5) !important; color: #ff007f !important; font-family: 'Orbitron' !important; font-weight: 900 !important; cursor: pointer !important; text-align: center; }
         
-        /* SECURE PASSWORD FIELD FOR NOTEPAD */
         .note-password-input { padding: 12px 18px; border-radius: 8px; background: rgba(0,0,0,0.6); border: 1px solid var(--neon-cyan); color: #fff; font-family: 'Orbitron'; font-size: 0.9rem; outline: none; transition: 0.3s; flex: 1;}
         .note-password-input:focus { box-shadow: 0 0 15px rgba(0,242,254,0.4); border-color: #fff;}
         .unlock-note-btn { background: var(--neon-green); color: #000; font-weight: bold; padding: 8px 15px; border-radius: 6px; border: none; cursor: pointer; font-family: 'Orbitron'; transition: 0.3s; }
@@ -291,9 +256,7 @@
         .gaming-canvas-element { width: 100%; height: 100%; display: block; background: #000; cursor: crosshair; }
         .gaming-pulse-node-core { width: 10px; height: 10px; background: var(--neon-pink); border-radius: 50%; display: inline-block; margin-right: 8px; animation: recPulse 0.8s infinite alternate; }
 
-        /* --- COMPACT WHATSAPP WEB STICKY LAYOUT --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 320px 1fr; gap: 0; width: 100%; height: 75vh; max-height: 800px; background: var(--wa-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; z-index: 10; }
-        
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow: hidden; z-index: 5; height: 100%; }
         .wa-top-bar { display:flex; justify-content:space-between; align-items:center; padding:12px 15px; background:var(--wa-header); color:var(--wa-text); font-size:1.15rem; font-weight:bold; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .wa-top-bar-icons span { cursor:pointer; transition:0.3s; margin-left:12px;}
@@ -319,7 +282,6 @@
         .whatsapp-user-id { font-size: 0.85rem; color: var(--wa-text-muted); font-family: inherit; margin-top:3px; }
         .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.75rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: inherit; }
         
-        /* WHATSAPP RIGHT SIDE - PERFECT FLEX LAYOUT */
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 11; transition: background 0.3s ease;}
         .chat-stream-header-bar { background: var(--wa-header); padding: 10px 15px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 12; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.15rem; transition: 0.3s; margin-left: 4px; display:flex; align-items:center; justify-content:center; position:relative; z-index: 12;}
@@ -330,13 +292,11 @@
         .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
         
         .chat-messages-scroll-stack { flex: 1 1 auto; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; z-index: 11; scroll-behavior: smooth; }
-        
         .chat-interface-footer-inputs { padding: 12px 15px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 12; position: relative; margin-top: auto; flex-shrink: 0;}
         .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); outline: none; font-size: 1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); z-index: 12;}
         .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%; z-index: 12;}
         .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
         
-        /* MSG BUBBLES AND ACTIONS */
         .bubble-msg-wrapper { max-width: 65%; padding: 6px 8px 8px 10px; border-radius: 8px; font-size: 0.95rem; line-height: 20px; position: relative; box-shadow: 0 1px 3px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; group; }
         .bubble-msg-wrapper.first-in-group { margin-top: 10px; }
         .bubble-text-content { display: inline-block; padding-right: 65px; padding-bottom: 4px; white-space: pre-wrap; min-width: 45px; }
@@ -349,14 +309,12 @@
         .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid var(--wa-msg-in); }
         
-        /* PREMIUM TOOLS MENU (WHATSAPP) */
         .premium-tools-menu { position:absolute; top: 45px; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.8); width: 200px; z-index: 10000; display: none; flex-direction: column; padding: 8px; }
         .premium-tools-menu.active { display: flex; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .premium-tool-btn { padding: 10px; color: #fff; background: transparent; border: none; text-align: left; font-family: 'Rajdhani'; font-weight: bold; font-size: 0.95rem; cursor: pointer; border-radius: 6px; transition: 0.3s; display:flex; align-items:center; gap:8px; }
         .premium-tool-btn:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
         
-        /* NEW GEN-Z REACTIONS & ACTIONS MENU */
         .msg-action-menu { position:absolute; top:-20px; right:-15px; background:var(--wa-header); border:1px solid var(--border-glass); border-radius:20px; padding:4px 8px; display:none; gap:10px; box-shadow:0 5px 15px rgba(0,0,0,0.7); z-index:10; white-space: nowrap;}
         .bubble-msg-wrapper:hover .msg-action-menu { display:flex; animation: popAction 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes popAction { 0% { transform: scale(0.5); opacity:0;} 100% { transform: scale(1); opacity:1;} }
@@ -377,7 +335,6 @@
         .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.92); z-index: 200000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px); }
         .nexus-popup-card-box { background: var(--wa-header); border: 2px solid var(--border-glass); padding: 30px; border-radius: 18px; width: 90%; max-width: 450px; text-align: center; color: var(--wa-text); box-shadow: 0 20px 50px rgba(0,0,0,0.7); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
         
-        /* NEW CUSTOM CYBER CALENDAR MODAL */
         #cyberCalendarOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
         .cyber-calendar-box { background: #111b21; border: 2px solid #00f2fe; border-radius: 16px; padding: 25px; width: 320px; box-shadow: 0 0 40px rgba(0,242,254,0.3); text-align: center; font-family: 'Orbitron'; }
         .cal-header { display: flex; justify-content: space-between; align-items: center; color: #00f2fe; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold; }
@@ -401,7 +358,6 @@
         .giant-compiler-layout { background: var(--card-bg); padding: 30px 25px; border-radius: 18px; border: 1px solid var(--border-glass); margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
         .giant-compiler-layout h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 15px rgba(0,242,254,0.4); }
         
-        /* Modern Glass Panel for Admin UI - Compact */
         .modern-glass-panel { background: var(--admin-glass); border-radius: 18px; border: 1px solid var(--border-glass); padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,242,254,0.1); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); margin-bottom: 25px; position: relative; overflow: hidden; transition: all 0.4s ease; }
         .modern-glass-panel::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%); z-index: 0; pointer-events: none; }
         .modern-glass-panel:hover { border-color: var(--neon-cyan); box-shadow: 0 20px 45px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,242,254,0.2); transform: translateY(-3px); }
@@ -679,6 +635,11 @@
                 </div>
                 <div class="menu-card" id="menuCard_request" onclick="window.switchCustomerChannel('request')">
                     <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">🎫</div><h3 style="color:#f1c40f;">Support Request</h3><p>Direct requests to Admin.</p>
+                </div>
+                
+                <!-- FIX 3: SETTINGS MENU CARD ADDED -->
+                <div class="menu-card" id="menuCard_settings" onclick="alert('Settings Panel is Active! Scroll Up to see Profile Update Options.')" style="border-color:#e74c3c;">
+                    <div class="icon" style="text-shadow: 0 0 15px #e74c3c;">⚙️</div><h3 style="color:#e74c3c;">Settings</h3><p>Manage profile & preferences.</p>
                 </div>
             </div>
 
@@ -1271,6 +1232,27 @@
         const db = getDatabase(app);
 
         window.db = db; window.get = get; window.ref = ref; window.update = update; window.remove = remove; window.set = set; window.push = push;
+
+        // FIX 5: 🚀 WHATSAPP REAL-TIME SYNC ENGINE (FIX FOR MESSAGES NOT DELIVERING) 🚀
+        onValue(ref(db, 'chats'), (snapshot) => {
+            if (snapshot.exists()) {
+                window.cachedChatsData = snapshot.val();
+                if (MatrixSystemState.get('currentMode') === 'admin') {
+                    if (typeof window.renderAdminSpyChatConsoleLogs === 'function') {
+                        window.renderAdminSpyChatConsoleLogs();
+                    }
+                } else {
+                    if (typeof window.renderActiveChatConversationLogs === 'function') {
+                        window.renderActiveChatConversationLogs();
+                    }
+                }
+                if (typeof window.initializeCrossLinkChatPanel === 'function') {
+                    window.initializeCrossLinkChatPanel();
+                }
+            } else {
+                window.cachedChatsData = {};
+            }
+        });
 
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
@@ -2321,7 +2303,6 @@
 
         window.insertChecklistToNotepad = function() { document.execCommand('insertHTML', false, `<ul class="checklist"><li onclick="this.classList.toggle('checked')">New Task item...</li></ul>`); window.updateNotepadLiveCounters(); };
          
-        // Advanced Safe Find & Replace using TreeWalker (Ignores HTML Tags)
         window.executeFindAndReplaceEngine = function() { 
             const editor = document.getElementById('richNoteWritingPadEditable'); 
              
@@ -2371,12 +2352,6 @@
         window.triggerNoteFormatBlock = function(tagName) { document.execCommand('formatBlock', false, `<${tagName}>`); document.getElementById('richNoteWritingPadEditable')?.focus(); };
         window.triggerNoteFontFamily = function(fontName) { document.execCommand('fontName', false, fontName); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
         window.triggerNoteFontSizeChange = function(sizeVal) { document.execCommand('fontSize', false, sizeVal); document.getElementById('richNoteWritingPadEditable')?.focus(); window.updateNotepadLiveCounters(); };
-
-        function autoNarrateChatMessage(senderName, textBody) {
-            if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            const cleanText = textBody.replace(/🤖|🚫|📎|🎙|✅|❌|📌/g, '');
-            if(cleanText.trim().length > 0) { try { window.speakNaturalHuman(`${senderName} says: ${cleanText}`); } catch(e) {} }
-        }
 
         window.triggerForgotIDModal = function() {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
@@ -2450,944 +2425,6 @@
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); const bioText = document.getElementById('customerBioInput').value.trim(); const nameText = document.getElementById('customerNameInput').value.trim();
             if(currentUid) { let updates = {}; if(bioText) updates.bio = bioText; if(nameText) updates.clientName = nameText; try { update(ref(db, `users/${currentUid}`), updates).then(() => { window.playSynthesizedSound(880, 'sine', 0.1); }); } catch(e) {} }
         };
-
-        window.toggleAIMatrixAssistantChannel = function() {
-            let activeState = !MatrixSystemState.get('isAIAssistantActiveState'); MatrixSystemState.set('isAIAssistantActiveState', activeState);
-            const toggleBtn = document.getElementById('btnAIAssistantToggle');
-            if(activeState) { toggleBtn.innerText = "🤖 AI CORE: ON"; toggleBtn.style.color = "var(--neon-pink)"; window.speakNaturalHuman("AI system online."); } 
-            else { toggleBtn.innerText = "🤖 AI CORE: OFF"; toggleBtn.style.color = "var(--wa-text-muted)"; }
-        };
-
-        function processAIMatrixAssistantResponseStream(userPromptText) {
-            const aiPhrasesArr = ["Matrix transmission processed successfully.", "Holographic grid stable. Mainframe online.", "Quantum protocol initialized.", "Identity signature validated across clusters.", "Energy core output stable.", "Checking policy bounds. All secure.", "Signal routed safely."];
-            const pseudoResponse = aiPhrasesArr[Math.floor(Math.random() * aiPhrasesArr.length)];
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const currentUserObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid); const clientNameLabel = currentUserObj ? currentUserObj.clientName : "Unknown Client";
-
-            setTimeout(() => {
-                const aiPacketRef = push(ref(db, 'chats')); const aiMsgBody = `🤖 AI Assistant: ${pseudoResponse}`;
-                set(aiPacketRef, { sender: "MainframeAdmin", receiver: currentUid, textBody: aiMsgBody, read: false, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }).then(() => {
-                    try { const interceptRef = push(ref(db, 'ai_communications')); set(interceptRef, { logId: interceptRef.key, customerID: currentUid, customerName: clientNameLabel, query: userPromptText, response: aiMsgBody, epochTimeNode: Date.now(), timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), fullDateString: new Date().toLocaleDateString() }); } catch(e) {}
-                    autoNarrateChatMessage("AI Engine", pseudoResponse);
-                });
-            }, 1000);
-        }
-
-        window.bootArcadeSubGame = function(gameModeId) {
-            currentArcadeEngineId = "tom"; canvasElement = document.getElementById('nexusMatrixArcadeCanvas'); canvasCtx = canvasElement ? canvasElement.getContext('2d') : null;
-            if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
-            if (tomSpeechRecognitionInstance) { tomSpeechRecognitionInstance.stop(); isTomListeningStateActive = false; }
-            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); initializeTalkingTomAudioRecognitionEngine();
-        };
-
-        function executeTalkingTomRenderCycle() {
-            if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming' || currentArcadeEngineId !== 'tom' || !canvasCtx) return;
-            if (document.hidden) { requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); return; }
-            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 650, 380); virtualTomTalkingAnimationCycle += 0.25;
-            let catGlowHead = canvasCtx.createRadialGradient(325, 160, 10, 325, 160, 90); catGlowHead.addColorStop(0, '#95a5a6'); catGlowHead.addColorStop(1, '#7f8c8d');
-            canvasCtx.fillStyle = catGlowHead; canvasCtx.beginPath(); canvasCtx.arc(325, 160, 85, 0, Math.PI*2); canvasCtx.fill();
-            canvasCtx.fillStyle = '#ffffff'; canvasCtx.beginPath(); canvasCtx.arc(290, 145, 18, 0, Math.PI*2); canvasCtx.arc(360, 145, 18, 0, Math.PI*2); canvasCtx.fill();
-            canvasCtx.fillStyle = '#00f2fe'; canvasCtx.beginPath(); let pupOffset = Math.sin(virtualTomTalkingAnimationCycle)*3;
-            canvasCtx.arc(290 + pupOffset, 145, 8, 0, Math.PI*2); canvasCtx.arc(360 + pupOffset, 145, 8, 0, Math.PI*2); canvasCtx.fill();
-            let speechMouthRadius = 8 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 18);
-            canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath(); canvasCtx.arc(325, 200, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
-
-            if (isTomListeningStateActive && audioAnalyserNode) {
-                audioAnalyserNode.getByteFrequencyData(visualizerDataArray); canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
-                for (let i = 0; i < 35; i++) { let barH = (visualizerDataArray[i] || 0) * 0.5 || 5; canvasCtx.fillRect(45 + i * 16, 300 - barH / 2, 10, barH); }
-            } else {
-                canvasCtx.fillStyle = 'rgba(0, 242, 254, 0.4)';
-                for(let b=0; b<25; b++) { let barH = 10 + Math.abs(Math.sin(b + Date.now()*0.01) * 35); canvasCtx.fillRect(80 + b*20, 300 - barH/2, 12, barH); }
-            }
-            requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle);
-        }
-
-        function initializeTalkingTomAudioRecognitionEngine() {
-            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (window.SpeechRecognition) {
-                tomSpeechRecognitionInstance = new window.SpeechRecognition(); tomSpeechRecognitionInstance.continuous = false; tomSpeechRecognitionInstance.interimResults = false;
-                tomSpeechRecognitionInstance.onresult = function(e) { const txt = e.results[0][0].transcript; if(txt) window.executeHighPitchTomVoiceEchoPlayback(txt); };
-                tomSpeechRecognitionInstance.onend = function() {
-                    isTomListeningStateActive = false; const btn = document.getElementById('virtualTomLiveVoiceRecBtn');
-                    if(btn) { btn.innerText = "🎙 LISTEN"; btn.style.background = "var(--neon-pink)"; }
-                    if (audioMicStreamNode) { audioMicStreamNode.getTracks().forEach(track => track.stop()); }
-                };
-            }
-        }
-
-        window.toggleTalkingTomVoiceListenerEngine = function() {
-            if(!tomSpeechRecognitionInstance) { alert("Voice Recognition not supported."); return; }
-            if(!isTomListeningStateActive) {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-                    audioMicStreamNode = stream; audioVisualizerContextNode = new (window.AudioContext || window.webkitAudioContext)();
-                    if(audioVisualizerContextNode.state === 'suspended') audioVisualizerContextNode.resume();
-                    audioAnalyserNode = audioVisualizerContextNode.createAnalyser();
-                    let source = audioVisualizerContextNode.createMediaStreamSource(stream); source.connect(audioAnalyserNode);
-                    audioAnalyserNode.fftSize = 64; visualizerDataArray = new Uint8Array(audioAnalyserNode.frequencyBinCount);
-                    tomSpeechRecognitionInstance.start(); isTomListeningStateActive = true;
-                    document.getElementById('virtualTomLiveVoiceRecBtn').innerText = "🛑 LISTENING"; document.getElementById('virtualTomLiveVoiceRecBtn').style.background = "#2ecc71";
-                }).catch(() => { alert("Mic access rejected."); });
-            } else { tomSpeechRecognitionInstance.stop(); }
-        };
-
-        window.executeHighPitchTomVoiceEchoPlayback = function(audioStringMsg) {
-            if(!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return;
-            try { 
-                window.speechSynthesis.cancel(); 
-                const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg); 
-                syntaxUtterance.pitch = 2.0;
-                syntaxUtterance.rate = 1.1; 
-                let voices = window.speechSynthesis.getVoices(); 
-                let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US"));
-                if(bestVoice) syntaxUtterance.voice = bestVoice; 
-                window.speechSynthesis.speak(syntaxUtterance); 
-            } catch(e){}
-        };
-
-        window.executeVirtualTomSpeechLoop = function() { 
-            const txt = document.getElementById('virtualTomTextInput').value.trim(); 
-            if(!txt) return; 
-            window.executeHighPitchTomVoiceEchoPlayback(txt); 
-            document.getElementById('virtualTomTextInput').value = ""; 
-        };
-
-        window.clearCurrentChatConversation = function() {
-            const currentUid = MatrixSystemState.get('currentMode') === 'admin' ? "MainframeAdmin" : MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('currentMode') === 'admin' ? MatrixSystemState.get('spyActiveTargetUserContext') : MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!currentUid || !targetUid) return;
-            if(confirm("Are you sure you want to clear this conversation history?")) {
-                get(ref(db, 'chats')).then((snap) => {
-                    try { 
-                        const data = snap.val(); 
-                        if(data) {
-                            Object.keys(data).forEach(key => { 
-                                const msg = data[key]; 
-                                if((msg.sender === currentUid && msg.receiver === targetUid) || (msg.sender === targetUid && msg.receiver === currentUid)) { 
-                                    localStorage.setItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`, "purged"); 
-                                } 
-                            });
-                            if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyChatConsoleLogs(); else window.renderActiveChatConversationLogs();
-                        } 
-                    } catch(e) {}
-                });
-            }
-        };
-
-        window.switchChatWallpaperMatrix = function() {
-            const wallpapersArr = [
-                "var(--wa-chat-bg)", 
-                "linear-gradient(135deg, #111b21, #202c33)", 
-                "var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover",
-                "var(--wa-chat-bg) url('https://i.pinimg.com/originals/97/c0/07/97c00759d90d786d9b6096d274ad3e07.png') center/cover",
-                "var(--wa-chat-bg) url('https://i.pinimg.com/originals/8f/ba/cb/8fbacbd464e996966eb9d4a6b7a9c21e.jpg') center/cover"
-            ];
-            const currentWall = localStorage.getItem('nexus_chat_wall_idx') || 2;
-            let nextWallIdx = (parseInt(currentWall) + 1) % wallpapersArr.length;
-            localStorage.setItem('nexus_chat_wall_idx', nextWallIdx);
-            document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
-        };
-
-        window.toggleInChatSearch = function() {
-            const searchBar = document.getElementById('waInChatSearchBarNode');
-            if (searchBar) {
-                searchBar.classList.toggle('active');
-                if (searchBar.classList.contains('active')) { document.getElementById('waMessageSearchInput').focus(); } 
-                else { document.getElementById('waMessageSearchInput').value = ""; window.filterActiveChatMessages(); }
-            }
-        };
-             
-        window.filterActiveChatMessages = function() {
-            const q = document.getElementById('waMessageSearchInput').value.toLowerCase();
-            document.querySelectorAll('.bubble-msg-wrapper').forEach(msg => {
-                if (msg.innerText.toLowerCase().includes(q)) { msg.style.display = "inline-block"; } 
-                else { msg.style.display = "none"; }
-            });
-        };
-
-        window.handleUserTypingSimulationTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const inputField = document.getElementById('chatCoreMessageTextInput');
-            if (inputField) { document.getElementById('chatInputCharCounter').innerText = `${inputField.value.length}/250`; }
-            if(!currentUid || !targetUid) return;
-            try { set(ref(db, `typing_states/${currentUid}`), { typingTo: targetUid }); clearTimeout(typingTimeoutTrackerNode); typingTimeoutTrackerNode = setTimeout(() => { remove(ref(db, `typing_states/${currentUid}`)); }, 1000); } catch(e) {}
-        };
-
-        window.closeCustomInlinePopupEngine = function() {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(wrapper) wrapper.classList.add('hidden');
-            if(liveVideoCallStreamObj) { liveVideoCallStreamObj.getTracks().forEach(track => track.stop()); liveVideoCallStreamObj = null; }
-        };
-
-        window.wipeNoteInterfaceToBlankTrigger = function() {
-            const editor = document.getElementById('richNoteWritingPadEditable'); if (editor) editor.innerHTML = "";
-            notesVoicePayloadBase64Node = ""; autoGeneratedVoiceDurationString = ""; window.updateNotepadLiveCounters(); window.playSynthesizedSound(880, 'sine', 0.1);
-        };
-
-        window.toggleRichNotesVoiceStreamRecorder = function() {
-            const recBtnNode = document.getElementById('noteAudioRecCoreBtn'); const pulseNode = document.getElementById('noteRecPulseIndicator');
-            if (!notesMediaRecorderInstance || notesMediaRecorderInstance.state === "inactive") {
-                navigator.mediaDevices.getUserMedia({ audio: true }).then(mediaStreamObj => {
-                    notesMediaRecorderInstance = new MediaRecorder(mediaStreamObj); notesAudioChunksCollectorArr = []; notesRecordingStartEpoch = Date.now();
-                    notesMediaRecorderInstance.ondataavailable = e => { if (e.data.size > 0) notesAudioChunksCollectorArr.push(e.data); };
-                    notesMediaRecorderInstance.onstop = () => {
-                        const computationDuration = Math.floor((Date.now() - notesRecordingStartEpoch) / 1000); autoGeneratedVoiceDurationString = `${computationDuration} Seconds`;
-                        const storageReader = new FileReader(); storageReader.onload = function(readerEvent) { notesVoicePayloadBase64Node = readerEvent.target.result; }; storageReader.readAsDataURL(new Blob(notesAudioChunksCollectorArr, { type: 'audio/webm' }));
-                        mediaStreamObj.getTracks().forEach(trackInstance => trackInstance.stop());
-                    };
-                    notesMediaRecorderInstance.start(); if (pulseNode) pulseNode.classList.remove('hidden'); if (recBtnNode) recBtnNode.style.background = "rgba(255,0,127,0.15)";
-                }).catch(() => { alert("Microphone access denied."); });
-            } else { notesMediaRecorderInstance.stop(); if (pulseNode) pulseNode.classList.add('hidden'); if (recBtnNode) recBtnNode.style.background = "rgba(4,15,36,0.6)"; }
-        };
-
-        window.dispatchCompiledNoteToCloudMatrix = function() {
-            const parsedHtmlPayload = document.getElementById('richNoteWritingPadEditable').innerHTML.trim(); const dateLogSelected = document.getElementById('noteManualDateSelector').value; const timeLogSelected = document.getElementById('noteManualTimeSelector').value; const currentUid = MatrixSystemState.get('loggedInCustomerID');
-             
-            // Handle Password Lock for Note
-            const pwdInput = document.getElementById('noteLockPasswordInput');
-            let noteLockPass = "";
-            if(pwdInput) { noteLockPass = pwdInput.value.trim(); }
-
-            if(!parsedHtmlPayload && !notesVoicePayloadBase64Node) return;
-            try { 
-                const cloudNoteReferenceNode = push(ref(db, `users_notes/${currentUid}`)); 
-                set(cloudNoteReferenceNode, { 
-                    noteId: cloudNoteReferenceNode.key, 
-                    ownerId: currentUid, 
-                    richTextHtml: parsedHtmlPayload || "[ Audio Stream Payload ]", 
-                    voicePayloadB64: notesVoicePayloadBase64Node, 
-                    mappedDate: dateLogSelected, 
-                    mappedTime: timeLogSelected, 
-                    voiceDuration: autoGeneratedVoiceDurationString, 
-                    epochStamp: Date.now(),
-                    lockPassword: noteLockPass
-                }).then(() => { 
-                    window.wipeNoteInterfaceToBlankTrigger(); 
-                    if(pwdInput) pwdInput.value = "";
-                    window.playSynthesizedSound(1100, 'sine', 0.15); 
-                    fetchRealtimeNotesCloudData(); 
-                    localStorage.removeItem('nexus_autosave_note'); 
-                }); 
-            } catch(e) {}
-        };
-
-        window.unlockSecureNoteEngine = function(noteIdSignature, truePass) {
-            const userAttempt = prompt("🔒 This note is locked. Please enter the password to view:");
-            if (userAttempt === truePass) {
-                const blurDiv = document.getElementById(`blur_overlay_${noteIdSignature}`);
-                const contentDiv = document.getElementById(`hidden_content_${noteIdSignature}`);
-                if(blurDiv && contentDiv) {
-                    blurDiv.style.display = 'none';
-                    contentDiv.style.display = 'block';
-                }
-            } else {
-                alert("❌ Incorrect Password!");
-            }
-        };
-
-        function fetchRealtimeNotesCloudData() {
-            const interfaceWrapper = document.getElementById('realtimeCloudNotesViewStack'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!interfaceWrapper || !currentUid) return;
-            try {
-                get(ref(db, `users_notes/${currentUid}`)).then((snapshotData) => {
-                    if(!snapshotData.exists()) { interfaceWrapper.innerHTML = `<div style="color:var(--text-sub); text-align:center; padding:20px; font-weight:bold; font-size:1.05rem; background:rgba(0,0,0,0.4); border-radius:10px;"> Repository empty.</div>`; return; }
-                    interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
-                        let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
-                         
-                        let displayHtml = "";
-                        if(noteItem.lockPassword) {
-                            displayHtml = `
-                                <div id="blur_overlay_${noteItem.noteId}" style="text-align:center; padding:30px; background:rgba(0,0,0,0.4); border-radius:8px; border:1px dashed var(--neon-pink);">
-                                    <div style="font-size:2rem; margin-bottom:10px;">🔒</div>
-                                    <p style="color:var(--text-sub); margin-bottom:15px;">This note is secured with a password.</p>
-                                    <button class="unlock-note-btn" onclick="window.unlockSecureNoteEngine('${noteItem.noteId}', '${noteItem.lockPassword}')">Unlock Content</button>
-                                </div>
-                                <div id="hidden_content_${noteItem.noteId}" style="display:none; color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">
-                                    ${noteItem.richTextHtml}
-                                </div>
-                            `;
-                        } else {
-                            displayHtml = `<div style="color:var(--text-main); font-size:1.15rem; font-weight:500; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; overflow-x:auto; padding-top:10px;">${noteItem.richTextHtml}</div>`;
-                        }
-
-                        return `<div class="note-structural-card"><div class="note-structural-card-content"><div class="note-structural-meta"><span>📅 ${noteItem.mappedDate} | ⏰ ${noteItem.mappedTime} ${noteItem.lockPassword ? '🔒 Secured' : ''}</span><span style="cursor:pointer; color:var(--neon-pink); padding:4px 8px; border-radius:4px; background:rgba(255,0,127,0.1);" onclick="window.executeCloudNotePurgeMatrix('${noteItem.noteId}')">❌ Delete</span></div>${displayHtml}${voiceAttachmentMarkup}</div></div>`;
-                    }).join('');
-                });
-            } catch(e){}
-        }
-
-        window.executeCloudNotePurgeMatrix = function(noteIdSignature) { remove(ref(db, `users_notes/${MatrixSystemState.get('loggedInCustomerID')}/${noteIdSignature}`)).then(fetchRealtimeNotesCloudData); };
-
-        window.renderCloudVault = function() {
-            const vaultContainer = document.getElementById('cloudVaultGridContainer'); const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!vaultContainer || !currentUid) return;
-            let vaultItemsHTML = "";
-            MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid && p.attachment).forEach(p => {
-                vaultItemsHTML += `<div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.6);"><img src="${p.attachment}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; cursor: pointer; border: 2px solid var(--neon-cyan);" onclick="window.triggerEnlargedAttachmentView('${p.attachment}')"><span style="display:block; font-size:1rem; color:#2ecc71; margin-bottom: 12px; font-weight:bold;">Policy Document</span><button onclick="window.executePhysicalAssetDownloadEngine('${p.attachment}')" class="note-tool-btn" style="width: 100%; justify-content: center; background:#2ecc71; color:#000;">💾 DOWNLOAD</button></div>`;
-            });
-            try {
-                get(ref(db, 'chats')).then((snap) => {
-                    const data = snap.val();
-                    if(data) {
-                        const myGroups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid)).map(g => g.id);
-                        Object.keys(data).forEach(key => {
-                            const msg = data[key];
-                            const isMyGroupChat = myGroups.includes(msg.receiver);
-                            const allowedChat = (msg.sender === currentUid || msg.receiver === currentUid || isMyGroupChat);
-                            if(allowedChat && msg.mediaPayload && !msg.mediaPayload.startsWith("data:audio")) {
-                                if(localStorage.getItem(`deleted_chat_node_${currentUid}_${msg.epochTimeNode}`)) return;
-                                if(localStorage.getItem(`del_for_me_${key}`)) return;
-                                vaultItemsHTML += `<div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.6);"><img src="${msg.mediaPayload}" onclick="window.triggerEnlargedAttachmentView('${msg.mediaPayload}')" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 18px; cursor: pointer; border: 2px solid #00f2fe;"><span style="display:block; font-size:1rem; color:#00f2fe; margin-bottom: 12px; font-weight:bold;">Chat Asset</span><button onclick="window.executePhysicalAssetDownloadEngine('${msg.mediaPayload}')" class="note-tool-btn" style="width: 100%; justify-content: center; background:#00f2fe; color:#000;">💾 DOWNLOAD</button></div>`;
-                            }
-                        });
-                    }
-                    vaultContainer.innerHTML = vaultItemsHTML || `<p style="color:var(--text-sub); grid-column: 1 / -1; font-weight:bold; text-align:center; font-size:1.25rem; background:rgba(0,0,0,0.4); padding:30px; border-radius:12px;">No media found in vault.</p>`;
-                });
-            } catch(e) {}
-        };
-
-        window.executePhysicalAssetDownloadEngine = function(srcUrl) { const a = document.createElement('a'); a.href = srcUrl; a.download = `Nexus_Vault_Asset_${Date.now()}.png`; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
-
-        window.triggerEnlargedAttachmentView = function(src) {
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:transparent; border:none; box-shadow:none; max-width:90vw;"><img src="${src}" style="max-width:100%; max-height:85vh; border-radius:16px; border:2px solid var(--neon-cyan); box-shadow:0 0 50px rgba(0,242,254,0.6);"><div style="margin-top:25px; display:flex; justify-content:center; gap:25px;"><button onclick="window.executePhysicalAssetDownloadEngine('${src}')" class="hud-engage-btn" style="width:auto; padding:18px 35px;">💾 DOWNLOAD</button><button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:auto; padding:18px 35px;">✖ CLOSE</button></div></div>`;
-            wrapper.classList.remove('hidden');
-        };
-
-        window.initializeCrossLinkChatPanel = function() {
-            const container = document.getElementById('chatTargetContainerView'); if(!container) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-             
-            let users = MatrixSystemState.get('cachedGlobalUsersArr').filter(u => u.id !== currentUid);
-            users.unshift({ id: "MainframeAdmin", clientName: "Support Admin (Mainframe)", avatar: defaultAvatarSvg, bio: "System Support", isOnlineNode: true });
-             
-            const groups = MatrixSystemState.get('cachedGlobalGroupsArr').filter(g => g.members.includes(currentUid));
-             
-            let html = "";
-            groups.forEach(g => {
-                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === g.id ? "active-chat-target" : "";
-                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectClientChatTarget('${g.id}', true)">
-                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${g.name}</div>
-                        <div class="whatsapp-user-id">Group • ${g.members.length} members</div>
-                    </div>
-                </div>`;
-            });
-
-            users.forEach(u => {
-                const activeClass = MatrixSystemState.get('activeSelectedChatTargetUserId') === u.id ? "active-chat-target" : "";
-                const onlineClass = u.isOnlineNode ? "online-chamak-active" : "";
-                let unreadBadge = `<span id="unreadCounterBadge_${u.id}" class="whatsapp-unread-counter-pill hidden">0</span>`;
-                 
-                html += `<div class="chat-user-item-node ${activeClass} ${onlineClass}" onclick="window.selectClientChatTarget('${u.id}', false)">
-                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${u.clientName} ${unreadBadge}</div>
-                        <div class="whatsapp-user-id">${u.bio || "Available"}</div>
-                    </div>
-                </div>`;
-            });
-             
-            container.innerHTML = html;
-        };
-
-        window.selectClientChatTarget = function(targetId, isGroup) {
-            MatrixSystemState.set('activeSelectedChatTargetUserId', targetId);
-            window.initializeCrossLinkChatPanel();
-             
-            let name = "Unknown", avatar = defaultAvatarSvg, bio = "Available";
-            if (isGroup) {
-                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
-                if(g) { name = g.name; avatar = g.avatar || defaultAvatarSvg; bio = g.members.join(", "); }
-            } else if (targetId === "MainframeAdmin") {
-                name = "Support Admin (Mainframe)"; avatar = defaultAvatarSvg; bio = "System Support";
-            } else {
-                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
-                if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; bio = u.isOnlineNode ? "Online" : u.bio; }
-            }
-             
-            document.getElementById('chatActiveHeaderAvatarNode').src = avatar;
-            document.getElementById('chatActiveUserHeaderNode').innerText = name;
-            document.getElementById('chatActiveUserBioNode').innerText = bio;
-             
-            if (window.innerWidth <= 768) {
-                document.getElementById('clientChatGridMatrixWrapper').classList.add('mobile-chat-view-active');
-            }
-             
-            window.renderActiveChatConversationLogs();
-        };
-
-        function getMessageDateDividerString(epochTime) {
-            const msgDate = new Date(epochTime);
-            const today = new Date();
-            const yesterday = new Date(today);
-            yesterday.setDate(yesterday.getDate() - 1);
-
-            if(msgDate.toDateString() === today.toDateString()) {
-                return "TODAY";
-            } else if(msgDate.toDateString() === yesterday.toDateString()) {
-                return "YESTERDAY";
-            } else {
-                return msgDate.toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
-            }
-        }
-
-        window.renderActiveChatConversationLogs = function() {
-            const scrollBox = document.getElementById('chatMessagesScrollWrapper'); if(!scrollBox) return;
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!currentUid || !targetUid) return;
-
-            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-            const rawData = window.cachedChatsData || {};
-             
-            let msgs = [];
-            Object.keys(rawData).forEach(key => {
-                const m = rawData[key]; m.dbKey = key;
-                if(localStorage.getItem(`deleted_chat_node_${currentUid}_${m.epochTimeNode}`)) return;
-                if(localStorage.getItem(`del_for_me_${key}`)) return;
-
-                if(m.isDeletedForEveryone) {
-                    m.textBody = "🚫 This message was deleted";
-                    m.mediaPayload = "";
-                }
-                 
-                if (isGroup) {
-                    if (m.receiver === targetUid) msgs.push(m);
-                } else {
-                    if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
-                        msgs.push(m);
-                    }
-                }
-            });
-             
-            msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
-            if(msgs.length > 150) msgs = msgs.slice(-150);
-             
-            let html = "";
-            let lastSender = "";
-            let lastDateStr = "";
-
-            msgs.forEach((m, idx) => {
-                // --- SHADOW BAN CHECK LOGIC START ---
-                const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
-                const isSenderShadowBanned = senderProfile && senderProfile.shadowBanned;
-                const isMe = m.sender === currentUid;
-                 
-                if (isSenderShadowBanned && !isMe) {
-                    return; // Skip rendering this message for the receiver
-                }
-                // --- SHADOW BAN CHECK LOGIC END ---
-
-                let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
-                let actualISODate = new Date(m.epochTimeNode).toISOString().split('T')[0];
-                 
-                if(currentDateStr !== lastDateStr) {
-                    lastDateStr = currentDateStr;
-                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); box-shadow: 0 2px 4px rgba(0,0,0,0.2); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
-                }
-
-                const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
-                const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
-                lastSender = m.sender;
-                 
-                let mediaHtml = "";
-                if(m.mediaPayload) {
-                    if(m.mediaPayload.startsWith('data:audio')) {
-                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
-                    } else if (m.mediaPayload.startsWith('data:image')) {
-                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
-                    } else {
-                        mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
-                    }
-                }
-                 
-                let senderNameHtml = "";
-                if (isGroup && !isMe) {
-                    const senderProfileGrp = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
-                    senderNameHtml = `<div class="group-sender-name">${senderProfileGrp ? senderProfileGrp.clientName : m.sender}</div>`;
-                } else if (!isGroup && !isMe && m.sender === "MainframeAdmin") {
-                    senderNameHtml = `<div class="group-sender-name" style="color:#ff007f;">Admin</div>`;
-                }
-
-                let tickHtml = "";
-                if (isMe) {
-                    if (m.read) tickHtml = `<span class="whatsapp-tick-space double-blue" style="color:#53bdeb;">✓✓</span>`;
-                    else tickHtml = `<span class="whatsapp-tick-space">✓✓</span>`; 
-                }
-
-                let editedTag = m.isEdited && !m.isDeletedForEveryone ? `<span style="font-size:0.7rem; color:rgba(255,255,255,0.5); font-style:italic; margin-right:4px;">(Edited)</span>` : "";
-
-                let actionsHtml = "";
-                if(isMe && !m.isDeletedForEveryone) {
-                    actionsHtml = `
-                    <div class="msg-action-menu">
-                        <span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span>
-                        <span class="msg-action-icon" title="Delete" onclick="window.deleteChatMessage('${m.dbKey}', ${m.epochTimeNode})">🗑️</span>
-                    </div>`;
-                } else if (!m.isDeletedForEveryone) {
-                    actionsHtml = `
-                    <div class="msg-action-menu">
-                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '❤️')">❤️</span>
-                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '👍')">👍</span>
-                        <span class="msg-action-icon" onclick="window.reactToMessage('${m.dbKey}', '😂')">😂</span>
-                    </div>`;
-                }
-                 
-                let reactionsDisplay = "";
-                if(m.reactions) {
-                    let totalReacts = Object.values(m.reactions).join("");
-                    reactionsDisplay = `<div style="position:absolute; bottom:-12px; right:10px; background:var(--wa-header); border-radius:12px; padding:2px 6px; font-size:0.8rem; border:1px solid var(--border-glass); box-shadow:0 2px 5px rgba(0,0,0,0.5);">${totalReacts}</div>`;
-                }
-
-                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}">
-                    ${actionsHtml}
-                    ${senderNameHtml}
-                    <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
-                    <div class="whatsapp-time">${editedTag}${m.timestamp} ${tickHtml}</div>
-                    ${reactionsDisplay}
-                </div>`;
-            });
-             
-            scrollBox.innerHTML = html;
-            setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
-        };
-
-        window.dispatchMatrixChatMessage = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId');
-            if(!currentUid || !targetUid) { alert("Select a chat pipeline first."); return; }
-             
-            const inputField = document.getElementById('chatCoreMessageTextInput');
-            const text = inputField.value.trim();
-            const media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64') || "";
-             
-            if(!text && !media) return;
-             
-            const msgRef = push(ref(db, 'chats'));
-            set(msgRef, {
-                sender: currentUid,
-                receiver: targetUid,
-                textBody: text,
-                mediaPayload: media,
-                read: false,
-                isEdited: false,
-                isDeletedForEveryone: false,
-                originalText: text,
-                epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                inputField.value = "";
-                document.getElementById('chatInputCharCounter').innerText = "0/250";
-                MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
-                const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = "";
-                if(isAudioContextAllowed) window.playSynthesizedSound(800, 'sine', 0.1);
-                 
-                if (MatrixSystemState.get('isAIAssistantActiveState') && targetUid === "MainframeAdmin") {
-                    processAIMatrixAssistantResponseStream(text);
-                }
-            });
-        };
-
-        window.renderAdminSpyUserList = function() {
-            const container = document.getElementById('adminSpyUsersListWrapper'); if(!container) return;
-            const users = MatrixSystemState.get('cachedGlobalUsersArr');
-            const groups = MatrixSystemState.get('cachedGlobalGroupsArr');
-             
-            let html = "";
-            groups.forEach(g => {
-                const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === g.id ? "active-chat-target" : "";
-                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${g.id}', true)">
-                    <img class="whatsapp-avatar" src="${g.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${g.name}</div>
-                        <div class="whatsapp-user-id">Group • Spy Mode</div>
-                    </div>
-                </div>`;
-            });
-
-            users.forEach(u => {
-                const activeClass = MatrixSystemState.get('spyActiveTargetUserContext') === u.id ? "active-chat-target" : "";
-                html += `<div class="chat-user-item-node ${activeClass}" onclick="window.selectAdminSpyChatTarget('${u.id}', false)">
-                    <img class="whatsapp-avatar" src="${u.avatar || defaultAvatarSvg}">
-                    <div class="whatsapp-user-info">
-                        <div class="whatsapp-user-name">${u.clientName}</div>
-                        <div class="whatsapp-user-id">${u.contact}</div>
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-        };
-
-        window.selectAdminSpyChatTarget = function(targetId, isGroup) {
-            MatrixSystemState.set('spyActiveTargetUserContext', targetId);
-            window.renderAdminSpyUserList();
-             
-            let name = "Unknown", avatar = defaultAvatarSvg;
-            if (isGroup) {
-                const g = MatrixSystemState.get('cachedGlobalGroupsArr').find(x => x.id === targetId);
-                if(g) { name = g.name; avatar = g.avatar || defaultAvatarSvg; }
-            } else {
-                const u = MatrixSystemState.get('cachedGlobalUsersArr').find(x => x.id === targetId);
-                if(u) { name = u.clientName; avatar = u.avatar || defaultAvatarSvg; }
-            }
-             
-            document.getElementById('adminChatActiveHeaderAvatarNode').src = avatar;
-            document.getElementById('spyActiveHeaderTitle').innerText = name;
-             
-            if (window.innerWidth <= 768) {
-                document.getElementById('adminChatGridBox').classList.add('mobile-chat-view-active');
-            }
-            window.renderAdminSpyChatConsoleLogs();
-        };
-
-        window.renderAdminSpyChatConsoleLogs = function() {
-            const scrollBox = document.getElementById('adminSpyChatLogsStack'); if(!scrollBox) return;
-            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
-            if(!targetUid) return;
-
-            const isGroup = MatrixSystemState.get('cachedGlobalGroupsArr').some(g => g.id === targetUid);
-            const rawData = window.cachedChatsData || {};
-             
-            let msgs = [];
-            Object.keys(rawData).forEach(key => {
-                const m = rawData[key]; m.dbKey = key;
-                if (isGroup) {
-                    if (m.receiver === targetUid) msgs.push(m);
-                } else {
-                    if (m.sender === targetUid || m.receiver === targetUid) msgs.push(m);
-                }
-            });
-             
-            msgs.sort((a,b) => a.epochTimeNode - b.epochTimeNode);
-            if(msgs.length > 150) msgs = msgs.slice(-150);
-             
-            let html = "";
-            let lastSender = "";
-            let lastDateStr = "";
-
-            msgs.forEach(m => {
-                // --- ADMIN GHOST TAG LOGIC ---
-                const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
-                const isSenderShadowBanned = senderProfile && senderProfile.shadowBanned;
-                 
-                let adminSuperPowerInfo = "";
-                if (isSenderShadowBanned) {
-                    adminSuperPowerInfo += `<div style="background:rgba(142,68,173,0.2); color:#9b59b6; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #9b59b6; font-weight:bold;">👻 GHOST MSG (Shadow Banned)</div>`;
-                }
-
-                let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
-                let actualISODate = new Date(m.epochTimeNode).toISOString().split('T')[0];
-
-                if(currentDateStr !== lastDateStr) {
-                    lastDateStr = currentDateStr;
-                    html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
-                }
-
-                const isMe = m.sender === "MainframeAdmin";
-                const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
-                const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
-                lastSender = m.sender;
-                 
-                let mediaHtml = "";
-                if(m.mediaPayload && !m.isDeletedForEveryone) {
-                    if(m.mediaPayload.startsWith('data:audio')) {
-                        mediaHtml = `<audio src="${m.mediaPayload}" controls style="max-width:100%; height:45px; margin-bottom:6px;"></audio><br>`;
-                    } else if (m.mediaPayload.startsWith('data:image')) {
-                        mediaHtml = `<img src="${m.mediaPayload}" style="max-width:250px; border-radius:10px; margin-bottom:6px; cursor:pointer; border: 1px solid rgba(255,255,255,0.2);" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')"><br>`;
-                    } else {
-                        mediaHtml = `<a href="${m.mediaPayload}" download="Attachment" style="color:#00f2fe; text-decoration:underline; font-weight:bold;">📎 Download File</a><br>`;
-                    }
-                }
-                 
-                let displayBody = m.textBody;
-                 
-                if(m.isDeletedForEveryone) {
-                    displayBody = `<strike>${m.originalText || m.textBody}</strike>`;
-                    adminSuperPowerInfo += `<div style="background:rgba(231,76,60,0.2); color:#e74c3c; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #e74c3c; font-weight:bold;">🚨 USER DELETED THIS (Spying)</div>`;
-                }
-                if(m.isEdited && m.originalText && !m.isDeletedForEveryone) {
-                    adminSuperPowerInfo += `<div style="background:rgba(241,196,15,0.2); color:#f1c40f; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #f1c40f;">⚠️ Original text: ${m.originalText}</div>`;
-                }
-
-                let senderNameHtml = `<div class="group-sender-name">${m.sender}</div>`;
-                 
-                html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
-                    ${!isMe ? senderNameHtml : ''}
-                    ${adminSuperPowerInfo}
-                    <div class="bubble-text-content">${mediaHtml}${displayBody}</div>
-                    <div class="whatsapp-time">${m.timestamp}</div>
-                </div>`;
-            });
-             
-            scrollBox.innerHTML = html;
-            setTimeout(() => { scrollBox.scrollTop = scrollBox.scrollHeight; }, 10);
-        };
-
-        window.dispatchAdminSpyInterceptionMsg = function() {
-            const targetUid = MatrixSystemState.get('spyActiveTargetUserContext');
-            if(!targetUid) { alert("Select a target user first."); return; }
-             
-            const inputField = document.getElementById('adminSpyResponseInput');
-            const text = inputField.value.trim();
-            const media = MatrixSystemState.get('globalLiveChatBinaryStreamBase64') || "";
-             
-            if(!text && !media) return;
-             
-            const msgRef = push(ref(db, 'chats'));
-            set(msgRef, {
-                sender: "MainframeAdmin",
-                receiver: targetUid,
-                textBody: text,
-                mediaPayload: media,
-                read: false,
-                isEdited: false,
-                isDeletedForEveryone: false,
-                originalText: text,
-                epochTimeNode: Date.now(),
-                timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-            }).then(() => {
-                inputField.value = "";
-                MatrixSystemState.set('globalLiveChatBinaryStreamBase64', "");
-            });
-        };
-
-        window.renderInteractiveDrawersContent = function() {
-            const emHTML = systemEmojisList.map(e => `<div class="emoji-item-node" onclick="window.insertEmojiToChat('${e}')">${e}</div>`).join('');
-            document.getElementById('systemEmojiMatrixBoxNode').innerHTML = emHTML;
-            document.getElementById('adminSystemEmojiMatrixBoxNode').innerHTML = emHTML;
-             
-            const gifHTML = structuralGifMatrixList.map(g => `<img src="${g}" class="gif-thumb-item" onclick="window.insertGifToChat('${g}')">`).join('');
-            document.getElementById('mainframeGifContainerBox').innerHTML = gifHTML;
-            document.getElementById('adminMainframeGifContainerBox').innerHTML = gifHTML;
-        };
-
-        window.insertEmojiToChat = function(emoji) {
-            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
-            const input = document.getElementById(isAdm ? 'adminSpyResponseInput' : 'chatCoreMessageTextInput');
-            if(input) { input.value += emoji; input.focus(); }
-        };
-
-        window.insertGifToChat = function(gifUrl) {
-            MatrixSystemState.set('globalLiveChatBinaryStreamBase64', gifUrl);
-            const isAdm = MatrixSystemState.get('currentMode') === 'admin';
-            if(isAdm) { window.dispatchAdminSpyInterceptionMsg(); } else { window.dispatchMatrixChatMessage(); }
-            document.getElementById('mainframeGifContainerBox')?.classList.add('hidden');
-            document.getElementById('adminMainframeGifContainerBox')?.classList.add('hidden');
-        };
-
-        window.filterCardsEngine = function() {
-            const q = document.getElementById('searchInput').value.toLowerCase();
-            document.querySelectorAll('.hud-data-card').forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
-            });
-        };
-
-        window.submitPolicyForm = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const reg = document.getElementById('regNo').value.trim(); const insure = document.getElementById('insurerName').value.trim(); const pol = document.getElementById('policyNo').value.trim(); const phone = document.getElementById('contactNo').value.trim(); const email = document.getElementById('email').value.trim(); const notes = document.getElementById('notesReal').value.trim(); const attachment = MatrixSystemState.get('loadedAttachmentB64');
-            if(!insure || !phone) { alert("Please complete required parameters."); return; }
-            const newPolicyRef = push(ref(db, 'policies'));
-            set(newPolicyRef, { policyKey: newPolicyRef.key, ownerNodeID: currentUid, reg, insure, pol, phone, email, notes, attachment, status: 'pending', adminComment: '' }).then(() => {
-                alert("Data securely transmitted."); ['regNo','insurerName','policyNo','contactNo','email','notesReal'].forEach(id=>document.getElementById(id).value=""); document.getElementById('policyAttachmentFeedback').innerText = ""; MatrixSystemState.set('loadedAttachmentB64', ""); window.renderCustomerLiveTracker();
-            });
-        };
-
-        window.renderCustomerLiveTracker = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID'); const trackerSection = document.getElementById('customerLiveTrackerSection'); if(!trackerSection || !currentUid) return;
-            let myPolicies = MatrixSystemState.get('cachedGlobalPolicyArr').filter(p => p.ownerNodeID === currentUid);
-            if(myPolicies.length === 0) { trackerSection.innerHTML = `<p style="color:#8696a0;">No operational secure vectors active.</p>`; return; }
-            trackerSection.innerHTML = myPolicies.map(p => `<div style="border-bottom:1px dashed rgba(0,242,254,0.3); padding:10px 0;"><div style="display:flex; justify-content:space-between;"><span style="color:#fff;">Insurer: ${p.insure}</span><span class="status-badge status-${p.status}">${p.status.toUpperCase()}</span></div>${p.adminComment ? `<div style="color:#f1c40f; margin-top:4px;"><b>Admin:</b> ${p.adminComment}</div>` : ''}</div>`).join('');
-        };
-
-        window.transmitAdminResponse = function(policyKey) { update(ref(db, `policies/${policyKey}`), { status: document.getElementById(`updateStatusSelect_${policyKey}`).value, adminComment: document.getElementById(`adminCommentInput_${policyKey}`).value.trim() }).then(() => { alert("Tracker metrics updated."); if(isAudioContextAllowed) window.playSynthesizedSound(880, 'sine', 0.1); }); };
-        window.purgeRegistryLog = function(policyKey) { if(confirm("Purge this registry log?")) { remove(ref(db, `policies/${policyKey}`)); } };
-        window.executeMainframeAdminSyncRoute = function() { const nextId = document.getElementById('mainframeAdminIdInput').value.trim(); const nextPass = document.getElementById('mainframeAdminPassInput').value.trim(); if(!nextId || !nextPass) return; set(ref(db, 'mainframeAdmin'), { id: nextId, pass: nextPass }).then(() => { let adminRoute = MatrixSystemState.get('cachedAdminMainframeRoute'); adminRoute.masterId = nextId; adminRoute.masterPass = nextPass; MatrixSystemState.set('cachedAdminMainframeRoute', adminRoute); alert("Master credentials synchronized."); }); };
-        window.alterClientCredentialsOverrideData = function(uid) { const targetNewPass = document.getElementById(`userPasswordInputInline_${uid}`).value.trim(); if(!targetNewPass) return; update(ref(db, `users/${uid}`), { pass: targetNewPass }); };
-
-        window.uploadUserProfileAvatarEngine = function(event) {
-            const file = event.target.files[0]; const targetUid = event.target.getAttribute('data-target-uid') || MatrixSystemState.get('loggedInCustomerID');
-            if(file) { const reader = new FileReader(); reader.onload = function(e) { const base64Avatar = e.target.result; 
-                let targetDbString = targetUid.startsWith('group_') ? `groups/${targetUid}/avatar` : `users/${targetUid}/avatar`;
-                set(ref(db, targetDbString), base64Avatar).then(() => { 
-                    if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
-                    event.target.removeAttribute('data-target-uid'); 
-                }); 
-            }; reader.readAsDataURL(file); }
-        };
-
-        window.processBinaryAttachment = function(event, type) {
-            const fileInput = event.target;
-            if(fileInput && fileInput.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
-                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
-
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
-         
-        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
-
-        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-
-        window.handlePasswordTypingEffects = function(inputElement) {
-            if(!inputElement) return;
-            const len = inputElement.value.length;
-            const glowLine = document.getElementById('passwordGlowLine');
-             
-            if(len > 0 && isAudioContextAllowed) window.playSynthesizedSound(800 + (Math.random() * 200), 'triangle', 0.05);
-
-            if (len === 0) {
-                if(glowLine) { glowLine.style.background = '#f1c40f'; glowLine.style.boxShadow = '0 0 15px #f1c40f'; }
-                inputElement.style.borderColor = 'rgba(0, 242, 254, 0.3)';
-            } else if (len < 5) {
-                if(glowLine) { glowLine.style.background = '#e74c3c'; glowLine.style.boxShadow = '0 0 15px #e74c3c'; }
-                inputElement.style.borderColor = '#e74c3c';
-            } else if (len < 8) {
-                if(glowLine) { glowLine.style.background = '#00f2fe'; glowLine.style.boxShadow = '0 0 15px #00f2fe'; }
-                inputElement.style.borderColor = '#00f2fe';
-            } else {
-                if(glowLine) { glowLine.style.background = '#2ecc71'; glowLine.style.boxShadow = '0 0 20px #2ecc71'; }
-                inputElement.style.borderColor = '#2ecc71';
-            }
-        };
-
-        window.checkAutoLogin = function() {
-            const u = document.getElementById('accessNodeUser').value.trim();
-            const p = document.getElementById('accessNodePass').value.trim(); 
-            if (!u || p === "") return;
-            const btn = document.getElementById('engageBtnCore');
-             
-            btn.innerText = "[ DECRYPTING... ]";
-            btn.style.pointerEvents = "none";
-            window.playSynthesizedSound(400, 'sawtooth', 0.5);
-
-            setTimeout(() => {
-                let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && String(user.id) === String(u) && String(user.pass) === String(p)); 
-
-                if (masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
-                    MatrixSystemState.set('currentMode', 'admin');
-                    triggerEpicUnlockAnimation();
-                } else if (userMatch) {
-                    if (userMatch.lockoutState === "true") { 
-                        triggerBruteForceDenial("ACCOUNT LOCKED");
-                        return; 
-                    }
-                    MatrixSystemState.set('currentMode', 'user');
-                    MatrixSystemState.set('loggedInCustomerID', userMatch.id);
-                    triggerEpicUnlockAnimation();
-                } else {
-                    triggerBruteForceDenial("ACCESS DENIED");
-                }
-            }, 800);
-        };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                document.getElementById('accessNodePass').focus();
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch) document.getElementById('accessNodePass').focus(); 
-            }
-        };
-
-        function triggerBruteForceDenial(message) {
-            const btn = document.getElementById('engageBtnCore');
-            const terminal = document.getElementById('loginTerminal');
-            terminal.classList.add('access-denied-shake');
-            window.playSynthesizedSound(150, 'sawtooth', 0.4);
-            btn.innerText = message;
-            btn.style.background = "#e74c3c";
-            btn.style.color = "#fff";
-            setTimeout(() => {
-                terminal.classList.remove('access-denied-shake');
-                btn.innerText = "ENGAGE MAINFRAME";
-                btn.style.background = "linear-gradient(135deg, #f1c40f, #d4ac0d)";
-                btn.style.color = "#000";
-                btn.style.pointerEvents = "all";
-                document.getElementById('accessNodePass').value = "";
-                window.handlePasswordTypingEffects(document.getElementById('accessNodePass'));
-            }, 1000);
-        }
-
-        function triggerEpicUnlockAnimation() {
-            const btn = document.getElementById('engageBtnCore');
-            btn.innerText = "ACCESS GRANTED";
-            btn.style.background = "#2ecc71";
-            window.playSynthesizedSound(1200, 'sine', 0.5);
-            document.getElementById('mainStage').style.transform = "scale(1.5)";
-            document.getElementById('mainStage').style.transition = "transform 0.8s ease-in";
-            setTimeout(() => {
-                window.executeClusterLogin(null);
-                setTimeout(() => document.getElementById('mainStage').style.transform = "scale(1)", 500);
-            }, 800);
-        }
-
-        window.executeClusterLogin = function(e) {
-            if(e) e.preventDefault();
-             
-            const mode = MatrixSystemState.get('currentMode');
-            const mainStage = document.getElementById('mainStage');
-            if(mainStage) mainStage.style.display = 'none';
-             
-            const backdrop = document.getElementById('matrixAnimatedBackdrop');
-            if(backdrop) backdrop.classList.add('hidden');
-
-            if (mode === 'admin') {
-                document.getElementById('adminDashboard').classList.add('active-view');
-                document.getElementById('customerDashboard').classList.remove('active-view');
-                window.switchAdminSubSection('menu');
-                localStorage.setItem('nexus_system_session_mode', 'admin');
-            } else {
-                document.getElementById('customerDashboard').classList.add('active-view');
-                document.getElementById('adminDashboard').classList.remove('active-view');
-                 
-                const uid = MatrixSystemState.get('loggedInCustomerID');
-                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                 
-                if(userObj) {
-                    document.getElementById('clientDisplayLabel').innerText = ` // ${userObj.clientName} [${userObj.id}]`;
-                    if(userObj.avatar) document.getElementById('customerLiveAvatarPreview').src = userObj.avatar;
-                }
-                 
-                if(uid) update(ref(db, `users/${uid}`), { isOnlineNode: true });
-                localStorage.setItem('nexus_system_session_mode', 'user');
-                localStorage.setItem('nexus_logged_in_uid', uid);
-
-                window.switchCustomerChannel('menu');
-                if(typeof window.enforceCustomerPermissions === 'function') window.enforceCustomerPermissions();
-            }
-        };
-
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false}, shadowBanned: false }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
-            }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message);
-            });
-        };
-
-        window.logoutEngine = function() {
-            MatrixSystemState.set('loggedInCustomerID', "");
-            localStorage.removeItem('nexus_logged_in_uid');
-            localStorage.removeItem('nexus_system_session_mode');
-            window.location.reload();
-        };
-
-        onValue(ref(db, 'users'), (snapshot) => {
-            if (snapshot.exists()) {
-                MatrixSystemState.set('cachedGlobalUsersArr', Object.values(snapshot.val()));
-                if(MatrixSystemState.get('currentMode') === 'admin' && MatrixSystemState.get('activeAdminSubSection') === 'credentials') {
-                    if(typeof window.renderUserControlPanel === 'function') window.renderUserControlPanel();
-                }
-            }
-        });
 
         window.checkActiveStateSessionRetentionOnLaunch = function() {
             const savedUid = localStorage.getItem('nexus_logged_in_uid');
