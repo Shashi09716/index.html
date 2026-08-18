@@ -574,6 +574,8 @@
                 <button class="note-tool-btn" onclick="window.triggerEmbeddedNoteFormat('underline')" title="Underline"><u>U</u></button>
                 <div class="toolbar-divider"></div>
                 <button class="note-tool-btn" onclick="window.executeFindAndReplaceEngine()" title="Find & Replace">🔍 Replace</button>
+                <button class="note-tool-btn" onclick="document.execCommand('undo', false, null); window.updateNotepadLiveCounters();" title="Undo">↩️ Undo</button>
+                <button class="note-tool-btn" onclick="document.execCommand('redo', false, null); window.updateNotepadLiveCounters();" title="Redo">↪️ Redo</button>
                 <div class="toolbar-divider"></div>
                 <button class="note-tool-btn" onclick="document.execCommand('justifyLeft', false, '')" title="Align Left">⬅️</button>
                 <button class="note-tool-btn" onclick="document.execCommand('justifyCenter', false, '')" title="Align Center">⏺️</button>
@@ -1440,7 +1442,6 @@
             const input = document.getElementById(targetCalInputId);
             if(input) {
                 input.value = dateStr;
-                // Manually trigger the onchange event
                 const event = new Event('change');
                 input.dispatchEvent(event);
             }
@@ -1474,6 +1475,27 @@
             if (editorNode) {
                 editorNode.addEventListener('keyup', (e) => {
                     const slashMenu = document.getElementById('slashCommandMenu');
+                    const selection = window.getSelection();
+                    if (selection.rangeCount > 0) {
+                        const range = selection.getRangeAt(0);
+                        const node = range.startContainer;
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            const textBeforeCursor = node.nodeValue.substring(0, range.startOffset);
+                            const lastWord = textBeforeCursor.split(' ').pop();
+                            
+                            // Notion-Style Auto-Markdown Trigger
+                            if (lastWord === '##') {
+                                range.setStart(node, range.startOffset - 2);
+                                range.deleteContents();
+                                document.execCommand('formatBlock', false, '<h2>');
+                            } else if (lastWord === '#') {
+                                range.setStart(node, range.startOffset - 1);
+                                range.deleteContents();
+                                document.execCommand('formatBlock', false, '<h1>');
+                            }
+                        }
+                    }
+
                     if (e.key === '/') {
                         slashMenu.style.display = 'block';
                     } else if (e.key === 'Escape' || e.key === 'Backspace' || e.key === ' ') {
@@ -1885,7 +1907,7 @@
         window.approvePendingAccount = function(reqId, isAuto = false) {
             const req = MatrixSystemState.get('cachedPendingUsersArr').find(r => r.reqId === reqId); if(!req) return;
             const userId = req.name.replace(/\s+/g, '') + req.phone.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => {
+            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
                 remove(ref(db, 'pending_accounts/' + reqId));
                 if(!isAuto) { alert(`✅ User Approved!\nID: ${userId}`); window.renderAdminPendingApprovals(); }
             });
@@ -2179,7 +2201,46 @@
         };
 
         window.insertChecklistToNotepad = function() { document.execCommand('insertHTML', false, `<ul class="checklist"><li onclick="this.classList.toggle('checked')">New Task item...</li></ul>`); window.updateNotepadLiveCounters(); };
-        window.executeFindAndReplaceEngine = function() { const editor = document.getElementById('richNoteWritingPadEditable'); const findText = prompt("Find text:"); if(!findText) return; const replaceText = prompt("Replace with:"); if(replaceText === null) return; editor.innerHTML = editor.innerHTML.replace(new RegExp(findText, 'gi'), replaceText); window.updateNotepadLiveCounters(); };
+        
+        // Advanced Safe Find & Replace using TreeWalker (Ignores HTML Tags)
+        window.executeFindAndReplaceEngine = function() { 
+            const editor = document.getElementById('richNoteWritingPadEditable'); 
+            
+            const findText = prompt("🔍 Enter text to find:"); 
+            if(!findText) return; 
+            
+            const replaceText = prompt(`✏️ Replace "${findText}" with:`); 
+            if(replaceText === null) return; 
+
+            const walker = document.createTreeWalker(editor, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            const regex = new RegExp(findText, 'gi');
+            let nodesToReplace = [];
+
+            while ((node = walker.nextNode())) {
+                if (regex.test(node.nodeValue)) {
+                    nodesToReplace.push(node);
+                }
+            }
+
+            let matchCount = 0;
+            nodesToReplace.forEach(n => {
+                const originalText = n.nodeValue;
+                n.nodeValue = originalText.replace(regex, replaceText);
+                
+                const matches = originalText.match(regex);
+                if(matches) matchCount += matches.length;
+            });
+
+            if(matchCount > 0) {
+                alert(`✅ Success: Replaced ${matchCount} occurrence(s) of "${findText}".`);
+            } else {
+                alert(`ℹ️ No matches found for "${findText}".`);
+            }
+
+            window.updateNotepadLiveCounters(); 
+        };
+
         window.insertCodeBlock = function() { document.execCommand('insertHTML', false, `<br><div style="background:#111b21; color:#00f2fe; padding:15px; border-radius:8px; border-left:4px solid var(--neon-cyan); font-family:monospace; box-shadow: 0 3px 8px rgba(0,0,0,0.5);"><pre style="margin:0; overflow-x:auto;"><code>// Insert your syntax here</code></pre></div><p><br></p>`); window.updateNotepadLiveCounters(); };
         window.insertProfessionalTable = function() { document.execCommand('insertHTML', false, `<table border="1" style="width:100%; border-collapse:collapse; margin-bottom:15px;"><tr><th style="padding:8px; border:1px solid #ccc;">H1</th><th style="padding:8px; border:1px solid #ccc;">H2</th></tr><tr><td style="padding:8px; border:1px solid #ccc;">D1</td><td style="padding:8px; border:1px solid #ccc;">D2</td></tr></table><p><br></p>`); window.updateNotepadLiveCounters(); };
         window.insertLinkToNotepad = function() { const url = prompt("Enter URL:", "https://"); if (url) { document.execCommand('createLink', false, url); window.updateNotepadLiveCounters(); } };
@@ -2335,7 +2396,7 @@
             try { 
                 window.speechSynthesis.cancel(); 
                 const syntaxUtterance = new SpeechSynthesisUtterance(audioStringMsg); 
-                syntaxUtterance.pitch = 2.0; // High pitch for Tom voice effect
+                syntaxUtterance.pitch = 2.0;
                 syntaxUtterance.rate = 1.1; 
                 let voices = window.speechSynthesis.getVoices(); 
                 let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US"));
@@ -2457,7 +2518,7 @@
                     mappedTime: timeLogSelected, 
                     voiceDuration: autoGeneratedVoiceDurationString, 
                     epochStamp: Date.now(),
-                    lockPassword: noteLockPass // Save the password
+                    lockPassword: noteLockPass
                 }).then(() => { 
                     window.wipeNoteInterfaceToBlankTrigger(); 
                     if(pwdInput) pwdInput.value = "";
@@ -2490,7 +2551,6 @@
                     interfaceWrapper.innerHTML = Object.values(snapshotData.val()).reverse().map(noteItem => {
                         let voiceAttachmentMarkup = noteItem.voicePayloadB64 ? `<div style="margin-top:15px; display:flex; align-items:center; gap:12px;"><audio src="${noteItem.voicePayloadB64}" controls style="max-width:100%; height:45px;"></audio></div>` : "";
                         
-                        // Handle Locked Content Display
                         let displayHtml = "";
                         if(noteItem.lockPassword) {
                             displayHtml = `
@@ -2666,6 +2726,16 @@
             let lastDateStr = "";
 
             msgs.forEach((m, idx) => {
+                // --- SHADOW BAN CHECK LOGIC START ---
+                const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
+                const isSenderShadowBanned = senderProfile && senderProfile.shadowBanned;
+                const isMe = m.sender === currentUid;
+                
+                if (isSenderShadowBanned && !isMe) {
+                    return; // Skip rendering this message for the receiver
+                }
+                // --- SHADOW BAN CHECK LOGIC END ---
+
                 let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
                 let actualISODate = new Date(m.epochTimeNode).toISOString().split('T')[0];
                 
@@ -2674,7 +2744,6 @@
                     html += `<div style="text-align:center; margin: 20px 0; width:100%; display:block;"><span class="chat-date-badge" data-date="${actualISODate}" style="background: rgba(32, 44, 51, 0.85); color: var(--wa-text-muted); padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid var(--wa-border); box-shadow: 0 2px 4px rgba(0,0,0,0.2); text-transform: uppercase; transition: 0.5s;">${currentDateStr}</span></div>`;
                 }
 
-                const isMe = m.sender === currentUid;
                 const bubbleType = isMe ? 'bubble-outgoing' : 'bubble-incoming';
                 const hasTail = lastSender !== m.sender ? 'has-tail first-in-group' : '';
                 lastSender = m.sender;
@@ -2692,8 +2761,8 @@
                 
                 let senderNameHtml = "";
                 if (isGroup && !isMe) {
-                    const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
-                    senderNameHtml = `<div class="group-sender-name">${senderProfile ? senderProfile.clientName : m.sender}</div>`;
+                    const senderProfileGrp = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
+                    senderNameHtml = `<div class="group-sender-name">${senderProfileGrp ? senderProfileGrp.clientName : m.sender}</div>`;
                 } else if (!isGroup && !isMe && m.sender === "MainframeAdmin") {
                     senderNameHtml = `<div class="group-sender-name" style="color:#ff007f;">Admin</div>`;
                 }
@@ -2855,6 +2924,15 @@
             let lastDateStr = "";
 
             msgs.forEach(m => {
+                // --- ADMIN GHOST TAG LOGIC ---
+                const senderProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === m.sender);
+                const isSenderShadowBanned = senderProfile && senderProfile.shadowBanned;
+                
+                let adminSuperPowerInfo = "";
+                if (isSenderShadowBanned) {
+                    adminSuperPowerInfo += `<div style="background:rgba(142,68,173,0.2); color:#9b59b6; padding:4px 8px; border-radius:4px; font-size:0.8rem; margin-bottom:4px; border:1px solid #9b59b6; font-weight:bold;">👻 GHOST MSG (Shadow Banned)</div>`;
+                }
+
                 let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
                 let actualISODate = new Date(m.epochTimeNode).toISOString().split('T')[0];
 
@@ -2879,7 +2957,6 @@
                     }
                 }
                 
-                let adminSuperPowerInfo = "";
                 let displayBody = m.textBody;
                 
                 if(m.isDeletedForEveryone) {
@@ -2996,33 +3073,6 @@
             }; reader.readAsDataURL(file); }
         };
 
-        window.checkAutoLogin = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
-            let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            
-            if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
-                MatrixSystemState.set('currentMode', 'admin');
-                window.executeClusterLogin(null);
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    MatrixSystemState.set('currentMode', 'user');
-                    window.executeClusterLogin(null);
-                }
-            }
-        };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                document.getElementById('accessNodePass').focus();
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch) document.getElementById('accessNodePass').focus(); 
-            }
-        };
-
         window.processBinaryAttachment = function(event, type) {
             const fileInput = event.target;
             if(fileInput && fileInput.files.length > 0) {
@@ -3041,6 +3091,92 @@
 
         window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
 
+        window.checkAutoLogin = function() {
+            const u = document.getElementById('accessNodeUser').value.trim();
+            const p = document.getElementById('accessNodePass').value.trim(); 
+            if (!u || p === "") return;
+            const btn = document.getElementById('engageBtnCore');
+            
+            btn.innerText = "[ DECRYPTING... ]";
+            btn.style.pointerEvents = "none";
+            window.playSynthesizedSound(400, 'sawtooth', 0.5);
+
+            setTimeout(() => {
+                let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && String(user.id) === String(u) && String(user.pass) === String(p)); 
+
+                if (masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
+                    MatrixSystemState.set('currentMode', 'admin');
+                    triggerEpicUnlockAnimation();
+                } else if (userMatch) {
+                    if (userMatch.lockoutState === "true") { 
+                        triggerBruteForceDenial("ACCOUNT LOCKED");
+                        return; 
+                    }
+                    MatrixSystemState.set('currentMode', 'user');
+                    MatrixSystemState.set('loggedInCustomerID', userMatch.id);
+                    triggerEpicUnlockAnimation();
+                } else {
+                    triggerBruteForceDenial("ACCESS DENIED");
+                }
+            }, 800);
+        };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
+            }
+        };
+
+        function triggerBruteForceDenial(message) {
+            const btn = document.getElementById('engageBtnCore');
+            const terminal = document.getElementById('loginTerminal');
+            terminal.classList.add('access-denied-shake');
+            window.playSynthesizedSound(150, 'sawtooth', 0.4);
+            btn.innerText = message;
+            btn.style.background = "#e74c3c";
+            btn.style.color = "#fff";
+            setTimeout(() => {
+                terminal.classList.remove('access-denied-shake');
+                btn.innerText = "ENGAGE MAINFRAME";
+                btn.style.background = "linear-gradient(135deg, #f1c40f, #d4ac0d)";
+                btn.style.color = "#000";
+                btn.style.pointerEvents = "all";
+                document.getElementById('accessNodePass').value = "";
+                window.handlePasswordTypingEffects(document.getElementById('accessNodePass'));
+            }, 1000);
+        }
+
+        function triggerEpicUnlockAnimation() {
+            const btn = document.getElementById('engageBtnCore');
+            btn.innerText = "ACCESS GRANTED";
+            btn.style.background = "#2ecc71";
+            window.playSynthesizedSound(1200, 'sine', 0.5);
+            document.getElementById('mainStage').style.transform = "scale(1.5)";
+            document.getElementById('mainStage').style.transition = "transform 0.8s ease-in";
+            setTimeout(() => {
+                window.executeClusterLogin(null);
+                setTimeout(() => document.getElementById('mainStage').style.transform = "scale(1)", 500);
+            }, 800);
+        }
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false}, shadowBanned: false }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message);
+            });
+        };
+
         window.logoutEngine = function() {
             MatrixSystemState.set('loggedInCustomerID', "");
             localStorage.removeItem('nexus_logged_in_uid');
@@ -3048,23 +3184,6 @@
             window.location.reload();
         };
 
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
-            }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
-            });
-        };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
-    </script>
-
-    <script>
         setTimeout(() => {
             const preloader = document.getElementById('systemPreloader');
             if(preloader) {
