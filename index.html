@@ -510,7 +510,7 @@
                 <div class="hud-input-cluster">
                     <input type="password" id="accessNodePass" required placeholder=" " oninput="window.handlePasswordTypingEffects(this)">
                     <label>Secure Access Password Key</label>
-                    <div class="neon-glow-underline"></div>
+                    <div class="neon-glow-underline" id="passwordGlowLine"></div>
                 </div>
                 <button type="submit" id="engageBtnCore" class="hud-engage-btn">ENGAGE MAINFRAME</button>
                 <div style="display:flex; justify-content:space-between; margin-top:20px; font-family:'Orbitron'; font-size:0.9rem;">
@@ -3090,8 +3090,7 @@
         window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
 
         window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-        
-        // Typo Fixed Here ('indow' -> 'window')
+
         window.handlePasswordTypingEffects = function(inputElement) {
             if(!inputElement) return;
             const len = inputElement.value.length;
@@ -3187,6 +3186,42 @@
             }, 800);
         }
 
+        window.executeClusterLogin = function(e) {
+            if(e) e.preventDefault();
+            
+            const mode = MatrixSystemState.get('currentMode');
+            const mainStage = document.getElementById('mainStage');
+            if(mainStage) mainStage.style.display = 'none';
+            
+            const backdrop = document.getElementById('matrixAnimatedBackdrop');
+            if(backdrop) backdrop.classList.add('hidden');
+
+            if (mode === 'admin') {
+                document.getElementById('adminDashboard').classList.add('active-view');
+                document.getElementById('customerDashboard').classList.remove('active-view');
+                window.switchAdminSubSection('menu');
+                localStorage.setItem('nexus_system_session_mode', 'admin');
+            } else {
+                document.getElementById('customerDashboard').classList.add('active-view');
+                document.getElementById('adminDashboard').classList.remove('active-view');
+                
+                const uid = MatrixSystemState.get('loggedInCustomerID');
+                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
+                
+                if(userObj) {
+                    document.getElementById('clientDisplayLabel').innerText = ` // ${userObj.clientName} [${userObj.id}]`;
+                    if(userObj.avatar) document.getElementById('customerLiveAvatarPreview').src = userObj.avatar;
+                }
+                
+                if(uid) update(ref(db, `users/${uid}`), { isOnlineNode: true });
+                localStorage.setItem('nexus_system_session_mode', 'user');
+                localStorage.setItem('nexus_logged_in_uid', uid);
+
+                window.switchCustomerChannel('menu');
+                if(typeof window.enforceCustomerPermissions === 'function') window.enforceCustomerPermissions();
+            }
+        };
+
         window.createNewCustomerNode = function() {
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
             if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
@@ -3207,115 +3242,15 @@
             window.location.reload();
         };
 
-        // 1. FIREBASE SE USERS DATA FETCH KARNA (For ID Verification)
         onValue(ref(db, 'users'), (snapshot) => {
             if (snapshot.exists()) {
                 MatrixSystemState.set('cachedGlobalUsersArr', Object.values(snapshot.val()));
                 if(MatrixSystemState.get('currentMode') === 'admin' && MatrixSystemState.get('activeAdminSubSection') === 'credentials') {
-                    window.renderUserControlPanel && window.renderUserControlPanel();
+                    if(typeof window.renderUserControlPanel === 'function') window.renderUserControlPanel();
                 }
             }
         });
 
-        // 2. MAIN LOGIN ROUTER (Login successful hone par UI switch karta hai)
-        window.executeClusterLogin = function(e) {
-            if(e) e.preventDefault();
-            
-            const mode = MatrixSystemState.get('currentMode');
-            
-            // Login Screen (Cinema Stage) hide karo
-            const mainStage = document.getElementById('mainStage');
-            if(mainStage) mainStage.style.display = 'none';
-            
-            const backdrop = document.getElementById('matrixAnimatedBackdrop');
-            if(backdrop) backdrop.classList.add('hidden');
-
-            // Dashboard dikhao based on Mode
-            if (mode === 'admin') {
-                document.getElementById('adminDashboard').classList.add('active-view');
-                document.getElementById('customerDashboard').classList.remove('active-view');
-                window.switchAdminSubSection('menu');
-                
-                // Save Admin Session
-                localStorage.setItem('nexus_system_session_mode', 'admin');
-            } else {
-                document.getElementById('customerDashboard').classList.add('active-view');
-                document.getElementById('adminDashboard').classList.remove('active-view');
-                
-                const uid = MatrixSystemState.get('loggedInCustomerID');
-                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid);
-                
-                if(userObj) {
-                    document.getElementById('clientDisplayLabel').innerText = ` // ${userObj.clientName} [${userObj.id}]`;
-                    if(userObj.avatar) document.getElementById('customerLiveAvatarPreview').src = userObj.avatar;
-                }
-                
-                // Turn Online Status True in DB
-                if(uid) update(ref(db, `users/${uid}`), { isOnlineNode: true });
-                
-                // Save Customer Session
-                localStorage.setItem('nexus_system_session_mode', 'user');
-                localStorage.setItem('nexus_logged_in_uid', uid);
-
-                window.switchCustomerChannel('menu');
-                window.enforceCustomerPermissions && window.enforceCustomerPermissions();
-            }
-        };
-
-        // 3. CUSTOMER MENU NAVIGATION ENGINE
-        window.switchCustomerChannel = function(channel) {
-            MatrixSystemState.set('activeCustomerWorkspaceChannel', channel);
-            const sections = ['customerMainMenuBlock', 'customerUploadInterfaceBlock', 'customerVaultInterfaceBlock', 'customerGamingInterfaceBlock', 'customerChatInterfaceBlock', 'customerRequestInterfaceBlock', 'masterNotesInterfaceBlock'];
-            
-            sections.forEach(id => {
-                let el = document.getElementById(id);
-                if(el) el.classList.add('hidden');
-            });
-            
-            const btnBack = document.getElementById('btnBackToHome');
-            if(btnBack) {
-                if(channel === 'menu') btnBack.classList.add('hidden');
-                else btnBack.classList.remove('hidden');
-            }
-
-            if(channel === 'menu') document.getElementById('customerMainMenuBlock').classList.remove('hidden');
-            if(channel === 'upload') document.getElementById('customerUploadInterfaceBlock').classList.remove('hidden');
-            if(channel === 'vault') { document.getElementById('customerVaultInterfaceBlock').classList.remove('hidden'); window.renderCloudVault && window.renderCloudVault(); }
-            if(channel === 'gaming') { document.getElementById('customerGamingInterfaceBlock').classList.remove('hidden'); window.bootArcadeSubGame && window.bootArcadeSubGame(); }
-            if(channel === 'chat') { document.getElementById('customerChatInterfaceBlock').classList.remove('hidden'); window.initializeCrossLinkChatPanel && window.initializeCrossLinkChatPanel(); }
-            if(channel === 'request') document.getElementById('customerRequestInterfaceBlock').classList.remove('hidden');
-            if(channel === 'notes') { document.getElementById('masterNotesInterfaceBlock').classList.remove('hidden'); window.fetchRealtimeNotesCloudData && window.fetchRealtimeNotesCloudData(); }
-        };
-
-        // 4. ADMIN MENU NAVIGATION ENGINE
-        window.switchAdminSubSection = function(section) {
-            MatrixSystemState.set('activeAdminSubSection', section);
-            const blocks = ['adminMainMenuBlock', 'creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock', 'masterNotesInterfaceBlock'];
-            
-            blocks.forEach(id => {
-                let el = document.getElementById(id);
-                if(el) el.classList.add('hidden');
-            });
-            
-            const btnBack = document.getElementById('btnAdminBackToHome');
-            if(btnBack) {
-                if(section === 'menu') btnBack.classList.add('hidden');
-                else btnBack.classList.remove('hidden');
-            }
-
-            if(section === 'menu') document.getElementById('adminMainMenuBlock').classList.remove('hidden');
-            if(section === 'creation') document.getElementById('creationBlock').classList.remove('hidden');
-            if(section === 'approvals') { document.getElementById('adminApprovalsBlock').classList.remove('hidden'); window.renderAdminPendingApprovals && window.renderAdminPendingApprovals(); }
-            if(section === 'credentials') { document.getElementById('credentialsBlock').classList.remove('hidden'); window.renderUserControlPanel && window.renderUserControlPanel(); }
-            if(section === 'workspace') document.getElementById('policyWorkspaceBlock').classList.remove('hidden');
-            if(section === 'spychat') { document.getElementById('adminSpyChatBlock').classList.remove('hidden'); window.renderAdminSpyUserList && window.renderAdminSpyUserList(); }
-            if(section === 'tickets') { document.getElementById('adminSupportTicketsBlock').classList.remove('hidden'); window.renderAdminTickets && window.renderAdminTickets(); }
-            if(section === 'aispy') document.getElementById('adminAiSpyChatBlock').classList.remove('hidden');
-            if(section === 'stats') { document.getElementById('adminSystemStatsBlock').classList.remove('hidden'); }
-            if(section === 'notes') { document.getElementById('masterNotesInterfaceBlock').classList.remove('hidden'); }
-        };
-
-        // 5. AUTO-LOGIN ON REFRESH
         window.checkActiveStateSessionRetentionOnLaunch = function() {
             const savedUid = localStorage.getItem('nexus_logged_in_uid');
             const savedMode = localStorage.getItem('nexus_system_session_mode');
@@ -3325,6 +3260,8 @@
                 setTimeout(() => { window.executeClusterLogin(null); }, 800);
             }
         };
+
+        setTimeout(() => { window.checkActiveStateSessionRetentionOnLaunch(); }, 500);
 
         setTimeout(() => {
             const preloader = document.getElementById('systemPreloader');
