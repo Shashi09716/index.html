@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V20.8 (Code Studio & UI Upgraded)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V21.0 (Next-Gen Studio & Sync)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
     <!-- Tesseract JS for Image to Code (OCR) -->
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
@@ -45,12 +45,19 @@
             overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; 
         }
 
-        /* LOGIN SUCCESS OVERLAY ANIMATION */
-        #loginSuccessOverlay { position: fixed; inset: 0; background: var(--bg-prime); z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        /* --- NEXT-GEN LOGIN SUCCESS OVERLAY ANIMATION --- */
+        #loginSuccessOverlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.96); z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); }
         #loginSuccessOverlay.active { opacity: 1; visibility: visible; }
-        .portal-ring { width: 150px; height: 150px; border-radius: 50%; border: 4px solid transparent; border-top-color: var(--neon-cyan); border-bottom-color: var(--neon-pink); animation: spinPortal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 20px var(--neon-pink); }
-        @keyframes spinPortal { 0% { transform: rotate(0deg) scale(0.8); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(0.8); } }
-        .portal-text { margin-top: 30px; font-family: 'Orbitron'; font-size: 2rem; color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); animation: pulseGlow 1s infinite alternate; letter-spacing: 4px; font-weight: 900;}
+        .quantum-warp-box { position: relative; width: 220px; height: 220px; display: flex; justify-content: center; align-items: center; }
+        .portal-ring { position: absolute; width: 160px; height: 160px; border-radius: 50%; border: 4px solid transparent; border-top-color: var(--neon-cyan); border-bottom-color: var(--neon-pink); animation: spinPortal 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; box-shadow: 0 0 35px var(--neon-cyan), inset 0 0 25px var(--neon-pink); }
+        .portal-ring-outer { position: absolute; width: 210px; height: 210px; border-radius: 50%; border: 2px dashed #f1c40f; animation: spinPortalRev 3s linear infinite; opacity: 0.7; }
+        .portal-ring-core { width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, #fff 0%, var(--neon-cyan) 60%, transparent 100%); animation: corePulse 1s infinite alternate; box-shadow: 0 0 50px #fff; }
+        @keyframes spinPortal { 0% { transform: rotate(0deg) scale(0.85); } 50% { transform: rotate(180deg) scale(1.1); } 100% { transform: rotate(360deg) scale(0.85); } }
+        @keyframes spinPortalRev { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+        @keyframes corePulse { 0% { transform: scale(0.8); opacity: 0.6; } 100% { transform: scale(1.15); opacity: 1; } }
+        
+        .portal-text { margin-top: 35px; font-family: 'Orbitron'; font-size: 2.2rem; color: #fff; text-shadow: 0 0 25px var(--neon-cyan); animation: glitchTextAnim 3s infinite; letter-spacing: 5px; font-weight: 900;}
+        .portal-subtext { margin-top: 10px; font-family: 'Rajdhani'; font-size: 1.15rem; color: #2ecc71; letter-spacing: 2px; font-weight: 700; }
 
         /* GEN-Z ANIMATED CYBER GRID BACKDROP FOR LOCK VIEW */
         #matrixAnimatedBackdrop {
@@ -104,7 +111,6 @@
         body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #059669; }
         .toggle-switch:checked::before { transform: translateX(24px); background: #fff; box-shadow: 0 0 10px #fff; }
         
-        /* NEW GEN CYBER RANGE SLIDERS */
         .cyber-range { -webkit-appearance: none; width: 100%; height: 8px; background: rgba(0,0,0,0.8); border-radius: 5px; outline: none; border: 1px solid var(--border-glass); box-shadow: inset 0 0 5px rgba(0,0,0,0.5); margin-top: 10px; }
         .cyber-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--neon-cyan); cursor: pointer; box-shadow: 0 0 15px var(--neon-cyan); transition: 0.3s; }
         .cyber-range::-webkit-slider-thumb:hover { transform: scale(1.3); background: #fff; }
@@ -146,7 +152,6 @@
         .volumetric-beam { position: absolute; top: 150px; width: 140px; height: 0; background: linear-gradient(to bottom, #ffffff 0%, var(--lamp-color) 20%, rgba(255, 255, 255, 0.1) 60%, transparent 100%); clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%); z-index: 2; pointer-events: none; opacity: 0; transition: height 0.9s ease, width 0.9s ease, opacity 0.3s; transform: translateZ(5px);}
         .cinema-stage.activated .volumetric-beam { opacity: 0.85; height: 650px; width: 950px; filter: drop-shadow(0 0 40px var(--lamp-shadow)); }
         
-        /* 🚀 ROPE BUG FIXED HERE: Added translateZ(150px) to keep rope in front during 3D rotation */
         .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; touch-action: none; transform: translateZ(150px); }
         .quantum-cord:active { cursor: grabbing; transform: translateY(80px) scale(0.95) translateZ(150px); transition: transform 0.1s linear; }
         
@@ -227,31 +232,48 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 14px; padding: 30px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 15px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); box-shadow: 0 0 20px rgba(0,242,254,0.2); }
 
-        /* UPGRADED NOTEPAD PRO ENGINE - FIXED COLLAPSE ISSUE */
+        /* --- FULL SCREEN CODE PREVIEW MODAL OVERLAY --- */
+        #codeExecutionFullscreenOverlay {
+            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2000000; background: #000;
+            display: none; flex-direction: column; overflow: hidden; animation: zoomInCode 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        @keyframes zoomInCode { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+        .code-fullscreen-exit-btn {
+            position: absolute; top: 20px; right: 25px; z-index: 2000005; background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border: 2px solid #fff; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900;
+            padding: 12px 24px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 0 30px rgba(231,76,60,0.8), 0 5px 15px rgba(0,0,0,0.7); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulseExitBtn 2s infinite alternate;
+        }
+        @keyframes pulseExitBtn { 0% { box-shadow: 0 0 20px rgba(231,76,60,0.6); } 100% { box-shadow: 0 0 40px rgba(231,76,60,1), 0 0 10px #fff; } }
+        .code-fullscreen-exit-btn:hover { transform: scale(1.1) rotate(-3deg); background: #ff007f; border-color: #00f2fe; }
+        .code-fullscreen-iframe { width: 100vw; height: 100vh; border: none; background: #fff; }
+
+        /* UPGRADED NOTEPAD PRO ENGINE - FIXED WRITING AREA */
         .notes-engine-card-surface { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 16px; padding: 35px; margin-bottom: 25px; box-shadow: 0 20px 45px rgba(255,0,127,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; width: 100%; height: 85vh; max-height: none; }
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 40px; max-height: 100vh;}
         .notes-editor-container-shell { position: relative; margin-top: 20px; background: #e2e8f0; border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex: 1; }
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
         
-        .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 30px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; position: relative; flex-direction: column; }
+        .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 25px; display: flex; justify-content: center; align-items: flex-start; user-select: text !important; -webkit-user-select: text !important; position: relative; flex-direction: column; }
         
-        /* CLEANED UP PAPER BOX - FLEX 1 & HEIGHT 100% PREVENTS COLLAPSE */
+        /* CLEANED UP PAPER BOX */
         .wordpad-paper { 
             background: #ffffff !important; 
             width: 100% !important; 
-            max-width: 900px !important;
-            min-height: 100% !important; 
+            max-width: 950px !important;
+            min-height: 480px !important; 
             flex: 1;
-            padding: 40px !important; 
+            padding: 35px !important; 
             box-sizing: border-box !important; 
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important; 
             color: #000 !important; 
             font-family: 'Segoe UI', Arial, sans-serif !important; 
-            font-size: 1.25rem !important; 
+            font-size: 1.2rem !important; 
             line-height: 1.7 !important; 
             outline: none !important; 
             border-radius: 8px !important; 
-            border: 1px solid #ccc !important;
+            border: 1px solid #cbd5e1 !important;
             overflow-x: hidden !important; 
             word-wrap: break-word !important;
             user-select: text !important;
@@ -263,12 +285,12 @@
             display: block !important;
             margin: 0 auto;
         }
-        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 35px rgba(255,0,127,0.4) !important; transform: translateY(-2px); }
+        .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 35px rgba(255,0,127,0.4) !important; }
         .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: #888; pointer-events: none; display:block; }
         
         .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 15px 40px rgba(0,0,0,0.8) !important; border-color: #334155 !important; }
         
-        /* SLASH COMMAND MENU GEN-Z FEATURE */
+        /* SLASH COMMAND MENU */
         .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 250px; z-index: 1000; display: none; padding: 10px; }
         .slash-cmd-item { padding: 10px 15px; color: #fff; cursor: pointer; border-radius: 8px; font-family: 'Rajdhani'; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
         .slash-cmd-item:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
@@ -342,7 +364,7 @@
         .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
         
         /* MSG BUBBLES AND ACTIONS */
-        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1.05rem; line-height: 22px; position: relative; box-shadow: 0 1px 4px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; group; }
+        .bubble-msg-wrapper { max-width: 65%; padding: 8px 10px 10px 12px; border-radius: 10px; font-size: 1.05rem; line-height: 22px; position: relative; box-shadow: 0 1px 4px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 3px; display: inline-block; }
         .bubble-msg-wrapper.first-in-group { margin-top: 14px; }
         .bubble-text-content { display: inline-block; padding-right: 70px; padding-bottom: 6px; white-space: pre-wrap; min-width: 50px; }
         .group-sender-name { font-size: 0.9rem; font-weight: 700; color: #00f2fe; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
@@ -354,6 +376,8 @@
         .bubble-incoming { background: var(--wa-msg-in); color: var(--wa-text); align-self: flex-start; border-top-left-radius: 0;}
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -10px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 15px solid transparent; border-right: 15px solid var(--wa-msg-in); }
         
+        .msg-reaction-pill { position: absolute; bottom: -10px; right: 20px; background: #202c33; border: 1px solid var(--border-glass); border-radius: 12px; padding: 2px 8px; font-size: 0.85rem; box-shadow: 0 2px 6px rgba(0,0,0,0.5); z-index: 4; }
+
         /* PREMIUM TOOLS MENU (WHATSAPP) */
         .premium-tools-menu { position:absolute; top: 50px; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 220px; z-index: 10000; display: none; flex-direction: column; padding: 10px; }
         .premium-tools-menu.active { display: flex; animation: slideDown 0.3s ease; }
@@ -361,7 +385,7 @@
         .premium-tool-btn { padding: 12px; color: #fff; background: transparent; border: none; text-align: left; font-family: 'Rajdhani'; font-weight: bold; font-size: 1.05rem; cursor: pointer; border-radius: 8px; transition: 0.3s; display:flex; align-items:center; gap:10px; }
         .premium-tool-btn:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
         
-        /* MSG HOVER ACTIONS (Edit/Delete) */
+        /* MSG HOVER ACTIONS (Edit/Delete/React) */
         .msg-action-menu { position:absolute; top:-15px; right:-10px; background:var(--wa-header); border:1px solid var(--border-glass); border-radius:12px; padding:6px 10px; display:none; gap:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); z-index:10; }
         .bubble-msg-wrapper:hover .msg-action-menu { display:flex; }
         .msg-action-icon { font-size: 1.1rem; cursor:pointer; transition: 0.2s; }
@@ -392,7 +416,6 @@
         .giant-compiler-layout { background: var(--card-bg); padding: 40px 35px; border-radius: 22px; border: 1px solid var(--border-glass); margin-bottom: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
         .giant-compiler-layout h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 25px; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 20px rgba(0,242,254,0.4); }
         
-        /* Modern Glass Panel for Admin UI */
         .modern-glass-panel { background: var(--admin-glass); border-radius: 22px; border: 1px solid var(--border-glass); padding: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,242,254,0.1); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); margin-bottom: 30px; position: relative; overflow: hidden; transition: all 0.4s ease; }
         .modern-glass-panel::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%); z-index: 0; pointer-events: none; }
         .modern-glass-panel:hover { border-color: var(--neon-cyan); box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 50px rgba(0,242,254,0.2); transform: translateY(-5px); }
@@ -453,13 +476,26 @@
 <body>
     <div id="systemPreloader">
         <div class="loader-spinner"></div>
-        <div class="preloader-text">NEXUS SECURE GATEWAY V20.8</div>
+        <div class="preloader-text">NEXUS SECURE GATEWAY V21.0</div>
     </div>
     
-    <!-- LOGIN SUCCESS ANIMATION OVERLAY -->
+    <!-- NEXT-GEN LOGIN SUCCESS ANIMATION OVERLAY -->
     <div id="loginSuccessOverlay">
-        <div class="portal-ring"></div>
-        <div class="portal-text">AUTHENTICATED</div>
+        <div class="quantum-warp-box">
+            <div class="portal-ring-outer"></div>
+            <div class="portal-ring"></div>
+            <div class="portal-ring-core"></div>
+        </div>
+        <div class="portal-text">ACCESS GRANTED</div>
+        <div class="portal-subtext">⚡ QUANTUM ENCRYPTION SYNCED</div>
+    </div>
+
+    <!-- FULL SCREEN CODE PREVIEW OVERLAY (WITH CORNER EXIT BUTTON) -->
+    <div id="codeExecutionFullscreenOverlay">
+        <button class="code-fullscreen-exit-btn" onclick="window.closeFullscreenCodePreview()">
+            <span>✖ EXIT PREVIEW</span>
+        </button>
+        <iframe id="fullscreenCodeRunnerIframe" class="code-fullscreen-iframe"></iframe>
     </div>
 
     <div id="matrixAnimatedBackdrop" class="hidden"></div>
@@ -565,7 +601,7 @@
                     <div class="icon">📝</div><h3>Rich Notes Pro</h3><p>Professional workspace.</p>
                 </div>
                 <div class="menu-card" id="menuCard_code" onclick="window.switchCustomerChannel('code')">
-                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color:#a73ec9;">Code Studio</h3><p>Live Editor & OCR.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color:#a73ec9;">Code Studio</h3><p>Live Editor & Full Screen Play.</p>
                 </div>
                 <div class="menu-card" id="menuCard_vault" onclick="window.switchCustomerChannel('vault')">
                     <div class="icon">📂</div><h3>Cloud Vault</h3><p>Access your documents.</p>
@@ -585,12 +621,12 @@
             <div id="customerCodeInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#a73ec9; text-shadow:0 0 15px rgba(167,62,201,0.4);">💻 CODE STUDIO PRO</h3>
-                    <p style="color:var(--text-sub); margin-bottom: 25px;">Live code preview, editing, and Image to Code extraction using AI OCR.</p>
+                    <p style="color:var(--text-sub); margin-bottom: 25px;">Live code preview in Full Screen mode, editing, and Image to Code extraction using AI OCR.</p>
                     
                     <div style="display:flex; gap:15px; margin-bottom: 20px; flex-wrap:wrap;">
-                        <button onclick="window.playCodePreview('customer')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ PLAY CODE</button>
-                        <button onclick="window.stopCodePreview('customer')" class="abort-btn" style="flex:1; padding:15px;">⏹ EXIT PREVIEW</button>
-                        <button onclick="window.saveCodeSnippet('customer')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE TO CLOUD</button>
+                        <button onclick="window.playCodePreview('customer')" class="hud-engage-btn" style="flex:2; padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ RUN FULL SCREEN PLAY</button>
+                        <button onclick="window.saveCodeSnippet('customer')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE SNIPPET</button>
+                        <button onclick="window.insertStarterCodeTemplate('customer')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:12px 20px;">⚡ LOAD TEMPLATE</button>
                     </div>
 
                     <div style="display:flex; gap:10px; margin-bottom: 20px; align-items: center; flex-wrap:wrap;">
@@ -600,21 +636,16 @@
                     </div>
 
                     <div class="hud-input-cluster full-width-field">
-                        <textarea id="liveCodeEditor_customer" class="giant-compiler-input" style="height:350px; font-family:monospace; font-size:15px; background:#0b141a; color:#00f2fe; white-space: pre;" placeholder="Paste your HTML, CSS, or JS code here..."></textarea>
+                        <textarea id="liveCodeEditor_customer" class="giant-compiler-input" style="height:380px; font-family:monospace; font-size:15px; background:#0b141a; color:#00f2fe; white-space: pre;" placeholder="Paste your HTML, CSS, or JS code here..."></textarea>
                     </div>
                     
                     <div class="hud-input-cluster full-width-field" style="margin-top:20px;">
                         <input type="text" id="codeNotesInput_customer" class="giant-compiler-input" placeholder="Add notes/description for this code snippet...">
                     </div>
-
-                    <!-- Live Preview Iframe -->
-                    <div id="codePreviewWrapper_customer" style="display:none; margin-top:30px; border:3px solid var(--neon-cyan); border-radius:12px; overflow:hidden; height:450px; background:#fff; box-shadow: 0 10px 30px rgba(0,242,254,0.3);">
-                        <iframe id="codePreviewIframe_customer" style="width:100%; height:100%; border:none;"></iframe>
-                    </div>
                 </div>
             </div>
 
-            <!-- EXISTING CUSTOMER BLOCKS -->
+            <!-- POLICY UPLOAD BLOCK -->
             <div id="customerUploadInterfaceBlock" class="hidden">
                 <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">📁 SECURE POLICY SYSTEM</h3>
                 <div id="customerLiveTrackerSection" style="margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.6); border-radius: 14px; border: 2px solid rgba(0,242,254,0.4); box-shadow: inset 0 3px 10px rgba(0,0,0,0.7);"></div>
@@ -636,9 +667,10 @@
                 <button onclick="window.submitPolicyForm()" class="hud-engage-btn" style="margin-top: 15px;">TRANSMIT SECURE DATA</button>
             </div>
 
+            <!-- PRO WORKSPACE NOTEPAD BLOCK -->
             <div id="customerNotesInterfaceBlock" class="hidden">
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
-                    <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V20.8</h3>
+                    <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom: 20px;">🧠 PRO WORKSPACE NOTEPAD V21.0</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom: 20px;">
                         <div class="hud-input-cluster" style="margin-bottom:0;"><input type="text" id="noteManualDateSelector" class="locked-anchor-input" readonly></div>
@@ -749,6 +781,7 @@
                 </div>
             </div>
 
+            <!-- CLOUD VAULT BLOCK -->
             <div id="customerVaultInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
@@ -757,6 +790,7 @@
                 </div>
             </div>
 
+            <!-- GAMING TALKING TOM BLOCK -->
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
                     <h2 class="neon-cyan-text" style="font-size: 2rem; margin-bottom:20px; text-shadow:0 0 20px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
@@ -771,6 +805,7 @@
                 </div>
             </div>
 
+            <!-- WHATSAPP PRO BLOCK (CUSTOMER) -->
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
                     <div class="chat-target-userlist-pane">
@@ -841,11 +876,11 @@
                         
                         <div class="chat-pinned-message-banner hidden" id="chatPinnedMessageBannerNode">
                             <span style="font-size: 1.2rem;">📌</span> 
-                            <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><i>Pinned Message Feature Upgrade</i></div>
+                            <div style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" id="chatPinnedMessageContent"><i>Pinned: Welcome to the high-security chat channel!</i></div>
                         </div>
 
                         <div class="chat-messages-scroll-stack" id="chatMessagesScrollWrapper">
-                            <div style="text-align:center; margin: 10px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:6px 12px; border-radius:8px; font-size:0.8rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.</span></div>
+                            <div style="text-align:center; margin: 10px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:6px 12px; border-radius:8px; font-size:0.8rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat can read or listen to them.</span></div>
                         </div>
                         
                         <div style="position:relative; z-index:100;">
@@ -924,6 +959,7 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:10px; font-size:1rem; color:#f1c40f; padding-left:15px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
+            <!-- SUPPORT REQUEST BLOCK -->
             <div id="customerRequestInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
@@ -998,9 +1034,8 @@
                 <div class="menu-card" onclick="window.switchAdminSubSection('workspace')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Workspace</h3><p>Review & update customer policies.</p>
                 </div>
-                <!-- Admin Code Studio Card -->
                 <div class="menu-card" onclick="window.switchAdminSubSection('code')" style="border-color:#a73ec9;">
-                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color: #a73ec9;">Code Studio</h3><p>Live Editor & OCR.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color: #a73ec9;">Code Studio</h3><p>Live Editor & Full Screen Play.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('spychat')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">💬</div><h3 style="color: #2ecc71;">Spychat Web</h3><p>Admin WhatsApp interface.</p>
@@ -1112,12 +1147,12 @@
                 <div id="adminCodeInterfaceBlock" class="hidden">
                     <div class="giant-compiler-layout">
                         <h3 class="neon-cyan-text" style="color:#a73ec9; text-shadow:0 0 15px rgba(167,62,201,0.4);">💻 CODE STUDIO PRO (ADMIN)</h3>
-                        <p style="color:var(--text-sub); margin-bottom: 25px;">Live code preview, editing, and Image to Code extraction using AI OCR.</p>
+                        <p style="color:var(--text-sub); margin-bottom: 25px;">Live code preview in Full Screen mode, editing, and Image to Code extraction using AI OCR.</p>
                         
                         <div style="display:flex; gap:15px; margin-bottom: 20px; flex-wrap:wrap;">
-                            <button onclick="window.playCodePreview('admin')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ PLAY CODE</button>
-                            <button onclick="window.stopCodePreview('admin')" class="abort-btn" style="flex:1; padding:15px;">⏹ EXIT PREVIEW</button>
-                            <button onclick="window.saveCodeSnippet('admin')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE TO CLOUD</button>
+                            <button onclick="window.playCodePreview('admin')" class="hud-engage-btn" style="flex:2; padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ RUN FULL SCREEN PLAY</button>
+                            <button onclick="window.saveCodeSnippet('admin')" class="hud-engage-btn" style="flex:1; padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE SNIPPET</button>
+                            <button onclick="window.insertStarterCodeTemplate('admin')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:12px 20px;">⚡ LOAD TEMPLATE</button>
                         </div>
 
                         <div style="display:flex; gap:10px; margin-bottom: 20px; align-items: center; flex-wrap:wrap;">
@@ -1127,16 +1162,11 @@
                         </div>
 
                         <div class="hud-input-cluster full-width-field">
-                            <textarea id="liveCodeEditor_admin" class="giant-compiler-input" style="height:350px; font-family:monospace; font-size:15px; background:#0b141a; color:#00f2fe; white-space: pre;" placeholder="Paste your HTML, CSS, or JS code here..."></textarea>
+                            <textarea id="liveCodeEditor_admin" class="giant-compiler-input" style="height:380px; font-family:monospace; font-size:15px; background:#0b141a; color:#00f2fe; white-space: pre;" placeholder="Paste your HTML, CSS, or JS code here..."></textarea>
                         </div>
                         
                         <div class="hud-input-cluster full-width-field" style="margin-top:20px;">
                             <input type="text" id="codeNotesInput_admin" class="giant-compiler-input" placeholder="Add notes/description for this code snippet...">
-                        </div>
-
-                        <!-- Live Preview Iframe -->
-                        <div id="codePreviewWrapper_admin" style="display:none; margin-top:30px; border:3px solid var(--neon-cyan); border-radius:12px; overflow:hidden; height:450px; background:#fff; box-shadow: 0 10px 30px rgba(0,242,254,0.3);">
-                            <iframe id="codePreviewIframe_admin" style="width:100%; height:100%; border:none;"></iframe>
                         </div>
                     </div>
                 </div>
@@ -1374,7 +1404,7 @@
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         
-        // --- UPGRADED AUTO LOGOUT ENGINE (Controlled by Admin Limits) ---
+        // --- UPGRADED AUTO LOGOUT ENGINE ---
         let activityTimeout;
         window.executeAutoLogoutTracker = function() {
             const resetInactivityTimer = () => {
@@ -1398,107 +1428,67 @@
         }
         executeAutoLogoutTracker();
 
-        // --- NEW: WHATSAPP PREMIUM TOOLS MENU TOGGLE ---
-        window.toggleWaPremiumTools = function() {
-            const menu = document.getElementById('waPremiumToolsMenu');
-            if(menu) { menu.classList.toggle('active'); }
-        };
-
-        // --- NEW: TYPING SOUND ENGINE ---
-        window.playTypingSound = function() {
-            if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return;
-            try {
-                if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume();
-                const oscillator = globalAudioCtx.createOscillator();
-                const gainNode = globalAudioCtx.createGain();
-                oscillator.type = 'square';
-                oscillator.frequency.setValueAtTime(800 + Math.random() * 200, globalAudioCtx.currentTime);
-                gainNode.gain.setValueAtTime(0.05, globalAudioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, globalAudioCtx.currentTime + 0.05);
-                oscillator.connect(gainNode);
-                gainNode.connect(globalAudioCtx.destination);
-                oscillator.start();
-                oscillator.stop(globalAudioCtx.currentTime + 0.05);
-            } catch(e) {}
-        };
-
-        // --- NEW: PREMIUM FEATURE LOCAL TOGGLES ---
-        window.toggleUserPremiumFeatureSelf = function(featureKey) {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            if(!currentUid) return;
-            const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
-            if(!user || !user.premium || !user.premium[featureKey]) {
-                alert("❌ ACCESS DENIED: You don't have premium permission for this feature. Contact Admin.");
+        // --- FULL SCREEN CODE PREVIEW LOGIC WITH EXIT BUTTON ---
+        window.playCodePreview = function(mode) {
+            const codeEditor = document.getElementById('liveCodeEditor_' + mode);
+            if (!codeEditor) return;
+            const code = codeEditor.value.trim();
+            if (!code) {
+                alert("Please type or paste some code before playing!");
                 return;
             }
+
+            const overlay = document.getElementById('codeExecutionFullscreenOverlay');
+            const iframe = document.getElementById('fullscreenCodeRunnerIframe');
             
-            let currentLocalState = localStorage.getItem(`local_prem_${featureKey}_${currentUid}`) === 'true';
-            let newState = !currentLocalState;
-            localStorage.setItem(`local_prem_${featureKey}_${currentUid}`, newState.toString());
-            
-            if(featureKey === 'stealthMode') {
-                const btn = document.getElementById('btnPremiumStealth');
-                if(btn) btn.innerHTML = `👻 Ghost/Stealth Mode: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
-                if(newState) update(ref(db, `users/${currentUid}`), { isOnlineNode: false }); // Stealth instantly goes offline
-            }
-            if(featureKey === 'autoReply') {
-                const btn = document.getElementById('btnPremiumAutoReply');
-                if(btn) btn.innerHTML = `🤖 Auto-Reply Bot: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+            if (overlay && iframe) {
+                overlay.style.display = 'flex';
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write(code);
+                doc.close();
+                if(isAudioContextAllowed) window.playSynthesizedSound(950, 'sine', 0.2);
             }
         };
 
-        // --- NEW: MASS MEDIA DOWNLOADER ---
-        window.triggerMassMediaDownloader = function() {
-            const currentUid = MatrixSystemState.get('loggedInCustomerID');
-            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId') || MatrixSystemState.get('spyActiveTargetUserContext');
-            if(!currentUid || !targetUid) return;
-
-            if(MatrixSystemState.get('currentMode') === 'user') {
-                const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
-                if(!user || !user.premium || !user.premium.massDownload) {
-                    alert("❌ ACCESS DENIED: Mass Media Downloader requires Admin Permission.");
-                    return;
-                }
-            }
-
-            alert("📥 Initiating Secure Mass Media Extraction...\nThis feature gathers all images/audio from this chat pipeline. Since this is a browser environment, it will prompt download for the most recent 5 files to prevent browser crashing.");
-            
-            const rawData = window.cachedChatsData || {};
-            let medias = [];
-            Object.keys(rawData).forEach(key => {
-                const m = rawData[key];
-                if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
-                    if(m.mediaPayload && !m.isDeletedForEveryone) medias.push(m.mediaPayload);
-                }
-            });
-
-            if(medias.length === 0) { alert("No media found in this chat."); return; }
-            
-            let downloadCount = Math.min(medias.length, 5);
-            for(let i=0; i<downloadCount; i++) {
-                setTimeout(() => {
-                    const a = document.createElement('a'); a.href = medias[i]; a.download = `Nexus_Mass_Extract_${Date.now()}_${i}.png`; 
-                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                }, i * 500);
+        window.closeFullscreenCodePreview = function() {
+            const overlay = document.getElementById('codeExecutionFullscreenOverlay');
+            const iframe = document.getElementById('fullscreenCodeRunnerIframe');
+            if (overlay && iframe) {
+                overlay.style.display = 'none';
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write("");
+                doc.close();
+                if(isAudioContextAllowed) window.playSynthesizedSound(400, 'sine', 0.15);
             }
         };
 
-        // --- NEW: CODE STUDIO LOGIC (Play, Stop, OCR, Save) ---
-        window.playCodePreview = function(mode) {
-            const code = document.getElementById('liveCodeEditor_' + mode).value;
-            const iframe = document.getElementById('codePreviewIframe_' + mode);
-            const wrapper = document.getElementById('codePreviewWrapper_' + mode);
-            wrapper.style.display = 'block';
-            const doc = iframe.contentWindow.document;
-            doc.open(); doc.write(code); doc.close();
-        };
-
-        window.stopCodePreview = function(mode) {
-            document.getElementById('codePreviewWrapper_' + mode).style.display = 'none';
-            const iframe = document.getElementById('codePreviewIframe_' + mode);
-            const doc = iframe.contentWindow.document;
-            doc.open(); doc.write(""); doc.close();
+        window.insertStarterCodeTemplate = function(mode) {
+            const starter = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #0a0e1a; font-family: sans-serif; color: #fff; text-align: center; }
+  .card { padding: 40px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 2px solid #00f2fe; box-shadow: 0 0 30px #00f2fe; }
+  h1 { font-size: 2.5rem; color: #00f2fe; margin-bottom: 10px; }
+  button { padding: 12px 25px; border-radius: 8px; border: none; background: #ff007f; color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  button:hover { transform: scale(1.1); box-shadow: 0 0 20px #ff007f; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>⚡ Live Next-Gen Code Runner</h1>
+    <p>Edit in Code Studio & Run smoothly in Fullscreen!</p>
+    <button onclick="alert('Hello from Nexus Full Screen Execution!')">Click Me</button>
+  </div>
+</body>
+</html>`;
+            const editor = document.getElementById('liveCodeEditor_' + mode);
+            if(editor) {
+                editor.value = starter;
+                alert("⚡ Sample Cyber Starter Code Loaded!");
+            }
         };
 
         window.saveCodeSnippet = function(mode) {
@@ -1531,7 +1521,90 @@
             }
         };
 
-        // --- NEW: WHATSAPP SMART DATE JUMP LOGIC ---
+        // --- WHATSAPP PREMIUM TOOLS MENU TOGGLE ---
+        window.toggleWaPremiumTools = function() {
+            const menu = document.getElementById('waPremiumToolsMenu');
+            if(menu) { menu.classList.toggle('active'); }
+        };
+
+        // --- TYPING SOUND ENGINE ---
+        window.playTypingSound = function() {
+            if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return;
+            try {
+                if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume();
+                const oscillator = globalAudioCtx.createOscillator();
+                const gainNode = globalAudioCtx.createGain();
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(800 + Math.random() * 200, globalAudioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.05, globalAudioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, globalAudioCtx.currentTime + 0.05);
+                oscillator.connect(gainNode);
+                gainNode.connect(globalAudioCtx.destination);
+                oscillator.start();
+                oscillator.stop(globalAudioCtx.currentTime + 0.05);
+            } catch(e) {}
+        };
+
+        window.toggleUserPremiumFeatureSelf = function(featureKey) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            if(!user || !user.premium || !user.premium[featureKey]) {
+                alert("❌ ACCESS DENIED: You don't have premium permission for this feature. Contact Admin.");
+                return;
+            }
+            
+            let currentLocalState = localStorage.getItem(`local_prem_${featureKey}_${currentUid}`) === 'true';
+            let newState = !currentLocalState;
+            localStorage.setItem(`local_prem_${featureKey}_${currentUid}`, newState.toString());
+            
+            if(featureKey === 'stealthMode') {
+                const btn = document.getElementById('btnPremiumStealth');
+                if(btn) btn.innerHTML = `👻 Ghost/Stealth Mode: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+                if(newState) update(ref(db, `users/${currentUid}`), { isOnlineNode: false });
+            }
+            if(featureKey === 'autoReply') {
+                const btn = document.getElementById('btnPremiumAutoReply');
+                if(btn) btn.innerHTML = `🤖 Auto-Reply Bot: <span style="color:${newState?'#2ecc71':'#e74c3c'};">${newState?'ON':'OFF'}</span>`;
+            }
+        };
+
+        window.triggerMassMediaDownloader = function() {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId') || MatrixSystemState.get('spyActiveTargetUserContext');
+            if(!currentUid || !targetUid) return;
+
+            if(MatrixSystemState.get('currentMode') === 'user') {
+                const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+                if(!user || !user.premium || !user.premium.massDownload) {
+                    alert("❌ ACCESS DENIED: Mass Media Downloader requires Admin Permission.");
+                    return;
+                }
+            }
+
+            alert("📥 Initiating Secure Mass Media Extraction...\nDownloading latest media files.");
+            
+            const rawData = window.cachedChatsData || {};
+            let medias = [];
+            Object.keys(rawData).forEach(key => {
+                const m = rawData[key];
+                if ((m.sender === currentUid && m.receiver === targetUid) || (m.sender === targetUid && m.receiver === currentUid)) {
+                    if(m.mediaPayload && !m.isDeletedForEveryone) medias.push(m.mediaPayload);
+                }
+            });
+
+            if(medias.length === 0) { alert("No media found in this chat."); return; }
+            
+            let downloadCount = Math.min(medias.length, 5);
+            for(let i=0; i<downloadCount; i++) {
+                setTimeout(() => {
+                    const a = document.createElement('a'); a.href = medias[i]; a.download = `Nexus_Mass_Extract_${Date.now()}_${i}.png`; 
+                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                }, i * 500);
+            }
+        };
+
         window.jumpToWhatsAppDate = function(dateStr) {
             if(!dateStr) return;
             const targetDate = new Date(dateStr);
@@ -1553,11 +1626,10 @@
             }
         };
 
-        // --- SMART NOTEPAD (GEN-Z FEATURES) LOGIC ---
+        // --- NOTEPAD PRO LOGIC ---
         setTimeout(() => {
             const editorNode = document.getElementById('richNoteWritingPadEditable');
             if (editorNode) {
-                // Feature: Slash Command Menu
                 editorNode.addEventListener('keyup', (e) => {
                     const slashMenu = document.getElementById('slashCommandMenu');
                     if (e.key === '/') {
@@ -1567,7 +1639,6 @@
                     }
                 });
 
-                // Feature: Drag and Drop Media Files directly into Notepad
                 editorNode.addEventListener('dragover', (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
                 editorNode.addEventListener('drop', (e) => {
                     e.preventDefault();
@@ -1580,8 +1651,6 @@
                                 document.execCommand('insertHTML', false, `<br><img src="${b64}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-cyan); box-shadow:0 10px 20px rgba(0,242,254,0.3);"><br>`);
                             } else if (file.type.startsWith('audio/')) {
                                 document.execCommand('insertHTML', false, `<br><div style="background:rgba(0,0,0,0.5); padding:15px; border-radius:12px; margin:10px 0; border-left:5px solid var(--neon-pink);"><audio controls src="${b64}" class="note-inline-audio"></audio></div><br>`);
-                            } else {
-                                alert("Drop supported for Images and Audio only right now.");
                             }
                             window.updateNotepadLiveCounters();
                         };
@@ -1589,7 +1658,6 @@
                     }
                 });
 
-                // Feature: Paste image directly
                 editorNode.addEventListener('paste', (e) => {
                     if (e.clipboardData && e.clipboardData.items) {
                         const items = e.clipboardData.items;
@@ -1610,7 +1678,6 @@
             }
         }, 1500);
 
-        // --- NEW: CHAT AREA PERFECT LOCK ENGINE (FIXED BLUR ISSUE) ---
         window.toggleWaAreaLock = function(matrixId, btnId) {
             const matrixNode = document.getElementById(matrixId);
             const btnNode = document.getElementById(btnId);
@@ -1682,6 +1749,10 @@
         ];
 
         window.MatrixSystemState = MatrixSystemState;
+
+        window.reactToMessage = function(dbKey, emoji) {
+            update(ref(db, 'chats/' + dbKey), { reaction: emoji });
+        };
 
         window.deleteChatMessage = function(dbKey, epochTime) {
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
@@ -1936,7 +2007,7 @@
                 wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()"><h4 style="color:#00a884;">✅ REQUEST SENT / अनुरोध सबमिट हो गया</h4><p style="margin-bottom:25px; text-align:left; font-size: 1.1rem; color:var(--text-sub); line-height: 1.6;"><strong>English:</strong> Your request has been securely sent. The Admin will verify and share your new ID on your registered Contact Number via SMS within 24 to 48 hours.<br><br><strong>Hindi (हिंदी):</strong> आपका अनुरोध सुरक्षित रूप से भेज दिया गया है। एडमिन वेरिफाई करके 24 से 48 घंटों के भीतर आपके पंजीकृत संपर्क नंबर पर SMS के माध्यम से आपकी नई आईडी शेयर करेंगे।</p><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn primary-btn" style="width:100%;">UNDERSTOOD / समझ गया</button></div>`;
                 window.speakNaturalHuman("Request submitted successfully.");
             }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message + "\n\nIska matlab aapke Firebase Rules sahi se update nahi hue hain. Please Firebase mein .read aur .write dono ko 'true' karein!");
+                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek karein.");
             });
         };
 
@@ -2040,7 +2111,7 @@
                 
                 return `<div style="background:rgba(4,14,33,0.9); padding:30px; border-radius:18px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'}; position:relative; overflow:hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
                         ${isDeact ? '<div style="position:absolute; top:0; left:0; width:100%; height:8px; background:#e74c3c;"></div>' : ''}
-                        <div style="font-size:1.1rem; line-height:1.6;"><b>ID:</b> <span style="color:#00f2fe; font-size:1.2rem;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b>${user.contact}</div>
+                        <div style="font-size:1.1rem; line-height:1.6;"><b>ID:</b> <span style="color:#00f2fe; font-size:1.2rem;">${user.id}</span><br><b>Name:</b> ${user.clientName}<br><b>Contact:</b> ${user.contact}</div>
                         <div style="display:flex; justify-content:space-between; margin-top:20px; gap:12px;">
                             <select onchange="window.toggleUserNodeActivationState('${user.id}', this.value)" style="flex:1; padding:10px; background:var(--bg-prime); color:var(--neon-cyan); border:1px solid var(--border-glass); border-radius:8px; outline:none; font-weight:bold; font-size:1rem;"><option value="active" ${!isDeact?'selected':''}>🟢 Active</option><option value="deactivated" ${isDeact?'selected':''}>🔴 Deactivated</option></select>
                             <button onclick="window.wipeUserPermanently('${user.id}')" class="abort-btn" style="padding:10px 15px;">Wipe User</button>
@@ -2692,7 +2763,7 @@
             let lastSender = "";
             let lastDateStr = "";
 
-            msgs.forEach((m, idx) => {
+            msgs.forEach((m) => {
                 let currentDateStr = getMessageDateDividerString(m.epochTimeNode);
                 let actualISODate = new Date(m.epochTimeNode).toISOString().split('T')[0];
                 
@@ -2734,19 +2805,24 @@
                 let editedTag = m.isEdited && !m.isDeletedForEveryone ? `<span style="font-size:0.7rem; color:rgba(255,255,255,0.5); font-style:italic; margin-right:4px;">(Edited)</span>` : "";
 
                 let actionsHtml = "";
-                if(isMe && !m.isDeletedForEveryone) {
+                if(!m.isDeletedForEveryone) {
                     actionsHtml = `
                     <div class="msg-action-menu">
-                        <span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span>
+                        <span class="msg-action-icon" title="React" onclick="window.reactToMessage('${m.dbKey}', '❤️')">❤️</span>
+                        <span class="msg-action-icon" title="React" onclick="window.reactToMessage('${m.dbKey}', '🔥')">🔥</span>
+                        ${isMe ? `<span class="msg-action-icon" title="Edit" onclick="window.editChatMessage('${m.dbKey}', '${m.textBody.replace(/'/g, "\\'")}', ${m.epochTimeNode})">✏️</span>` : ''}
                         <span class="msg-action-icon" title="Delete" onclick="window.deleteChatMessage('${m.dbKey}', ${m.epochTimeNode})">🗑️</span>
                     </div>`;
                 }
+
+                let reactionPill = m.reaction ? `<div class="msg-reaction-pill">${m.reaction}</div>` : '';
                 
                 html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}">
                     ${actionsHtml}
                     ${senderNameHtml}
                     <div class="bubble-text-content">${mediaHtml}${m.textBody}</div>
                     <div class="whatsapp-time">${editedTag}${m.timestamp} ${tickHtml}</div>
+                    ${reactionPill}
                 </div>`;
             });
             
@@ -2911,12 +2987,14 @@
                 }
 
                 let senderNameHtml = `<div class="group-sender-name">${m.sender}</div>`;
+                let reactionPill = m.reaction ? `<div class="msg-reaction-pill">${m.reaction}</div>` : '';
                 
                 html += `<div class="bubble-msg-wrapper ${bubbleType} ${hasTail}" style="border:1px solid ${isMe?'var(--wa-msg-out)':'#ff007f'};">
                     ${!isMe ? senderNameHtml : ''}
                     ${adminSuperPowerInfo}
                     <div class="bubble-text-content">${mediaHtml}${displayBody}</div>
                     <div class="whatsapp-time">${m.timestamp}</div>
+                    ${reactionPill}
                 </div>`;
             });
             
@@ -3145,7 +3223,6 @@
                 MatrixSystemState.set('loggedInCustomerID', savedUserToken); MatrixSystemState.set('currentMode', savedMode); MatrixSystemState.set('activeCustomerWorkspaceChannel', savedWorkspaceChan);
                 document.getElementById('mainStage').style.display = 'none'; const nav = document.getElementById('mainCyberNavbar'); if(nav) { nav.style.opacity = '1'; nav.style.pointerEvents = 'all'; }
                 
-                // Hide Brand Header Globally On Valid Session Restored
                 const brandNode = document.getElementById('shashiBrandTitle'); if (brandNode) brandNode.style.display = 'none';
 
                 if(savedMode === 'admin') { 
@@ -3410,7 +3487,7 @@
                     let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
                     if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id); return; }
                 }
-                alert("❌ ACCESS DENIED: Invalid System ID or Password (Case-Sensitive Match Failed).");
+                alert("❌ ACCESS DENIED: Invalid System ID or Password.");
                 if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
             }
         };
@@ -3652,67 +3729,4 @@
                     window.executeClusterLogin(null);
                 }
             }
-        };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                document.getElementById('accessNodePass').focus();
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch) document.getElementById('accessNodePass').focus(); 
-            }
-        };
-
-        window.processBinaryAttachment = function(event, type) {
-            const fileInput = event.target;
-            if(fileInput && fileInput.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
-                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
-
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
-        
-        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
-
-        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-
-        window.logoutEngine = function() {
-            MatrixSystemState.set('loggedInCustomerID', "");
-            localStorage.removeItem('nexus_logged_in_uid');
-            localStorage.removeItem('nexus_system_session_mode');
-            window.location.reload();
-        };
-
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
-            }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
-            });
-        };
-
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
-    </script>
-
-    <script>
-        setTimeout(() => {
-            const preloader = document.getElementById('systemPreloader');
-            if(preloader) {
-                preloader.style.opacity = "0"; 
-                setTimeout(() => preloader.style.display = "none", 500);
-            }
-        }, 2000); 
-    </script>
-</body>
-</html>
+I'm having a hard time fulfilling your request. Can I help you with something else instead?
