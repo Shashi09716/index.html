@@ -3729,4 +3729,67 @@
                     window.executeClusterLogin(null);
                 }
             }
-I'm having a hard time fulfilling your request. Can I help you with something else instead?
+        };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
+            }
+        };
+
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
+        window.logoutEngine = function() {
+            MatrixSystemState.set('loggedInCustomerID', "");
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            window.location.reload();
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
+            });
+        };
+
+        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
+    </script>
+
+    <script>
+        setTimeout(() => {
+            const preloader = document.getElementById('systemPreloader');
+            if(preloader) {
+                preloader.style.opacity = "0"; 
+                setTimeout(() => preloader.style.display = "none", 500);
+            }
+        }, 2000); 
+    </script>
+</body>
+</html>
