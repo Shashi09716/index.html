@@ -1747,21 +1747,91 @@
         // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS & VOICE DICTATION)
         // ==========================================
         window.toggleAdminAiSize = function(action) {
+
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
             const widget = document.getElementById('liveAdminAiAgent');
+            const header = widget.querySelector('.ai-agent-header');
+            widget.style.transition = "all 0.3s ease"; 
+            
+            // Full screen CSS class hamesha ke liye hata diya
+            widget.classList.remove('maximized'); 
+            
             if(action === 'minimize') {
                 widget.classList.add('minimized');
-                widget.classList.remove('maximized');
+                widget.style.top = "";
+                widget.style.left = "";
+                widget.style.right = "20px";
+                widget.style.bottom = "0px";
+                widget.style.width = "320px";
             } else if (action === 'maximize') {
                 widget.classList.remove('minimized');
-                widget.classList.add('maximized');
+                // ⚡ Pyara sa box jo screen ke center mein aayega
+                widget.style.top = "10vh";
+                widget.style.left = "calc(50vw - 150px)"; 
+                widget.style.right = "auto";
+                widget.style.bottom = "auto";
+                widget.style.width = "450px";
+                widget.style.height = "75vh";
+                widget.style.boxShadow = "0 20px 60px rgba(0,242,254,0.5), 0 0 20px var(--neon-pink)"; 
             } else if (action === 'close') {
                 widget.style.display = 'none';
                 document.getElementById('aiAgentNavRestoreBtn').style.display = 'inline-block';
             } else if (action === 'restore') {
-                widget.classList.remove('minimized', 'maximized');
+                widget.classList.remove('minimized');
                 document.getElementById('aiAgentNavRestoreBtn').style.display = 'none';
+                widget.style.top = "auto";
+                widget.style.left = "auto";
+                widget.style.right = "20px";
+                widget.style.bottom = "20px";
+                widget.style.width = "380px";
+                widget.style.height = "450px";
+                widget.style.boxShadow = "0 10px 40px rgba(255,0,127,0.4)";
             }
         };
+
+        // ⚡ DRAG & DROP LOGIC FOR AI AGENT (Movable Box)
+        setTimeout(() => {
+            const aiWidget = document.getElementById('liveAdminAiAgent');
+            if(!aiWidget) return;
+            const aiHeader = aiWidget.querySelector('.ai-agent-header');
+            let isDragging = false, startX, startY, initialX, initialY;
+
+            aiHeader.style.cursor = "grab";
+            
+            aiHeader.addEventListener('mousedown', (e) => {
+                if(aiWidget.classList.contains('minimized')) return; 
+                isDragging = true;
+                aiHeader.style.cursor = "grabbing";
+                aiWidget.style.transition = "none"; // Drag ke time par lag hatane ke liye
+                
+                let rect = aiWidget.getBoundingClientRect();
+                startX = e.clientX;
+                startY = e.clientY;
+                initialX = rect.left;
+                initialY = rect.top;
+                
+                aiWidget.style.right = "auto";
+                aiWidget.style.bottom = "auto";
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if(!isDragging) return;
+                e.preventDefault();
+                let dx = e.clientX - startX;
+                let dy = e.clientY - startY;
+                aiWidget.style.left = (initialX + dx) + "px";
+                aiWidget.style.top = (initialY + dy) + "px";
+            });
+
+            document.addEventListener('mouseup', () => {
+                if(isDragging) {
+                    isDragging = false;
+                    aiHeader.style.cursor = "grab";
+                    aiWidget.style.transition = "all 0.3s ease";
+                }
+            });
+        }, 1000);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         window.handleAiAttachment = function(e, type) {
             const file = e.target.files[0];
