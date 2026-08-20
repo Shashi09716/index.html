@@ -559,16 +559,20 @@
             </div>
             <h1 class="hud-logo">NEXUS GATEWAY</h1>
             <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin();">
+
+<!-- ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= -->
                 <div class="hud-input-cluster">
-                    <input type="text" id="accessNodeUser" required placeholder=" " onkeyup="window.debouncedAutoLoginCheck(); window.playTypingSound();">
+                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="window.verifyInputIdentityProgress(); window.debouncedAutoLoginCheck();" onkeydown="window.playTypingSound();">
                     <label id="hudInputLabel">User ID / Admin ID</label>
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" " onkeyup="window.debouncedAutoLoginCheck(); window.playTypingSound();">
+                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.debouncedAutoLoginCheck();" onkeydown="window.playTypingSound();">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
+<!-- ================= YAHAN TAK REPLACE KARNA HAI ================= -->
+
                 <button type="submit" class="hud-engage-btn" id="loginSubmitBtn">ENGAGE MAINFRAME</button>
                 <div style="display:flex; justify-content:space-between; margin-top:20px; font-family:'Orbitron'; font-size:0.9rem;">
                     <span onclick="window.triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT ID ]</span>
@@ -4190,30 +4194,37 @@
                 overlay.classList.add('active');
                 MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+                // ⚡ FIX: Lamp aur login screen ko turant hide karo taaki flash na ho
                 document.getElementById('loginTerminal').style.display = 'none';
+                document.getElementById('mainStage').style.display = 'none';
+                document.getElementById('shashiBrandTitle').style.display = 'none';
 
+                // Dashboard ko background mein turant load kardo
+                MatrixSystemState.set('loggedInCustomerID', loggedInId);
+                MatrixSystemState.set('currentMode', mode);
+                localStorage.setItem('nexus_logged_in_uid', loggedInId);
+                localStorage.setItem('nexus_system_session_mode', mode);
+                
+                document.getElementById('mainCyberNavbar').style.opacity = '1';
+                document.getElementById('mainCyberNavbar').style.pointerEvents = 'all';
+                
+                if(mode === 'admin') {
+                    document.getElementById('adminDashboard').classList.remove('hidden');
+                    document.getElementById('adminDashboard').style.display = 'flex';
+                    window.loadAdminSubmissions();
+                } else {
+                    document.getElementById('customerDashboard').classList.remove('hidden');
+                    document.getElementById('customerDashboard').style.display = 'flex';
+                    window.switchCustomerChannel('menu');
+                }
+
+                // Animation poora hone ke baad overlay ko hata do
                 setTimeout(() => {
                     overlay.classList.remove('active');
-                    MatrixSystemState.set('loggedInCustomerID', loggedInId);
-                    MatrixSystemState.set('currentMode', mode);
-                    localStorage.setItem('nexus_logged_in_uid', loggedInId);
-                    localStorage.setItem('nexus_system_session_mode', mode);
-                    
-                    document.getElementById('shashiBrandTitle').style.display = 'none';
-                    document.getElementById('mainStage').style.display = 'none';
-                    document.getElementById('mainCyberNavbar').style.opacity = '1';
-                    document.getElementById('mainCyberNavbar').style.pointerEvents = 'all';
-                    
-                    if(mode === 'admin') {
-                        document.getElementById('adminDashboard').classList.remove('hidden');
-                        document.getElementById('adminDashboard').style.display = 'flex';
-                        window.loadAdminSubmissions();
-                    } else {
-                        document.getElementById('customerDashboard').classList.remove('hidden');
-                        document.getElementById('customerDashboard').style.display = 'flex';
-                        window.switchCustomerChannel('menu');
-                    }
                 }, 2500); 
+// ================= YAHAN TAK REPLACE KARNA HAI =================
+
             } else {
                 let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
                 fails++;
