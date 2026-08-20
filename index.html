@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V25.0 (Ultimate Premium)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V25.0 (Next-Gen Studio & Sync)</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
+    <!-- Tesseract JS for Image to Code (OCR) -->
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
@@ -42,7 +43,9 @@
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
         
         /* STRICT SCROLL LOCK SYSTEM (100% FIXED) */
-        body.strict-scroll-lock, html.strict-scroll-lock { overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; }
+        body.strict-scroll-lock, html.strict-scroll-lock { 
+            overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; 
+        }
 
         /* --- NEXT-GEN MIND-BLOWING HYPER-WARP LOGIN ANIMATION --- */
         #loginSuccessOverlay { position: fixed; inset: 0; background: #000; z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; perspective: 1000px; overflow: hidden; }
@@ -59,11 +62,23 @@
         @keyframes warpSpeed { 0% { background: rgba(0,0,0,1); } 80% { background: rgba(255,255,255,1); } 100% { background: transparent; } }
 
         /* GEN-Z ANIMATED CYBER GRID BACKDROP FOR LOCK VIEW */
-        #matrixAnimatedBackdrop { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.15) 0%, rgba(2, 5, 14, 0.98) 80%); background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px); background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px); }
+        #matrixAnimatedBackdrop {
+            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none;
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.15) 0%, rgba(2, 5, 14, 0.98) 80%);
+            background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px);
+        }
         @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
         
         /* PERFECT LOCK AREA */
-        .locked-area-active { position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 95vw !important; height: 95vh !important; max-width: 1800px !important; z-index: 1000001 !important; border-radius: 16px !important; margin: 0 !important; border: 2px solid var(--neon-cyan) !important; box-sizing: border-box !important; background: var(--wa-bg) !important; box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(0,242,254,0.4) !important; overflow: hidden !important; animation: popUpGenZ 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important; }
+        .locked-area-active {
+            position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important;
+            width: 95vw !important; height: 95vh !important; max-width: 1800px !important; z-index: 1000001 !important;
+            border-radius: 16px !important; margin: 0 !important; border: 2px solid var(--neon-cyan) !important;
+            box-sizing: border-box !important; background: var(--wa-bg) !important;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(0,242,254,0.4) !important; overflow: hidden !important;
+            animation: popUpGenZ 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+        }
         @keyframes popUpGenZ { 0% { opacity:0; transform: translate(-50%, -45%) scale(0.95); } 100% { opacity:1; transform: translate(-50%, -50%) scale(1); } }
 
         input, textarea, select, [contenteditable="true"] { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
@@ -76,7 +91,7 @@
         @keyframes cyberPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); } }
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         
-        /* UPGRADED MENU BAR - FULL SCREEN AND COMPACT */
+        /* UPGRADED MENU BAR - FULL SCREEN AND GLASSMORPHIC */
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; width: 100vw; height: 70px; background: rgba(10, 18, 30, 0.4); border-bottom: 1px solid rgba(0, 242, 254, 0.2); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(25px) saturate(180%); -webkit-backdrop-filter: blur(25px) saturate(180%); box-shadow: 0 5px 25px rgba(0, 242, 254, 0.1); transition: all 0.4s ease; border-radius: 0; max-width: 100%;}
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.6); border-color: var(--border-glass); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
@@ -90,9 +105,12 @@
         .cyber-toggle-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
         .toggle-switch-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; color: var(--text-main); font-weight: 800; font-family: 'Orbitron', sans-serif; font-size: 1rem; background: linear-gradient(135deg, rgba(20,30,48,0.8), rgba(36,59,85,0.8)); padding: 15px 18px; border-radius: 10px; border: 1px solid var(--border-glass); transition: all 0.4s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .toggle-switch-wrapper:hover { background: linear-gradient(135deg, rgba(0,242,254,0.15), rgba(0,242,254,0.05)); box-shadow: 0 6px 20px rgba(0,242,254,0.3); border-color: var(--neon-cyan); transform: translateY(-2px); }
+        body.light-theme-active .toggle-switch-wrapper { color: #111b21; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-color:#cbd5e1; }
         .toggle-switch { appearance: none; width: 50px; height: 26px; background: rgba(0,0,0,0.9); border: 2px solid var(--border-glass); border-radius: 30px; position: relative; cursor: pointer; outline: none; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: inset 0 0 10px rgba(0,0,0,0.9); }
+        body.light-theme-active .toggle-switch { background: #cbd5e1; border-color: #94a3b8; }
         .toggle-switch::before { content: ''; position: absolute; width: 18px; height: 18px; background: var(--text-sub); border-radius: 50%; top: 2px; left: 3px; transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .toggle-switch:checked { background: var(--neon-green); border-color: #27ae60; box-shadow: 0 0 20px rgba(46,204,113,0.6); }
+        body.light-theme-active .toggle-switch:checked { background: #10b981; border-color: #059669; }
         .toggle-switch:checked::before { transform: translateX(24px); background: #fff; box-shadow: 0 0 10px #fff; }
         
         .cyber-range { -webkit-appearance: none; width: 100%; height: 8px; background: rgba(0,0,0,0.8); border-radius: 5px; outline: none; border: 1px solid var(--border-glass); box-shadow: inset 0 0 5px rgba(0,0,0,0.5); margin-top: 10px; }
@@ -127,6 +145,7 @@
         .cinema-stage.activated .gate-left { transform: translateX(-100%); opacity: 0; }
         .cinema-stage.activated .gate-right { transform: translateX(100%); opacity: 0; }
         
+        /* UPGRADED BLINDING CORE LIGHT */
         .blinding-core-light { position: absolute; width: 120px; height: 120px; background: radial-gradient(circle, #ffffff 40%, var(--lamp-color) 80%); border-radius: 50%; left: 50%; top: 30px; transform: translateX(-50%); filter: blur(8px); opacity: 0; transition: opacity 0.4s ease, background 0.4s ease; box-shadow: 0 0 100px #ffffff, 0 0 200px var(--lamp-color); }
         .cinema-stage.activated .blinding-core-light { opacity: 1; animation: pulseGlowSuper 2s infinite alternate; }
         @keyframes pulseGlowSuper { 0% { transform: translateX(-50%) scale(1); filter: blur(8px); } 100% { transform: translateX(-50%) scale(1.1); filter: blur(12px); box-shadow: 0 0 150px #fff, 0 0 250px var(--lamp-color); } }
@@ -140,6 +159,7 @@
         
         .quantum-cord { position: absolute; top: 180px; left: 240px; z-index: 10000; cursor: grab; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); padding: 60px 40px; margin-left: -40px; margin-top: -40px; pointer-events: all; display: flex; flex-direction: column; align-items: center; touch-action: none; transform: translateZ(150px); }
         .quantum-cord:active { cursor: grabbing; transform: translateY(80px) scale(0.95) translateZ(150px); transition: transform 0.1s linear; }
+        
         .beaded-wire { width: 8px; height: 180px; background: repeating-linear-gradient(to bottom, #00f2fe, #00f2fe 8px, #0f172a 8px, #0f172a 16px); box-shadow: 0 0 20px rgba(0,242,254,0.9); border-radius:4px;}
         .luminescent-node { width: 44px; height: 44px; background: radial-gradient(circle, #fff, #00f2fe); border-radius: 50%; box-shadow: 0 0 50px #00f2fe; border: 3px solid #000; transition: 0.3s; margin-top: -5px;}
         
@@ -160,15 +180,18 @@
         .hud-engage-btn { width: 100%; padding: 22px; background: linear-gradient(135deg, #00f2fe, #4facfe); color: #000000; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,242,254,0.5); text-transform: uppercase; transform: translateZ(25px);}
         .hud-engage-btn:hover { box-shadow: 0 0 50px rgba(0, 242, 254, 0.9); transform: translateZ(30px) scale(1.02); }
         
+        /* DASHBOARD SPACING & LAYOUT FIXES (SMOOTH TRANSITIONS) */
         .dashboard-panel-core { position: fixed; inset: 0; display: none; justify-content: center; align-items: flex-start; background: var(--bg-prime); z-index: 100; padding: 30px; overflow-y: auto; overflow-x: hidden; padding-bottom: 60px; padding-top: 110px; scroll-behavior: smooth; transition: opacity 0.5s ease;}
         .dashboard-panel-core.active-view { display: flex; opacity: 1; }
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 20px; width: 100%; max-width: 1400px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 40px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .hud-container-panel:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,242,254,0.1); }
         
+        /* UPGRADED COMPACT MAIN MENU (NO SHAKE, GEN-Z STYLE) */
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; padding: 10px; margin-top: 20px; }
         .menu-card { background: linear-gradient(145deg, rgba(4, 14, 33, 0.9), rgba(10, 22, 45, 0.9)); border: 1px solid var(--border-glass); border-radius: 12px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0, 242, 254, 0.05); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
         .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.2), transparent); transform: skewX(-25deg); transition: 0.5s; z-index:1; }
         .menu-card:hover::before { left: 150%; }
+        /* Removed shaky 3D transform, using smooth scale up */
         .menu-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,242,254,0.4), inset 0 0 15px rgba(0,242,254,0.2); border-color: var(--neon-cyan); z-index: 10; }
         .menu-card .icon { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 15px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
         .menu-card:hover .icon { transform: scale(1.1); text-shadow: 0 0 25px var(--neon-cyan); }
@@ -197,14 +220,12 @@
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.95rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 10px; }
         .refresh-spinner-node { width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: activePulseGreen 1s infinite alternate; }
         @keyframes activePulseGreen { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 15px #2ecc71; } }
-        
         .form-grid-layout, .giant-compiler-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .full-width-field { grid-column: span 2; }
         .abort-btn { padding: 10px 20px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 5px 15px rgba(231,76,60,0.4); letter-spacing: 1px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-transform: uppercase;}
         .abort-btn:hover { background: #e74c3c; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
         .home-action-btn { background: rgba(0,242,254,0.1); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 0.9rem;}
         .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); transform: scale(1.05); }
-        
         .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.9); border: 2px solid #00f2fe; padding: 10px 25px; border-radius: 12px; display: inline-block; box-shadow: 0 0 20px rgba(0,242,254,0.4), inset 0 0 10px rgba(0,242,254,0.2); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; letter-spacing: 2px;}
         .ai-helper-banner { padding: 18px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.1); border: 2px solid rgba(0,242,254,0.4); color: #00f2fe; text-align: center; font-size: 1.1rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); letter-spacing: 0.5px;}
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
@@ -231,10 +252,18 @@
         .cyber-upload-node { border: 2px dashed rgba(0, 242, 254, 0.7); border-radius: 10px; padding: 20px; background: rgba(0,0,0,0.4); text-align: center; cursor: pointer; transition: 0.3s; box-shadow: inset 0 3px 10px rgba(0,0,0,0.4); }
         .cyber-upload-node:hover { border-color: #00f2fe; background: rgba(0,242,254,0.1); }
 
-        /* FULL SCREEN CODE PREVIEW MODAL OVERLAY */
-        #codeExecutionFullscreenOverlay { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2000000; background: #000; display: none; flex-direction: column; overflow: hidden; animation: zoomInCode 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+        /* --- FULL SCREEN CODE PREVIEW MODAL OVERLAY --- */
+        #codeExecutionFullscreenOverlay {
+            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2000000; background: #000;
+            display: none; flex-direction: column; overflow: hidden; animation: zoomInCode 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
         @keyframes zoomInCode { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
-        .code-fullscreen-exit-btn { position: absolute; top: 20px; right: 25px; z-index: 2000005; background: linear-gradient(135deg, #e74c3c, #c0392b); border: 2px solid #fff; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; padding: 10px 20px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(231,76,60,0.8); transition: all 0.3s; animation: pulseExitBtn 2s infinite alternate; }
+        .code-fullscreen-exit-btn {
+            position: absolute; top: 20px; right: 25px; z-index: 2000005; background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border: 2px solid #fff; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900;
+            padding: 10px 20px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 0 20px rgba(231,76,60,0.8); transition: all 0.3s; animation: pulseExitBtn 2s infinite alternate;
+        }
         @keyframes pulseExitBtn { 0% { box-shadow: 0 0 15px rgba(231,76,60,0.6); } 100% { box-shadow: 0 0 30px rgba(231,76,60,1); } }
         .code-fullscreen-exit-btn:hover { transform: scale(1.1); background: #ff007f; border-color: #00f2fe; }
         .code-fullscreen-iframe { width: 100vw; height: 100vh; border: none; background: #fff; }
@@ -259,20 +288,33 @@
         .notes-engine-card-surface.fullscreen-active { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; border-radius: 0; margin: 0; display: flex; flex-direction: column; background: var(--bg-prime); padding: 30px; max-height: 100vh;}
         .notes-editor-container-shell { position: relative; margin-top: 15px; background: #e2e8f0; border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; flex: 1; min-height: 250px;}
         .notes-editor-container-shell.notepad-dark-mode { background: #111b21 !important; color: #e9edef !important; border-color: #334155; }
+        
         .wordpad-container { height: 100%; width: 100%; overflow-y: auto; padding: 15px; display: flex; justify-content: center; align-items: flex-start; position: relative; flex-direction: column; }
-        .wordpad-paper { background: #ffffff !important; width: 100% !important; max-width: 900px !important; min-height: 200px !important; flex: 1; padding: 20px !important; box-sizing: border-box !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important; color: #000 !important; font-family: 'Segoe UI', Arial, sans-serif !important; font-size: 1.1rem !important; line-height: 1.6 !important; outline: none !important; border-radius: 8px !important; border: 1px solid #cbd5e1 !important; overflow-x: hidden !important; word-wrap: break-word !important; user-select: text !important; cursor: text !important; position: relative; display: block !important; margin: 0 auto; }
+        
+        .wordpad-paper { 
+            background: #ffffff !important; 
+            width: 100% !important; max-width: 900px !important; min-height: 200px !important; flex: 1;
+            padding: 20px !important; box-sizing: border-box !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important; 
+            color: #000 !important; font-family: 'Segoe UI', Arial, sans-serif !important; font-size: 1.1rem !important; 
+            line-height: 1.6 !important; outline: none !important; border-radius: 8px !important; 
+            border: 1px solid #cbd5e1 !important; overflow-x: hidden !important; word-wrap: break-word !important;
+            user-select: text !important; cursor: text !important; position: relative; display: block !important; margin: 0 auto;
+        }
         .wordpad-paper:focus { border-color: #ff007f !important; box-shadow: 0 0 20px rgba(255,0,127,0.3) !important; }
         .wordpad-paper[placeholder]:empty:before { content: attr(placeholder); color: #888; pointer-events: none; display:block; }
         .notepad-dark-mode .wordpad-paper { background: #1a2536 !important; color: #fff !important; box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important; border-color: #334155 !important; }
         
+        /* SLASH COMMAND MENU */
         .slash-command-menu { position: absolute; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.8); width: 220px; z-index: 1000; display: none; padding: 8px; }
         .slash-cmd-item { padding: 8px 12px; color: #fff; cursor: pointer; border-radius: 6px; font-family: 'Rajdhani'; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: 0.2s; font-size: 0.95rem;}
         .slash-cmd-item:hover { background: rgba(0,242,254,0.2); color: var(--neon-cyan); }
         .note-inline-audio { width: 100%; border-radius: 8px; margin-top: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
         .notes-toolbar-ribbon { background: rgba(10, 15, 30, 0.85); padding: 12px 20px; border-bottom: 2px solid var(--neon-cyan); display: flex; gap: 8px; align-items: center; flex-flow: row wrap; justify-content: flex-start; z-index: 10; border-radius: 10px 10px 0 0;}
         .note-tool-btn { border-radius: 6px; padding: 8px 12px; border: 1px solid rgba(0,242,254,0.3); background: rgba(0,0,0,0.4); color: var(--text-main); font-family: 'Orbitron'; font-size: 0.85rem; font-weight: 800; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; }
         .note-tool-btn:hover { background: linear-gradient(135deg, var(--neon-cyan), #4facfe); color: #000; border-color: transparent; transform: translateY(-2px); }
         .ai-btn-special { background: linear-gradient(135deg, #ff007f, #7f00ff) !important; color: #fff !important; border: none !important; }
+        
         .note-tool-select { background: rgba(4,15,36,0.9); border: 1px solid var(--border-glass); color: var(--neon-cyan); padding: 6px; border-radius: 6px; font-family: 'Orbitron'; font-size: 0.85rem; cursor: pointer; outline: none; font-weight:bold; }
         .toolbar-divider { width: 1px; height: 20px; background: var(--border-glass); margin: 0 5px; opacity: 0.6; }
         .notes-status-bar { padding: 10px 20px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border-glass); font-family: monospace; font-size: 0.9rem; color: #00f2fe; display: flex; justify-content: space-between; align-items: center;}
@@ -291,6 +333,7 @@
         /* --- WHATSAPP COMPACT LAYOUT (Gen-Z) --- */
         .chat-io-grid-matrix { display: grid; grid-template-columns: 320px 1fr; gap: 0; width: 100%; height: 65vh; max-height: 650px; background: var(--wa-bg); border-radius: 12px; border: 1px solid var(--border-glass); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); position: relative; font-family: 'Segoe UI', sans-serif !important; transition: height 0.4s ease, max-height 0.4s ease; }
         .locked-area-active .chat-io-grid-matrix { height: 90vh; max-height: 90vh; }
+        
         .chat-target-userlist-pane { background: var(--wa-search-bg); border-right: 1px solid var(--wa-border); display: flex; flex-direction: column; overflow: hidden; z-index: 5; height: 100%; }
         .wa-top-bar { display:flex; justify-content:space-between; align-items:center; padding:12px 15px; background:var(--wa-header); color:var(--wa-text); font-size:1.1rem; font-weight:bold; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .wa-top-bar-icons span { cursor:pointer; transition:0.3s; margin-left:12px;}
@@ -315,6 +358,7 @@
         .whatsapp-user-name { font-weight: 600; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; justify-content: space-between; font-family: inherit; color: var(--wa-text); }
         .whatsapp-user-id { font-size: 0.85rem; color: var(--wa-text-muted); font-family: inherit; margin-top:3px; }
         .whatsapp-unread-counter-pill { background: var(--wa-green); color: #ffffff; font-size: 0.8rem; font-weight: bold; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: inherit; }
+        
         .chat-stream-message-container { display: flex; flex-direction: column; background: var(--chat-wallpaper); position: relative; height: 100%; overflow: hidden; z-index: 1; transition: background 0.3s ease;}
         .chat-stream-header-bar { background: var(--wa-header); padding: 12px 15px; color: var(--wa-text); display: flex; align-items: center; justify-content: space-between; gap: 10px; z-index: 10; border-bottom:1px solid var(--wa-border); flex-shrink: 0;}
         .header-actions-btn { background:none; border:none; color:var(--wa-text-muted); padding:8px; border-radius:50%; cursor:pointer; font-size:1.1rem; transition: 0.3s; margin-left: 4px; display:flex; align-items:center; justify-content:center; position:relative;}
@@ -324,11 +368,14 @@
         .wa-status-circle-icon:hover { border-color: var(--wa-green); color: var(--wa-green); }
         .wa-status-circle-icon.has-status { border-color: #00a884; color: #00a884; animation: statusPulse 2s infinite; border-style: solid; border-width: 3px; }
         .chat-pinned-message-banner { background: rgba(32, 44, 51, 0.95); padding: 8px 15px; border-bottom: 1px solid var(--wa-border); color: var(--wa-text); font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer; border-left: 4px solid var(--wa-green); backdrop-filter: blur(5px); flex-shrink: 0; z-index: 5;}
+        
         .chat-messages-scroll-stack { flex: 1 1 auto; padding: 20px 5%; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; z-index: 2; scroll-behavior: smooth; }
+        
         .chat-interface-footer-inputs { padding: 12px 15px; background: var(--wa-header); display: flex; gap: 10px; align-items: center; z-index: 10; position: relative; margin-top: auto; flex-shrink: 0;}
         .whatsapp-input-field { flex: 1; padding: 12px 15px; background: var(--wa-search-input); border: none; border-radius: 10px; color: var(--wa-text); outline: none; font-size: 1rem; font-family: inherit; font-weight: 400; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);}
         .whatsapp-circle-btn { width: 40px; height: 40px; background: transparent; border: none; color: var(--wa-text-muted); font-size: 1.4rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; border-radius: 50%;}
         .whatsapp-circle-btn:hover { color: var(--wa-text); background: rgba(255,255,255,0.08);}
+        
         .bubble-msg-wrapper { max-width: 70%; padding: 6px 8px 8px 10px; border-radius: 8px; font-size: 0.95rem; line-height: 20px; position: relative; box-shadow: 0 1px 3px rgba(11,20,26,.5); font-weight: 400; font-family: inherit; cursor: pointer; word-wrap: break-word; margin-bottom: 2px; display: inline-block; }
         .bubble-msg-wrapper.first-in-group { margin-top: 10px; }
         .bubble-text-content { display: inline-block; padding-right: 60px; padding-bottom: 4px; white-space: pre-wrap; min-width: 40px; }
@@ -342,6 +389,7 @@
         .bubble-incoming.has-tail::before { content: ""; position: absolute; top: 0; left: -8px; width: 0; height: 0; border-top: 0px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid var(--wa-msg-in); }
         .msg-reaction-pill { position: absolute; bottom: -8px; right: 15px; background: #202c33; border: 1px solid var(--border-glass); border-radius: 10px; padding: 2px 6px; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 4; }
 
+        /* Premium Tools Menu */
         .premium-tools-menu { position:absolute; top: 40px; right: 0; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(15px); border: 1px solid var(--neon-cyan); border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.8); width: 200px; z-index: 10000; display: none; flex-direction: column; padding: 8px; }
         .premium-tools-menu.active { display: flex; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -442,7 +490,7 @@
         <div class="preloader-text">NEXUS SECURE GATEWAY V25.0</div>
     </div>
     
-    <!-- NEXT-GEN MIND-BLOWING LOGIN SUCCESS ANIMATION -->
+    <!-- NEXT-GEN LOGIN SUCCESS ANIMATION OVERLAY -->
     <div id="loginSuccessOverlay">
         <div class="hyper-tunnel"></div>
         <div class="hyper-tunnel-2"></div>
@@ -450,14 +498,16 @@
         <div class="warp-text">ACCESS GRANTED</div>
     </div>
 
-    <!-- FULL SCREEN CODE PREVIEW OVERLAY -->
+    <!-- FULL SCREEN CODE PREVIEW OVERLAY (WITH CORNER EXIT BUTTON) -->
     <div id="codeExecutionFullscreenOverlay">
-        <button class="code-fullscreen-exit-btn" onclick="window.closeFullscreenCodePreview()"><span>✖ EXIT PREVIEW</span></button>
+        <button class="code-fullscreen-exit-btn" onclick="window.closeFullscreenCodePreview()">
+            <span>✖ EXIT PREVIEW</span>
+        </button>
         <iframe id="fullscreenCodeRunnerIframe" class="code-fullscreen-iframe"></iframe>
     </div>
 
     <!-- CODE LIBRARY MODAL -->
-    <div id="codeLibraryModal" class="code-library-modal hidden" onclick="window.closeCodeLibrary()">
+    <div id="codeLibraryModal" class="code-library-modal" onclick="window.closeCodeLibrary()">
         <div class="code-library-content" onclick="event.stopPropagation()">
             <div class="code-library-header">
                 <h3 class="neon-cyan-text" style="font-size:1.5rem; margin:0;">📚 YOUR CODE LIBRARY</h3>
@@ -470,6 +520,7 @@
     </div>
 
     <div id="matrixAnimatedBackdrop" class="hidden"></div>
+
     <canvas class="matrix-ambient-particle-space" id="ambientParticleSpaceNode"></canvas>
     
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
@@ -522,7 +573,7 @@
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
-                <button type="submit" class="hud-engage-btn">ENGAGE MAINFRAME</button>
+                <button type="submit" class="hud-engage-btn" id="loginSubmitBtn">ENGAGE MAINFRAME</button>
                 <div style="display:flex; justify-content:space-between; margin-top:20px; font-family:'Orbitron'; font-size:0.9rem;">
                     <span onclick="window.triggerForgotIDModal()" style="color:var(--neon-cyan); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT ID ]</span>
                     <span onclick="window.triggerForgotPasswordMatrixModal()" style="color:var(--neon-pink); cursor:pointer; font-weight:bold; transition:0.2s;">[ FORGOT PASS ]</span>
@@ -543,7 +594,7 @@
 
             <div class="panel-header-flex">
                 <h2 class="neon-cyan-text" id="dashboardIdentityHeadingNode">Customer Terminal<span id="clientDisplayLabel"></span></h2>
-                <div style="display: flex; gap: 12px;">
+                <div style="display: flex; gap: 10px;">
                     <button onclick="window.switchCustomerChannel('menu')" class="home-action-btn hidden" id="btnBackToHome">🏠 HOME</button>
                     <button onclick="window.logoutEngine()" class="abort-btn">LOGOUT</button>
                 </div>
@@ -571,7 +622,7 @@
                     <div class="icon">📝</div><h3>Rich Notes Pro</h3><p>Professional workspace.</p>
                 </div>
                 <div class="menu-card" id="menuCard_code" onclick="window.switchCustomerChannel('code')">
-                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color:#a73ec9;">Code Studio</h3><p>Live Editor & Play.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color:#a73ec9;">Code Studio</h3><p>Live Editor & Full Screen Play.</p>
                 </div>
                 <div class="menu-card" id="menuCard_vault" onclick="window.switchCustomerChannel('vault')">
                     <div class="icon">📂</div><h3>Cloud Vault</h3><p>Access your documents.</p>
@@ -583,7 +634,7 @@
                     <div class="icon">💬</div><h3>WhatsApp Web</h3><p>Chat & Status management.</p>
                 </div>
                 <div class="menu-card" id="menuCard_request" onclick="window.switchCustomerChannel('request')">
-                    <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">🎫</div><h3 style="color:#f1c40f;">Support</h3><p>Direct requests to Admin.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">🎫</div><h3 style="color:#f1c40f;">Support Request</h3><p>Direct requests to Admin.</p>
                 </div>
             </div>
 
@@ -757,15 +808,15 @@
             <div id="customerVaultInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text">📂 SECURE CLOUD VAULT GALLERY</h3>
-                    <p style="color:var(--text-sub); margin-bottom: 20px; font-size:1.05rem;">Synchronized policy documents & media assets.</p>
-                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px;"></div>
+                    <p style="color:var(--text-sub); margin-bottom: 20px; font-size:1rem;">Synchronized policy documents & media assets.</p>
+                    <div id="cloudVaultGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px;"></div>
                 </div>
             </div>
 
             <!-- GAMING TALKING TOM BLOCK -->
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 2rem; margin-bottom:20px; text-shadow:0 0 20px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 20px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="320"></canvas>
                         <div id="virtualTomTalkOverlay" style="position:absolute; bottom:15px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:10px; border-radius:10px; border:2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100; box-shadow: 0 4px 10px rgba(0,0,0,0.8);">
@@ -979,7 +1030,6 @@
                 <div style="font-family: 'Orbitron'; font-size: 1.05rem; color: var(--neon-cyan); font-weight: 900; display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
                     <span class="refresh-spinner-node" style="background: var(--neon-cyan);"></span> 🛡️ MAIN CLOUD ACCOUNT MANAGEMENT & SIGNAL LOGS:
                 </div>
-                <!-- INCIDENT ALERTS LISTENER GOES HERE -->
                 <div id="adminIntrusionNotificationArea"></div>
             </div>
             
@@ -1471,12 +1521,14 @@
                 dayStr: days[now.getDay()]
             }).then(() => {
                 alert(`✅ Code successfully saved to Library as: ${snippetName}`);
+                // reset editor if needed, but lets keep it so user can keep editing
             });
         };
 
         window.openCodeLibrary = function(mode) {
             const modal = document.getElementById('codeLibraryModal');
             modal.classList.remove('hidden');
+            // small delay to allow display block before opacity transition
             setTimeout(() => { modal.classList.add('active'); }, 10);
             
             const listContainer = document.getElementById('codeLibraryListContainer');
@@ -1602,7 +1654,7 @@
         };
 
         window.insertStarterCodeTemplate = function(mode) {
-            const starter = `<!DOCTYPE html>\n<html>\n<head>\n<style>\n  body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #0a0e1a; font-family: sans-serif; color: #fff; text-align: center; }\n  .card { padding: 40px; border-radius: 20px; border: 2px solid #00f2fe; box-shadow: 0 0 30px #00f2fe; }\n  h1 { color: #00f2fe; margin-bottom: 10px; }\n  button { padding: 12px 25px; border-radius: 8px; border: none; background: #ff007f; color: #fff; font-weight: bold; cursor: pointer; }\n</style>\n</head>\n<body>\n  <div class="card">\n    <h1>⚡ Code Studio Active</h1>\n    <button onclick="alert('System Online!')">Click Me</button>\n  </div>\n</body>\n</html>`;
+            const starter = `<!DOCTYPE html>\n<html>\n<head>\n<style>\n  body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #0a0e1a; font-family: sans-serif; color: #fff; text-align: center; }\n  .card { padding: 40px; border-radius: 20px; background: rgba(255,255,255,0.05); border: 2px solid #00f2fe; box-shadow: 0 0 30px #00f2fe; }\n  h1 { font-size: 2.5rem; color: #00f2fe; margin-bottom: 10px; }\n  button { padding: 12px 25px; border-radius: 8px; border: none; background: #ff007f; color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }\n  button:hover { transform: scale(1.1); box-shadow: 0 0 20px #ff007f; }\n</style>\n</head>\n<body>\n  <div class="card">\n    <h1>⚡ Live Next-Gen Code Runner</h1>\n    <p>Edit in Code Studio & Run smoothly in Fullscreen!</p>\n    <button onclick="alert('Hello from Nexus Full Screen Execution!')">Click Me</button>\n  </div>\n</body>\n</html>`;
             const editor = document.getElementById('liveCodeEditor_' + mode);
             if(editor) {
                 editor.value = starter;
@@ -1612,16 +1664,23 @@
         };
 
         window.processOCRImage = async function(event, mode) {
-            const file = event.target.files[0]; if (!file) return;
+            const file = event.target.files[0];
+            if (!file) return;
             const statusText = document.getElementById('ocrStatusText_' + mode);
-            statusText.innerText = "⏳ AI OCR Scanning...";
+            statusText.innerText = "⏳ AI OCR Analyzing Image...";
+            statusText.style.color = "#f1c40f";
+
             try {
                 const result = await Tesseract.recognize(file, 'eng');
                 const editor = document.getElementById('liveCodeEditor_' + mode);
                 editor.value += "\n" + result.data.text;
                 window.updateLineNumbers(mode);
-                statusText.innerText = "✅ Extraction Complete!";
-            } catch (err) { statusText.innerText = "❌ Parse Failed."; }
+                statusText.innerText = "✅ Code Extraction Complete!";
+                statusText.style.color = "#2ecc71";
+            } catch (err) {
+                statusText.innerText = "❌ OCR Parsing Failed.";
+                statusText.style.color = "#e74c3c";
+            }
         };
 
         // --- WHATSAPP PREMIUM TOOLS MENU TOGGLE ---
@@ -3470,8 +3529,7 @@
                 if(data && targetUid && data[targetUid] && data[targetUid].typingTo === "MainframeAdmin" && adminTypingNode) {
                     const activeTargetProfile = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUid); 
                     adminTypingNode.innerText = `${activeTargetProfile ? activeTargetProfile.clientName : 'User'} typing...`; 
-                    adminTypingNode.classList.remove('hidden'); 
-                } else if(adminTypingNode) adminTypingNode.classList.add('hidden');
+                    adminTypingNode.classList.remove('hidden'); } else if(adminTypingNode) adminTypingNode.classList.add('hidden');
             } catch(e) {} 
         });
 
@@ -3480,15 +3538,18 @@
                 const alertsData = snapshot.val(); 
                 const notificationHostNode = document.getElementById('adminIntrusionNotificationArea'); 
                 if(notificationHostNode && MatrixSystemState.get('currentMode') === 'admin' && alertsData) { 
+                    
+                    // Saare alerts ko reverse kar rahe hain taaki naya pehle dikhe
                     notificationHostNode.innerHTML = Object.keys(alertsData).reverse().map(alertRefKey => {
                         let alertInfo = alertsData[alertRefKey];
-                        let passText = alertInfo.attemptedPassword ? `<span style="color:#f1c40f; margin-left:15px; font-family:monospace; background:rgba(0,0,0,0.5); padding:4px 8px; border-radius:6px; border:1px solid #f1c40f;">🔑 Pass: ${alertInfo.attemptedPassword}</span>` : "";
-                        let statusText = alertInfo.type === 'lockout' ? '🚨 SECURITY LOCKOUT' : '⚠️ FAILED LOGIN ATT.';
+                        // Password ko yellow color mein highlight karke show karenge
+                        let passText = alertInfo.attemptedPassword ? `<span style="color:#f1c40f; margin-left:15px;">🔑 Pass: ${alertInfo.attemptedPassword}</span>` : "";
+                        let statusText = alertInfo.type === 'lockout' ? '🚨 SECURITY LOCKOUT' : '⚠️ FAILED LOGIN';
                         
-                        return `<div class="realtime-alert-banner" style="flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:12px;">
+                        return `<div class="realtime-alert-banner" style="flex-direction:column; align-items:flex-start; gap:10px;">
                             <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
                                 <span>${statusText}: [@${alertInfo.lockedUID}] ${passText}</span>
-                                <button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertInfo.lockedUID}')" class="abort-btn" style="padding:6px 12px; font-size:0.8rem;">CLEAR</button>
+                                <button onclick="window.dismissLockoutIncidentNode('${alertRefKey}', '${alertInfo.lockedUID}')" class="abort-btn" style="padding:6px 12px;">CLEAR</button>
                             </div>
                         </div>`;
                     }).join(''); 
@@ -3500,6 +3561,7 @@
             remove(ref(db, `incident_alerts/${alertKey}`)).then(() => { 
                 update(ref(db, `users/${originalUserUID}`), { lockoutState: "false" }); 
                 localStorage.removeItem('nexus_hard_lockout_flag_' + originalUserUID); 
+                alert("Client lock cleared."); 
             }); 
         };
 
@@ -3520,6 +3582,7 @@
 
         window.triggerLockoutTerminalUI = function(usernameString, attemptedPass) {
             localStorage.setItem('nexus_hard_lockout_flag_' + usernameString, 'true');
+            // DataBase mein Password Push ho raha hai
             set(push(ref(db, 'incident_alerts')), { lockedUID: usernameString, attemptedPassword: attemptedPass || "Unknown", type: 'lockout', epoch: Date.now() });
             
             document.body.innerHTML = `<div style="background:#02050e; color:#e74c3c; height:100vh; width:100vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px;"><h1 style="font-size:3.5rem; text-shadow:0 0 25px #e74c3c; margin-bottom:20px; font-family:'Orbitron', sans-serif;">SECURITY LOCKOUT</h1><p style="font-size:1.4rem; color:#fff; max-width:650px; font-family:'Rajdhani', sans-serif;">Access signatures for ID [${usernameString}] locked.</p></div>`;
@@ -3694,24 +3757,71 @@
                     if(targetUid === MatrixSystemState.get('loggedInCustomerID')) { document.getElementById('customerLiveAvatarPreview').src = base64Avatar; document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
                     if(targetUid === MatrixSystemState.get('activeSelectedChatTargetUserId')) { document.getElementById('chatActiveHeaderAvatarNode').src = base64Avatar; }
                     event.target.removeAttribute('data-target-uid'); 
-                }); 
-            }; reader.readAsDataURL(file); }
+                }); }; reader.readAsDataURL(file); }
         };
 
-        window.checkAutoLogin = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); const p = document.getElementById('accessNodePass').value.trim(); if(!u || p === "") return;
+        window.executeClusterLogin = function(event) {
+            if(event) { event.preventDefault(); event.stopPropagation(); }
+            const u = document.getElementById('accessNodeUser').value.trim(); 
+            const p = document.getElementById('accessNodePass').value.trim(); 
+            if(!u || p === "") return;
+
             let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            
+            let isSuccess = false; let loggedInId = ""; let mode = MatrixSystemState.get('currentMode');
+
             if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
-                MatrixSystemState.set('currentMode', 'admin');
-                window.executeClusterLogin(null);
+                isSuccess = true; loggedInId = "MainframeAdmin"; mode = 'admin';
             } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
                 if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
                     if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    MatrixSystemState.set('currentMode', 'user');
-                    window.executeClusterLogin(null);
+                    isSuccess = true; loggedInId = userMatch.id; mode = 'user';
                 }
+            }
+
+            if(isSuccess) {
+                const overlay = document.getElementById('loginSuccessOverlay');
+                overlay.classList.add('active');
+                MatrixSystemState.set('consecutiveBruteFailuresCount', 0); // Reset failures on success
+                
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                    MatrixSystemState.set('loggedInCustomerID', loggedInId);
+                    MatrixSystemState.set('currentMode', mode);
+                    localStorage.setItem('nexus_logged_in_uid', loggedInId);
+                    localStorage.setItem('nexus_system_session_mode', mode);
+                    
+                    document.getElementById('shashiBrandTitle').style.display = 'none';
+                    document.getElementById('mainStage').style.display = 'none';
+                    document.getElementById('mainCyberNavbar').style.opacity = '1';
+                    document.getElementById('mainCyberNavbar').style.pointerEvents = 'all';
+                    
+                    if(mode === 'admin') {
+                        document.getElementById('adminDashboard').classList.remove('hidden');
+                        document.getElementById('adminDashboard').style.display = 'flex';
+                        window.loadAdminSubmissions();
+                    } else {
+                        document.getElementById('customerDashboard').classList.remove('hidden');
+                        document.getElementById('customerDashboard').style.display = 'flex';
+                        window.switchCustomerChannel('menu');
+                    }
+                }, 2500); 
+            } else {
+                // 👇 YAHAN PAR PASSWORD CAPTURE LOGIC ADD KIYA HAI 👇
+                let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
+                fails++;
+                MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
+
+                // Har failed login attempt (ID + Password) database mein capture hoga
+                set(push(ref(db, 'incident_alerts')), { lockedUID: u, attemptedPassword: p, type: 'failed_login', epoch: Date.now() });
+
+                if (fails >= 3) {
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
+                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id, p); return; } // P (Password) pass kiya
+                }
+                
+                alert("❌ ACCESS DENIED: Invalid System ID or Password.");
+                if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
             }
         };
 
