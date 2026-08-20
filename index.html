@@ -1654,7 +1654,8 @@
             const iframe = document.getElementById('fullscreenCodeRunnerIframe');
             if (overlay && iframe) {
                 overlay.style.display = 'flex';
-                iframe.srcdoc = code;
+                const doc = iframe.contentWindow.document;
+                doc.open(); doc.write(code); doc.close();
             }
         };
 
