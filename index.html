@@ -1630,10 +1630,13 @@
                         <div class="code-lib-info">
                             <span style="font-size:1.15rem; font-weight:bold; color:var(--neon-cyan);">${item.title}</span>
                             <span style="font-size:0.85rem; color:#8696a0;">By: ${item.author} | ${item.dateStr} (${item.dayStr}) at ${item.timeStr}</span>
+
+// ================= Yahan se naya Code REPLACE karo =================
                         </div>
                         <div class="code-lib-actions">
                             <button onclick="window.playSnippetFromLibrary('${safeCode}')" class="hud-engage-btn" style="padding:6px 12px; width:auto; font-size:0.9rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ Play</button>
-                            <button onclick="window.shareCodeLive('${item.id}')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-size:0.8rem;">Share</button>
+                            <button onclick="window.downloadLibraryCode('${safeCode}', '${encodeURIComponent(item.title)}')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; font-size:0.8rem;">💾 HTML</button>
+                            <button onclick="window.shareCodeLive('${safeCode}', '${encodeURIComponent(item.title)}')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-size:0.8rem;">🔗 Share</button>
                             <button onclick="window.deleteLibraryCode('${item.id}')" class="abort-btn" style="padding:6px 12px; font-size:0.9rem;">🗑</button>
                         </div>
                     </div>`;
@@ -1648,15 +1651,28 @@
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         };
 
+        // 1. PLAY BUTTON FIX
         window.playSnippetFromLibrary = function(encodedCode) {
             const code = decodeURIComponent(encodedCode);
             const overlay = document.getElementById('codeExecutionFullscreenOverlay');
             const iframe = document.getElementById('fullscreenCodeRunnerIframe');
             if (overlay && iframe) {
                 overlay.style.display = 'flex';
-                const doc = iframe.contentWindow.document;
-                doc.open(); doc.write(code); doc.close();
+                iframe.srcdoc = code; // ⚡ Direct render without crash
             }
+        };
+
+        // 2. NEW: HTML DOWNLOAD FUNCTION
+        window.downloadLibraryCode = function(encodedCode, encodedTitle) {
+            const code = decodeURIComponent(encodedCode);
+            const title = decodeURIComponent(encodedTitle);
+            const blob = new Blob([code], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `${title.replace(/[^a-z0-9]/gi, '_')}.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         };
 
         window.deleteLibraryCode = function(itemId) {
@@ -1666,9 +1682,20 @@
             }
         };
 
-        window.shareCodeLive = function(itemId) {
-            alert("Code Share link generated! You can now send this link directly in WhatsApp Web chat to any customer.");
+        // 3. UPDATED: SHARE (COPY TO CLIPBOARD & WHATSAPP)
+        window.shareCodeLive = function(encodedCode, encodedTitle) {
+            const code = decodeURIComponent(encodedCode);
+            const title = decodeURIComponent(encodedTitle);
+            navigator.clipboard.writeText(code).then(() => {
+                if(confirm("✅ Code Copied to Clipboard!\n\nDo you want to share it directly on WhatsApp?")) {
+                    const waText = encodeURIComponent(`💻 *${title}*\n\n\`\`\`html\n${code}\n\`\`\``);
+                    window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
+                }
+            }).catch(() => {
+                alert("❌ Failed to copy. Your browser might be blocking clipboard access.");
+            });
         };
+// ===================================================================
 
         // ==========================================
         // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS & VOICE DICTATION)
