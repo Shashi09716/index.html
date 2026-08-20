@@ -121,7 +121,7 @@
         .thunder-overlay { position: fixed; inset: 0; background: #fff; z-index: 9999; pointer-events: none; opacity: 0; mix-blend-mode: overlay; transition: opacity 0.1s; display: none; }
         .thunder-overlay.flash { display: block; animation: thunderStrike 0.5s ease-out forwards; }
         @keyframes thunderStrike { 0% { opacity: 0; } 10% { opacity: 0.95; } 20% { opacity: 0; } 30% { opacity: 0.7; } 40% { opacity: 0; } 100% { opacity: 0; } }
-        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; }
+        .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; transition: opacity 0.4s ease; }
         @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 50% { --lamp-color: #ff007f; --lamp-shadow: rgba(255, 0, 127, 0.95); } }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
         
@@ -200,18 +200,32 @@
         .neon-cyan-text span { font-size: 1.3rem; color: var(--text-main); font-family: 'Rajdhani'; opacity: 0.85; margin-left: 12px; text-shadow: none; font-weight: 600; animation: none; }
         .neon-green-text { font-family: 'Orbitron'; color: #2ecc71; font-size: 2rem; text-shadow: 0 0 20px rgba(46,204,113,0.5); font-weight: 900; animation: glitchTextAnim 3s infinite reverse; margin:0; }
         
-        /* ADMIN LIVE AI AGENT WIDGET */
-        .ai-agent-widget { position: fixed; right: 20px; bottom: 20px; width: 350px; background: rgba(6, 17, 38, 0.95); border: 2px solid var(--neon-pink); border-radius: 16px; box-shadow: 0 10px 40px rgba(255,0,127,0.3); z-index: 100000; display: flex; flex-direction: column; overflow: hidden; transition: 0.3s; transform: translateY(0); backdrop-filter: blur(15px); }
-        .ai-agent-widget.minimized { transform: translateY(calc(100% - 50px)); }
-        .ai-agent-header { background: linear-gradient(90deg, #1a001a, #ff007f); padding: 12px 15px; color: #fff; font-family: 'Orbitron'; font-weight: 900; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .ai-agent-body { height: 350px; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; }
+        /* ADMIN LIVE AI AGENT WIDGET (SUPER UPGRADED UI) */
+        .ai-agent-widget { position: fixed; right: 20px; bottom: 20px; background: rgba(6, 17, 38, 0.95); border: 2px solid var(--neon-pink); border-radius: 12px; box-shadow: 0 10px 40px rgba(255,0,127,0.4); z-index: 100000; display: flex; flex-direction: column; overflow: hidden; transition: all 0.3s ease; backdrop-filter: blur(15px); min-width: 320px; width: 380px; height: 450px; resize: both; }
+        .ai-agent-widget.minimized { height: 45px !important; min-height: 45px !important; resize: none; bottom: 0; right: 20px; }
+        .ai-agent-widget.maximized { top: 20px !important; left: 20px !important; right: 20px !important; bottom: 20px !important; width: auto !important; height: auto !important; resize: none !important; }
+        
+        .ai-agent-header { background: linear-gradient(90deg, #1a001a, #ff007f); padding: 10px 15px; color: #fff; font-family: 'Orbitron'; font-weight: 900; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        .ai-window-controls { display: flex; gap: 10px; align-items: center; }
+        .ai-window-controls span { cursor: pointer; font-size: 1.2rem; line-height: 1; transition: 0.2s; color: rgba(255,255,255,0.7); }
+        .ai-window-controls span:hover { color: #fff; text-shadow: 0 0 10px #fff; transform: scale(1.1); }
+        
+        .ai-agent-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; }
         .ai-bubble { padding: 10px 14px; border-radius: 12px; max-width: 85%; word-wrap: break-word; line-height: 1.4; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .ai-bubble.system { background: rgba(0,242,254,0.1); color: #00f2fe; border: 1px solid rgba(0,242,254,0.3); align-self: flex-start; }
         .ai-bubble.user { background: rgba(255,0,127,0.2); color: #fff; border: 1px solid rgba(255,0,127,0.5); align-self: flex-end; }
-        .ai-agent-input-area { display: flex; padding: 10px; background: #02050e; border-top: 1px solid rgba(255,0,127,0.4); }
-        .ai-agent-input-area input { flex: 1; padding: 10px; background: #111b21; border: 1px solid var(--border-glass); color: #fff; border-radius: 8px; outline: none; font-family: inherit; }
-        .ai-agent-input-area button { background: #ff007f; color: #fff; border: none; padding: 10px 15px; margin-left: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .ai-agent-input-area button:hover { background: #00f2fe; color: #000; }
+        
+        .ai-attachment-tray { display: flex; gap: 8px; padding: 10px; background: #0a0d14; border-top: 1px solid rgba(255,0,127,0.3); overflow-x: auto; flex-shrink: 0; transition: 0.3s; }
+        .ai-attachment-tray button { background: #202c33; color: #00f2fe; border: 1px solid rgba(0,242,254,0.3); border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 0.85rem; font-family: 'Orbitron'; font-weight: bold; white-space: nowrap; transition: 0.2s; }
+        .ai-attachment-tray button:hover { background: #00f2fe; color: #000; box-shadow: 0 0 10px #00f2fe; }
+
+        .ai-agent-input-area { display: flex; padding: 10px; background: #02050e; border-top: 1px solid rgba(255,0,127,0.4); flex-shrink: 0; }
+        .ai-agent-input-area input[type="text"] { flex: 1; padding: 10px; background: #111b21; border: 1px solid var(--border-glass); color: #fff; border-radius: 8px; outline: none; font-family: inherit; font-size: 0.95rem; }
+        .ai-agent-input-area input[type="text"]:focus { border-color: var(--neon-pink); }
+        .ai-agent-input-area button.send-btn { background: #ff007f; color: #fff; border: none; padding: 10px 15px; margin-left: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Orbitron'; }
+        .ai-agent-input-area button.send-btn:hover { background: #00f2fe; color: #000; box-shadow: 0 0 15px #00f2fe; }
+        .ai-agent-input-area button.clip-btn { background: transparent; color: #8696a0; border: none; font-size: 1.2rem; cursor: pointer; padding: 0 10px; transition: 0.2s; }
+        .ai-agent-input-area button.clip-btn:hover { color: #fff; transform: scale(1.1); }
 
         .matrix-system-controller-dock { margin-top: 30px; display: flex; gap: 15px; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); padding: 18px 25px; border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 10px rgba(0,0,0,0.6); }
         .auto-pulse-refresh-badge { font-family: 'Orbitron'; font-size: 0.95rem; color: #2ecc71; font-weight: bold; display: flex; align-items: center; gap: 10px; }
@@ -521,6 +535,7 @@
     <nav class="top-cyber-navbar" id="mainCyberNavbar" style="opacity: 0; pointer-events: none;">
         <div class="navbar-brand-glitch" id="shashiBrandTitle">Made By SHASHI TIWARI</div>
         <div class="navbar-controls">
+            <button onclick="document.getElementById('liveAdminAiAgent').style.display='flex'; window.toggleAdminAiSize('restore');" class="nav-btn" style="border-color:var(--neon-pink); color:var(--neon-pink); display:none;" id="aiAgentNavRestoreBtn">🤖 AI AGENT</button>
             <button id="systemAudioToggleBtn" class="nav-btn" onclick="window.toggleGlobalSystemAudio()">🔊 SOUND: ON</button>
             <button class="nav-btn" onclick="window.executeCosmicThemeToggle()"><span id="themeToggleBtnLabel">🌓 DARK MODE</span></button>
             <button id="fullScreenBtn" class="nav-btn" onclick="window.toggleFullScreenEngine()"><span id="fullScreenLabel">🔲 FULL SCREEN</span></button>
@@ -978,7 +993,7 @@
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
             </div>
 
-            <!-- SUPPORT REQUEST BLOCK -->
+            <!-- SUPPORT REQUEST BLOCK & DIRECT AI COMMS -->
             <div id="customerRequestInterfaceBlock" class="hidden">
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
@@ -1004,6 +1019,14 @@
                     
                     <button onclick="window.submitSupportTicket()" class="hud-engage-btn" id="btnSubmitSupportTicket" style="background:linear-gradient(135deg, #e67e22, #d35400); padding:15px;">SUBMIT REQUEST</button>
                     <div id="customerTicketHistory" style="margin-top:30px; border-top:2px solid var(--border-glass); padding-top:20px;"></div>
+
+                    <!-- DIRECT AI INBOX FOR CUSTOMER -->
+                    <div style="margin-top:40px; border:2px solid var(--neon-cyan); padding:20px; border-radius:12px; background:rgba(0,0,0,0.6); box-shadow:0 0 20px rgba(0,242,254,0.2);">
+                        <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:15px; text-shadow:0 0 10px rgba(0,242,254,0.3);">🤖 DIRECT AI COMMS (FROM ADMIN)</h4>
+                        <div id="customerAiInboxStack" style="display:flex; flex-direction:column; gap:10px; max-height:300px; overflow-y:auto; padding-right:10px;">
+                            <p style="color:var(--text-sub);">No incoming transmissions from Matrix AI.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1344,18 +1367,36 @@
                 </div>
             </div> 
 
-            <!-- REAL LIVE AI AGENT WIDGET (ADMIN) -->
+            <!-- REAL LIVE AI AGENT WIDGET (ADMIN) - SUPER UPGRADED -->
             <div id="liveAdminAiAgent" class="ai-agent-widget minimized">
-                <div class="ai-agent-header" onclick="document.getElementById('liveAdminAiAgent').classList.toggle('minimized')">
-                    <span>🤖 AI SYSTEM MONITOR</span>
-                    <span style="font-size:0.8rem;">[ GitHub/Cloud Synced ]</span>
+                <div class="ai-agent-header">
+                    <span style="display:flex; align-items:center; gap:8px;">🤖 <span>AI SYSTEM MONITOR</span></span>
+                    <div class="ai-window-controls">
+                        <span onclick="window.toggleAdminAiSize('minimize')" title="Minimize">_</span>
+                        <span onclick="window.toggleAdminAiSize('maximize')" title="Maximize">□</span>
+                        <span onclick="window.toggleAdminAiSize('close')" title="Close">✖</span>
+                    </div>
                 </div>
                 <div class="ai-agent-body" id="aiAgentChatBox">
-                    <div class="ai-bubble system">System initialized. Connected to Mainframe, GitHub Repos, and Cloud Firestore. Monitoring live access.</div>
+                    <div class="ai-bubble system">System initialized. Super-Admin controls unlocked.<br><br><b>💡 Tip:</b> Use format <code>/send UserID Message</code> or <code>SMS UserID Message</code> to direct ping customers, or attach a file and say "send to UserID".</div>
                 </div>
+                
+                <!-- AI Attachment Tray (Hidden by default) -->
+                <div id="aiAttachmentTray" class="ai-attachment-tray hidden">
+                    <button onclick="document.getElementById('aiFileInput').click()">📄 Document</button>
+                    <button onclick="document.getElementById('aiImageInput').click()">🖼️ Image</button>
+                    <button onclick="alert('Simulated: Video capture linked.')">🎥 Video</button>
+                    <button onclick="window.triggerAIVoiceNote()">🎙️ Voice</button>
+                    <button onclick="alert('Simulated: Folder ZIP archive linked.')">📁 Folder</button>
+                </div>
+                
                 <div class="ai-agent-input-area">
-                    <input type="text" id="aiAgentInput" placeholder="Ask AI to write code, check logs..." onkeydown="if(event.key==='Enter') window.sendAiAgentMessage()">
-                    <button onclick="window.sendAiAgentMessage()">SEND</button>
+                    <button onclick="document.getElementById('aiAttachmentTray').classList.toggle('hidden')" class="clip-btn">📎</button>
+                    <input type="text" id="aiAgentInput" placeholder="Command AI... (/send UserID MSG)" onkeydown="if(event.key==='Enter') window.sendAiAgentMessage()">
+                    <button class="send-btn" onclick="window.sendAiAgentMessage()">SEND</button>
+                    
+                    <input type="file" id="aiFileInput" style="display:none;" onchange="window.handleAiAttachment(event, 'doc')">
+                    <input type="file" id="aiImageInput" accept="image/*" style="display:none;" onchange="window.handleAiAttachment(event, 'image')">
                 </div>
             </div>
             
@@ -1414,7 +1455,7 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
-        // --- MISSING NAVIGATION LOGIC ADDED HERE ---
+        // --- NAVIGATION LOGIC ---
         window.switchCustomerChannel = function(channel) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channel);
             localStorage.setItem('nexus_active_chan_route', channel);
@@ -1456,7 +1497,6 @@
             if(section === 'aispy') window.renderAdminAiInterceptionSpyBlock();
             if(section === 'stats') window.renderDynamicServerDiagnosticsDashboard();
         };
-        // -------------------------------------------
 
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
 
@@ -1465,7 +1505,8 @@
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
-                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true, thunderMode: "medium", autoLogoutTime: 60 }
+                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true, thunderMode: "medium", autoLogoutTime: 60 },
+                aiPendingAttachment: null
             };
             return {
                 get: (key) => state[key],
@@ -1509,7 +1550,7 @@
         executeAutoLogoutTracker();
 
         // ==========================================
-        // NEW FEATURE: VS CODE LINE NUMBERS SYNC
+        // NEW FEATURE: SAVE CODE LIBRARY & SYNC
         // ==========================================
         window.updateLineNumbers = function(mode) {
             const editor = document.getElementById('liveCodeEditor_' + mode);
@@ -1525,9 +1566,6 @@
             if(editor && lineNumbers) { lineNumbers.scrollTop = editor.scrollTop; }
         };
 
-        // ==========================================
-        // NEW FEATURE: SAVE CODE LIBRARY
-        // ==========================================
         window.saveCodeSnippet = function(mode) {
             const code = document.getElementById('liveCodeEditor_' + mode).value.trim();
             if(!code) return alert("Editor is empty! Please write some code.");
@@ -1539,7 +1577,6 @@
             const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
             const authorName = userObj ? userObj.clientName : "Mainframe Admin";
             
-            // Format to proper HTML if not present
             let finalCode = code;
             if(!finalCode.toLowerCase().includes("<!doctype html>")) {
                 finalCode = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>${snippetName}</title>\n</head>\n<body>\n${code}\n</body>\n</html>`;
@@ -1558,16 +1595,12 @@
                 dateStr: now.toLocaleDateString(),
                 timeStr: now.toLocaleTimeString(),
                 dayStr: days[now.getDay()]
-            }).then(() => {
-                alert(`✅ Code successfully saved to Library as: ${snippetName}`);
-                // reset editor if needed, but lets keep it so user can keep editing
-            });
+            }).then(() => { alert(`✅ Code successfully saved to Library as: ${snippetName}`); });
         };
 
         window.openCodeLibrary = function(mode) {
             const modal = document.getElementById('codeLibraryModal');
             modal.classList.remove('hidden');
-            // small delay to allow display block before opacity transition
             setTimeout(() => { modal.classList.add('active'); }, 10);
             
             const listContainer = document.getElementById('codeLibraryListContainer');
@@ -1620,9 +1653,7 @@
         window.deleteLibraryCode = function(itemId) {
             if(confirm("Delete this snippet from Library?")) {
                 const currentUid = MatrixSystemState.get('loggedInCustomerID') || "Admin";
-                remove(ref(db, `global_code_library/${currentUid}/${itemId}`)).then(() => {
-                    window.openCodeLibrary(); 
-                });
+                remove(ref(db, `global_code_library/${currentUid}/${itemId}`)).then(() => { window.openCodeLibrary(); });
             }
         };
 
@@ -1631,29 +1662,136 @@
         };
 
         // ==========================================
-        // NEW FEATURE: ADMIN LIVE AI AGENT
+        // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS)
         // ==========================================
+        window.toggleAdminAiSize = function(action) {
+            const widget = document.getElementById('liveAdminAiAgent');
+            if(action === 'minimize') {
+                widget.classList.add('minimized');
+                widget.classList.remove('maximized');
+            } else if (action === 'maximize') {
+                widget.classList.remove('minimized');
+                widget.classList.add('maximized');
+            } else if (action === 'close') {
+                widget.style.display = 'none';
+                document.getElementById('aiAgentNavRestoreBtn').style.display = 'inline-block';
+            } else if (action === 'restore') {
+                widget.classList.remove('minimized', 'maximized');
+                document.getElementById('aiAgentNavRestoreBtn').style.display = 'none';
+            }
+        };
+
+        window.handleAiAttachment = function(e, type) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    MatrixSystemState.set('aiPendingAttachment', { type: type, data: evt.target.result });
+                    document.getElementById('aiAgentInput').value = `[${type.toUpperCase()} ATTACHED] ` + document.getElementById('aiAgentInput').value;
+                    document.getElementById('aiAttachmentTray').classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+        
+        window.triggerAIVoiceNote = function() {
+             alert("Voice recording module active. AI will attach your voice clip. Say 'SMS [User]' to dispatch.");
+             MatrixSystemState.set('aiPendingAttachment', { type: 'voice', data: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }); // Simulated Audio
+             document.getElementById('aiAgentInput').value = `[VOICE ATTACHED] ` + document.getElementById('aiAgentInput').value;
+             document.getElementById('aiAttachmentTray').classList.add('hidden');
+        };
+
         window.sendAiAgentMessage = function() {
             const input = document.getElementById('aiAgentInput');
-            const text = input.value.trim();
-            if(!text) return;
+            let text = input.value.trim();
+            let att = MatrixSystemState.get('aiPendingAttachment');
+            if(!text && !att) return;
             
             const chatBox = document.getElementById('aiAgentChatBox');
-            chatBox.innerHTML += `<div class="ai-bubble user">${text}</div>`;
+            let attachmentHtml = "";
+            
+            if(att) {
+                if(att.type === 'image') attachmentHtml = `<br><img src="${att.data}" style="max-width:100%; border-radius:8px; margin-top:5px;">`;
+                else if(att.type === 'doc' || att.type === 'folder') attachmentHtml = `<br><a href="${att.data}" download="AI_Doc" style="color:#00f2fe; text-decoration:underline;">📎 Download Attachment</a>`;
+                else if(att.type === 'voice' || att.type === 'video') attachmentHtml = `<br><audio controls src="${att.data}" style="max-width:100%; height:30px; margin-top:5px;"></audio>`;
+            }
+
+            if(text || attachmentHtml) {
+                chatBox.innerHTML += `<div class="ai-bubble user">${text}${attachmentHtml}</div>`;
+            }
+            
             input.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
+            document.getElementById('aiAttachmentTray').classList.add('hidden');
 
             setTimeout(() => {
-                let response = "I am connected to the Matrix Core. Code parsing and log checking is fully active.";
-                if(text.toLowerCase().includes("code")) response = "Yes, I can write and compile code directly into the workspace. Awaiting specific logic parameters.";
-                if(text.toLowerCase().includes("hack")) response = "Monitoring brute force metrics. Firewall is holding strong at 99.9% integrity.";
-                if(text.toLowerCase().includes("hello")) response = "Greetings Admin! I am monitoring all global hubs.";
+                let response = "";
+                // Match command: sms user123 Hello! OR send to user123 Hello! OR /send user123 Hello!
+                const match = text.match(/^(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
                 
-                chatBox.innerHTML += `<div class="ai-bubble system">🤖 ${response}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-                window.playSynthesizedSound(600, 'sine', 0.1);
-            }, 1000);
+                if(match) {
+                    let targetUid = match[1];
+                    let msgContent = match[2] || "";
+                    
+                    const aiSmsRef = push(ref(db, `support_ai_messages/${targetUid}`));
+                    set(aiSmsRef, {
+                        msgId: aiSmsRef.key,
+                        text: msgContent.replace(/\[.*?ATTACHED\]/g, '').trim() || "Sent you an attachment.",
+                        attachment: att ? att.data : "",
+                        attType: att ? att.type : "",
+                        epoch: Date.now(),
+                        timeStr: new Date().toLocaleTimeString()
+                    }).then(() => {
+                        chatBox.innerHTML += `<div class="ai-bubble system">✅ <b>Transmission Successful:</b> Direct message pushed to User [${targetUid}]'s dashboard. Matrix synced.</div>`;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                        MatrixSystemState.set('aiPendingAttachment', null);
+                        window.playSynthesizedSound(600, 'sine', 0.1);
+                    }).catch(e => {
+                        chatBox.innerHTML += `<div class="ai-bubble system" style="color:#e74c3c; border-color:#e74c3c;">❌ Error routing to ${targetUid}. User not found.</div>`;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    });
+                } else {
+                    response = "I am connected to the Matrix Core. To send a direct ping/file to a user's Support Box, use format: 'SMS [UserID] [Message]' or attach a file and type '/send [UserID]'.";
+                    if(text.toLowerCase().includes("hack")) response = "Monitoring brute force metrics. Firewall is holding strong at 99.9% integrity.";
+                    if(text.toLowerCase().includes("hello")) response = "Greetings Admin! I am monitoring all global hubs.";
+                    
+                    chatBox.innerHTML += `<div class="ai-bubble system">🤖 ${response}</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                    window.playSynthesizedSound(600, 'sine', 0.1);
+                    MatrixSystemState.set('aiPendingAttachment', null);
+                }
+            }, 800);
         };
+
+        // Customer Listener for AI Direct Messages
+        onValue(ref(db, `support_ai_messages`), (snapshot) => {
+            if(MatrixSystemState.get('currentMode') !== 'user') return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            
+            const myAiMsgs = snapshot.val() ? snapshot.val()[currentUid] : null;
+            const inbox = document.getElementById('customerAiInboxStack');
+            if(inbox) {
+                if(!myAiMsgs) {
+                    inbox.innerHTML = '<p style="color:var(--text-sub);">No incoming transmissions from Matrix AI.</p>';
+                    return;
+                }
+                const msgsArr = Object.values(myAiMsgs).sort((a,b)=>b.epoch - a.epoch);
+                inbox.innerHTML = msgsArr.map(m => {
+                    let attHtml = "";
+                    if(m.attachment) {
+                        if(m.attType === 'image') attHtml = `<br><img src="${m.attachment}" style="max-width:200px; border-radius:8px; margin-top:8px; cursor:pointer; border:1px solid var(--neon-cyan);" onclick="window.triggerEnlargedAttachmentView('${m.attachment}')">`;
+                        else if(m.attType === 'doc' || m.attType === 'folder') attHtml = `<br><a href="${m.attachment}" download="AI_Doc" style="color:var(--neon-cyan); text-decoration:underline; font-weight:bold; display:inline-block; margin-top:8px;">📎 Download Linked File</a>`;
+                        else if(m.attType === 'voice' || m.attType === 'video') attHtml = `<br><audio controls src="${m.attachment}" style="height:35px; width:100%; margin-top:8px;"></audio>`;
+                    }
+                    return `<div style="background:rgba(0,242,254,0.1); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                        <div style="font-size:0.85rem; color:var(--neon-cyan); font-weight:bold; margin-bottom:8px; border-bottom:1px dashed rgba(0,242,254,0.3); padding-bottom:5px;">🤖 Admin AI System - ${m.timeStr}</div>
+                        <div style="color:#fff; font-size:1rem; line-height:1.4;">${m.text}</div>
+                        ${attHtml}
+                    </div>`;
+                }).join('');
+            }
+        });
 
 
         // --- FULL SCREEN CODE PREVIEW LOGIC WITH EXIT BUTTON ---
@@ -3846,17 +3984,15 @@
                     }
                 }, 2500); 
             } else {
-                // 👇 YAHAN PAR PASSWORD CAPTURE LOGIC ADD KIYA HAI 👇
                 let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
                 fails++;
                 MatrixSystemState.set('consecutiveBruteFailuresCount', fails);
 
-                // Har failed login attempt (ID + Password) database mein capture hoga
                 set(push(ref(db, 'incident_alerts')), { lockedUID: u, attemptedPassword: p, type: 'failed_login', epoch: Date.now() });
 
                 if (fails >= 3) {
                     let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
-                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id, p); return; } // P (Password) pass kiya
+                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id, p); return; }
                 }
                 
                 alert("❌ ACCESS DENIED: Invalid System ID or Password.");
