@@ -2699,30 +2699,45 @@
             }
         });
 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
         window.updateGlobalFeatures = function() {
             const updates = {
-                policy: document.getElementById('globalTog_policy').checked, notes: document.getElementById('globalTog_notes').checked,
-                vault: document.getElementById('globalTog_vault').checked, gaming: document.getElementById('globalTog_gaming').checked,
-                chat: document.getElementById('globalTog_chat').checked, code: document.getElementById('globalTog_code').checked,
+                policy: document.getElementById('globalTog_policy').checked === true, 
+                notes: document.getElementById('globalTog_notes').checked === true,
+                vault: document.getElementById('globalTog_vault').checked === true, 
+                gaming: document.getElementById('globalTog_gaming').checked === true,
+                chat: document.getElementById('globalTog_chat').checked === true, 
+                code: document.getElementById('globalTog_code').checked === true,
+                request: true, // ⚡ FIX: Ye missing tha jiski wajah se data corrupt ho raha tha
                 thunderMode: document.getElementById('adminThunderControlRange').value,
                 autoLogoutTime: document.getElementById('adminLogoutControl').value
             };
             set(ref(db, 'global_settings/features'), updates);
         };
 
-        window.updateUserFeature = function(uid, feature, state) { update(ref(db, `users/${uid}/features`), { [feature]: state }); };
-        window.updateUserPremiumFeature = function(uid, premiumFeature, state) { update(ref(db, `users/${uid}/premium`), { [premiumFeature]: state }); };
+        window.updateUserFeature = function(uid, feature, state) { 
+            update(ref(db, `users/${uid}/features`), { [feature]: state === true }); 
+        };
+        
+        window.updateUserPremiumFeature = function(uid, premiumFeature, state) { 
+            update(ref(db, `users/${uid}/premium`), { [premiumFeature]: state === true }); 
+        };
 
         window.enforceCustomerPermissions = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!currentUid) return;
             const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
-            const globalFeats = MatrixSystemState.get('globalFeatures');
-            const userFeats = user && user.features ? user.features : { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true };
+            const globalFeats = MatrixSystemState.get('globalFeatures') || {};
+            const userFeats = user && user.features ? user.features : {};
             
             ['policy', 'notes', 'vault', 'gaming', 'chat', 'code', 'request'].forEach(feat => {
                 const card = document.getElementById(`menuCard_${feat}`);
                 if(card) {
-                    const isEnabled = globalFeats[feat] && userFeats[feat];
+                    // ⚡ FIX: Strict Boolean Check (String "false" ko block karega)
+                    const isGlobalEnabled = (globalFeats[feat] === true || globalFeats[feat] === "true" || (globalFeats[feat] === undefined && feat === 'request'));
+                    const isUserEnabled = (userFeats[feat] === true || userFeats[feat] === "true" || userFeats[feat] === undefined);
+                    
+                    const isEnabled = isGlobalEnabled && isUserEnabled;
+                    
                     card.style.display = isEnabled ? 'flex' : 'none';
                     if (!isEnabled && MatrixSystemState.get('activeCustomerWorkspaceChannel') === feat) {
                         window.switchCustomerChannel('menu');
@@ -2730,6 +2745,7 @@
                 }
             });
         };
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
