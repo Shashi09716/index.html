@@ -842,14 +842,19 @@
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
                     
                     <div class="chat-target-userlist-pane">
+
+<!-- ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= -->
                         <div class="wa-top-bar">
                             <span>WhatsApp Pro</span>
-                            <div class="wa-top-bar-icons">
+                            <div class="wa-top-bar-icons" style="display:flex; align-items:center;">
                                 <button id="waLockBtn_user" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', 'waLockBtn_user')" style="background:transparent; border:1px solid #00f2fe; color:#00f2fe; padding:2px 8px; border-radius:4px; font-size:0.8rem; cursor:pointer;">⛶ FULL</button>
+                                <button onclick="window.openWaSettingsOverlay()" style="background:transparent; border:none; color:var(--wa-text-muted); font-size:1.2rem; cursor:pointer; margin-left:12px;" title="Settings">⚙️</button>
                             </div>
                         </div>
                         <div class="whatsapp-search-box">
                             <input type="text" id="clientContactSearchField" placeholder="🔍 Search or start new chat" oninput="window.filterClientChatContactList()">
+<!-- ================= YAHAN TAK REPLACE KARNA HAI ================= -->
+
                             <input type="file" id="statusUploadInputNode" accept="image/*" style="display:none;" onchange="window.uploadUserStatusMatrixEngine(event)">
                             <button class="nav-btn" style="padding: 6px 10px; font-size: 1rem; border-radius: 6px; box-shadow: none;" onclick="window.triggerCreateGroupModal()" title="Create WhatsApp Group">👥</button>
                         </div>
