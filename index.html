@@ -1622,13 +1622,17 @@
                     return;
                 }
 
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+                // ⚡ BULLETPROOF FIX: HTML/JS क्रैश रोकने के लिए Base64 Encryption का यूज़
                 const data = snap.val();
                 let html = "";
                 Object.values(data).sort((a,b)=>b.epoch - a.epoch).forEach(item => {
-                    // ⚡ FIX 1: Single quotes (') ko %27 mein badalna taaki button HTML crash na kare
-                    let safeCode = encodeURIComponent(item.code || "").replace(/'/g, "%27");
-                    let safeTitle = encodeURIComponent(item.title || "").replace(/'/g, "%27");
+                    
+                    let rawCode = item.code || "";
+                    let rawTitle = item.title || "Snippet";
+                    
+                    // Code aur Title ko Base64 mein convert kar diya taaki onclick break na ho
+                    let base64Code = btoa(unescape(encodeURIComponent(rawCode)));
+                    let base64Title = btoa(unescape(encodeURIComponent(rawTitle)));
                     
                     html += `
                     <div class="code-lib-item">
@@ -1637,9 +1641,9 @@
                             <span style="font-size:0.85rem; color:#8696a0;">By: ${item.author} | ${item.dateStr} (${item.dayStr}) at ${item.timeStr}</span>
                         </div>
                         <div class="code-lib-actions">
-                            <button onclick="window.playSnippetFromLibrary('${safeCode}')" class="hud-engage-btn" style="padding:6px 12px; width:auto; font-size:0.9rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ Play</button>
-                            <button onclick="window.downloadLibraryCode('${safeCode}', '${safeTitle}')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; font-size:0.8rem;">💾 HTML</button>
-                            <button onclick="window.shareCodeLive('${safeCode}', '${safeTitle}')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-size:0.8rem;">🔗 Share</button>
+                            <button onclick="window.playSnippetFromLibrary('${base64Code}')" class="hud-engage-btn" style="padding:6px 12px; width:auto; font-size:0.9rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ Play</button>
+                            <button onclick="window.downloadLibraryCode('${base64Code}', '${base64Title}')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; font-size:0.8rem;">💾 HTML</button>
+                            <button onclick="window.shareCodeLive('${base64Code}', '${base64Title}')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-size:0.8rem;">🔗 Share</button>
                             <button onclick="window.deleteLibraryCode('${item.id}')" class="abort-btn" style="padding:6px 12px; font-size:0.9rem;">🗑</button>
                         </div>
                     </div>`;
@@ -1654,28 +1658,40 @@
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         };
 
-        // 1. PLAY BUTTON FIX
-        window.playSnippetFromLibrary = function(encodedCode) {
-            const code = decodeURIComponent(encodedCode);
-            const overlay = document.getElementById('codeExecutionFullscreenOverlay');
-            const iframe = document.getElementById('fullscreenCodeRunnerIframe');
-            if (overlay && iframe) {
-                overlay.style.display = 'flex';
-                iframe.srcdoc = code; 
+        // 1. PLAY BUTTON BULLETPROOF FIX (With Iframe Refresh)
+        window.playSnippetFromLibrary = function(base64Code) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const overlay = document.getElementById('codeExecutionFullscreenOverlay');
+                const iframe = document.getElementById('fullscreenCodeRunnerIframe');
+                if (overlay && iframe) {
+                    overlay.style.display = 'flex';
+                    // Iframe ko blank karke refresh kar rahe hain taaki stuck na ho
+                    iframe.src = "about:blank";
+                    setTimeout(() => {
+                        iframe.srcdoc = code; 
+                    }, 50);
+                }
+            } catch(e) {
+                alert("Error playing code: " + e.message);
             }
         };
 
-        // 2. NEW: HTML DOWNLOAD FUNCTION
-        window.downloadLibraryCode = function(encodedCode, encodedTitle) {
-            const code = decodeURIComponent(encodedCode);
-            const title = decodeURIComponent(encodedTitle);
-            const blob = new Blob([code], { type: 'text/html' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `${title.replace(/[^a-z0-9]/gi, '_')}.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        // 2. HTML DOWNLOAD BULLETPROOF FIX
+        window.downloadLibraryCode = function(base64Code, base64Title) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const title = decodeURIComponent(escape(atob(base64Title)));
+                const blob = new Blob([code], { type: 'text/html' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `${title.replace(/[^a-z0-9]/gi, '_')}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch(e) {
+                alert("Download Error: " + e.message);
+            }
         };
 
         window.deleteLibraryCode = function(itemId) {
@@ -1685,41 +1701,43 @@
             }
         };
 
-        // 3. UPDATED: SHARE FIX (WITH FALLBACK FOR HTTP NETWORKS)
-        window.shareCodeLive = function(encodedCode, encodedTitle) {
-            const code = decodeURIComponent(encodedCode);
-            const title = decodeURIComponent(encodedTitle);
-            
-            // ⚡ FIX 2: Fallback system agar navigator.clipboard reject ho jaye
-            const fallbackCopyTextToClipboard = (text) => {
-                var textArea = document.createElement("textarea");
-                textArea.value = text;
-                textArea.style.position = "fixed";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-                try { document.execCommand('copy'); } catch (err) {}
-                document.body.removeChild(textArea);
-            };
+        // 3. SHARE BULLETPROOF FIX (Clipboard + WhatsApp)
+        window.shareCodeLive = function(base64Code, base64Title) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const title = decodeURIComponent(escape(atob(base64Title)));
+                
+                const fallbackCopyTextToClipboard = (text) => {
+                    var textArea = document.createElement("textarea");
+                    textArea.value = text;
+                    textArea.style.position = "fixed";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try { document.execCommand('copy'); } catch (err) {}
+                    document.body.removeChild(textArea);
+                };
 
-            const promptWhatsApp = () => {
-                if(confirm("✅ Code Copied to Clipboard!\n\nDo you want to share it directly on WhatsApp?")) {
-                    const waText = encodeURIComponent(`💻 *${title}*\n\n\`\`\`html\n${code}\n\`\`\``);
-                    window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
-                }
-            };
+                const promptWhatsApp = () => {
+                    if(confirm("✅ Code Copied to Clipboard!\n\nDo you want to share it directly on WhatsApp?")) {
+                        const waText = encodeURIComponent(`💻 *${title}*\n\n\`\`\`html\n${code}\n\`\`\``);
+                        window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
+                    }
+                };
 
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(code).then(promptWhatsApp).catch(() => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(code).then(promptWhatsApp).catch(() => {
+                        fallbackCopyTextToClipboard(code);
+                        promptWhatsApp();
+                    });
+                } else {
                     fallbackCopyTextToClipboard(code);
                     promptWhatsApp();
-                });
-            } else {
-                fallbackCopyTextToClipboard(code);
-                promptWhatsApp();
+                }
+            } catch(e) {
+                alert("Share Error: " + e.message);
             }
         };
-// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         // ==========================================
         // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS & VOICE DICTATION)
