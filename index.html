@@ -703,7 +703,6 @@
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                         <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin:0;">🧠 PRO WORKSPACE NOTEPAD</h3>
-                        <button id="waLockBtn_notes" onclick="window.toggleWaAreaLock('notesMainWrapperCard', 'waLockBtn_notes')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;">🔓 Unlock View</button>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
@@ -840,9 +839,6 @@
 
             <!-- WHATSAPP PRO BLOCK (CUSTOMER) -->
             <div id="customerChatInterfaceBlock" class="hidden">
-                <div style="margin-bottom:10px; display:flex; justify-content:flex-end;">
-                    <button id="waLockBtn_user" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', 'waLockBtn_user')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:bold;">🔓 Unlock Full View</button>
-                </div>
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
                     <div class="chat-target-userlist-pane">
                         <div class="wa-top-bar">
@@ -900,6 +896,7 @@
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
+                                <button class="header-actions-btn" title="Toggle Full Screen View" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', this)">⛶</button>
                             </div>
                         </div>
 
@@ -1161,19 +1158,19 @@
                                 <span style="color:#2ecc71;">ENABLE POLICY VAULT</span> <input type="checkbox" id="globalTog_policy" class="toggle-switch" onchange="window.updateGlobalFeatures()">
                             </label>
                             <label class="toggle-switch-wrapper" style="border-color:#00f2fe;">
-                                <span style="color:#00f2fe;">ENABLE NOTES PRO</span> <input type="checkbox" id="globalTog_notes" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked> 
+                                <span style="color:#00f2fe;">ENABLE NOTES PRO</span> <input type="checkbox" id="globalTog_notes" class="toggle-switch" onchange="window.updateGlobalFeatures()"> 
                             </label>
                             <label class="toggle-switch-wrapper" style="border-color:#f1c40f;">
-                                <span style="color:#f1c40f;">ENABLE CLOUD VAULT</span> <input type="checkbox" id="globalTog_vault" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                                <span style="color:#f1c40f;">ENABLE CLOUD VAULT</span> <input type="checkbox" id="globalTog_vault" class="toggle-switch" onchange="window.updateGlobalFeatures()">
                             </label>
                             <label class="toggle-switch-wrapper" style="border-color:#ff007f;">
-                                <span style="color:#ff007f;">ENABLE GAMING NEXUS</span> <input type="checkbox" id="globalTog_gaming" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                                <span style="color:#ff007f;">ENABLE GAMING NEXUS</span> <input type="checkbox" id="globalTog_gaming" class="toggle-switch" onchange="window.updateGlobalFeatures()">
                             </label>
                             <label class="toggle-switch-wrapper" style="border-color:#a73ec9;">
-                                <span style="color:#a73ec9;">ENABLE CODE STUDIO</span> <input type="checkbox" id="globalTog_code" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                                <span style="color:#a73ec9;">ENABLE CODE STUDIO</span> <input type="checkbox" id="globalTog_code" class="toggle-switch" onchange="window.updateGlobalFeatures()">
                             </label>
                             <label class="toggle-switch-wrapper" style="grid-column: 1 / -1; border-color:#00a884;">
-                                <span style="color:#00a884; font-size:1.1rem;">ENABLE WHATSAPP WEB MULTIPLAYER</span> <input type="checkbox" id="globalTog_chat" class="toggle-switch" onchange="window.updateGlobalFeatures()" checked>
+                                <span style="color:#00a884; font-size:1.1rem;">ENABLE WHATSAPP WEB MULTIPLAYER</span> <input type="checkbox" id="globalTog_chat" class="toggle-switch" onchange="window.updateGlobalFeatures()">
                             </label>
                         </div>
                     </div>
@@ -1221,9 +1218,6 @@
                 </div>
 
                 <div id="adminSpyChatBlock" class="hidden">
-                    <div style="margin-bottom:10px; display:flex; justify-content:flex-end;">
-                        <button id="waLockBtn_admin" onclick="window.toggleWaAreaLock('adminChatGridBox', 'waLockBtn_admin')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:bold;">🔓 Unlock Full View</button>
-                    </div>
                     <div class="chat-io-grid-matrix" id="adminChatGridBox">
                         <div class="chat-target-userlist-pane">
                             <div class="wa-top-bar">
@@ -1273,6 +1267,7 @@
                                     </div>
 
                                     <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;">🗑️</button>
+                                    <button class="header-actions-btn" title="Toggle Full Screen View" onclick="window.toggleWaAreaLock('adminChatGridBox', this)">⛶</button>
                                 </div>
                             </div>
                             <div class="chat-messages-scroll-stack" id="adminSpyChatLogsStack"></div>
@@ -1392,6 +1387,7 @@
                 
                 <div class="ai-agent-input-area">
                     <button onclick="document.getElementById('aiAttachmentTray').classList.toggle('hidden')" class="clip-btn">📎</button>
+                    <button onclick="window.startAiDictation()" class="clip-btn" title="Voice Dictation">🎙️</button>
                     <input type="text" id="aiAgentInput" placeholder="Command AI... (/send UserID MSG)" onkeydown="if(event.key==='Enter') window.sendAiAgentMessage()">
                     <button class="send-btn" onclick="window.sendAiAgentMessage()">SEND</button>
                     
@@ -1505,7 +1501,7 @@
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
-                globalFeatures: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true, thunderMode: "medium", autoLogoutTime: 60 },
+                globalFeatures: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, thunderMode: "medium", autoLogoutTime: 60 },
                 aiPendingAttachment: null
             };
             return {
@@ -1521,7 +1517,7 @@
         let visualizerDataArray = new Uint8Array(0), virtualTomTalkingAnimationCycle = 0;
         let nativeAudioMediaRecorderInstance = null, compiledAudioChunksCollectorArr = [], notesMediaRecorderInstance = null, notesAudioChunksCollectorArr = [];
         let notesVoicePayloadBase64Node = "", notesVoiceTimerIntervalTracker = null, notesRecordingStartEpoch = 0, autoGeneratedVoiceDurationString = "";
-        let typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
+        let _typingTimer = null, typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
 
         const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
         
@@ -1550,7 +1546,7 @@
         executeAutoLogoutTracker();
 
         // ==========================================
-        // NEW FEATURE: SAVE CODE LIBRARY & SYNC
+        // SAVE CODE LIBRARY & SYNC
         // ==========================================
         window.updateLineNumbers = function(mode) {
             const editor = document.getElementById('liveCodeEditor_' + mode);
@@ -1662,7 +1658,7 @@
         };
 
         // ==========================================
-        // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS)
+        // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS & VOICE DICTATION)
         // ==========================================
         window.toggleAdminAiSize = function(action) {
             const widget = document.getElementById('liveAdminAiAgent');
@@ -1696,9 +1692,27 @@
         
         window.triggerAIVoiceNote = function() {
              alert("Voice recording module active. AI will attach your voice clip. Say 'SMS [User]' to dispatch.");
-             MatrixSystemState.set('aiPendingAttachment', { type: 'voice', data: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }); // Simulated Audio
+             MatrixSystemState.set('aiPendingAttachment', { type: 'voice', data: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }); 
              document.getElementById('aiAgentInput').value = `[VOICE ATTACHED] ` + document.getElementById('aiAgentInput').value;
              document.getElementById('aiAttachmentTray').classList.add('hidden');
+        };
+
+        window.startAiDictation = function() {
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!window.SpeechRecognition) { alert("Speech Recognition not supported in this browser."); return; }
+            let recognition = new window.SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            document.getElementById('aiAgentInput').placeholder = "Listening... Speak now";
+            
+            recognition.onresult = function(e) {
+                document.getElementById('aiAgentInput').value += e.results[0][0].transcript + " ";
+                document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)";
+            };
+            recognition.onerror = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
+            recognition.onend = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
+            
+            recognition.start();
         };
 
         window.sendAiAgentMessage = function() {
@@ -2006,16 +2020,16 @@
                                 const file = items[i].getAsFile();
                                 const reader = new FileReader();
                                 reader.onload = (readerEvent) => {
-                                    document.execCommand('insertHTML', false, `<img src="${readerEvent.target.result}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-pink);"><br>`);
-                                    window.updateNotepadLiveCounters();
-                                };
-                                reader.readAsDataURL(file);
+                                        document.execCommand('insertHTML', false, `<img src="${readerEvent.target.result}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-pink);"><br>`);
+                                        window.updateNotepadLiveCounters();
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
                             }
                         }
-                    }
-                });
-            }
-        }, 1500);
+                    });
+                }
+            }, 1500);
 
         window.toggleWaAreaLock = function(matrixId, btnId) {
             const matrixNode = document.getElementById(matrixId);
@@ -2392,7 +2406,7 @@
         window.approvePendingAccount = function(reqId, isAuto = false) {
             const req = MatrixSystemState.get('cachedPendingUsersArr').find(r => r.reqId === reqId); if(!req) return;
             const userId = req.name.replace(/\s+/g, '') + req.phone.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => {
+            set(ref(db, 'users/' + userId), { id: userId, pass: req.pass, status: 'active', clientName: req.name, dob: req.dob, contact: req.phone, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => {
                 remove(ref(db, 'pending_accounts/' + reqId));
                 if(!isAuto) { alert(`✅ User Approved!\nID: ${userId}`); window.renderAdminPendingApprovals(); }
             });
@@ -2442,7 +2456,7 @@
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); if(!currentUid) return;
             const user = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
             const globalFeats = MatrixSystemState.get('globalFeatures');
-            const userFeats = user && user.features ? user.features : { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true };
+            const userFeats = user && user.features ? user.features : { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true };
             
             ['policy', 'notes', 'vault', 'gaming', 'chat', 'code'].forEach(feat => {
                 const card = document.getElementById(`menuCard_${feat}`);
@@ -2460,7 +2474,7 @@
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
             listWrapper.innerHTML = MatrixSystemState.get('cachedGlobalUsersArr').map((user) => {
                 const isDeact = user.status === 'deactivated';
-                const f = user.features || { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true };
+                const f = user.features || { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true };
                 const p = user.premium || { stealthMode: false, autoReply: false, broadcast: false, antiDelete: false, scheduler: false, massDownload: false };
                 
                 return `<div style="background:rgba(4,14,33,0.9); padding:25px; border-radius:16px; border:1px solid ${isDeact?'#e74c3c':'var(--border-glass)'}; position:relative; overflow:hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.5);">
@@ -4039,7 +4053,7 @@
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
             if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
             const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: false, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
                 alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
                 document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
                 window.loadAdminSubmissions(); 
