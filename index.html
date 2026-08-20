@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V25.0 (Next-Gen Studio & Sync)</title>
+    <title>Ultimate Nexus Matrix 3D PRO MAX ⚡ V25.0</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700;900&family=Segoe+UI:wght@400;500;600;700&display=swap">
-    <!-- Tesseract JS for Image to Code (OCR) -->
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <style>
         /* --- ULTRA-REALISTIC CYBERPUNK MATRIX ENGINE SYSTEM PALETTE --- */
         :root {
-            /* UPGRADED LAMP GLOW - MORE NEON, BRIGHT & GEN-Z */
             --lamp-color: #00f2fe; --lamp-glow: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.98);
             --neon-cyan: #00f2fe; --neon-pink: #ff007f; --neon-green: #2ecc71; --neon-purple: #a73ec9;
             --wa-bg: #111b21; --wa-header: #202c33; --wa-search-bg: #111b21; --wa-search-input: #2a3942;
@@ -19,7 +17,6 @@
             --bg-prime: #02050e; --panel-glass: rgba(6, 17, 38, 0.95); --border-glass: rgba(0, 242, 254, 0.4); 
             --text-main: #ffffff; --text-sub: #f8fafc; --input-bg: #1a2536; --card-bg: rgba(4, 14, 33, 0.85);
             --cyber-glow: 0 15px 35px rgba(0, 242, 254, 0.6), inset 0 0 20px rgba(0, 242, 254, 0.3);
-            /* UPGRADED CHAMAK FOR LAMP */
             --lamp-chamak: 0 0 80px #00f2fe, 0 0 160px rgba(0, 242, 254, 0.9);
             --chat-wallpaper: var(--wa-chat-bg) url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') center/cover;
             --matrix-3d-shadow-cyan: 0 20px 40px rgba(0, 242, 254, 0.25);
@@ -42,41 +39,30 @@
         
         body { background: var(--bg-prime); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Rajdhani', sans-serif; position: relative; width: 100vw; transition: background 0.4s ease, color 0.4s ease; color: var(--text-main); perspective: 1200px; }
         
-        /* STRICT SCROLL LOCK SYSTEM (100% FIXED) */
-        body.strict-scroll-lock, html.strict-scroll-lock { 
-            overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; 
-        }
+        body.strict-scroll-lock, html.strict-scroll-lock { overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; }
 
-        /* --- NEXT-GEN MIND-BLOWING HYPER-WARP LOGIN ANIMATION (UPDATED FOR PROFESSIONAL LOOK) --- */
-        #loginSuccessOverlay { position: fixed; inset: 0; background: #02050e; z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; perspective: 1000px; overflow: hidden; }
+        /* NEXT-GEN ANIMATION OVERLAY */
+        #loginSuccessOverlay { position: fixed; inset: 0; background: #02050e; z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; perspective: 1000px; overflow: hidden; }
         #loginSuccessOverlay.active { opacity: 1; visibility: visible; animation: cyberFadeOut 2.5s ease-in-out forwards; }
         .cyber-unlock-ring { width: 120px; height: 120px; border: 4px dashed var(--neon-cyan); border-radius: 50%; animation: spinRing 2s linear infinite, glowPulse 1s alternate infinite; margin-bottom: 30px; box-shadow: 0 0 20px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); border-left-color: transparent;}
-        .warp-text { font-family: 'Orbitron'; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); font-weight: 900; z-index: 20; letter-spacing: 10px; animation: textGlitchEntry 2.5s forwards; }
+        .warp-text { font-family: 'Orbitron'; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); font-weight: 900; z-index: 20; letter-spacing: 10px; animation: textGlitchEntry 2.5s forwards; text-align: center; }
         
         @keyframes spinRing { 100% { transform: rotate(360deg); } }
         @keyframes glowPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan), inset 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 30px var(--neon-cyan); } }
         @keyframes textGlitchEntry { 0% { opacity: 0; transform: translateY(30px) scale(0.9); filter: blur(10px); } 20% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); } 80% { opacity: 1; transform: scale(1.05); filter: blur(0px); } 100% { opacity: 0; transform: scale(1.5); filter: blur(20px); } }
         @keyframes cyberFadeOut { 0% { background: rgba(2, 5, 14, 1); opacity: 1; } 80% { background: rgba(2, 5, 14, 1); opacity: 1; } 100% { opacity: 0; visibility: hidden; background: transparent; } }
 
-        /* GEN-Z ANIMATED CYBER GRID BACKDROP FOR LOCK VIEW */
-        #matrixAnimatedBackdrop {
-            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none;
-            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.15) 0%, rgba(2, 5, 14, 0.98) 80%);
-            background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px);
-        }
+        #matrixAnimatedBackdrop { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999990; pointer-events: none; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.15) 0%, rgba(2, 5, 14, 0.98) 80%); background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px); background-size: 30px 30px; animation: gridMove 20s linear infinite; backdrop-filter: blur(10px); }
         @keyframes gridMove { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
         
         /* PERFECT LOCK AREA */
-        .locked-area-active {
-            position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important;
-            width: 95vw !important; height: 95vh !important; max-width: 1800px !important; z-index: 1000001 !important;
-            border-radius: 16px !important; margin: 0 !important; border: 2px solid var(--neon-cyan) !important;
-            box-sizing: border-box !important; background: var(--wa-bg) !important;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(0,242,254,0.4) !important; overflow: hidden !important;
-            animation: popUpGenZ 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
-        }
+        .locked-area-active { position: fixed !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 95vw !important; height: 95vh !important; max-width: 1800px !important; z-index: 1000001 !important; border-radius: 16px !important; margin: 0 !important; border: 2px solid var(--neon-cyan) !important; box-sizing: border-box !important; background: var(--wa-bg) !important; box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 60px rgba(0,242,254,0.4) !important; overflow: hidden !important; animation: popUpGenZ 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important; }
         @keyframes popUpGenZ { 0% { opacity:0; transform: translate(-50%, -45%) scale(0.95); } 100% { opacity:1; transform: translate(-50%, -50%) scale(1); } }
+
+        /* FULL SCREEN EXIT BUTTON FIX */
+        .exit-fullscreen-wa-btn { display: none; }
+        .locked-area-active .exit-fullscreen-wa-btn { display: flex; position: absolute; top: 15px; right: 15px; z-index: 999999; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 12px 24px; border-radius: 8px; font-weight: 900; font-family: 'Orbitron'; font-size: 1rem; cursor: pointer; border: 2px solid white; box-shadow: 0 0 20px rgba(231,76,60,0.8); animation: alertPulse 2s infinite alternate; }
+        @keyframes alertPulse { 0% { box-shadow: 0 0 10px rgba(231,76,60,0.6); } 100% { box-shadow: 0 0 30px rgba(231,76,60,1); transform: scale(1.02); } }
 
         input, textarea, select, [contenteditable="true"] { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
         .nav-btn, .hud-tab, .channel-tab-btn, .admin-nav-tab, .hud-engage-btn, .whatsapp-circle-btn, .header-actions-btn, .bubble-msg-wrapper { user-select: none; -webkit-user-select: none; }
@@ -88,12 +74,11 @@
         @keyframes cyberPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); } }
         .preloader-text { color: var(--neon-cyan); margin-top: 30px; font-family: 'Orbitron'; font-weight: 900; font-size: 1.4rem; letter-spacing: 5px; animation: pulseGlow 1.2s infinite alternate; text-shadow: 0 0 20px var(--neon-cyan); }
         
-        /* UPGRADED MENU BAR - FULL SCREEN AND GLASSMORPHIC */
         .top-cyber-navbar { position: fixed; top: 0; left: 0; right: 0; width: 100vw; height: 70px; background: rgba(10, 18, 30, 0.4); border-bottom: 1px solid rgba(0, 242, 254, 0.2); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 99999; backdrop-filter: blur(25px) saturate(180%); -webkit-backdrop-filter: blur(25px) saturate(180%); box-shadow: 0 5px 25px rgba(0, 242, 254, 0.1); transition: all 0.4s ease; border-radius: 0; max-width: 100%;}
         body.light-theme-active .top-cyber-navbar { background: rgba(255, 255, 255, 0.6); border-color: var(--border-glass); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); }
         .navbar-brand-glitch { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; position: relative; animation: glitchTextAnim 4s infinite; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
         body.light-theme-active .navbar-brand-glitch { color: #0f172a; text-shadow: none; animation: none; }
-        @keyframes glitchTextAnim { 0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 5% { text-shadow: -2px 0 #ff007f, 2px 0 #00f2fe; } 10% { text-shadow: 2px 0 #ff007f, -2px 0 #00f2fe; } 15%, 100% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8); } }
+        
         .navbar-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; z-index: 100000; }
         .nav-btn { background: rgba(10, 20, 40, 0.8); border: 1px solid rgba(0, 242, 254, 0.5); border-radius: 8px; color: var(--neon-cyan); padding: 8px 15px; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-size: 0.85rem; letter-spacing: 1px; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); text-transform: uppercase;}
         .nav-btn:hover { background: rgba(0, 242, 254, 0.15); box-shadow: 0 0 20px rgba(0, 242, 254, 0.5); transform: translateY(-2px); color: #fff; border-color: #fff; }
@@ -114,19 +99,20 @@
         .cyber-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--neon-cyan); cursor: pointer; box-shadow: 0 0 15px var(--neon-cyan); transition: 0.3s; }
         .cyber-range::-webkit-slider-thumb:hover { transform: scale(1.3); background: #fff; }
 
-        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform, opacity;}
-        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; will-change: transform; }
+        .smoke-container { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+        .smoke-cloud { position: absolute; top: -50%; width: 50vw; height: 200vh; filter: blur(140px); opacity: 0.14; border-radius: 50%; animation: smokeDrift 22s infinite alternate ease-in-out; }
         .smoke-left { left: -20vw; background: radial-gradient(circle, #ff007f 0%, #7f00ff 50%, transparent 100%); }
         .smoke-right { right: -20vw; background: radial-gradient(circle, #00f2fe 0%, #4facfe 50%, transparent 100%); animation-delay: -11s; }
         .thunder-overlay { position: fixed; inset: 0; background: #fff; z-index: 9999; pointer-events: none; opacity: 0; mix-blend-mode: overlay; transition: opacity 0.1s; display: none; }
         .thunder-overlay.flash { display: block; animation: thunderStrike 0.5s ease-out forwards; }
         @keyframes thunderStrike { 0% { opacity: 0; } 10% { opacity: 0.95; } 20% { opacity: 0; } 30% { opacity: 0.7; } 40% { opacity: 0; } 100% { opacity: 0; } }
+        
         .cinema-stage { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden; transform-style: preserve-3d; transition: opacity 0.4s ease; }
-        @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 50% { --lamp-color: #ff007f; --lamp-shadow: rgba(255, 0, 127, 0.95); } }
         .cinema-stage.activated { animation: dynamicColorCycle 5s infinite linear; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.2) 0%, rgba(2, 5, 14, 1) 90%); box-shadow: inset 0 0 120px rgba(0, 242, 254, 0.1); }
+        @keyframes dynamicColorCycle { 0%, 100% { --lamp-color: #00f2fe; --lamp-shadow: rgba(0, 242, 254, 0.95); } 50% { --lamp-color: #ff007f; --lamp-shadow: rgba(255, 0, 127, 0.95); } }
         
         @keyframes floatLamp { 0%, 100% { transform: scale(1.1) translateZ(50px) translateY(0); } 50% { transform: scale(1.1) translateZ(50px) translateY(-15px); } }
-        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; will-change: transform; transform-style: preserve-3d;}
+        .cyber-lamp-core { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; animation: floatLamp 4s infinite ease-in-out; transform-style: preserve-3d;}
         .cinema-stage.activated .cyber-lamp-core { animation: none; transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); transform: translateX(400px) scale(0.85) translateZ(50px); }
         
         .metallic-shutter-head { width: 280px; height: 180px; background: conic-gradient(from 180deg at 50% 50%, #1a2536, #475b7a, #02050a, #475b7a, #1a2536); border-radius: 140px 140px 60px 60px; position: relative; border: 4px solid var(--lamp-color); box-shadow: 0 30px 50px rgba(0,0,0,0.8), inset 0 10px 30px rgba(255,255,255,0.2); z-index: 5; overflow: hidden; transform: translateZ(30px); transition: border-color 0.4s;}
@@ -142,7 +128,6 @@
         .cinema-stage.activated .gate-left { transform: translateX(-100%); opacity: 0; }
         .cinema-stage.activated .gate-right { transform: translateX(100%); opacity: 0; }
         
-        /* UPGRADED BLINDING CORE LIGHT */
         .blinding-core-light { position: absolute; width: 120px; height: 120px; background: radial-gradient(circle, #ffffff 40%, var(--lamp-color) 80%); border-radius: 50%; left: 50%; top: 30px; transform: translateX(-50%); filter: blur(8px); opacity: 0; transition: opacity 0.4s ease, background 0.4s ease; box-shadow: 0 0 100px #ffffff, 0 0 200px var(--lamp-color); }
         .cinema-stage.activated .blinding-core-light { opacity: 1; animation: pulseGlowSuper 2s infinite alternate; }
         @keyframes pulseGlowSuper { 0% { transform: translateX(-50%) scale(1); filter: blur(8px); } 100% { transform: translateX(-50%) scale(1.1); filter: blur(12px); box-shadow: 0 0 150px #fff, 0 0 250px var(--lamp-color); } }
@@ -167,6 +152,7 @@
         .hud-status-chip { font-family: 'Orbitron'; font-size: 0.8rem; color: #f1c40f; background: rgba(241,196,15,0.15); padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(241,196,15,0.4); letter-spacing: 1px; font-weight: bold; }
         .hud-status-chip.cyan-pulse { color: #00f2fe; background: rgba(0,242,254,0.15); border-color: rgba(0,242,254,0.5); }
         .hud-logo { font-family: 'Orbitron'; color: var(--text-main); font-size: 3rem; text-align: center; margin-bottom: 30px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 10px 20px rgba(0,0,0,0.6); animation: glitchTextAnim 4s infinite alternate; transform: translateZ(30px); }
+        
         .hud-input-cluster { position: relative; margin-bottom: 30px; width: 100%; transform: translateZ(10px); }
         .hud-input-cluster input, .hud-input-cluster textarea, .hud-input-cluster select { width: 100%; padding: 20px 18px; background: var(--input-bg); border: 2px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-size: 1.15rem; outline: none; transition: 0.3s; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
         .hud-input-cluster input:focus, .hud-input-cluster textarea:focus { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0,242,254,0.4); }
@@ -183,12 +169,11 @@
         .hud-container-panel { background: var(--panel-glass); border: 1px solid var(--border-glass); border-top: 6px solid var(--neon-cyan); padding: 40px 35px; border-radius: 20px; width: 100%; max-width: 1400px; box-shadow: var(--matrix-3d-shadow-cyan); backdrop-filter: blur(40px); margin-top: 10px; margin-bottom: 40px; transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .hud-container-panel:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,242,254,0.1); }
         
-        /* UPGRADED COMPACT MAIN MENU (NO SHAKE, GEN-Z STYLE) */
+        /* UPGRADED COMPACT MAIN MENU */
         .main-menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; padding: 10px; margin-top: 20px; }
         .menu-card { background: linear-gradient(145deg, rgba(4, 14, 33, 0.9), rgba(10, 22, 45, 0.9)); border: 1px solid var(--border-glass); border-radius: 12px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0, 242, 254, 0.05); position: relative; overflow: hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; }
         .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(0,242,254,0.2), transparent); transform: skewX(-25deg); transition: 0.5s; z-index:1; }
         .menu-card:hover::before { left: 150%; }
-        /* Removed shaky 3D transform, using smooth scale up */
         .menu-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,242,254,0.4), inset 0 0 15px rgba(0,242,254,0.2); border-color: var(--neon-cyan); z-index: 10; }
         .menu-card .icon { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 15px var(--neon-cyan); position:relative; z-index:2; transition: 0.3s; }
         .menu-card:hover .icon { transform: scale(1.1); text-shadow: 0 0 25px var(--neon-cyan); }
@@ -203,7 +188,7 @@
         /* ADMIN LIVE AI AGENT WIDGET (SUPER UPGRADED UI) */
         .ai-agent-widget { position: fixed; right: 20px; bottom: 20px; background: rgba(6, 17, 38, 0.95); border: 2px solid var(--neon-pink); border-radius: 12px; box-shadow: 0 10px 40px rgba(255,0,127,0.4); z-index: 100000; display: flex; flex-direction: column; overflow: hidden; transition: all 0.3s ease; backdrop-filter: blur(15px); min-width: 320px; width: 380px; height: 450px; resize: both; }
         .ai-agent-widget.minimized { height: 45px !important; min-height: 45px !important; resize: none; bottom: 0; right: 20px; }
-        .ai-agent-widget.maximized { top: 20px !important; left: 20px !important; right: 20px !important; bottom: 20px !important; width: auto !important; height: auto !important; resize: none !important; }
+        .ai-agent-widget.maximized { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; border-radius: 0 !important; z-index: 9999999 !important; resize: none !important; }
         
         .ai-agent-header { background: linear-gradient(90deg, #1a001a, #ff007f); padding: 10px 15px; color: #fff; font-family: 'Orbitron'; font-weight: 900; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; user-select: none; }
         .ai-window-controls { display: flex; gap: 10px; align-items: center; }
@@ -501,13 +486,11 @@
         <div class="preloader-text">NEXUS SECURE GATEWAY V25.0</div>
     </div>
     
-    <!-- NEXT-GEN LOGIN SUCCESS ANIMATION OVERLAY -->
     <div id="loginSuccessOverlay">
         <div class="cyber-unlock-ring"></div>
         <div class="warp-text">ACCESS GRANTED</div>
     </div>
 
-    <!-- FULL SCREEN CODE PREVIEW OVERLAY (WITH CORNER EXIT BUTTON) -->
     <div id="codeExecutionFullscreenOverlay">
         <button class="code-fullscreen-exit-btn" onclick="window.closeFullscreenCodePreview()">
             <span>✖ EXIT PREVIEW</span>
@@ -515,16 +498,13 @@
         <iframe id="fullscreenCodeRunnerIframe" class="code-fullscreen-iframe"></iframe>
     </div>
 
-    <!-- CODE LIBRARY MODAL -->
     <div id="codeLibraryModal" class="code-library-modal" onclick="window.closeCodeLibrary()">
         <div class="code-library-content" onclick="event.stopPropagation()">
             <div class="code-library-header">
                 <h3 class="neon-cyan-text" style="font-size:1.5rem; margin:0;">📚 YOUR CODE LIBRARY</h3>
                 <button onclick="window.closeCodeLibrary()" class="abort-btn" style="padding:8px 15px;">✖</button>
             </div>
-            <div class="code-library-list" id="codeLibraryListContainer">
-                <!-- Library items injected here -->
-            </div>
+            <div class="code-library-list" id="codeLibraryListContainer"></div>
         </div>
     </div>
 
@@ -572,14 +552,14 @@
                 <div class="hud-status-chip cyan-pulse">UNIVERSAL SYNC: OK</div>
             </div>
             <h1 class="hud-logo">NEXUS GATEWAY</h1>
-            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin(event);">
+            <form id="secureGatewayForm" onsubmit="event.preventDefault(); window.executeClusterLogin();">
                 <div class="hud-input-cluster">
-                    <input type="text" id="accessNodeUser" required placeholder=" " oninput="window.debouncedInputCheck(); window.playTypingSound();">
+                    <input type="text" id="accessNodeUser" required placeholder=" " onkeyup="window.debouncedAutoLoginCheck(); window.playTypingSound();">
                     <label id="hudInputLabel">User ID / Admin ID</label>
                     <div class="neon-glow-underline"></div>
                 </div>
                 <div class="hud-input-cluster">
-                    <input type="password" id="accessNodePass" required placeholder=" " oninput="window.debouncedAutoLoginCheck(); window.playTypingSound();">
+                    <input type="password" id="accessNodePass" required placeholder=" " onkeyup="window.debouncedAutoLoginCheck(); window.playTypingSound();">
                     <label>Secure Access Password Key</label>
                     <div class="neon-glow-underline"></div>
                 </div>
@@ -644,7 +624,8 @@
                     <div class="icon">💬</div><h3>WhatsApp Web</h3><p>Chat & Status management.</p>
                 </div>
                 <div class="menu-card" id="menuCard_request" onclick="window.switchCustomerChannel('request')">
-                    <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">🎫</div><h3 style="color:#f1c40f;">Support Request</h3><p>Direct requests to Admin.</p>
+                    <div class="icon" style="text-shadow: 0 0 20px #f1c40f;">🎫<span id="aiSmsBadge" style="display:none; position:absolute; top:-5px; right:-10px; background:#e74c3c; color:white; font-size:12px; padding:2px 6px; border-radius:10px; font-family:sans-serif;">New</span></div>
+                    <h3 style="color:#f1c40f;">Support Request</h3><p>Direct requests to Admin.</p>
                 </div>
             </div>
 
@@ -703,6 +684,7 @@
                 <div class="notes-engine-card-surface" id="notesMainWrapperCard">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                         <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin:0;">🧠 PRO WORKSPACE NOTEPAD</h3>
+                        <button id="waLockBtn_notes" onclick="window.toggleWaAreaLock('notesMainWrapperCard', 'waLockBtn_notes')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-weight:900;">🔓 Unlock View</button>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom: 15px;">
@@ -822,16 +804,18 @@
                 </div>
             </div>
 
-            <!-- GAMING TALKING TOM BLOCK -->
+            <!-- GAMING TALKING TOM BLOCK & DRAWING ROAD -->
             <div id="customerGamingInterfaceBlock" class="hidden">
                 <div class="gaming-bar-nexus-wrapper">
-                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 20px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM</h2>
+                    <h2 class="neon-cyan-text" style="font-size: 1.8rem; margin-bottom:15px; text-shadow:0 0 20px var(--neon-cyan);">🐱 VIRTUAL TALKING TOM & DRAWING</h2>
+                    <p style="color:#00f2fe; margin-bottom: 10px;">Drag mouse/finger to draw neon lines directly on Tom!</p>
                     <div class="gaming-canvas-container-box">
                         <canvas id="nexusMatrixArcadeCanvas" class="gaming-canvas-element" width="600" height="320"></canvas>
                         <div id="virtualTomTalkOverlay" style="position:absolute; bottom:15px; left:50%; transform:translateX(-50%); width:90%; background:rgba(2,6,20,0.95); padding:10px; border-radius:10px; border:2px solid var(--neon-cyan); display: flex; justify-content: space-between; align-items: center; z-index:100; box-shadow: 0 4px 10px rgba(0,0,0,0.8);">
-                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="width:55%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-weight:700; outline:none; border-radius:6px; font-size:0.95rem;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
-                            <button id="virtualTomLiveVoiceRecBtn" onclick="window.toggleTalkingTomVoiceListenerEngine()" style="width:20%; padding:10px; background:var(--neon-pink); border:none; color:#fff; font-weight:900; cursor:pointer; border-radius:6px; font-size:0.85rem; box-shadow: 0 2px 5px rgba(255,0,127,0.5);">🎙️ LISTEN</button>
-                            <button onclick="window.executeVirtualTomSpeechLoop()" style="width:20%; padding:10px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-weight:900; cursor:pointer; border-radius:6px; font-size: 0.85rem; box-shadow: 0 2px 5px rgba(0,242,254,0.5);">SAY</button>
+                            <input type="text" id="virtualTomTextInput" placeholder="Type to talk..." style="width:45%; padding:10px; background:#010610; border:1px solid var(--border-glass); color:#fff; font-weight:700; outline:none; border-radius:6px; font-size:0.95rem;" onkeydown="if(event.key==='Enter') window.executeVirtualTomSpeechLoop()">
+                            <button onclick="window.clearCanvasRoadStrokes()" style="width:15%; padding:10px; background:transparent; border:1px solid #e74c3c; color:#e74c3c; font-weight:900; cursor:pointer; border-radius:6px; font-size:0.8rem;">🧹 CLEAR</button>
+                            <button id="virtualTomLiveVoiceRecBtn" onclick="window.toggleTalkingTomVoiceListenerEngine()" style="width:15%; padding:10px; background:var(--neon-pink); border:none; color:#fff; font-weight:900; cursor:pointer; border-radius:6px; font-size:0.85rem; box-shadow: 0 2px 5px rgba(255,0,127,0.5);">🎙️</button>
+                            <button onclick="window.executeVirtualTomSpeechLoop()" style="width:15%; padding:10px; background:linear-gradient(135deg, #00f2fe, #4facfe); border:none; color:#000; font-weight:900; cursor:pointer; border-radius:6px; font-size: 0.85rem; box-shadow: 0 2px 5px rgba(0,242,254,0.5);">SAY</button>
                         </div>
                     </div>
                 </div>
@@ -840,11 +824,13 @@
             <!-- WHATSAPP PRO BLOCK (CUSTOMER) -->
             <div id="customerChatInterfaceBlock" class="hidden">
                 <div class="chat-io-grid-matrix" id="clientChatGridMatrixWrapper">
+                    <button class="exit-fullscreen-wa-btn" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', 'waLockBtn_user')">✖ EXIT FULL SCREEN</button>
+                    
                     <div class="chat-target-userlist-pane">
                         <div class="wa-top-bar">
                             <span>WhatsApp Pro</span>
                             <div class="wa-top-bar-icons">
-                                <span>📷</span><span onclick="window.toggleInChatSearch()">🔍</span><span>⋮</span>
+                                <button id="waLockBtn_user" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', 'waLockBtn_user')" style="background:transparent; border:1px solid #00f2fe; color:#00f2fe; padding:2px 8px; border-radius:4px; font-size:0.8rem; cursor:pointer;">⛶ FULL</button>
                             </div>
                         </div>
                         <div class="whatsapp-search-box">
@@ -896,7 +882,6 @@
                                 <button onclick="window.toggleAIMatrixAssistantChannel()" id="btnAIAssistantToggle" class="header-actions-btn" title="Toggle AI">🤖</button>
                                 <button onclick="window.clearCurrentChatConversation()" class="header-actions-btn" style="color:#e74c3c;" title="Clear Chat">🗑️</button>
                                 <button onclick="window.switchChatWallpaperMatrix()" class="header-actions-btn" title="Wallpaper">🎨</button>
-                                <button class="header-actions-btn" title="Toggle Full Screen View" onclick="window.toggleWaAreaLock('clientChatGridMatrixWrapper', this)">⛶</button>
                             </div>
                         </div>
 
@@ -1219,11 +1204,13 @@
 
                 <div id="adminSpyChatBlock" class="hidden">
                     <div class="chat-io-grid-matrix" id="adminChatGridBox">
+                        <button class="exit-fullscreen-wa-btn" onclick="window.toggleWaAreaLock('adminChatGridBox', 'waLockBtn_admin')">✖ EXIT FULL SCREEN</button>
+
                         <div class="chat-target-userlist-pane">
                             <div class="wa-top-bar">
                                 <span>WhatsApp Admin Proxy</span>
                                 <div class="wa-top-bar-icons">
-                                    <span>📷</span><span>⋮</span>
+                                    <button id="waLockBtn_admin" onclick="window.toggleWaAreaLock('adminChatGridBox', 'waLockBtn_admin')" style="background:transparent; border:1px solid #00f2fe; color:#00f2fe; padding:2px 8px; border-radius:4px; font-size:0.8rem; cursor:pointer;">⛶ FULL</button>
                                 </div>
                             </div>
                             <div class="whatsapp-search-box">
@@ -1501,7 +1488,7 @@
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
                 cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
                 cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
-                globalFeatures: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, thunderMode: "medium", autoLogoutTime: 60 },
+                globalFeatures: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true, thunderMode: "medium", autoLogoutTime: 60 },
                 aiPendingAttachment: null
             };
             return {
@@ -1544,6 +1531,29 @@
             document.onclick = resetInactivityTimer;
         }
         executeAutoLogoutTracker();
+
+        // ==========================================
+        // AUTO-LOGIN LOGIC
+        // ==========================================
+        window.debouncedAutoLoginCheck = function() {
+            clearTimeout(_typingTimer);
+            _typingTimer = setTimeout(() => {
+                const u = document.getElementById('accessNodeUser').value.trim();
+                const p = document.getElementById('accessNodePass').value.trim();
+                if(!u || !p) return;
+                
+                let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
+                    window.executeClusterLogin();
+                    return;
+                }
+                
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u);
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    window.executeClusterLogin();
+                }
+            }, 400); 
+        };
 
         // ==========================================
         // SAVE CODE LIBRARY & SYNC
@@ -1791,6 +1801,8 @@
                     return;
                 }
                 const msgsArr = Object.values(myAiMsgs).sort((a,b)=>b.epoch - a.epoch);
+                let unreadCount = 0; // Simple unread visual
+                
                 inbox.innerHTML = msgsArr.map(m => {
                     let attHtml = "";
                     if(m.attachment) {
@@ -1804,6 +1816,10 @@
                         ${attHtml}
                     </div>`;
                 }).join('');
+                
+                // Show badge on support card
+                const badge = document.getElementById('aiSmsBadge');
+                if(badge && msgsArr.length > 0) badge.style.display = 'block';
             }
         });
 
@@ -2020,20 +2036,55 @@
                                 const file = items[i].getAsFile();
                                 const reader = new FileReader();
                                 reader.onload = (readerEvent) => {
-                                        document.execCommand('insertHTML', false, `<img src="${readerEvent.target.result}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-pink);"><br>`);
-                                        window.updateNotepadLiveCounters();
-                                    };
-                                    reader.readAsDataURL(file);
-                                }
+                                    document.execCommand('insertHTML', false, `<img src="${readerEvent.target.result}" style="max-width:100%; border-radius:12px; margin:10px 0; border:2px solid var(--neon-pink);"><br>`);
+                                    window.updateNotepadLiveCounters();
+                                };
+                                reader.readAsDataURL(file);
                             }
                         }
-                    });
-                }
-            }, 1500);
+                    }
+                });
+            }
+        }, 1500);
+
+        // FREE DRAW ROAD LOGIC ON CANVAS
+        let drawingStrokes = [];
+        let isDrawingPath = false;
+        
+        function initCanvasDrawing() {
+            const canvas = document.getElementById('nexusMatrixArcadeCanvas');
+            if(!canvas) return;
+            
+            const startDraw = (e) => { 
+                if(MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming') return;
+                isDrawingPath = true; 
+                let rect = canvas.getBoundingClientRect();
+                let x = (e.offsetX !== undefined) ? e.offsetX : (e.touches[0].clientX - rect.left);
+                let y = (e.offsetY !== undefined) ? e.offsetY : (e.touches[0].clientY - rect.top);
+                drawingStrokes.push([{x, y}]); 
+            };
+            const draw = (e) => { 
+                if(!isDrawingPath) return; 
+                e.preventDefault();
+                let rect = canvas.getBoundingClientRect();
+                let x = (e.offsetX !== undefined) ? e.offsetX : (e.touches[0].clientX - rect.left);
+                let y = (e.offsetY !== undefined) ? e.offsetY : (e.touches[0].clientY - rect.top);
+                let pts = drawingStrokes[drawingStrokes.length-1];
+                pts.push({x, y});
+            };
+            const stopDraw = () => { isDrawingPath = false; };
+
+            canvas.addEventListener('mousedown', startDraw); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stopDraw); canvas.addEventListener('mouseleave', stopDraw);
+            canvas.addEventListener('touchstart', startDraw, {passive:false}); canvas.addEventListener('touchmove', draw, {passive:false}); canvas.addEventListener('touchend', stopDraw);
+        }
+        
+        window.clearCanvasRoadStrokes = function() {
+            drawingStrokes = [];
+        };
 
         window.toggleWaAreaLock = function(matrixId, btnId) {
             const matrixNode = document.getElementById(matrixId);
-            const btnNode = document.getElementById(btnId);
+            const btnNode = document.getElementById(btnId) || document.querySelector(`#${matrixId} .exit-fullscreen-wa-btn`);
             const navBar = document.getElementById('mainCyberNavbar');
             const isNotes = matrixId.includes('notes');
             const backdrop = document.getElementById('matrixAnimatedBackdrop');
@@ -2057,9 +2108,11 @@
                         backdrop.classList.remove('hidden');
                     }
                     
-                    btnNode.innerHTML = '🔒 Locked (Fixed Center)';
-                    btnNode.style.color = '#ff007f';
-                    btnNode.style.borderColor = '#ff007f';
+                    if(btnNode && !btnNode.classList.contains('exit-fullscreen-wa-btn')) {
+                        btnNode.innerHTML = '🔒 Locked (Fixed Center)';
+                        btnNode.style.color = '#ff007f';
+                        btnNode.style.borderColor = '#ff007f';
+                    }
                 } else {
                     matrixNode.classList.remove('locked-area-active');
                     document.body.classList.remove('strict-scroll-lock');
@@ -2076,9 +2129,11 @@
                         placeholder.parentNode.removeChild(placeholder);
                     }
                     
-                    btnNode.innerHTML = '🔓 Unlock Full View';
-                    btnNode.style.color = isNotes ? '#00f2fe' : '#00f2fe';
-                    btnNode.style.borderColor = isNotes ? '#00f2fe' : '#00f2fe';
+                    if(btnNode && !btnNode.classList.contains('exit-fullscreen-wa-btn')) {
+                        btnNode.innerHTML = '🔓 Unlock Full View';
+                        btnNode.style.color = isNotes ? '#00f2fe' : '#00f2fe';
+                        btnNode.style.borderColor = isNotes ? '#00f2fe' : '#00f2fe';
+                    }
                 }
             }
         };
@@ -2799,13 +2854,18 @@
             currentArcadeEngineId = "tom"; canvasElement = document.getElementById('nexusMatrixArcadeCanvas'); canvasCtx = canvasElement ? canvasElement.getContext('2d') : null;
             if (requestArcadeFrameToken) cancelAnimationFrame(requestArcadeFrameToken);
             if (tomSpeechRecognitionInstance) { tomSpeechRecognitionInstance.stop(); isTomListeningStateActive = false; }
+            initCanvasDrawing(); // DRAWING INITIALIZE
             requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); initializeTalkingTomAudioRecognitionEngine();
         };
 
         function executeTalkingTomRenderCycle() {
             if (MatrixSystemState.get('activeCustomerWorkspaceChannel') !== 'gaming' || currentArcadeEngineId !== 'tom' || !canvasCtx) return;
             if (document.hidden) { requestArcadeFrameToken = requestAnimationFrame(executeTalkingTomRenderCycle); return; }
-            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 320); virtualTomTalkingAnimationCycle += 0.25;
+            
+            canvasCtx.fillStyle = '#0a0d16'; canvasCtx.fillRect(0, 0, 600, 320); 
+            
+            // Draw Tom
+            virtualTomTalkingAnimationCycle += 0.25;
             let catGlowHead = canvasCtx.createRadialGradient(300, 140, 10, 300, 140, 80); catGlowHead.addColorStop(0, '#95a5a6'); catGlowHead.addColorStop(1, '#7f8c8d');
             canvasCtx.fillStyle = catGlowHead; canvasCtx.beginPath(); canvasCtx.arc(300, 140, 75, 0, Math.PI*2); canvasCtx.fill();
             canvasCtx.fillStyle = '#ffffff'; canvasCtx.beginPath(); canvasCtx.arc(270, 125, 15, 0, Math.PI*2); canvasCtx.arc(330, 125, 15, 0, Math.PI*2); canvasCtx.fill();
@@ -2813,6 +2873,28 @@
             canvasCtx.arc(270 + pupOffset, 125, 6, 0, Math.PI*2); canvasCtx.arc(330 + pupOffset, 125, 6, 0, Math.PI*2); canvasCtx.fill();
             let speechMouthRadius = 6 + Math.abs(Math.cos(virtualTomTalkingAnimationCycle) * 15);
             canvasCtx.fillStyle = '#ff007f'; canvasCtx.beginPath(); canvasCtx.arc(300, 180, speechMouthRadius, 0, Math.PI); canvasCtx.fill();
+
+            // Draw Free Lines (Roads)
+            if(drawingStrokes.length > 0) {
+                canvasCtx.strokeStyle = '#00f2fe';
+                canvasCtx.lineWidth = 4;
+                canvasCtx.lineCap = 'round';
+                canvasCtx.lineJoin = 'round';
+                canvasCtx.shadowBlur = 10;
+                canvasCtx.shadowColor = '#00f2fe';
+                
+                drawingStrokes.forEach(path => {
+                    if(path.length < 2) return;
+                    canvasCtx.beginPath();
+                    canvasCtx.moveTo(path[0].x, path[0].y);
+                    for(let i=1; i<path.length; i++) {
+                        canvasCtx.lineTo(path[i].x, path[i].y);
+                    }
+                    canvasCtx.stroke();
+                });
+                
+                canvasCtx.shadowBlur = 0; // reset for next frame
+            }
 
             if (isTomListeningStateActive && audioAnalyserNode) {
                 audioAnalyserNode.getByteFrequencyData(visualizerDataArray); canvasCtx.fillStyle = 'rgba(255, 0, 127, 0.6)';
@@ -3973,8 +4055,11 @@
             if(isSuccess) {
                 const overlay = document.getElementById('loginSuccessOverlay');
                 overlay.classList.add('active');
-                MatrixSystemState.set('consecutiveBruteFailuresCount', 0); // Reset failures on success
+                MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                 
+                // Pura login terminal hide kar do immediately taaki animation ke beech dashboard flash na ho
+                document.getElementById('loginTerminal').style.display = 'none';
+
                 setTimeout(() => {
                     overlay.classList.remove('active');
                     MatrixSystemState.set('loggedInCustomerID', loggedInId);
@@ -4053,7 +4138,7 @@
             const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
             if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
             const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
                 alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
                 document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
                 window.loadAdminSubmissions(); 
