@@ -2279,16 +2279,50 @@
             if (event && event.cancelable) event.preventDefault(); 
             if (isCordPulled) return; isCordPulled = true;
             const cord = document.getElementById('triggerCord'); 
-            if (cord) cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
-            if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            
+            // Smooth Animation for pulling
+            if (cord) cord.style.transform = "translateY(50px) scale(0.95)";
+            
+            // Play sound if possible (wrapped in try-catch to prevent browser block crashes)
+            try {
+                if(isAudioContextAllowed) window.playSynthesizedSound(320, 'triangle', 0.25);
+            } catch(err) { console.log('Audio Blocked'); }
+
             setTimeout(() => { 
-                if (cord) cord.style.transform = "translateY(0px) scale(1) translateZ(150px)"; 
-                window.triggerLampActivationOverride(); 
+                if (cord) cord.style.transform = "translateY(0px) scale(1)"; 
+                
+                // DIRECT AND FORCEFUL ACTIVATION
+                const mainStage = document.getElementById('mainStage'); 
+                const loginTerminal = document.getElementById('loginTerminal'); 
+                const nav = document.getElementById('mainCyberNavbar'); 
+                
+                if(mainStage) mainStage.classList.add('activated'); 
+                if(loginTerminal) {
+                    loginTerminal.style.opacity = '1';
+                    loginTerminal.style.pointerEvents = 'all';
+                    loginTerminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
+                }
+                if(nav) { 
+                    nav.style.opacity = '1'; 
+                    nav.style.pointerEvents = 'all'; 
+                }
+                
+                // Clean up ambient particles to save memory
+                if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
+                
+                // Reset flag
                 isCordPulled = false; 
             }, 300);
         };
+
+        // EVENT LISTENERS KO BHI YE WALA REPLACE KARNA HAI
         const triggerCordNode = document.getElementById('triggerCord');
-        if (triggerCordNode) { triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); triggerCordNode.addEventListener('mousedown', window.pullCordAction); }
+        if (triggerCordNode) { 
+            // Mouse aur Touch dono ke liye proper setup
+            triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); 
+            triggerCordNode.addEventListener('mousedown', window.pullCordAction); 
+            triggerCordNode.addEventListener('click', window.pullCordAction); // Add direct click just in case
+        }
 
         window.triggerLampActivationOverride = function() {
             const mainStage = document.getElementById('mainStage'); const loginTerminal = document.getElementById('loginTerminal'); isAudioContextAllowed = true; 
@@ -4164,5 +4198,47 @@
             }
         }, 2000); 
     </script>
+
+<!-- ⚡ ROPE STUCK PROBLEM FIX ⚡ -->
+<script>
+    setTimeout(() => {
+        const cord = document.getElementById('triggerCord');
+        if(cord) {
+            // Rassi kheenchne ka direct function
+            cord.onclick = function(e) {
+                e.preventDefault();
+                // 1. Rassi ko neeche kheenchne ka animation
+                cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
+                
+                setTimeout(() => {
+                    // 2. Rassi wapas upar jayegi
+                    cord.style.transform = "translateY(0px) scale(1) translateZ(150px)";
+                    
+                    // 3. Forcefully Login Screen ko aage lana
+                    const stage = document.getElementById('mainStage');
+                    const terminal = document.getElementById('loginTerminal');
+                    const nav = document.getElementById('mainCyberNavbar');
+                    
+                    if(stage) stage.classList.add('activated');
+                    if(terminal) {
+                        terminal.style.opacity = '1';
+                        terminal.style.pointerEvents = 'auto';
+                        terminal.style.visibility = 'visible';
+                        terminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
+                        terminal.style.zIndex = '999999'; /* Ekdum screen ke samne lane ke liye */
+                    }
+                    if(nav) {
+                        nav.style.opacity = '1';
+                        nav.style.pointerEvents = 'all';
+                    }
+                }, 350); // 350ms ka delay realistic feel ke liye
+            };
+            
+            // Mobile touch support ke liye
+            cord.ontouchstart = cord.onclick;
+        }
+    }, 1000); // Page load hone ke 1 second baad trigger activate hoga
+</script>
+
 </body>
 </html>
