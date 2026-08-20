@@ -900,10 +900,15 @@
                             </div>
                         </div>
 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
                         <div class="whatsapp-in-chat-search" id="waInChatSearchBarNode">
-                            <input type="text" id="waMessageSearchInput" placeholder="Search current messages..." oninput="window.filterActiveChatMessages()">
+                            <input type="text" id="waMessageSearchInput" placeholder="Search current messages..." oninput="window.runInChatSearch()">
+                            <span id="waSearchMatchCount" style="color:var(--wa-green); font-size:0.9rem; font-weight:bold; margin-left:10px; margin-right:10px;">0/0</span>
+                            <button onclick="window.navigateInChatSearch(-1)" class="header-actions-btn" title="Previous">⬆️</button>
+                            <button onclick="window.navigateInChatSearch(1)" class="header-actions-btn" title="Next">⬇️</button>
                             <button onclick="window.toggleInChatSearch()" class="header-actions-btn" style="color: #e74c3c; font-weight:bold;">✖</button>
                         </div>
+// ================= YAHAN TAK REPLACE KARNA HAI =================
                         
                         <div class="chat-pinned-message-banner hidden" id="chatPinnedMessageBannerNode">
                             <span style="font-size: 1.1rem;">📌</span> 
@@ -986,6 +991,53 @@
                             <div id="recentStatusUpdatesContainer"></div>
                         </div>
                     </div>
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+
+                    <!-- ⚙️ WHATSAPP SETTINGS & CUSTOM THEME OVERLAY -->
+                    <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005;">
+                        <div class="status-dashboard-header">
+                            <button onclick="window.closeWaSettingsOverlay()" style="background:none; border:none; color:var(--wa-text); font-size:1.4rem; cursor:pointer;">⬅️</button> Settings & Profile
+                        </div>
+                        <div style="overflow-y:auto; flex:1; padding: 20px;">
+                            <div class="status-section-title" style="padding-left:0; padding-top:0;">Profile Information</div>
+                            <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px; background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; border:1px solid var(--border-glass);">
+                                <div style="position:relative; cursor:pointer;" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
+                                    <img id="waSettingsAvatarPreview" class="whatsapp-avatar" src="" style="width:75px; height:75px; border:2px solid var(--neon-cyan);">
+                                    <div style="position:absolute; bottom:0; right:0; background:var(--wa-green); border-radius:50%; width:25px; height:25px; display:flex; justify-content:center; align-items:center; font-size:0.8rem;">📷</div>
+                                </div>
+                                <div style="flex:1;">
+                                    <label style="font-size:0.8rem; color:var(--wa-text-muted);">Name</label>
+                                    <input type="text" id="waSettingsNameInput" class="whatsapp-input-field" style="margin-top:0; padding:8px; border-color:transparent; background:transparent; border-bottom:2px solid var(--neon-cyan); border-radius:0;" placeholder="Your Name" onchange="document.getElementById('customerNameInput').value=this.value; window.updateCustomerProfileEngine();">
+                                    <label style="font-size:0.8rem; color:var(--wa-text-muted); display:block; margin-top:10px;">About (Bio)</label>
+                                    <input type="text" id="waSettingsBioInput" class="whatsapp-input-field" style="margin-top:0; padding:8px; border-color:transparent; background:transparent; border-bottom:2px solid var(--neon-cyan); border-radius:0;" placeholder="Available" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
+                                </div>
+                            </div>
+
+                            <div class="status-section-title" style="padding-left:0;">Chat Theme & Wallpaper</div>
+                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border-glass);">
+                                <div>
+                                    <div style="color:var(--wa-text); font-weight:bold; font-size:1.05rem;">Custom Gallery Theme</div>
+                                    <div style="color:var(--wa-text-muted); font-size:0.85rem;">Set custom wallpaper from device</div>
+                                </div>
+                                <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
+                                <button onclick="document.getElementById('waCustomWallpaperInput').click()" class="hud-engage-btn" style="width:auto; padding:8px 15px; font-size:0.9rem; border-radius:8px;">🖼️ UPLOAD</button>
+                            </div>
+
+                            <div class="status-section-title" style="padding-left:0;">Help & About Nexus</div>
+                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; color:var(--wa-text-muted); font-size:0.95rem; line-height:1.6; border:1px solid var(--border-glass);">
+                                <b style="color:var(--neon-cyan); font-size:1.1rem;">🚀 WhatsApp Pro Guide:</b><br><br>
+                                • <b>Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
+                                • <b>Attachment (📎):</b> Send images, docs, and audio.<br>
+                                • <b>Full Screen (⛶):</b> Maximize chat view without lag.<br>
+                                • <b>Premium (💎):</b> Access ghost mode & auto-replies.<br>
+                                • <b>AI Summarize (✨):</b> Get quick summary of long chats.<br>
+                                • <b>Calls (📞/📹):</b> Holographic 3D calling interface.<br>
+                                • <b>Custom Theme:</b> Use the Upload button above to set personal gallery images as wallpaper.<br>
+                            </div>
+                        </div>
+                    </div>
+
+// ================= YAHAN TAK REPLACE KARNA HAI =================
                 </div>
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
             </div>
@@ -3225,22 +3277,119 @@
             document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = wallpapersArr[nextWallIdx]; });
         };
 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+        let inChatSearchMatches = [];
+        let currentSearchIndex = -1;
+
         window.toggleInChatSearch = function() {
             const searchBar = document.getElementById('waInChatSearchBarNode');
             if (searchBar) {
                 searchBar.classList.toggle('active');
-                if (searchBar.classList.contains('active')) { document.getElementById('waMessageSearchInput').focus(); } 
-                else { document.getElementById('waMessageSearchInput').value = ""; window.filterActiveChatMessages(); }
+                if (searchBar.classList.contains('active')) { 
+                    document.getElementById('waMessageSearchInput').focus(); 
+                } else { 
+                    document.getElementById('waMessageSearchInput').value = ""; 
+                    window.runInChatSearch(); 
+                }
             }
         };
-            
-        window.filterActiveChatMessages = function() {
+
+        window.runInChatSearch = function() {
             const q = document.getElementById('waMessageSearchInput').value.toLowerCase();
-            document.querySelectorAll('.bubble-msg-wrapper').forEach(msg => {
-                if (msg.innerText.toLowerCase().includes(q)) { msg.style.display = "inline-block"; } 
-                else { msg.style.display = "none"; }
+            const bubbles = Array.from(document.querySelectorAll('.bubble-msg-wrapper'));
+            const countDisplay = document.getElementById('waSearchMatchCount');
+            
+            inChatSearchMatches = [];
+            currentSearchIndex = -1;
+            
+            bubbles.forEach(msg => {
+                msg.style.display = "inline-block"; 
+                msg.style.boxShadow = "none";
+                msg.style.border = "none";
             });
+
+            if (!q) {
+                if(countDisplay) countDisplay.innerText = "0/0";
+                return;
+            }
+
+            bubbles.forEach(msg => {
+                const textContent = msg.querySelector('.bubble-text-content');
+                if(textContent && textContent.innerText.toLowerCase().includes(q)) {
+                    inChatSearchMatches.push(msg);
+                }
+            });
+
+            if (inChatSearchMatches.length > 0) {
+                currentSearchIndex = inChatSearchMatches.length - 1;
+                window.updateSearchNavigation();
+            } else {
+                if(countDisplay) countDisplay.innerText = "0/0";
+            }
         };
+
+        window.navigateInChatSearch = function(direction) {
+            if(inChatSearchMatches.length === 0) return;
+            currentSearchIndex += direction;
+            if (currentSearchIndex >= inChatSearchMatches.length) currentSearchIndex = 0;
+            if (currentSearchIndex < 0) currentSearchIndex = inChatSearchMatches.length - 1;
+            window.updateSearchNavigation();
+        };
+
+        window.updateSearchNavigation = function() {
+            const countDisplay = document.getElementById('waSearchMatchCount');
+            if(countDisplay) countDisplay.innerText = `${currentSearchIndex + 1}/${inChatSearchMatches.length}`;
+            
+            inChatSearchMatches.forEach(m => { m.style.boxShadow = "none"; m.style.border = "none"; m.style.transform = "scale(1)"; });
+            
+            const targetMsg = inChatSearchMatches[currentSearchIndex];
+            if(targetMsg) {
+                targetMsg.scrollIntoView({behavior: 'smooth', block: 'center'});
+                targetMsg.style.boxShadow = "0 0 25px #2ecc71";
+                targetMsg.style.border = "2px solid #2ecc71";
+                targetMsg.style.transform = "scale(1.02)";
+                targetMsg.style.transition = "0.3s";
+            }
+        };
+
+        window.openWaSettingsOverlay = function() {
+            const dashboard = document.getElementById('whatsappSettingsOverlayPanel');
+            if(!dashboard) return;
+            
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            
+            if(userObj) {
+                document.getElementById('waSettingsAvatarPreview').src = userObj.avatar || defaultAvatarSvg;
+                document.getElementById('waSettingsNameInput').value = userObj.clientName || "";
+                document.getElementById('waSettingsBioInput').value = userObj.bio || "Available";
+            }
+            
+            dashboard.classList.remove('hidden');
+        };
+
+        window.closeWaSettingsOverlay = function() { document.getElementById('whatsappSettingsOverlayPanel')?.classList.add('hidden'); };
+
+        window.applyCustomChatWallpaper = function(e) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const b64 = evt.target.result;
+                    const bgStr = `var(--wa-chat-bg) url('${b64}') center/cover`;
+                    document.querySelectorAll('.chat-stream-message-container').forEach(c => { c.style.background = bgStr; });
+                    localStorage.setItem('nexus_custom_wallpaper', bgStr);
+                    alert("✅ Custom Chat Theme Updated Successfully!");
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        setTimeout(() => {
+            const customWall = localStorage.getItem('nexus_custom_wallpaper');
+            if(customWall) document.querySelectorAll('.chat-stream-message-container').forEach(c => c.style.background = customWall);
+        }, 1500);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         window.handleUserTypingSimulationTracker = function() {
             const currentUid = MatrixSystemState.get('loggedInCustomerID'); const targetUid = MatrixSystemState.get('activeSelectedChatTargetUserId'); const inputField = document.getElementById('chatCoreMessageTextInput');
