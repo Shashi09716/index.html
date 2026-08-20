@@ -415,12 +415,14 @@
         .hologram-scanline { position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: rgba(0,242,254,0.85); box-shadow: 0 0 15px #00f2fe; animation: scanHolo 2.5s infinite linear; pointer-events: none;}
         @keyframes scanHolo { 0% { top: -10%; opacity:0; } 10% { opacity:1; } 90% { opacity:1; } 100% { top: 110%; opacity:0; } }
         
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
-        /* ⚡ FIX: Full screen z-index clash (Modals hidden behind chat) */
-        .nexus-custom-popup-overlay { position: fixed; inset: 0; background: rgba(2, 5, 14, 0.92); z-index: 3000000 !important; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+/* ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= */
+        /* ⚡ FIX 1: CSS Crash theek kiya aur sabhi Popups ko sabse aage (Top Layer) par set kiya */
+        .nexus-custom-popup-overlay { position: fixed !important; inset: 0; background: rgba(2, 5, 14, 0.92); z-index: 3000000 !important; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
         .status-viewer-overlay { z-index: 3000000 !important; }
         .nexus-popup-card-box { background: var(--wa-header); border: 2px solid var(--border-glass); padding: 30px; border-radius: 16px; width: 90%; max-width: 450px; text-align: center; color: var(--wa-text); box-shadow: 0 20px 40px rgba(0,0,0,0.7); animation: popupEntrance3D 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden; font-family:'Rajdhani', sans-serif;}
-// ================= YAHAN TAK REPLACE KARNA HAI =================
+        
+        .emoji-matrix-drawer, .mainframe-gif-drawer, .wa-attachment-popover, .msg-action-menu { z-index: 2000005 !important; }
+/* ================= YAHAN TAK REPLACE KARNA HAI ================= */
 
         @keyframes popupEntrance3D { from { opacity: 0; transform: scale(0.8) translateY(25px); } to { opacity: 1; transform: scale(1) translateY(0); } }
         .nexus-popup-card-box h4 { font-family: 'Rajdhani', sans-serif; color: var(--neon-cyan); margin-bottom: 20px; font-size: 1.5rem; font-weight:800; text-shadow: 0 0 10px rgba(0,242,254,0.4);}
@@ -4385,7 +4387,14 @@
             });
         };
 
-        setTimeout(() => { checkActiveStateSessionRetentionOnLaunch(); }, 500);
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+        // ⚡ FIX 2: Emojis aur GIFs ko page load hote hi draw karne ka command
+        setTimeout(() => { 
+            window.renderInteractiveDrawersContent(); 
+            checkActiveStateSessionRetentionOnLaunch(); 
+        }, 500);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
+
     </script>
 
     <script>
