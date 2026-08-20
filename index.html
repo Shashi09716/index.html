@@ -1897,8 +1897,12 @@
             setTimeout(() => {
                 let response = "";
                 // Match command: sms user123 Hello! OR send to user123 Hello! OR /send user123 Hello!
-                const match = text.match(/^(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
                 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+                // ⚡ FIX: Regex mein se '^' hata diya gaya hai. Ab attachment ke sath bhi command fail nahi hoga!
+                const match = text.match(/(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
+
                 if(match) {
                     let targetUid = match[1];
                     let msgContent = match[2] || "";
