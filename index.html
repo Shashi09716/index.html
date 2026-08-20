@@ -47,19 +47,16 @@
             overflow: hidden !important; height: 100vh !important; width: 100vw !important; position: fixed !important; touch-action: none !important; 
         }
 
-        /* --- NEXT-GEN MIND-BLOWING HYPER-WARP LOGIN ANIMATION --- */
-        #loginSuccessOverlay { position: fixed; inset: 0; background: #000; z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; perspective: 1000px; overflow: hidden; }
-        #loginSuccessOverlay.active { opacity: 1; visibility: visible; animation: warpSpeed 2.5s ease-in forwards; }
-        .hyper-tunnel { position: absolute; width: 200vw; height: 200vh; background: conic-gradient(from 0deg, transparent, var(--neon-cyan), transparent, var(--neon-pink), transparent); animation: spinTunnel 1s linear infinite; opacity: 0.5; mix-blend-mode: screen; }
-        .hyper-tunnel-2 { position: absolute; width: 200vw; height: 200vh; background: conic-gradient(from 180deg, transparent, #fff, transparent, var(--neon-green), transparent); animation: spinTunnelRev 0.8s linear infinite; opacity: 0.5; mix-blend-mode: screen; }
-        .portal-core-burst { width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 100px 50px #fff, 0 0 200px 100px var(--neon-cyan); animation: burstCore 2.5s forwards; z-index: 10;}
-        .warp-text { position: absolute; font-family: 'Orbitron'; font-size: 4rem; color: #fff; text-shadow: 0 0 40px var(--neon-cyan); font-weight: 900; z-index: 20; animation: warpTextMove 2.5s forwards; letter-spacing: 12px; }
+        /* --- NEXT-GEN MIND-BLOWING HYPER-WARP LOGIN ANIMATION (UPDATED FOR PROFESSIONAL LOOK) --- */
+        #loginSuccessOverlay { position: fixed; inset: 0; background: #02050e; z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; perspective: 1000px; overflow: hidden; }
+        #loginSuccessOverlay.active { opacity: 1; visibility: visible; animation: cyberFadeOut 2.5s ease-in-out forwards; }
+        .cyber-unlock-ring { width: 120px; height: 120px; border: 4px dashed var(--neon-cyan); border-radius: 50%; animation: spinRing 2s linear infinite, glowPulse 1s alternate infinite; margin-bottom: 30px; box-shadow: 0 0 20px var(--neon-cyan), inset 0 0 20px var(--neon-cyan); border-left-color: transparent;}
+        .warp-text { font-family: 'Orbitron'; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); font-weight: 900; z-index: 20; letter-spacing: 10px; animation: textGlitchEntry 2.5s forwards; }
         
-        @keyframes spinTunnel { 100% { transform: rotate(360deg) scale(2); } }
-        @keyframes spinTunnelRev { 100% { transform: rotate(-360deg) scale(2); } }
-        @keyframes burstCore { 0% { transform: scale(0); opacity: 1; } 80% { transform: scale(50); opacity: 1; } 100% { transform: scale(100); opacity: 0; } }
-        @keyframes warpTextMove { 0% { transform: translateZ(-1000px) scale(0); opacity: 0; } 50% { transform: translateZ(0) scale(1.5); opacity: 1; } 100% { transform: translateZ(500px) scale(3); opacity: 0; } }
-        @keyframes warpSpeed { 0% { background: rgba(0,0,0,1); } 80% { background: rgba(255,255,255,1); } 100% { background: transparent; } }
+        @keyframes spinRing { 100% { transform: rotate(360deg); } }
+        @keyframes glowPulse { 0% { box-shadow: 0 0 10px var(--neon-cyan), inset 0 0 10px var(--neon-cyan); } 100% { box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 30px var(--neon-cyan); } }
+        @keyframes textGlitchEntry { 0% { opacity: 0; transform: translateY(30px) scale(0.9); filter: blur(10px); } 20% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); } 80% { opacity: 1; transform: scale(1.05); filter: blur(0px); } 100% { opacity: 0; transform: scale(1.5); filter: blur(20px); } }
+        @keyframes cyberFadeOut { 0% { background: rgba(2, 5, 14, 1); opacity: 1; } 80% { background: rgba(2, 5, 14, 1); opacity: 1; } 100% { opacity: 0; visibility: hidden; background: transparent; } }
 
         /* GEN-Z ANIMATED CYBER GRID BACKDROP FOR LOCK VIEW */
         #matrixAnimatedBackdrop {
@@ -492,9 +489,7 @@
     
     <!-- NEXT-GEN LOGIN SUCCESS ANIMATION OVERLAY -->
     <div id="loginSuccessOverlay">
-        <div class="hyper-tunnel"></div>
-        <div class="hyper-tunnel-2"></div>
-        <div class="portal-core-burst"></div>
+        <div class="cyber-unlock-ring"></div>
         <div class="warp-text">ACCESS GRANTED</div>
     </div>
 
@@ -1418,6 +1413,50 @@
 
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
+
+        // --- MISSING NAVIGATION LOGIC ADDED HERE ---
+        window.switchCustomerChannel = function(channel) {
+            MatrixSystemState.set('activeCustomerWorkspaceChannel', channel);
+            localStorage.setItem('nexus_active_chan_route', channel);
+            const blocks = ['customerMainMenuBlock', 'customerUploadInterfaceBlock', 'customerNotesInterfaceBlock', 'customerCodeInterfaceBlock', 'customerVaultInterfaceBlock', 'customerGamingInterfaceBlock', 'customerChatInterfaceBlock', 'customerRequestInterfaceBlock'];
+            blocks.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+            
+            const targetMap = { 'menu': 'customerMainMenuBlock', 'upload': 'customerUploadInterfaceBlock', 'notes': 'customerNotesInterfaceBlock', 'code': 'customerCodeInterfaceBlock', 'vault': 'customerVaultInterfaceBlock', 'gaming': 'customerGamingInterfaceBlock', 'chat': 'customerChatInterfaceBlock', 'request': 'customerRequestInterfaceBlock' };
+            const targetId = targetMap[channel];
+            if (targetId && document.getElementById(targetId)) document.getElementById(targetId).classList.remove('hidden');
+            
+            const homeBtn = document.getElementById('btnBackToHome');
+            if (homeBtn) { if (channel === 'menu') homeBtn.classList.add('hidden'); else homeBtn.classList.remove('hidden'); }
+            
+            if(channel === 'chat') window.initializeCrossLinkChatPanel();
+            if(channel === 'vault') window.renderCloudVault();
+            if(channel === 'gaming') window.bootArcadeSubGame();
+            if(channel === 'request') window.renderCustomerTicketHistory();
+        };
+
+        window.switchAdminSubSection = function(section) {
+            MatrixSystemState.set('activeAdminSubSection', section);
+            localStorage.setItem('nexus_active_chan_route', section);
+            const blocks = ['adminMainMenuBlock', 'creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminCodeInterfaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'];
+            blocks.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+            
+            const targetMap = { 'menu': 'adminMainMenuBlock', 'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock', 'workspace': 'policyWorkspaceBlock', 'code': 'adminCodeInterfaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock', 'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock' };
+            const targetId = targetMap[section];
+            if (targetId && document.getElementById(targetId)) document.getElementById(targetId).classList.remove('hidden');
+            
+            const homeBtn = document.getElementById('btnAdminBackToHome');
+            if (homeBtn) { if (section === 'menu') homeBtn.classList.add('hidden'); else homeBtn.classList.remove('hidden'); }
+            
+            if(section === 'creation') window.renderLiveCreationStatsSummary();
+            if(section === 'approvals') window.renderAdminPendingApprovals();
+            if(section === 'credentials') window.renderUserControlPanel();
+            if(section === 'workspace') window.renderPolicyCardsBlock();
+            if(section === 'spychat') window.renderAdminSpyUserList();
+            if(section === 'tickets') window.renderAdminTickets();
+            if(section === 'aispy') window.renderAdminAiInterceptionSpyBlock();
+            if(section === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+        };
+        // -------------------------------------------
 
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
 
