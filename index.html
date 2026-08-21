@@ -999,50 +999,115 @@
                         </div>
                     </div>
 
-                    <!-- ⚙️ WHATSAPP SETTINGS & CUSTOM THEME OVERLAY -->
-                    <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005;">
-                        <div class="status-dashboard-header">
-                            <button onclick="window.closeWaSettingsOverlay()" style="background:none; border:none; color:var(--wa-text); font-size:1.4rem; cursor:pointer;">⬅️</button> Settings & Profile
+                    <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005; background: var(--wa-bg);">
+                        <div class="status-dashboard-header" style="background: var(--wa-header); border-bottom: 1px solid var(--wa-border); box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+                            <button onclick="window.closeWaSettingsOverlay()" style="background:none; border:none; color:var(--wa-text); font-size:1.4rem; cursor:pointer; transition:0.2s;" onmouseover="this.style.transform='translateX(-5px)'" onmouseout="this.style.transform='translateX(0)'">⬅️</button> 
+                            <span style="margin-left: 15px; font-weight: 600; font-family: 'Segoe UI', sans-serif; font-size:1.2rem;">Settings</span>
                         </div>
-                        <div style="overflow-y:auto; flex:1; padding: 20px;">
-                            <div class="status-section-title" style="padding-left:0; padding-top:0;">Profile Information</div>
-                            <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px; background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; border:1px solid var(--border-glass);">
-                                <div style="position:relative; cursor:pointer;" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
-                                    <img id="waSettingsAvatarPreview" class="whatsapp-avatar" src="" style="width:75px; height:75px; border:2px solid var(--neon-cyan);">
-                                    <div style="position:absolute; bottom:0; right:0; background:var(--wa-green); border-radius:50%; width:25px; height:25px; display:flex; justify-content:center; align-items:center; font-size:0.8rem;">📷</div>
+                        
+                        <div style="overflow-y:auto; flex:1; display: flex; justify-content: center; padding-bottom: 50px;">
+                            <div style="width: 100%; max-width: 600px; padding: 25px 20px;">
+                                
+                                <div style="display:flex; align-items:center; gap:20px; background: var(--wa-header); padding: 20px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                    <div style="position:relative;" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
+                                        <img id="waSettingsAvatarPreview" class="whatsapp-avatar" src="" style="width:80px; height:80px; border:2px solid #00a884; box-shadow: 0 4px 10px rgba(0,168,132,0.4);">
+                                        <div style="position:absolute; bottom:0; right:0; background:#00a884; border-radius:50%; width:28px; height:28px; display:flex; justify-content:center; align-items:center; font-size:0.85rem; border:2px solid var(--wa-header);">📷</div>
+                                    </div>
+                                    <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
+                                        <input type="text" id="waSettingsNameInput" style="background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; font-size:1.3rem; font-weight:600; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif;" placeholder="Your Name" onchange="document.getElementById('customerNameInput').value=this.value; window.updateCustomerProfileEngine();">
+                                        <input type="text" id="waSettingsBioInput" style="background:transparent; border:none; color:var(--wa-text-muted); font-size:0.95rem; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif;" placeholder="Available" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
+                                    </div>
+                                    <div style="color: #00a884; font-size: 1.6rem; margin-left: 10px;">👤</div>
                                 </div>
-                                <div style="flex:1;">
-                                    <label style="font-size:0.8rem; color:var(--wa-text-muted);">Name</label>
-                                    <input type="text" id="waSettingsNameInput" class="whatsapp-input-field" style="margin-top:0; padding:8px; border-color:transparent; background:transparent; border-bottom:2px solid var(--neon-cyan); border-radius:0;" placeholder="Your Name" onchange="document.getElementById('customerNameInput').value=this.value; window.updateCustomerProfileEngine();">
-                                    <label style="font-size:0.8rem; color:var(--wa-text-muted); display:block; margin-top:10px;">About (Bio)</label>
-                                    <input type="text" id="waSettingsBioInput" class="whatsapp-input-field" style="margin-top:0; padding:8px; border-color:transparent; background:transparent; border-bottom:2px solid var(--neon-cyan); border-radius:0;" placeholder="Available" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
-                                </div>
-                            </div>
 
-                            <div class="status-section-title" style="padding-left:0;">Chat Theme & Wallpaper</div>
-                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border-glass);">
-                                <div>
-                                    <div style="color:var(--wa-text); font-weight:bold; font-size:1.05rem;">Custom Gallery Theme</div>
-                                    <div style="color:var(--wa-text-muted); font-size:0.85rem;">Set custom wallpaper from device</div>
-                                </div>
-                                <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
-                                <button onclick="document.getElementById('waCustomWallpaperInput').click()" class="hud-engage-btn" style="width:auto; padding:8px 15px; font-size:0.9rem; border-radius:8px;">🖼️ UPLOAD</button>
-                            </div>
+                                <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 20px 0;"></div>
 
-                            <div class="status-section-title" style="padding-left:0;">Help & About Nexus</div>
-                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; color:var(--wa-text-muted); font-size:0.95rem; line-height:1.6; border:1px solid var(--border-glass);">
-                                <b style="color:var(--neon-cyan); font-size:1.1rem;">🚀 WhatsApp Pro Guide:</b><br><br>
-                                • <b>Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
-                                • <b>Attachment (📎):</b> Send images, docs, and audio.<br>
-                                • <b>Full Screen (⛶):</b> Maximize chat view without lag.<br>
-                                • <b>Premium (💎):</b> Access ghost mode & auto-replies.<br>
-                                • <b>AI Summarize (✨):</b> Get quick summary of long chats.<br>
-                                • <b>Calls (📞/📹):</b> Holographic 3D calling interface.<br>
-                                • <b>Custom Theme:</b> Use the Upload button above to set personal gallery images as wallpaper.<br>
+                                <div style="display:flex; flex-direction:column; font-family: 'Segoe UI', sans-serif;">
+                                    
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Account settings are restricted by Admin.')">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔑</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Account</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Security notifications, change number</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Privacy mode is active. Ghost mode can be toggled from the Premium menu.')">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔒</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Privacy</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Block contacts, disappearing messages</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">😊</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Avatar</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Create, edit, profile photo</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s; background: rgba(0,168,132,0.1); border: 1px solid rgba(0,168,132,0.2);" onclick="document.getElementById('waCustomWallpaperInput').click()">
+                                        <span style="font-size: 1.4rem; color:#00a884; width:30px; text-align:center;">🎨</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Chats (Custom Theme)</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Theme, wallpapers, chat history</div>
+                                        </div>
+                                        <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Notification sounds are managed by your OS.')">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔔</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Notifications</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Message, group & call tones</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.triggerMassMediaDownloader()">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">💾</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Storage and data</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Network usage, auto-download</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Language is locked to English (US).')">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🌐</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">App language</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">English (Device's language)</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.switchCustomerChannel('request')">
+                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">❓</span>
+                                        <div style="flex:1;">
+                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Help</div>
+                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Help center, contact us, privacy policy</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div style="margin-top: 25px; background:linear-gradient(135deg, rgba(0, 168, 132, 0.05), rgba(4, 14, 33, 0.5)); padding:20px; border-radius:12px; border:1px solid rgba(0,168,132,0.2);">
+                                    <b style="color:var(--wa-green); font-size:1rem; font-family:'Segoe UI'; display:flex; align-items:center; gap:8px;">🚀 Pro Features Guide</b>
+                                    <div style="color:var(--wa-text-muted); font-size:0.85rem; margin-top:10px; line-height:1.8;">
+                                        • <b>Search (🔍):</b> In-chat specific word finder.<br>
+                                        • <b>Premium (💎):</b> Ghost mode, Auto-Reply, Broadcast.<br>
+                                        • <b>AI Tools (✨):</b> Summarize chats instantly.<br>
+                                        • <b>Hologram Calls:</b> 3D Secure Audio/Video bridging.
+                                    </div>
+                                </div>
+                                
+                                <div style="text-align:center; margin-top:35px; color:#8696a0; font-size:0.8rem; letter-spacing:1px; font-family: 'Segoe UI', sans-serif;">
+                                    from<br><b style="color:#fff; font-size:1.1rem; letter-spacing: 2px;">N E X U S</b>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
             </div>
