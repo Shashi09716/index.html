@@ -1135,13 +1135,11 @@
                 <div class="giant-compiler-layout">
                     <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
                     <p style="color:var(--text-sub); margin-bottom: 20px; font-size: 1rem;">Send a direct support ticket or feature request to the Mainframe Admin.</p>
-                    
                     <div class="hud-input-cluster">
                         <input type="text" id="supportTicketSubject" placeholder=" ">
                         <label>Ticket Subject</label>
                         <div class="neon-glow-underline" style="background:#f1c40f;"></div>
                     </div>
-                    
                     <div class="hud-input-cluster">
                         <textarea id="supportTicketBody" placeholder=" " style="height:100px;"></textarea>
                         <label>Explain your request / issue...</label>
@@ -1169,6 +1167,10 @@
                 </div>
             </div>
 
+            <div class="matrix-system-controller-dock">
+                <div class="auto-pulse-refresh-badge"><span class="refresh-spinner-node"></span> LIVE REALTIME CLOUD CONSOLE MATRIX STABLE</div>
+            </div>
+            <div class="ai-helper-banner" style="margin-top: 15px;">💡 AI Status: Encryption live. Cloud Firebase sync stable. High Frequency Sync active seamlessly.</div>
         </div>
     </div>
     
@@ -4111,12 +4113,18 @@
             if (event) event.stopPropagation(); 
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); 
             if(!wrapper) return;
+
+            // ⚡ FIX: Agar kisi ne bina chat select kiye profile click kar di, toh crash roko!
+            if (!targetUserId) {
+                alert("Please select a valid chat pipeline first.");
+                return;
+            }
             
             let targetAvatarPath = defaultAvatarSvg; 
             let displayName = "Unknown"; 
             let displayContact = "Private"; 
             let displayBio = "Available"; 
-            let isGroupNode = targetUserId.startsWith('group_');
+            let isGroupNode = String(targetUserId).startsWith('group_');
             let currentUid = MatrixSystemState.get('loggedInCustomerID');
 
             // ==========================================
