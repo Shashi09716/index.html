@@ -999,110 +999,147 @@
                         </div>
                     </div>
 
-                    <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005; background: var(--wa-bg);">
-                        <div class="status-dashboard-header" style="background: var(--wa-header); border-bottom: 1px solid var(--wa-border); box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                            <button onclick="window.closeWaSettingsOverlay()" style="background:none; border:none; color:var(--wa-text); font-size:1.4rem; cursor:pointer; transition:0.2s;" onmouseover="this.style.transform='translateX(-5px)'" onmouseout="this.style.transform='translateX(0)'">⬅️</button> 
-                            <span style="margin-left: 15px; font-weight: 600; font-family: 'Segoe UI', sans-serif; font-size:1.2rem;">Settings</span>
+                    <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005; background: rgba(11, 20, 26, 0.95); backdrop-filter: blur(25px);">
+                        <div class="status-dashboard-header" style="background: rgba(32, 44, 51, 0.8); border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
+                            <button onclick="window.closeWaSettingsOverlay()" style="background:none; border:none; color:var(--neon-cyan); font-size:1.4rem; cursor:pointer; transition:0.2s;" onmouseover="this.style.transform='translateX(-5px)'" onmouseout="this.style.transform='translateX(0)'">⬅️</button> 
+                            <span id="waSettingsTitle" style="margin-left: 15px; font-weight: 700; font-family: 'Segoe UI', sans-serif; font-size:1.2rem; color:#fff;">Settings</span>
                         </div>
                         
                         <div style="overflow-y:auto; flex:1; display: flex; justify-content: center; padding-bottom: 50px;">
-                            <div style="width: 100%; max-width: 600px; padding: 25px 20px;">
+                            <div style="width: 100%; max-width: 650px; padding: 25px 20px;" id="waSettingsDynamicView">
                                 
-                                <div style="display:flex; align-items:center; gap:20px; background: var(--wa-header); padding: 20px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                                    <div style="position:relative;" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
-                                        <img id="waSettingsAvatarPreview" class="whatsapp-avatar" src="" style="width:80px; height:80px; border:2px solid #00a884; box-shadow: 0 4px 10px rgba(0,168,132,0.4);">
-                                        <div style="position:absolute; bottom:0; right:0; background:#00a884; border-radius:50%; width:28px; height:28px; display:flex; justify-content:center; align-items:center; font-size:0.85rem; border:2px solid var(--wa-header);">📷</div>
+                                <div id="waSettingsMainSubView">
+                                    <div style="display:flex; align-items:center; gap:20px; background: linear-gradient(145deg, rgba(32,44,51,0.9), rgba(11,20,26,0.9)); padding: 25px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;">
+                                        <div style="position:relative; cursor:pointer; transition:0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
+                                            <img id="waSettingsAvatarPreview" class="whatsapp-avatar" src="" style="width:85px; height:85px; border:2px solid var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.3);">
+                                            <div style="position:absolute; bottom:0; right:0; background:var(--neon-cyan); border-radius:50%; width:30px; height:30px; display:flex; justify-content:center; align-items:center; font-size:0.9rem; border:3px solid var(--wa-header); color:#000;">📷</div>
+                                        </div>
+                                        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+                                            <input type="text" id="waSettingsNameInput" style="background:transparent; border:none; border-bottom:1px solid rgba(0,242,254,0.3); color:#fff; font-size:1.4rem; font-weight:700; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif; transition:0.3s;" placeholder="Your Name" onfocus="this.style.borderColor='var(--neon-cyan)'" onblur="this.style.borderColor='rgba(0,242,254,0.3)'" onchange="document.getElementById('customerNameInput').value=this.value; window.updateCustomerProfileEngine();">
+                                            <input type="text" id="waSettingsBioInput" style="background:transparent; border:none; color:#8696a0; font-size:1rem; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif; transition:0.3s; border-bottom:1px solid transparent;" placeholder="Available" onfocus="this.style.borderColor='rgba(255,255,255,0.1)'" onblur="this.style.borderColor='transparent'" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
+                                        </div>
                                     </div>
-                                    <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
-                                        <input type="text" id="waSettingsNameInput" style="background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; font-size:1.3rem; font-weight:600; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif;" placeholder="Your Name" onchange="document.getElementById('customerNameInput').value=this.value; window.updateCustomerProfileEngine();">
-                                        <input type="text" id="waSettingsBioInput" style="background:transparent; border:none; color:var(--wa-text-muted); font-size:0.95rem; outline:none; padding:4px 0; width:100%; font-family: 'Segoe UI', sans-serif;" placeholder="Available" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
+
+                                    <div style="display:flex; flex-direction:column; gap:10px; font-family: 'Segoe UI', sans-serif;">
+                                        
+                                        <div class="wa-setting-item" onclick="window.navWaSetting('account')" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(32,44,51,0.4); border-radius:16px; border:1px solid rgba(255,255,255,0.02); transition:0.2s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">🔑</span>
+                                            <div style="flex:1;">
+                                                <div style="color:#e9edef; font-size:1.1rem; font-weight:600;">Account & Security</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">App lock, password protection</div>
+                                            </div>
+                                            <span style="color:#8696a0;">▶</span>
+                                        </div>
+
+                                        <div class="wa-setting-item" onclick="window.navWaSetting('privacy')" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(32,44,51,0.4); border-radius:16px; border:1px solid rgba(255,255,255,0.02); transition:0.2s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">🔒</span>
+                                            <div style="flex:1;">
+                                                <div style="color:#e9edef; font-size:1.1rem; font-weight:600;">Privacy</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">Block contacts, disappearing messages</div>
+                                            </div>
+                                            <span style="color:#8696a0;">▶</span>
+                                        </div>
+
+                                        <div class="wa-setting-item" onclick="window.navWaSetting('avatar')" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(32,44,51,0.4); border-radius:16px; border:1px solid rgba(255,255,255,0.02); transition:0.2s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">😎</span>
+                                            <div style="flex:1;">
+                                                <div style="color:#e9edef; font-size:1.1rem; font-weight:600;">Avatar Studio</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">Choose from premium avatars</div>
+                                            </div>
+                                            <span style="color:#8696a0;">▶</span>
+                                        </div>
+
+                                        <div class="wa-setting-item" onclick="document.getElementById('waCustomWallpaperInput').click()" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(0,242,254,0.08); border-radius:16px; border:1px solid rgba(0,242,254,0.2); transition:0.2s;" onmouseover="this.style.background='rgba(0,242,254,0.15)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(0,242,254,0.08)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">🎨</span>
+                                            <div style="flex:1;">
+                                                <div style="color:var(--neon-cyan); font-size:1.1rem; font-weight:600;">Chat Theme & Wallpaper</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">Set custom image from device</div>
+                                            </div>
+                                            <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
+                                        </div>
+
+                                        <div class="wa-setting-item" onclick="window.navWaSetting('notifications')" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(32,44,51,0.4); border-radius:16px; border:1px solid rgba(255,255,255,0.02); transition:0.2s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">🔔</span>
+                                            <div style="flex:1;">
+                                                <div style="color:#e9edef; font-size:1.1rem; font-weight:600;">Notifications</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">Manage push alerts and sounds</div>
+                                            </div>
+                                            <span style="color:#8696a0;">▶</span>
+                                        </div>
+
+                                        <div class="wa-setting-item" onclick="window.navWaSetting('help')" style="display:flex; align-items:center; gap:20px; padding: 18px; cursor:pointer; background:rgba(32,44,51,0.4); border-radius:16px; border:1px solid rgba(255,255,255,0.02); transition:0.2s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'; this.style.transform='translateX(5px)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'; this.style.transform='translateX(0)'">
+                                            <span style="font-size: 1.5rem; width:40px; text-align:center;">❓</span>
+                                            <div style="flex:1;">
+                                                <div style="color:#e9edef; font-size:1.1rem; font-weight:600;">Help & Instructions</div>
+                                                <div style="color:#8696a0; font-size:0.9rem; margin-top:3px;">App guide, FAQ, support</div>
+                                            </div>
+                                            <span style="color:#8696a0;">▶</span>
+                                        </div>
                                     </div>
-                                    <div style="color: #00a884; font-size: 1.6rem; margin-left: 10px;">👤</div>
-                                </div>
-
-                                <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 20px 0;"></div>
-
-                                <div style="display:flex; flex-direction:column; font-family: 'Segoe UI', sans-serif;">
                                     
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Account settings are restricted by Admin.')">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔑</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Account</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Security notifications, change number</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Privacy mode is active. Ghost mode can be toggled from the Premium menu.')">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔒</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Privacy</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Block contacts, disappearing messages</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="document.getElementById('hiddenAvatarFileInputNode').click()">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">😊</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Avatar</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Create, edit, profile photo</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s; background: rgba(0,168,132,0.1); border: 1px solid rgba(0,168,132,0.2);" onclick="document.getElementById('waCustomWallpaperInput').click()">
-                                        <span style="font-size: 1.4rem; color:#00a884; width:30px; text-align:center;">🎨</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Chats (Custom Theme)</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Theme, wallpapers, chat history</div>
-                                        </div>
-                                        <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Notification sounds are managed by your OS.')">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🔔</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Notifications</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Message, group & call tones</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.triggerMassMediaDownloader()">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">💾</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Storage and data</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Network usage, auto-download</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="alert('Language is locked to English (US).')">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">🌐</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">App language</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">English (Device's language)</div>
-                                        </div>
-                                    </div>
-
-                                    <div style="display:flex; align-items:center; gap:20px; padding: 15px; cursor:pointer; border-radius:12px; transition:0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.switchCustomerChannel('request')">
-                                        <span style="font-size: 1.4rem; color:#8696a0; width:30px; text-align:center;">❓</span>
-                                        <div style="flex:1;">
-                                            <div style="color:var(--wa-text); font-size:1.05rem; font-weight:500;">Help</div>
-                                            <div style="color:var(--wa-text-muted); font-size:0.85rem;">Help center, contact us, privacy policy</div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div style="margin-top: 25px; background:linear-gradient(135deg, rgba(0, 168, 132, 0.05), rgba(4, 14, 33, 0.5)); padding:20px; border-radius:12px; border:1px solid rgba(0,168,132,0.2);">
-                                    <b style="color:var(--wa-green); font-size:1rem; font-family:'Segoe UI'; display:flex; align-items:center; gap:8px;">🚀 Pro Features Guide</b>
-                                    <div style="color:var(--wa-text-muted); font-size:0.85rem; margin-top:10px; line-height:1.8;">
-                                        • <b>Search (🔍):</b> In-chat specific word finder.<br>
-                                        • <b>Premium (💎):</b> Ghost mode, Auto-Reply, Broadcast.<br>
-                                        • <b>AI Tools (✨):</b> Summarize chats instantly.<br>
-                                        • <b>Hologram Calls:</b> 3D Secure Audio/Video bridging.
+                                    <div style="text-align:center; margin-top:40px; color:#8696a0; font-size:0.8rem; letter-spacing:2px; font-family: 'Segoe UI', sans-serif;">
+                                        from<br><b style="color:#fff; font-size:1.3rem; letter-spacing: 4px;">N E X U S</b>
                                     </div>
                                 </div>
-                                
-                                <div style="text-align:center; margin-top:35px; color:#8696a0; font-size:0.8rem; letter-spacing:1px; font-family: 'Segoe UI', sans-serif;">
-                                    from<br><b style="color:#fff; font-size:1.1rem; letter-spacing: 2px;">N E X U S</b>
+
+                                <div id="waSettingsAccountSubView" class="hidden">
+                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Account Security</h3>
+                                    <div style="background:rgba(32,44,51,0.6); padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.05);">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                            <span style="color:#e9edef; font-size:1.1rem; font-family:'Segoe UI'; font-weight:500;">Enable App Lock (Password)</span>
+                                            <label class="toggle-switch-wrapper" style="padding:0; background:transparent; border:none; box-shadow:none;"><input type="checkbox" id="appLockSettingToggle" class="toggle-switch" style="transform:scale(0.8);" onchange="window.toggleAppLockSecurity(this.checked)"></label>
+                                        </div>
+                                        <p style="color:#8696a0; font-size:0.9rem;">Require password to open WhatsApp Web interface. Enhances security.</p>
+                                    </div>
+                                </div>
+
+                                <div id="waSettingsPrivacySubView" class="hidden">
+                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Privacy Controls</h3>
+                                    <div style="background:rgba(32,44,51,0.6); padding:20px; border-radius:16px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.05);">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                            <span style="color:#e9edef; font-size:1.1rem; font-family:'Segoe UI'; font-weight:500;">Disappearing Messages</span>
+                                            <label class="toggle-switch-wrapper" style="padding:0; background:transparent; border:none; box-shadow:none;"><input type="checkbox" id="disappearMsgToggle" class="toggle-switch" style="transform:scale(0.8);" onchange="window.requestDisappearingToggle(this)"></label>
+                                        </div>
+                                        <p style="color:#8696a0; font-size:0.9rem;">Make messages in new chats disappear after 24h. <span style="color:var(--neon-pink);">*Requires Admin Approval</span></p>
+                                    </div>
+                                    <div style="background:rgba(32,44,51,0.6); padding:20px; border-radius:16px; cursor:pointer; border:1px solid rgba(255,255,255,0.05);" onclick="alert('Block list is currently empty.')">
+                                        <span style="color:#e74c3c; font-size:1.1rem; font-family:'Segoe UI'; font-weight:600;">🚫 Blocked Contacts</span>
+                                    </div>
+                                </div>
+
+                                <div id="waSettingsAvatarSubView" class="hidden">
+                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Avatar Studio</h3>
+                                    <p style="color:#8696a0; font-size:0.9rem; margin-bottom:20px;">Select a premium Gen-Z avatar for your profile.</p>
+                                    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:15px;" id="avatarGridSelection">
+                                    </div>
+                                </div>
+
+                                <div id="waSettingsNotificationsSubView" class="hidden">
+                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Notifications</h3>
+                                    <div style="background:rgba(32,44,51,0.6); padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.05);">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                            <span style="color:#e9edef; font-size:1.1rem; font-family:'Segoe UI'; font-weight:500;">Push Notifications</span>
+                                            <label class="toggle-switch-wrapper" style="padding:0; background:transparent; border:none; box-shadow:none;"><input type="checkbox" checked class="toggle-switch" style="transform:scale(0.8);" onchange="alert(this.checked ? 'Push enabled.' : 'Push disabled.')"></label>
+                                        </div>
+                                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                                            <span style="color:#e9edef; font-size:1.1rem; font-family:'Segoe UI'; font-weight:500;">Conversation Sounds</span>
+                                            <label class="toggle-switch-wrapper" style="padding:0; background:transparent; border:none; box-shadow:none;"><input type="checkbox" checked class="toggle-switch" style="transform:scale(0.8);" onchange="MatrixSystemState.set('isSystemAudioEnabled', this.checked);"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="waSettingsHelpSubView" class="hidden">
+                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Help & Guide</h3>
+                                    <div style="background:linear-gradient(135deg, rgba(0, 168, 132, 0.1), rgba(32, 44, 51, 0.8)); padding:25px; border-radius:16px; border:1px solid rgba(0,168,132,0.3); color:#e9edef; line-height:1.8; font-family:'Segoe UI';">
+                                        <b style="color:#00a884; font-size:1.2rem; display:block; margin-bottom:15px;">🚀 WhatsApp Pro Features:</b>
+                                        • <b style="color:#fff;">Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
+                                        • <b style="color:#fff;">Attachment (📎):</b> Send images, docs, and audio.<br>
+                                        • <b style="color:#fff;">Full Screen (⛶):</b> Maximize chat view without lag.<br>
+                                        • <b style="color:#fff;">Premium (💎):</b> Access ghost mode & auto-replies.<br>
+                                        • <b style="color:#fff;">AI Summarize (✨):</b> Get quick summary of long chats.<br>
+                                        • <b style="color:#fff;">Calls (📞/📹):</b> Holographic 3D calling interface.<br>
+                                        • <b style="color:#fff;">Custom Theme:</b> Use the settings menu to set personal gallery images as wallpaper.<br>
+                                    </div>
                                 </div>
 
                             </div>
@@ -3464,10 +3501,82 @@
                 document.getElementById('waSettingsBioInput').value = userObj.bio || "Available";
             }
             
+            window.navWaSetting('main'); 
             dashboard.classList.remove('hidden');
         };
 
-        window.closeWaSettingsOverlay = function() { document.getElementById('whatsappSettingsOverlayPanel')?.classList.add('hidden'); };
+        window.closeWaSettingsOverlay = function() { 
+            const dashboard = document.getElementById('whatsappSettingsOverlayPanel');
+            if(dashboard && !document.getElementById('waSettingsMainSubView').classList.contains('hidden')) {
+                dashboard.classList.add('hidden'); 
+            } else {
+                window.navWaSetting('main'); 
+            }
+        };
+
+        window.navWaSetting = function(viewId) {
+            const views = ['Main', 'Account', 'Privacy', 'Avatar', 'Notifications', 'Help'];
+            views.forEach(v => {
+                const el = document.getElementById(`waSettings${v}SubView`);
+                if(el) el.classList.add('hidden');
+            });
+            
+            if(viewId === 'main') {
+                document.getElementById('waSettingsMainSubView').classList.remove('hidden');
+                document.getElementById('waSettingsTitle').innerText = "Settings";
+            } else {
+                const target = document.getElementById(`waSettings${viewId.charAt(0).toUpperCase() + viewId.slice(1)}SubView`);
+                if(target) target.classList.remove('hidden');
+                document.getElementById('waSettingsTitle').innerText = viewId.charAt(0).toUpperCase() + viewId.slice(1);
+                
+                if(viewId === 'avatar') {
+                    const avatars = [
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka",
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Oliver",
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Mia",
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+                        "https://api.dicebear.com/7.x/avataaars/svg?seed=Zoe"
+                    ];
+                    let avHtml = "";
+                    avatars.forEach(url => {
+                        avHtml += `<img src="${url}" onclick="window.quickSetAvatar('${url}')" style="width:100px; height:100px; border-radius:50%; border:3px solid transparent; cursor:pointer; background:#fff; transition:0.2s;" onmouseover="this.style.border='3px solid var(--neon-cyan)'; this.style.transform='scale(1.1)'" onmouseout="this.style.border='3px solid transparent'; this.style.transform='scale(1)'">`;
+                    });
+                    document.getElementById('avatarGridSelection').innerHTML = avHtml;
+                }
+            }
+        };
+
+        window.quickSetAvatar = function(url) {
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(currentUid) {
+                update(ref(db, `users/${currentUid}`), { avatar: url }).then(() => {
+                    document.getElementById('waSettingsAvatarPreview').src = url;
+                    alert('Avatar Updated successfully!');
+                });
+            }
+        };
+
+        window.toggleAppLockSecurity = function(isChecked) {
+            if(isChecked) {
+                const pass = prompt("Set a 4-digit App Lock PIN for WhatsApp:");
+                if(pass && pass.length === 4 && !isNaN(pass)) {
+                    localStorage.setItem('wa_app_lock_pin', pass);
+                    alert("App Lock Enabled successfully.");
+                } else {
+                    alert("Invalid PIN. App Lock disabled.");
+                    document.getElementById('appLockSettingToggle').checked = false;
+                }
+            } else {
+                localStorage.removeItem('wa_app_lock_pin');
+                alert("App Lock Disabled.");
+            }
+        };
+
+        window.requestDisappearingToggle = function(checkbox) {
+            checkbox.checked = false;
+            alert("❌ ACCESS DENIED: Only the System Admin can enable Disappearing Messages for this node.");
+        };
 
         window.applyCustomChatWallpaper = function(e) {
             const file = e.target.files[0];
