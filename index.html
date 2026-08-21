@@ -614,8 +614,8 @@
             <div style="display: none;">
                 <img id="customerLiveAvatarPreview" src="">
                 <input type="file" id="hiddenAvatarFileInputNode" accept="image/*" onchange="window.uploadUserProfileAvatarEngine(event)">
-                <input type="text" id="customerNameInput">
-                <input type="text" id="customerBioInput">
+                <input type="text" id="customerNameInput" onchange="window.updateCustomerProfileEngine()">
+                <input type="text" id="customerBioInput" onchange="window.updateCustomerProfileEngine()">
             </div>
 
             <div id="customerMainMenuBlock" class="main-menu-grid">
@@ -1136,25 +1136,33 @@
                                 </div>
 
                                 <div id="waSettingsHelpSubView" class="hidden">
-                                    <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Help & Guide</h3>
-                                    <div style="background:linear-gradient(135deg, rgba(0, 168, 132, 0.1), rgba(32, 44, 51, 0.8)); padding:25px; border-radius:16px; border:1px solid rgba(0,168,132,0.3); color:#e9edef; line-height:1.8; font-family:'Segoe UI';">
-                                        <b style="color:#00a884; font-size:1.2rem; display:block; margin-bottom:15px;">🚀 WhatsApp Pro Features:</b>
-                                        • <b style="color:#fff;">Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
-                                        • <b style="color:#fff;">Attachment (📎):</b> Send images, docs, and audio.<br>
-                                        • <b style="color:#fff;">Full Screen (⛶):</b> Maximize chat view without lag.<br>
-                                        • <b style="color:#fff;">Premium (💎):</b> Access ghost mode & auto-replies.<br>
-                                        • <b style="color:#fff;">AI Summarize (✨):</b> Get quick summary of long chats.<br>
-                                        • <b style="color:#fff;">Calls (📞/📹):</b> Holographic 3D calling interface.<br>
-                                        • <b style="color:#fff;">Custom Theme:</b> Use the settings menu to set personal gallery images as wallpaper.<br>
+                                            <h3 style="color:#fff; font-family:'Segoe UI'; margin-bottom:20px;">Help & Guide</h3>
+                                            <div style="background:linear-gradient(135deg, rgba(0, 168, 132, 0.1), rgba(32, 44, 51, 0.8)); padding:25px; border-radius:16px; border:1px solid rgba(0,168,132,0.3); color:#e9edef; line-height:1.8; font-family:'Segoe UI';">
+                                                <b style="color:#00a884; font-size:1.2rem; display:block; margin-bottom:15px;">🚀 WhatsApp Pro Features:</b>
+                                                • <b style="color:#fff;">Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
+                                                • <b style="color:#fff;">Attachment (📎):</b> Send images, docs, and audio.<br>
+                                                • <b style="color:#fff;">Full Screen (⛶):</b> Maximize chat view without lag.<br>
+                                                • <b style="color:#fff;">Premium (💎):</b> Access ghost mode & auto-replies.<br>
+                                                • <b style="color:#fff;">AI Summarize (✨):</b> Get quick summary of long chats.<br>
+                                                • <b style="color:#fff;">Calls (📞/📹):</b> Holographic 3D calling interface.<br>
+                                                • <b style="color:#fff;">Custom Theme:</b> Use the settings menu to set personal gallery images as wallpaper.<br>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
             </div>
+
+            <!-- SUPPORT REQUEST BLOCK & DIRECT AI COMMS -->
+            <div id="customerRequestInterfaceBlock" class="hidden">
+                <div class="giant-compiler-layout">
+                    <h3 class="neon-cyan-text" style="color:#f1c40f; text-shadow:0 0 15px rgba(241,196,15,0.4);">🎫 SUPPORT & REQUESTS</h3>
+                    <p style="color:var(--text-sub); margin-bottom: 20px; font-size: 1rem;">Send a direct support ticket or feature request to the Mainframe Admin.</p>
 
             <!-- SUPPORT REQUEST BLOCK & DIRECT AI COMMS -->
             <div id="customerRequestInterfaceBlock" class="hidden">
@@ -1474,8 +1482,8 @@
                                 <div style="flex: 1; position: relative; min-width: 120px; display:flex; align-items:center;">
                                     <input type="text" id="adminSpyResponseInput" class="whatsapp-input-field" placeholder="Type response..." onkeydown="if(event.key==='Enter') window.dispatchAdminSpyInterceptionMsg()" oninput="window.playTypingSound()">
                                 </div>
-                                <button id="adminVoiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()">🎙️</button>
-                                <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="padding:8px 12px; background:var(--wa-green); border-radius:50%; color:#111b21; font-weight:bold; cursor:pointer; border:none; transform:rotate(-45deg); font-size:1.2rem;">➤</button>
+                                <button id="adminVoiceRecordingCoreTriggerBtn" class="whatsapp-circle-btn" onclick="window.toggleVoiceAudioRecordingEngine()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--neon-cyan);">🎙️</button>
+                                <button onclick="window.dispatchAdminSpyInterceptionMsg()" style="width:42px; height:42px; display:flex; justify-content:center; align-items:center; background:rgba(0,242,254,0.15); border-radius:50%; color:var(--neon-cyan); font-weight:bold; cursor:pointer; border:1px solid rgba(0,242,254,0.3); transform:rotate(-45deg); font-size:1.2rem; box-shadow: 0 0 10px rgba(0,242,254,0.2); transition:0.2s;" onmouseover="this.style.transform='rotate(-45deg) scale(1.1)'" onmouseout="this.style.transform='rotate(-45deg) scale(1)'">➤</button>
                             </div>
                         </div>
                     </div>
@@ -4141,7 +4149,23 @@
             } else if (targetUserId === "MainframeAdmin") {
                 displayName = "Support Admin (Mainframe)"; displayContact = "System Admin"; displayBio = "Managing Matrix Cloud";
             }
-            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:var(--wa-bg); border:1px solid var(--wa-border); border-radius:12px; max-width:350px;"><div style="background:var(--wa-header); padding:20px; border-radius:12px 12px 0 0; text-align:center;"><img src="${targetAvatarPath}" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid var(--wa-green); box-shadow:0 8px 15px rgba(0,0,0,0.5);"><h2 style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-weight:600; font-size:1.4rem; margin-top:15px;">${displayName}</h2><div style="color:var(--wa-text-muted); font-size:0.95rem; margin-top:5px;">${displayContact}</div></div><div style="padding:20px; text-align:left; background:var(--wa-chat-bg); border-radius:0 0 12px 12px;"><h4 style="color:var(--wa-green); font-family:'Segoe UI', sans-serif; font-size:0.9rem; margin-bottom:8px;">About and phone number</h4><div style="color:var(--wa-text); font-family:'Segoe UI', sans-serif; font-size:1.05rem; border-bottom:1px solid var(--wa-border); padding-bottom:15px; margin-bottom:15px;">${displayBio}</div><button onclick="window.closeCustomInlinePopupEngine()" class="nexus-popup-btn cancel-btn" style="width:100%; padding:10px;">Close</button></div></div>`;
+            wrapper.innerHTML = `<div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background: rgba(11, 20, 26, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 20px; max-width: 380px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); overflow: hidden; padding: 0;">
+                <div style="background: linear-gradient(180deg, rgba(32, 44, 51, 0.9) 0%, rgba(11, 20, 26, 0) 100%); padding: 30px 20px 20px; text-align: center; position: relative;">
+                    <div style="position: absolute; top: 15px; right: 15px; cursor: pointer; color: #8696a0; font-size: 1.2rem; transition: 0.3s;" onclick="window.closeCustomInlinePopupEngine()" onmouseover="this.style.color='#e74c3c'" onmouseout="this.style.color='#8696a0'">✖</div>
+                    <img src="${targetAvatarPath}" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 254, 0.3); margin-bottom: 15px;">
+                    <h2 style="color: #fff; font-family: 'Segoe UI', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${displayName}</h2>
+                    <div style="color: var(--neon-cyan); font-size: 1rem; margin-top: 5px; font-weight: 500;">${displayContact}</div>
+                </div>
+                <div style="padding: 20px; text-align: left; background: rgba(32, 44, 51, 0.4); border-top: 1px solid rgba(255,255,255,0.05);">
+                    <h4 style="color: #8696a0; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">About</h4>
+                    <div style="color: #e9edef; font-family: 'Segoe UI', sans-serif; font-size: 1.1rem; line-height: 1.5; font-weight: 500;">${displayBio}</div>
+                </div>
+                <div style="padding: 15px; display: flex; justify-content: center; gap: 15px; background: rgba(32, 44, 51, 0.6); border-top: 1px solid rgba(255,255,255,0.05);">
+                    <button class="whatsapp-circle-btn" style="background: rgba(0, 168, 132, 0.2); color: #00a884; border: 1px solid rgba(0, 168, 132, 0.4);" onclick="alert('Message feature initialized.')">💬</button>
+                    <button class="whatsapp-circle-btn" style="background: rgba(0, 242, 254, 0.2); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.4);" onclick="window.triggerHologramCall('audio')">📞</button>
+                    <button class="whatsapp-circle-btn" style="background: rgba(167, 62, 201, 0.2); color: #a73ec9; border: 1px solid rgba(167, 62, 201, 0.4);" onclick="window.triggerHologramCall('video')">📹</button>
+                </div>
+            </div>`;
             wrapper.classList.remove('hidden');
         };
 
@@ -4164,11 +4188,16 @@
             const recentContainer = document.getElementById('recentStatusUpdatesContainer'); let recentHtml = "";
             Object.keys(grouped).forEach(uid => {
                 if(uid === currentUid) return;
-                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid); const name = userObj ? userObj.clientName : "Admin"; const avatar = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg;
+                const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === uid); 
+                
+                const amIBlocked = userObj && userObj.premium && userObj.premium.stealthMode;
+                if (amIBlocked && MatrixSystemState.get('currentMode') !== 'admin') return;
+
+                const name = userObj ? userObj.clientName : "Admin"; const avatar = (userObj && userObj.avatar) ? userObj.avatar : defaultAvatarSvg;
                 const latestTime = new Date(Math.max(...grouped[uid].map(s=>s.epochTime))).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                recentHtml += `<div class="chat-user-item-node" onclick="window.openStatusViewerEngineForUser('${uid}')"><img class="whatsapp-avatar" src="${avatar}" style="border: 2px solid #00a884; padding:2px;"><div class="whatsapp-user-info"><div class="whatsapp-user-name">${name}</div><div class="whatsapp-user-id">${latestTime}</div></div></div>`;
+                recentHtml += `<div class="chat-user-item-node" onclick="window.openStatusViewerEngineForUser('${uid}')" style="background: rgba(32,44,51,0.4); border-radius: 12px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.02); transition: 0.3s;" onmouseover="this.style.background='rgba(32,44,51,0.8)'" onmouseout="this.style.background='rgba(32,44,51,0.4)'"><img class="whatsapp-avatar" src="${avatar}" style="border: 2px solid var(--neon-cyan); padding:2px; box-shadow: 0 0 10px rgba(0,242,254,0.3);"><div class="whatsapp-user-info"><div class="whatsapp-user-name" style="color:#fff; font-weight:600;">${name}</div><div class="whatsapp-user-id" style="color:#8696a0;">${latestTime}</div></div></div>`;
             });
-            if(recentHtml === "") { recentHtml = "<div style='color:var(--wa-text-muted); padding:20px; text-align:center;'>No recent updates</div>"; }
+            if(recentHtml === "") { recentHtml = "<div style='color:var(--wa-text-muted); padding:20px; text-align:center; font-family:Segoe UI;'>No recent updates available</div>"; }
             recentContainer.innerHTML = recentHtml; dashboard.classList.remove('hidden');
         };
         
