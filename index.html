@@ -228,7 +228,11 @@
         .abort-btn:hover { background: #e74c3c; box-shadow: 0 0 25px rgba(231,76,60,0.8); transform: scale(1.05); }
         .home-action-btn { background: rgba(0,242,254,0.1); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 0.9rem;}
         .home-action-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); transform: scale(1.05); }
-        .hyper-clock-ticker { font-family: 'Orbitron', monospace; font-size: 1.8rem; font-weight: 900; color: #f1c40f; background: rgba(0,0,0,0.9); border: 2px solid #00f2fe; padding: 10px 25px; border-radius: 12px; display: inline-block; box-shadow: 0 0 20px rgba(0,242,254,0.4), inset 0 0 10px rgba(0,242,254,0.2); margin-bottom: 20px; text-align: center; position: relative; text-shadow: 0 0 10px #f1c40f; letter-spacing: 2px;}
+        
+        /* ⚡ FIX 2: Modern, Clean & Genuine Glassmorphism Clock */
+        .hyper-clock-ticker { font-family: 'Rajdhani', sans-serif; font-size: 2.2rem; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 8px 35px; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); margin-bottom: 20px; letter-spacing: 4px; transition: all 0.3s ease; }
+        .hyper-clock-ticker:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(0, 242, 254, 0.4); box-shadow: 0 10px 40px rgba(0, 242, 254, 0.2); color: #00f2fe; }
+        
         .ai-helper-banner { padding: 18px; margin-top: 25px; border-radius: 12px; background: rgba(0,242,254,0.1); border: 2px solid rgba(0,242,254,0.4); color: #00f2fe; text-align: center; font-size: 1.1rem; font-weight: 700; box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.1); letter-spacing: 0.5px;}
         .search-terminal-input, .giant-compiler-input { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 2px solid var(--border-glass); border-radius: 8px; color: var(--text-main); font-size: 1rem; font-family: 'Orbitron'; outline: none; font-weight: bold; box-shadow: inset 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
         .giant-compiler-input:focus, .search-terminal-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.4); }
@@ -2774,9 +2778,16 @@
         function initatePrecisionChronometerTick() {
             setInterval(() => {
                 const clock = new Date(); const padData = (val, len = 2) => String(val).padStart(len, '0');
-                const hh = padData(clock.getHours()); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); const pureTimeString = `${hh}:${mm}:${ss}`;
+                
+                /* ⚡ FIX: 12-Hour Premium Genuine Time Format with AM/PM */
+                let rawHrs = clock.getHours(); const ampm = rawHrs >= 12 ? 'PM' : 'AM';
+                let displayHrs = rawHrs % 12; displayHrs = displayHrs ? displayHrs : 12;
+                
+                const hh = padData(displayHrs); const mm = padData(clock.getMinutes()); const ss = padData(clock.getSeconds()); 
+                const pureTimeString = `${hh}:${mm}:${ss} <span style="font-size:1rem; opacity:0.8; margin-left:5px;">${ampm}</span>`;
+                
                 ['userPrecisionTimeNode', 'adminPrecisionTimeNode'].forEach(id => { const node = document.getElementById(id); if(node) node.innerHTML = pureTimeString; });
-                const manualTimeField = document.getElementById('noteManualTimeSelector'); if(manualTimeField) manualTimeField.value = pureTimeString;
+                const manualTimeField = document.getElementById('noteManualTimeSelector'); if(manualTimeField) manualTimeField.value = `${hh}:${mm}:${ss} ${ampm}`;
                 const daysOfWeekArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                 const dateText = `${padData(clock.getDate())}/${padData(clock.getMonth() + 1)}/${clock.getFullYear()} (${daysOfWeekArr[clock.getDay()]})`;
                 const manualDateField = document.getElementById('noteManualDateSelector'); if(manualDateField) manualDateField.value = dateText;
@@ -4259,6 +4270,7 @@
                     document.getElementById('customerDashboard').classList.remove('hidden'); 
                     document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel(savedWorkspaceChan); 
+                    window.enforceCustomerPermissions(); // ⚡ FIX 1: Session reload par permission turant apply hogi
                 }
                 if(ambientParticleToken) { cancelAnimationFrame(ambientParticleToken); ambientParticleToken = null; }
                 setTimeout(clearPreloader, 800);
@@ -4678,6 +4690,7 @@
                     document.getElementById('customerDashboard').classList.remove('hidden');
                     document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel('menu');
+                    window.enforceCustomerPermissions(); // ⚡ FIX 1: Login hone ke turant baad hide/show permissions lag jayengi
                 }
 
                 // Animation poora hone ke baad overlay ko hata do
