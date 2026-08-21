@@ -998,7 +998,6 @@
                             <div id="recentStatusUpdatesContainer"></div>
                         </div>
                     </div>
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
 
                     <!-- ⚙️ WHATSAPP SETTINGS & CUSTOM THEME OVERLAY -->
                     <div id="whatsappSettingsOverlayPanel" class="status-dashboard-overlay hidden" style="z-index: 10005;">
@@ -1019,6 +1018,34 @@
                                     <input type="text" id="waSettingsBioInput" class="whatsapp-input-field" style="margin-top:0; padding:8px; border-color:transparent; background:transparent; border-bottom:2px solid var(--neon-cyan); border-radius:0;" placeholder="Available" onchange="document.getElementById('customerBioInput').value=this.value; window.updateCustomerProfileEngine();">
                                 </div>
                             </div>
+
+                            <div class="status-section-title" style="padding-left:0;">Chat Theme & Wallpaper</div>
+                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border-glass);">
+                                <div>
+                                    <div style="color:var(--wa-text); font-weight:bold; font-size:1.05rem;">Custom Gallery Theme</div>
+                                    <div style="color:var(--wa-text-muted); font-size:0.85rem;">Set custom wallpaper from device</div>
+                                </div>
+                                <input type="file" id="waCustomWallpaperInput" style="display:none;" accept="image/*" onchange="window.applyCustomChatWallpaper(event)">
+                                <button onclick="document.getElementById('waCustomWallpaperInput').click()" class="hud-engage-btn" style="width:auto; padding:8px 15px; font-size:0.9rem; border-radius:8px;">🖼️ UPLOAD</button>
+                            </div>
+
+                            <div class="status-section-title" style="padding-left:0;">Help & About Nexus</div>
+                            <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; color:var(--wa-text-muted); font-size:0.95rem; line-height:1.6; border:1px solid var(--border-glass);">
+                                <b style="color:var(--neon-cyan); font-size:1.1rem;">🚀 WhatsApp Pro Guide:</b><br><br>
+                                • <b>Search (🔍):</b> Find specific words in active chat. Count & arrow navigation included.<br>
+                                • <b>Attachment (📎):</b> Send images, docs, and audio.<br>
+                                • <b>Full Screen (⛶):</b> Maximize chat view without lag.<br>
+                                • <b>Premium (💎):</b> Access ghost mode & auto-replies.<br>
+                                • <b>AI Summarize (✨):</b> Get quick summary of long chats.<br>
+                                • <b>Calls (📞/📹):</b> Holographic 3D calling interface.<br>
+                                • <b>Custom Theme:</b> Use the Upload button above to set personal gallery images as wallpaper.<br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="chatAttachmentStatusFeedback" style="margin-top:8px; font-size:0.95rem; color:#f1c40f; padding-left:12px; font-family:monospace; font-weight: bold;"></div>
+            </div>
 
                             <div class="status-section-title" style="padding-left:0;">Chat Theme & Wallpaper</div>
                             <div style="background:rgba(0,0,0,0.4); padding:15px; border-radius:12px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border-glass);">
