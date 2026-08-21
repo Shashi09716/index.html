@@ -927,40 +927,8 @@
                             <div style="text-align:center; margin: 10px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:6px 12px; border-radius:8px; font-size:0.8rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted. No one outside of this chat can read or listen to them.</span></div>
                         </div>
                         
-                        <div style="position:relative; z-index:100;">
-                            <div class="emoji-matrix-drawer hidden" id="systemEmojiMatrixBoxNode"></div>
-                            <div class="mainframe-gif-drawer hidden" id="mainframeGifContainerBox"></div>
-                            
-                            <div class="wa-attachment-popover" id="waAttachmentMenuBox">
-                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #5151e5, #7e7ef5);">📄</div><span>Document</span>
-                                </div>
-                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #d3305c, #e55a80);">📸</div><span>Camera</span>
-                                </div>
-                                <div class="attach-icon-wrapper" onclick="document.getElementById('chatMediaFileInput').click()">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #a73ec9, #c863e4);">🖼️</div><span>HD Photo</span>
-                                </div>
-                                <div class="attach-icon-wrapper">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #d95e26, #e77c98);">🎧</div><span>Audio</span>
-                                </div>
-                                <div class="attach-icon-wrapper">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #1fa855, #41d279);">📍</div><span>Location</span>
-                                </div>
-                                <div class="attach-icon-wrapper">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #009de1, #30c5ff);">👤</div><span>Contact</span>
-                                </div>
-                                <div class="attach-icon-wrapper">
-                                    <div class="attach-circle" style="background: linear-gradient(135deg, #f39c12, #f1c40f);">📊</div><span>Polls</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="smartRepliesBox" style="display:none; gap:6px; padding:6px 12px; background:var(--wa-chat-bg); overflow-x:auto;">
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Yes, absolutely!')">Yes, absolutely!</button>
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Let me check and revert.')">Let me check and revert.</button>
-                            <button class="hud-status-chip" onclick="window.useSmartReply('Can we connect on a call?')">Can we connect on a call?</button>
-                        </div>
+                        <!-- ⚡ FIX: Smart Replies (Yellow Buttons) Removed Here -->
+                        <div id="smartRepliesBox" style="display:none !important;"></div>
 
                         <div style="padding: 4px 12px; display:flex; align-items:center; background:var(--wa-header); border-top:1px solid rgba(255,255,255,0.05);">
                             <label style="color:#00f2fe; margin-left:4px; font-weight:bold; cursor:pointer; font-size:0.8rem;"><input type="checkbox" id="isViewOnceCheck" style="margin-right:3px; transform:scale(1);"> ① View Once Media</label>
@@ -4140,15 +4108,144 @@
         };
 
         window.triggerTargetUserContactProfileModal = function(event, targetUserId) {
-            if (event) event.stopPropagation(); const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); if(!wrapper) return;
-            let targetAvatarPath = defaultAvatarSvg; let displayName = "Unknown"; let displayContact = "Private"; let displayBio = "Available"; let isGroupNode = targetUserId.startsWith('group_');
+            if (event) event.stopPropagation(); 
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper'); 
+            if(!wrapper) return;
+            
+            let targetAvatarPath = defaultAvatarSvg; 
+            let displayName = "Unknown"; 
+            let displayContact = "Private"; 
+            let displayBio = "Available"; 
+            let isGroupNode = targetUserId.startsWith('group_');
+            let currentUid = MatrixSystemState.get('loggedInCustomerID');
 
+            // ==========================================
+            // 🌟 REAL WHATSAPP GROUP INFO PANEL LOGIC
+            // ==========================================
+            if (isGroupNode) {
+                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
+                if(groupMatch) {
+                    targetAvatarPath = groupMatch.avatar || defaultAvatarSvg;
+                    displayName = groupMatch.name || "Group";
+                    
+                    // Fetch Group Members dynamically
+                    let membersHtml = "";
+                    const globalUsers = MatrixSystemState.get('cachedGlobalUsersArr');
+                    groupMatch.members.forEach(memberId => {
+                        let mName = "Unknown", mAvatar = defaultAvatarSvg, mStatus = "Available";
+                        if(memberId === "MainframeAdmin") { mName = "System Admin"; mStatus = "Managing Matrix Cloud"; }
+                        else {
+                            const mUser = globalUsers.find(u => u.id === memberId);
+                            if(mUser) { 
+                                mName = (memberId === currentUid) ? "You" : mUser.clientName; 
+                                mAvatar = mUser.avatar || defaultAvatarSvg; 
+                                mStatus = mUser.bio || "Available";
+                            }
+                        }
+                        membersHtml += `
+                        <div style="display:flex; align-items:center; gap:15px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <img src="${mAvatar}" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                            <div style="flex:1; text-align:left;">
+                                <div style="color:#e9edef; font-size:1rem; font-weight:500;">${mName}</div>
+                                <div style="color:#8696a0; font-size:0.85rem; margin-top:2px;">${mStatus}</div>
+                            </div>
+                            ${groupMatch.admin === memberId ? '<span style="color:#00a884; font-size:0.75rem; border:1px solid rgba(0,168,132,0.5); padding:3px 6px; border-radius:4px; font-weight:bold; background:rgba(0,168,132,0.1);">Group Admin</span>' : ''}
+                        </div>`;
+                    });
+
+                    // Fetch Group Shared Media (Photos/Images)
+                    const rawData = window.cachedChatsData || {};
+                    let mediaHtml = "";
+                    let mediaCount = 0;
+                    Object.keys(rawData).forEach(key => {
+                        const m = rawData[key];
+                        if (m.receiver === targetUserId && m.mediaPayload && !m.isDeletedForEveryone) {
+                            if (m.mediaPayload.startsWith('data:image')) {
+                                mediaHtml += `<img src="${m.mediaPayload}" style="width:75px; height:75px; object-fit:cover; border-radius:8px; flex-shrink:0; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="window.triggerEnlargedAttachmentView('${m.mediaPayload}')">`;
+                                mediaCount++;
+                            }
+                        }
+                    });
+                    if(mediaHtml === "") mediaHtml = `<div style="color:#8696a0; font-size:0.9rem; padding:10px 0;">No media shared yet</div>`;
+
+                    let creationDate = groupMatch.epoch ? new Date(groupMatch.epoch).toLocaleDateString() : "Recently";
+
+                    wrapper.innerHTML = `
+                    <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background: #0b141a; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; width: 100%; max-width: 420px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); overflow: hidden; padding: 0; display:flex; flex-direction:column; max-height:85vh; font-family:'Segoe UI', sans-serif;">
+                        
+                        <div style="background: #202c33; padding: 15px 20px; display: flex; align-items: center; gap: 15px; position: sticky; top: 0; z-index: 10; box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+                            <button onclick="window.closeCustomInlinePopupEngine()" style="background:none; border:none; color:#aebac1; font-size:1.4rem; cursor:pointer; transition:0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#aebac1'">⬅️</button>
+                            <span style="color:#e9edef; font-size:1.1rem; font-weight:600;">Group info</span>
+                        </div>
+
+                        <div style="overflow-y:auto; flex:1; padding-bottom:20px; background:#0b141a;">
+                            <!-- Profile Header -->
+                            <div style="text-align:center; padding: 30px 20px 20px; background: #0b141a; border-bottom: 8px solid #02050e;">
+                                <img src="${targetAvatarPath}" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                                <h2 style="color: #e9edef; font-weight: 500; font-size: 1.5rem; margin: 0;">${displayName}</h2>
+                                <div style="color: #8696a0; font-size: 1rem; margin-top: 5px;">Group • ${groupMatch.members.length} participants</div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div style="display:flex; justify-content:space-evenly; padding:15px; background:#0b141a; border-bottom: 8px solid #02050e;">
+                                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; color:#00a884; transition:0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="window.triggerHologramCall('audio')">
+                                    <span style="font-size:1.4rem; border:1px solid rgba(0,168,132,0.5); border-radius:50%; width:45px; height:45px; display:flex; justify-content:center; align-items:center;">📞</span>
+                                    <span style="font-size:0.9rem;">Audio</span>
+                                </div>
+                                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; color:#00a884; transition:0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="window.triggerHologramCall('video')">
+                                    <span style="font-size:1.4rem; border:1px solid rgba(0,168,132,0.5); border-radius:50%; width:45px; height:45px; display:flex; justify-content:center; align-items:center;">📹</span>
+                                    <span style="font-size:0.9rem;">Video</span>
+                                </div>
+                                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; color:#00a884; transition:0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="window.toggleInChatSearch(); window.closeCustomInlinePopupEngine();">
+                                    <span style="font-size:1.4rem; border:1px solid rgba(0,168,132,0.5); border-radius:50%; width:45px; height:45px; display:flex; justify-content:center; align-items:center;">🔍</span>
+                                    <span style="font-size:0.9rem;">Search</span>
+                                </div>
+                            </div>
+
+                            <!-- Group Description -->
+                            <div style="padding:15px 20px; background:#0b141a; border-bottom: 8px solid #02050e; text-align:left;">
+                                <div style="color:#00a884; font-size:0.9rem; font-weight:600; margin-bottom:8px;">Description</div>
+                                <div style="color:#e9edef; font-size:1rem;">Created by ${groupMatch.admin === currentUid ? 'You' : 'Admin'} on ${creationDate}</div>
+                            </div>
+
+                            <!-- Media Section -->
+                            <div style="padding:15px 20px; background:#0b141a; border-bottom: 8px solid #02050e; text-align:left;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; cursor:pointer;">
+                                    <div style="color:#8696a0; font-size:0.95rem;">Media, links, and docs</div>
+                                    <div style="color:#8696a0; font-size:0.9rem; display:flex; align-items:center; gap:5px;">${mediaCount} <span style="font-size:1.2rem;">›</span></div>
+                                </div>
+                                <div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:5px;">
+                                    ${mediaHtml}
+                                </div>
+                            </div>
+
+                            <!-- Members List -->
+                            <div style="padding:15px 20px; background:#0b141a; border-bottom: 8px solid #02050e; text-align:left;">
+                                <div style="color:#8696a0; font-size:0.95rem; margin-bottom:10px;">${groupMatch.members.length} participants</div>
+                                ${membersHtml}
+                            </div>
+
+                            <!-- Exit Group Action -->
+                            <div style="padding:18px 20px; background:#0b141a; text-align:left; cursor:pointer; transition:0.3s;" onmouseover="this.style.background='rgba(234, 103, 89, 0.1)'" onmouseout="this.style.background='#0b141a'" onclick="window.exitWhatsAppGroup('${groupMatch.id}')">
+                                <div style="display:flex; align-items:center; gap:20px; color:#ea6759;">
+                                    <span style="font-size:1.5rem;">🚪</span>
+                                    <span style="font-size:1.1rem; font-weight:500;">Exit group</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>`;
+                    wrapper.classList.remove('hidden');
+                    return; // ⚡ End function execution here if it's a group
+                }
+            } 
+            
+            // ==========================================
+            // 👤 STANDARD USER PROFILE LOGIC (Unchanged)
+            // ==========================================
             if(targetUserId !== "MainframeAdmin" && !isGroupNode) {
                 const userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === targetUserId);
                 if(userMatch) { targetAvatarPath = userMatch.avatar || defaultAvatarSvg; displayName = userMatch.clientName || "Unknown"; displayContact = userMatch.contact || "Private"; displayBio = userMatch.bio || "Available"; }
-            } else if (isGroupNode) {
-                const groupMatch = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === targetUserId);
-                if(groupMatch) { targetAvatarPath = groupMatch.avatar || defaultAvatarSvg; displayName = groupMatch.name || "Group"; displayContact = "Group Chat"; displayBio = `${groupMatch.members.length} Participants`; }
             } else if (targetUserId === "MainframeAdmin") {
                 displayName = "Support Admin (Mainframe)"; displayContact = "System Admin"; displayBio = "Managing Matrix Cloud";
             }
@@ -4170,6 +4267,45 @@
                 </div>
             </div>`;
             wrapper.classList.remove('hidden');
+        };
+
+        // ==========================================
+        // 🚪 EXIT GROUP ENGINE
+        // ==========================================
+        window.exitWhatsAppGroup = function(groupId) {
+            if(confirm("Exit this group? You will no longer be able to send or receive messages in this group.")) {
+                const currentUid = MatrixSystemState.get('loggedInCustomerID');
+                const group = MatrixSystemState.get('cachedGlobalGroupsArr').find(g => g.id === groupId);
+                
+                if(group) {
+                    // Remove user from the group members array
+                    const newMembers = group.members.filter(m => m !== currentUid);
+                    
+                    // Update Database
+                    update(ref(db, `groups/${groupId}`), { members: newMembers }).then(() => {
+                        window.closeCustomInlinePopupEngine();
+                        alert("You have left the group.");
+                        
+                        // Clear active chat selection
+                        MatrixSystemState.set('activeSelectedChatTargetUserId', "");
+                        MatrixSystemState.set('spyActiveTargetUserContext', "");
+                        
+                        // Reset Chat Headers
+                        document.getElementById('chatActiveUserHeaderNode').innerText = "Select Pipeline...";
+                        if(document.getElementById('spyActiveHeaderTitle')) document.getElementById('spyActiveHeaderTitle').innerText = "Select Pipeline...";
+                        
+                        // Reset Scroll Areas
+                        document.getElementById('chatMessagesScrollWrapper').innerHTML = `<div style="text-align:center; margin: 10px 0;"><span style="background:rgba(255,200,50,0.1); color:#f1c40f; padding:6px 12px; border-radius:8px; font-size:0.8rem; border: 1px solid rgba(241,196,15,0.3);">🔒 Messages are end-to-end encrypted.</span></div>`;
+                        if(document.getElementById('adminSpyChatLogsStack')) document.getElementById('adminSpyChatLogsStack').innerHTML = "";
+                        
+                        // Re-render chat panels
+                        window.initializeCrossLinkChatPanel();
+                        if(MatrixSystemState.get('currentMode') === 'admin') window.renderAdminSpyUserList();
+                    }).catch(error => {
+                        alert("Error leaving group: " + error.message);
+                    });
+                }
+            }
         };
 
         onValue(ref(db, 'statuses'), (snapshot) => {
