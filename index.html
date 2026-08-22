@@ -1666,56 +1666,38 @@
             window.initPremiumMatrixUI();
         };
 
-        // ⚡ COPY FUNCTION FIX (100% Working Again)
+        // ⚡ COPY FUNCTION FIX (Ab Code 100% Copy Hoga)
         window.copyPolicySnippetFromRepo = function(base64Code) {
             try {
                 const code = decodeURIComponent(escape(atob(base64Code)));
-                navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Clean policy code copied to clipboard successfully!");
-                }).catch(err => {
-                    const textArea = document.createElement("textarea");
-                    textArea.value = code;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert("✅ Clean policy code copied (Fallback Mode)!");
-                });
+                const textArea = document.createElement("textarea");
+                textArea.value = code;
+                textArea.style.position = "fixed"; 
+                textArea.style.top = "-9999px"; 
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert("✅ Code copied successfully!");
             } catch(e) {
-                alert("Copy error: " + e.message);
+                alert("Copy Error: " + e.message);
             }
         };
 
-        // --- ⚡ DYNAMIC UI UPGRADES (Compact Dashboard & Premium Features) ---
+        // --- ⚡ DYNAMIC UI UPGRADES (Length Reduced, Width Unchanged) ---
         window.initPremiumMatrixUI = function() {
             if (window.policyUiUpgraded) return;
             window.policyUiUpgraded = true;
 
-            // ⚡ 1. COMPACT DASHBOARD CSS INJECTION (Makes everything sleek)
-            const compactStyle = document.createElement('style');
-            compactStyle.innerHTML = `
-                .hud-container-panel { max-width: 1100px !important; padding: 25px 30px !important; border-radius: 16px !important; margin: 0 auto !important; }
-                .dashboard-panel-core { padding-top: 95px !important; }
-                .giant-compiler-layout { padding: 20px !important; margin-bottom: 20px !important; }
-                .modern-glass-panel { padding: 20px !important; margin-bottom: 20px !important; }
-                .main-menu-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important; gap: 10px !important; margin-top: 10px !important; }
-                .menu-card { padding: 12px !important; border-radius: 10px !important; }
-                .menu-card .icon { font-size: 1.6rem !important; margin-bottom: 5px !important; }
-                .menu-card h3 { font-size: 0.9rem !important; margin-bottom: 3px !important; }
-                .menu-card p { font-size: 0.75rem !important; display:none; }
-                .panel-header-flex { margin-bottom: 15px !important; padding-bottom: 10px !important; }
-                h2.neon-cyan-text, h2.neon-green-text { font-size: 1.6rem !important; }
-            `;
-            document.head.appendChild(compactStyle);
-
-            // 2. FULL SCREEN FIX WITH SVG ICON
+            // 1. FULL SCREEN FIX WITH SVG ICON
             const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
             if (hubHeader && !document.getElementById('policyHubLockBtn')) {
                 const fsBtn = document.createElement('button');
                 fsBtn.id = 'policyHubLockBtn';
                 fsBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                 fsBtn.className = 'nav-btn';
-                fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:6px 12px; border-radius:8px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
+                fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:8px 12px; border-radius:8px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
                 
                 fsBtn.onclick = function() { 
                     window.toggleWaAreaLock('adminPolicySearchBlock', null); 
@@ -1738,40 +1720,40 @@
                 if(tabContainer) tabContainer.appendChild(fsBtn);
             }
 
-            // 3. Injector Bar PREMIUM UI & CALENDAR ANALYTICS
+            // 3. Injector Bar PREMIUM UI & CALENDAR ANALYTICS (Height Reduced)
             const textarea = document.getElementById('adminPolicyCodePasteInput');
             if (textarea) {
                 textarea.style.background = '#0d1117'; 
                 textarea.style.border = '1px solid #1e293b';
                 textarea.style.borderLeft = '4px solid #00f2fe';
-                textarea.style.boxShadow = 'inset 0 0 20px rgba(0,0,0,0.8), 0 10px 30px rgba(0,0,0,0.5)';
+                textarea.style.boxShadow = 'inset 0 0 15px rgba(0,0,0,0.8), 0 5px 15px rgba(0,0,0,0.5)';
                 textarea.style.color = '#38bdf8'; 
-                textarea.style.padding = '25px';
-                textarea.style.fontSize = '1.15rem';
-                textarea.style.minHeight = '300px'; 
+                textarea.style.padding = '15px';
+                textarea.style.fontSize = '1.05rem';
+                textarea.style.minHeight = '140px';  // ⚡ FIX: Length Reduced (was 300px)
                 textarea.style.flex = '1'; 
                 textarea.style.fontFamily = '"Courier New", Courier, monospace';
-                textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
+                textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...";
                 
                 const injectorBlock = document.getElementById('policySubBlock_injector');
                 if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
-                    // Analytics Bar
+                    // Analytics Bar (Compact)
                     const analyticsBar = document.createElement('div');
                     analyticsBar.id = 'injectorAnalyticsBar';
-                    analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); padding:12px 20px; border-radius:10px; border:1px solid rgba(0,242,254,0.3); margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); flex-wrap:wrap; gap:12px;';
+                    analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); padding:10px 15px; border-radius:10px; border:1px solid rgba(0,242,254,0.3); margin-bottom:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); flex-wrap:wrap; gap:10px;';
                     analyticsBar.innerHTML = `
                         <div style="display:flex; align-items:center; gap:12px;">
-                            <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#00f2fe; border:1px solid #00f2fe; padding:8px 12px; border-radius:6px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
+                            <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#00f2fe; border:1px solid #00f2fe; padding:6px 10px; border-radius:6px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
                                 <option value="today">📅 Today</option>
                                 <option value="yesterday">📅 Yesterday</option>
                                 <option value="between">🗓️ Between Dates</option>
                             </select>
-                            <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:6px 10px; border-radius:6px; outline:none; font-family:monospace;">
-                            <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:6px 10px; border-radius:6px; outline:none; font-family:monospace;">
+                            <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:4px 8px; border-radius:6px; outline:none; font-family:monospace;">
+                            <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:4px 8px; border-radius:6px; outline:none; font-family:monospace;">
                         </div>
                         <div style="display:flex; align-items:center; gap:15px;">
-                            <div style="color:var(--text-sub); font-size:1rem; font-family:Orbitron; font-weight:bold;">Total Code Injected: <span id="injTotalCount" style="color:#2ecc71; font-size:1.4rem; text-shadow:0 0 15px rgba(46,204,113,0.6); margin-left:8px;">0</span></div>
-                            <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:8px 15px; font-size:0.85rem; box-shadow:0 0 15px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
+                            <div style="color:var(--text-sub); font-size:0.95rem; font-family:Orbitron; font-weight:bold;">Total Code Injected: <span id="injTotalCount" style="color:#2ecc71; font-size:1.2rem; text-shadow:0 0 10px rgba(46,204,113,0.6); margin-left:6px;">0</span></div>
+                            <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:6px 12px; font-size:0.8rem; box-shadow:0 0 10px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
                         </div>
                     `;
 
@@ -1779,14 +1761,14 @@
                     const header = document.createElement('div');
                     header.id = 'injectorTerminalHeader';
                     header.innerHTML = `
-                        <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:12px 18px; border-radius:10px 10px 0 0; border:1px solid #1e293b; border-bottom:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:10px 15px; border-radius:10px 10px 0 0; border:1px solid #1e293b; border-bottom:none;">
                             <div style="display:flex; gap:8px;">
-                                <span style="width:12px; height:12px; border-radius:50%; background:#e74c3c; box-shadow:0 0 10px #e74c3c;"></span>
-                                <span style="width:12px; height:12px; border-radius:50%; background:#f1c40f; box-shadow:0 0 10px #f1c40f;"></span>
-                                <span style="width:12px; height:12px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
+                                <span style="width:10px; height:10px; border-radius:50%; background:#e74c3c; box-shadow:0 0 8px #e74c3c;"></span>
+                                <span style="width:10px; height:10px; border-radius:50%; background:#f1c40f; box-shadow:0 0 8px #f1c40f;"></span>
+                                <span style="width:10px; height:10px; border-radius:50%; background:#2ecc71; box-shadow:0 0 8px #2ecc71;"></span>
                             </div>
-                            <span style="color:#8696a0; font-family:monospace; font-weight:bold; letter-spacing:1px; font-size:1rem;">root@matrix-hub:~#</span>
-                            <span style="color:#00f2fe; font-weight:900; font-size:0.95rem;">JS INJECTOR ⚡</span>
+                            <span style="color:#8696a0; font-family:monospace; font-weight:bold; letter-spacing:1px; font-size:0.95rem;">root@matrix-hub:~#</span>
+                            <span style="color:#00f2fe; font-weight:900; font-size:0.9rem;">JS INJECTOR ⚡</span>
                         </div>
                     `;
                     
@@ -1808,7 +1790,7 @@
                 searchInput.style.fontSize = '1rem';
                 searchInput.style.padding = '12px 20px';
                 searchInput.style.width = '100%';
-                searchInput.style.maxWidth = '600px'; 
+                searchInput.style.maxWidth = '500px'; 
                 searchInput.style.fontFamily = 'Orbitron';
                 searchInput.style.letterSpacing = '1px';
                 searchInput.placeholder = "SCAN REG NO OR CONTACT NO...";
@@ -1825,7 +1807,7 @@
                 if(!searchBtn) {
                     searchBtn = document.createElement('button');
                     searchBtn.id = 'premiumSearchBtnBtn';
-                    searchBtn.innerHTML = '⚡ DEEP SEARCH';
+                    searchBtn.innerHTML = '⚡ SEARCH';
                     searchBtn.className = 'hud-engage-btn';
                     searchBtn.style.cssText = 'width:auto; padding:0 25px; height:45px; font-size:0.95rem; font-weight:900; border-radius:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 15px rgba(0,242,254,0.4); color:#000; display:flex; align-items:center; gap:8px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
                     searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 20px rgba(0,242,254,0.6)'; };
@@ -1840,6 +1822,32 @@
                         window.executePolicySearch();
                     }
                 };
+            }
+        };
+
+        // ⚡ OVERRIDE GLOBAL FULLSCREEN LOGIC TO FIX BUGS
+        window.toggleFullScreenEngine = function() {
+            const btn = document.getElementById('fullScreenBtn');
+            if (!document.fullscreenElement) { 
+                document.documentElement.requestFullscreen().then(() => { 
+                    if(btn) {
+                        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
+                        btn.style.color = "#ff007f";
+                        btn.style.borderColor = "#ff007f";
+                        btn.style.boxShadow = "0 0 15px rgba(255,0,127,0.5)";
+                    }
+                }).catch(()=>{}); 
+            } else { 
+                if (document.exitFullscreen) { 
+                    document.exitFullscreen().then(() => { 
+                        if(btn) {
+                            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                            btn.style.color = "#00f2fe";
+                            btn.style.borderColor = "#00f2fe";
+                            btn.style.boxShadow = "none";
+                        }
+                    }); 
+                } 
             }
         };
 
@@ -1928,7 +1936,7 @@
             wrapper.classList.remove('hidden');
         };
 
-        // ⚡ STRICT SEARCH EXECUTION LOGIC (100% Fixed - Accurate Flex Row Matching)
+        // ⚡ STRICT SEARCH EXECUTION LOGIC (Grid Fill Fix + Accurate Matching)
         window.executePolicySearch = function() {
             const searchInput = document.getElementById('adminPolicySearchInput');
             if(!searchInput) return;
@@ -1938,12 +1946,12 @@
             if(!feedbackUI || !cardsContainer) return;
             
             if (q === "") {
-                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p></div>";
+                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:20px; text-align:center; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.4rem;'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:5px; font-size:1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p></div>";
                 cardsContainer.style.display = 'none';
                 return;
             }
 
-            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
+            feedbackUI.innerHTML = "<div style='text-align:center; padding:20px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.2rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
             cardsContainer.style.display = 'none';
             
             setTimeout(() => {
@@ -1958,13 +1966,12 @@
                     
                     let isMatch = false;
 
-                    // STRICT MATCHING CONDITIONS ONLY
                     if (exactReg.includes(cleanQ) || exactContact.includes(cleanQ) || fullText.includes(q)) {
                         isMatch = true;
                     }
 
                     if(isMatch) {
-                        card.style.display = "flex"; 
+                        card.style.display = "flex"; // Flex ensures the flex-grow property works
                         matchCount++;
                     } else {
                         card.style.display = "none";
@@ -1972,18 +1979,18 @@
                 });
 
                 if(matchCount === 0) {
-                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
+                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:20px; text-align:center; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.4rem;'>❌ NO MATCHES</h3><p style='color:#e9edef; margin-top:5px; font-size:1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
                     cardsContainer.style.display = 'none';
                 } else {
                     // ⚡ FIX: Render Search items using Flex Wrap (Allows items to stretch proportionally)
-                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:10px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
+                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:8px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1rem; box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
                     cardsContainer.style.display = 'flex'; 
                     cardsContainer.style.flexWrap = 'wrap';
                 }
             }, 300);
         };
 
-        // ⚡ MENU & BULK DELETE LOGIC FOR LIBRARY (Ctrl+F Style)
+        // ⚡ MENU & BULK DELETE LOGIC FOR LIBRARY
         window.toggleLibraryDeleteMenu = function() {
             const bar = document.getElementById('libraryDeleteControlBar');
             if(bar.style.display === 'none') {
@@ -2036,7 +2043,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Original Grid Restored)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Flex Grid + Library Original Layout Restored)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -2047,38 +2054,38 @@
             let libraryHtml = "";
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
-            // Search Container UI (Flex layout for smart stretching)
+            // Search Container UI (Flex layout for smart stretching) -> Height Reduced to 380px
             listContainer.innerHTML = `
                 <div id="adminSearchFeedbackUI">
-                    <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
-                        <h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3>
-                        <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
+                    <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:20px; text-align:center; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
+                        <h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.4rem;'>🔍 AWAITING INPUT</h3>
+                        <p style='color:#8696a0; margin-top:5px; font-size:1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
                     </div>
                 </div>
-                <div id="adminSearchCardsContainer" style="display:none; flex-wrap:wrap; gap:15px; width:100%;">
+                <div id="adminSearchCardsContainer" style="display:none; flex-wrap:wrap; gap:15px; width:100%; max-height:360px; overflow-y:auto; padding-right:5px;">
                 </div>
             `;
 
             // Library Top Controls
             let libControls = `
-            <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
-                <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">ALL</button>
-                <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ DONE</button>
-                <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ NOT DONE</button>
-                <button onclick="window.toggleLibraryDeleteMenu()" class="nav-btn" style="border-color:rgba(231,76,60,0.5); color:#e74c3c; background:rgba(231,76,60,0.1); font-size:0.8rem; padding:6px 14px; border-radius:20px;">🗑️ DELETE</button>
+            <div style="display:flex; justify-content:flex-end; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+                <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.75rem; padding:6px 12px; border-radius:20px;">ALL</button>
+                <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.75rem; padding:6px 12px; border-radius:20px;">✅ DONE</button>
+                <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.75rem; padding:6px 12px; border-radius:20px;">⏳ NOT DONE</button>
+                <button onclick="window.toggleLibraryDeleteMenu()" class="nav-btn" style="border-color:rgba(231,76,60,0.5); color:#e74c3c; background:rgba(231,76,60,0.1); font-size:0.75rem; padding:6px 12px; border-radius:20px;">🗑️ DELETE</button>
             </div>
             
-            <div id="libraryDeleteControlBar" class="hidden" style="display:none; background:rgba(0,0,0,0.8); padding:15px; border-radius:12px; border:1px solid #e74c3c; margin-bottom:15px; align-items:center; gap:10px; flex-wrap:wrap; box-shadow:0 5px 15px rgba(231,76,60,0.2);">
-                <div style="display:flex; align-items:center; background:#02050e; border:1px solid #e74c3c; border-radius:6px; padding:5px 10px; flex:1; min-width:200px;">
-                    <span style="color:#e74c3c; margin-right:8px;">🔍</span>
-                    <input type="text" id="libDeleteSearch" placeholder="Find Reg No to delete..." oninput="window.filterLibraryDeleteSearch()" style="background:transparent; border:none; color:#fff; outline:none; width:100%; font-family:monospace;">
+            <div id="libraryDeleteControlBar" class="hidden" style="display:none; background:rgba(0,0,0,0.8); padding:12px; border-radius:10px; border:1px solid #e74c3c; margin-bottom:12px; align-items:center; gap:8px; flex-wrap:wrap; box-shadow:0 5px 15px rgba(231,76,60,0.2);">
+                <div style="display:flex; align-items:center; background:#02050e; border:1px solid #e74c3c; border-radius:6px; padding:4px 8px; flex:1; min-width:180px;">
+                    <span style="color:#e74c3c; margin-right:6px;">🔍</span>
+                    <input type="text" id="libDeleteSearch" placeholder="Find Reg No to delete..." oninput="window.filterLibraryDeleteSearch()" style="background:transparent; border:none; color:#fff; outline:none; width:100%; font-family:monospace; font-size:0.9rem;">
                 </div>
-                <button onclick="window.enableLibrarySelectMode()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:8px 12px;">🖱️ Select</button>
-                <button onclick="window.selectAllLibraryForDelete()" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; padding:8px 12px;">✅ Select All</button>
-                <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:8px 15px; border-radius:6px; font-size:0.9rem;">🗑️ Confirm</button>
+                <button onclick="window.enableLibrarySelectMode()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:6px 10px; font-size:0.8rem;">🖱️ Select</button>
+                <button onclick="window.selectAllLibraryForDelete()" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; padding:6px 10px; font-size:0.8rem;">✅ Select All</button>
+                <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:6px 12px; border-radius:6px; font-size:0.85rem;">🗑️ Confirm</button>
             </div>
 
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:15px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:15px; max-height:360px; overflow-y:auto; padding-right:5px; padding-bottom:10px;">
             `;
             
             items.forEach((item, index) => {
@@ -2097,10 +2104,9 @@
                 let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
                 let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
 
-                // ⚡ SMART FLEX ROW STYLING FOR SEARCH ONLY
+                // ⚡ SEARCH RESULT CARD (Flex Row Style - Fits screen intelligently)
                 let flexCardStyle = `flex: 1 1 calc(25% - 15px); min-width: 250px; box-sizing: border-box; display:none; flex-direction:column; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); border-radius:8px;`;
 
-                // Search Result Card
                 searchHtml += `
                 <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="${flexCardStyle}">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -2120,9 +2126,9 @@
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
-                // Library Original Clean Card (Grid Style Restored)
+                // ⚡ LIBRARY CARD (Original Grid Style - No Flex stretch)
                 libraryHtml += `
-                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="box-sizing: border-box; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); flex-direction:column; border-radius:8px;">
+                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="box-sizing: border-box; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); display:flex; flex-direction:column; border-radius:8px;">
                     <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:-8px; right:-8px; z-index:10; background:#02050e; border-radius:50%; padding:2px; box-shadow:0 0 10px #e74c3c;">
                         <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.2);">
                     </div>
@@ -2150,7 +2156,7 @@
                 document.getElementById('adminPolicyLibraryGridList').innerHTML = libraryHtml;
                 libraryContainer.innerHTML = libControls + document.getElementById('adminPolicyLibraryGridList').outerHTML;
             } else {
-                libraryContainer.innerHTML = libControls + "<div style='width: 100%; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div></div>";
+                libraryContainer.innerHTML = libControls + "<div style='width: 100%; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:20px; text-align:center; border-radius:12px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1rem; margin-top:5px;'>No records found for this filter.</p></div></div>";
             }
             
             const searchInputObj = document.getElementById('adminPolicySearchInput');
@@ -2232,16 +2238,16 @@
 
             document.getElementById('adminPolicyCodePasteInput').value = "";
             alert("✅ Success! " + processedCount + " policy/policies converted & saved to Cloud Vault!");
+            
+            // ⚡ Refresh UI dynamically so new code appears immediately
             window.renderAdminPolicySearchDashboard();
-            window.switchPolicySubTab('library');
         };
 
         window.renderAdminPolicySearchDashboard = function() {
             // ⚡ GLITCH FIX: Guarantee the injector tab is visible and initialized BEFORE fetching data
-            if (!window.policySubTabInitialized) {
+            if (!window.policyUiUpgraded) {
                 window.switchPolicySubTab('injector');
                 window.initPremiumMatrixUI();
-                window.policySubTabInitialized = true;
             }
             
             const listContainer = document.getElementById('adminPolicySearchResultsList');
@@ -2250,7 +2256,7 @@
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    let emptyMsg = "<div style='background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px; width:100%;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>Upload your first policy code above.</p></div>";
+                    let emptyMsg = "<div style='background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:20px; text-align:center; border-radius:12px; width:100%;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1rem; margin-top:5px;'>Upload your first policy code above.</p></div>";
                     listContainer.innerHTML = emptyMsg;
                     libraryContainer.innerHTML = emptyMsg;
                     return;
