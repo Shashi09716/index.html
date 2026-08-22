@@ -1647,6 +1647,7 @@
                     btn.style.background = "transparent";
                 }
             });
+            
             const targetEl = document.getElementById('policySubBlock_' + tabId);
             if(targetEl) {
                 targetEl.classList.remove('hidden');
@@ -1654,6 +1655,7 @@
                 targetEl.style.flexDirection = "column";
                 targetEl.style.height = "100%";
             }
+            
             const activeBtn = document.getElementById('pSubTab_' + tabId);
             if(activeBtn) {
                 activeBtn.style.borderColor = "var(--neon-cyan)";
@@ -1661,40 +1663,22 @@
                 activeBtn.style.background = "rgba(0,242,254,0.15)";
             }
 
-            // --- ⚡ DYNAMIC UI UPGRADES ---
+            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Analytics & Terminal Injector) ---
             if (!window.policyUiUpgraded) {
                 window.policyUiUpgraded = true;
-                
-                // 1. Full Screen Logo Button (100% Working)
-                const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
-                if (hubHeader && !document.getElementById('policyHubLockBtn')) {
-                    const fsBtn = document.createElement('button');
-                    fsBtn.id = 'policyHubLockBtn';
-                    fsBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
-                    fsBtn.className = 'nav-btn';
-                    fsBtn.style.cssText = 'background:rgba(0,242,254,0.1); border:2px solid #00f2fe; padding:6px 10px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
-                    
-                    fsBtn.onclick = function() { 
-                        const block = document.getElementById('adminPolicySearchBlock');
-                        block.classList.toggle('locked-area-active');
-                        document.body.classList.toggle('strict-scroll-lock');
-                        if(block.classList.contains('locked-area-active')) {
-                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
-                            this.style.borderColor = "#ff007f";
-                            this.style.boxShadow = "0 0 20px rgba(255,0,127,0.6)";
-                            this.style.background = "rgba(255,0,127,0.15)";
-                        } else {
-                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
-                            this.style.borderColor = "#00f2fe";
-                            this.style.boxShadow = "0 0 15px rgba(0,242,254,0.4)";
-                            this.style.background = "rgba(0,242,254,0.1)";
-                        }
-                    };
-                    const tabContainer = hubHeader.querySelector('div') || hubHeader;
-                    if(tabContainer) tabContainer.appendChild(fsBtn);
+
+                // 1. FULL SCREEN FIX WITH SVG ICON
+                const mainFsBtn = document.getElementById('fullScreenBtn');
+                if (mainFsBtn) {
+                    mainFsBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                    mainFsBtn.style.display = 'flex';
+                    mainFsBtn.style.alignItems = 'center';
+                    mainFsBtn.style.justifyContent = 'center';
+                    mainFsBtn.style.padding = '8px 12px';
+                    mainFsBtn.style.color = '#00f2fe';
                 }
 
-                // 2. Injector Bar PREMIUM UI + CALENDAR ANALYTICS (Mac Terminal Style)
+                // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS UPGRADE
                 const textarea = document.getElementById('adminPolicyCodePasteInput');
                 if (textarea) {
                     textarea.style.background = '#0d1117'; 
@@ -1704,14 +1688,13 @@
                     textarea.style.color = '#38bdf8'; 
                     textarea.style.padding = '25px';
                     textarea.style.fontSize = '1.15rem';
-                    textarea.style.minHeight = '350px'; 
+                    textarea.style.minHeight = '300px'; 
                     textarea.style.flex = '1'; 
                     textarea.style.fontFamily = '"Courier New", Courier, monospace';
                     textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
                     
                     const injectorBlock = document.getElementById('policySubBlock_injector');
                     if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
-                        
                         // Calendar Analytics Bar
                         const analyticsBar = document.createElement('div');
                         analyticsBar.id = 'injectorAnalyticsBar';
@@ -1757,35 +1740,37 @@
                 // 3. Search Bar PREMIUM UI Upgrade
                 const searchInput = document.getElementById('adminPolicySearchInput');
                 if (searchInput) {
-                    searchInput.style.background = 'rgba(0,0,0,0.8)';
-                    searchInput.style.border = '2px solid #a73ec9';
-                    searchInput.style.boxShadow = 'inset 0 0 15px rgba(167,62,201,0.2)';
+                    searchInput.style.background = 'rgba(2, 5, 14, 0.8)';
+                    searchInput.style.border = '2px solid #00f2fe';
+                    searchInput.style.boxShadow = '0 0 25px rgba(0,242,254,0.3), inset 0 0 15px rgba(0,242,254,0.1)';
                     searchInput.style.color = '#fff';
-                    searchInput.style.borderRadius = '12px';
-                    searchInput.style.fontSize = '1.1rem';
-                    searchInput.style.padding = '18px 25px';
-                    searchInput.placeholder = "🔍 Strictly Search Vault by Reg No, Phone, Name...";
-                    searchInput.removeAttribute('oninput'); // Wait for Enter/Click
+                    searchInput.style.borderRadius = '30px';
+                    searchInput.style.fontSize = '1.3rem';
+                    searchInput.style.padding = '20px 30px';
+                    searchInput.style.textAlign = 'center';
+                    searchInput.style.width = '100%';
+                    searchInput.style.maxWidth = '800px';
+                    searchInput.style.margin = '0 auto';
+                    searchInput.placeholder = "🔍 ENTER REG NO. OR CONTACT NO. TO SEARCH...";
+                    searchInput.removeAttribute('oninput'); // Stop auto-search
                     
                     const parent = searchInput.parentNode;
                     parent.style.display = 'flex';
-                    parent.style.gap = '15px';
+                    parent.style.flexDirection = 'column';
+                    parent.style.gap = '20px';
                     parent.style.alignItems = 'center';
-                    parent.style.background = 'linear-gradient(90deg, rgba(6,17,38,0.9), rgba(2,5,14,0.95))';
-                    parent.style.padding = '20px';
-                    parent.style.borderRadius = '16px';
-                    parent.style.border = '1px solid rgba(167,62,201,0.4)';
-                    parent.style.boxShadow = '0 10px 30px rgba(0,0,0,0.6)';
+                    parent.style.background = 'transparent';
+                    parent.style.border = 'none';
                     
                     let searchBtn = document.getElementById('premiumSearchBtnBtn');
                     if(!searchBtn) {
                         searchBtn = document.createElement('button');
                         searchBtn.id = 'premiumSearchBtnBtn';
-                        searchBtn.innerHTML = '<span style="font-size:1.3rem;">🚀</span> INIT SEARCH';
+                        searchBtn.innerHTML = '<span style="font-size:1.4rem;">🚀</span> EXECUTE SEARCH';
                         searchBtn.className = 'hud-engage-btn';
-                        searchBtn.style.cssText = 'width:auto; padding:0 35px; height:60px; font-size:1.1rem; font-weight:900; border-radius:12px; background:linear-gradient(135deg, #a73ec9, #c863e4); box-shadow:0 0 20px rgba(167,62,201,0.5); color:#fff; display:flex; align-items:center; gap:10px; border:2px solid #fff; transition:0.3s; cursor:pointer; flex-shrink:0;';
-                        searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 30px #c863e4'; };
-                        searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 20px rgba(167,62,201,0.5)'; };
+                        searchBtn.style.cssText = 'width:auto; padding:15px 40px; font-size:1.2rem; font-weight:900; border-radius:30px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 20px rgba(0,242,254,0.5); color:#000; display:flex; align-items:center; gap:10px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
+                        searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 30px #00f2fe'; };
+                        searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 20px rgba(0,242,254,0.5)'; };
                         searchBtn.onclick = function() { window.executePolicySearch(); };
                         parent.appendChild(searchBtn);
                     }
@@ -1806,60 +1791,30 @@
             }
         };
 
-        // ⚡ STRICT SEARCH EXECUTION LOGIC (Accurate Reg No & Phone Match)
-        window.executePolicySearch = function() {
-            const searchInput = document.getElementById('adminPolicySearchInput');
-            if(!searchInput) return;
-            const q = searchInput.value.toLowerCase().trim();
-            const feedbackUI = document.getElementById('adminSearchFeedbackUI');
-            const cardsContainer = document.getElementById('adminSearchCardsContainer');
-            if(!feedbackUI || !cardsContainer) return;
-            
-            if (q === "") {
-                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No, Contact No or exact details and press <b>Search</b>.</p></div>";
-                cardsContainer.style.display = 'none';
-                return;
+        // ⚡ OVERRIDE GLOBAL FULLSCREEN LOGIC TO FIX BUGS
+        window.toggleFullScreenEngine = function() {
+            const btn = document.getElementById('fullScreenBtn');
+            if (!document.fullscreenElement) { 
+                document.documentElement.requestFullscreen().then(() => { 
+                    if(btn) {
+                        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
+                        btn.style.color = "#ff007f";
+                        btn.style.borderColor = "#ff007f";
+                        btn.style.boxShadow = "0 0 15px rgba(255,0,127,0.5)";
+                    }
+                }).catch(()=>{}); 
+            } else { 
+                if (document.exitFullscreen) { 
+                    document.exitFullscreen().then(() => { 
+                        if(btn) {
+                            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                            btn.style.color = "#00f2fe";
+                            btn.style.borderColor = "#00f2fe";
+                            btn.style.boxShadow = "none";
+                        }
+                    }); 
+                } 
             }
-
-            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
-            cardsContainer.style.display = 'none';
-            
-            setTimeout(() => {
-                const cards = cardsContainer.querySelectorAll('.policy-repo-card');
-                let matchCount = 0;
-                
-                cards.forEach(card => {
-                    const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase().replace(/\s+/g, '');
-                    const exactContact = card.getAttribute('data-exact-contact') || "";
-                    const fullText = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
-                    const cleanQ = q.replace(/\s+/g, ''); // For reg number spaces
-                    
-                    let isMatch = false;
-
-                    if (exactReg === cleanQ) {
-                        isMatch = true; // Strict Reg Match
-                    } else if (exactContact === q || fullText.includes(`'${q}'`) || fullText.includes(`"${q}"`) || fullText.includes(`: ${q}`)) {
-                        isMatch = true; // Strict Phone Match
-                    } else if (fullText.includes(q)) {
-                        isMatch = true; // Broad Match Fallback
-                    }
-
-                    if(isMatch) {
-                        card.style.display = "flex";
-                        matchCount++;
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-
-                if(matchCount === 0) {
-                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
-                    cardsContainer.style.display = 'none';
-                } else {
-                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
-                    cardsContainer.style.display = 'flex';
-                }
-            }, 300);
         };
 
         // ⚡ ANALYTICS LOGIC (Handle Dates & Details Popup)
@@ -1947,6 +1902,66 @@
             wrapper.classList.remove('hidden');
         };
 
+        // ⚡ STRICT SEARCH EXECUTION LOGIC (100% Fixed - Accurate Reg No & Phone Match)
+        window.executePolicySearch = function() {
+            const searchInput = document.getElementById('adminPolicySearchInput');
+            if(!searchInput) return;
+            const q = searchInput.value.toLowerCase().trim();
+            const feedbackUI = document.getElementById('adminSearchFeedbackUI');
+            const cardsContainer = document.getElementById('adminSearchCardsContainer');
+            if(!feedbackUI || !cardsContainer) return;
+            
+            if (q === "") {
+                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p></div>";
+                cardsContainer.style.display = 'none';
+                return;
+            }
+
+            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
+            cardsContainer.style.display = 'none';
+            
+            setTimeout(() => {
+                const cards = cardsContainer.querySelectorAll('.policy-repo-card');
+                let matchCount = 0;
+                
+                cards.forEach(card => {
+                    const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase().replace(/\s+/g, '');
+                    const exactContact = card.getAttribute('data-exact-contact') || "";
+                    const exactPol = (card.getAttribute('data-exact-pol') || "").toLowerCase().replace(/\s+/g, '');
+                    const exactClient = (card.getAttribute('data-exact-client') || "").toLowerCase();
+                    const cleanQ = q.replace(/\s+/g, '');
+                    
+                    let isMatch = false;
+
+                    // STRICT MATCHING CONDITIONS ONLY
+                    if (exactReg.includes(cleanQ)) {
+                        isMatch = true;
+                    } else if (exactContact.includes(cleanQ)) {
+                        isMatch = true; 
+                    } else if (exactPol.includes(cleanQ)) {
+                        isMatch = true;
+                    } else if (exactClient.includes(q)) {
+                        isMatch = true;
+                    }
+
+                    if(isMatch) {
+                        card.style.display = "flex";
+                        matchCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                if(matchCount === 0) {
+                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
+                    cardsContainer.style.display = 'none';
+                } else {
+                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
+                    cardsContainer.style.display = 'flex';
+                }
+            }, 300);
+        };
+
         // ⚡ MENU & BULK DELETE LOGIC FOR LIBRARY (Ctrl+F Style)
         window.toggleLibraryDeleteMenu = function() {
             const bar = document.getElementById('libraryDeleteControlBar');
@@ -1960,11 +1975,11 @@
         };
 
         window.filterLibraryDeleteSearch = function() {
-            const q = document.getElementById('libDeleteSearch').value.toLowerCase().trim();
+            const q = document.getElementById('libDeleteSearch').value.toLowerCase().replace(/\s+/g, '');
             const cards = document.getElementById('adminPolicyLibraryGridList').querySelectorAll('.policy-repo-card');
             cards.forEach(card => {
-                const text = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
-                if(text.includes(q)) {
+                const reg = (card.getAttribute('data-exact-reg') || "").toLowerCase().replace(/\s+/g, '');
+                if(reg.includes(q)) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -1998,7 +2013,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Delete Menu & Original Look)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Delete Menu & Original Look restored)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -2023,43 +2038,42 @@
 
             // Library Top Controls (Original Tabs + Delete Button + Hidden Delete Menu)
             let libControls = `
-            <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:15px;">
-                <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
-                <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
-                <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
-                <button onclick="window.toggleLibraryDeleteMenu()" class="nav-btn" style="border-color:rgba(231,76,60,0.5); color:#e74c3c; background:rgba(231,76,60,0.1); font-size:0.8rem; padding:6px 14px; border-radius:20px;">🗑️ Delete</button>
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+                <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">ALL</button>
+                <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ DONE</button>
+                <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ NOT DONE</button>
+                <button onclick="window.toggleLibraryDeleteMenu()" class="nav-btn" style="border-color:rgba(231,76,60,0.5); color:#e74c3c; background:rgba(231,76,60,0.1); font-size:0.8rem; padding:6px 14px; border-radius:20px;">🗑️ DELETE</button>
             </div>
             
             <div id="libraryDeleteControlBar" class="hidden" style="display:none; background:rgba(0,0,0,0.8); padding:15px; border-radius:12px; border:1px solid #e74c3c; margin-bottom:15px; align-items:center; gap:10px; flex-wrap:wrap; box-shadow:0 5px 15px rgba(231,76,60,0.2);">
-                <input type="text" id="libDeleteSearch" placeholder="🔍 Search Reg No..." oninput="window.filterLibraryDeleteSearch()" style="flex:1; min-width:200px; background:#02050e; border:1px solid #e74c3c; padding:8px 12px; border-radius:6px; color:#fff; outline:none; font-family:monospace;">
+                <div style="display:flex; align-items:center; background:#02050e; border:1px solid #e74c3c; border-radius:6px; padding:5px 10px; flex:1; min-width:200px;">
+                    <span style="color:#e74c3c; margin-right:8px;">🔍</span>
+                    <input type="text" id="libDeleteSearch" placeholder="Find Reg No to delete..." oninput="window.filterLibraryDeleteSearch()" style="background:transparent; border:none; color:#fff; outline:none; width:100%; font-family:monospace;">
+                </div>
                 <button onclick="window.enableLibrarySelectMode()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:8px 12px;">🖱️ Select</button>
                 <button onclick="window.selectAllLibraryForDelete()" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; padding:8px 12px;">✅ Select All</button>
                 <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:8px 15px; border-radius:6px; font-size:0.9rem;">🗑️ Confirm</button>
             </div>
 
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;">
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:12px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
             `;
             
             items.forEach((item, index) => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
                 let serialNo = `#${index + 1}`;
                 let isDone = item.isDone === true;
-                let statusBadge = isDone ? `<span style="border:1px solid #2ecc71; color:#2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="border:1px solid #e74c3c; color:#e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
+                let statusBadge = isDone ? `<span style="border:1px solid #2ecc71; color:#2ecc71; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold; background:rgba(46,204,113,0.1);">DONE</span>` : `<span style="border:1px solid #e74c3c; color:#e74c3c; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold; background:rgba(231,76,60,0.1);">NOT DONE</span>`;
                 
                 let itemDate = item.epoch ? new Date(item.epoch) : new Date();
                 let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
                 let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-                let dyStr = item.dayStr || daysArr[itemDate.getDay()];
                 
                 let contactMatch = item.rawCode ? item.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
                 let extractedContact = contactMatch ? contactMatch[1] : "";
 
-                let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
-                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
-
                 // Search Result Card
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
+                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" data-exact-pol="${item.policyNo}" data-exact-client="${item.clientName}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:900; font-size:1.2rem; text-shadow:0 0 10px rgba(0,242,254,0.5);">${item.insurer} (${serialNo})</span>
                         ${statusBadge}
@@ -2067,10 +2081,8 @@
                     <p style="font-size:1.1rem; margin-bottom:8px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
                     <p style="font-size:1.1rem; margin-bottom:8px;"><b>Policy No:</b> ${item.policyNo}</p>
                     <p style="font-size:1.1rem; margin-bottom:15px;"><b>Client:</b> ${item.clientName}</p>
-                    <p style="font-size:0.9rem; color:var(--text-sub); background:rgba(0,0,0,0.5); padding:8px 12px; border-radius:8px;">🕒 Saved: ${dStr} at ${tStr} (${dyStr})</p>
                     <div style="display:flex; gap:12px; margin-top:20px; align-items:center; flex-wrap:wrap;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:12px 20px; width:auto; font-size:0.95rem; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:0 5px 15px rgba(46,204,113,0.4);">📋 COPY CODE</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:12px 18px; font-size:0.95rem; font-weight:bold;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
                     </div>
                 </div>`;
 
@@ -2079,21 +2091,21 @@
 
                 // Library Original Clean Card (with hidden Checkbox)
                 libraryHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px; padding:15px;">
-                    <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:15px; left:15px; z-index:10;">
-                        <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.5);">
+                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+                    <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:-8px; right:-8px; z-index:10; background:#02050e; border-radius:50%; padding:2px; box-shadow:0 0 10px #e74c3c;">
+                        <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.2);">
                     </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding-left:25px;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.9rem;">${item.insurer} (${serialNo})</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem; word-break:break-all;">${item.insurer} <br>${serialNo}</span>
                         ${statusBadge}
                     </div>
-                    <p style="margin-top:5px; padding-left:25px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                    <p style="padding-left:25px;"><b>Policy No:</b> ${item.policyNo}</p>
-                    <p style="padding-left:25px;"><b>Client:</b> ${item.clientName}</p>
-                    <p style="font-size:0.8rem; color:var(--text-sub); padding-left:25px;">🕒 Saved on: ${dStr} at ${tStr}</p>
-                    <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap; padding-left:25px;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'Undo':'Done'}</button>
+                    <p style="margin-top:5px; font-size:0.85rem;"><b>Reg:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')" style="padding:2px 4px; font-size:0.75rem;">${item.regNo}</span></p>
+                    <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.policyNo}"><b>Pol:</b> ${item.policyNo}</p>
+                    <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.clientName}"><b>Name:</b> ${item.clientName}</p>
+                    <p style="font-size:0.75rem; color:var(--text-sub); margin-top:8px;">🕒 ${dStr} ${tStr}</p>
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; font-size:0.75rem; flex:1; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:none;">📋 COPY</button>
+                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 10px; font-size:0.75rem; flex:1;">${isDone?'Undo':'Done'}</button>
                     </div>
                 </div>`;
             });
