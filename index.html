@@ -1648,7 +1648,12 @@
                 }
             });
             const targetEl = document.getElementById('policySubBlock_' + tabId);
-            if(targetEl) targetEl.classList.remove('hidden');
+            if(targetEl) {
+                targetEl.classList.remove('hidden');
+                targetEl.style.display = "flex";
+                targetEl.style.flexDirection = "column";
+                targetEl.style.height = "100%";
+            }
             const activeBtn = document.getElementById('pSubTab_' + tabId);
             if(activeBtn) {
                 activeBtn.style.borderColor = "var(--neon-cyan)";
@@ -1656,69 +1661,76 @@
                 activeBtn.style.background = "rgba(0,242,254,0.15)";
             }
 
-            // --- ⚡ DYNAMIC UI UPGRADES (Injected once for Premium Look & Full Screen) ---
+            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Logo & Terminal Injector) ---
             if (!window.policyUiUpgraded) {
                 window.policyUiUpgraded = true;
                 
-                // 1. Full Screen Button for Matrix Hub (PREMIUM SVG ICON)
+                // 1. Full Screen Button for Matrix Hub (PREMIUM GLOWING SVG ICON)
                 const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
                 if (hubHeader && !document.getElementById('policyHubLockBtn')) {
                     const fsBtn = document.createElement('button');
                     fsBtn.id = 'policyHubLockBtn';
-                    fsBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                    // Expand Icon
+                    fsBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                     fsBtn.className = 'nav-btn';
-                    fsBtn.style.cssText = 'background:rgba(255,0,127,0.1); border:2px solid #ff007f; padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(255,0,127,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
+                    fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
                     
                     fsBtn.onclick = function() { 
                         window.toggleWaAreaLock('adminPolicySearchBlock', null); 
                         const isLocked = document.getElementById('adminPolicySearchBlock').classList.contains('locked-area-active');
                         if(isLocked) {
-                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
-                            this.style.borderColor = "#00f2fe";
-                            this.style.boxShadow = "0 0 20px rgba(0,242,254,0.6)";
-                            this.style.background = "rgba(0,242,254,0.15)";
-                        } else {
-                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                            // Collapse Icon (Pink)
+                            this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
+                            this.style.color = "#ff007f";
                             this.style.borderColor = "#ff007f";
-                            this.style.boxShadow = "0 0 15px rgba(255,0,127,0.4)";
-                            this.style.background = "rgba(255,0,127,0.1)";
+                            this.style.boxShadow = "0 0 20px rgba(255,0,127,0.5)";
+                            this.style.background = "rgba(255,0,127,0.15)";
+                        } else {
+                            // Expand Icon (Cyan)
+                            this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                            this.style.color = "#00f2fe";
+                            this.style.borderColor = "#00f2fe";
+                            this.style.boxShadow = "0 0 15px rgba(0,242,254,0.3)";
+                            this.style.background = "rgba(0,242,254,0.1)";
                         }
                     };
                     const tabContainer = hubHeader.querySelector('div') || hubHeader;
                     if(tabContainer) tabContainer.appendChild(fsBtn);
                 }
 
-                // 2. Injector Bar PREMIUM UI Upgrade (Mac Terminal Style)
+                // 2. Injector Bar PREMIUM UI Upgrade (Mac Terminal Style - Solves Empty Space Issue)
                 const textarea = document.getElementById('adminPolicyCodePasteInput');
                 if (textarea) {
-                    textarea.style.background = 'linear-gradient(145deg, rgba(0,0,0,0.9), rgba(6,17,38,0.9))';
-                    textarea.style.border = '2px solid #00f2fe';
-                    textarea.style.boxShadow = '0 0 30px rgba(0,242,254,0.2), inset 0 0 20px rgba(0,242,254,0.1)';
-                    textarea.style.color = '#00f2fe';
+                    textarea.style.background = '#0d1117'; 
+                    textarea.style.border = '1px solid #1e293b';
+                    textarea.style.borderLeft = '4px solid #00f2fe';
+                    textarea.style.boxShadow = 'inset 0 0 20px rgba(0,0,0,0.8), 0 10px 30px rgba(0,0,0,0.5)';
+                    textarea.style.color = '#38bdf8'; 
                     textarea.style.padding = '25px';
-                    textarea.style.fontSize = '1.1rem';
-                    textarea.style.height = '350px';
-                    textarea.style.fontFamily = 'monospace';
-                    textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
+                    textarea.style.fontSize = '1.15rem';
+                    textarea.style.minHeight = '400px'; 
+                    textarea.style.flex = '1'; 
+                    textarea.style.fontFamily = '"Courier New", Courier, monospace';
+                    textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
                     
                     const injectorBlock = document.getElementById('policySubBlock_injector');
                     if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
                         const header = document.createElement('div');
                         header.id = 'injectorTerminalHeader';
                         header.innerHTML = `
-                            <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:12px 20px; border-radius:16px 16px 0 0; border:2px solid #00f2fe; border-bottom:none;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:15px 20px; border-radius:12px 12px 0 0; border:1px solid #1e293b; border-bottom:none;">
                                 <div style="display:flex; gap:8px;">
                                     <span style="width:14px; height:14px; border-radius:50%; background:#e74c3c; box-shadow:0 0 10px #e74c3c;"></span>
                                     <span style="width:14px; height:14px; border-radius:50%; background:#f1c40f; box-shadow:0 0 10px #f1c40f;"></span>
                                     <span style="width:14px; height:14px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
                                 </div>
-                                <span style="color:#00f2fe; font-family:monospace; font-weight:bold; letter-spacing:2px; font-size:1.1rem;">root@matrix-hub:~#</span>
+                                <span style="color:#8696a0; font-family:monospace; font-weight:bold; letter-spacing:2px; font-size:1.1rem;">root@matrix-hub:~#</span>
                                 <span style="color:#00f2fe; font-weight:900;">JS INJECTOR ⚡</span>
                             </div>
                         `;
                         textarea.parentNode.insertBefore(header, textarea);
-                        textarea.style.borderRadius = '0 0 16px 16px';
-                        textarea.style.borderTop = 'none';
+                        textarea.style.borderTopLeftRadius = '0';
+                        textarea.style.borderTopRightRadius = '0';
                     }
                 }
 
@@ -1774,7 +1786,7 @@
             }
         };
 
-        // ⚡ SEARCH EXECUTION LOGIC (Deep Search Fix)
+        // ⚡ SEARCH EXECUTION LOGIC (100% Fixed - Accurate Text Indexing)
         window.executePolicySearch = function() {
             const searchInput = document.getElementById('adminPolicySearchInput');
             if(!searchInput) return;
@@ -1796,7 +1808,8 @@
                 const cards = cardsContainer.querySelectorAll('.policy-repo-card');
                 let matchCount = 0;
                 cards.forEach(card => {
-                    const text = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || "")));
+                    // Plain text search logic (Bug Fixed)
+                    const text = card.getAttribute('data-search-plain') || "";
                     if(text.includes(q)) {
                         card.style.display = "flex";
                         matchCount++;
@@ -1877,12 +1890,11 @@
                 let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
                 let dyStr = item.dayStr || daysArr[itemDate.getDay()];
                 
-                // DEEP SEARCH BASE64 ENCODING
-                let searchPayload = (item.regNo + " " + item.policyNo + " " + item.clientName + " " + item.insurer + " " + item.rawCode).toLowerCase();
-                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
+                // DEEP SEARCH FIX (Plane Text mapping)
+                let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
 
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
+                <div class="hud-data-card policy-repo-card" data-search-plain="${searchPayload}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:900; font-size:1.2rem; text-shadow:0 0 10px rgba(0,242,254,0.5);">${item.insurer} (${serialNo})</span>
                         ${statusBadge}
@@ -2050,89 +2062,6 @@
             update(ref(db, `policy_code_repository/${id}`), { isDone: newState }).then(() => {
                 window.renderAdminPolicySearchDashboard();
             });
-        };
-
-        window.displayPolicyRepoList = function(dataObj) {
-            const listContainer = document.getElementById('adminPolicySearchResultsList');
-            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!listContainer || !libraryContainer) return;
-            
-            const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
-            let searchHtml = "";
-            let libraryHtml = "";
-            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            
-            items.forEach((item, index) => {
-                let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-                let serialNo = `#${index + 1}`;
-                let isDone = item.isDone === true;
-                let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
-                
-                let itemDate = item.epoch ? new Date(item.epoch) : new Date();
-                let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
-                let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-                let dyStr = item.dayStr || daysArr[itemDate.getDay()];
-                
-                searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.9rem;">${item.insurer} (${serialNo})</span>
-                        ${statusBadge}
-                    </div>
-                    <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                    <p><b>Policy No:</b> ${item.policyNo}</p>
-                    <p><b>Client:</b> ${item.clientName}</p>
-                    <p style="font-size:0.8rem; color:var(--text-sub);">🕒 Saved on: ${dStr} at ${tStr} (${dyStr})</p>
-                    <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 12px; font-size:0.85rem;">🗑️</button>
-                    </div>
-                </div>`;
-
-                if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
-                if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
-
-                libraryHtml += `
-                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
-                    ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:#2ecc71;"></div>' : ''}
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:0.9rem; font-weight:bold;">${serialNo} • ${item.insurer}</span>
-                        ${statusBadge}
-                    </div>
-                    <div style="font-size:0.8rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
-                    <div style="background:#000; border:1px solid rgba(0,242,254,0.2); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#00f2fe; max-height:110px; overflow-y:auto; word-break:break-all; white-space:pre-wrap;">${item.rawCode}</div>
-                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${dStr} | ⏰ ${tStr} (${dyStr})</div>
-                    <div style="display:flex; gap:8px; margin-top:auto;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 12px; width:auto; font-size:0.78rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.78rem; padding:8px 10px;">${isDone?'Undo':'Done'}</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 10px; font-size:0.78rem;">🗑️</button>
-                    </div>
-                </div>`;
-            });
-            
-            listContainer.innerHTML = searchHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No matching policies found.</p>";
-            libraryContainer.innerHTML = libraryHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No records found for this filter.</p>";
-        };
-
-        window.filterAdminPolicyDatabaseItems = function() {
-            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.policy-repo-card');
-            cards.forEach(card => {
-                const text = card.getAttribute('data-search-text') || "";
-                card.style.display = text.includes(q) ? "flex" : "none";
-            });
-        };
-
-        window.copyPolicySnippetFromRepo = function(base64Code) {
-            try {
-                const code = decodeURIComponent(escape(atob(base64Code)));
-                navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Clean policy code copied to clipboard successfully!");
-                });
-            } catch(e) {
-                alert("Copy error: " + e.message);
-            }
         };
 
         window.deletePolicyRepoItem = function(id) {
