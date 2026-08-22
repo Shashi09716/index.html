@@ -1666,7 +1666,7 @@
             window.initPremiumMatrixUI();
         };
 
-        // --- ⚡ DYNAMIC UI UPGRADES (Glitch Fixed: Now runs globally) ---
+        // --- ⚡ DYNAMIC UI UPGRADES (Glitch Fixed: Now runs instantly on load) ---
         window.initPremiumMatrixUI = function() {
             if (window.policyUiUpgraded) return;
             window.policyUiUpgraded = true;
@@ -1701,7 +1701,7 @@
                 if(tabContainer) tabContainer.appendChild(fsBtn);
             }
 
-            // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS (Glitch Fixed)
+            // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS
             const textarea = document.getElementById('adminPolicyCodePasteInput');
             if (textarea) {
                 textarea.style.background = '#0d1117'; 
@@ -1753,24 +1753,25 @@
                         </div>
                     `;
                     
-                    textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling);
-                    textarea.parentNode.insertBefore(header, textarea); 
+                    textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); 
+                    textarea.parentNode.insertBefore(header, textarea);
                     textarea.style.borderTopLeftRadius = '0';
                     textarea.style.borderTopRightRadius = '0';
                 }
             }
 
-            // 3. Search Bar PREMIUM UI Upgrade
+            // 3. Search Bar PREMIUM UI Upgrade (Reduced Size & Advanced Look)
             const searchInput = document.getElementById('adminPolicySearchInput');
             if (searchInput) {
                 searchInput.style.background = 'linear-gradient(145deg, #02050e, #0b141a)';
                 searchInput.style.border = '2px solid #00f2fe';
-                searchInput.style.boxShadow = '0 0 20px rgba(0,242,254,0.2), inset 0 0 10px rgba(0,242,254,0.1)';
+                searchInput.style.boxShadow = '0 0 15px rgba(0,242,254,0.2), inset 0 0 10px rgba(0,242,254,0.1)';
                 searchInput.style.color = '#00f2fe';
                 searchInput.style.borderRadius = '8px';
-                searchInput.style.fontSize = '1.1rem';
-                searchInput.style.padding = '15px 20px';
+                searchInput.style.fontSize = '1rem';
+                searchInput.style.padding = '12px 20px';
                 searchInput.style.width = '100%';
+                searchInput.style.maxWidth = '600px'; // Made smaller
                 searchInput.style.fontFamily = 'Orbitron';
                 searchInput.style.letterSpacing = '1px';
                 searchInput.placeholder = "SCAN REG NO OR CONTACT NO...";
@@ -1789,8 +1790,9 @@
                     searchBtn.id = 'premiumSearchBtnBtn';
                     searchBtn.innerHTML = '⚡ DEEP SEARCH';
                     searchBtn.className = 'hud-engage-btn';
-                    searchBtn.style.cssText = 'width:auto; padding:0 35px; height:55px; font-size:1.1rem; font-weight:900; border-radius:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 15px rgba(0,242,254,0.4); color:#000; display:flex; align-items:center; gap:10px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
-                    searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 25px rgba(0,242,254,0.6)'; };
+                    // Smaller search button
+                    searchBtn.style.cssText = 'width:auto; padding:0 25px; height:45px; font-size:1rem; font-weight:900; border-radius:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 15px rgba(0,242,254,0.4); color:#000; display:flex; align-items:center; gap:8px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
+                    searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 20px rgba(0,242,254,0.6)'; };
                     searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 15px rgba(0,242,254,0.4)'; };
                     searchBtn.onclick = function() { window.executePolicySearch(); };
                     parent.appendChild(searchBtn);
@@ -1963,8 +1965,8 @@
                     feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
                     cardsContainer.style.display = 'none';
                 } else {
+                    // ⚡ FIX: Render Search items as Auto-Fit Grid (stretches cards proportionally)
                     feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
-                    // ⚡ FIX: Render Search items as Grid!
                     cardsContainer.style.display = 'grid'; 
                 }
             }, 300);
@@ -2023,7 +2025,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Delete Menu & Original Look restored)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Grid Logic)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -2034,7 +2036,7 @@
             let libraryHtml = "";
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
-            // Search Container Default UI
+            // Search Container UI (Grid setup via auto-fit minmax)
             listContainer.innerHTML = `
                 <div id="adminSearchFeedbackUI">
                     <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
@@ -2042,11 +2044,11 @@
                         <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
                     </div>
                 </div>
-                <div id="adminSearchCardsContainer" style="display:none; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:15px; width:100%;">
+                <div id="adminSearchCardsContainer" style="display:none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:15px; width:100%;">
                 </div>
             `;
 
-            // Library Top Controls (Original Tabs + Delete Button + Hidden Delete Menu)
+            // Library Top Controls
             let libControls = `
             <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
                 <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">ALL</button>
@@ -2065,7 +2067,7 @@
                 <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:8px 15px; border-radius:6px; font-size:0.9rem;">🗑️ Confirm</button>
             </div>
 
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:12px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(22%, 1fr)); gap:15px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
             `;
             
             items.forEach((item, index) => {
@@ -2084,7 +2086,7 @@
                 let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
                 let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
 
-                // Search Result Card (Compact Box format Grid Layout)
+                // Search Result Card (Flex Column format to fit in Grid naturally)
                 searchHtml += `
                 <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; flex-direction:column; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
@@ -2095,7 +2097,7 @@
                     <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.policyNo}"><b>Pol:</b> ${item.policyNo}</p>
                     <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.clientName}"><b>Name:</b> ${item.clientName}</p>
                     <p style="font-size:0.75rem; color:var(--text-sub); margin-top:8px;">🕒 ${dStr} ${tStr}</p>
-                    <div style="display:flex; gap:8px; margin-top:12px;">
+                    <div style="display:flex; gap:8px; margin-top:auto; padding-top:12px;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; font-size:0.75rem; flex:1; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:none;">📋 COPY</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 10px; font-size:0.75rem; flex:1;">${isDone?'Undo':'Done'}</button>
                     </div>
@@ -2142,7 +2144,6 @@
                 window.executePolicySearch();
             }
             
-            // Re-calculate analytics whenever list renders
             window.calculateCodeAnalytics();
         };
 
@@ -2221,6 +2222,9 @@
         };
 
         window.renderAdminPolicySearchDashboard = function() {
+            // ⚡ GLITCH FIX: Inject UI immediately before fetching data!
+            if(typeof window.initPremiumMatrixUI === 'function') window.initPremiumMatrixUI();
+            
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
             if(!listContainer || !libraryContainer) return;
@@ -2234,7 +2238,6 @@
                 }
                 window.cachedPolicyRepoData = snap.val();
                 window.displayPolicyRepoList(window.cachedPolicyRepoData);
-                window.initPremiumMatrixUI(); // Ensure UI runs after data loads
             });
         };
 
