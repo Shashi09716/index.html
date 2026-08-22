@@ -1635,7 +1635,8 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
-        const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
+        window.saveAdminPolicyCodeSnippet = function() {
+            const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
             if(!codeText) { alert("Please paste a code snippet first."); return; }
             
             const now = new Date();
@@ -1767,12 +1768,10 @@
                 });
                 processedCount++;
             });
-            });
 
             document.getElementById('adminPolicyCodePasteInput').value = "";
-            alert(`✅ Success! ${processedCount} policy/policies converted & saved to Cloud Vault!`);
+            alert("✅ Success! " + processedCount + " policy/policies converted & saved to Cloud Vault!");
             window.switchPolicySubTab('library');
-        };
         };
 
         window.renderAdminPolicySearchDashboard = function() {
