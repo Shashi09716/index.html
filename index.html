@@ -1635,6 +1635,33 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
+        // ⚡ FIX: TAB SWITCHING FUNCTION (Search and Library Buttons Ke Liye)
+        window.switchPolicySubTab = function(tabId) {
+            ['injector', 'search', 'library'].forEach(t => {
+                const el = document.getElementById('policySubBlock_' + t);
+                if(el) el.classList.add('hidden');
+                const btn = document.getElementById('pSubTab_' + t);
+                if(btn) {
+                    btn.style.borderColor = "rgba(0,242,254,0.3)";
+                    btn.style.color = "var(--text-sub)";
+                    btn.style.background = "transparent";
+                }
+            });
+            const targetEl = document.getElementById('policySubBlock_' + tabId);
+            if(targetEl) targetEl.classList.remove('hidden');
+            const activeBtn = document.getElementById('pSubTab_' + tabId);
+            if(activeBtn) {
+                activeBtn.style.borderColor = "var(--neon-cyan)";
+                activeBtn.style.color = "var(--neon-cyan)";
+                activeBtn.style.background = "rgba(0,242,254,0.15)";
+            }
+            if(tabId === 'search' || tabId === 'library') {
+                if(typeof window.renderAdminPolicySearchDashboard === 'function') {
+                    window.renderAdminPolicySearchDashboard();
+                }
+            }
+        };
+
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
             if(!codeText) { alert("Please paste a code snippet first."); return; }
