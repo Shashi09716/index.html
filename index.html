@@ -1647,16 +1647,13 @@
                     btn.style.background = "transparent";
                 }
             });
-            
             const targetEl = document.getElementById('policySubBlock_' + tabId);
             if(targetEl) {
                 targetEl.classList.remove('hidden');
-                // ⚡ FIX: Make the tab fill the screen vertically when in Full Screen
                 targetEl.style.display = "flex";
                 targetEl.style.flexDirection = "column";
                 targetEl.style.height = "100%";
             }
-            
             const activeBtn = document.getElementById('pSubTab_' + tabId);
             if(activeBtn) {
                 activeBtn.style.borderColor = "var(--neon-cyan)";
@@ -1664,36 +1661,32 @@
                 activeBtn.style.background = "rgba(0,242,254,0.15)";
             }
 
-            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Analytics & Terminal Injector) ---
+            // --- ⚡ DYNAMIC UI UPGRADES ---
             if (!window.policyUiUpgraded) {
                 window.policyUiUpgraded = true;
                 
-                // 1. Full Screen Button for Matrix Hub (PREMIUM GLOWING SVG ICON)
+                // 1. Full Screen Logo Button (100% Working)
                 const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
                 if (hubHeader && !document.getElementById('policyHubLockBtn')) {
                     const fsBtn = document.createElement('button');
                     fsBtn.id = 'policyHubLockBtn';
-                    // Expand SVG Icon
-                    fsBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                    fsBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                     fsBtn.className = 'nav-btn';
-                    fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
+                    fsBtn.style.cssText = 'background:rgba(0,242,254,0.1); border:2px solid #00f2fe; padding:6px 10px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
                     
                     fsBtn.onclick = function() { 
-                        window.toggleWaAreaLock('adminPolicySearchBlock', null); 
-                        const isLocked = document.getElementById('adminPolicySearchBlock').classList.contains('locked-area-active');
-                        if(isLocked) {
-                            // Collapse SVG Icon (Pink)
-                            this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
-                            this.style.color = "#ff007f";
+                        const block = document.getElementById('adminPolicySearchBlock');
+                        block.classList.toggle('locked-area-active');
+                        document.body.classList.toggle('strict-scroll-lock');
+                        if(block.classList.contains('locked-area-active')) {
+                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
                             this.style.borderColor = "#ff007f";
-                            this.style.boxShadow = "0 0 20px rgba(255,0,127,0.5)";
+                            this.style.boxShadow = "0 0 20px rgba(255,0,127,0.6)";
                             this.style.background = "rgba(255,0,127,0.15)";
                         } else {
-                            // Expand SVG Icon (Cyan)
-                            this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
-                            this.style.color = "#00f2fe";
+                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                             this.style.borderColor = "#00f2fe";
-                            this.style.boxShadow = "0 0 15px rgba(0,242,254,0.3)";
+                            this.style.boxShadow = "0 0 15px rgba(0,242,254,0.4)";
                             this.style.background = "rgba(0,242,254,0.1)";
                         }
                     };
@@ -1701,7 +1694,7 @@
                     if(tabContainer) tabContainer.appendChild(fsBtn);
                 }
 
-                // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS UPGRADE
+                // 2. Injector Bar PREMIUM UI + CALENDAR ANALYTICS (Mac Terminal Style)
                 const textarea = document.getElementById('adminPolicyCodePasteInput');
                 if (textarea) {
                     textarea.style.background = '#0d1117'; 
@@ -1711,30 +1704,31 @@
                     textarea.style.color = '#38bdf8'; 
                     textarea.style.padding = '25px';
                     textarea.style.fontSize = '1.15rem';
-                    textarea.style.minHeight = '300px'; 
+                    textarea.style.minHeight = '350px'; 
                     textarea.style.flex = '1'; 
                     textarea.style.fontFamily = '"Courier New", Courier, monospace';
                     textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
                     
                     const injectorBlock = document.getElementById('policySubBlock_injector');
                     if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
-                        // Analytics Calendar Bar
+                        
+                        // Calendar Analytics Bar
                         const analyticsBar = document.createElement('div');
                         analyticsBar.id = 'injectorAnalyticsBar';
-                        analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.9), rgba(2,5,14,0.95)); padding:15px 20px; border-radius:12px; border:1px solid #a73ec9; margin-bottom:15px; box-shadow:0 8px 20px rgba(0,0,0,0.5); flex-wrap:wrap; gap:10px;';
+                        analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); padding:15px 25px; border-radius:12px; border:1px solid rgba(0,242,254,0.3); margin-bottom:20px; box-shadow:0 8px 25px rgba(0,0,0,0.6); flex-wrap:wrap; gap:15px;';
                         analyticsBar.innerHTML = `
-                            <div style="display:flex; align-items:center; gap:10px;">
-                                <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#fff; border:1px solid #00f2fe; padding:8px 12px; border-radius:8px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#00f2fe; border:1px solid #00f2fe; padding:10px 15px; border-radius:8px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
                                     <option value="today">📅 Today</option>
                                     <option value="yesterday">📅 Yesterday</option>
                                     <option value="between">🗓️ Between Dates</option>
                                 </select>
-                                <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px; border-radius:8px; outline:none; font-family:monospace;">
-                                <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px; border-radius:8px; outline:none; font-family:monospace;">
+                                <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
+                                <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
                             </div>
-                            <div style="display:flex; align-items:center; gap:15px;">
-                                <div style="color:var(--text-sub); font-size:1.1rem; font-family:Orbitron; font-weight:bold;">Total Injected: <span id="injTotalCount" style="color:#00f2fe; font-size:1.4rem; text-shadow:0 0 10px #00f2fe;">0</span></div>
-                                <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:8px 15px; font-size:0.9rem; box-shadow:0 0 10px rgba(46,204,113,0.3);">📄 VIEW DETAILS</button>
+                            <div style="display:flex; align-items:center; gap:20px;">
+                                <div style="color:var(--text-sub); font-size:1.1rem; font-family:Orbitron; font-weight:bold;">Total Code Injected: <span id="injTotalCount" style="color:#2ecc71; font-size:1.6rem; text-shadow:0 0 15px rgba(46,204,113,0.6); margin-left:8px;">0</span></div>
+                                <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:10px 20px; font-size:0.95rem; box-shadow:0 0 15px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
                             </div>
                         `;
 
@@ -1753,8 +1747,8 @@
                             </div>
                         `;
                         
-                        textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); // Insert Analytics
-                        textarea.parentNode.insertBefore(header, textarea); // Insert Terminal Header
+                        textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); // Add Analytics
+                        textarea.parentNode.insertBefore(header, textarea); // Add Terminal Header
                         textarea.style.borderTopLeftRadius = '0';
                         textarea.style.borderTopRightRadius = '0';
                     }
@@ -1770,8 +1764,8 @@
                     searchInput.style.borderRadius = '12px';
                     searchInput.style.fontSize = '1.1rem';
                     searchInput.style.padding = '18px 25px';
-                    searchInput.placeholder = "🔍 Search Vault Exact by Reg No, Phone, Name or Details...";
-                    searchInput.removeAttribute('oninput'); 
+                    searchInput.placeholder = "🔍 Strictly Search Vault by Reg No, Phone, Name...";
+                    searchInput.removeAttribute('oninput'); // Wait for Enter/Click
                     
                     const parent = searchInput.parentNode;
                     parent.style.display = 'flex';
@@ -1812,7 +1806,63 @@
             }
         };
 
-        // ⚡ ANALYTICS LOGIC (Handle Dates & Filter Data)
+        // ⚡ STRICT SEARCH EXECUTION LOGIC (Accurate Reg No & Phone Match)
+        window.executePolicySearch = function() {
+            const searchInput = document.getElementById('adminPolicySearchInput');
+            if(!searchInput) return;
+            const q = searchInput.value.toLowerCase().trim();
+            const feedbackUI = document.getElementById('adminSearchFeedbackUI');
+            const cardsContainer = document.getElementById('adminSearchCardsContainer');
+            if(!feedbackUI || !cardsContainer) return;
+            
+            if (q === "") {
+                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No, Contact No or exact details and press <b>Search</b>.</p></div>";
+                cardsContainer.style.display = 'none';
+                return;
+            }
+
+            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
+            cardsContainer.style.display = 'none';
+            
+            setTimeout(() => {
+                const cards = cardsContainer.querySelectorAll('.policy-repo-card');
+                let matchCount = 0;
+                
+                cards.forEach(card => {
+                    const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase().replace(/\s+/g, '');
+                    const exactContact = card.getAttribute('data-exact-contact') || "";
+                    const fullText = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
+                    const cleanQ = q.replace(/\s+/g, ''); // For reg number spaces
+                    
+                    let isMatch = false;
+
+                    if (exactReg === cleanQ) {
+                        isMatch = true; // Strict Reg Match
+                    } else if (exactContact === q || fullText.includes(`'${q}'`) || fullText.includes(`"${q}"`) || fullText.includes(`: ${q}`)) {
+                        isMatch = true; // Strict Phone Match
+                    } else if (fullText.includes(q)) {
+                        isMatch = true; // Broad Match Fallback
+                    }
+
+                    if(isMatch) {
+                        card.style.display = "flex";
+                        matchCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                if(matchCount === 0) {
+                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
+                    cardsContainer.style.display = 'none';
+                } else {
+                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
+                    cardsContainer.style.display = 'flex';
+                }
+            }, 300);
+        };
+
+        // ⚡ ANALYTICS LOGIC (Handle Dates & Details Popup)
         window.handleDateFilterChange = function() {
             let type = document.getElementById('injDateFilterType').value;
             document.getElementById('injDateStart').style.display = (type === 'between') ? 'inline-block' : 'none';
@@ -1822,8 +1872,7 @@
 
         window.calculateCodeAnalytics = function() {
             if(!window.cachedPolicyRepoData) {
-                const countNode = document.getElementById('injTotalCount');
-                if(countNode) countNode.innerText = "0";
+                if(document.getElementById('injTotalCount')) document.getElementById('injTotalCount').innerText = "0";
                 window.currentFilteredAnalytics = [];
                 return;
             }
@@ -1843,7 +1892,7 @@
                     let yest = new Date(); yest.setDate(now.getDate() - 1);
                     return itemDate.toDateString() === yest.toDateString();
                 } else if (type === 'between') {
-                    if(!dStart || !dEnd) return true; // Show all if dates not picked yet
+                    if(!dStart || !dEnd) return true;
                     let s = new Date(dStart); s.setHours(0,0,0,0);
                     let e = new Date(dEnd); e.setHours(23,59,59,999);
                     return itemDate >= s && itemDate <= e;
@@ -1856,14 +1905,13 @@
             if(countNode) countNode.innerText = filtered.length;
         };
 
-        // ⚡ SHOW DETAILED ANALYTICS POPUP
         window.showFilteredCodeDetails = function() {
             let data = window.currentFilteredAnalytics || [];
-            if(data.length === 0) { alert("No data available for this date range."); return; }
+            if(data.length === 0) { alert("No codes found for this date range."); return; }
             
             let html = `<div class="nexus-popup-card-box" style="max-width:850px; width:95%; max-height:85vh; display:flex; flex-direction:column; padding:20px; border:2px solid #2ecc71; box-shadow:0 0 40px rgba(46,204,113,0.3);" onclick="event.stopPropagation()">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
-                    <h3 style="color:#00f2fe; margin:0; font-family:'Orbitron'; font-size:1.5rem; text-shadow:0 0 10px rgba(0,242,254,0.4);">📊 INJECTION ANALYTICS DETAILS</h3>
+                    <h3 style="color:#00f2fe; margin:0; font-family:'Orbitron'; font-size:1.5rem; text-shadow:0 0 10px rgba(0,242,254,0.4);">📊 INJECTION DETAILS (${data.length})</h3>
                     <button onclick="window.closeCustomInlinePopupEngine()" style="background:none; border:none; color:#e74c3c; font-size:1.5rem; cursor:pointer;">✖</button>
                 </div>
                 <div style="flex:1; overflow-y:auto; padding-right:10px; margin-bottom:15px;">
@@ -1879,7 +1927,6 @@
                         </thead>
                         <tbody>
                             ${data.map(d => {
-                                // Extract contact from raw data using regex
                                 let contactMatch = d.rawCode ? d.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || d.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || d.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
                                 let contact = contactMatch ? contactMatch[1] : "N/A";
                                 return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.4); transition:0.2s;" onmouseover="this.style.background='rgba(0,242,254,0.08)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
@@ -1893,98 +1940,65 @@
                         </tbody>
                     </table>
                 </div>
-                <button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:100%; padding:15px; font-size:1.1rem;">CLOSE WINDOW</button>
+                <button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:100%; padding:15px; font-size:1.1rem;">CLOSE DETAILS</button>
             </div>`;
-            
             const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
             wrapper.innerHTML = html;
             wrapper.classList.remove('hidden');
         };
 
-        // ⚡ SEARCH EXECUTION LOGIC (100% Fixed - Accurate & Strict Indexing)
-        window.executePolicySearch = function() {
-            const searchInput = document.getElementById('adminPolicySearchInput');
-            if(!searchInput) return;
-            const q = searchInput.value.toLowerCase().trim();
-            const feedbackUI = document.getElementById('adminSearchFeedbackUI');
-            const cardsContainer = document.getElementById('adminSearchCardsContainer');
-            if(!feedbackUI || !cardsContainer) return;
-            
-            if (q === "") {
-                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter details above and press <b>Search</b> or <b>Enter</b> to find policies.</p></div>";
-                cardsContainer.style.display = 'none';
-                return;
+        // ⚡ MENU & BULK DELETE LOGIC FOR LIBRARY (Ctrl+F Style)
+        window.toggleLibraryDeleteMenu = function() {
+            const bar = document.getElementById('libraryDeleteControlBar');
+            if(bar.style.display === 'none') {
+                bar.style.display = 'flex';
+            } else {
+                bar.style.display = 'none';
+                document.querySelectorAll('.lib-delete-cb-wrapper').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lib-delete-cb').forEach(cb => cb.checked = false);
             }
+        };
 
-            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
-            cardsContainer.style.display = 'none';
-            
-            setTimeout(() => {
-                const cards = cardsContainer.querySelectorAll('.policy-repo-card');
-                let matchCount = 0;
-                
-                // Regex to check if query is strictly a 10 digit number
-                const isStrictNumber = /^\d{10}$/.test(q);
-
-                cards.forEach(card => {
-                    const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase();
-                    const exactContact = card.getAttribute('data-exact-contact') || "";
-                    const fullText = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
-                    
-                    let isMatch = false;
-
-                    if (isStrictNumber) {
-                        // Strict Match for Phone Number
-                        if (exactContact === q || fullText.includes(`'${q}'`) || fullText.includes(`"${q}"`) || fullText.includes(`: ${q}`)) {
-                            isMatch = true;
-                        }
-                    } else {
-                        // Exact match for Reg No. priority
-                        if (exactReg === q || exactReg.replace(/\s+/g, '') === q.replace(/\s+/g, '')) {
-                            isMatch = true;
-                        } else if (fullText.includes(q)) {
-                            // Fallback broad search if no exact reg matched
-                            isMatch = true;
-                        }
-                    }
-
-                    if(isMatch) {
-                        card.style.display = "flex";
-                        matchCount++;
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-
-                if(matchCount === 0) {
-                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
-                    cardsContainer.style.display = 'none';
+        window.filterLibraryDeleteSearch = function() {
+            const q = document.getElementById('libDeleteSearch').value.toLowerCase().trim();
+            const cards = document.getElementById('adminPolicyLibraryGridList').querySelectorAll('.policy-repo-card');
+            cards.forEach(card => {
+                const text = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
+                if(text.includes(q)) {
+                    card.style.display = 'flex';
                 } else {
-                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
-                    cardsContainer.style.display = 'flex';
+                    card.style.display = 'none';
                 }
-            }, 400);
+            });
         };
 
-        // ⚡ BULK DELETE LOGIC FOR LIBRARY
-        window.toggleAllLibraryPolicies = function(masterCb) {
-            document.querySelectorAll('.lib-item-checkbox').forEach(cb => { cb.checked = masterCb.checked; });
+        window.enableLibrarySelectMode = function() {
+            document.querySelectorAll('.lib-delete-cb-wrapper').forEach(el => el.style.display = 'block');
         };
 
-        window.bulkDeleteLibraryPolicies = function() {
-            const checkedBoxes = document.querySelectorAll('.lib-item-checkbox:checked');
-            if(checkedBoxes.length === 0) { alert("⚠️ Please select at least one policy to delete."); return; }
-            if(confirm(`🚨 Are you sure you want to permanently delete ${checkedBoxes.length} selected policies from the Cloud Vault?`)) {
+        window.selectAllLibraryForDelete = function() {
+            window.enableLibrarySelectMode();
+            document.querySelectorAll('.lib-delete-cb').forEach(cb => {
+                if(cb.closest('.policy-repo-card').style.display !== 'none') {
+                    cb.checked = true;
+                }
+            });
+        };
+
+        window.executeBulkLibraryDelete = function() {
+            const checkedBoxes = document.querySelectorAll('.lib-delete-cb:checked');
+            if(checkedBoxes.length === 0) { alert("⚠️ Select at least one policy to delete."); return; }
+            if(confirm(`🚨 Permanently delete ${checkedBoxes.length} selected policies?`)) {
                 let updates = {};
                 checkedBoxes.forEach(cb => { updates[cb.value] = null; });
                 update(ref(db, 'policy_code_repository'), updates).then(() => {
-                    alert(`✅ Successfully deleted ${checkedBoxes.length} policies.`);
+                    alert(`✅ ${checkedBoxes.length} policies deleted.`);
                     window.renderAdminPolicySearchDashboard();
                 }).catch(err => { alert("❌ Error deleting: " + err.message); });
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Deep Indexing Attributes)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Delete Menu & Original Look)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -1995,46 +2009,55 @@
             let libraryHtml = "";
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
+            // Search Container Default UI
             listContainer.innerHTML = `
                 <div id="adminSearchFeedbackUI">
                     <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
                         <h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3>
-                        <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter details above and press <b>Search</b> or <b>Enter</b> to find policies.</p>
+                        <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
                     </div>
                 </div>
                 <div id="adminSearchCardsContainer" style="display:none; flex-direction:column; gap:15px; width:100%;">
                 </div>
             `;
 
+            // Library Top Controls (Original Tabs + Delete Button + Hidden Delete Menu)
             let libControls = `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; background:linear-gradient(90deg, rgba(0,0,0,0.8), rgba(6,17,38,0.9)); padding:15px 25px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow:0 5px 15px rgba(0,242,254,0.2); flex-wrap:wrap; gap:10px;">
-                <label class="cyber-checkbox-label" style="color:#00f2fe; font-weight:bold; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; gap:10px;">
-                    <input type="checkbox" id="masterLibraryCheckbox" class="cyber-checkbox" style="transform:scale(1.4);" onchange="window.toggleAllLibraryPolicies(this)"> 
-                    SELECT ALL POLICIES
-                </label>
-                <button onclick="window.bulkDeleteLibraryPolicies()" class="abort-btn" style="padding:12px 25px; font-size:1rem; box-shadow:0 0 20px rgba(231,76,60,0.5);">🗑️ DELETE SELECTED</button>
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:15px;">
+                <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
+                <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
+                <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
+                <button onclick="window.toggleLibraryDeleteMenu()" class="nav-btn" style="border-color:rgba(231,76,60,0.5); color:#e74c3c; background:rgba(231,76,60,0.1); font-size:0.8rem; padding:6px 14px; border-radius:20px;">🗑️ Delete</button>
             </div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap:20px; max-height:550px; overflow-y:auto; padding-right:10px; padding-bottom:20px;">
+            
+            <div id="libraryDeleteControlBar" class="hidden" style="display:none; background:rgba(0,0,0,0.8); padding:15px; border-radius:12px; border:1px solid #e74c3c; margin-bottom:15px; align-items:center; gap:10px; flex-wrap:wrap; box-shadow:0 5px 15px rgba(231,76,60,0.2);">
+                <input type="text" id="libDeleteSearch" placeholder="🔍 Search Reg No..." oninput="window.filterLibraryDeleteSearch()" style="flex:1; min-width:200px; background:#02050e; border:1px solid #e74c3c; padding:8px 12px; border-radius:6px; color:#fff; outline:none; font-family:monospace;">
+                <button onclick="window.enableLibrarySelectMode()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:8px 12px;">🖱️ Select</button>
+                <button onclick="window.selectAllLibraryForDelete()" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; padding:8px 12px;">✅ Select All</button>
+                <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:8px 15px; border-radius:6px; font-size:0.9rem;">🗑️ Confirm</button>
+            </div>
+
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;">
             `;
             
             items.forEach((item, index) => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
                 let serialNo = `#${index + 1}`;
                 let isDone = item.isDone === true;
-                let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:900; box-shadow:0 0 10px rgba(46,204,113,0.3);">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:900; box-shadow:0 0 10px rgba(231,76,60,0.3);">NOT DONE</span>`;
+                let statusBadge = isDone ? `<span style="border:1px solid #2ecc71; color:#2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="border:1px solid #e74c3c; color:#e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
                 
                 let itemDate = item.epoch ? new Date(item.epoch) : new Date();
                 let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
                 let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
                 let dyStr = item.dayStr || daysArr[itemDate.getDay()];
                 
-                // DEEP SEARCH FIX (Extracting Contact Data & Base64 Payload)
-                let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
-                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
-                
                 let contactMatch = item.rawCode ? item.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
                 let extractedContact = contactMatch ? contactMatch[1] : "";
 
+                let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
+                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
+
+                // Search Result Card
                 searchHtml += `
                 <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
@@ -2048,30 +2071,29 @@
                     <div style="display:flex; gap:12px; margin-top:20px; align-items:center; flex-wrap:wrap;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:12px 20px; width:auto; font-size:0.95rem; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:0 5px 15px rgba(46,204,113,0.4);">📋 COPY CODE</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:12px 18px; font-size:0.95rem; font-weight:bold;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:12px 18px; font-size:0.95rem;">🗑️ DELETE</button>
                     </div>
                 </div>`;
 
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
+                // Library Original Clean Card (with hidden Checkbox)
                 libraryHtml += `
-                <div style="background:linear-gradient(145deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); border:2px solid ${isDone?'rgba(46,204,113,0.6)':'rgba(0,242,254,0.3)'}; border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px; box-shadow:0 10px 30px rgba(0,0,0,0.8); position:relative; overflow:hidden; transition:0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='${isDone?'#2ecc71':'#00f2fe'}';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='${isDone?'rgba(46,204,113,0.6)':'rgba(0,242,254,0.3)'}';">
-                    ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:5px; background:#2ecc71; box-shadow:0 0 20px #2ecc71;"></div>' : '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:var(--neon-cyan);"></div>'}
-                    
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-                            <input type="checkbox" class="lib-item-checkbox cyber-checkbox" value="${item.id}" style="transform:scale(1.4);">
-                            <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:1.15rem; font-weight:900; text-shadow:0 0 12px rgba(0,242,254,0.4);">${serialNo} • ${item.insurer}</span>
-                        </label>
+                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px; padding:15px;">
+                    <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:15px; left:15px; z-index:10;">
+                        <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.5);">
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding-left:25px;">
+                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.9rem;">${item.insurer} (${serialNo})</span>
                         ${statusBadge}
                     </div>
-                    <div style="font-size:0.95rem; color:#f1c40f; font-family:monospace; background:rgba(241,196,15,0.15); padding:10px; border-radius:8px;"><b>Reg:</b> <span style="color:#fff;">${item.regNo}</span><br><b>Client:</b> ${item.clientName}<br><b style="color:#2ecc71;">Contact:</b> <span style="color:#fff;">${extractedContact || 'N/A'}</span></div>
-                    <div style="background:#02050e; border:1px solid rgba(0,242,254,0.3); border-radius:10px; padding:15px; font-family:monospace; font-size:0.9rem; color:#00f2fe; max-height:130px; overflow-y:auto; word-break:break-all; white-space:pre-wrap; box-shadow:inset 0 0 15px rgba(0,0,0,0.9);">${item.rawCode}</div>
-                    <div style="font-size:0.85rem; color:var(--text-sub); text-align:right; margin-top:5px;">📅 ${dStr} | ⏰ ${tStr}</div>
-                    <div style="display:flex; gap:12px; margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05);">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:10px 15px; flex:2; font-size:0.9rem; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:0 5px 15px rgba(46,204,113,0.4);">📋 COPY</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.9rem; padding:10px; flex:1;">${isDone?'Undo':'Done'}</button>
+                    <p style="margin-top:5px; padding-left:25px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
+                    <p style="padding-left:25px;"><b>Policy No:</b> ${item.policyNo}</p>
+                    <p style="padding-left:25px;"><b>Client:</b> ${item.clientName}</p>
+                    <p style="font-size:0.8rem; color:var(--text-sub); padding-left:25px;">🕒 Saved on: ${dStr} at ${tStr}</p>
+                    <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap; padding-left:25px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
+                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'Undo':'Done'}</button>
                     </div>
                 </div>`;
             });
@@ -2081,14 +2103,18 @@
                 if(searchWrapper) searchWrapper.innerHTML = searchHtml;
             }
             
-            libraryContainer.innerHTML = libraryHtml ? (libControls + libraryHtml + `</div>`) : "<div style='grid-column: 1 / -1; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div>";
+            if(libraryHtml) {
+                document.getElementById('adminPolicyLibraryGridList').innerHTML = libraryHtml;
+                libraryContainer.innerHTML = libControls + document.getElementById('adminPolicyLibraryGridList').outerHTML;
+            } else {
+                libraryContainer.innerHTML = libControls + "<div style='grid-column: 1 / -1; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div></div>";
+            }
             
             const searchInputObj = document.getElementById('adminPolicySearchInput');
             if(searchInputObj && searchInputObj.value.trim() !== "") {
                 window.executePolicySearch();
             }
             
-            // Re-calculate analytics whenever list renders
             window.calculateCodeAnalytics();
         };
 
