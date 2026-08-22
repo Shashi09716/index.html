@@ -1660,55 +1660,103 @@
             if (!window.policyUiUpgraded) {
                 window.policyUiUpgraded = true;
                 
-                // 1. Full Screen Button for Matrix Hub
+                // 1. Full Screen Button for Matrix Hub (PREMIUM SVG ICON)
                 const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
                 if (hubHeader && !document.getElementById('policyHubLockBtn')) {
                     const fsBtn = document.createElement('button');
                     fsBtn.id = 'policyHubLockBtn';
-                    fsBtn.innerHTML = '⛶ FULL SCREEN';
+                    fsBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                     fsBtn.className = 'nav-btn';
-                    fsBtn.style.cssText = 'border-color:#ff007f; color:#ff007f; padding:6px 12px; font-size:0.85rem; font-weight:bold; border-radius:8px; margin-left:15px; box-shadow: 0 0 10px rgba(255,0,127,0.3);';
-                    fsBtn.onclick = function() { window.toggleWaAreaLock('adminPolicySearchBlock', 'policyHubLockBtn'); };
-                    const tabContainer = hubHeader.querySelector('div');
+                    fsBtn.style.cssText = 'background:rgba(255,0,127,0.1); border:2px solid #ff007f; padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(255,0,127,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
+                    
+                    fsBtn.onclick = function() { 
+                        window.toggleWaAreaLock('adminPolicySearchBlock', null); 
+                        const isLocked = document.getElementById('adminPolicySearchBlock').classList.contains('locked-area-active');
+                        if(isLocked) {
+                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #00f2fe);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
+                            this.style.borderColor = "#00f2fe";
+                            this.style.boxShadow = "0 0 20px rgba(0,242,254,0.6)";
+                            this.style.background = "rgba(0,242,254,0.15)";
+                        } else {
+                            this.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #ff007f);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                            this.style.borderColor = "#ff007f";
+                            this.style.boxShadow = "0 0 15px rgba(255,0,127,0.4)";
+                            this.style.background = "rgba(255,0,127,0.1)";
+                        }
+                    };
+                    const tabContainer = hubHeader.querySelector('div') || hubHeader;
                     if(tabContainer) tabContainer.appendChild(fsBtn);
                 }
 
-                // 2. Injector Bar UI Upgrade
+                // 2. Injector Bar PREMIUM UI Upgrade (Mac Terminal Style)
                 const textarea = document.getElementById('adminPolicyCodePasteInput');
                 if (textarea) {
-                    textarea.style.background = 'rgba(0,0,0,0.8)';
+                    textarea.style.background = 'linear-gradient(145deg, rgba(0,0,0,0.9), rgba(6,17,38,0.9))';
                     textarea.style.border = '2px solid #00f2fe';
-                    textarea.style.boxShadow = '0 0 25px rgba(0,242,254,0.15), inset 0 0 15px rgba(0,242,254,0.1)';
+                    textarea.style.boxShadow = '0 0 30px rgba(0,242,254,0.2), inset 0 0 20px rgba(0,242,254,0.1)';
                     textarea.style.color = '#00f2fe';
-                    textarea.style.padding = '20px';
-                    textarea.style.fontSize = '1.05rem';
-                    textarea.style.borderRadius = '16px';
-                    textarea.placeholder = "🚀 Paste your Matrix Policy JSON/JS block here...";
+                    textarea.style.padding = '25px';
+                    textarea.style.fontSize = '1.1rem';
+                    textarea.style.height = '350px';
+                    textarea.style.fontFamily = 'monospace';
+                    textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
+                    
+                    const injectorBlock = document.getElementById('policySubBlock_injector');
+                    if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
+                        const header = document.createElement('div');
+                        header.id = 'injectorTerminalHeader';
+                        header.innerHTML = `
+                            <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:12px 20px; border-radius:16px 16px 0 0; border:2px solid #00f2fe; border-bottom:none;">
+                                <div style="display:flex; gap:8px;">
+                                    <span style="width:14px; height:14px; border-radius:50%; background:#e74c3c; box-shadow:0 0 10px #e74c3c;"></span>
+                                    <span style="width:14px; height:14px; border-radius:50%; background:#f1c40f; box-shadow:0 0 10px #f1c40f;"></span>
+                                    <span style="width:14px; height:14px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
+                                </div>
+                                <span style="color:#00f2fe; font-family:monospace; font-weight:bold; letter-spacing:2px; font-size:1.1rem;">root@matrix-hub:~#</span>
+                                <span style="color:#00f2fe; font-weight:900;">JS INJECTOR ⚡</span>
+                            </div>
+                        `;
+                        textarea.parentNode.insertBefore(header, textarea);
+                        textarea.style.borderRadius = '0 0 16px 16px';
+                        textarea.style.borderTop = 'none';
+                    }
                 }
 
-                // 3. Search Bar UI Upgrade (Button + Enter Key + Blank handling)
+                // 3. Search Bar PREMIUM UI Upgrade
                 const searchInput = document.getElementById('adminPolicySearchInput');
                 if (searchInput) {
                     searchInput.style.background = 'rgba(0,0,0,0.8)';
                     searchInput.style.border = '2px solid #a73ec9';
-                    searchInput.style.boxShadow = '0 0 25px rgba(167,62,201,0.15), inset 0 0 15px rgba(167,62,201,0.1)';
+                    searchInput.style.boxShadow = 'inset 0 0 15px rgba(167,62,201,0.2)';
                     searchInput.style.color = '#fff';
                     searchInput.style.borderRadius = '12px';
-                    searchInput.placeholder = "⌨️ Type Reg No, Policy No, or Name and press ENTER...";
-                    searchInput.removeAttribute('oninput'); // Stop auto-search (wait for Enter/Click)
+                    searchInput.style.fontSize = '1.1rem';
+                    searchInput.style.padding = '18px 25px';
+                    searchInput.placeholder = "🔍 Search Vault by Reg No, Phone, Name or Details...";
+                    searchInput.removeAttribute('oninput'); // Stop auto-search
                     
                     const parent = searchInput.parentNode;
                     parent.style.display = 'flex';
                     parent.style.gap = '15px';
                     parent.style.alignItems = 'center';
+                    parent.style.background = 'linear-gradient(90deg, rgba(6,17,38,0.9), rgba(2,5,14,0.95))';
+                    parent.style.padding = '20px';
+                    parent.style.borderRadius = '16px';
+                    parent.style.border = '1px solid rgba(167,62,201,0.4)';
+                    parent.style.boxShadow = '0 10px 30px rgba(0,0,0,0.6)';
                     
-                    const searchBtn = document.createElement('button');
-                    searchBtn.innerHTML = '🔍 SEARCH NOW';
-                    searchBtn.className = 'hud-engage-btn';
-                    searchBtn.style.cssText = 'width:auto; padding:0 30px; font-size:1.1rem; font-weight:900; border-radius:12px; background:linear-gradient(135deg, #a73ec9, #c863e4); box-shadow:0 0 20px rgba(167,62,201,0.5); color:#fff;';
-                    searchBtn.onclick = function() { window.executePolicySearch(); };
-                    
-                    parent.appendChild(searchBtn);
+                    let searchBtn = document.getElementById('premiumSearchBtnBtn');
+                    if(!searchBtn) {
+                        searchBtn = document.createElement('button');
+                        searchBtn.id = 'premiumSearchBtnBtn';
+                        searchBtn.innerHTML = '<span style="font-size:1.3rem;">🚀</span> INIT SEARCH';
+                        searchBtn.className = 'hud-engage-btn';
+                        searchBtn.style.cssText = 'width:auto; padding:0 35px; height:60px; font-size:1.1rem; font-weight:900; border-radius:12px; background:linear-gradient(135deg, #a73ec9, #c863e4); box-shadow:0 0 20px rgba(167,62,201,0.5); color:#fff; display:flex; align-items:center; gap:10px; border:2px solid #fff; transition:0.3s; cursor:pointer; flex-shrink:0;';
+                        searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 30px #c863e4'; };
+                        searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 20px rgba(167,62,201,0.5)'; };
+                        searchBtn.onclick = function() { window.executePolicySearch(); };
+                        parent.appendChild(searchBtn);
+                    }
 
                     searchInput.onkeydown = function(e) {
                         if(e.key === 'Enter') {
@@ -1726,23 +1774,29 @@
             }
         };
 
-        // ⚡ NEW SEARCH EXECUTION LOGIC (Blank screen logic & Button execution)
+        // ⚡ SEARCH EXECUTION LOGIC (Deep Search Fix)
         window.executePolicySearch = function() {
-            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-            const listContainer = document.getElementById('adminPolicySearchResultsList');
+            const searchInput = document.getElementById('adminPolicySearchInput');
+            if(!searchInput) return;
+            const q = searchInput.value.toLowerCase().trim();
+            const feedbackUI = document.getElementById('adminSearchFeedbackUI');
+            const cardsContainer = document.getElementById('adminSearchCardsContainer');
+            if(!feedbackUI || !cardsContainer) return;
             
             if (q === "") {
-                listContainer.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0;'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px;'>Enter details above and press Search or Enter to find policies.</p></div>";
+                feedbackUI.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter details above and press <b>Search</b> or <b>Enter</b> to find policies.</p></div>";
+                cardsContainer.style.display = 'none';
                 return;
             }
 
-            listContainer.innerHTML = "<p style='color:#00f2fe; text-align:center; padding:20px; font-size:1.2rem; font-weight:bold; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</p>";
+            feedbackUI.innerHTML = "<div style='text-align:center; padding:40px;'><h3 style='color:#00f2fe; font-family:Orbitron; font-size:1.5rem; animation: pulseGlow 1s infinite alternate;'>Scanning Matrix Hub... ⏳</h3></div>";
+            cardsContainer.style.display = 'none';
             
             setTimeout(() => {
-                const cards = document.querySelectorAll('.policy-repo-card');
+                const cards = cardsContainer.querySelectorAll('.policy-repo-card');
                 let matchCount = 0;
                 cards.forEach(card => {
-                    const text = card.getAttribute('data-search-text') || "";
+                    const text = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || "")));
                     if(text.includes(q)) {
                         card.style.display = "flex";
                         matchCount++;
@@ -1750,17 +1804,18 @@
                         card.style.display = "none";
                     }
                 });
-                
-                const scanText = listContainer.querySelector('p');
-                if(scanText) scanText.style.display = 'none';
 
                 if(matchCount === 0) {
-                    listContainer.innerHTML += `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:30px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0;'>❌ NO MATCHES FOUND</h3><p style='color:#e9edef; margin-top:10px;'>No records found for "<b>${q}</b>".</p></div>`;
+                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO MATCHES FOUND</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No records found for "<b>${q}</b>".</p></div>`;
+                    cardsContainer.style.display = 'none';
+                } else {
+                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4);'>✅ Found ${matchCount} match(es) for "${q}"</div>`;
+                    cardsContainer.style.display = 'flex';
                 }
-            }, 300);
+            }, 400);
         };
 
-        // ⚡ BULK DELETE & SELECTION LOGIC FOR LIBRARY
+        // ⚡ BULK DELETE LOGIC FOR LIBRARY
         window.toggleAllLibraryPolicies = function(masterCb) {
             document.querySelectorAll('.lib-item-checkbox').forEach(cb => { cb.checked = masterCb.checked; });
         };
@@ -1778,7 +1833,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION TO ADD CHECKBOXES & HIDDEN SEARCH
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Deep Indexing)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -1789,12 +1844,19 @@
             let libraryHtml = "";
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
-            // Set initial Blank Screen for Search
-            listContainer.innerHTML = "<div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#00f2fe; font-family:Orbitron; margin:0;'>🔍 AWAITING INPUT</h3><p style='color:#8696a0; margin-top:10px;'>Enter details above and press Search or Enter to find policies.</p></div>";
+            listContainer.innerHTML = `
+                <div id="adminSearchFeedbackUI">
+                    <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
+                        <h3 style='color:#00f2fe; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(0,242,254,0.5);'>🔍 AWAITING INPUT</h3>
+                        <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter details above and press <b>Search</b> or <b>Enter</b> to find policies.</p>
+                    </div>
+                </div>
+                <div id="adminSearchCardsContainer" style="display:none; flex-direction:column; gap:15px; width:100%;">
+                </div>
+            `;
 
-            // Library Top Controls (Select All & Delete Selected)
             let libControls = `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; background:linear-gradient(90deg, rgba(0,0,0,0.8), rgba(6,17,38,0.9)); padding:15px 25px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow:0 5px 15px rgba(0,242,254,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; background:linear-gradient(90deg, rgba(0,0,0,0.8), rgba(6,17,38,0.9)); padding:15px 25px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow:0 5px 15px rgba(0,242,254,0.2); flex-wrap:wrap; gap:10px;">
                 <label class="cyber-checkbox-label" style="color:#00f2fe; font-weight:bold; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; gap:10px;">
                     <input type="checkbox" id="masterLibraryCheckbox" class="cyber-checkbox" style="transform:scale(1.4);" onchange="window.toggleAllLibraryPolicies(this)"> 
                     SELECT ALL POLICIES
@@ -1815,9 +1877,12 @@
                 let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
                 let dyStr = item.dayStr || daysArr[itemDate.getDay()];
                 
-                // Note: display:none keeps search items hidden until search is executed
+                // DEEP SEARCH BASE64 ENCODING
+                let searchPayload = (item.regNo + " " + item.policyNo + " " + item.clientName + " " + item.insurer + " " + item.rawCode).toLowerCase();
+                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
+
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px;">
+                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:900; font-size:1.2rem; text-shadow:0 0 10px rgba(0,242,254,0.5);">${item.insurer} (${serialNo})</span>
                         ${statusBadge}
@@ -1836,7 +1901,6 @@
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
-                // Library Items WITH Selection Checkbox
                 libraryHtml += `
                 <div style="background:linear-gradient(145deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); border:2px solid ${isDone?'rgba(46,204,113,0.6)':'rgba(0,242,254,0.3)'}; border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px; box-shadow:0 10px 30px rgba(0,0,0,0.8); position:relative; overflow:hidden; transition:0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='${isDone?'#2ecc71':'#00f2fe'}';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='${isDone?'rgba(46,204,113,0.6)':'rgba(0,242,254,0.3)'}';">
                     ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:5px; background:#2ecc71; box-shadow:0 0 20px #2ecc71;"></div>' : '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:var(--neon-cyan);"></div>'}
@@ -1858,13 +1922,15 @@
                 </div>`;
             });
             
-            if(searchHtml) listContainer.innerHTML += searchHtml; // Add hidden search items
+            if(searchHtml) {
+                const searchWrapper = document.getElementById('adminSearchCardsContainer');
+                if(searchWrapper) searchWrapper.innerHTML = searchHtml;
+            }
             
             libraryContainer.innerHTML = libraryHtml ? (libControls + libraryHtml + `</div>`) : "<div style='grid-column: 1 / -1; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div>";
             
-            // Re-run search automatically if user has typed something before data synced
-            const searchInput = document.getElementById('adminPolicySearchInput');
-            if(searchInput && searchInput.value.trim() !== "") {
+            const searchInputObj = document.getElementById('adminPolicySearchInput');
+            if(searchInputObj && searchInputObj.value.trim() !== "") {
                 window.executePolicySearch();
             }
         };
@@ -1950,7 +2016,7 @@
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    let emptyMsg = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty. Upload your first policy code above.</p>";
+                    let emptyMsg = "<div style='background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>Upload your first policy code above.</p></div>";
                     listContainer.innerHTML = emptyMsg;
                     libraryContainer.innerHTML = emptyMsg;
                     return;
