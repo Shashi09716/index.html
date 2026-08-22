@@ -1232,24 +1232,40 @@
             <div class="customerCardsContainer" id="adminStaticContainer">
                 
                 <div id="adminPolicySearchBlock" class="hidden">
-                    <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow);">
-                        <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 15px;">🔍 POLICY UPLOAD & SEARCH DASHBOARD</h3>
-                        <p style="color:var(--text-sub); margin-bottom: 20px;">Paste your policy code blocks below (up to 1000+ codes). Search instantly using Reg No, Policy No, or Client Name.</p>
-                        
-                        <div style="display:flex; flex-direction:column; gap:15px; margin-bottom:25px;">
-                            <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', id_policy_number: '...', ... })..." style="height:120px; font-family:monospace; font-size:0.9rem;"></textarea>
-                            <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE POLICY CODE TO CLOUD</button>
-                        </div>
+    <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-glass); padding-bottom: 15px;">
+            <h3 class="neon-cyan-text" style="font-size: 1.5rem; margin: 0;">⚡ ADVANCED POLICY REPO & MATRIX HUB</h3>
+            <span style="font-family: 'Orbitron'; font-size: 0.85rem; color: var(--neon-green);">● CLOUD SYNCED</span>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;" id="policyThreeColumnGrid">
+            <!-- Column 1: Code Input & Save -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                <h4 style="font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 1.05rem; border-bottom: 1px dashed var(--border-glass); padding-bottom: 8px;">1️⃣ CODE INJECTOR</h4>
+                <p style="color: var(--text-sub); font-size: 0.85rem;">Paste policy JS code block. Auto-compiles to repository.</p>
+                <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste code here (e.g. var data = { id_registration_number: '...' })..." style="height: 200px; font-family: monospace; font-size: 0.85rem; resize: vertical;"></textarea>
+                <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding: 12px; font-size: 0.9rem; background: linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE TO REPO</button>
+            </div>
 
-                        <div style="margin-bottom:20px;">
-                            <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No (e.g. DL03CCU1728), Policy No, or Client Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px;">
-                        </div>
+            <!-- Column 2: Instant Search Engine -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                <h4 style="font-family: 'Orbitron'; color: #f1c40f; font-size: 1.05rem; border-bottom: 1px dashed var(--border-glass); padding-bottom: 8px;">2️⃣ INSTANT SEARCH</h4>
+                <p style="color: var(--text-sub); font-size: 0.85rem;">Filter records instantly using Reg No, Policy No or Client Name.</p>
+                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search Reg No (e.g. DL03)..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 0.95rem; padding: 12px;">
+                <div id="adminPolicySearchResultsList" style="display: flex; flex-direction: column; gap: 10px; max-height: 220px; overflow-y: auto; padding-right: 5px;"></div>
+            </div>
 
-                        <div id="adminPolicySearchResultsList" style="display:flex; flex-direction:column; gap:15px; max-height:500px; overflow-y:auto;"></div>
-                    </div>
-                </div>
+            <!-- Column 3: Code Library Box -->
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                <h4 style="font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.05rem; border-bottom: 1px dashed var(--border-glass); padding-bottom: 8px;">3️⃣ REPO LIBRARY BOX</h4>
+                <p style="color: var(--text-sub); font-size: 0.85rem;">All active compiled policy code blocks stored in cloud vault.</p>
+                <div id="adminPolicyLibraryBoxList" style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 5px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <div id="creationBlock" class="hidden">
+<div id="creationBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: rgba(0, 242, 254, 0.6); box-shadow: var(--cyber-glow);">
                         <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 20px;">⚡ ACCOUNT ENGINE IDENTITY</h3>
                         <div style="background:rgba(0,242,254,0.1); border: 1px solid rgba(0,242,254,0.3); padding:12px; border-radius:10px; margin-bottom:18px; color:var(--neon-cyan); font-weight:bold; font-size:1rem; text-align:center;" id="liveCreationStatsMiniNode">Loading...</div>
@@ -1610,7 +1626,7 @@
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================
-        // 🔍 POLICY SEARCH & UPLOAD BACKEND LOGIC
+        // 🔍 3-COLUMN POLICY SEARCH & LIBRARY BACKEND
         // ==========================================
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
@@ -1645,53 +1661,72 @@
 
         window.renderAdminPolicySearchDashboard = function() {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
-            if(!listContainer) return;
+            const libraryContainer = document.getElementById('adminPolicyLibraryBoxList');
+            if(!listContainer || !libraryContainer) return;
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    listContainer.innerHTML = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty. Upload your first policy code above.</p>";
+                    let emptyMsg = "<p style='color:var(--text-sub); text-align:center; padding:15px; font-size:0.85rem;'>Repository is empty.</p>";
+                    listContainer.innerHTML = emptyMsg;
+                    libraryContainer.innerHTML = emptyMsg;
                     return;
                 }
                 window.cachedPolicyRepoData = snap.val();
                 window.displayPolicyRepoList(window.cachedPolicyRepoData);
+                window.displayPolicyLibraryBox(window.cachedPolicyRepoData);
             });
         };
 
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             if(!listContainer) return;
-            
             const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
             let html = "";
-            
             items.forEach(item => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
                 html += `
-                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: var(--neon-cyan); margin-bottom:10px;">
-                    <div class="owner-name-tag-right">${item.insurer}</div>
-                    <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                    <p><b>Policy No:</b> ${item.policyNo}</p>
-                    <p><b>Client:</b> ${item.clientName}</p>
-                    <div style="display:flex; gap:10px; margin-top:12px;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 12px; font-size:0.85rem;">🗑️ DELETE</button>
+                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="padding: 12px; margin-bottom: 8px; border-left-color: #f1c40f; background: rgba(0,0,0,0.6);">
+                    <div style="font-size:0.8rem; color:var(--neon-cyan); font-weight:bold;">${item.insurer}</div>
+                    <p style="margin:4px 0; font-size:0.85rem;"><b>Reg:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
+                    <p style="margin:2px 0; font-size:0.85rem;"><b>Client:</b> ${item.clientName}</p>
+                    <div style="display:flex; gap:8px; margin-top:8px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; width:auto; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
+                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
                     </div>
                 </div>`;
             });
-            listContainer.innerHTML = html || "<p style='color:var(--text-sub); text-align:center;'>No matching policies found.</p>";
+            listContainer.innerHTML = html || "<p style='color:var(--text-sub); text-align:center;'>No matching results.</p>";
+        };
+
+        window.displayPolicyLibraryBox = function(dataObj) {
+            const libraryContainer = document.getElementById('adminPolicyLibraryBoxList');
+            if(!libraryContainer) return;
+            const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
+            let html = "";
+            items.forEach(item => {
+                let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+                html += `
+                <div style="background: rgba(10,20,40,0.8); border: 1px solid var(--border-glass); border-radius: 8px; padding: 12px; display:flex; flex-direction:column; gap:6px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <b style="color:var(--neon-green); font-size:0.85rem; font-family:'Orbitron';">${item.insurer}</b>
+                        <span style="font-size:0.75rem; color:var(--text-sub);">${item.regNo}</span>
+                    </div>
+                    <div style="background: #020408; padding: 8px; border-radius: 6px; font-family: monospace; font-size: 0.75rem; color: #00f2fe; max-height: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.rawCode}</div>
+                    <div style="display:flex; gap:8px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; width:auto; font-size:0.75rem; background:linear-gradient(135deg, #00f2fe, #4facfe);">📋 COPY CLEAN CODE</button>
+                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-db-btn" style="background:#e74c3c; color:#fff; border:none; padding:6px 8px; border-radius:6px; cursor:pointer; font-size:0.75rem;">🗑️</button>
+                    </div>
+                </div>`;
+            });
+            libraryContainer.innerHTML = html || "<p style='color:var(--text-sub); text-align:center;'>Library box empty.</p>";
         };
 
         window.filterAdminPolicyDatabaseItems = function() {
             const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.policy-repo-card');
-            
             cards.forEach(card => {
                 const text = card.getAttribute('data-search-text') || "";
-                if(text.includes(q)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = text.includes(q) ? "block" : "none";
             });
         };
 
@@ -1699,7 +1734,7 @@
             try {
                 const code = decodeURIComponent(escape(atob(base64Code)));
                 navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Policy JS Code Copied to Clipboard! You can now paste (Ctrl+V) it anywhere.");
+                    alert("✅ Clean policy code copied to clipboard successfully!");
                 });
             } catch(e) {
                 alert("Copy error: " + e.message);
@@ -1707,7 +1742,7 @@
         };
 
         window.deletePolicyRepoItem = function(id) {
-            if(confirm("Permanently delete this policy snippet from cloud?")) {
+            if(confirm("Permanently delete this policy snippet from repository?")) {
                 remove(ref(db, `policy_code_repository/${id}`)).then(() => {
                     window.renderAdminPolicySearchDashboard();
                 });
