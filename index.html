@@ -1635,70 +1635,153 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
-        // ==========================================
-        // 🔍 ADVANCED 3-TAB POLICY REPO & METADATA LOGIC
-        // ==========================================
-        window.switchPolicySubTab = function(tabName) {
-            ['injector', 'search', 'library'].forEach(t => {
-                const block = document.getElementById(`policySubBlock_${t}`);
-                const btn = document.getElementById(`pSubTab_${t}`);
-                if(block) block.classList.toggle('hidden', t !== tabName);
-                if(btn) {
-                    if(t === tabName) {
-                        btn.style.borderColor = "var(--neon-cyan)";
-                        btn.style.color = "var(--neon-cyan)";
-                        btn.style.background = "rgba(0,242,254,0.15)";
-                    } else {
-                        btn.style.borderColor = "rgba(0,242,254,0.3)";
-                        btn.style.color = "var(--text-sub)";
-                        btn.style.background = "transparent";
-                    }
-                }
-            });
-            if(tabName === 'search' || tabName === 'library') {
-                window.renderAdminPolicySearchDashboard();
-            }
-        };
-
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
             if(!codeText) { alert("Please paste a code snippet first."); return; }
-            
-            let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            
-            let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
-            let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
-            let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
-            let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
             
             const now = new Date();
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
             const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
             const dayStr = daysArr[now.getDay()];
-            
-            const codeRef = push(ref(db, 'policy_code_repository'));
-            set(codeRef, {
-                id: codeRef.key,
-                title: `${insurer} - ${regNo} (${clientName})`,
-                regNo: regNo,
-                policyNo: policyNo,
-                clientName: clientName,
-                insurer: insurer,
-                rawCode: codeText,
-                isDone: false,
-                dateStr: dateStr,
-                timeStr: timeStr,
-                dayStr: dayStr,
-                epoch: Date.now()
-            }).then(() => {
-                document.getElementById('adminPolicyCodePasteInput').value = "";
-                alert("✅ Policy code compiled with timestamp & saved to cloud!");
-                window.switchPolicySubTab('library');
+
+            let policiesToSave = [];
+
+            // 1. ADVANCED CHECK: If it's the 100 Policies Master Database (Format A)
+            if (codeText.includes("policyRepo") || codeText.includes("const policyRepo") || codeText.includes("var policyRepo")) {
+                try {
+                    // Force expose policyRepo to our mock window object even if it is inside an IIFE
+                    let modifiedCode = codeText.replace(/(?:const|let|var)\s+policyRepo\s*=/g, 'window.policyRepo =');
+                    
+                    let sandboxFn = new Function(`
+                        let window = {};
+                        let document = { 
+                            getElementById: () => ({ remove: ()=>{}, onclick: null, value: '' }), 
+                            createElement: () => ({ style: {}, innerHTML: '' }), 
+                            body: { appendChild: () => {} },
+                            querySelector: () => null
+                        };
+                        let alert = () => {};
+                        let console = { log: () => {} };
+                        try {
+                            ${modifiedCode}
+                        } catch(err) {}
+                        return window.policyRepo || null;
+                    `);
+                    
+                    let repoObj = sandboxFn();
+                    
+                    if (repoObj && typeof repoObj === 'object') {
+                        Object.keys(repoObj).forEach(regKey => {
+                            let p = repoObj[regKey];
+                            let regNo = p.registration_number || p.id_registration_number || regKey;
+                            let policyNo = p.policy_number || p.id_policy_number || "UNKNOWN_POL";
+                            let clientName = p.name || p.id_name || "UNKNOWN_CLIENT";
+                            let insurer = p.insurer || p.id_insurer || "INSURER";
+
+                            // AUTOMATIC CONVERSION: Format A -> Format B (Single Injector Script)
+                            let dataObjStr = "var data = {\n";
+                            let dataKeys = Object.keys(p).filter(k => !['is_legal_liability_driver', 'same_address', 'id_is_legal_liability_driver', 'id_same_address'].includes(k));
+                            
+                            dataKeys.forEach((k, idx) => {
+                                let val = p[k];
+                                let valStr = typeof val === 'string' ? `"${val.replace(/"/g, '\\"')}"` : val;
+                                let cleanKey = k.startsWith('id_') ? k : `id_${k}`;
+                                dataObjStr += `    "${cleanKey}": ${valStr}${idx < dataKeys.length - 1 ? ',' : ''}\n`;
+                            });
+                            dataObjStr += "};\n\n";
+
+                            let chkObjStr = "var checkboxes = {\n";
+                            let legalVal = p.is_legal_liability_driver !== undefined ? p.is_legal_liability_driver : (p.id_is_legal_liability_driver !== undefined ? p.id_is_legal_liability_driver : true);
+                            let addrVal = p.same_address !== undefined ? p.same_address : (p.id_same_address !== undefined ? p.id_same_address : true);
+                            
+                            chkObjStr += `    "id_is_legal_liability_driver": ${legalVal},\n`;
+                            chkObjStr += `    "id_same_address": ${addrVal}\n`;
+                            chkObjStr += "};\n\n";
+
+                            let scriptBody = dataObjStr + chkObjStr + `for (var key in data) {
+    var cleanKey = key.replace('id_', '');
+    var el = document.getElementById(key) || document.getElementById(cleanKey) || document.querySelector('[name="' + key + '"]') || document.querySelector('[name="' + cleanKey + '"]');
+    if (el) {
+        if (el.tagName === 'SELECT') {
+            var matched = false;
+            for (var i = 0; i < el.options.length; i++) {
+                if (el.options[i].text.toLowerCase().includes(String(data[key]).toLowerCase()) || el.options[i].text.toLowerCase().includes('tata')) {
+                    el.selectedIndex = i; matched = true; break;
+                }
+            }
+            if(!matched) el.value = data[key];
+        } else { el.value = data[key]; }
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+}
+
+for (var key in checkboxes) {
+    var cleanKey = key.replace('id_', '');
+    var el = document.getElementById(key) || document.getElementById(cleanKey) || document.querySelector('[name="' + key + '"]') || document.querySelector('[name="' + cleanKey + '"]');
+    if (el) { el.checked = checkboxes[key]; el.dispatchEvent(new Event('change', { bubbles: true })); }
+}
+
+if (window.jQuery) { jQuery('select').trigger('change'); }
+var fileInput = document.getElementById('id_policy_document') || document.querySelector('input[type="file"]');
+if (fileInput) fileInput.click();
+console.log("🎉 " + (data.id_registration_number || data.registration_number || "Data") + " filled!");`;
+
+                            policiesToSave.push({
+                                regNo: regNo,
+                                policyNo: policyNo,
+                                clientName: clientName,
+                                insurer: insurer,
+                                raw: scriptBody
+                            });
+                        });
+                    }
+                } catch(e) {
+                    console.error("Matrix Hub Conversion error:", e);
+                }
+            }
+
+            // 2. FALLBACK CHECK: If you directly paste a Single Policy (Format B)
+            if (policiesToSave.length === 0) {
+                let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
+                let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
+                let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/name['"]?\s*:\s*['"]([^'"]+)['"]/i);
+                let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
+
+                policiesToSave.push({
+                    regNo: regMatch ? regMatch[1] : "UNKNOWN_REG",
+                    policyNo: polMatch ? polMatch[1] : "UNKNOWN_POL",
+                    clientName: nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT",
+                    insurer: insurerMatch ? insurerMatch[1] : "INSURER",
+                    raw: codeText
+                });
+            }
+
+            let processedCount = 0;
+            policiesToSave.forEach(item => {
+                const codeRef = push(ref(db, 'policy_code_repository'));
+                set(codeRef, {
+                    id: codeRef.key,
+                    title: `${item.insurer} - ${item.regNo} (${item.clientName})`,
+                    regNo: item.regNo,
+                    policyNo: item.policyNo,
+                    clientName: item.clientName,
+                    insurer: item.insurer,
+                    rawCode: item.raw,
+                    isDone: false,
+                    dateStr: dateStr,
+                    timeStr: timeStr,
+                    dayStr: dayStr,
+                    epoch: Date.now()
+                });
+                processedCount++;
             });
+
+            document.getElementById('adminPolicyCodePasteInput').value = "";
+            alert(`✅ Success! ${processedCount} policy/policies converted & saved to Cloud Vault!`);
+            window.switchPolicySubTab('library');
+        };
         };
 
         window.renderAdminPolicySearchDashboard = function() {
