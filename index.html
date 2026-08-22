@@ -1209,6 +1209,10 @@
                 <div class="menu-card" onclick="window.switchAdminSubSection('workspace')" style="border-color:#2ecc71;">
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">💼</div><h3 style="color: #2ecc71;">Workspace</h3><p>Review & update customer policies.</p>
                 </div>
+                <!-- 🔍 Yeh naya card yahan add karna hai -->
+                <div class="menu-card" onclick="window.switchAdminSubSection('policysearch')" style="border-color:#00f2fe;">
+                    <div class="icon" style="text-shadow: 0 0 20px #00f2fe;">🔍</div><h3 style="color: #00f2fe;">Policy Search</h3><p>Upload & search 1000+ policy code blocks.</p>
+                </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('code')" style="border-color:#a73ec9;">
                     <div class="icon" style="text-shadow: 0 0 20px #a73ec9;">💻</div><h3 style="color: #a73ec9;">Code Studio</h3><p>Live Editor & Full Screen Play.</p>
                 </div>
@@ -1228,6 +1232,25 @@
 
             <div class="customerCardsContainer" id="adminStaticContainer">
                 
+                <!-- 🔍 Naya Policy Search HTML Block yahan paste karo -->
+                <div id="adminPolicySearchBlock" class="hidden">
+                    <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow);">
+                        <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 15px;">🔍 POLICY UPLOAD & SEARCH DASHBOARD</h3>
+                        <p style="color:var(--text-sub); margin-bottom: 20px;">Paste your policy code blocks below (up to 1000+ codes). Search instantly using Reg No, Policy No, or Client Name.</p>
+                        
+                        <div style="display:flex; flex-direction:column; gap:15px; margin-bottom:25px;">
+                            <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', id_policy_number: '...', ... })..." style="height:120px; font-family:monospace; font-size:0.9rem;"></textarea>
+                            <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe);">💾 SAVE POLICY CODE TO CLOUD</button>
+                        </div>
+
+                        <div style="margin-bottom:20px;">
+                            <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No (e.g. DL03CCU1728), Policy No, or Client Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px;">
+                        </div>
+
+                        <div id="adminPolicySearchResultsList" style="display:flex; flex-direction:column; gap:15px; max-height:500px; overflow-y:auto;"></div>
+                    </div>
+                </div>
+
                 <div id="creationBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: rgba(0, 242, 254, 0.6); box-shadow: var(--cyber-glow);">
                         <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin-bottom: 20px;">⚡ ACCOUNT ENGINE IDENTITY</h3>
@@ -1611,10 +1634,10 @@
         window.switchAdminSubSection = function(section) {
             MatrixSystemState.set('activeAdminSubSection', section);
             localStorage.setItem('nexus_active_chan_route', section);
-            const blocks = ['adminMainMenuBlock', 'creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminCodeInterfaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock'];
+            const blocks = ['adminMainMenuBlock', 'creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminCodeInterfaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock', 'adminPolicySearchBlock'];
             blocks.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
             
-            const targetMap = { 'menu': 'adminMainMenuBlock', 'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock', 'workspace': 'policyWorkspaceBlock', 'code': 'adminCodeInterfaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock', 'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock' };
+            const targetMap = { 'menu': 'adminMainMenuBlock', 'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock', 'workspace': 'policyWorkspaceBlock', 'code': 'adminCodeInterfaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock', 'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock', 'policysearch': 'adminPolicySearchBlock' };
             const targetId = targetMap[section];
             if (targetId && document.getElementById(targetId)) document.getElementById(targetId).classList.remove('hidden');
             
@@ -1629,10 +1652,10 @@
             if(section === 'tickets') window.renderAdminTickets();
             if(section === 'aispy') window.renderAdminAiInterceptionSpyBlock();
             if(section === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+            if(section === 'policysearch') window.renderAdminPolicySearchDashboard();
         };
 
         let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
-
         const MatrixSystemState = (() => {
             let state = {
                 currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
