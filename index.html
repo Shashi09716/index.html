@@ -1647,13 +1647,16 @@
                     btn.style.background = "transparent";
                 }
             });
+            
             const targetEl = document.getElementById('policySubBlock_' + tabId);
             if(targetEl) {
                 targetEl.classList.remove('hidden');
+                // ⚡ FIX: Make the tab fill the screen vertically when in Full Screen
                 targetEl.style.display = "flex";
                 targetEl.style.flexDirection = "column";
                 targetEl.style.height = "100%";
             }
+            
             const activeBtn = document.getElementById('pSubTab_' + tabId);
             if(activeBtn) {
                 activeBtn.style.borderColor = "var(--neon-cyan)";
@@ -1661,7 +1664,7 @@
                 activeBtn.style.background = "rgba(0,242,254,0.15)";
             }
 
-            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Logo & Terminal Injector) ---
+            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Analytics & Terminal Injector) ---
             if (!window.policyUiUpgraded) {
                 window.policyUiUpgraded = true;
                 
@@ -1670,7 +1673,7 @@
                 if (hubHeader && !document.getElementById('policyHubLockBtn')) {
                     const fsBtn = document.createElement('button');
                     fsBtn.id = 'policyHubLockBtn';
-                    // Expand Icon
+                    // Expand SVG Icon
                     fsBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                     fsBtn.className = 'nav-btn';
                     fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
@@ -1679,14 +1682,14 @@
                         window.toggleWaAreaLock('adminPolicySearchBlock', null); 
                         const isLocked = document.getElementById('adminPolicySearchBlock').classList.contains('locked-area-active');
                         if(isLocked) {
-                            // Collapse Icon (Pink)
+                            // Collapse SVG Icon (Pink)
                             this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
                             this.style.color = "#ff007f";
                             this.style.borderColor = "#ff007f";
                             this.style.boxShadow = "0 0 20px rgba(255,0,127,0.5)";
                             this.style.background = "rgba(255,0,127,0.15)";
                         } else {
-                            // Expand Icon (Cyan)
+                            // Expand SVG Icon (Cyan)
                             this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
                             this.style.color = "#00f2fe";
                             this.style.borderColor = "#00f2fe";
@@ -1698,7 +1701,7 @@
                     if(tabContainer) tabContainer.appendChild(fsBtn);
                 }
 
-                // 2. Injector Bar PREMIUM UI Upgrade (Mac Terminal Style - Solves Empty Space Issue)
+                // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS UPGRADE
                 const textarea = document.getElementById('adminPolicyCodePasteInput');
                 if (textarea) {
                     textarea.style.background = '#0d1117'; 
@@ -1708,13 +1711,34 @@
                     textarea.style.color = '#38bdf8'; 
                     textarea.style.padding = '25px';
                     textarea.style.fontSize = '1.15rem';
-                    textarea.style.minHeight = '400px'; 
+                    textarea.style.minHeight = '300px'; 
                     textarea.style.flex = '1'; 
                     textarea.style.fontFamily = '"Courier New", Courier, monospace';
                     textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
                     
                     const injectorBlock = document.getElementById('policySubBlock_injector');
                     if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
+                        // Analytics Calendar Bar
+                        const analyticsBar = document.createElement('div');
+                        analyticsBar.id = 'injectorAnalyticsBar';
+                        analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.9), rgba(2,5,14,0.95)); padding:15px 20px; border-radius:12px; border:1px solid #a73ec9; margin-bottom:15px; box-shadow:0 8px 20px rgba(0,0,0,0.5); flex-wrap:wrap; gap:10px;';
+                        analyticsBar.innerHTML = `
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#fff; border:1px solid #00f2fe; padding:8px 12px; border-radius:8px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
+                                    <option value="today">📅 Today</option>
+                                    <option value="yesterday">📅 Yesterday</option>
+                                    <option value="between">🗓️ Between Dates</option>
+                                </select>
+                                <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px; border-radius:8px; outline:none; font-family:monospace;">
+                                <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px; border-radius:8px; outline:none; font-family:monospace;">
+                            </div>
+                            <div style="display:flex; align-items:center; gap:15px;">
+                                <div style="color:var(--text-sub); font-size:1.1rem; font-family:Orbitron; font-weight:bold;">Total Injected: <span id="injTotalCount" style="color:#00f2fe; font-size:1.4rem; text-shadow:0 0 10px #00f2fe;">0</span></div>
+                                <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:8px 15px; font-size:0.9rem; box-shadow:0 0 10px rgba(46,204,113,0.3);">📄 VIEW DETAILS</button>
+                            </div>
+                        `;
+
+                        // Terminal Header
                         const header = document.createElement('div');
                         header.id = 'injectorTerminalHeader';
                         header.innerHTML = `
@@ -1728,7 +1752,9 @@
                                 <span style="color:#00f2fe; font-weight:900;">JS INJECTOR ⚡</span>
                             </div>
                         `;
-                        textarea.parentNode.insertBefore(header, textarea);
+                        
+                        textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); // Insert Analytics
+                        textarea.parentNode.insertBefore(header, textarea); // Insert Terminal Header
                         textarea.style.borderTopLeftRadius = '0';
                         textarea.style.borderTopRightRadius = '0';
                     }
@@ -1744,8 +1770,8 @@
                     searchInput.style.borderRadius = '12px';
                     searchInput.style.fontSize = '1.1rem';
                     searchInput.style.padding = '18px 25px';
-                    searchInput.placeholder = "🔍 Search Vault by Reg No, Phone, Name or Details...";
-                    searchInput.removeAttribute('oninput'); // Stop auto-search
+                    searchInput.placeholder = "🔍 Search Vault Exact by Reg No, Phone, Name or Details...";
+                    searchInput.removeAttribute('oninput'); 
                     
                     const parent = searchInput.parentNode;
                     parent.style.display = 'flex';
@@ -1779,14 +1805,103 @@
                 }
             }
 
-            if(tabId === 'search' || tabId === 'library') {
+            if(tabId === 'search' || tabId === 'library' || tabId === 'injector') {
                 if(typeof window.renderAdminPolicySearchDashboard === 'function') {
                     window.renderAdminPolicySearchDashboard();
                 }
             }
         };
 
-        // ⚡ SEARCH EXECUTION LOGIC (100% Fixed - Accurate Text Indexing)
+        // ⚡ ANALYTICS LOGIC (Handle Dates & Filter Data)
+        window.handleDateFilterChange = function() {
+            let type = document.getElementById('injDateFilterType').value;
+            document.getElementById('injDateStart').style.display = (type === 'between') ? 'inline-block' : 'none';
+            document.getElementById('injDateEnd').style.display = (type === 'between') ? 'inline-block' : 'none';
+            window.calculateCodeAnalytics();
+        };
+
+        window.calculateCodeAnalytics = function() {
+            if(!window.cachedPolicyRepoData) {
+                const countNode = document.getElementById('injTotalCount');
+                if(countNode) countNode.innerText = "0";
+                window.currentFilteredAnalytics = [];
+                return;
+            }
+            let type = document.getElementById('injDateFilterType').value;
+            let dStart = document.getElementById('injDateStart').value;
+            let dEnd = document.getElementById('injDateEnd').value;
+            
+            let items = Object.values(window.cachedPolicyRepoData);
+            let now = new Date();
+            
+            let filtered = items.filter(item => {
+                if(!item.epoch) return false;
+                let itemDate = new Date(item.epoch);
+                if(type === 'today') {
+                    return itemDate.toDateString() === now.toDateString();
+                } else if (type === 'yesterday') {
+                    let yest = new Date(); yest.setDate(now.getDate() - 1);
+                    return itemDate.toDateString() === yest.toDateString();
+                } else if (type === 'between') {
+                    if(!dStart || !dEnd) return true; // Show all if dates not picked yet
+                    let s = new Date(dStart); s.setHours(0,0,0,0);
+                    let e = new Date(dEnd); e.setHours(23,59,59,999);
+                    return itemDate >= s && itemDate <= e;
+                }
+                return true;
+            });
+
+            window.currentFilteredAnalytics = filtered;
+            const countNode = document.getElementById('injTotalCount');
+            if(countNode) countNode.innerText = filtered.length;
+        };
+
+        // ⚡ SHOW DETAILED ANALYTICS POPUP
+        window.showFilteredCodeDetails = function() {
+            let data = window.currentFilteredAnalytics || [];
+            if(data.length === 0) { alert("No data available for this date range."); return; }
+            
+            let html = `<div class="nexus-popup-card-box" style="max-width:850px; width:95%; max-height:85vh; display:flex; flex-direction:column; padding:20px; border:2px solid #2ecc71; box-shadow:0 0 40px rgba(46,204,113,0.3);" onclick="event.stopPropagation()">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
+                    <h3 style="color:#00f2fe; margin:0; font-family:'Orbitron'; font-size:1.5rem; text-shadow:0 0 10px rgba(0,242,254,0.4);">📊 INJECTION ANALYTICS DETAILS</h3>
+                    <button onclick="window.closeCustomInlinePopupEngine()" style="background:none; border:none; color:#e74c3c; font-size:1.5rem; cursor:pointer;">✖</button>
+                </div>
+                <div style="flex:1; overflow-y:auto; padding-right:10px; margin-bottom:15px;">
+                    <table style="width:100%; border-collapse:collapse; color:#fff; font-size:0.95rem; text-align:left; font-family:'Segoe UI', sans-serif;">
+                        <thead style="background:rgba(0,242,254,0.15); position:sticky; top:0; z-index:10; backdrop-filter:blur(10px);">
+                            <tr>
+                                <th style="padding:15px; border-bottom:2px solid #00f2fe;">Reg No</th>
+                                <th style="padding:15px; border-bottom:2px solid #00f2fe;">Contact Number</th>
+                                <th style="padding:15px; border-bottom:2px solid #00f2fe;">Date</th>
+                                <th style="padding:15px; border-bottom:2px solid #00f2fe;">Time</th>
+                                <th style="padding:15px; border-bottom:2px solid #00f2fe;">Day</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(d => {
+                                // Extract contact from raw data using regex
+                                let contactMatch = d.rawCode ? d.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || d.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || d.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
+                                let contact = contactMatch ? contactMatch[1] : "N/A";
+                                return `<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.4); transition:0.2s;" onmouseover="this.style.background='rgba(0,242,254,0.08)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                                    <td style="padding:12px; color:#f1c40f; font-weight:bold; font-family:monospace;">${d.regNo}</td>
+                                    <td style="padding:12px; color:#2ecc71; font-weight:bold; font-family:monospace;">${contact}</td>
+                                    <td style="padding:12px;">${d.dateStr}</td>
+                                    <td style="padding:12px;">${d.timeStr}</td>
+                                    <td style="padding:12px; color:#a73ec9; font-weight:bold;">${d.dayStr}</td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="width:100%; padding:15px; font-size:1.1rem;">CLOSE WINDOW</button>
+            </div>`;
+            
+            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
+            wrapper.innerHTML = html;
+            wrapper.classList.remove('hidden');
+        };
+
+        // ⚡ SEARCH EXECUTION LOGIC (100% Fixed - Accurate & Strict Indexing)
         window.executePolicySearch = function() {
             const searchInput = document.getElementById('adminPolicySearchInput');
             if(!searchInput) return;
@@ -1807,10 +1922,33 @@
             setTimeout(() => {
                 const cards = cardsContainer.querySelectorAll('.policy-repo-card');
                 let matchCount = 0;
+                
+                // Regex to check if query is strictly a 10 digit number
+                const isStrictNumber = /^\d{10}$/.test(q);
+
                 cards.forEach(card => {
-                    // Plain text search logic (Bug Fixed)
-                    const text = card.getAttribute('data-search-plain') || "";
-                    if(text.includes(q)) {
+                    const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase();
+                    const exactContact = card.getAttribute('data-exact-contact') || "";
+                    const fullText = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
+                    
+                    let isMatch = false;
+
+                    if (isStrictNumber) {
+                        // Strict Match for Phone Number
+                        if (exactContact === q || fullText.includes(`'${q}'`) || fullText.includes(`"${q}"`) || fullText.includes(`: ${q}`)) {
+                            isMatch = true;
+                        }
+                    } else {
+                        // Exact match for Reg No. priority
+                        if (exactReg === q || exactReg.replace(/\s+/g, '') === q.replace(/\s+/g, '')) {
+                            isMatch = true;
+                        } else if (fullText.includes(q)) {
+                            // Fallback broad search if no exact reg matched
+                            isMatch = true;
+                        }
+                    }
+
+                    if(isMatch) {
                         card.style.display = "flex";
                         matchCount++;
                     } else {
@@ -1819,10 +1957,10 @@
                 });
 
                 if(matchCount === 0) {
-                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO MATCHES FOUND</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No records found for "<b>${q}</b>".</p></div>`;
+                    feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
                     cardsContainer.style.display = 'none';
                 } else {
-                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4);'>✅ Found ${matchCount} match(es) for "${q}"</div>`;
+                    feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
                     cardsContainer.style.display = 'flex';
                 }
             }, 400);
@@ -1846,7 +1984,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Deep Indexing)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Deep Indexing Attributes)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -1890,11 +2028,15 @@
                 let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
                 let dyStr = item.dayStr || daysArr[itemDate.getDay()];
                 
-                // DEEP SEARCH FIX (Plane Text mapping)
+                // DEEP SEARCH FIX (Extracting Contact Data & Base64 Payload)
                 let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
+                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
+                
+                let contactMatch = item.rawCode ? item.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
+                let extractedContact = contactMatch ? contactMatch[1] : "";
 
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-plain="${searchPayload}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
+                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:900; font-size:1.2rem; text-shadow:0 0 10px rgba(0,242,254,0.5);">${item.insurer} (${serialNo})</span>
                         ${statusBadge}
@@ -1924,7 +2066,7 @@
                         </label>
                         ${statusBadge}
                     </div>
-                    <div style="font-size:0.95rem; color:#f1c40f; font-family:monospace; background:rgba(241,196,15,0.15); padding:10px; border-radius:8px;"><b>Reg:</b> ${item.regNo}<br><b>Client:</b> ${item.clientName}</div>
+                    <div style="font-size:0.95rem; color:#f1c40f; font-family:monospace; background:rgba(241,196,15,0.15); padding:10px; border-radius:8px;"><b>Reg:</b> <span style="color:#fff;">${item.regNo}</span><br><b>Client:</b> ${item.clientName}<br><b style="color:#2ecc71;">Contact:</b> <span style="color:#fff;">${extractedContact || 'N/A'}</span></div>
                     <div style="background:#02050e; border:1px solid rgba(0,242,254,0.3); border-radius:10px; padding:15px; font-family:monospace; font-size:0.9rem; color:#00f2fe; max-height:130px; overflow-y:auto; word-break:break-all; white-space:pre-wrap; box-shadow:inset 0 0 15px rgba(0,0,0,0.9);">${item.rawCode}</div>
                     <div style="font-size:0.85rem; color:var(--text-sub); text-align:right; margin-top:5px;">📅 ${dStr} | ⏰ ${tStr}</div>
                     <div style="display:flex; gap:12px; margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05);">
@@ -1945,6 +2087,9 @@
             if(searchInputObj && searchInputObj.value.trim() !== "") {
                 window.executePolicySearch();
             }
+            
+            // Re-calculate analytics whenever list renders
+            window.calculateCodeAnalytics();
         };
 
         window.saveAdminPolicyCodeSnippet = function() {
