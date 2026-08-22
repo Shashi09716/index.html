@@ -1752,6 +1752,7 @@
             const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
             let searchHtml = "";
             let libraryHtml = "";
+            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
             items.forEach((item, index) => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
@@ -1759,7 +1760,11 @@
                 let isDone = item.isDone === true;
                 let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
                 
-                // Search Tab List Item
+                let itemDate = item.epoch ? new Date(item.epoch) : new Date();
+                let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
+                let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+                let dyStr = item.dayStr || daysArr[itemDate.getDay()];
+                
                 searchHtml += `
                 <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1769,7 +1774,7 @@
                     <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
                     <p><b>Policy No:</b> ${item.policyNo}</p>
                     <p><b>Client:</b> ${item.clientName}</p>
-                    <p style="font-size:0.8rem; color:var(--text-sub);">🕒 Saved on: ${item.dateStr || 'N/A'} at ${item.timeStr || ''} (${item.dayStr || ''})</p>
+                    <p style="font-size:0.8rem; color:var(--text-sub);">🕒 Saved on: ${dStr} at ${tStr} (${dyStr})</p>
                     <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
@@ -1777,11 +1782,9 @@
                     </div>
                 </div>`;
 
-                // Library Filter check
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
-                // Library Tab Grid Card (Clean code box look with Timestamp & Delete option)
                 libraryHtml += `
                 <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
                     ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:#2ecc71;"></div>' : ''}
@@ -1791,7 +1794,7 @@
                     </div>
                     <div style="font-size:0.8rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
                     <div style="background:#000; border:1px solid rgba(0,242,254,0.2); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#00f2fe; max-height:110px; overflow-y:auto; word-break:break-all; white-space:pre-wrap;">${item.rawCode}</div>
-                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${item.dateStr || 'N/A'} | ⏰ ${item.timeStr || ''} (${item.dayStr || ''})</div>
+                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${dStr} | ⏰ ${tStr} (${dyStr})</div>
                     <div style="display:flex; gap:8px; margin-top:auto;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 12px; width:auto; font-size:0.78rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.78rem; padding:8px 10px;">${isDone?'Undo':'Done'}</button>
