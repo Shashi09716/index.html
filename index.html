@@ -1611,6 +1611,111 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
+        // ==========================================
+        // 🔍 POLICY SEARCH & UPLOAD BACKEND LOGIC
+        // ==========================================
+        window.saveAdminPolicyCodeSnippet = function() {
+            const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
+            if(!codeText) { alert("Please paste a code snippet first."); return; }
+            
+            let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            
+            let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
+            let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
+            let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
+            let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
+            
+            const codeRef = push(ref(db, 'policy_code_repository'));
+            set(codeRef, {
+                id: codeRef.key,
+                title: `${insurer} - ${regNo} (${clientName})`,
+                regNo: regNo,
+                policyNo: policyNo,
+                clientName: clientName,
+                insurer: insurer,
+                rawCode: codeText,
+                epoch: Date.now()
+            }).then(() => {
+                document.getElementById('adminPolicyCodePasteInput').value = "";
+                alert("✅ Policy code successfully compiled and saved to cloud repository!");
+                window.renderAdminPolicySearchDashboard();
+            });
+        };
+
+        window.renderAdminPolicySearchDashboard = function() {
+            const listContainer = document.getElementById('adminPolicySearchResultsList');
+            if(!listContainer) return;
+            
+            get(ref(db, 'policy_code_repository')).then((snap) => {
+                if(!snap.exists()) {
+                    listContainer.innerHTML = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty. Upload your first policy code above.</p>";
+                    return;
+                }
+                window.cachedPolicyRepoData = snap.val();
+                window.displayPolicyRepoList(window.cachedPolicyRepoData);
+            });
+        };
+
+        window.displayPolicyRepoList = function(dataObj) {
+            const listContainer = document.getElementById('adminPolicySearchResultsList');
+            if(!listContainer) return;
+            
+            const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
+            let html = "";
+            
+            items.forEach(item => {
+                let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+                html += `
+                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: var(--neon-cyan); margin-bottom:10px;">
+                    <div class="owner-name-tag-right">${item.insurer}</div>
+                    <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
+                    <p><b>Policy No:</b> ${item.policyNo}</p>
+                    <p><b>Client:</b> ${item.clientName}</p>
+                    <div style="display:flex; gap:10px; margin-top:12px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
+                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 12px; font-size:0.85rem;">🗑️ DELETE</button>
+                    </div>
+                </div>`;
+            });
+            listContainer.innerHTML = html || "<p style='color:var(--text-sub); text-align:center;'>No matching policies found.</p>";
+        };
+
+        window.filterAdminPolicyDatabaseItems = function() {
+            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.policy-repo-card');
+            
+            cards.forEach(card => {
+                const text = card.getAttribute('data-search-text') || "";
+                if(text.includes(q)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        };
+
+        window.copyPolicySnippetFromRepo = function(base64Code) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                navigator.clipboard.writeText(code).then(() => {
+                    alert("✅ Policy JS Code Copied to Clipboard! You can now paste (Ctrl+V) it anywhere.");
+                });
+            } catch(e) {
+                alert("Copy error: " + e.message);
+            }
+        };
+
+        window.deletePolicyRepoItem = function(id) {
+            if(confirm("Permanently delete this policy snippet from cloud?")) {
+                remove(ref(db, `policy_code_repository/${id}`)).then(() => {
+                    window.renderAdminPolicySearchDashboard();
+                });
+            }
+        };
+
         // --- NAVIGATION LOGIC ---
         window.switchCustomerChannel = function(channel) {
             MatrixSystemState.set('activeCustomerWorkspaceChannel', channel);
