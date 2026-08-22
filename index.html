@@ -1663,131 +1663,145 @@
                 activeBtn.style.background = "rgba(0,242,254,0.15)";
             }
 
-            // --- ⚡ DYNAMIC UI UPGRADES (Premium Full Screen, Analytics & Terminal Injector) ---
-            if (!window.policyUiUpgraded) {
-                window.policyUiUpgraded = true;
+            window.initPremiumMatrixUI();
+        };
 
-                // 1. FULL SCREEN FIX WITH SVG ICON
-                const mainFsBtn = document.getElementById('fullScreenBtn');
-                if (mainFsBtn) {
-                    mainFsBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
-                    mainFsBtn.style.display = 'flex';
-                    mainFsBtn.style.alignItems = 'center';
-                    mainFsBtn.style.justifyContent = 'center';
-                    mainFsBtn.style.padding = '8px 12px';
-                    mainFsBtn.style.color = '#00f2fe';
-                }
+        // --- ⚡ DYNAMIC UI UPGRADES (Glitch Fixed: Now runs globally) ---
+        window.initPremiumMatrixUI = function() {
+            if (window.policyUiUpgraded) return;
+            window.policyUiUpgraded = true;
 
-                // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS UPGRADE
-                const textarea = document.getElementById('adminPolicyCodePasteInput');
-                if (textarea) {
-                    textarea.style.background = '#0d1117'; 
-                    textarea.style.border = '1px solid #1e293b';
-                    textarea.style.borderLeft = '4px solid #00f2fe';
-                    textarea.style.boxShadow = 'inset 0 0 20px rgba(0,0,0,0.8), 0 10px 30px rgba(0,0,0,0.5)';
-                    textarea.style.color = '#38bdf8'; 
-                    textarea.style.padding = '25px';
-                    textarea.style.fontSize = '1.15rem';
-                    textarea.style.minHeight = '300px'; 
-                    textarea.style.flex = '1'; 
-                    textarea.style.fontFamily = '"Courier New", Courier, monospace';
-                    textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    id_policy_number: 'POL123456789',\n    name: 'John Doe',\n    insurer: 'TATA AIG',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
-                    
-                    const injectorBlock = document.getElementById('policySubBlock_injector');
-                    if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
-                        // Calendar Analytics Bar
-                        const analyticsBar = document.createElement('div');
-                        analyticsBar.id = 'injectorAnalyticsBar';
-                        analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); padding:15px 25px; border-radius:12px; border:1px solid rgba(0,242,254,0.3); margin-bottom:20px; box-shadow:0 8px 25px rgba(0,0,0,0.6); flex-wrap:wrap; gap:15px;';
-                        analyticsBar.innerHTML = `
-                            <div style="display:flex; align-items:center; gap:12px;">
-                                <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#00f2fe; border:1px solid #00f2fe; padding:10px 15px; border-radius:8px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
-                                    <option value="today">📅 Today</option>
-                                    <option value="yesterday">📅 Yesterday</option>
-                                    <option value="between">🗓️ Between Dates</option>
-                                </select>
-                                <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
-                                <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
-                            </div>
-                            <div style="display:flex; align-items:center; gap:20px;">
-                                <div style="color:var(--text-sub); font-size:1.1rem; font-family:Orbitron; font-weight:bold;">Total Code Injected: <span id="injTotalCount" style="color:#2ecc71; font-size:1.6rem; text-shadow:0 0 15px rgba(46,204,113,0.6); margin-left:8px;">0</span></div>
-                                <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:10px 20px; font-size:0.95rem; box-shadow:0 0 15px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
-                            </div>
-                        `;
-
-                        // Terminal Header
-                        const header = document.createElement('div');
-                        header.id = 'injectorTerminalHeader';
-                        header.innerHTML = `
-                            <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:15px 20px; border-radius:12px 12px 0 0; border:1px solid #1e293b; border-bottom:none;">
-                                <div style="display:flex; gap:8px;">
-                                    <span style="width:14px; height:14px; border-radius:50%; background:#e74c3c; box-shadow:0 0 10px #e74c3c;"></span>
-                                    <span style="width:14px; height:14px; border-radius:50%; background:#f1c40f; box-shadow:0 0 10px #f1c40f;"></span>
-                                    <span style="width:14px; height:14px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
-                                </div>
-                                <span style="color:#8696a0; font-family:monospace; font-weight:bold; letter-spacing:2px; font-size:1.1rem;">root@matrix-hub:~#</span>
-                                <span style="color:#00f2fe; font-weight:900;">JS INJECTOR ⚡</span>
-                            </div>
-                        `;
-                        
-                        textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); // Add Analytics
-                        textarea.parentNode.insertBefore(header, textarea); // Add Terminal Header
-                        textarea.style.borderTopLeftRadius = '0';
-                        textarea.style.borderTopRightRadius = '0';
+            // 1. FULL SCREEN FIX WITH SVG ICON
+            const hubHeader = document.querySelector('#adminPolicySearchBlock .panel-header-flex') || document.querySelector('#adminPolicySearchBlock div[style*="display:flex"]');
+            if (hubHeader && !document.getElementById('policyHubLockBtn')) {
+                const fsBtn = document.createElement('button');
+                fsBtn.id = 'policyHubLockBtn';
+                fsBtn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                fsBtn.className = 'nav-btn';
+                fsBtn.style.cssText = 'color:#00f2fe; border-color:#00f2fe; background:rgba(0,242,254,0.1); padding:8px; border-radius:10px; margin-left:15px; box-shadow: 0 0 15px rgba(0,242,254,0.4); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.3s;';
+                
+                fsBtn.onclick = function() { 
+                    window.toggleWaAreaLock('adminPolicySearchBlock', null); 
+                    const isLocked = document.getElementById('adminPolicySearchBlock').classList.contains('locked-area-active');
+                    if(isLocked) {
+                        this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
+                        this.style.color = "#ff007f";
+                        this.style.borderColor = "#ff007f";
+                        this.style.boxShadow = "0 0 20px rgba(255,0,127,0.5)";
+                        this.style.background = "rgba(255,0,127,0.15)";
+                    } else {
+                        this.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px currentColor);"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+                        this.style.color = "#00f2fe";
+                        this.style.borderColor = "#00f2fe";
+                        this.style.boxShadow = "0 0 15px rgba(0,242,254,0.3)";
+                        this.style.background = "rgba(0,242,254,0.1)";
                     }
-                }
+                };
+                const tabContainer = hubHeader.querySelector('div') || hubHeader;
+                if(tabContainer) tabContainer.appendChild(fsBtn);
+            }
 
-                // 3. Search Bar PREMIUM UI Upgrade
-                const searchInput = document.getElementById('adminPolicySearchInput');
-                if (searchInput) {
-                    searchInput.style.background = 'rgba(2, 5, 14, 0.8)';
-                    searchInput.style.border = '2px solid #00f2fe';
-                    searchInput.style.boxShadow = '0 0 25px rgba(0,242,254,0.3), inset 0 0 15px rgba(0,242,254,0.1)';
-                    searchInput.style.color = '#fff';
-                    searchInput.style.borderRadius = '30px';
-                    searchInput.style.fontSize = '1.3rem';
-                    searchInput.style.padding = '20px 30px';
-                    searchInput.style.textAlign = 'center';
-                    searchInput.style.width = '100%';
-                    searchInput.style.maxWidth = '800px';
-                    searchInput.style.margin = '0 auto';
-                    searchInput.placeholder = "🔍 ENTER REG NO. OR CONTACT NO. TO SEARCH...";
-                    searchInput.removeAttribute('oninput'); // Stop auto-search
-                    
-                    const parent = searchInput.parentNode;
-                    parent.style.display = 'flex';
-                    parent.style.flexDirection = 'column';
-                    parent.style.gap = '20px';
-                    parent.style.alignItems = 'center';
-                    parent.style.background = 'transparent';
-                    parent.style.border = 'none';
-                    
-                    let searchBtn = document.getElementById('premiumSearchBtnBtn');
-                    if(!searchBtn) {
-                        searchBtn = document.createElement('button');
-                        searchBtn.id = 'premiumSearchBtnBtn';
-                        searchBtn.innerHTML = '<span style="font-size:1.4rem;">🚀</span> EXECUTE SEARCH';
-                        searchBtn.className = 'hud-engage-btn';
-                        searchBtn.style.cssText = 'width:auto; padding:15px 40px; font-size:1.2rem; font-weight:900; border-radius:30px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 20px rgba(0,242,254,0.5); color:#000; display:flex; align-items:center; gap:10px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
-                        searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 30px #00f2fe'; };
-                        searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 20px rgba(0,242,254,0.5)'; };
-                        searchBtn.onclick = function() { window.executePolicySearch(); };
-                        parent.appendChild(searchBtn);
-                    }
+            // 2. Injector Bar PREMIUM UI & CALENDAR ANALYTICS (Glitch Fixed)
+            const textarea = document.getElementById('adminPolicyCodePasteInput');
+            if (textarea) {
+                textarea.style.background = '#0d1117'; 
+                textarea.style.border = '1px solid #1e293b';
+                textarea.style.borderLeft = '4px solid #00f2fe';
+                textarea.style.boxShadow = 'inset 0 0 20px rgba(0,0,0,0.8), 0 10px 30px rgba(0,0,0,0.5)';
+                textarea.style.color = '#38bdf8'; 
+                textarea.style.padding = '25px';
+                textarea.style.fontSize = '1.15rem';
+                textarea.style.minHeight = '300px'; 
+                textarea.style.flex = '1'; 
+                textarea.style.fontFamily = '"Courier New", Courier, monospace';
+                textarea.placeholder = "// 🚀 INITIALIZE MATRIX UPLINK...\n// Paste your Premium Policy JSON/JS Code Block here...\n\nvar data = {\n    id_registration_number: 'DL03CCU1728',\n    contact: '9876543210'\n};\n\n// ⚡ System will auto-compile & extract metrics.";
+                
+                const injectorBlock = document.getElementById('policySubBlock_injector');
+                if (injectorBlock && !document.getElementById('injectorTerminalHeader')) {
+                    // Analytics Bar
+                    const analyticsBar = document.createElement('div');
+                    analyticsBar.id = 'injectorAnalyticsBar';
+                    analyticsBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98)); padding:15px 25px; border-radius:12px; border:1px solid rgba(0,242,254,0.3); margin-bottom:20px; box-shadow:0 8px 25px rgba(0,0,0,0.6); flex-wrap:wrap; gap:15px;';
+                    analyticsBar.innerHTML = `
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <select id="injDateFilterType" onchange="window.handleDateFilterChange()" style="background:#02050e; color:#00f2fe; border:1px solid #00f2fe; padding:10px 15px; border-radius:8px; outline:none; font-family:Orbitron; font-weight:bold; cursor:pointer;">
+                                <option value="today">📅 Today</option>
+                                <option value="yesterday">📅 Yesterday</option>
+                                <option value="between">🗓️ Between Dates</option>
+                            </select>
+                            <input type="date" id="injDateStart" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
+                            <input type="date" id="injDateEnd" onchange="window.calculateCodeAnalytics()" style="display:none; background:#02050e; color:#fff; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; outline:none; font-family:monospace;">
+                        </div>
+                        <div style="display:flex; align-items:center; gap:20px;">
+                            <div style="color:var(--text-sub); font-size:1.1rem; font-family:Orbitron; font-weight:bold;">Total Code Injected: <span id="injTotalCount" style="color:#2ecc71; font-size:1.6rem; text-shadow:0 0 15px rgba(46,204,113,0.6); margin-left:8px;">0</span></div>
+                            <button onclick="window.showFilteredCodeDetails()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:10px 20px; font-size:0.95rem; box-shadow:0 0 15px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
+                        </div>
+                    `;
 
-                    searchInput.onkeydown = function(e) {
-                        if(e.key === 'Enter') {
-                            e.preventDefault();
-                            window.executePolicySearch();
-                        }
-                    };
+                    // Terminal Header
+                    const header = document.createElement('div');
+                    header.id = 'injectorTerminalHeader';
+                    header.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:#02050e; padding:15px 20px; border-radius:12px 12px 0 0; border:1px solid #1e293b; border-bottom:none;">
+                            <div style="display:flex; gap:8px;">
+                                <span style="width:14px; height:14px; border-radius:50%; background:#e74c3c; box-shadow:0 0 10px #e74c3c;"></span>
+                                <span style="width:14px; height:14px; border-radius:50%; background:#f1c40f; box-shadow:0 0 10px #f1c40f;"></span>
+                                <span style="width:14px; height:14px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;"></span>
+                            </div>
+                            <span style="color:#8696a0; font-family:monospace; font-weight:bold; letter-spacing:2px; font-size:1.1rem;">root@matrix-hub:~#</span>
+                            <span style="color:#00f2fe; font-weight:900;">JS INJECTOR ⚡</span>
+                        </div>
+                    `;
+                    
+                    textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling);
+                    textarea.parentNode.insertBefore(header, textarea); 
+                    textarea.style.borderTopLeftRadius = '0';
+                    textarea.style.borderTopRightRadius = '0';
                 }
             }
 
-            if(tabId === 'search' || tabId === 'library' || tabId === 'injector') {
-                if(typeof window.renderAdminPolicySearchDashboard === 'function') {
-                    window.renderAdminPolicySearchDashboard();
+            // 3. Search Bar PREMIUM UI Upgrade
+            const searchInput = document.getElementById('adminPolicySearchInput');
+            if (searchInput) {
+                searchInput.style.background = 'linear-gradient(145deg, #02050e, #0b141a)';
+                searchInput.style.border = '2px solid #00f2fe';
+                searchInput.style.boxShadow = '0 0 20px rgba(0,242,254,0.2), inset 0 0 10px rgba(0,242,254,0.1)';
+                searchInput.style.color = '#00f2fe';
+                searchInput.style.borderRadius = '8px';
+                searchInput.style.fontSize = '1.1rem';
+                searchInput.style.padding = '15px 20px';
+                searchInput.style.width = '100%';
+                searchInput.style.fontFamily = 'Orbitron';
+                searchInput.style.letterSpacing = '1px';
+                searchInput.placeholder = "SCAN REG NO OR CONTACT NO...";
+                searchInput.removeAttribute('oninput'); 
+                
+                const parent = searchInput.parentNode;
+                parent.style.display = 'flex';
+                parent.style.gap = '15px';
+                parent.style.alignItems = 'center';
+                parent.style.background = 'transparent';
+                parent.style.border = 'none';
+                
+                let searchBtn = document.getElementById('premiumSearchBtnBtn');
+                if(!searchBtn) {
+                    searchBtn = document.createElement('button');
+                    searchBtn.id = 'premiumSearchBtnBtn';
+                    searchBtn.innerHTML = '⚡ DEEP SEARCH';
+                    searchBtn.className = 'hud-engage-btn';
+                    searchBtn.style.cssText = 'width:auto; padding:0 35px; height:55px; font-size:1.1rem; font-weight:900; border-radius:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 15px rgba(0,242,254,0.4); color:#000; display:flex; align-items:center; gap:10px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
+                    searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 25px rgba(0,242,254,0.6)'; };
+                    searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 15px rgba(0,242,254,0.4)'; };
+                    searchBtn.onclick = function() { window.executePolicySearch(); };
+                    parent.appendChild(searchBtn);
                 }
+
+                searchInput.onkeydown = function(e) {
+                    if(e.key === 'Enter') {
+                        e.preventDefault();
+                        window.executePolicySearch();
+                    }
+                };
             }
         };
 
@@ -1902,7 +1916,7 @@
             wrapper.classList.remove('hidden');
         };
 
-        // ⚡ STRICT SEARCH EXECUTION LOGIC (100% Fixed - Accurate Reg No & Phone Match)
+        // ⚡ STRICT SEARCH EXECUTION LOGIC (Grid Fix + Accurate Matching)
         window.executePolicySearch = function() {
             const searchInput = document.getElementById('adminPolicySearchInput');
             if(!searchInput) return;
@@ -1927,20 +1941,13 @@
                 cards.forEach(card => {
                     const exactReg = (card.getAttribute('data-exact-reg') || "").toLowerCase().replace(/\s+/g, '');
                     const exactContact = card.getAttribute('data-exact-contact') || "";
-                    const exactPol = (card.getAttribute('data-exact-pol') || "").toLowerCase().replace(/\s+/g, '');
-                    const exactClient = (card.getAttribute('data-exact-client') || "").toLowerCase();
+                    const fullText = decodeURIComponent(escape(atob(card.getAttribute('data-search-base') || ""))).toLowerCase();
                     const cleanQ = q.replace(/\s+/g, '');
                     
                     let isMatch = false;
 
                     // STRICT MATCHING CONDITIONS ONLY
-                    if (exactReg.includes(cleanQ)) {
-                        isMatch = true;
-                    } else if (exactContact.includes(cleanQ)) {
-                        isMatch = true; 
-                    } else if (exactPol.includes(cleanQ)) {
-                        isMatch = true;
-                    } else if (exactClient.includes(q)) {
+                    if (exactReg.includes(cleanQ) || exactContact.includes(cleanQ) || fullText.includes(q)) {
                         isMatch = true;
                     }
 
@@ -1957,7 +1964,8 @@
                     cardsContainer.style.display = 'none';
                 } else {
                     feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
-                    cardsContainer.style.display = 'flex';
+                    // ⚡ FIX: Render Search items as Grid!
+                    cardsContainer.style.display = 'grid'; 
                 }
             }, 300);
         };
@@ -1971,6 +1979,8 @@
                 bar.style.display = 'none';
                 document.querySelectorAll('.lib-delete-cb-wrapper').forEach(el => el.style.display = 'none');
                 document.querySelectorAll('.lib-delete-cb').forEach(cb => cb.checked = false);
+                document.getElementById('libDeleteSearch').value = '';
+                window.filterLibraryDeleteSearch(); // reset
             }
         };
 
@@ -2002,12 +2012,12 @@
 
         window.executeBulkLibraryDelete = function() {
             const checkedBoxes = document.querySelectorAll('.lib-delete-cb:checked');
-            if(checkedBoxes.length === 0) { alert("⚠️ Select at least one policy to delete."); return; }
-            if(confirm(`🚨 Permanently delete ${checkedBoxes.length} selected policies?`)) {
+            if(checkedBoxes.length === 0) { alert("⚠️ Please select at least one policy to delete."); return; }
+            if(confirm(`🚨 Are you sure you want to permanently delete ${checkedBoxes.length} selected policies?`)) {
                 let updates = {};
                 checkedBoxes.forEach(cb => { updates[cb.value] = null; });
                 update(ref(db, 'policy_code_repository'), updates).then(() => {
-                    alert(`✅ ${checkedBoxes.length} policies deleted.`);
+                    alert(`✅ Successfully deleted ${checkedBoxes.length} policies.`);
                     window.renderAdminPolicySearchDashboard();
                 }).catch(err => { alert("❌ Error deleting: " + err.message); });
             }
@@ -2032,7 +2042,7 @@
                         <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
                     </div>
                 </div>
-                <div id="adminSearchCardsContainer" style="display:none; flex-direction:column; gap:15px; width:100%;">
+                <div id="adminSearchCardsContainer" style="display:none; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:15px; width:100%;">
                 </div>
             `;
 
@@ -2071,27 +2081,32 @@
                 let contactMatch = item.rawCode ? item.rawCode.match(/contact(?:_no)?['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/mobile['"]?\s*:\s*['"]?(\d+)['"]?/i) || item.rawCode.match(/phone['"]?\s*:\s*['"]?(\d+)['"]?/i) : null;
                 let extractedContact = contactMatch ? contactMatch[1] : "";
 
-                // Search Result Card
+                let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
+                let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
+
+                // Search Result Card (Compact Box format Grid Layout)
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" data-exact-pol="${item.policyNo}" data-exact-client="${item.clientName}" style="display:none; border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:15px; box-shadow:0 8px 25px rgba(0,0,0,0.6); padding:25px; width:100%;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:15px;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:900; font-size:1.2rem; text-shadow:0 0 10px rgba(0,242,254,0.5);">${item.insurer} (${serialNo})</span>
+                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; flex-direction:column; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem; word-break:break-all;">${item.insurer} <br>${serialNo}</span>
                         ${statusBadge}
                     </div>
-                    <p style="font-size:1.1rem; margin-bottom:8px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                    <p style="font-size:1.1rem; margin-bottom:8px;"><b>Policy No:</b> ${item.policyNo}</p>
-                    <p style="font-size:1.1rem; margin-bottom:15px;"><b>Client:</b> ${item.clientName}</p>
-                    <div style="display:flex; gap:12px; margin-top:20px; align-items:center; flex-wrap:wrap;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:12px 20px; width:auto; font-size:0.95rem; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:0 5px 15px rgba(46,204,113,0.4);">📋 COPY CODE</button>
+                    <p style="margin-top:5px; font-size:0.85rem;"><b>Reg:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')" style="padding:2px 4px; font-size:0.75rem;">${item.regNo}</span></p>
+                    <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.policyNo}"><b>Pol:</b> ${item.policyNo}</p>
+                    <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.clientName}"><b>Name:</b> ${item.clientName}</p>
+                    <p style="font-size:0.75rem; color:var(--text-sub); margin-top:8px;">🕒 ${dStr} ${tStr}</p>
+                    <div style="display:flex; gap:8px; margin-top:12px;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; font-size:0.75rem; flex:1; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:none;">📋 COPY</button>
+                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 10px; font-size:0.75rem; flex:1;">${isDone?'Undo':'Done'}</button>
                     </div>
                 </div>`;
 
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
-                // Library Original Clean Card (with hidden Checkbox)
+                // Library Original Clean Card (Compact Original Look with Checkbox Wrapper)
                 libraryHtml += `
-                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); flex-direction:column;">
                     <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:-8px; right:-8px; z-index:10; background:#02050e; border-radius:50%; padding:2px; box-shadow:0 0 10px #e74c3c;">
                         <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.2);">
                     </div>
@@ -2103,7 +2118,7 @@
                     <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.policyNo}"><b>Pol:</b> ${item.policyNo}</p>
                     <p style="font-size:0.85rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.clientName}"><b>Name:</b> ${item.clientName}</p>
                     <p style="font-size:0.75rem; color:var(--text-sub); margin-top:8px;">🕒 ${dStr} ${tStr}</p>
-                    <div style="display:flex; gap:8px; margin-top:12px;">
+                    <div style="display:flex; gap:8px; margin-top:auto; padding-top:12px;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; font-size:0.75rem; flex:1; background:linear-gradient(135deg, #2ecc71, #27ae60); box-shadow:none;">📋 COPY</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 10px; font-size:0.75rem; flex:1;">${isDone?'Undo':'Done'}</button>
                     </div>
@@ -2127,6 +2142,7 @@
                 window.executePolicySearch();
             }
             
+            // Re-calculate analytics whenever list renders
             window.calculateCodeAnalytics();
         };
 
@@ -2218,6 +2234,7 @@
                 }
                 window.cachedPolicyRepoData = snap.val();
                 window.displayPolicyRepoList(window.cachedPolicyRepoData);
+                window.initPremiumMatrixUI(); // Ensure UI runs after data loads
             });
         };
 
