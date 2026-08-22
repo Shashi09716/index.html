@@ -1666,7 +1666,7 @@
             window.initPremiumMatrixUI();
         };
 
-        // --- ⚡ DYNAMIC UI UPGRADES (Glitch Fixed: Now runs instantly on load) ---
+        // --- ⚡ DYNAMIC UI UPGRADES (Glitch Fixed: Now runs globally instantly) ---
         window.initPremiumMatrixUI = function() {
             if (window.policyUiUpgraded) return;
             window.policyUiUpgraded = true;
@@ -1753,14 +1753,14 @@
                         </div>
                     `;
                     
-                    textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling); 
-                    textarea.parentNode.insertBefore(header, textarea);
+                    textarea.parentNode.insertBefore(analyticsBar, textarea.previousSibling);
+                    textarea.parentNode.insertBefore(header, textarea); 
                     textarea.style.borderTopLeftRadius = '0';
                     textarea.style.borderTopRightRadius = '0';
                 }
             }
 
-            // 3. Search Bar PREMIUM UI Upgrade (Reduced Size & Advanced Look)
+            // 3. Search Bar PREMIUM UI Upgrade (Reduced Size, Sleek Design)
             const searchInput = document.getElementById('adminPolicySearchInput');
             if (searchInput) {
                 searchInput.style.background = 'linear-gradient(145deg, #02050e, #0b141a)';
@@ -1771,10 +1771,10 @@
                 searchInput.style.fontSize = '1rem';
                 searchInput.style.padding = '12px 20px';
                 searchInput.style.width = '100%';
-                searchInput.style.maxWidth = '600px'; // Made smaller
+                searchInput.style.maxWidth = '450px'; // Size Reduced
                 searchInput.style.fontFamily = 'Orbitron';
                 searchInput.style.letterSpacing = '1px';
-                searchInput.placeholder = "SCAN REG NO OR CONTACT NO...";
+                searchInput.placeholder = "SCAN REG OR CONTACT NO...";
                 searchInput.removeAttribute('oninput'); 
                 
                 const parent = searchInput.parentNode;
@@ -1788,9 +1788,9 @@
                 if(!searchBtn) {
                     searchBtn = document.createElement('button');
                     searchBtn.id = 'premiumSearchBtnBtn';
-                    searchBtn.innerHTML = '⚡ DEEP SEARCH';
+                    searchBtn.innerHTML = '⚡ SEARCH';
                     searchBtn.className = 'hud-engage-btn';
-                    // Smaller search button
+                    // Reduced Search Button Size
                     searchBtn.style.cssText = 'width:auto; padding:0 25px; height:45px; font-size:1rem; font-weight:900; border-radius:8px; background:linear-gradient(135deg, #00f2fe, #4facfe); box-shadow:0 0 15px rgba(0,242,254,0.4); color:#000; display:flex; align-items:center; gap:8px; border:none; transition:0.3s; cursor:pointer; flex-shrink:0;';
                     searchBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 0 20px rgba(0,242,254,0.6)'; };
                     searchBtn.onmouseout = function() { this.style.transform = 'scale(1)'; this.style.boxShadow = '0 0 15px rgba(0,242,254,0.4)'; };
@@ -1918,7 +1918,7 @@
             wrapper.classList.remove('hidden');
         };
 
-        // ⚡ STRICT SEARCH EXECUTION LOGIC (Grid Fix + Accurate Matching)
+        // ⚡ STRICT SEARCH EXECUTION LOGIC (Grid Fill Fix + Accurate Matching)
         window.executePolicySearch = function() {
             const searchInput = document.getElementById('adminPolicySearchInput');
             if(!searchInput) return;
@@ -1954,7 +1954,7 @@
                     }
 
                     if(isMatch) {
-                        card.style.display = "flex";
+                        card.style.display = "flex"; // Flex ensures the flex-grow property works
                         matchCount++;
                     } else {
                         card.style.display = "none";
@@ -1965,9 +1965,10 @@
                     feedbackUI.innerHTML = `<div style='background:rgba(231,76,60,0.1); border:1px solid #e74c3c; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'><h3 style='color:#e74c3c; font-family:Orbitron; margin:0; font-size:1.8rem; text-shadow:0 0 15px rgba(231,76,60,0.5);'>❌ NO EXACT MATCHES</h3><p style='color:#e9edef; margin-top:10px; font-size:1.1rem;'>No accurate records found for "<b>${q}</b>".</p></div>`;
                     cardsContainer.style.display = 'none';
                 } else {
-                    // ⚡ FIX: Render Search items as Auto-Fit Grid (stretches cards proportionally)
+                    // ⚡ FIX: Render Search items using Flex Wrap (Allows items to stretch proportionally)
                     feedbackUI.innerHTML = `<div style='margin-bottom:15px; text-align:center; background:rgba(46,204,113,0.1); border:1px solid #2ecc71; padding:12px; border-radius:8px; color:#2ecc71; font-weight:bold; font-size:1.1rem; text-shadow:0 0 10px rgba(46,204,113,0.4); box-shadow:0 5px 15px rgba(0,0,0,0.3);'>✅ ACCURATE MATCH: Found ${matchCount} record(s) for "${q}"</div>`;
-                    cardsContainer.style.display = 'grid'; 
+                    cardsContainer.style.display = 'flex'; 
+                    cardsContainer.style.flexWrap = 'wrap';
                 }
             }, 300);
         };
@@ -2025,7 +2026,7 @@
             }
         };
 
-        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Library Grid Logic)
+        // ⚡ OVERRIDE DISPLAY FUNCTION (Search Fix + Flex Grid Logic)
         window.displayPolicyRepoList = function(dataObj) {
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -2036,7 +2037,7 @@
             let libraryHtml = "";
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
-            // Search Container UI (Grid setup via auto-fit minmax)
+            // Search Container UI (Flex layout for smart stretching)
             listContainer.innerHTML = `
                 <div id="adminSearchFeedbackUI">
                     <div style='background:rgba(0,0,0,0.6); border:1px dashed #00f2fe; padding:40px; text-align:center; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5);'>
@@ -2044,7 +2045,7 @@
                         <p style='color:#8696a0; margin-top:10px; font-size:1.1rem;'>Enter Reg No or Contact No above and press <b>Search</b>.</p>
                     </div>
                 </div>
-                <div id="adminSearchCardsContainer" style="display:none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:15px; width:100%;">
+                <div id="adminSearchCardsContainer" style="display:none; flex-wrap:wrap; gap:15px; width:100%;">
                 </div>
             `;
 
@@ -2067,7 +2068,7 @@
                 <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:8px 15px; border-radius:6px; font-size:0.9rem;">🗑️ Confirm</button>
             </div>
 
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(22%, 1fr)); gap:15px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
+            <div id="adminPolicyLibraryGridList" style="display:flex; flex-wrap:wrap; gap:15px; max-height:600px; overflow-y:auto; padding-right:5px; padding-bottom:20px;">
             `;
             
             items.forEach((item, index) => {
@@ -2086,9 +2087,12 @@
                 let searchPayload = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.rawCode || ''}`.toLowerCase();
                 let base64SearchString = btoa(unescape(encodeURIComponent(searchPayload)));
 
-                // Search Result Card (Flex Column format to fit in Grid naturally)
+                // ⚡ SMART FLEX ROW STYLING (Works perfectly for 2, 4, 5, 6 cards)
+                let flexCardStyle = `flex: 1 1 calc(25% - 15px); min-width: 250px; box-sizing: border-box; display:none; flex-direction:column; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);`;
+
+                // Search Result Card
                 searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="display:none; flex-direction:column; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+                <div class="hud-data-card policy-repo-card" data-search-base="${base64SearchString}" data-exact-reg="${item.regNo}" data-exact-contact="${extractedContact}" style="${flexCardStyle}">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem; word-break:break-all;">${item.insurer} <br>${serialNo}</span>
                         ${statusBadge}
@@ -2106,9 +2110,9 @@
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
-                // Library Original Clean Card (Compact Original Look with Checkbox Wrapper)
+                // Library Original Clean Card (Also using Smart Flex Row Styling)
                 libraryHtml += `
-                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); flex-direction:column;">
+                <div class="hud-data-card policy-repo-card" data-exact-reg="${item.regNo}" style="flex: 1 1 calc(25% - 15px); min-width: 250px; box-sizing: border-box; border:1px solid var(--border-glass); border-left:4px solid ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:0; padding:15px; position:relative; background:rgba(0,0,0,0.6); box-shadow:0 4px 10px rgba(0,0,0,0.5); flex-direction:column;">
                     <div class="lib-delete-cb-wrapper" style="display:none; position:absolute; top:-8px; right:-8px; z-index:10; background:#02050e; border-radius:50%; padding:2px; box-shadow:0 0 10px #e74c3c;">
                         <input type="checkbox" class="lib-delete-cb cyber-checkbox" value="${item.id}" style="transform:scale(1.2);">
                     </div>
@@ -2136,7 +2140,7 @@
                 document.getElementById('adminPolicyLibraryGridList').innerHTML = libraryHtml;
                 libraryContainer.innerHTML = libControls + document.getElementById('adminPolicyLibraryGridList').outerHTML;
             } else {
-                libraryContainer.innerHTML = libControls + "<div style='grid-column: 1 / -1; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div></div>";
+                libraryContainer.innerHTML = libControls + "<div style='width: 100%; background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>No records found for this filter.</p></div></div>";
             }
             
             const searchInputObj = document.getElementById('adminPolicySearchInput');
@@ -2222,8 +2226,11 @@
         };
 
         window.renderAdminPolicySearchDashboard = function() {
-            // ⚡ GLITCH FIX: Inject UI immediately before fetching data!
-            if(typeof window.initPremiumMatrixUI === 'function') window.initPremiumMatrixUI();
+            // ⚡ GLITCH FIX: Guarantee the injector tab is visible and initialized BEFORE fetching data
+            if (!window.policyUiUpgraded) {
+                window.switchPolicySubTab('injector');
+                window.initPremiumMatrixUI();
+            }
             
             const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
@@ -2231,7 +2238,7 @@
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    let emptyMsg = "<div style='background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>Upload your first policy code above.</p></div>";
+                    let emptyMsg = "<div style='background:rgba(231,76,60,0.1); border:1px dashed #e74c3c; padding:40px; text-align:center; border-radius:16px; width:100%;'><h3 style='color:#e74c3c; font-family:Orbitron;'>📭 REPOSITORY EMPTY</h3><p style='color:#e9edef; font-size:1.1rem; margin-top:10px;'>Upload your first policy code above.</p></div>";
                     listContainer.innerHTML = emptyMsg;
                     libraryContainer.innerHTML = emptyMsg;
                     return;
