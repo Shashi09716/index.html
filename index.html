@@ -497,27 +497,27 @@
         }
 
         /* ========================================================================== */
-        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, 4-COL GRID & ANALYTICS STYLES */
+        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, 4-COL GRID & FULL-SPEC STYLES      */
         /* ========================================================================== */
         .analytics-control-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(4, 14, 33, 0.9);
-            padding: 12px 18px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.98));
+            padding: 14px 20px;
+            border-radius: 14px;
             border: 1px solid var(--border-glass);
             margin-bottom: 20px;
-            box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(0, 242, 254, 0.08);
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
         }
         .analytics-filters-flex { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
         .analytics-pill-btn {
-            background: rgba(10, 20, 40, 0.8);
+            background: rgba(10, 20, 40, 0.85);
             border: 1px solid rgba(0, 242, 254, 0.4);
             color: var(--text-sub);
-            padding: 7px 15px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.82rem;
@@ -529,36 +529,40 @@
             background: rgba(0, 242, 254, 0.2);
             color: var(--neon-cyan);
             border-color: var(--neon-cyan);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            transform: translateY(-1px);
         }
         .analytics-date-input {
-            background: #02050e;
+            background: #030712;
             border: 1px solid var(--border-glass);
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
+            color: #00f2fe;
+            padding: 7px 12px;
+            border-radius: 8px;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 700;
             outline: none;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.7);
         }
         .analytics-count-badge {
             background: rgba(46, 204, 113, 0.15);
             border: 1px solid #2ecc71;
             color: #2ecc71;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 900;
+            box-shadow: 0 0 15px rgba(46,204,113,0.3);
         }
 
         /* macOS Hacker Terminal UI */
         .mac-terminal-container {
             background: #000000;
-            border-radius: 12px;
+            border-radius: 14px;
             border: 2px solid var(--border-glass);
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 242, 254, 0.25);
             margin-bottom: 20px;
         }
         .mac-terminal-topbar {
@@ -571,9 +575,9 @@
         }
         .mac-window-dots { display: flex; gap: 8px; z-index: 2; }
         .mac-dot { width: 13px; height: 13px; border-radius: 50%; display: inline-block; }
-        .mac-dot.dot-red { background: #ff5f56; box-shadow: 0 0 6px #ff5f56; }
-        .mac-dot.dot-yellow { background: #ffbd2e; box-shadow: 0 0 6px #ffbd2e; }
-        .mac-dot.dot-green { background: #27c93f; box-shadow: 0 0 6px #27c93f; }
+        .mac-dot.dot-red { background: #ff5f56; box-shadow: 0 0 8px #ff5f56; }
+        .mac-dot.dot-yellow { background: #ffbd2e; box-shadow: 0 0 8px #ffbd2e; }
+        .mac-dot.dot-green { background: #27c93f; box-shadow: 0 0 8px #27c93f; }
         .mac-terminal-prompt-title {
             position: absolute;
             left: 50%;
@@ -582,54 +586,73 @@
             font-weight: 800;
             font-size: 0.88rem;
             color: var(--neon-cyan);
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.7);
             white-space: nowrap;
         }
         .mac-terminal-editor {
             width: 100%;
-            height: 230px;
+            height: 250px;
             background: #030712;
             color: #38bdf8;
             font-family: 'Fira Code', 'Courier New', monospace;
             font-size: 0.95rem;
             line-height: 1.5;
-            padding: 18px;
+            padding: 20px;
             border: none;
             outline: none;
             resize: vertical;
             box-sizing: border-box;
         }
 
-        /* 4-Per-Row Grid Format */
+        /* 4-Per-Row Grid Layout */
         .policy-4col-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            max-height: 520px;
+            max-height: 560px;
             overflow-y: auto;
-            padding: 5px;
+            padding: 6px;
         }
-        @media (max-width: 1200px) { .policy-4col-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 900px) { .policy-4col-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .policy-4col-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1350px) { .policy-4col-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 950px) { .policy-4col-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 620px) { .policy-4col-grid { grid-template-columns: 1fr; } }
 
-        .compact-policy-card {
-            background: rgba(4, 14, 33, 0.92);
+        /* Full Spec Policy Card */
+        .fullspec-policy-card {
+            background: linear-gradient(145deg, rgba(6, 17, 38, 0.95), rgba(2, 6, 18, 0.95));
             border: 1px solid var(--border-glass);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
-        .compact-policy-card:hover {
+        .fullspec-policy-card:hover {
             transform: translateY(-4px);
             border-color: var(--neon-cyan);
-            box-shadow: 0 12px 25px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.25);
+        }
+        .fullspec-price-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #f1c40f;
+            text-shadow: 0 0 10px rgba(241,196,15,0.4);
+        }
+        .addon-tag-pill {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: var(--neon-cyan);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
         }
 
         /* Blank Default Waiting Pulse State */
@@ -638,34 +661,65 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
             background: rgba(2, 5, 14, 0.6);
-            border: 2px dashed rgba(0, 242, 254, 0.3);
+            border: 2px dashed rgba(0, 242, 254, 0.35);
             border-radius: 16px;
             text-align: center;
             animation: cyberBeaconGlow 2.5s infinite ease-in-out;
         }
         @keyframes cyberBeaconGlow {
             0%, 100% { border-color: rgba(0, 242, 254, 0.2); box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.05); }
-            50% { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 254, 0.3), inset 0 0 20px rgba(0, 242, 254, 0.15); }
+            50% { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 242, 254, 0.35), inset 0 0 20px rgba(0, 242, 254, 0.15); }
+        }
+
+        /* 360 Inspector Grid Layout */
+        .inspector-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .inspector-spec-node {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .inspector-spec-node b {
+            color: var(--text-sub);
+            font-size: 0.75rem;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        .inspector-spec-node span {
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
         /* Bilingual Guide & One-Click Copy */
-        .guide-tri-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 20px 0; }
-        .guide-box { background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 12px; padding: 18px; }
+        .guide-tri-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+        .guide-box { background: rgba(0,0,0,0.6); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; transition:0.3s; }
+        .guide-box:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.15); }
         .template-copy-terminal {
             background: #010409;
-            border-radius: 12px;
+            border-radius: 14px;
             border: 1px solid var(--border-glass);
             overflow: hidden;
             margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .template-copy-topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #161b22;
-            padding: 10px 16px;
+            padding: 12px 18px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -684,6 +738,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 0.8rem;
             border-bottom: 2px solid var(--border-glass);
+            white-space: nowrap;
         }
         .details-modal-table td {
             padding: 12px;
@@ -1444,21 +1499,21 @@
 
                             <!-- ================= TAB 1: MAC TERMINAL & ANALYTICS INJECTOR ================= -->
                             <div id="policySubBlock_injector" class="policy-sub-content">
-                                <!-- Analytics Bar -->
+                                <!-- Calendar & Analytics Control Bar -->
                                 <div class="analytics-control-bar">
                                     <div class="analytics-filters-flex">
-                                        <button class="analytics-pill-btn active" id="filterBtn_today" onclick="window.filterPolicyAnalytics('today')">Today</button>
-                                        <button class="analytics-pill-btn" id="filterBtn_yesterday" onclick="window.filterPolicyAnalytics('yesterday')">Yesterday</button>
-                                        <div style="display:flex; align-items:center; gap:6px;">
-                                            <input type="date" id="analyticsStartDate" class="analytics-date-input">
-                                            <span style="color:var(--text-sub); font-size:0.85rem;">to</span>
-                                            <input type="date" id="analyticsEndDate" class="analytics-date-input">
-                                            <button onclick="window.filterPolicyAnalytics('custom')" class="analytics-pill-btn" style="padding:6px 12px;">Apply</button>
+                                        <button class="analytics-pill-btn active" id="filterBtn_today" onclick="window.filterPolicyAnalytics('today')">📅 Today</button>
+                                        <button class="analytics-pill-btn" id="filterBtn_yesterday" onclick="window.filterPolicyAnalytics('yesterday')">⏮️ Yesterday</button>
+                                        <div style="display:flex; align-items:center; gap:8px;">
+                                            <input type="date" id="analyticsStartDate" class="analytics-date-input" title="Start Date">
+                                            <span style="color:var(--text-sub); font-size:0.85rem; font-weight:bold;">to</span>
+                                            <input type="date" id="analyticsEndDate" class="analytics-date-input" title="End Date">
+                                            <button onclick="window.filterPolicyAnalytics('custom')" class="analytics-pill-btn" style="padding:7px 14px; background:rgba(0,242,254,0.15); border-color:var(--neon-cyan); color:#fff;">⚡ Apply Range</button>
                                         </div>
                                     </div>
                                     <div style="display:flex; align-items:center; gap:12px;">
-                                        <div class="analytics-count-badge">Injected: <span id="policyAnalyticsLiveCount">0</span></div>
-                                        <button onclick="window.openPolicyDetailsModal()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:6px 14px; font-size:0.82rem; border-radius:20px;">📊 View Details</button>
+                                        <div class="analytics-count-badge">Injected: <span id="policyAnalyticsLiveCount">0</span> Policies</div>
+                                        <button onclick="window.openPolicyDetailsModal()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:7px 16px; font-size:0.85rem; border-radius:20px; font-weight:900;">📊 View Details</button>
                                     </div>
                                 </div>
 
@@ -1466,31 +1521,32 @@
                                 <div class="mac-terminal-container">
                                     <div class="mac-terminal-topbar">
                                         <div class="mac-window-dots">
-                                            <span class="mac-dot dot-red"></span>
-                                            <span class="mac-dot dot-yellow"></span>
-                                            <span class="mac-dot dot-green"></span>
+                                            <span class="mac-dot dot-red" title="Close"></span>
+                                            <span class="mac-dot dot-yellow" title="Minimize"></span>
+                                            <span class="mac-dot dot-green" title="Maximize"></span>
                                         </div>
                                         <div class="mac-terminal-prompt-title">root@matrix-hub:~# JS INJECTOR ⚡</div>
                                     </div>
-                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste your JavaScript payload or auto-filler code block here...
-var data = {
-  id_registration_number: 'DL01AB1234',
-  id_policy_number: 'POL-99281-X',
-  id_name: 'Rahul Sharma',
-  id_insurer: 'ICICI LOMBARD'
+                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste complete JavaScript payload / Policy object here...
+const policyRepo = {
+    'RJ45CD9597': {
+        business_type: 'RENEW', coverage_type: 'Comprehensive', insurer: 'TATA AIG',
+        premium: '6619', registration_number: 'RJ45CD9597', name: 'MANOJ KUMAR MEENA',
+        mobile: '9001193100', policy_number: '6205029417 01 00', insurer_declared_idv: '319801'
+    }
 };"></textarea>
                                 </div>
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & SAVE TO CLOUD VAULT</button>
                             </div>
 
-                            <!-- ================= TAB 2: SEARCH POLICY (COMPACT & 4-PER-ROW GRID) ================= -->
+                            <!-- ================= TAB 2: SEARCH POLICY (4-PER-ROW GRID) ================= -->
                             <div id="policySubBlock_search" class="policy-sub-content hidden">
                                 <div style="display:flex; gap:10px; margin-bottom:20px;">
                                     <input 
                                         type="text" 
                                         id="adminPolicySearchInput" 
                                         class="search-terminal-input" 
-                                        placeholder="🔍 Type Reg No, Contact Number, or Customer Name and press Enter..." 
+                                        placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name and press Enter..." 
                                         onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
                                         style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
                                     >
@@ -1499,26 +1555,26 @@ var data = {
 
                                 <!-- Blank Default State (Glowing Beacon) -->
                                 <div id="policySearchEmptyState" class="search-blank-pulse-box">
-                                    <div style="font-size:3rem; margin-bottom:10px; text-shadow:0 0 20px var(--neon-cyan);">📡</div>
-                                    <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:8px;">Waiting for Input...</h4>
-                                    <p style="color:var(--text-sub); font-size:0.95rem; max-width:500px; line-height:1.5;">Type specific Registration Number, Mobile Number, or Client Name above and press Search/Enter to load results in 4-Card Grid format.</p>
+                                    <div style="font-size:3.5rem; margin-bottom:10px; text-shadow:0 0 25px var(--neon-cyan);">📡</div>
+                                    <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.4rem; margin-bottom:8px;">Waiting for Input...</h4>
+                                    <p style="color:var(--text-sub); font-size:0.95rem; max-width:550px; line-height:1.5;">Type specific Registration Number, Customer Name, or Mobile Number above and press Search/Enter to load results in clean 4-Per-Row Grid layout.</p>
                                 </div>
 
                                 <!-- 4-Col Grid Results Container -->
                                 <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- ================= TAB 3: POLICY LIBRARY (FILTERED VIEWS) ================= -->
+                            <!-- ================= TAB 3: POLICY LIBRARY ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                                    <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
+                                    <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">Complete indexed repository with 360° Inspector view & 1-Click Code Copy.</p>
                                     <div style="display:flex; gap:8px;">
                                         <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
                                         <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
                                         <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
                                     </div>
                                 </div>
-                                <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
+                                <div id="adminPolicyLibraryGridList" class="policy-4col-grid"></div>
                             </div>
 
                             <!-- ================= TAB 4: ABOUT US / FORMAT GUIDE (BILINGUAL) ================= -->
@@ -1533,44 +1589,55 @@ var data = {
                                 <!-- Visual Guides -->
                                 <div class="guide-tri-grid">
                                     <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
+                                        <div style="font-size:2.2rem; margin-bottom:8px;">⚡</div>
                                         <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">1. Mac Injector</h4>
                                         <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">1. मैक इंजेक्टर</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste your JavaScript policy payloads. System auto-extracts Reg No, Insurer, and Policy No.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">अपना जावास्क्रिप्ट पेलोड पेस्ट करें। सिस्टम अपने आप रजिस्ट्रेशन और पॉलिसी डिटेल्स कंपाइल कर लेगा।</p>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste policy scripts in hacker macOS terminal. Auto-extracts 40+ fields with real-time analytics.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">macOS टर्मिनल में पॉलिसी स्क्रिप्ट पेस्ट करें। 40+ फील्ड्स अपने आप एक्सट्रैक्ट और सिंक हो जाएंगे।</p>
                                     </div>
                                     <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+                                        <div style="font-size:2.2rem; margin-bottom:8px;">🔍</div>
                                         <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">2. Search Dashboard</h4>
                                         <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">2. सर्च डैशबोर्ड</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Zero lag default state. Instant 4-cards-per-row grid search for 1000+ policies.</p>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Zero lag default state with glowing radar. Search instantly across 1000+ policies in 4-column cards.</p>
                                         <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बिना लैग वाली डिफ़ॉल्ट स्क्रीन। 4-कॉलम ग्रिड में तुरंत 1000+ पॉलिसीज में से सर्च करें।</p>
                                     </div>
                                     <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">📚</div>
+                                        <div style="font-size:2.2rem; margin-bottom:8px;">📚</div>
                                         <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">3. Cloud Library</h4>
                                         <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">3. क्लाउड लाइब्रेरी</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done) and 1-Click copy.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी और स्टेटस ट्रैक कर सकते हैं।</p>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done), 360° Inspector, and 1-Click copy.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी, 360° इंस्पेक्टर और स्टेटस ट्रैक कर सकते हैं।</p>
                                     </div>
                                 </div>
 
-                                <!-- One Click Template Box -->
+                                <!-- One Click Auto-Filler Template Box -->
                                 <div class="template-copy-terminal">
                                     <div class="template-copy-topbar">
                                         <span style="color:#fff; font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">📋 AUTO-FILLER JAVASCRIPT TEMPLATE</span>
                                         <button onclick="window.copyPolicyAutoFillerTemplate()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #ff007f, #7f00ff); color:#fff;">📋 COPY FORMAT</button>
                                     </div>
-                                    <pre style="margin:0; padding:18px; background:#050508; color:#a5f3fc; font-family:'Fira Code', monospace; font-size:0.88rem; overflow-x:auto;"><code id="policyTemplateCodeString">// === NEXUS MATRIX AUTO-FILLER TEMPLATE ===
-var policyPayload = {
-    id_registration_number: "DL01AB1234",
-    id_policy_number: "POL-99281-X",
-    id_name: "Rahul Sharma",
-    id_insurer: "ICICI LOMBARD",
-    id_mobile_number: "9876543210",
-    id_timestamp: new Date().toISOString()
-};
-console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
+                                    <pre style="margin:0; padding:18px; background:#050508; color:#a5f3fc; font-family:'Fira Code', monospace; font-size:0.88rem; overflow-x:auto;"><code id="policyTemplateCodeString">(function() {
+    const policyRepo = {
+        "RJ45CD9597": {
+            "business_type": "RENEW", "sales_channel": "Webapp", "coverage_type": "Comprehensive", "insurer": "TATA AIG",
+            "issue_date": "24-07-2026", "policy_start_date": "10-08-2026", "policy_end_date": "09-08-2027", "product_type": "Car",
+            "vehicle_category": "Private", "policy_number": "6205029417 01 00", "tp_premium": "3416", "od_premium": "2143.31",
+            "pa_amount": "0", "service_tax": "1010", "premium": "6619", "ncb": "0", "insurer_declared_idv": "319801",
+            "electrical_value": "0", "non_electrical_value": "0", "cng_kit_value": "0", "voluntary_deductible": "0",
+            "previous_policy_insurer": "Tata AIG", "previous_policy_number": "6205029417", "previous_policy_expiry_date": "09-08-2026",
+            "previous_ncb": "50", "financier": "NA", "registration_number": "RJ45CD9597", "manufacturing_date": "01-01-2018",
+            "registration_date": "10-08-2018", "engine_number": "K12MN4437317", "chassis_number": "MA3EWB22SJG525241",
+            "name": "MANOJ KUMAR MEENA", "email": "abc@gmail.com", "mobile": "9001193100", "marital_status": "Married",
+            "nominee_name": "NA", "nominee_age": "0", "nominee_relationship": "NA",
+            "address": "192,, ASHOK, VIHAR, JAGATPURA,, JAIPUR, JAIPUR-RAJASTHAN, 302017",
+            "state": "RAJASTHAN", "city": "JAIPUR", "pincode": "302017",
+            "is_legal_liability_driver": true, "is_depreciation_waiver": false, "is_key_replacement": false,
+            "is_road_side_assistance": false, "is_engine_protector": false, "is_consumables_cover": false, "same_address": true
+        }
+    };
+    console.log("Matrix Auto-Filler Payload Active:", policyRepo);
+})();</code></pre>
                                 </div>
                             </div>
 
@@ -1579,7 +1646,7 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
 
                     <!-- ================= VIEW DETAILS MODAL ================= -->
                     <div id="policyHistoryDetailsModal" class="nexus-custom-popup-overlay hidden" onclick="window.closePolicyDetailsModal()">
-                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:900px; width:95%; max-height:85vh; padding:25px; text-align:left;">
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:950px; width:95%; max-height:85vh; padding:25px; text-align:left;">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border-bottom:1px solid var(--border-glass); padding-bottom:12px;">
                                 <h3 class="neon-cyan-text" style="font-size:1.4rem; margin:0;">📊 INJECTED POLICY ANALYTICS HISTORY</h3>
                                 <button onclick="window.closePolicyDetailsModal()" class="abort-btn" style="padding:6px 14px; font-size:0.9rem;">✖ CLOSE</button>
@@ -1591,6 +1658,8 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
                                             <th>Reg No</th>
                                             <th>Customer Name</th>
                                             <th>Contact</th>
+                                            <th>Insurer</th>
+                                            <th>Premium</th>
                                             <th>Policy No</th>
                                             <th>Date</th>
                                             <th>Day</th>
@@ -1600,6 +1669,20 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
                                     <tbody id="policyDetailsModalTbody"></tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= 360° POLICY INSPECTOR MODAL ================= -->
+                    <div id="policy360InspectorModal" class="nexus-custom-popup-overlay hidden" onclick="window.close360PolicyInspector()">
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:900px; width:95%; max-height:85vh; padding:25px; text-align:left; overflow-y:auto;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-glass); padding-bottom:12px;">
+                                <div>
+                                    <h3 class="neon-cyan-text" id="inspectorHeaderTitle" style="font-size:1.4rem; margin:0;">POLICY INSPECTOR</h3>
+                                    <span id="inspectorHeaderSubtitle" style="color:var(--text-sub); font-size:0.85rem;"></span>
+                                </div>
+                                <button onclick="window.close360PolicyInspector()" class="abort-btn" style="padding:6px 14px; font-size:0.9rem;">✖ CLOSE</button>
+                            </div>
+                            <div id="inspectorModalDynamicBody"></div>
                         </div>
                     </div>
 
@@ -1964,7 +2047,7 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================================================
-        // 🔍 ADVANCED 4-TAB POLICY REPO, ANALYTICS & 4-COL SEARCH ENGINE
+        // 🔍 ADVANCED FULL-SPEC POLICY REPO, PARSER, ANALYTICS & 360° INSPECTOR
         // ==========================================================================
         window.activeAnalyticsPolicyRecords = [];
 
@@ -1992,22 +2075,69 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
             }
         };
 
+        // Deep Full-Spec Policy Payload Parser
+        function parseFullPolicyPayload(rawText) {
+            const extract = (regex, fallback = "N/A") => {
+                const match = rawText.match(regex);
+                return match ? match[1].trim() : fallback;
+            };
+            const extractBool = (regex) => {
+                const match = rawText.match(regex);
+                return match ? (match[1].toLowerCase() === 'true') : false;
+            };
+
+            return {
+                registration_number: extract(/(?:registration_number|id_registration_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RJ45CD9597"),
+                policy_number: extract(/(?:policy_number|id_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                insurer: extract(/(?:insurer|id_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "TATA AIG"),
+                name: extract(/(?:name|id_name|customer_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "CUSTOMER"),
+                mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                premium: extract(/(?:premium|id_premium|total_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                tp_premium: extract(/(?:tp_premium|id_tp_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                od_premium: extract(/(?:od_premium|id_od_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                service_tax: extract(/(?:service_tax|id_service_tax)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                pa_amount: extract(/(?:pa_amount|id_pa_amount)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                ncb: extract(/(?:ncb|id_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                previous_ncb: extract(/(?:previous_ncb|id_previous_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                insurer_declared_idv: extract(/(?:insurer_declared_idv|id_insurer_declared_idv|idv)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                business_type: extract(/(?:business_type|id_business_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RENEW"),
+                coverage_type: extract(/(?:coverage_type|id_coverage_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Comprehensive"),
+                product_type: extract(/(?:product_type|id_product_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Car"),
+                vehicle_category: extract(/(?:vehicle_category|id_vehicle_category)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Private"),
+                engine_number: extract(/(?:engine_number|id_engine_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                chassis_number: extract(/(?:chassis_number|id_chassis_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                manufacturing_date: extract(/(?:manufacturing_date|id_manufacturing_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                registration_date: extract(/(?:registration_date|id_registration_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                issue_date: extract(/(?:issue_date|id_issue_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                policy_start_date: extract(/(?:policy_start_date|id_policy_start_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                policy_end_date: extract(/(?:policy_end_date|id_policy_end_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                previous_policy_insurer: extract(/(?:previous_policy_insurer|id_previous_policy_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                previous_policy_number: extract(/(?:previous_policy_number|id_previous_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                previous_policy_expiry_date: extract(/(?:previous_policy_expiry_date|id_previous_policy_expiry_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                financier: extract(/(?:financier|id_financier)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                nominee_name: extract(/(?:nominee_name|id_nominee_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                nominee_age: extract(/(?:nominee_age|id_nominee_age)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                nominee_relationship: extract(/(?:nominee_relationship|id_nominee_relationship)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                address: extract(/(?:address|id_address)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                state: extract(/(?:state|id_state)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                city: extract(/(?:city|id_city)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                pincode: extract(/(?:pincode|id_pincode)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                is_legal_liability_driver: extractBool(/(?:is_legal_liability_driver|id_is_legal_liability_driver)['"]?\s*:\s*(true|false)/i),
+                is_depreciation_waiver: extractBool(/(?:is_depreciation_waiver|id_is_depreciation_waiver)['"]?\s*:\s*(true|false)/i),
+                is_key_replacement: extractBool(/(?:is_key_replacement|id_is_key_replacement)['"]?\s*:\s*(true|false)/i),
+                is_road_side_assistance: extractBool(/(?:is_road_side_assistance|id_is_road_side_assistance)['"]?\s*:\s*(true|false)/i),
+                is_engine_protector: extractBool(/(?:is_engine_protector|id_is_engine_protector)['"]?\s*:\s*(true|false)/i),
+                is_consumables_cover: extractBool(/(?:is_consumables_cover|id_is_consumables_cover)['"]?\s*:\s*(true|false)/i),
+                same_address: extractBool(/(?:same_address|id_same_address)['"]?\s*:\s*(true|false)/i)
+            };
+        }
+
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
-            if(!codeText) { alert("Please paste a code snippet first."); return; }
+            if(!codeText) { alert("Please paste a JavaScript policy payload first."); return; }
             
-            let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let phoneMatch = codeText.match(/(?:id_mobile_number|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            
-            let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
-            let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
-            let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
-            let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
-            let phone = phoneMatch ? phoneMatch[1] : "N/A";
-            
+            const parsed = parseFullPolicyPayload(codeText);
             const now = new Date();
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             const isoDate = now.toISOString().split('T')[0];
@@ -2018,13 +2148,16 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
             const codeRef = push(ref(db, 'policy_code_repository'));
             set(codeRef, {
                 id: codeRef.key,
-                title: `${insurer} - ${regNo} (${clientName})`,
-                regNo: regNo,
-                policyNo: policyNo,
-                clientName: clientName,
-                insurer: insurer,
-                contact: phone,
+                title: `${parsed.insurer} - ${parsed.registration_number} (${parsed.name})`,
+                regNo: parsed.registration_number,
+                policyNo: parsed.policy_number,
+                clientName: parsed.name,
+                insurer: parsed.insurer,
+                contact: parsed.mobile,
+                premium: parsed.premium,
+                idv: parsed.insurer_declared_idv,
                 rawCode: codeText,
+                fullSpec: parsed,
                 isDone: false,
                 isoDate: isoDate,
                 dateStr: dateStr,
@@ -2033,7 +2166,7 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
                 epoch: Date.now()
             }).then(() => {
                 document.getElementById('adminPolicyCodePasteInput').value = "";
-                alert("⚡ Policy Injected & Synced into Cloud Matrix!");
+                alert(`⚡ Policy [${parsed.registration_number}] Injected & Synced into Cloud Matrix!`);
                 window.filterPolicyAnalytics('today');
             });
         };
@@ -2085,16 +2218,18 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
             const data = window.activeAnalyticsPolicyRecords || [];
             
             if(data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-sub); padding:20px;">No policy injections recorded for this selected range.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:var(--text-sub); padding:20px;">No policy injections recorded for this selected range.</td></tr>`;
             } else {
                 tbody.innerHTML = data.map(item => `
                     <tr>
-                        <td style="color:var(--neon-cyan);">${item.regNo}</td>
+                        <td style="color:var(--neon-cyan); font-weight:bold;">${item.regNo}</td>
                         <td>${item.clientName}</td>
                         <td style="color:#2ecc71;">${item.contact || 'N/A'}</td>
+                        <td>${item.insurer}</td>
+                        <td style="color:#f1c40f; font-weight:bold;">₹${item.premium || '0'}</td>
                         <td>${item.policyNo}</td>
                         <td>${item.dateStr}</td>
-                        <td style="color:#f1c40f;">${item.dayStr}</td>
+                        <td style="color:#ff007f;">${item.dayStr}</td>
                         <td>${item.timeStr}</td>
                     </tr>
                 `).join('');
@@ -2104,6 +2239,94 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
 
         window.closePolicyDetailsModal = function() {
             document.getElementById('policyHistoryDetailsModal').classList.add('hidden');
+        };
+
+        // 360° Policy Data Inspector Modal
+        window.open360PolicyInspector = function(itemId) {
+            get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
+                if(!snap.exists()) return;
+                const item = snap.val();
+                const s = item.fullSpec || parseFullPolicyPayload(item.rawCode || "");
+
+                document.getElementById('inspectorHeaderTitle').innerText = `${s.insurer} // ${s.registration_number}`;
+                document.getElementById('inspectorHeaderSubtitle').innerText = `Customer: ${s.name} | Policy No: ${s.policy_number}`;
+
+                let addonsHtml = "";
+                const addonsList = [
+                    { k: 'is_legal_liability_driver', l: 'Driver Legal Liability' },
+                    { k: 'is_depreciation_waiver', l: 'Zero Depreciation' },
+                    { k: 'is_key_replacement', l: 'Key Replacement' },
+                    { k: 'is_road_side_assistance', l: 'Roadside Assistance (RSA)' },
+                    { k: 'is_engine_protector', l: 'Engine Protector' },
+                    { k: 'is_consumables_cover', l: 'Consumables Cover' }
+                ];
+                addonsList.forEach(a => {
+                    let active = s[a.k] === true;
+                    addonsHtml += `<span class="addon-tag-pill" style="background:${active?'rgba(46,204,113,0.15)':'rgba(255,255,255,0.05)'}; color:${active?'#2ecc71':'#8696a0'}; border-color:${active?'#2ecc71':'rgba(255,255,255,0.1)'};">${active?'✔':'✖'} ${a.l}</span>`;
+                });
+
+                document.getElementById('inspectorModalDynamicBody').innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,242,254,0.08); border:1px solid rgba(0,242,254,0.3); padding:14px; border-radius:10px; margin-top:15px;">
+                        <div>
+                            <span style="color:var(--text-sub); font-size:0.8rem; font-family:'Orbitron';">TOTAL NET PREMIUM</span>
+                            <div style="color:#f1c40f; font-family:'Orbitron'; font-size:1.8rem; font-weight:900;">₹${s.premium}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="color:var(--text-sub); font-size:0.8rem; font-family:'Orbitron';">INSURER DECLARED IDV</span>
+                            <div style="color:#2ecc71; font-family:'Orbitron'; font-size:1.4rem; font-weight:900;">₹${s.insurer_declared_idv}</div>
+                        </div>
+                    </div>
+
+                    <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">🚘 VEHICLE & REGISTRATION</h5>
+                    <div class="inspector-specs-grid">
+                        <div class="inspector-spec-node"><b>Reg Number</b><span>${s.registration_number}</span></div>
+                        <div class="inspector-spec-node"><b>Reg Date</b><span>${s.registration_date}</span></div>
+                        <div class="inspector-spec-node"><b>Manufacturing</b><span>${s.manufacturing_date}</span></div>
+                        <div class="inspector-spec-node"><b>Engine No</b><span>${s.engine_number}</span></div>
+                        <div class="inspector-spec-node"><b>Chassis No</b><span>${s.chassis_number}</span></div>
+                        <div class="inspector-spec-node"><b>Vehicle Type</b><span>${s.product_type} (${s.vehicle_category})</span></div>
+                    </div>
+
+                    <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">💰 PREMIUM & TAX BREAKDOWN</h5>
+                    <div class="inspector-specs-grid">
+                        <div class="inspector-spec-node"><b>OD Premium</b><span>₹${s.od_premium}</span></div>
+                        <div class="inspector-spec-node"><b>TP Premium</b><span>₹${s.tp_premium}</span></div>
+                        <div class="inspector-spec-node"><b>Service Tax / GST</b><span>₹${s.service_tax}</span></div>
+                        <div class="inspector-spec-node"><b>NCB Applied</b><span>${s.ncb}% (Prev: ${s.previous_ncb}%)</span></div>
+                    </div>
+
+                    <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">🛡️ ACTIVE ADD-ON COVERS</h5>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:15px;">${addonsHtml}</div>
+
+                    <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">👤 CUSTOMER & NOMINEE</h5>
+                    <div class="inspector-specs-grid">
+                        <div class="inspector-spec-node"><b>Full Name</b><span>${s.name}</span></div>
+                        <div class="inspector-spec-node"><b>Mobile No</b><span>${s.mobile}</span></div>
+                        <div class="inspector-spec-node"><b>Email</b><span>${s.email}</span></div>
+                        <div class="inspector-spec-node"><b>Nominee</b><span>${s.nominee_name} (${s.nominee_relationship})</span></div>
+                        <div class="inspector-spec-node" style="grid-column:1/-1;"><b>Address</b><span>${s.address}, ${s.city} - ${s.pincode} (${s.state})</span></div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; margin-top:20px;">
+                        <button onclick="window.copyRawPolicyCode('${itemId}')" class="hud-engage-btn" style="flex:1; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY COMPLETE SCRIPT</button>
+                        <button onclick="window.close360PolicyInspector()" class="abort-btn" style="flex:1; padding:12px;">CLOSE</button>
+                    </div>
+                `;
+
+                document.getElementById('policy360InspectorModal').classList.remove('hidden');
+            });
+        };
+
+        window.close360PolicyInspector = function() {
+            document.getElementById('policy360InspectorModal').classList.add('hidden');
+        };
+
+        window.copyRawPolicyCode = function(itemId) {
+            get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
+                if(snap.exists()) {
+                    navigator.clipboard.writeText(snap.val().rawCode).then(() => alert("📋 Full policy script copied to clipboard!"));
+                }
+            });
         };
 
         // Search Execution (4 Cards Per Row Grid)
@@ -2140,27 +2363,46 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
                     return;
                 }
 
-                gridContainer.innerHTML = matched.map((item, idx) => {
-                    let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-                    let isDone = item.isDone === true;
-                    return `
-                    <div class="compact-policy-card" style="border-left: 4px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${item.insurer}</span>
-                            <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
-                        </div>
-                        <div style="font-size:0.95rem; font-weight:bold; color:#fff; margin-top:4px;">Reg: <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></div>
-                        <div style="font-size:0.85rem; color:var(--text-sub);"><b>Name:</b> ${item.clientName}</div>
-                        <div style="font-size:0.85rem; color:var(--text-sub);"><b>Pol No:</b> ${item.policyNo}</div>
-                        <div style="font-size:0.8rem; color:#8696a0; margin-top:2px;">🕒 ${item.dateStr} (${item.dayStr})</div>
-                        <div style="display:flex; gap:6px; margin-top:auto; padding-top:8px;">
-                            <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="flex:1; padding:6px 10px; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                            <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
-                            <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
-                        </div>
-                    </div>`;
-                }).join('');
+                gridContainer.innerHTML = matched.map((item) => window.generatePolicyCardMarkup(item)).join('');
             });
+        };
+
+        // Unified Full-Spec Card Generator
+        window.generatePolicyCardMarkup = function(item) {
+            let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+            let isDone = item.isDone === true;
+            let s = item.fullSpec || parseFullPolicyPayload(item.rawCode || "");
+
+            return `
+            <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer}</span>
+                    <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
+                    <div>
+                        <div style="font-size:1.05rem; font-weight:900; color:#fff;">
+                            <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${s.registration_number}')">${s.registration_number}</span>
+                        </div>
+                        <div style="font-size:0.85rem; color:var(--text-sub); margin-top:2px;"><b>Name:</b> ${s.name}</div>
+                    </div>
+                    <div class="fullspec-price-tag">₹${s.premium}</div>
+                </div>
+
+                <div style="font-size:0.8rem; color:#8696a0; border-top:1px dashed rgba(255,255,255,0.1); padding-top:6px; margin-top:4px;">
+                    <div><b>Pol No:</b> ${s.policy_number}</div>
+                    <div><b>IDV:</b> ₹${s.insurer_declared_idv} | <b>NCB:</b> ${s.ncb}%</div>
+                    <div style="font-size:0.75rem; color:#00f2fe; margin-top:2px;">🕒 Injected: ${item.dateStr} (${item.dayStr})</div>
+                </div>
+
+                <div style="display:flex; gap:6px; margin-top:auto; padding-top:8px;">
+                    <button onclick="window.open360PolicyInspector('${item.id}')" class="nav-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; border-color:var(--neon-cyan); color:var(--neon-cyan);" title="View 360° Specs">👁 View</button>
+                    <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 Copy</button>
+                    <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
+                    <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
+                </div>
+            </div>`;
         };
 
         // Bilingual Toggle & Template Copy
@@ -2175,7 +2417,7 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
         window.copyPolicyAutoFillerTemplate = function() {
             const templateText = document.getElementById('policyTemplateCodeString').innerText;
             navigator.clipboard.writeText(templateText).then(() => {
-                alert("📋 JavaScript Auto-Filler Format Template copied to clipboard!");
+                alert("📋 Full Auto-Filler Format Template copied to clipboard!");
             });
         };
 
@@ -2185,7 +2427,7 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    libraryContainer.innerHTML = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty.</p>";
+                    libraryContainer.innerHTML = "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>Repository is empty.</p>";
                     return;
                 }
                 window.cachedPolicyRepoData = snap.val();
@@ -2230,41 +2472,21 @@ console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
             const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
             let libraryHtml = "";
             
-            items.forEach((item, index) => {
-                let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-                let serialNo = `#${index + 1}`;
+            items.forEach((item) => {
                 let isDone = item.isDone === true;
-                let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
-
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
-
-                libraryHtml += `
-                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:10px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
-                    ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:#2ecc71;"></div>' : ''}
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:0.9rem; font-weight:bold;">${serialNo} • ${item.insurer}</span>
-                        ${statusBadge}
-                    </div>
-                    <div style="font-size:0.85rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
-                    <div style="background:#000; border:1px solid rgba(0,242,254,0.2); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#00f2fe; max-height:110px; overflow-y:auto; word-break:break-all; white-space:pre-wrap;">${item.rawCode}</div>
-                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${item.dateStr} | ⏰ ${item.timeStr} (${item.dayStr})</div>
-                    <div style="display:flex; gap:8px; margin-top:auto;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 12px; width:auto; font-size:0.78rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.78rem; padding:8px 10px;">${isDone?'Undo':'Done'}</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 10px; font-size:0.78rem;">🗑️</button>
-                    </div>
-                </div>`;
+                libraryHtml += window.generatePolicyCardMarkup(item);
             });
             
-            libraryContainer.innerHTML = libraryHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No records found for this filter.</p>";
+            libraryContainer.innerHTML = libraryHtml || "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>No records found for this filter.</p>";
         };
 
         window.copyPolicySnippetFromRepo = function(base64Code) {
             try {
                 const code = decodeURIComponent(escape(atob(base64Code)));
                 navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Clean policy code copied to clipboard successfully!");
+                    alert("✅ Full Policy script copied to clipboard successfully!");
                 });
             } catch(e) {
                 alert("Copy error: " + e.message);
