@@ -1243,10 +1243,8 @@
             </div>
         </div>
 
-        <!-- Sub Block 1: Code Injector (UPGRADED MAC TERMINAL & ANALYTICS) -->
+        <!-- Sub Block 1: Code Injector -->
         <div id="policySubBlock_injector" class="policy-sub-content">
-            
-            <!-- ⚡ NEW: Analytics Calendar Bar -->
             <div class="analytics-calendar-bar" style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-glass); margin-bottom: 20px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 15px;">
                 <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                     <select id="injectorDateFilter" onchange="window.updateInjectorAnalytics()" style="background: var(--bg-prime); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 8px 12px; border-radius: 6px; font-family: 'Orbitron'; outline: none; font-weight: bold; cursor: pointer;">
@@ -1266,7 +1264,6 @@
                 </div>
             </div>
 
-            <!-- ⚡ NEW: Mac Terminal (Hacker Style) UI -->
             <div class="mac-terminal-window" style="background: rgba(10, 15, 30, 0.9); border: 1px solid var(--border-glass); border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 15px;">
                 <div class="mac-terminal-header" style="background: rgba(4, 14, 33, 0.95); padding: 10px 15px; display: flex; align-items: center; border-bottom: 1px solid var(--border-glass);">
                     <div style="display: flex; gap: 8px;">
@@ -1281,217 +1278,11 @@
                 </div>
             </div>
             <button onclick="window.saveAdminPolicyCodeSnippet(); setTimeout(window.updateInjectorAnalytics, 1000);" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width: 100%; box-shadow: 0 10px 30px rgba(0,242,254,0.3);">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
-            
-            <script>
-                setInterval(() => {
-                    if(document.getElementById('policySubBlock_injector') && !document.getElementById('policySubBlock_injector').classList.contains('hidden')) {
-                        if(window.updateInjectorAnalytics) window.updateInjectorAnalytics();
-                    }
-                }, 3000);
-
-                window.updateInjectorAnalytics = function() {
-                    const filterType = document.getElementById('injectorDateFilter').value;
-                    const customDateBox = document.getElementById('customDateRange');
-                    if(filterType === 'between') {
-                        customDateBox.style.display = 'flex';
-                    } else {
-                        customDateBox.style.display = 'none';
-                    }
-
-                    const sDate = document.getElementById('injectorStartDate').value;
-                    const eDate = document.getElementById('injectorEndDate').value;
-                    
-                    let count = 0;
-                    if(window.cachedPolicyRepoData) {
-                        const now = new Date();
-                        const todayStr = String(now.getDate()).padStart(2,'0') + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + now.getFullYear();
-                        
-                        const yesterday = new Date(now);
-                        yesterday.setDate(yesterday.getDate() - 1);
-                        const yestStr = String(yesterday.getDate()).padStart(2,'0') + '/' + String(yesterday.getMonth()+1).padStart(2,'0') + '/' + yesterday.getFullYear();
-
-                        const items = Object.values(window.cachedPolicyRepoData);
-                        
-                        items.forEach(item => {
-                            if (filterType === 'today' && item.dateStr === todayStr) count++;
-                            if (filterType === 'yesterday' && item.dateStr === yestStr) count++;
-                            if (filterType === 'between') {
-                                if(!sDate || !eDate) return;
-                                let itemEpoch = item.epoch;
-                                let startEpoch = new Date(sDate).setHours(0,0,0,0);
-                                let endEpoch = new Date(eDate).setHours(23,59,59,999);
-                                if (itemEpoch >= startEpoch && itemEpoch <= endEpoch) count++;
-                            }
-                        });
-                    }
-                    
-                    const countNode = document.getElementById('injectorTotalCount');
-                    if(countNode) countNode.innerText = 'Total Code Injected: ' + count;
-                };
-
-                window.openInjectorDetailsPopup = function() {
-                    const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-                    if(!wrapper) return;
-                    
-                    const filterType = document.getElementById('injectorDateFilter').value;
-                    const sDate = document.getElementById('injectorStartDate').value;
-                    const eDate = document.getElementById('injectorEndDate').value;
-                    
-                    let filteredData = [];
-                    if(window.cachedPolicyRepoData) {
-                        const now = new Date();
-                        const todayStr = String(now.getDate()).padStart(2,'0') + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + now.getFullYear();
-                        
-                        const yesterday = new Date(now);
-                        yesterday.setDate(yesterday.getDate() - 1);
-                        const yestStr = String(yesterday.getDate()).padStart(2,'0') + '/' + String(yesterday.getMonth()+1).padStart(2,'0') + '/' + yesterday.getFullYear();
-
-                        const items = Object.values(window.cachedPolicyRepoData);
-                        
-                        filteredData = items.filter(item => {
-                            if (filterType === 'today') return item.dateStr === todayStr;
-                            if (filterType === 'yesterday') return item.dateStr === yestStr;
-                            if (filterType === 'between') {
-                                if(!sDate || !eDate) return true;
-                                let itemEpoch = item.epoch;
-                                let startEpoch = new Date(sDate).setHours(0,0,0,0);
-                                let endEpoch = new Date(eDate).setHours(23,59,59,999);
-                                return itemEpoch >= startEpoch && itemEpoch <= endEpoch;
-                            }
-                            return true;
-                        }).sort((a,b) => b.epoch - a.epoch);
-                    }
-
-                    let rowsHtml = filteredData.map((d, i) => {
-                        let bg = i%2 === 0 ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.2)';
-                        return `<tr style="border-bottom: 1px solid var(--border-glass); background: ${bg};">
-                            <td style="padding: 12px; color: var(--neon-cyan); font-family: monospace; font-weight: bold;">${d.regNo || 'N/A'}</td>
-                            <td style="padding: 12px; color: #fff; font-weight: bold;">${d.clientName || 'N/A'}</td>
-                            <td style="padding: 12px; color: #2ecc71;">${d.dateStr || 'N/A'}</td>
-                            <td style="padding: 12px; color: #f1c40f;">${d.timeStr || 'N/A'}</td>
-                            <td style="padding: 12px; color: var(--text-sub);">${d.dayStr || 'N/A'}</td>
-                        </tr>`;
-                    }).join('');
-
-                    if(filteredData.length === 0) {
-                        rowsHtml = `<tr><td colspan="5" style="padding: 20px; text-align: center; color: var(--text-sub);">No records found for the selected date(s).</td></tr>`;
-                    }
-
-                    wrapper.innerHTML = `
-                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width: 900px; width: 95%; background: #0b141a; border: 1px solid var(--neon-cyan); box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 30px rgba(0,242,254,0.2); padding: 0; overflow: hidden; display: flex; flex-direction: column; max-height: 85vh;">
-                            <div style="background: rgba(4, 14, 33, 0.95); padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-glass);">
-                                <h3 style="color: #00f2fe; margin: 0; font-family: 'Orbitron'; font-size: 1.4rem; text-shadow: 0 0 10px rgba(0,242,254,0.4);">📄 INJECTED CODES DETAILS</h3>
-                                <button onclick="window.closeCustomInlinePopupEngine()" style="background: transparent; border: none; color: #e74c3c; font-size: 1.5rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">✖</button>
-                            </div>
-                            <div style="padding: 0; overflow-y: auto; flex: 1;">
-                                <table style="width: 100%; border-collapse: collapse; text-align: left; font-family: 'Segoe UI', sans-serif; font-size: 0.95rem;">
-                                    <thead style="background: rgba(0, 242, 254, 0.1); border-bottom: 2px solid var(--neon-cyan); position: sticky; top: 0; z-index: 5;">
-                                        <tr>
-                                            <th style="padding: 15px; color: #00f2fe; font-weight: bold; font-family: 'Orbitron';">Reg No</th>
-                                            <th style="padding: 15px; color: #00f2fe; font-weight: bold; font-family: 'Orbitron';">Client Name</th>
-                                            <th style="padding: 15px; color: #00f2fe; font-weight: bold; font-family: 'Orbitron';">Date</th>
-                                            <th style="padding: 15px; color: #00f2fe; font-weight: bold; font-family: 'Orbitron';">Time</th>
-                                            <th style="padding: 15px; color: #00f2fe; font-weight: bold; font-family: 'Orbitron';">Day</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${rowsHtml}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div style="padding: 15px 25px; background: rgba(0,0,0,0.8); border-top: 1px solid var(--border-glass); text-align: right; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="color: var(--text-sub); font-size: 0.9rem;">Auto-synced with Cloud Vault Data</span>
-                                <span style="color: #2ecc71; font-weight: bold; font-family: 'Orbitron'; font-size: 1.1rem;">Total Match: ${filteredData.length}</span>
-                            </div>
-                        </div>
-                    `;
-                    wrapper.classList.remove('hidden');
-                };
-
-                // Updated Search Filter with blank default & 4-per-row grid
-                window.filterAdminPolicyDatabaseItems = function() {
-                    const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-                    const listContainer = document.getElementById('adminPolicySearchResultsList');
-                    if(!listContainer) return;
-
-                    if(!q) {
-                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:30px; grid-column: 1 / -1; font-size:1rem;">Type Reg No, Contact, or Customer Name above to search specific policies...</p>`;
-                        return;
-                    }
-
-                    if(!window.cachedPolicyRepoData) {
-                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:20px; grid-column: 1 / -1;">No records available.</p>`;
-                        return;
-                    }
-
-                    const items = Object.values(window.cachedPolicyRepoData).filter(item => {
-                        const text = (item.regNo + ' ' + (item.policyNo||'') + ' ' + (item.clientName||'') + ' ' + (item.insurer||'')).toLowerCase();
-                        return text.includes(q);
-                    }).sort((a,b) => b.epoch - a.epoch);
-
-                    if(items.length === 0) {
-                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:20px; grid-column: 1 / -1;">No matching policies found.</p>`;
-                        return;
-                    }
-
-                    let searchHtml = "";
-                    items.forEach((item, index) => {
-                        let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-                        let serialNo = `#${index + 1}`;
-                        let isDone = item.isDone === true;
-                        let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
-                        
-                        searchHtml += `
-                        <div class="hud-data-card policy-repo-card" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; padding:15px; gap:8px;">
-                            <div style="display:flex; justify-content:space-between; align-items:center;">
-                                <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem;">${item.insurer} (${serialNo})</span>
-                                ${statusBadge}
-                            </div>
-                            <p style="margin-top:3px; font-size:0.85rem;"><b>Reg:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                            <p style="font-size:0.85rem;"><b>Client:</b> ${item.clientName}</p>
-                            <div style="display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap;">
-                                <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; width:auto; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                                <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
-                            </div>
-                        </div>`;
-                    });
-                    listContainer.innerHTML = searchHtml;
-                };
-
-                window.copyFormatTemplate = function() {
-                    const code = document.getElementById('formatTemplateCode').innerText;
-                    navigator.clipboard.writeText(code).then(() => {
-                        alert("✅ Exact Auto-Filler Code Format copied to clipboard!");
-                    });
-                };
-
-                window.switchPolicySubTab = function(tabName) {
-                    ['injector', 'search', 'library', 'about'].forEach(t => {
-                        const block = document.getElementById(`policySubBlock_${t}`);
-                        const btn = document.getElementById(`pSubTab_${t}`);
-                        if(block) block.classList.toggle('hidden', t !== tabName);
-                        if(btn) {
-                            if(t === tabName) {
-                                btn.style.borderColor = "var(--neon-cyan)";
-                                btn.style.color = "var(--neon-cyan)";
-                                btn.style.background = "rgba(0,242,254,0.15)";
-                            } else {
-                                btn.style.borderColor = "rgba(0,242,254,0.3)";
-                                btn.style.color = "var(--text-sub)";
-                                btn.style.background = "transparent";
-                            }
-                        }
-                    });
-                    if(tabName === 'search' || tabName === 'library') {
-                        window.renderAdminPolicySearchDashboard();
-                    }
-                };
-            </script>
         </div>
 
         <!-- Sub Block 2: Search Policy (4 per row grid & blank default) -->
         <div id="policySubBlock_search" class="policy-sub-content hidden">
-            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Policy No, or Client Name. Type below to query records.</p>
+            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Contact No, or Customer Name. Type below to query records.</p>
             <div style="margin-bottom:20px;">
                 <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Contact No, or Customer Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
             </div>
@@ -1500,7 +1291,7 @@
             </div>
         </div>
 
-        <!-- Sub Block 3: Policy Library (Filtered Done / Not Done Views) -->
+        <!-- Sub Block 3: Policy Library -->
         <div id="policySubBlock_library" class="policy-sub-content hidden">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                 <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
