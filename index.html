@@ -1234,9 +1234,9 @@
                 <div id="adminPolicySearchBlock" class="hidden">
     <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
-                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-                <div style="display:flex; gap:12px;">
-                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
+            <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
+            <div style="display:flex; gap:12px;">
+                <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
                 <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">🔍 2. Search</button>
                 <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">📚 3. Library</button>
                 <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">ℹ️ 4. About Us</button>
@@ -1248,10 +1248,10 @@
             <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.5); padding:10px 15px; border-radius:10px; border:1px solid var(--border-glass); margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                 <div style="font-family:'Orbitron'; font-size:0.85rem; color:var(--neon-cyan); font-weight:bold;">📊 Analytics Calendar:</div>
                 <div style="display:flex; gap:6px;">
-                    <button onclick="alert('Filtered: Today')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Today</button>
-                    <button onclick="alert('Filtered: Yesterday')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Yesterday</button>
-                    <button onclick="alert('Filtered: Between Dates')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Between Dates</button>
-                    <button onclick="alert('VIEW DETAILS Popup: Dark-mode history table active.')" class="nav-btn" style="padding:5px 12px; font-size:0.75rem; border-color:var(--neon-pink); color:var(--neon-pink);">VIEW DETAILS</button>
+                    <button onclick="window.filterInjectorAnalytics('today')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Today</button>
+                    <button onclick="window.filterInjectorAnalytics('yesterday')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Yesterday</button>
+                    <button onclick="window.filterInjectorAnalytics('between')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Between Dates</button>
+                    <button onclick="window.openViewDetailsPopup()" class="nav-btn" style="padding:5px 12px; font-size:0.75rem; border-color:var(--neon-pink); color:var(--neon-pink);">VIEW DETAILS ⚡</button>
                 </div>
             </div>
             <div style="background:#111; border:2px solid var(--neon-cyan); border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,242,254,0.2);">
@@ -1305,7 +1305,7 @@
                 </p>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <span style="font-family:'Orbitron'; color:#f1c40f; font-size:0.9rem; font-weight:bold;">📋 JavaScript Auto-Filer Format:</span>
-                    <button onclick="window.copyStandardFormatCode()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY FORMAT</button>
+                    <button onclick="window.copyStandardFormatCode()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.80rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY FORMAT</button>
                 </div>
                 <div style="background:#000; border:1px solid var(--neon-cyan); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#0ff; max-height:200px; overflow-y:auto; white-space:pre-wrap;" id="standardFormatCodeBlock">(function() {
     // 1. डेटा बेस (Policy Repository)
@@ -1388,7 +1388,6 @@
 })();</div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -1799,12 +1798,10 @@
             if(!codeText) { alert("Please paste a code snippet first."); return; }
             
             let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
             
             let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
-            let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
             let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
             let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
             
@@ -1819,7 +1816,6 @@
                 id: codeRef.key,
                 title: `${insurer} - ${regNo} (${clientName})`,
                 regNo: regNo,
-                policyNo: policyNo,
                 clientName: clientName,
                 insurer: insurer,
                 rawCode: codeText,
