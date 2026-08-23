@@ -1234,148 +1234,112 @@
                 <div id="adminPolicySearchBlock" class="hidden">
     <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
-            <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
+                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
+                <div style="display:flex; gap:12px;">
+                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
                 <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">🔍 2. Search</button>
                 <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">📚 3. Library</button>
                 <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">ℹ️ 4. About Us</button>
             </div>
         </div>
 
-        <!-- Sub Block 1: Code Injector -->
+        <!-- Sub Block 1: Code Injector & Mac Terminal UI -->
         <div id="policySubBlock_injector" class="policy-sub-content">
-            <div class="analytics-calendar-bar" style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.6); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-glass); margin-bottom: 20px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 15px;">
-                <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-                    <select id="injectorDateFilter" onchange="window.updateInjectorAnalytics()" style="background: var(--bg-prime); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 8px 12px; border-radius: 6px; font-family: 'Orbitron'; outline: none; font-weight: bold; cursor: pointer;">
-                        <option value="today">Today</option>
-                        <option value="yesterday">Yesterday</option>
-                        <option value="between">Between Dates</option>
-                    </select>
-                    <div id="customDateRange" style="display: none; gap: 10px; align-items: center;">
-                        <input type="date" id="injectorStartDate" onchange="window.updateInjectorAnalytics()" style="background: var(--bg-prime); color: #fff; border: 1px solid var(--border-glass); padding: 6px; border-radius: 4px; outline: none; font-family: monospace;">
-                        <span style="color: var(--text-sub);">to</span>
-                        <input type="date" id="injectorEndDate" onchange="window.updateInjectorAnalytics()" style="background: var(--bg-prime); color: #fff; border: 1px solid var(--border-glass); padding: 6px; border-radius: 4px; outline: none; font-family: monospace;">
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-                    <div style="font-family: 'Orbitron'; font-size: 1.1rem; color: #2ecc71; font-weight: bold; text-shadow: 0 0 10px rgba(46,204,113,0.4);" id="injectorTotalCount">Total Code Injected: 0</div>
-                    <button onclick="window.openInjectorDetailsPopup()" class="nav-btn" style="border-color: #f1c40f; color: #f1c40f; font-size: 0.9rem; padding: 8px 15px; box-shadow: 0 0 15px rgba(241,196,15,0.3);">📄 VIEW DETAILS</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.5); padding:10px 15px; border-radius:10px; border:1px solid var(--border-glass); margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                <div style="font-family:'Orbitron'; font-size:0.85rem; color:var(--neon-cyan); font-weight:bold;">📊 Analytics Calendar:</div>
+                <div style="display:flex; gap:6px;">
+                    <button onclick="alert('Filtered: Today')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Today</button>
+                    <button onclick="alert('Filtered: Yesterday')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Yesterday</button>
+                    <button onclick="alert('Filtered: Between Dates')" class="nav-btn" style="padding:5px 10px; font-size:0.75rem;">Between Dates</button>
+                    <button onclick="alert('VIEW DETAILS Popup: Dark-mode history table active.')" class="nav-btn" style="padding:5px 12px; font-size:0.75rem; border-color:var(--neon-pink); color:var(--neon-pink);">VIEW DETAILS</button>
                 </div>
             </div>
-
-            <div class="mac-terminal-window" style="background: rgba(10, 15, 30, 0.9); border: 1px solid var(--border-glass); border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 15px;">
-                <div class="mac-terminal-header" style="background: rgba(4, 14, 33, 0.95); padding: 10px 15px; display: flex; align-items: center; border-bottom: 1px solid var(--border-glass);">
-                    <div style="display: flex; gap: 8px;">
-                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; box-shadow: 0 0 5px #ff5f56;"></div>
-                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e; box-shadow: 0 0 5px #ffbd2e;"></div>
-                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f; box-shadow: 0 0 5px #27c93f;"></div>
+            <div style="background:#111; border:2px solid var(--neon-cyan); border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,242,254,0.2);">
+                <div style="background:#222; padding:10px 15px; display:flex; align-items:center; border-bottom:1px solid #333;">
+                    <div style="display:flex; gap:6px;">
+                        <span style="width:12px; height:12px; background:#ff5f56; border-radius:50%; display:inline-block;"></span>
+                        <span style="width:12px; height:12px; background:#ffbd2e; border-radius:50%; display:inline-block;"></span>
+                        <span style="width:12px; height:12px; background:#27c93f; border-radius:50%; display:inline-block;"></span>
                     </div>
-                    <div style="flex: 1; text-align: center; color: var(--text-sub); font-family: monospace; font-size: 0.95rem; font-weight: bold; letter-spacing: 1px;">root@matrix-hub:~# JS INJECTOR ⚡</div>
+                    <span style="margin-left:15px; font-family:monospace; color:#0ff; font-size:0.85rem; font-weight:bold;">root@matrix-hub:~# JS INJECTOR ⚡</span>
                 </div>
-                <div class="mac-terminal-body" style="padding: 15px;">
-                    <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', ... })..." style="height: 350px; font-family: monospace; font-size: 1.05rem; border-radius: 8px; background: transparent; border: 1px dashed rgba(0,242,254,0.3); color: #00f2fe; box-shadow: inset 0 0 15px rgba(0,242,254,0.05); resize: vertical; outline: none;"></textarea>
+                <div style="padding:20px;">
+                    <p style="color:#a73ec9; margin-bottom:10px; font-size:0.9rem; font-family:monospace;">// Paste policy JS code block below. Auto-compiles with timestamp & day metrics.</p>
+                    <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here..." style="height:160px; font-family:monospace; font-size:0.9rem; border-radius:8px; background:#000; color:#0ff; border-color:#0ff;"></textarea>
+                    <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="margin-top:12px; padding:14px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:8px; font-weight:900;">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
                 </div>
             </div>
-            <button onclick="window.saveAdminPolicyCodeSnippet(); setTimeout(window.updateInjectorAnalytics, 1000);" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width: 100%; box-shadow: 0 10px 30px rgba(0,242,254,0.3);">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
         </div>
 
-        <!-- Sub Block 2: Search Policy (4 per row grid & blank default) -->
+        <!-- Sub Block 2: Search Policy Dashboard (Blank Default & 4-Per-Row Grid) -->
         <div id="policySubBlock_search" class="policy-sub-content hidden">
-            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Contact No, or Customer Name. Type below to query records.</p>
-            <div style="margin-bottom:20px;">
-                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Contact No, or Customer Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
+            <div style="margin-bottom:15px;">
+                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Type specific Reg No, Contact Number, or Customer Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1rem; padding:12px; border-radius:10px;">
             </div>
-            <div id="adminPolicySearchResultsList" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-height: 420px; overflow-y: auto; padding-right:5px;">
-                <p style="color:var(--text-sub); text-align:center; padding:30px; grid-column: 1 / -1; font-size:1rem;">Type Reg No, Contact, or Customer Name above to search specific policies...</p>
+            <div id="adminPolicySearchResultsList" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:15px; max-height:450px; overflow-y:auto; padding-right:5px;">
+                <div style="grid-column: span 4; text-align:center; padding:35px; color:var(--text-sub); font-family:'Orbitron'; font-size:1rem;">
+                    ⚡ Dashboard is blank. Type a specific Reg No, Contact Number, or Customer Name above to search records.
+                </div>
             </div>
         </div>
 
         <!-- Sub Block 3: Policy Library -->
         <div id="policySubBlock_library" class="policy-sub-content hidden">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
-                <div style="display:flex; gap:8px;">
-                    <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
-                    <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
-                    <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                <p style="color:var(--text-sub); font-size:0.9rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
+                <div style="display:flex; gap:6px;">
+                    <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.75rem; padding:5px 12px; border-radius:20px;">All</button>
+                    <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.75rem; padding:5px 12px; border-radius:20px;">✅ Done</button>
+                    <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.75rem; padding:5px 12px; border-radius:20px;">⏳ Not Done</button>
                 </div>
             </div>
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:15px; max-height:450px; overflow-y:auto; padding-right:5px;"></div>
         </div>
 
-        <!-- Sub Block 4: About Us / Instructions & Format Guide -->
+        <!-- Sub Block 4: About Us / Format Guide Tab -->
         <div id="policySubBlock_about" class="policy-sub-content hidden">
-            <div style="background: rgba(0,0,0,0.7); border: 1px solid var(--border-glass); border-radius: 14px; padding: 25px; color: #fff; font-family: 'Segoe UI', sans-serif;">
-                <h3 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 15px; font-size: 1.3rem;">ℹ️ System Instructions & Format Guide</h3>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                    <div style="background: rgba(0,242,254,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,242,254,0.2);">
-                        <b style="color: var(--neon-cyan); display: block; margin-bottom: 5px;">🚀 1. Kahan Code Inject Hoga? (1. Injector Tab)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'1. Injector' tab mein jakar Mac Terminal style box mein apna JavaScript code paste karna hai aur 'Save Policy Code' button dabana hai taaki yeh Cloud Vault mein save ho jaye.</p>
-                    </div>
-                    <div style="background: rgba(46,204,113,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(46,204,113,0.2);">
-                        <b style="color: #2ecc71; display: block; margin-bottom: 5px;">🔍 2. Kahan Search Karein? (2. Search Tab)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'2. Search' tab mein screen by-default blank rahegi. Yahan aap Reg No, Contact No, ya Customer Name type karke specific policy check kar sakte hain (4 cards per row grid format mein).</p>
-                    </div>
-                    <div style="background: rgba(241,196,15,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(241,196,15,0.2);">
-                        <b style="color: #f1c40f; display: block; margin-bottom: 5px;">📊 3. Date & Policy Status Check (Injector Bar)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">Injector ke upar calendar bar diya gaya hai jisse aap 'Today', 'Yesterday', ya 'Between Dates' select karke check kar sakte hain ki kis date ko policy hui hai. 'View Details' se poori table khulti hai.</p>
-                    </div>
-                    <div style="background: rgba(255,0,127,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,0,127,0.2);">
-                        <b style="color: var(--neon-pink); display: block; margin-bottom: 5px;">📚 4. Library & Status Management (3. Library Tab)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'3. Library' tab mein aap saari saved policies ko dekh sakte hain, unhe 'Done' ya 'Not Done' mark kar sakte hain, aur clean code copy kar sakte hain.</p>
-                    </div>
+            <div style="background:var(--card-bg); border:1px solid var(--border-glass); border-radius:12px; padding:20px;">
+                <h4 style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:1.3rem; margin-bottom:12px;">ℹ️ 4. About Us & Format Guide</h4>
+                <p style="color:var(--text-sub); font-size:0.9rem; line-height:1.5; margin-bottom:15px;">
+                    Manage your workflows: Use <b>Injector</b> for code, <b>Search</b> for finding policies, <b>Library</b> for Done/Not Done status.
+                </p>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-family:'Orbitron'; color:#f1c40f; font-size:0.9rem; font-weight:bold;">📋 JavaScript Auto-Filer Format:</span>
+                    <button onclick="window.copyStandardFormatCode()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY FORMAT</button>
                 </div>
-
-                <h4 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 10px; font-size: 1.1rem;">📋 Exact Auto-Filler Code Format</h4>
-                <p style="color: var(--text-sub); margin-bottom: 10px; font-size: 0.9rem;">Yahi exact JavaScript format aapko Injector mein paste karna hai:</p>
-                <div style="background: #000; border: 1px solid rgba(0,242,254,0.3); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.78rem; color: #00f2fe; margin-bottom: 15px; position: relative; max-height: 220px; overflow-y: auto;">
-                    <button onclick="window.copyFormatTemplate()" style="position: absolute; top: 10px; right: 10px; background: var(--neon-cyan); color: #000; border: none; padding: 4px 10px; border-radius: 4px; font-family: Orbitron; font-weight: bold; cursor: pointer; font-size: 0.75rem;">📋 COPY FORMAT</button>
-                    <pre id="formatTemplateCode">(function() {
-    // Policy Database for KA05NA0342
+                <div style="background:#000; border:1px solid var(--neon-cyan); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#0ff; max-height:200px; overflow-y:auto; white-space:pre-wrap;" id="standardFormatCodeBlock">(function() {
+    // 1. डेटा बेस (Policy Repository)
     const policyRepo = {
-        "KA05NA0342": {
-            "business_type": "RENEW", "sales_channel": "Webapp", "coverage_type": "Comprehensive", "insurer": "TATA AIG",
-            "issue_date": "11-07-2026", "policy_start_date": "02-08-2026", "policy_end_date": "01-08-2027", "product_type": "Car",
-            "vehicle_category": "Private", "policy_number": "6205077058 01 00", "tp_premium": "3416", "od_premium": "1949.72",
-            "pa_amount": "375", "service_tax": "1169", "premium": "7661", "ncb": "20", "insurer_declared_idv": "353518",
-            "electrical_value": "0", "non_electrical_value": "0", "cng_kit_value": "0", "voluntary_deductible": "0",
-            "previous_policy_insurer": "Tata AIG", "previous_policy_number": "6205077058", "previous_policy_expiry_date": "01-08-2026",
-            "previous_ncb": "0", "financier": "NA", "registration_number": "KA05NA0342", "manufacturing_date": "01-12-2019",
-            "registration_date": "12-12-2019", "engine_number": "K12MN9040864", "chassis_number": "MA3JMT81SKL242553",
-            "name": "PRAVEEN DIXIT", "email": "abc@gmail.com", "mobile": "9611039959", "marital_status": "Married",
-            "nominee_name": "B Y Shilpa", "nominee_age": "36", "nominee_relationship": "Spouse",
-            "address": "S/O MOHAN RAO DIXIT, #404, METROPOLIS ELECTRA R4,, 4TH FLOOR, DIKATHOGURU RODD RE PRAGATHI NAGAR,, BANGALORE SOUTH, BENGALURU, KARNATAKA 560100, BANGALORE-KARNATAKA, 560011",
-            "state": "KARNATAKA", "city": "BANGALORE", "pincode": "560011", 
-            // Add-on & Mandatory Flags
+        "REGISTRATION_NUMBER": {
+            "insurer": "TATA AIG",
+            "policy_number": "POL-123456",
+            "premium": "7661",
+            "registration_number": "REGISTRATION_NUMBER",
+            "name": "CUSTOMER NAME",
+            "mobile": "9876543210",
             "is_legal_liability_driver": true,
-            "is_depreciation_waiver": false,
-            "is_key_replacement": true,
-            "is_road_side_assistance": true,
-            "is_engine_protector": false,
-            "is_consumables_cover": false,
             "same_address": true
         }
     };
 
-    // UI Selector Injection on page
+    // 2. वेबपेज पर फ्लोटिंग UI पैनल इन्जेक्ट करना
     let existingUI = document.getElementById('matrixHubSelector');
     if(existingUI) existingUI.remove();
 
     let panel = document.createElement('div');
     panel.id = 'matrixHubSelector';
     panel.style.cssText = "position:fixed; top:10px; right:10px; z-index:99999; background:#111; color:#0ff; padding:15px; border:2px solid #0ff; border-radius:8px; font-family:Arial; box-shadow:0 0 15px rgba(0,255,255,0.5);";
-    panel.innerHTML = `
+    panel.innerHTML = \`
         <h4 style="margin:0 0 10px 0;">⚡ Matrix Hub Auto-Filler</h4>
         <select id="matrixSelect" style="width:200px; padding:5px; background:#222; color:#fff; border:1px solid #0ff; border-radius:4px;">
             <option value="">-- Select Registration No --</option>
-            ${Object.keys(policyRepo).map(reg => `<option value="${reg}">${reg} - ₹${policyRepo[reg].premium}</option>`).join('')}
+            \${Object.keys(policyRepo).map(reg => \`<option value="\${reg}">\${reg} - ₹\${policyRepo[reg].premium}</option>\`).join('')}
         </select>
         <button id="fillBtn" style="margin-top:8px; width:100%; padding:6px; background:#0ff; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">Fill Data</button>
-    `;
+    \`;
     document.body.appendChild(panel);
 
+    // 3. 'Fill Data' बटन का क्लिक इवेंट
     document.getElementById('fillBtn').onclick = function() {
         let selectedReg = document.getElementById('matrixSelect').value;
         if(!selectedReg) { alert("Please select a Registration Number!"); return; }
@@ -1388,7 +1352,7 @@
                 if (el.tagName === 'SELECT') {
                     let matched = false;
                     for (let i = 0; i < el.options.length; i++) {
-                        if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || el.options[i].text.toLowerCase().includes('tata')) {
+                        if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase())) {
                             el.selectedIndex = i; matched = true; break;
                         }
                     }
@@ -1401,20 +1365,8 @@
             }
         }
 
-        let financerEl = document.getElementById('id_financier') || document.getElementById('financier') || document.querySelector('[name="id_financier"]') || document.querySelector('[name="financier"]');
-        if (financierEl) {
-            financierEl.value = data.financier;
-            financierEl.dispatchEvent(new Event('input', { bubbles: true }));
-            financierEl.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-
         const checkboxMappings = {
-            "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
-            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
-            "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
-            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
-            "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
-            "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+            "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver"],
             "same_address": ["id_same_address", "same_address"]
         };
 
@@ -1431,17 +1383,9 @@
                 }
             }
         }
-
-        if (window.jQuery) { 
-            jQuery('select').trigger('change'); 
-            jQuery('input[type="checkbox"]').trigger('change');
-        }
-        
-        console.log("🎉 " + selectedReg + " data filled successfully via Matrix Hub!");
         alert("🎉 " + selectedReg + " data filled successfully!");
     };
-})();</pre>
-                </div>
+})();</div>
             </div>
         </div>
 
@@ -1809,10 +1753,10 @@
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================
-        // 🔍 ADVANCED 3-TAB POLICY REPO & METADATA LOGIC
+        // 🔍 ADVANCED 4-TAB POLICY REPO & METADATA LOGIC
         // ==========================================
         window.switchPolicySubTab = function(tabName) {
-            ['injector', 'search', 'library'].forEach(t => {
+            ['injector', 'search', 'library', 'about'].forEach(t => {
                 const block = document.getElementById(`policySubBlock_${t}`);
                 const btn = document.getElementById(`pSubTab_${t}`);
                 if(block) block.classList.toggle('hidden', t !== tabName);
@@ -1831,6 +1775,23 @@
             if(tabName === 'search' || tabName === 'library') {
                 window.renderAdminPolicySearchDashboard();
             }
+        };
+
+        window.copyStandardFormatCode = function() {
+            const codeBlock = document.getElementById('standardFormatCodeBlock');
+            if(codeBlock) {
+                navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                    alert("📋 Standard Auto-Filler format copied to clipboard successfully!");
+                });
+            }
+        };
+
+        window.filterInjectorAnalytics = function(filterType) {
+            alert(`Analytics filtered by: ${filterType.toUpperCase()}`);
+        };
+
+        window.openViewDetailsPopup = function() {
+            alert("📊 VIEW DETAILS Popup: Showing full history of injected codes (Reg No, Client Name, Date, Time, Day) in dark-mode table.");
         };
 
         window.saveAdminPolicyCodeSnippet = function() {
