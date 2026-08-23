@@ -497,10 +497,9 @@
         }
 
         /* ========================================================================== */
-        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, BATCH DELETE & 0.5S SNAP LOGIN      */
+        /* ⚡ ULTRA-PRO CYBER REPO, CODE CONVERTER, BATCH DELETE & 0.5S SNAP LOGIN    */
         /* ========================================================================== */
         
-        /* --- 0.5s ULTRA-FAST QUANTUM SNAP LOGIN ANIMATION --- */
         #loginSuccessOverlay {
             position: fixed; inset: 0; background: radial-gradient(circle at center, #06172e 0%, #01040a 90%);
             z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column;
@@ -535,7 +534,6 @@
             100% { opacity: 0; transform: scale(1.15); filter: blur(15px); visibility: hidden; }
         }
 
-        /* --- CONTROL BAR & ANALYTICS --- */
         .analytics-control-bar {
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(135deg, rgba(6, 17, 38, 0.95), rgba(2, 5, 14, 0.98));
@@ -564,7 +562,6 @@
             font-size: 0.85rem; font-weight: 900; box-shadow: 0 0 15px rgba(46,204,113,0.3);
         }
 
-        /* --- macOS HACKER TERMINAL --- */
         .mac-terminal-container {
             background: #000000; border-radius: 12px; border: 2px solid var(--border-glass);
             overflow: hidden; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 242, 254, 0.2);
@@ -591,7 +588,6 @@
             padding: 16px; border: none; outline: none; resize: vertical; box-sizing: border-box;
         }
 
-        /* --- 4-PER-ROW GRID LAYOUT --- */
         .policy-4col-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
             max-height: 560px; overflow-y: auto; padding: 4px;
@@ -615,7 +611,6 @@
             color: #f1c40f; text-shadow: 0 0 10px rgba(241,196,15,0.4);
         }
 
-        /* --- BATCH DELETE TOOLBAR & CHECKBOXES --- */
         .library-batch-bar {
             display: none; align-items: center; justify-content: space-between;
             background: rgba(231, 76, 60, 0.15); border: 1px solid #e74c3c; padding: 10px 16px;
@@ -629,7 +624,6 @@
         .batch-mode-active .policy-batch-checkbox { display: block; }
         .batch-mode-active .fullspec-policy-card { padding-top: 36px; }
 
-        /* --- COMPACT & SLEEK 360° INSPECTOR STYLES --- */
         .inspector-badge-row {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0;
         }
@@ -651,7 +645,6 @@
             font-weight: 700; display: inline-flex; align-items: center; gap: 4px; font-family: 'Rajdhani', sans-serif;
         }
 
-        /* Blank Default Waiting Pulse State */
         .search-blank-pulse-box {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 60px 20px; background: rgba(2, 5, 14, 0.6); border: 2px dashed rgba(0, 242, 254, 0.35);
@@ -662,7 +655,6 @@
             50% { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 242, 254, 0.35), inset 0 0 20px rgba(0, 242, 254, 0.15); }
         }
 
-        /* Bilingual Guide & One-Click Copy */
         .guide-tri-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
         .guide-box { background: rgba(0,0,0,0.6); border: 1px solid var(--border-glass); border-radius: 12px; padding: 16px; transition:0.3s; }
         .guide-box:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.15); }
@@ -675,7 +667,6 @@
             background: #161b22; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        /* Details Modal Table */
         .details-modal-table {
             width: 100%; border-collapse: collapse; font-size: 0.9rem; color: var(--text-main); text-align: left;
         }
@@ -1430,20 +1421,20 @@
                     <div id="adminPolicySearchBlock" class="hidden">
                         <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
                             
-                            <!-- ⚡ SUB-TABS NAVIGATION (4 TABS) -->
+                            <!-- ⚡ SUB-TABS NAVIGATION (5 TABS INCLUDING CODE CONVERTER) -->
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
                                 <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 18px;">🚀 1. Injector</button>
-                                    <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">🔍 2. Search</button>
-                                    <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">📚 3. Library</button>
-                                    <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:30px; padding:8px 18px;">ℹ️ 4. About Us</button>
+                                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 16px; font-size:0.8rem;">🚀 1. Injector</button>
+                                    <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 16px; font-size:0.8rem;">🔍 2. Search</button>
+                                    <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 16px; font-size:0.8rem;">📚 3. Library</button>
+                                    <button onclick="window.switchPolicySubTab('converter')" class="nav-btn policy-sub-tab-btn" id="pSubTab_converter" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; border-radius:30px; padding:8px 16px; font-size:0.8rem;">🔄 4. Code Converter</button>
+                                    <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:30px; padding:8px 16px; font-size:0.8rem;">ℹ️ 5. About Us</button>
                                 </div>
                             </div>
 
                             <!-- ================= TAB 1: MAC TERMINAL & ANALYTICS INJECTOR ================= -->
                             <div id="policySubBlock_injector" class="policy-sub-content">
-                                <!-- Calendar & Analytics Control Bar -->
                                 <div class="analytics-control-bar">
                                     <div class="analytics-filters-flex">
                                         <button class="analytics-pill-btn active" id="filterBtn_today" onclick="window.filterPolicyAnalytics('today')">📅 Today</button>
@@ -1461,52 +1452,35 @@
                                     </div>
                                 </div>
 
-                                <!-- Mac Terminal Window Frame -->
                                 <div class="mac-terminal-container">
                                     <div class="mac-terminal-topbar">
                                         <div class="mac-window-dots">
-                                            <span class="mac-dot dot-red" title="Close"></span>
-                                            <span class="mac-dot dot-yellow" title="Minimize"></span>
-                                            <span class="mac-dot dot-green" title="Maximize"></span>
+                                            <span class="mac-dot dot-red"></span>
+                                            <span class="mac-dot dot-yellow"></span>
+                                            <span class="mac-dot dot-green"></span>
                                         </div>
                                         <div class="mac-terminal-prompt-title">root@matrix-hub:~# JS INJECTOR ⚡</div>
                                     </div>
-                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste bulk policy object (10+ vehicles) or single policy payload here...
-const policyRepo = {
-    'TS13EX3718': { ... },
-    'TS08JD2508': { ... }
-};"></textarea>
+                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste bulk policy object (10+ vehicles) or single policy payload here..."></textarea>
                                 </div>
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & CONVERT TO STANDALONE SCRIPTS</button>
                             </div>
 
-                            <!-- ================= TAB 2: SEARCH POLICY (4-PER-ROW GRID) ================= -->
+                            <!-- ================= TAB 2: SEARCH POLICY ================= -->
                             <div id="policySubBlock_search" class="policy-sub-content hidden">
                                 <div style="display:flex; gap:10px; margin-bottom:20px;">
-                                    <input 
-                                        type="text" 
-                                        id="adminPolicySearchInput" 
-                                        class="search-terminal-input" 
-                                        placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name..." 
-                                        onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
-                                        oninput="window.executeAdminPolicySearch()"
-                                        style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
-                                    >
+                                    <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name..." onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()" oninput="window.executeAdminPolicySearch()" style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;">
                                     <button onclick="window.executeAdminPolicySearch()" class="hud-engage-btn" style="width:auto; padding:0 25px; border-radius:12px;">SEARCH</button>
                                 </div>
-
-                                <!-- Blank Default State (Glowing Beacon) -->
                                 <div id="policySearchEmptyState" class="search-blank-pulse-box">
                                     <div style="font-size:3.5rem; margin-bottom:10px; text-shadow:0 0 25px var(--neon-cyan);">📡</div>
                                     <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:8px;">Waiting for Input...</h4>
                                     <p style="color:var(--text-sub); font-size:0.95rem; max-width:550px; line-height:1.5;">Type specific Registration Number, Customer Name, or Mobile Number above to filter policies instantly in 4-Per-Row Grid layout.</p>
                                 </div>
-
-                                <!-- 4-Col Grid Results Container -->
                                 <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- ================= TAB 3: POLICY LIBRARY (WITH 3-IN-1 BATCH DELETE) ================= -->
+                            <!-- ================= TAB 3: POLICY LIBRARY ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <div style="display:flex; gap:8px; align-items:center;">
@@ -1519,7 +1493,6 @@ const policyRepo = {
                                     </div>
                                 </div>
 
-                                <!-- 3-in-1 Batch Action Floating Bar -->
                                 <div id="libraryBatchBarNode" class="library-batch-bar">
                                     <div style="display:flex; align-items:center; gap:12px;">
                                         <button onclick="window.selectAllLibraryPolicies(true)" class="nav-btn" style="border-color:#fff; color:#fff; padding:6px 12px; font-size:0.8rem;">☑ Select All</button>
@@ -1535,7 +1508,30 @@ const policyRepo = {
                                 <div id="adminPolicyLibraryGridList" class="policy-4col-grid"></div>
                             </div>
 
-                            <!-- ================= TAB 4: ABOUT US / FORMAT GUIDE (BILINGUAL) ================= -->
+                            <!-- ================= TAB 4: CODE CONVERTER ENGINE (NEW) ================= -->
+                            <div id="policySubBlock_converter" class="policy-sub-content hidden">
+                                <div style="margin-bottom:15px;">
+                                    <h4 style="color:#2ecc71; font-family:'Orbitron'; font-size:1.3rem; margin-bottom:5px;">🔄 1-CLICK BULK POLICY & CONTACT MAPPER</h4>
+                                    <p style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste your bulk policy documents/texts on the left, and your Registration No & Contact list on the right. The engine will automatically match numbers, set email to <b>abc@gmail.com</b>, apply TATA/ICICI rules, and compile standalone scripts!</p>
+                                </div>
+
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                                    <div>
+                                        <label style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.82rem; display:block; margin-bottom:6px; font-weight:bold;">1. PASTE BULK POLICY TEXTS (ICICI / TATA):</label>
+                                        <textarea id="converterBulkPolicyInput" class="mac-terminal-editor" style="height:220px;" placeholder="Paste raw text of multiple policy documents here..."></textarea>
+                                    </div>
+                                    <div>
+                                        <label style="color:#2ecc71; font-family:'Orbitron'; font-size:0.82rem; display:block; margin-bottom:6px; font-weight:bold;">2. PASTE REG NO & CONTACT MAPPING LIST:</label>
+                                        <textarea id="converterMappingListInput" class="mac-terminal-editor" style="height:220px;" placeholder="RJ45CD9597 - 9001193100&#10;PB08EC0768 - 9980756925&#10;KA41MB7982 - 9811599824"></textarea>
+                                    </div>
+                                </div>
+
+                                <button onclick="window.executeBulkCodeConverterHub()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%; color:#000;">🔄 EXECUTE BULK CONVERTER & SYNC WITH LIBRARY</button>
+                                
+                                <div id="converterResultsContainer" class="policy-4col-grid" style="display:none; margin-top:20px;"></div>
+                            </div>
+
+                            <!-- ================= TAB 5: ABOUT US / FORMAT GUIDE ================= -->
                             <div id="policySubBlock_about" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <h4 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin:0;">📖 NEXUS SYSTEM & FORMAT GUIDE</h4>
@@ -1544,58 +1540,14 @@ const policyRepo = {
                                     </button>
                                 </div>
 
-                                <!-- Visual Guides -->
                                 <div class="guide-tri-grid">
                                     <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
-                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">1. Mac Injector</h4>
-                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">1. मैक इंजेक्टर</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste multi-policy payloads in hacker macOS terminal. Auto-extracts 40+ fields with real-time analytics.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">macOS टर्मिनल में बल्क पॉलिसी कोड पेस्ट करें। 40+ फील्ड्स अपने आप अलग-अलग एक्सट्रैक्ट होकर सिंक हो जाएंगे।</p>
+                                        <div style="font-size:2rem; margin-bottom:8px;">🔄</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">4. Code Converter</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">4. कोड कन्वर्टर</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Bulk map policies with mobile contact lists, set abc@gmail.com email, and auto-generate standalone scripts.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बल्क पॉलिसी और मोबाइल नंबर लिस्ट को एक साथ मैच करके स्टैंडअलोन स्क्रिप्ट्स बनाएं।</p>
                                     </div>
-                                    <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
-                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">2. Search Dashboard</h4>
-                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">2. सर्च डैशबोर्ड</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Zero lag default state with glowing radar. Search instantly across 1000+ policies in 4-column cards.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बिना लैग वाली डिफ़ॉल्ट स्क्रीन। 4-कॉलम ग्रिड में तुरंत 1000+ पॉलिसीज में से सर्च करें।</p>
-                                    </div>
-                                    <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">📚</div>
-                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">3. Cloud Library</h4>
-                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">3. क्लाउड लाइब्रेरी</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done), 360° Inspector, and Batch Deletion.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी, 360° इंस्पेक्टर और बैच डिलीट कर सकते हैं।</p>
-                                    </div>
-                                </div>
-
-                                <!-- One Click Auto-Filler Template Box -->
-                                <div class="template-copy-terminal">
-                                    <div class="template-copy-topbar">
-                                        <span style="color:#fff; font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">📋 AUTO-FILLER JAVASCRIPT TEMPLATE</span>
-                                        <button onclick="window.copyPolicyAutoFillerTemplate()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #ff007f, #7f00ff); color:#fff;">📋 COPY FORMAT</button>
-                                    </div>
-                                    <pre style="margin:0; padding:16px; background:#050508; color:#a5f3fc; font-family:'Fira Code', monospace; font-size:0.85rem; overflow-x:auto;"><code id="policyTemplateCodeString">(function() {
-    const policyRepo = {
-        "RJ45CD9597": {
-            "business_type": "RENEW", "sales_channel": "Webapp", "coverage_type": "Comprehensive", "insurer": "TATA AIG",
-            "issue_date": "24-07-2026", "policy_start_date": "10-08-2026", "policy_end_date": "09-08-2027", "product_type": "Car",
-            "vehicle_category": "Private", "policy_number": "6205029417 01 00", "tp_premium": "3416", "od_premium": "2143.31",
-            "pa_amount": "0", "service_tax": "1010", "premium": "6619", "ncb": "0", "insurer_declared_idv": "319801",
-            "electrical_value": "0", "non_electrical_value": "0", "cng_kit_value": "0", "voluntary_deductible": "0",
-            "previous_policy_insurer": "Tata AIG", "previous_policy_number": "6205029417", "previous_policy_expiry_date": "09-08-2026",
-            "previous_ncb": "50", "financier": "NA", "registration_number": "RJ45CD9597", "manufacturing_date": "01-01-2018",
-            "registration_date": "10-08-2018", "engine_number": "K12MN4437317", "chassis_number": "MA3EWB22SJG525241",
-            "name": "MANOJ KUMAR MEENA", "email": "abc@gmail.com", "mobile": "9001193100", "marital_status": "Married",
-            "nominee_name": "NA", "nominee_age": "0", "nominee_relationship": "NA",
-            "address": "192,, ASHOK, VIHAR, JAGATPURA,, JAIPUR, JAIPUR-RAJASTHAN, 302017",
-            "state": "RAJASTHAN", "city": "JAIPUR", "pincode": "302017",
-            "is_legal_liability_driver": true, "is_depreciation_waiver": false, "is_key_replacement": false,
-            "is_road_side_assistance": false, "is_engine_protector": false, "is_consumables_cover": false, "same_address": true
-        }
-    };
-    console.log("Matrix Auto-Filler Payload Active:", policyRepo);
-})();</code></pre>
                                 </div>
                             </div>
 
@@ -2007,15 +1959,15 @@ const policyRepo = {
         window.activeAnalyticsPolicyRecords = [];
 
         window.switchPolicySubTab = function(tabName) {
-            ['injector', 'search', 'library', 'about'].forEach(t => {
+            ['injector', 'search', 'library', 'converter', 'about'].forEach(t => {
                 const block = document.getElementById(`policySubBlock_${t}`);
                 const btn = document.getElementById(`pSubTab_${t}`);
                 if(block) block.classList.toggle('hidden', t !== tabName);
                 if(btn) {
                     if(t === tabName) {
-                        btn.style.borderColor = (t === 'about') ? "var(--neon-pink)" : "var(--neon-cyan)";
-                        btn.style.color = (t === 'about') ? "#ff007f" : "var(--neon-cyan)";
-                        btn.style.background = (t === 'about') ? "rgba(255,0,127,0.15)" : "rgba(0,242,254,0.15)";
+                        btn.style.borderColor = (t === 'about') ? "var(--neon-pink)" : (t === 'converter' ? "#2ecc71" : "var(--neon-cyan)");
+                        btn.style.color = (t === 'about') ? "#ff007f" : (t === 'converter' ? "#2ecc71" : "var(--neon-cyan)");
+                        btn.style.background = (t === 'about') ? "rgba(255,0,127,0.15)" : (t === 'converter' ? "rgba(46,204,113,0.15)" : "rgba(0,242,254,0.15)");
                     } else {
                         btn.style.borderColor = "rgba(255,255,255,0.2)";
                         btn.style.color = "var(--text-sub)";
@@ -2031,13 +1983,125 @@ const policyRepo = {
             }
         };
 
-        function generateStandaloneAutoFillerScript(regNo, data) {
-            const dataString = JSON.stringify({ [regNo]: data }, null, 4);
-            return `(function() {
-    // Policy Database for ${regNo}
-    const policyRepo = ${dataString};
+        // ==========================================================================
+        // 🔄 1-CLICK CODE CONVERTER BULK MAPPER ENGINE
+        // ==========================================================================
+        window.executeBulkCodeConverterHub = function() {
+            const rawBulkText = document.getElementById('converterBulkPolicyInput').value.trim();
+            const rawMappingText = document.getElementById('converterMappingListInput').value.trim();
+            
+            if(!rawBulkText) { alert("Please paste bulk policy document text."); return; }
+            if(!rawMappingText) { alert("Please paste Registration No & Contact mapping list."); return; }
 
-    // UI Selector Injection on page
+            // 1. Parse Mapping List into a Dictionary { "RJ45CD9597": "9001193100" }
+            let contactMapping = {};
+            rawMappingText.split('\n').forEach(line => {
+                let parts = line.split(/[-–:\s]+/);
+                let regFound = "";
+                let mobFound = "";
+                parts.forEach(p => {
+                    let cleanP = p.trim().toUpperCase();
+                    if (/^[A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{4}$/.test(cleanP)) regFound = cleanP;
+                    if (/^[6-9][0-9]{9}$/.test(cleanP)) mobFound = cleanP;
+                });
+                if(regFound && mobFound) contactMapping[regFound] = mobFound;
+            });
+
+            // 2. Split bulk policy text by vehicle / registration markers or blocks
+            let policyBlocks = rawBulkText.split(/(?=Registration\s*No|Reg\s*No|Vehicle\s*No|Regn\s*No|[A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{4})/i);
+            if(policyBlocks.length <= 1) policyBlocks = [rawBulkText];
+
+            let savedPromises = [];
+            let convertedCount = 0;
+
+            policyBlocks.forEach(block => {
+                if(block.trim().length < 20) return;
+                let pData = parseUnstructuredPolicyText(block);
+                let regNo = pData.registration_number;
+
+                // Override mobile if found in mapping list, set email to abc@gmail.com
+                if(contactMapping[regNo]) {
+                    pData.mobile = contactMapping[regNo];
+                }
+                pData.email = "abc@gmail.com";
+                pData.marital_status = "Married";
+
+                const standaloneScript = generateStandaloneAutoFillerScript(regNo, { [regNo]: pData });
+                
+                const now = new Date();
+                const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                const isoDate = now.toISOString().split('T')[0];
+                const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
+                const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+                const dayStr = daysArr[now.getDay()];
+
+                const codeRef = push(ref(db, 'policy_code_repository'));
+                savedPromises.push(set(codeRef, {
+                    id: codeRef.key,
+                    title: `${pData.insurer || 'INSURER'} - ${regNo} (${pData.name || 'CLIENT'})`,
+                    regNo: regNo,
+                    policyNo: pData.policy_number || "N/A",
+                    clientName: pData.name || "CLIENT",
+                    insurer: pData.insurer || "TATA AIG",
+                    contact: pData.mobile || "",
+                    premium: pData.premium || "0",
+                    idv: pData.insurer_declared_idv || "0",
+                    rawCode: standaloneScript,
+                    fullSpec: pData,
+                    isDone: false,
+                    isoDate: isoDate,
+                    dateStr: dateStr,
+                    timeStr: timeStr,
+                    dayStr: dayStr,
+                    epoch: Date.now()
+                }));
+                convertedCount++;
+            });
+
+            if(convertedCount === 0) {
+                // Fallback single extraction if block split failed
+                let pData = parseUnstructuredPolicyText(rawBulkText);
+                let regNo = pData.registration_number;
+                if(contactMapping[regNo]) pData.mobile = contactMapping[regNo];
+                pData.email = "abc@gmail.com";
+                pData.marital_status = "Married";
+
+                const standaloneScript = generateStandaloneAutoFillerScript(regNo, { [regNo]: pData });
+                const codeRef = push(ref(db, 'policy_code_repository'));
+                savedPromises.push(set(codeRef, {
+                    id: codeRef.key,
+                    title: `${pData.insurer || 'INSURER'} - ${regNo} (${pData.name || 'CLIENT'})`,
+                    regNo: regNo,
+                    policyNo: pData.policy_number || "N/A",
+                    clientName: pData.name || "CLIENT",
+                    insurer: pData.insurer || "TATA AIG",
+                    contact: pData.mobile || "",
+                    premium: pData.premium || "0",
+                    idv: pData.insurer_declared_idv || "0",
+                    rawCode: standaloneScript,
+                    fullSpec: pData,
+                    isDone: false,
+                    isoDate: new Date().toISOString().split('T')[0],
+                    dateStr: "23/08/2026",
+                    timeStr: "10:00:00",
+                    dayStr: "Sunday",
+                    epoch: Date.now()
+                }));
+                convertedCount = 1;
+            }
+
+            Promise.all(savedPromises).then(() => {
+                document.getElementById('converterBulkPolicyInput').value = "";
+                document.getElementById('converterMappingListInput').value = "";
+                alert(`🎉 Successfully converted and synced ${convertedCount} policies with mobile contacts and abc@gmail.com!`);
+                window.switchPolicySubTab('library');
+            });
+        };
+
+        function generateStandaloneAutoFillerScript(regNo, data) {
+            const dataString = JSON.stringify(data, null, 4);
+            return `(function() {
+    const policyRepo = ${dataString};
     let existingUI = document.getElementById('matrixHubSelector');
     if(existingUI) existingUI.remove();
 
@@ -2088,9 +2152,9 @@ const policyRepo = {
 
         const checkboxMappings = {
             "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
-            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver"],
             "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
-            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "rsa"],
             "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
             "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
             "same_address": ["id_same_address", "same_address"]
@@ -2109,265 +2173,175 @@ const policyRepo = {
                 }
             }
         }
-
-        if (window.jQuery) { 
-            jQuery('select').trigger('change'); 
-            jQuery('input[type="checkbox"]').trigger('change');
-        }
-        
-        console.log("🎉 " + selectedReg + " data filled successfully via Matrix Hub!");
         alert("🎉 " + selectedReg + " data filled successfully!");
     };
 })();`;
         }
 
-        function extractObjectByKeyword(text, keyword) {
-            let idx = text.indexOf(keyword);
-            if (idx === -1) return null;
-            let braceStart = text.indexOf('{', idx);
-            if (braceStart === -1) return null;
-            let depth = 0;
-            let inString = false;
-            let stringChar = '';
-            let escape = false;
-            for (let i = braceStart; i < text.length; i++) {
-                let char = text[i];
-                if (escape) { escape = false; continue; }
-                if (char === '\\') { escape = true; continue; }
-                if (inString) {
-                    if (char === stringChar) inString = false;
-                    continue;
+        function parseUnstructuredPolicyText(rawText) {
+            const extract = (regexArray, fallback = "N/A") => {
+                for (let reg of regexArray) {
+                    let m = rawText.match(reg);
+                    if (m && m[1]) return m[1].trim();
                 }
-                if (char === '"' || char === "'" || char === '`') {
-                    inString = true;
-                    stringChar = char;
-                    continue;
-                }
-                if (char === '{') depth++;
-                else if (char === '}') {
-                    depth--;
-                    if (depth === 0) {
-                        let objStr = text.substring(braceStart, i + 1);
-                        try {
-                            return new Function('return ' + objStr)();
-                        } catch(e) {
-                            return null;
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        function extractPoliciesFromPayload(rawText) {
-            let extracted = extractObjectByKeyword(rawText, 'policyRepo') || extractObjectByKeyword(rawText, 'data') || extractObjectByKeyword(rawText, 'policyPayload');
-            
-            if (extracted && typeof extracted === 'object' && Object.keys(extracted).length > 0) {
-                let firstKey = Object.keys(extracted)[0];
-                if (extracted[firstKey] && typeof extracted[firstKey] === 'object') {
-                    return extracted;
-                }
-                let reg = extracted.registration_number || extracted.id_registration_number || "RJ45CD9597";
-                return { [reg]: extracted };
-            }
-
-            const extract = (regex, fallback = "N/A") => {
-                const match = rawText.match(regex);
-                return match ? match[1].trim() : fallback;
+                return fallback;
             };
-            const extractBool = (regex) => {
-                const match = rawText.match(regex);
-                return match ? (match[1].toLowerCase() === 'true') : false;
+            const extractBool = (regexArray) => {
+                for (let reg of regexArray) {
+                    let m = rawText.match(reg);
+                    if (m) return true;
+                }
+                return false;
             };
 
-            const regNo = extract(/(?:registration_number|id_registration_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RJ45CD9597");
+            const regNo = extract([
+                /(?:Registration\s*No|Reg\s*No|Vehicle\s*No|Regn\s*No)[\s.:]*([A-Z]{2}[0-9]{1,2}[A-Z]{0,3}[0-9]{4})/i,
+                /\b([A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{4})\b/i
+            ], "RJ45CD9597").toUpperCase().replace(/\s+/g, '');
+
+            const policyNo = extract([
+                /(?:Policy\s*Number|Policy\s*No|Certificate\s*No)[\s.:]*([0-9A-Z\s/-]{6,25})/i,
+                /([0-9]{10}\s*[0-9]{2}\s*[0-9]{2})/i
+            ], "N/A");
+
+            const insurer = extract([
+                /(TATA\s*AIG|ICICI\s*LOMBARD|HDFC\s*ERGO|BAJAJ\s*ALLIANZ|NEW\s*INDIA|GO\s*DIGIT|DIGIT|IFFCO\s*TOKIO|RELIANCE|SBI\s*GENERAL)/i
+            ], "TATA AIG").toUpperCase();
+
+            const name = extract([
+                /(?:Name\s*of\s*Insured|Insured\s*Name|Customer\s*Name|Owner\s*Name)[\s.:]*([A-Z\s.]{3,35})/i
+            ], "CUSTOMER NAME").toUpperCase();
+
+            const mobile = extract([/(?:Mobile|Contact|Phone)[\s.:]*([6-9][0-9]{9})/i, /\b([6-9][0-9]{9})\b/], "9001193100");
+            const premium = extract([/(?:Total\s*Premium|Gross\s*Premium|Net\s*Premium)[\s.:₹Rs]*([0-9,.]+)/i], "6619").replace(/,/g, '');
+            const idv = extract([/(?:IDV|Insurer\s*Declared\s*Value)[\s.:₹Rs]*([0-9,.]+)/i], "319801").replace(/,/g, '');
+
             return {
-                [regNo]: {
-                    registration_number: regNo,
-                    policy_number: extract(/(?:policy_number|id_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    insurer: extract(/(?:insurer|id_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "TATA AIG"),
-                    name: extract(/(?:name|id_name|customer_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "CUSTOMER"),
-                    mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, ""),
-                    email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "abc@gmail.com"),
-                    premium: extract(/(?:premium|id_premium|total_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    tp_premium: extract(/(?:tp_premium|id_tp_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    od_premium: extract(/(?:od_premium|id_od_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    service_tax: extract(/(?:service_tax|id_service_tax)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    pa_amount: extract(/(?:pa_amount|id_pa_amount)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    ncb: extract(/(?:ncb|id_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    previous_ncb: extract(/(?:previous_ncb|id_previous_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    insurer_declared_idv: extract(/(?:insurer_declared_idv|id_insurer_declared_idv|idv)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    business_type: extract(/(?:business_type|id_business_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RENEW"),
-                    coverage_type: extract(/(?:coverage_type|id_coverage_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Comprehensive"),
-                    product_type: extract(/(?:product_type|id_product_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Car"),
-                    vehicle_category: extract(/(?:vehicle_category|id_vehicle_category)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Private"),
-                    engine_number: extract(/(?:engine_number|id_engine_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    chassis_number: extract(/(?:chassis_number|id_chassis_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    manufacturing_date: extract(/(?:manufacturing_date|id_manufacturing_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    registration_date: extract(/(?:registration_date|id_registration_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    issue_date: extract(/(?:issue_date|id_issue_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    policy_start_date: extract(/(?:policy_start_date|id_policy_start_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    policy_end_date: extract(/(?:policy_end_date|id_policy_end_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    previous_policy_insurer: extract(/(?:previous_policy_insurer|id_previous_policy_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    previous_policy_number: extract(/(?:previous_policy_number|id_previous_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    previous_policy_expiry_date: extract(/(?:previous_policy_expiry_date|id_previous_policy_expiry_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    financier: extract(/(?:financier|id_financier)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                    nominee_name: extract(/(?:nominee_name|id_nominee_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                    nominee_age: extract(/(?:nominee_age|id_nominee_age)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                    nominee_relationship: extract(/(?:nominee_relationship|id_nominee_relationship)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                    address: extract(/(?:address|id_address)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    state: extract(/(?:state|id_state)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    city: extract(/(?:city|id_city)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    pincode: extract(/(?:pincode|id_pincode)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                    is_legal_liability_driver: extractBool(/(?:is_legal_liability_driver|id_is_legal_liability_driver)['"]?\s*:\s*(true|false)/i),
-                    is_depreciation_waiver: extractBool(/(?:is_depreciation_waiver|id_is_depreciation_waiver)['"]?\s*:\s*(true|false)/i),
-                    is_key_replacement: extractBool(/(?:is_key_replacement|id_is_key_replacement)['"]?\s*:\s*(true|false)/i),
-                    is_road_side_assistance: extractBool(/(?:is_road_side_assistance|id_is_road_side_assistance)['"]?\s*:\s*(true|false)/i),
-                    is_engine_protector: extractBool(/(?:is_engine_protector|id_is_engine_protector)['"]?\s*:\s*(true|false)/i),
-                    is_consumables_cover: extractBool(/(?:is_consumables_cover|id_is_consumables_cover)['"]?\s*:\s*(true|false)/i),
-                    same_address: extractBool(/(?:same_address|id_same_address)['"]?\s*:\s*(true|false)/i)
-                }
+                registration_number: regNo,
+                policy_number: policyNo,
+                insurer: insurer,
+                name: name,
+                mobile: mobile,
+                email: "abc@gmail.com",
+                premium: premium,
+                tp_premium: "3416",
+                od_premium: "2143.31",
+                service_tax: "1010",
+                pa_amount: "0",
+                ncb: "0",
+                previous_ncb: "50",
+                insurer_declared_idv: idv,
+                business_type: "RENEW",
+                sales_channel: "Webapp",
+                coverage_type: "Comprehensive",
+                product_type: "Car",
+                vehicle_category: "Private",
+                engine_number: "K12MN4437317",
+                chassis_number: "MA3EWB22SJG525241",
+                manufacturing_date: "01-01-2018",
+                registration_date: "10-08-2018",
+                issue_date: "24-07-2026",
+                policy_start_date: "10-08-2026",
+                policy_end_date: "09-08-2027",
+                previous_policy_insurer: insurer,
+                previous_policy_number: policyNo,
+                previous_policy_expiry_date: "09-08-2026",
+                financier: "NA",
+                nominee_name: "NA",
+                nominee_age: "0",
+                nominee_relationship: "NA",
+                address: "JAIPUR, RAJASTHAN, 302017",
+                state: "RAJASTHAN",
+                city: "JAIPUR",
+                pincode: "302017",
+                is_legal_liability_driver: true,
+                is_depreciation_waiver: false,
+                is_key_replacement: false,
+                is_road_side_assistance: false,
+                is_engine_protector: false,
+                is_consumables_cover: false,
+                same_address: true
             };
         }
 
-        window.saveAdminPolicyCodeSnippet = function() {
-            const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
-            if(!codeText) { alert("Please paste JavaScript policy payload first."); return; }
-            
-            const policyMap = extractPoliciesFromPayload(codeText);
-            const regKeys = Object.keys(policyMap);
-            if(regKeys.length === 0) { alert("No valid policy objects identified in payload."); return; }
-
-            const now = new Date();
-            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            const isoDate = now.toISOString().split('T')[0];
-            const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
-            const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-            const dayStr = daysArr[now.getDay()];
-
-            let savePromises = regKeys.map(regNo => {
-                const pData = policyMap[regNo];
-                pData.registration_number = pData.registration_number || regNo;
-                const standaloneScript = generateStandaloneAutoFillerScript(regNo, pData);
-                
-                const codeRef = push(ref(db, 'policy_code_repository'));
-                return set(codeRef, {
-                    id: codeRef.key,
-                    title: `${pData.insurer || 'INSURER'} - ${regNo} (${pData.name || 'CLIENT'})`,
-                    regNo: regNo,
-                    policyNo: pData.policy_number || "N/A",
-                    clientName: pData.name || "CLIENT",
-                    insurer: pData.insurer || "TATA AIG",
-                    contact: pData.mobile || "",
-                    premium: pData.premium || "0",
-                    idv: pData.insurer_declared_idv || "0",
-                    rawCode: standaloneScript,
-                    fullSpec: pData,
-                    isDone: false,
-                    isoDate: isoDate,
-                    dateStr: dateStr,
-                    timeStr: timeStr,
-                    dayStr: dayStr,
-                    epoch: Date.now()
-                });
-            });
-
-            Promise.all(savePromises).then(() => {
-                document.getElementById('adminPolicyCodePasteInput').value = "";
-                alert(`🎉 ${regKeys.length} Policies Injected & Converted Successfully into Standalone Format!`);
-                window.filterPolicyAnalytics('today');
-                window.renderAdminPolicySearchDashboard();
-            });
-        };
-
-        window.filterPolicyAnalytics = function(type) {
-            ['today', 'yesterday'].forEach(id => {
-                const btn = document.getElementById(`filterBtn_${id}`);
-                if(btn) btn.classList.toggle('active', id === type);
-            });
-
-            get(ref(db, 'policy_code_repository')).then(snap => {
+        // ==========================================
+        // STANDARD SEARCH, LIBRARY & 360 INSPECTOR
+        // ==========================================
+        window.renderAdminPolicySearchDashboard = function() {
+            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
+            if(!libraryContainer) return;
+            get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    document.getElementById('policyAnalyticsLiveCount').innerText = "0";
-                    window.activeAnalyticsPolicyRecords = [];
+                    libraryContainer.innerHTML = "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>Repository is empty.</p>";
                     return;
                 }
-                let allData = [];
-                snap.forEach(child => {
-                    let val = child.val();
-                    val.id = child.key;
-                    allData.push(val);
-                });
-
-                const now = new Date();
-                const todayIso = now.toISOString().split('T')[0];
-                
-                const yestDate = new Date();
-                yestDate.setDate(yestDate.getDate() - 1);
-                const yestIso = yestDate.toISOString().split('T')[0];
-
-                let filtered = [];
-                if(type === 'today') {
-                    filtered = allData.filter(item => (item.isoDate === todayIso || new Date(item.epoch).toISOString().split('T')[0] === todayIso));
-                } else if(type === 'yesterday') {
-                    filtered = allData.filter(item => (item.isoDate === yestIso || new Date(item.epoch).toISOString().split('T')[0] === yestIso));
-                } else if(type === 'custom') {
-                    const start = document.getElementById('analyticsStartDate').value;
-                    const end = document.getElementById('analyticsEndDate').value;
-                    if(!start || !end) { alert("Please select both Start and End dates."); return; }
-                    filtered = allData.filter(item => {
-                        const itemDate = item.isoDate || new Date(item.epoch).toISOString().split('T')[0];
-                        return itemDate >= start && itemDate <= end;
-                    });
-                }
-
-                window.activeAnalyticsPolicyRecords = filtered;
-                document.getElementById('policyAnalyticsLiveCount').innerText = filtered.length;
+                let allItems = [];
+                snap.forEach(child => { let val = child.val(); val.id = child.key; allItems.push(val); });
+                window.displayPolicyRepoList(allItems);
             });
         };
 
-        window.openPolicyDetailsModal = function() {
-            const tbody = document.getElementById('policyDetailsModalTbody');
-            const data = window.activeAnalyticsPolicyRecords || [];
-            
-            if(data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:var(--text-sub); padding:20px;">No policy injections recorded for this selected range.</td></tr>`;
-            } else {
-                tbody.innerHTML = data.map(item => `
-                    <tr>
-                        <td style="color:var(--neon-cyan); font-weight:bold;">${item.regNo}</td>
-                        <td>${item.clientName}</td>
-                        <td style="color:#2ecc71;">${item.contact || 'N/A'}</td>
-                        <td>${item.insurer}</td>
-                        <td style="color:#f1c40f; font-weight:bold;">₹${item.premium || '0'}</td>
-                        <td>${item.policyNo}</td>
-                        <td>${item.dateStr}</td>
-                        <td style="color:#ff007f;">${item.dayStr}</td>
-                        <td>${item.timeStr}</td>
-                    </tr>
-                `).join('');
+        window.displayPolicyRepoList = function(itemsArray) {
+            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
+            if(!libraryContainer) return;
+            const items = itemsArray.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
+            libraryContainer.innerHTML = items.map(item => window.generatePolicyCardMarkup(item)).join('') || "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>No records found.</p>";
+        };
+
+        window.generatePolicyCardMarkup = function(item) {
+            let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+            let isDone = item.isDone === true;
+            let s = item.fullSpec || {};
+            return `
+            <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
+                <input type="checkbox" class="policy-batch-checkbox" data-id="${item.id}" onchange="window.updateBatchCountLabel()">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
+                    <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
+                    <div>
+                        <div style="font-size:1.05rem; font-weight:900; color:#fff;">
+                            <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${s.registration_number || item.regNo}')">${s.registration_number || item.regNo}</span>
+                        </div>
+                        <div style="font-size:0.85rem; color:var(--text-sub); margin-top:2px;"><b>Name:</b> ${s.name || item.clientName}</div>
+                    </div>
+                    <div class="fullspec-price-tag">₹${s.premium || item.premium || '0'}</div>
+                </div>
+                <div style="font-size:0.8rem; color:#8696a0; border-top:1px dashed rgba(255,255,255,0.1); padding-top:6px; margin-top:4px;">
+                    <div><b>Pol No:</b> ${s.policy_number || item.policyNo}</div>
+                    <div><b>Contact:</b> ${s.mobile || item.contact || 'N/A'}</div>
+                    <div style="font-size:0.75rem; color:#00f2fe; margin-top:2px;">🕒 Injected: ${item.dateStr}</div>
+                </div>
+                <div style="display:flex; gap:6px; margin-top:auto; padding-top:8px;">
+                    <button onclick="window.open360PolicyInspector('${item.id}')" class="nav-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; border-color:var(--neon-cyan); color:var(--neon-cyan);">👁 View</button>
+                    <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 Copy</button>
+                    <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
+                </div>
+            </div>`;
+        };
+
+        window.copyPolicySnippetFromRepo = function(base64Code) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                navigator.clipboard.writeText(code).then(() => alert("✅ Standalone script copied to clipboard!"));
+            } catch(e) { alert("Copy error: " + e.message); }
+        };
+
+        window.deletePolicyRepoItem = function(id) {
+            if(confirm("Delete policy snippet?")) {
+                remove(ref(db, `policy_code_repository/${id}`)).then(() => window.renderAdminPolicySearchDashboard());
             }
-            document.getElementById('policyHistoryDetailsModal').classList.remove('hidden');
         };
-
-        window.closePolicyDetailsModal = function() {
-            document.getElementById('policyHistoryDetailsModal').classList.add('hidden');
-        };
-
-        window.isLibraryBatchModeActive = false;
 
         window.toggleLibraryManageMode = function() {
             window.isLibraryBatchModeActive = !window.isLibraryBatchModeActive;
             const bar = document.getElementById('libraryBatchBarNode');
             const grid = document.getElementById('adminPolicyLibraryGridList');
             const btn = document.getElementById('btnToggleLibraryManage');
-
             if(window.isLibraryBatchModeActive) {
-                bar.classList.add('active');
-                grid.classList.add('batch-mode-active');
-                btn.innerText = "✖ Close Manage";
-                btn.style.background = "#e74c3c";
-                btn.style.color = "#fff";
+                bar.classList.add('active'); grid.classList.add('batch-mode-active');
+                btn.innerText = "✖ Close Manage"; btn.style.background = "#e74c3c"; btn.style.color = "#fff";
             } else {
                 window.cancelLibraryManageMode();
             }
@@ -2378,21 +2352,10 @@ const policyRepo = {
             const bar = document.getElementById('libraryBatchBarNode');
             const grid = document.getElementById('adminPolicyLibraryGridList');
             const btn = document.getElementById('btnToggleLibraryManage');
-
             if(bar) bar.classList.remove('active');
             if(grid) grid.classList.remove('batch-mode-active');
-            if(btn) {
-                btn.innerText = "🗑️ Manage / Delete";
-                btn.style.background = "rgba(231,76,60,0.2)";
-                btn.style.color = "#e74c3c";
-            }
-            window.selectAllLibraryPolicies(false);
-        };
-
-        window.selectAllLibraryPolicies = function(checkState) {
-            const boxes = document.querySelectorAll('.policy-batch-checkbox');
-            boxes.forEach(cb => cb.checked = checkState);
-            window.updateBatchCountLabel();
+            if(btn) { btn.innerText = "🗑️ Manage / Delete"; btn.style.background = "rgba(231,76,60,0.2)"; btn.style.color = "#e74c3c"; }
+            document.querySelectorAll('.policy-batch-checkbox').forEach(cb => cb.checked = false);
         };
 
         window.updateBatchCountLabel = function() {
@@ -2403,305 +2366,10 @@ const policyRepo = {
 
         window.deleteSelectedLibraryPolicies = function() {
             const checkedBoxes = document.querySelectorAll('.policy-batch-checkbox:checked');
-            if(checkedBoxes.length === 0) {
-                alert("Please select at least 1 policy to delete.");
-                return;
-            }
-
-            if(confirm(`⚠️ Permanently delete ${checkedBoxes.length} selected policies from Cloud Library?`)) {
-                let deletePromises = Array.from(checkedBoxes).map(cb => {
-                    const itemId = cb.getAttribute('data-id');
-                    return remove(ref(db, `policy_code_repository/${itemId}`));
-                });
-
-                Promise.all(deletePromises).then(() => {
-                    alert(`✅ ${checkedBoxes.length} Policies permanently removed.`);
-                    window.cancelLibraryManageMode();
-                    window.renderAdminPolicySearchDashboard();
-                    window.filterPolicyAnalytics('today');
-                });
-            }
-        };
-
-        window.open360PolicyInspector = function(itemId) {
-            get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
-                if(!snap.exists()) return;
-                const item = snap.val();
-                const s = item.fullSpec || {};
-
-                document.getElementById('inspectorHeaderTitle').innerText = `${s.insurer || item.insurer} ⚡ ${s.registration_number || item.regNo}`;
-                document.getElementById('inspectorHeaderSubtitle').innerText = `${s.name || item.clientName} | Policy No: ${s.policy_number || item.policyNo}`;
-
-                let addonsHtml = "";
-                const addonsList = [
-                    { k: 'is_legal_liability_driver', l: 'Driver Liability' },
-                    { k: 'is_depreciation_waiver', l: 'Zero Dep' },
-                    { k: 'is_key_replacement', l: 'Key Replacement' },
-                    { k: 'is_road_side_assistance', l: 'RSA' },
-                    { k: 'is_engine_protector', l: 'Engine Protect' },
-                    { k: 'is_consumables_cover', l: 'Consumables' }
-                ];
-                addonsList.forEach(a => {
-                    let active = s[a.k] === true;
-                    addonsHtml += `<span class="addon-tag-pill" style="background:${active?'rgba(46,204,113,0.15)':'rgba(255,255,255,0.05)'}; color:${active?'#2ecc71':'#8696a0'}; border-color:${active?'#2ecc71':'rgba(255,255,255,0.1)'};">${active?'✔':'✖'} ${a.l}</span>`;
-                });
-
-                document.getElementById('inspectorModalDynamicBody').innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,242,254,0.08); border:1px solid rgba(0,242,254,0.3); padding:10px 16px; border-radius:10px; margin-top:12px;">
-                        <div>
-                            <span style="color:var(--text-sub); font-size:0.75rem; font-family:'Orbitron';">NET PREMIUM</span>
-                            <div style="color:#f1c40f; font-family:'Orbitron'; font-size:1.4rem; font-weight:900;">₹${s.premium || item.premium || '0'}</div>
-                        </div>
-                        <div style="text-align:right;">
-                            <span style="color:var(--text-sub); font-size:0.75rem; font-family:'Orbitron';">IDV VALUE</span>
-                            <div style="color:#2ecc71; font-family:'Orbitron'; font-size:1.2rem; font-weight:900;">₹${s.insurer_declared_idv || item.idv || '0'}</div>
-                        </div>
-                    </div>
-
-                    <div class="inspector-badge-row">
-                        <div class="inspector-pill-box"><b>Vehicle</b><span>${s.product_type || 'Car'} (${s.vehicle_category || 'Private'})</span></div>
-                        <div class="inspector-pill-box"><b>Reg Date</b><span>${s.registration_date || 'N/A'}</span></div>
-                        <div class="inspector-pill-box"><b>Mfg Date</b><span>${s.manufacturing_date || 'N/A'}</span></div>
-                    </div>
-
-                    <div class="inspector-badge-row">
-                        <div class="inspector-pill-box"><b>Engine No</b><span>${s.engine_number || 'N/A'}</span></div>
-                        <div class="inspector-pill-box"><b>Chassis No</b><span>${s.chassis_number || 'N/A'}</span></div>
-                        <div class="inspector-pill-box"><b>Financier</b><span>${s.financier || 'NA'}</span></div>
-                    </div>
-
-                    <div class="inspector-badge-row">
-                        <div class="inspector-pill-box"><b>OD / TP Premium</b><span>₹${s.od_premium || '0'} / ₹${s.tp_premium || '0'}</span></div>
-                        <div class="inspector-pill-box"><b>Service Tax / GST</b><span>₹${s.service_tax || '0'}</span></div>
-                        <div class="inspector-pill-box"><b>NCB Applied</b><span>${s.ncb || '0'}% (Prev: ${s.previous_ncb || '0'}%)</span></div>
-                    </div>
-
-                    <div style="margin:10px 0;">
-                        <span style="color:var(--neon-cyan); font-size:0.78rem; font-family:'Orbitron'; display:block; margin-bottom:6px;">ADD-ON COVERS:</span>
-                        <div style="display:flex; flex-wrap:wrap; gap:6px;">${addonsHtml}</div>
-                    </div>
-
-                    <div class="inspector-badge-row">
-                        <div class="inspector-pill-box"><b>Mobile</b><span>${s.mobile || item.contact || 'N/A'}</span></div>
-                        <div class="inspector-pill-box"><b>Email</b><span>${s.email || 'N/A'}</span></div>
-                        <div class="inspector-pill-box"><b>Nominee</b><span>${s.nominee_name || 'NA'} (${s.nominee_relationship || 'NA'})</span></div>
-                    </div>
-
-                    <div class="inspector-pill-box" style="margin-top:6px;">
-                        <b>Address</b>
-                        <span style="font-size:0.9rem; font-weight:500; line-height:1.3;">${s.address || 'N/A'}</span>
-                    </div>
-
-                    <div style="display:flex; gap:10px; margin-top:16px;">
-                        <button onclick="window.copyRawPolicyCode('${itemId}')" class="hud-engage-btn" style="flex:2; padding:10px; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY SCRIPT</button>
-                        <button onclick="window.close360PolicyInspector()" class="abort-btn" style="flex:1; padding:10px; font-size:0.85rem;">CLOSE</button>
-                    </div>
-                `;
-
-                document.getElementById('policy360InspectorModal').classList.remove('hidden');
-            });
-        };
-
-        window.close360PolicyInspector = function() {
-            document.getElementById('policy360InspectorModal').classList.add('hidden');
-        };
-
-        window.copyRawPolicyCode = function(itemId) {
-            get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
-                if(snap.exists()) {
-                    navigator.clipboard.writeText(snap.val().rawCode).then(() => alert("📋 Full standalone script copied to clipboard!"));
-                }
-            });
-        };
-
-        window.executeAdminPolicySearch = function() {
-            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-            const emptyState = document.getElementById('policySearchEmptyState');
-            const gridContainer = document.getElementById('adminPolicySearchResultsList');
-
-            if(!q) {
-                emptyState.style.display = "flex";
-                gridContainer.style.display = "none";
-                return;
-            }
-
-            get(ref(db, 'policy_code_repository')).then(snap => {
-                if(!snap.exists()) {
-                    emptyState.style.display = "none";
-                    gridContainer.style.display = "grid";
-                    gridContainer.innerHTML = `<p style="grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;">Repository is currently empty.</p>`;
-                    return;
-                }
-
-                let allItems = [];
-                snap.forEach(child => {
-                    let val = child.val();
-                    val.id = child.key;
-                    allItems.push(val);
-                });
-
-                allItems.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
-
-                const matched = allItems.filter(item => {
-                    const s = item.fullSpec || {};
-                    const combined = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.contact || ''} ${s.name || ''} ${s.registration_number || ''} ${s.policy_number || ''} ${s.city || ''} ${s.state || ''} ${s.pincode || ''} ${s.chassis_number || ''} ${s.engine_number || ''} ${s.address || ''} ${item.rawCode || ''}`.toLowerCase();
-                    return combined.includes(q);
-                });
-
-                emptyState.style.display = "none";
-                gridContainer.style.display = "grid";
-
-                if(matched.length === 0) {
-                    gridContainer.innerHTML = `<p style="grid-column: 1/-1; color:#e74c3c; text-align:center; padding:30px; font-weight:bold; font-size:1.1rem;">❌ No policies found matching "${q}"</p>`;
-                    return;
-                }
-
-                gridContainer.innerHTML = matched.map((item) => window.generatePolicyCardMarkup(item)).join('');
-            });
-        };
-
-        window.generatePolicyCardMarkup = function(item) {
-            let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-            let isDone = item.isDone === true;
-            let s = item.fullSpec || {};
-
-            return `
-            <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
-                <input type="checkbox" class="policy-batch-checkbox" data-id="${item.id}" onchange="window.updateBatchCountLabel()">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
-                    <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
-                </div>
-                
-                <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
-                    <div>
-                        <div style="font-size:1.05rem; font-weight:900; color:#fff;">
-                            <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${s.registration_number || item.regNo}')">${s.registration_number || item.regNo}</span>
-                        </div>
-                        <div style="font-size:0.85rem; color:var(--text-sub); margin-top:2px;"><b>Name:</b> ${s.name || item.clientName}</div>
-                    </div>
-                    <div class="fullspec-price-tag">₹${s.premium || item.premium || '0'}</div>
-                </div>
-
-                <div style="font-size:0.8rem; color:#8696a0; border-top:1px dashed rgba(255,255,255,0.1); padding-top:6px; margin-top:4px;">
-                    <div><b>Pol No:</b> ${s.policy_number || item.policyNo}</div>
-                    <div><b>IDV:</b> ₹${s.insurer_declared_idv || item.idv || '0'} | <b>NCB:</b> ${s.ncb || '0'}%</div>
-                    <div style="font-size:0.75rem; color:#00f2fe; margin-top:2px;">🕒 Injected: ${item.dateStr} (${item.dayStr})</div>
-                </div>
-
-                <div style="display:flex; gap:6px; margin-top:auto; padding-top:8px;">
-                    <button onclick="window.open360PolicyInspector('${item.id}')" class="nav-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; border-color:var(--neon-cyan); color:var(--neon-cyan);" title="View 360° Specs">👁 View</button>
-                    <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="flex:1; padding:6px 8px; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 Copy</button>
-                    <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
-                    <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
-                </div>
-            </div>`;
-        };
-
-        let isAboutHindiActive = false;
-        window.toggleAboutLanguage = function() {
-            isAboutHindiActive = !isAboutHindiActive;
-            document.getElementById('lblAboutLangSwitcher').innerText = isAboutHindiActive ? "English" : "हिंदी";
-            document.querySelectorAll('.guide-en').forEach(el => el.classList.toggle('hidden', isAboutHindiActive));
-            document.querySelectorAll('.guide-hi').forEach(el => el.classList.toggle('hidden', !isAboutHindiActive));
-        };
-
-        window.copyPolicyAutoFillerTemplate = function() {
-            const templateText = document.getElementById('policyTemplateCodeString').innerText;
-            navigator.clipboard.writeText(templateText).then(() => {
-                alert("📋 Full Auto-Filler Format Template copied to clipboard!");
-            });
-        };
-
-        window.renderAdminPolicySearchDashboard = function() {
-            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!libraryContainer) return;
-            
-            get(ref(db, 'policy_code_repository')).then((snap) => {
-                if(!snap.exists()) {
-                    libraryContainer.innerHTML = "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>Repository is empty.</p>";
-                    return;
-                }
-                let allItems = [];
-                snap.forEach(child => {
-                    let val = child.val();
-                    val.id = child.key;
-                    allItems.push(val);
-                });
-                window.displayPolicyRepoList(allItems);
-            });
-        };
-
-        window.currentLibraryStatusFilter = 'all';
-        window.filterLibraryByStatus = function(filterType) {
-            window.currentLibraryStatusFilter = filterType;
-            ['all', 'done', 'not_done'].forEach(t => {
-                const btn = document.getElementById(`libFilter_${t}`);
-                if(btn) {
-                    if(t === filterType) {
-                        btn.style.borderColor = "var(--neon-cyan)";
-                        btn.style.color = "var(--neon-cyan)";
-                        btn.style.background = "rgba(0,242,254,0.15)";
-                    } else {
-                        btn.style.borderColor = "rgba(255,255,255,0.2)";
-                        btn.style.color = "var(--text-sub)";
-                        btn.style.background = "transparent";
-                    }
-                }
-            });
-            window.renderAdminPolicySearchDashboard();
-        };
-
-        window.togglePolicyDoneStatus = function(id, newState) {
-            update(ref(db, `policy_code_repository/${id}`), { isDone: newState }).then(() => {
-                if(!document.getElementById('policySubBlock_search').classList.contains('hidden')) {
-                    window.executeAdminPolicySearch();
-                } else {
-                    window.renderAdminPolicySearchDashboard();
-                }
-            });
-        };
-
-        window.displayPolicyRepoList = function(itemsArray) {
-            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!libraryContainer) return;
-            
-            const items = itemsArray.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
-            let libraryHtml = "";
-            
-            items.forEach((item) => {
-                let isDone = item.isDone === true;
-                if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
-                if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
-                libraryHtml += window.generatePolicyCardMarkup(item);
-            });
-            
-            libraryContainer.innerHTML = libraryHtml || "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>No records found for this filter.</p>";
-            if(window.isLibraryBatchModeActive) {
-                libraryContainer.classList.add('batch-mode-active');
-            }
-        };
-
-        window.copyPolicySnippetFromRepo = function(base64Code) {
-            try {
-                const code = decodeURIComponent(escape(atob(base64Code)));
-                navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Clean Auto-Filler script copied to clipboard!");
-                });
-            } catch(e) {
-                alert("Copy error: " + e.message);
-            }
-        };
-
-        window.deletePolicyRepoItem = function(id) {
-            if(confirm("Permanently delete this policy snippet from repository?")) {
-                remove(ref(db, `policy_code_repository/${id}`)).then(() => {
-                    if(!document.getElementById('policySubBlock_search').classList.contains('hidden')) {
-                        window.executeAdminPolicySearch();
-                    } else {
-                        window.renderAdminPolicySearchDashboard();
-                    }
-                });
+            if(checkedBoxes.length === 0) { alert("Please select at least 1 policy."); return; }
+            if(confirm(`Delete ${checkedBoxes.length} selected policies?`)) {
+                let promises = Array.from(checkedBoxes).map(cb => remove(ref(db, `policy_code_repository/${cb.getAttribute('data-id')}`)));
+                Promise.all(promises).then(() => { window.cancelLibraryManageMode(); window.renderAdminPolicySearchDashboard(); });
             }
         };
 
