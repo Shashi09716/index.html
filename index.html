@@ -754,6 +754,7 @@
         <div class="loader-spinner"></div>
         <div class="preloader-text">NEXUS SECURE GATEWAY V25.0</div>
     </div>
+    </div>
     
     <div id="loginSuccessOverlay">
         <div class="cyber-unlock-ring"></div>
@@ -1527,13 +1528,10 @@
                                         </div>
                                         <div class="mac-terminal-prompt-title">root@matrix-hub:~# JS INJECTOR ⚡</div>
                                     </div>
-                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste complete JavaScript payload / Policy object here...
+                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste bulk or single policy repository payload here...
 const policyRepo = {
-    'RJ45CD9597': {
-        business_type: 'RENEW', coverage_type: 'Comprehensive', insurer: 'TATA AIG',
-        premium: '6619', registration_number: 'RJ45CD9597', name: 'MANOJ KUMAR MEENA',
-        mobile: '9001193100', policy_number: '6205029417 01 00', insurer_declared_idv: '319801'
-    }
+    'WB42BB2602': { ... },
+    'UP14CJ0064': { ... }
 };"></textarea>
                                 </div>
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & SAVE TO CLOUD VAULT</button>
@@ -1548,6 +1546,7 @@ const policyRepo = {
                                         class="search-terminal-input" 
                                         placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name and press Enter..." 
                                         onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
+                                        oninput="window.executeAdminPolicySearch()"
                                         style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
                                     >
                                     <button onclick="window.executeAdminPolicySearch()" class="hud-engage-btn" style="width:auto; padding:0 25px; border-radius:12px;">SEARCH</button>
@@ -1592,8 +1591,8 @@ const policyRepo = {
                                         <div style="font-size:2.2rem; margin-bottom:8px;">⚡</div>
                                         <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">1. Mac Injector</h4>
                                         <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">1. मैक इंजेक्टर</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste policy scripts in hacker macOS terminal. Auto-extracts 40+ fields with real-time analytics.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">macOS टर्मिनल में पॉलिसी स्क्रिप्ट पेस्ट करें। 40+ फील्ड्स अपने आप एक्सट्रैक्ट और सिंक हो जाएंगे।</p>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste multi-policy payloads in hacker macOS terminal. Auto-extracts 40+ fields with real-time analytics.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">macOS टर्मिनल में बल्क पॉलिसी कोड पेस्ट करें। 40+ फील्ड्स अपने आप अलग-अलग एक्सट्रैक्ट होकर सिंक हो जाएंगे।</p>
                                     </div>
                                     <div class="guide-box">
                                         <div style="font-size:2.2rem; margin-bottom:8px;">🔍</div>
@@ -2075,8 +2074,122 @@ const policyRepo = {
             }
         };
 
-        // Deep Full-Spec Policy Payload Parser
-        function parseFullPolicyPayload(rawText) {
+        // Generates the Standalone Auto-Filler Script for each vehicle
+        function generateStandaloneAutoFillerScript(regNo, data) {
+            const dataString = JSON.stringify({ [regNo]: data }, null, 4);
+            return `(function() {
+    // Policy Database for ${regNo}
+    const policyRepo = ${dataString};
+
+    // UI Selector Injection on page
+    let existingUI = document.getElementById('matrixHubSelector');
+    if(existingUI) existingUI.remove();
+
+    let panel = document.createElement('div');
+    panel.id = 'matrixHubSelector';
+    panel.style.cssText = "position:fixed; top:10px; right:10px; z-index:99999; background:#111; color:#0ff; padding:15px; border:2px solid #0ff; border-radius:8px; font-family:Arial; box-shadow:0 0 15px rgba(0,255,255,0.5);";
+    panel.innerHTML = \`
+        <h4 style="margin:0 0 10px 0;">⚡ Matrix Hub Auto-Filler</h4>
+        <select id="matrixSelect" style="width:200px; padding:5px; background:#222; color:#fff; border:1px solid #0ff; border-radius:4px;">
+            <option value="">-- Select Registration No --</option>
+            \${Object.keys(policyRepo).map(reg => \`<option value="\${reg}">\${reg} - ₹\${policyRepo[reg].premium || '0'}</option>\`).join('')}
+        </select>
+        <button id="fillBtn" style="margin-top:8px; width:100%; padding:6px; background:#0ff; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">Fill Data</button>
+    \`;
+    document.body.appendChild(panel);
+
+    document.getElementById('fillBtn').onclick = function() {
+        let selectedReg = document.getElementById('matrixSelect').value;
+        if(!selectedReg) { alert("Please select a Registration Number!"); return; }
+        let data = policyRepo[selectedReg];
+
+        for (let key in data) {
+            let fullKey = 'id_' + key;
+            let el = document.getElementById(fullKey) || document.getElementById(key) || document.querySelector('[name="' + fullKey + '"]') || document.querySelector('[name="' + key + '"]');
+            if (el) {
+                if (el.tagName === 'SELECT') {
+                    let matched = false;
+                    for (let i = 0; i < el.options.length; i++) {
+                        if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || el.options[i].text.toLowerCase().includes('tata')) {
+                            el.selectedIndex = i; matched = true; break;
+                        }
+                    }
+                    if(!matched) el.value = data[key];
+                } else { 
+                    el.value = data[key]; 
+                }
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+
+        let financerEl = document.getElementById('id_financier') || document.getElementById('financier') || document.querySelector('[name="id_financier"]') || document.querySelector('[name="financier"]');
+        if (financierEl) {
+            financierEl.value = data.financier;
+            financierEl.dispatchEvent(new Event('input', { bubbles: true }));
+            financierEl.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        const checkboxMappings = {
+            "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
+            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+            "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
+            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+            "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
+            "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+            "same_address": ["id_same_address", "same_address"]
+        };
+
+        for (let prop in checkboxMappings) {
+            if (data.hasOwnProperty(prop)) {
+                let selectors = checkboxMappings[prop];
+                for (let sel of selectors) {
+                    let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
+                    if (chk && chk.type === 'checkbox') {
+                        chk.checked = data[prop];
+                        chk.dispatchEvent(new Event('change', { bubbles: true }));
+                        chk.dispatchEvent(new Event('click', { bubbles: true }));
+                    }
+                }
+            }
+        }
+
+        if (window.jQuery) { 
+            jQuery('select').trigger('change'); 
+            jQuery('input[type="checkbox"]').trigger('change');
+        }
+        
+        console.log("🎉 " + selectedReg + " data filled successfully via Matrix Hub!");
+        alert("🎉 " + selectedReg + " data filled successfully!");
+    };
+})();`;
+        }
+
+        // Multi-Policy Extractor & Bulk-to-Single Converter
+        function extractPoliciesFromPayload(rawText) {
+            let extractedMap = {};
+            try {
+                const repoMatch = rawText.match(/const\s+policyRepo\s*=\s*(\{[\s\S]*?\});\s*(?:\n|\/\/|\/\*|let|\$|document|\()/);
+                if (repoMatch) {
+                    const parsedObj = new Function(`return ${repoMatch[1]}`)();
+                    if (parsedObj && typeof parsedObj === 'object') {
+                        return parsedObj;
+                    }
+                }
+            } catch (e) {}
+
+            try {
+                const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    const parsedObj = new Function(`return ${jsonMatch[0]}`)();
+                    if (parsedObj && typeof parsedObj === 'object') {
+                        if (parsedObj.policyRepo) return parsedObj.policyRepo;
+                        return parsedObj;
+                    }
+                }
+            } catch (e) {}
+
+            // Fallback for flat single policy object
             const extract = (regex, fallback = "N/A") => {
                 const match = rawText.match(regex);
                 return match ? match[1].trim() : fallback;
@@ -2086,13 +2199,14 @@ const policyRepo = {
                 return match ? (match[1].toLowerCase() === 'true') : false;
             };
 
-            return {
-                registration_number: extract(/(?:registration_number|id_registration_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RJ45CD9597"),
+            const regNo = extract(/(?:registration_number|id_registration_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RJ45CD9597");
+            extractedMap[regNo] = {
+                registration_number: regNo,
                 policy_number: extract(/(?:policy_number|id_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
                 insurer: extract(/(?:insurer|id_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "TATA AIG"),
                 name: extract(/(?:name|id_name|customer_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "CUSTOMER"),
-                mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, ""),
+                email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "abc@gmail.com"),
                 premium: extract(/(?:premium|id_premium|total_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
                 tp_premium: extract(/(?:tp_premium|id_tp_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
                 od_premium: extract(/(?:od_premium|id_od_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
@@ -2131,42 +2245,54 @@ const policyRepo = {
                 is_consumables_cover: extractBool(/(?:is_consumables_cover|id_is_consumables_cover)['"]?\s*:\s*(true|false)/i),
                 same_address: extractBool(/(?:same_address|id_same_address)['"]?\s*:\s*(true|false)/i)
             };
+            return extractedMap;
         }
 
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
-            if(!codeText) { alert("Please paste a JavaScript policy payload first."); return; }
+            if(!codeText) { alert("Please paste JavaScript policy payload first."); return; }
             
-            const parsed = parseFullPolicyPayload(codeText);
+            const policyMap = extractPoliciesFromPayload(codeText);
+            const regKeys = Object.keys(policyMap);
+            if(regKeys.length === 0) { alert("No valid policy objects identified in payload."); return; }
+
             const now = new Date();
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             const isoDate = now.toISOString().split('T')[0];
             const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
             const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
             const dayStr = daysArr[now.getDay()];
-            
-            const codeRef = push(ref(db, 'policy_code_repository'));
-            set(codeRef, {
-                id: codeRef.key,
-                title: `${parsed.insurer} - ${parsed.registration_number} (${parsed.name})`,
-                regNo: parsed.registration_number,
-                policyNo: parsed.policy_number,
-                clientName: parsed.name,
-                insurer: parsed.insurer,
-                contact: parsed.mobile,
-                premium: parsed.premium,
-                idv: parsed.insurer_declared_idv,
-                rawCode: codeText,
-                fullSpec: parsed,
-                isDone: false,
-                isoDate: isoDate,
-                dateStr: dateStr,
-                timeStr: timeStr,
-                dayStr: dayStr,
-                epoch: Date.now()
-            }).then(() => {
+
+            let savePromises = regKeys.map(regNo => {
+                const pData = policyMap[regNo];
+                pData.registration_number = pData.registration_number || regNo;
+                const standaloneScript = generateStandaloneAutoFillerScript(regNo, pData);
+                
+                const codeRef = push(ref(db, 'policy_code_repository'));
+                return set(codeRef, {
+                    id: codeRef.key,
+                    title: `${pData.insurer || 'INSURER'} - ${regNo} (${pData.name || 'CLIENT'})`,
+                    regNo: regNo,
+                    policyNo: pData.policy_number || "N/A",
+                    clientName: pData.name || "CLIENT",
+                    insurer: pData.insurer || "TATA AIG",
+                    contact: pData.mobile || "",
+                    premium: pData.premium || "0",
+                    idv: pData.insurer_declared_idv || "0",
+                    rawCode: standaloneScript,
+                    fullSpec: pData,
+                    isDone: false,
+                    isoDate: isoDate,
+                    dateStr: dateStr,
+                    timeStr: timeStr,
+                    dayStr: dayStr,
+                    epoch: Date.now()
+                });
+            });
+
+            Promise.all(savePromises).then(() => {
                 document.getElementById('adminPolicyCodePasteInput').value = "";
-                alert(`⚡ Policy [${parsed.registration_number}] Injected & Synced into Cloud Matrix!`);
+                alert(`🎉 ${regKeys.length} Policies Injected & Converted Successfully into Standalone Format!`);
                 window.filterPolicyAnalytics('today');
             });
         };
@@ -2246,10 +2372,10 @@ const policyRepo = {
             get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
                 if(!snap.exists()) return;
                 const item = snap.val();
-                const s = item.fullSpec || parseFullPolicyPayload(item.rawCode || "");
+                const s = item.fullSpec || {};
 
-                document.getElementById('inspectorHeaderTitle').innerText = `${s.insurer} // ${s.registration_number}`;
-                document.getElementById('inspectorHeaderSubtitle').innerText = `Customer: ${s.name} | Policy No: ${s.policy_number}`;
+                document.getElementById('inspectorHeaderTitle').innerText = `${s.insurer || item.insurer} // ${s.registration_number || item.regNo}`;
+                document.getElementById('inspectorHeaderSubtitle').innerText = `Customer: ${s.name || item.clientName} | Policy No: ${s.policy_number || item.policyNo}`;
 
                 let addonsHtml = "";
                 const addonsList = [
@@ -2269,30 +2395,30 @@ const policyRepo = {
                     <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,242,254,0.08); border:1px solid rgba(0,242,254,0.3); padding:14px; border-radius:10px; margin-top:15px;">
                         <div>
                             <span style="color:var(--text-sub); font-size:0.8rem; font-family:'Orbitron';">TOTAL NET PREMIUM</span>
-                            <div style="color:#f1c40f; font-family:'Orbitron'; font-size:1.8rem; font-weight:900;">₹${s.premium}</div>
+                            <div style="color:#f1c40f; font-family:'Orbitron'; font-size:1.8rem; font-weight:900;">₹${s.premium || item.premium || '0'}</div>
                         </div>
                         <div style="text-align:right;">
                             <span style="color:var(--text-sub); font-size:0.8rem; font-family:'Orbitron';">INSURER DECLARED IDV</span>
-                            <div style="color:#2ecc71; font-family:'Orbitron'; font-size:1.4rem; font-weight:900;">₹${s.insurer_declared_idv}</div>
+                            <div style="color:#2ecc71; font-family:'Orbitron'; font-size:1.4rem; font-weight:900;">₹${s.insurer_declared_idv || item.idv || '0'}</div>
                         </div>
                     </div>
 
                     <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">🚘 VEHICLE & REGISTRATION</h5>
                     <div class="inspector-specs-grid">
-                        <div class="inspector-spec-node"><b>Reg Number</b><span>${s.registration_number}</span></div>
-                        <div class="inspector-spec-node"><b>Reg Date</b><span>${s.registration_date}</span></div>
-                        <div class="inspector-spec-node"><b>Manufacturing</b><span>${s.manufacturing_date}</span></div>
-                        <div class="inspector-spec-node"><b>Engine No</b><span>${s.engine_number}</span></div>
-                        <div class="inspector-spec-node"><b>Chassis No</b><span>${s.chassis_number}</span></div>
-                        <div class="inspector-spec-node"><b>Vehicle Type</b><span>${s.product_type} (${s.vehicle_category})</span></div>
+                        <div class="inspector-spec-node"><b>Reg Number</b><span>${s.registration_number || item.regNo}</span></div>
+                        <div class="inspector-spec-node"><b>Reg Date</b><span>${s.registration_date || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Manufacturing</b><span>${s.manufacturing_date || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Engine No</b><span>${s.engine_number || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Chassis No</b><span>${s.chassis_number || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Vehicle Type</b><span>${s.product_type || 'Car'} (${s.vehicle_category || 'Private'})</span></div>
                     </div>
 
                     <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">💰 PREMIUM & TAX BREAKDOWN</h5>
                     <div class="inspector-specs-grid">
-                        <div class="inspector-spec-node"><b>OD Premium</b><span>₹${s.od_premium}</span></div>
-                        <div class="inspector-spec-node"><b>TP Premium</b><span>₹${s.tp_premium}</span></div>
-                        <div class="inspector-spec-node"><b>Service Tax / GST</b><span>₹${s.service_tax}</span></div>
-                        <div class="inspector-spec-node"><b>NCB Applied</b><span>${s.ncb}% (Prev: ${s.previous_ncb}%)</span></div>
+                        <div class="inspector-spec-node"><b>OD Premium</b><span>₹${s.od_premium || '0'}</span></div>
+                        <div class="inspector-spec-node"><b>TP Premium</b><span>₹${s.tp_premium || '0'}</span></div>
+                        <div class="inspector-spec-node"><b>Service Tax / GST</b><span>₹${s.service_tax || '0'}</span></div>
+                        <div class="inspector-spec-node"><b>NCB Applied</b><span>${s.ncb || '0'}% (Prev: ${s.previous_ncb || '0'}%)</span></div>
                     </div>
 
                     <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">🛡️ ACTIVE ADD-ON COVERS</h5>
@@ -2300,11 +2426,11 @@ const policyRepo = {
 
                     <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.95rem; margin:15px 0 8px 0;">👤 CUSTOMER & NOMINEE</h5>
                     <div class="inspector-specs-grid">
-                        <div class="inspector-spec-node"><b>Full Name</b><span>${s.name}</span></div>
-                        <div class="inspector-spec-node"><b>Mobile No</b><span>${s.mobile}</span></div>
-                        <div class="inspector-spec-node"><b>Email</b><span>${s.email}</span></div>
-                        <div class="inspector-spec-node"><b>Nominee</b><span>${s.nominee_name} (${s.nominee_relationship})</span></div>
-                        <div class="inspector-spec-node" style="grid-column:1/-1;"><b>Address</b><span>${s.address}, ${s.city} - ${s.pincode} (${s.state})</span></div>
+                        <div class="inspector-spec-node"><b>Full Name</b><span>${s.name || item.clientName}</span></div>
+                        <div class="inspector-spec-node"><b>Mobile No</b><span>${s.mobile || item.contact || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Email</b><span>${s.email || 'N/A'}</span></div>
+                        <div class="inspector-spec-node"><b>Nominee</b><span>${s.nominee_name || 'NA'} (${s.nominee_relationship || 'NA'})</span></div>
+                        <div class="inspector-spec-node" style="grid-column:1/-1;"><b>Address</b><span>${s.address || 'N/A'}, ${s.city || ''} - ${s.pincode || ''} (${s.state || ''})</span></div>
                     </div>
 
                     <div style="display:flex; gap:10px; margin-top:20px;">
@@ -2324,12 +2450,12 @@ const policyRepo = {
         window.copyRawPolicyCode = function(itemId) {
             get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
                 if(snap.exists()) {
-                    navigator.clipboard.writeText(snap.val().rawCode).then(() => alert("📋 Full policy script copied to clipboard!"));
+                    navigator.clipboard.writeText(snap.val().rawCode).then(() => alert("📋 Full standalone script copied to clipboard!"));
                 }
             });
         };
 
-        // Search Execution (4 Cards Per Row Grid)
+        // Real-Time Multi-Field Search Execution
         window.executeAdminPolicySearch = function() {
             const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
             const emptyState = document.getElementById('policySearchEmptyState');
@@ -2351,8 +2477,9 @@ const policyRepo = {
 
                 const allItems = Object.values(snap.val()).sort((a,b) => b.epoch - a.epoch);
                 const matched = allItems.filter(item => {
-                    const searchStr = `${item.regNo} ${item.policyNo} ${item.clientName} ${item.insurer} ${item.contact || ''}`.toLowerCase();
-                    return searchStr.includes(q);
+                    const s = item.fullSpec || {};
+                    const combined = `${item.regNo} ${item.policyNo} ${item.clientName} ${item.insurer} ${item.contact || ''} ${s.city || ''} ${s.state || ''} ${s.chassis_number || ''} ${s.engine_number || ''}`.toLowerCase();
+                    return combined.includes(q);
                 });
 
                 emptyState.style.display = "none";
@@ -2371,28 +2498,28 @@ const policyRepo = {
         window.generatePolicyCardMarkup = function(item) {
             let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
             let isDone = item.isDone === true;
-            let s = item.fullSpec || parseFullPolicyPayload(item.rawCode || "");
+            let s = item.fullSpec || {};
 
             return `
             <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer}</span>
+                    <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
                     <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
                 </div>
                 
                 <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
                     <div>
                         <div style="font-size:1.05rem; font-weight:900; color:#fff;">
-                            <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${s.registration_number}')">${s.registration_number}</span>
+                            <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${s.registration_number || item.regNo}')">${s.registration_number || item.regNo}</span>
                         </div>
-                        <div style="font-size:0.85rem; color:var(--text-sub); margin-top:2px;"><b>Name:</b> ${s.name}</div>
+                        <div style="font-size:0.85rem; color:var(--text-sub); margin-top:2px;"><b>Name:</b> ${s.name || item.clientName}</div>
                     </div>
-                    <div class="fullspec-price-tag">₹${s.premium}</div>
+                    <div class="fullspec-price-tag">₹${s.premium || item.premium || '0'}</div>
                 </div>
 
                 <div style="font-size:0.8rem; color:#8696a0; border-top:1px dashed rgba(255,255,255,0.1); padding-top:6px; margin-top:4px;">
-                    <div><b>Pol No:</b> ${s.policy_number}</div>
-                    <div><b>IDV:</b> ₹${s.insurer_declared_idv} | <b>NCB:</b> ${s.ncb}%</div>
+                    <div><b>Pol No:</b> ${s.policy_number || item.policyNo}</div>
+                    <div><b>IDV:</b> ₹${s.insurer_declared_idv || item.idv || '0'} | <b>NCB:</b> ${s.ncb || '0'}%</div>
                     <div style="font-size:0.75rem; color:#00f2fe; margin-top:2px;">🕒 Injected: ${item.dateStr} (${item.dayStr})</div>
                 </div>
 
@@ -2486,7 +2613,7 @@ const policyRepo = {
             try {
                 const code = decodeURIComponent(escape(atob(base64Code)));
                 navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Full Policy script copied to clipboard successfully!");
+                    alert("✅ Clean Auto-Filler script copied to clipboard!");
                 });
             } catch(e) {
                 alert("Copy error: " + e.message);
