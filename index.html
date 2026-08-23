@@ -694,11 +694,14 @@
         <div class="loader-spinner"></div>
         <div class="preloader-text">NEXUS SECURE GATEWAY V25.0</div>
     </div>
-    </div>
     
     <div id="loginSuccessOverlay">
-        <div class="cyber-unlock-ring"></div>
-        <div class="warp-text">ACCESS GRANTED</div>
+        <div class="cyber-hud-scanner-gate">
+            <div class="hud-outer-hex"></div>
+            <div class="hud-inner-core">⚡</div>
+            <div class="hud-scan-beam"></div>
+        </div>
+        <div class="warp-text-cyber">ACCESS GRANTED</div>
     </div>
 
     <div id="codeExecutionFullscreenOverlay">
@@ -2002,7 +2005,7 @@ const policyRepo = {
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================================================
-        // 🔍 ADVANCED FULL-SPEC POLICY REPO, BATCH DELETE & REAL-TIME SEARCH ENGINE
+        // 🔍 ADVANCED FULL-SPEC POLICY REPO, BATCH DELETE & DEEP SEARCH ENGINE
         // ==========================================================================
         window.activeAnalyticsPolicyRecords = [];
 
@@ -2146,7 +2149,6 @@ const policyRepo = {
                 }
             } catch (e) {}
 
-            // Fallback for flat single policy object
             const extract = (regex, fallback = "N/A") => {
                 const match = rawText.match(regex);
                 return match ? match[1].trim() : fallback;
@@ -2251,6 +2253,7 @@ const policyRepo = {
                 document.getElementById('adminPolicyCodePasteInput').value = "";
                 alert(`🎉 ${regKeys.length} Policies Injected & Converted Successfully into Standalone Format!`);
                 window.filterPolicyAnalytics('today');
+                window.renderAdminPolicySearchDashboard();
             });
         };
 
@@ -2267,7 +2270,13 @@ const policyRepo = {
                     window.activeAnalyticsPolicyRecords = [];
                     return;
                 }
-                const allData = Object.values(snap.val());
+                let allData = [];
+                snap.forEach(child => {
+                    let val = child.val();
+                    val.id = child.key;
+                    allData.push(val);
+                });
+
                 const now = new Date();
                 const todayIso = now.toISOString().split('T')[0];
                 
@@ -2488,7 +2497,7 @@ const policyRepo = {
             });
         };
 
-        // Real-Time Multi-Field Search Execution
+        // Real-Time Multi-Field Deep Search Execution
         window.executeAdminPolicySearch = function() {
             const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
             const emptyState = document.getElementById('policySearchEmptyState');
@@ -2508,10 +2517,18 @@ const policyRepo = {
                     return;
                 }
 
-                const allItems = Object.values(snap.val()).sort((a,b) => b.epoch - a.epoch);
+                let allItems = [];
+                snap.forEach(child => {
+                    let val = child.val();
+                    val.id = child.key;
+                    allItems.push(val);
+                });
+
+                allItems.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
+
                 const matched = allItems.filter(item => {
                     const s = item.fullSpec || {};
-                    const combined = `${item.regNo} ${item.policyNo} ${item.clientName} ${item.insurer} ${item.contact || ''} ${s.city || ''} ${s.state || ''} ${s.chassis_number || ''} ${s.engine_number || ''}`.toLowerCase();
+                    const combined = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.insurer || ''} ${item.contact || ''} ${s.name || ''} ${s.registration_number || ''} ${s.policy_number || ''} ${s.city || ''} ${s.state || ''} ${s.pincode || ''} ${s.chassis_number || ''} ${s.engine_number || ''} ${s.address || ''} ${item.rawCode || ''}`.toLowerCase();
                     return combined.includes(q);
                 });
 
@@ -2591,8 +2608,13 @@ const policyRepo = {
                     libraryContainer.innerHTML = "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>Repository is empty.</p>";
                     return;
                 }
-                window.cachedPolicyRepoData = snap.val();
-                window.displayPolicyRepoList(window.cachedPolicyRepoData);
+                let allItems = [];
+                snap.forEach(child => {
+                    let val = child.val();
+                    val.id = child.key;
+                    allItems.push(val);
+                });
+                window.displayPolicyRepoList(allItems);
             });
         };
 
@@ -2613,7 +2635,7 @@ const policyRepo = {
                     }
                 }
             });
-            if(window.cachedPolicyRepoData) window.displayPolicyRepoList(window.cachedPolicyRepoData);
+            window.renderAdminPolicySearchDashboard();
         };
 
         window.togglePolicyDoneStatus = function(id, newState) {
@@ -2626,11 +2648,11 @@ const policyRepo = {
             });
         };
 
-        window.displayPolicyRepoList = function(dataObj) {
+        window.displayPolicyRepoList = function(itemsArray) {
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
             if(!libraryContainer) return;
             
-            const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
+            const items = itemsArray.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
             let libraryHtml = "";
             
             items.forEach((item) => {
