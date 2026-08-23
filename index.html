@@ -2004,9 +2004,6 @@ const policyRepo = {
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
-        // ==========================================================================
-        // 🔍 ADVANCED FULL-SPEC POLICY REPO, BATCH DELETE & DEEP SEARCH ENGINE
-        // ==========================================================================
         window.activeAnalyticsPolicyRecords = [];
 
         window.switchPolicySubTab = function(tabName) {
@@ -2034,7 +2031,6 @@ const policyRepo = {
             }
         };
 
-        // Generates the Standalone Auto-Filler Script for each vehicle
         function generateStandaloneAutoFillerScript(regNo, data) {
             const dataString = JSON.stringify({ [regNo]: data }, null, 4);
             return `(function() {
@@ -2125,29 +2121,55 @@ const policyRepo = {
 })();`;
         }
 
-        // Multi-Policy Extractor & Bulk-to-Single Converter
-        function extractPoliciesFromPayload(rawText) {
-            let extractedMap = {};
-            try {
-                const repoMatch = rawText.match(/const\s+policyRepo\s*=\s*(\{[\s\S]*?\});\s*(?:\n|\/\/|\/\*|let|\$|document|\()/);
-                if (repoMatch) {
-                    const parsedObj = new Function(`return ${repoMatch[1]}`)();
-                    if (parsedObj && typeof parsedObj === 'object') {
-                        return parsedObj;
+        function extractObjectByKeyword(text, keyword) {
+            let idx = text.indexOf(keyword);
+            if (idx === -1) return null;
+            let braceStart = text.indexOf('{', idx);
+            if (braceStart === -1) return null;
+            let depth = 0;
+            let inString = false;
+            let stringChar = '';
+            let escape = false;
+            for (let i = braceStart; i < text.length; i++) {
+                let char = text[i];
+                if (escape) { escape = false; continue; }
+                if (char === '\\') { escape = true; continue; }
+                if (inString) {
+                    if (char === stringChar) inString = false;
+                    continue;
+                }
+                if (char === '"' || char === "'" || char === '`') {
+                    inString = true;
+                    stringChar = char;
+                    continue;
+                }
+                if (char === '{') depth++;
+                else if (char === '}') {
+                    depth--;
+                    if (depth === 0) {
+                        let objStr = text.substring(braceStart, i + 1);
+                        try {
+                            return new Function('return ' + objStr)();
+                        } catch(e) {
+                            return null;
+                        }
                     }
                 }
-            } catch (e) {}
+            }
+            return null;
+        }
 
-            try {
-                const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    const parsedObj = new Function(`return ${jsonMatch[0]}`)();
-                    if (parsedObj && typeof parsedObj === 'object') {
-                        if (parsedObj.policyRepo) return parsedObj.policyRepo;
-                        return parsedObj;
-                    }
+        function extractPoliciesFromPayload(rawText) {
+            let extracted = extractObjectByKeyword(rawText, 'policyRepo') || extractObjectByKeyword(rawText, 'data') || extractObjectByKeyword(rawText, 'policyPayload');
+            
+            if (extracted && typeof extracted === 'object' && Object.keys(extracted).length > 0) {
+                let firstKey = Object.keys(extracted)[0];
+                if (extracted[firstKey] && typeof extracted[firstKey] === 'object') {
+                    return extracted;
                 }
-            } catch (e) {}
+                let reg = extracted.registration_number || extracted.id_registration_number || "RJ45CD9597";
+                return { [reg]: extracted };
+            }
 
             const extract = (regex, fallback = "N/A") => {
                 const match = rawText.match(regex);
@@ -2159,52 +2181,53 @@ const policyRepo = {
             };
 
             const regNo = extract(/(?:registration_number|id_registration_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RJ45CD9597");
-            extractedMap[regNo] = {
-                registration_number: regNo,
-                policy_number: extract(/(?:policy_number|id_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                insurer: extract(/(?:insurer|id_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "TATA AIG"),
-                name: extract(/(?:name|id_name|customer_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "CUSTOMER"),
-                mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, ""),
-                email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "abc@gmail.com"),
-                premium: extract(/(?:premium|id_premium|total_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                tp_premium: extract(/(?:tp_premium|id_tp_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                od_premium: extract(/(?:od_premium|id_od_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                service_tax: extract(/(?:service_tax|id_service_tax)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                pa_amount: extract(/(?:pa_amount|id_pa_amount)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                ncb: extract(/(?:ncb|id_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                previous_ncb: extract(/(?:previous_ncb|id_previous_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                insurer_declared_idv: extract(/(?:insurer_declared_idv|id_insurer_declared_idv|idv)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                business_type: extract(/(?:business_type|id_business_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RENEW"),
-                coverage_type: extract(/(?:coverage_type|id_coverage_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Comprehensive"),
-                product_type: extract(/(?:product_type|id_product_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Car"),
-                vehicle_category: extract(/(?:vehicle_category|id_vehicle_category)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Private"),
-                engine_number: extract(/(?:engine_number|id_engine_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                chassis_number: extract(/(?:chassis_number|id_chassis_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                manufacturing_date: extract(/(?:manufacturing_date|id_manufacturing_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                registration_date: extract(/(?:registration_date|id_registration_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                issue_date: extract(/(?:issue_date|id_issue_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                policy_start_date: extract(/(?:policy_start_date|id_policy_start_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                policy_end_date: extract(/(?:policy_end_date|id_policy_end_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                previous_policy_insurer: extract(/(?:previous_policy_insurer|id_previous_policy_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                previous_policy_number: extract(/(?:previous_policy_number|id_previous_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                previous_policy_expiry_date: extract(/(?:previous_policy_expiry_date|id_previous_policy_expiry_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                financier: extract(/(?:financier|id_financier)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                nominee_name: extract(/(?:nominee_name|id_nominee_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                nominee_age: extract(/(?:nominee_age|id_nominee_age)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
-                nominee_relationship: extract(/(?:nominee_relationship|id_nominee_relationship)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
-                address: extract(/(?:address|id_address)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                state: extract(/(?:state|id_state)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                city: extract(/(?:city|id_city)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                pincode: extract(/(?:pincode|id_pincode)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
-                is_legal_liability_driver: extractBool(/(?:is_legal_liability_driver|id_is_legal_liability_driver)['"]?\s*:\s*(true|false)/i),
-                is_depreciation_waiver: extractBool(/(?:is_depreciation_waiver|id_is_depreciation_waiver)['"]?\s*:\s*(true|false)/i),
-                is_key_replacement: extractBool(/(?:is_key_replacement|id_is_key_replacement)['"]?\s*:\s*(true|false)/i),
-                is_road_side_assistance: extractBool(/(?:is_road_side_assistance|id_is_road_side_assistance)['"]?\s*:\s*(true|false)/i),
-                is_engine_protector: extractBool(/(?:is_engine_protector|id_is_engine_protector)['"]?\s*:\s*(true|false)/i),
-                is_consumables_cover: extractBool(/(?:is_consumables_cover|id_is_consumables_cover)['"]?\s*:\s*(true|false)/i),
-                same_address: extractBool(/(?:same_address|id_same_address)['"]?\s*:\s*(true|false)/i)
+            return {
+                [regNo]: {
+                    registration_number: regNo,
+                    policy_number: extract(/(?:policy_number|id_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    insurer: extract(/(?:insurer|id_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "TATA AIG"),
+                    name: extract(/(?:name|id_name|customer_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "CUSTOMER"),
+                    mobile: extract(/(?:mobile|id_mobile|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i, ""),
+                    email: extract(/(?:email|id_email)['"]?\s*:\s*['"]([^'"]+)['"]/i, "abc@gmail.com"),
+                    premium: extract(/(?:premium|id_premium|total_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    tp_premium: extract(/(?:tp_premium|id_tp_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    od_premium: extract(/(?:od_premium|id_od_premium)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    service_tax: extract(/(?:service_tax|id_service_tax)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    pa_amount: extract(/(?:pa_amount|id_pa_amount)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    ncb: extract(/(?:ncb|id_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    previous_ncb: extract(/(?:previous_ncb|id_previous_ncb)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    insurer_declared_idv: extract(/(?:insurer_declared_idv|id_insurer_declared_idv|idv)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    business_type: extract(/(?:business_type|id_business_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "RENEW"),
+                    coverage_type: extract(/(?:coverage_type|id_coverage_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Comprehensive"),
+                    product_type: extract(/(?:product_type|id_product_type)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Car"),
+                    vehicle_category: extract(/(?:vehicle_category|id_vehicle_category)['"]?\s*:\s*['"]([^'"]+)['"]/i, "Private"),
+                    engine_number: extract(/(?:engine_number|id_engine_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    chassis_number: extract(/(?:chassis_number|id_chassis_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    manufacturing_date: extract(/(?:manufacturing_date|id_manufacturing_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    registration_date: extract(/(?:registration_date|id_registration_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    issue_date: extract(/(?:issue_date|id_issue_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    policy_start_date: extract(/(?:policy_start_date|id_policy_start_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    policy_end_date: extract(/(?:policy_end_date|id_policy_end_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    previous_policy_insurer: extract(/(?:previous_policy_insurer|id_previous_policy_insurer)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    previous_policy_number: extract(/(?:previous_policy_number|id_previous_policy_number)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    previous_policy_expiry_date: extract(/(?:previous_policy_expiry_date|id_previous_policy_expiry_date)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    financier: extract(/(?:financier|id_financier)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                    nominee_name: extract(/(?:nominee_name|id_nominee_name)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                    nominee_age: extract(/(?:nominee_age|id_nominee_age)['"]?\s*:\s*['"]([^'"]+)['"]/i, "0"),
+                    nominee_relationship: extract(/(?:nominee_relationship|id_nominee_relationship)['"]?\s*:\s*['"]([^'"]+)['"]/i, "NA"),
+                    address: extract(/(?:address|id_address)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    state: extract(/(?:state|id_state)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    city: extract(/(?:city|id_city)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    pincode: extract(/(?:pincode|id_pincode)['"]?\s*:\s*['"]([^'"]+)['"]/i, "N/A"),
+                    is_legal_liability_driver: extractBool(/(?:is_legal_liability_driver|id_is_legal_liability_driver)['"]?\s*:\s*(true|false)/i),
+                    is_depreciation_waiver: extractBool(/(?:is_depreciation_waiver|id_is_depreciation_waiver)['"]?\s*:\s*(true|false)/i),
+                    is_key_replacement: extractBool(/(?:is_key_replacement|id_is_key_replacement)['"]?\s*:\s*(true|false)/i),
+                    is_road_side_assistance: extractBool(/(?:is_road_side_assistance|id_is_road_side_assistance)['"]?\s*:\s*(true|false)/i),
+                    is_engine_protector: extractBool(/(?:is_engine_protector|id_is_engine_protector)['"]?\s*:\s*(true|false)/i),
+                    is_consumables_cover: extractBool(/(?:is_consumables_cover|id_is_consumables_cover)['"]?\s*:\s*(true|false)/i),
+                    same_address: extractBool(/(?:same_address|id_same_address)['"]?\s*:\s*(true|false)/i)
+                }
             };
-            return extractedMap;
         }
 
         window.saveAdminPolicyCodeSnippet = function() {
@@ -2257,7 +2280,6 @@ const policyRepo = {
             });
         };
 
-        // Analytics Filters (Today / Yesterday / Custom Range)
         window.filterPolicyAnalytics = function(type) {
             ['today', 'yesterday'].forEach(id => {
                 const btn = document.getElementById(`filterBtn_${id}`);
@@ -2304,7 +2326,6 @@ const policyRepo = {
             });
         };
 
-        // View Details Modal Popup
         window.openPolicyDetailsModal = function() {
             const tbody = document.getElementById('policyDetailsModalTbody');
             const data = window.activeAnalyticsPolicyRecords || [];
@@ -2333,9 +2354,6 @@ const policyRepo = {
             document.getElementById('policyHistoryDetailsModal').classList.add('hidden');
         };
 
-        // ==========================================
-        // 🗑️ 3-IN-1 LIBRARY BATCH DELETE ENGINE
-        // ==========================================
         window.isLibraryBatchModeActive = false;
 
         window.toggleLibraryManageMode = function() {
@@ -2405,7 +2423,6 @@ const policyRepo = {
             }
         };
 
-        // Compact & Sleek 360° Policy Data Inspector Modal
         window.open360PolicyInspector = function(itemId) {
             get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
                 if(!snap.exists()) return;
@@ -2497,7 +2514,6 @@ const policyRepo = {
             });
         };
 
-        // Real-Time Multi-Field Deep Search Execution
         window.executeAdminPolicySearch = function() {
             const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
             const emptyState = document.getElementById('policySearchEmptyState');
@@ -2544,7 +2560,6 @@ const policyRepo = {
             });
         };
 
-        // Unified Full-Spec Card Generator
         window.generatePolicyCardMarkup = function(item) {
             let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
             let isDone = item.isDone === true;
@@ -2583,7 +2598,6 @@ const policyRepo = {
             </div>`;
         };
 
-        // Bilingual Toggle & Template Copy
         let isAboutHindiActive = false;
         window.toggleAboutLanguage = function() {
             isAboutHindiActive = !isAboutHindiActive;
