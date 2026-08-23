@@ -1465,7 +1465,6 @@
                     });
                 };
 
-                // Updated SubTab switcher to include 'about' tab
                 window.switchPolicySubTab = function(tabName) {
                     ['injector', 'search', 'library', 'about'].forEach(t => {
                         const block = document.getElementById(`policySubBlock_${t}`);
@@ -1518,16 +1517,23 @@
         <div id="policySubBlock_about" class="policy-sub-content hidden">
             <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--border-glass); border-radius: 14px; padding: 25px; color: #fff; font-family: 'Segoe UI', sans-serif;">
                 <h3 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 15px; font-size: 1.3rem;">ℹ️ System Format & About Us Guide</h3>
-                <p style="color: var(--text-sub); margin-bottom: 15px; line-height: 1.6;">The Cyber Policy Injector engine supports structured JavaScript object formats containing registration numbers, policy numbers, customer contact information, and insurer metadata.</p>
+                <p style="color: var(--text-sub); margin-bottom: 15px; line-height: 1.6;">The Cyber Policy Injector engine supports structured JavaScript object formats containing registration numbers, policy numbers, customer contact information, and insurer metadata matching the exact schema below:</p>
                 <div style="background: #000; border: 1px solid rgba(0,242,254,0.3); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.85rem; color: #00f2fe; margin-bottom: 15px; position: relative;">
                     <button onclick="window.copyFormatTemplate()" style="position: absolute; top: 10px; right: 10px; background: var(--neon-cyan); color: #000; border: none; padding: 4px 10px; border-radius: 4px; font-family: Orbitron; font-weight: bold; cursor: pointer; font-size: 0.75rem;">📋 COPY</button>
-                    <pre id="formatTemplateCode">var data = {
-    id_registration_number: "DL03CCU1728",
-    id_policy_number: "POL-99887766",
-    id_name: "Shashi Tiwari",
-    id_contact: "9835187726",
-    id_insurer: "HDFC ERGO"
-};</pre>
+                    <pre id="formatTemplateCode">(function() {
+    const policyRepo = {
+        "KA05NA0342": {
+            "insurer": "TATA AIG",
+            "policy_number": "6205077058 01 00",
+            "registration_number": "KA05NA0342",
+            "name": "PRAVEEN DIXIT",
+            "email": "abc@gmail.com",
+            "mobile": "9611039959",
+            "premium": "7661"
+        }
+    };
+    // ... auto-filler logic
+})();</pre>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.95rem;">
                     <div style="background: rgba(0,242,254,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,242,254,0.2);">
