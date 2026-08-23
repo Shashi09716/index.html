@@ -1262,6 +1262,8 @@
 
         <!-- Sub Block 3: Policy Library (Filtered Done / Not Done Views) -->
         <div id="policySubBlock_library" class="policy-sub-content hidden">
+            
+            <!-- Top Controls: Filters -->
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                 <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
                 <div style="display:flex; gap:8px;">
@@ -1270,7 +1272,21 @@
                     <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
                 </div>
             </div>
+
+            <!-- Bulk Delete Control Bar (Hidden by Default) -->
+            <div id="libraryDeleteControlBar" class="hidden" style="display:none; background:rgba(0,0,0,0.8); padding:12px; border-radius:10px; border:1px solid #e74c3c; margin-bottom:12px; align-items:center; gap:8px; flex-wrap:wrap; box-shadow:0 5px 15px rgba(231,76,60,0.2);">
+                <div style="display:flex; align-items:center; background:#02050e; border:1px solid #e74c3c; border-radius:6px; padding:4px 8px; flex:1; min-width:180px;">
+                    <span style="color:#e74c3c; margin-right:6px;">🔍</span>
+                    <input type="text" id="libDeleteSearch" placeholder="Find Reg No to delete..." oninput="window.filterLibraryDeleteSearch()" style="background:transparent; border:none; color:#fff; outline:none; width:100%; font-family:monospace; font-size:0.9rem;">
+                </div>
+                <button onclick="window.enableLibrarySelectMode()" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; padding:6px 10px; font-size:0.8rem;">🖱️ Select</button>
+                <button onclick="window.selectAllLibraryForDelete()" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; padding:6px 10px; font-size:0.8rem;">✅ Select All</button>
+                <button onclick="window.executeBulkLibraryDelete()" class="abort-btn" style="padding:6px 12px; border-radius:6px; font-size:0.85rem;">🗑️ Confirm</button>
+            </div>
+
+            <!-- Grid Container for Library Cards -->
             <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
+
         </div>
     </div>
 </div>
@@ -3313,8 +3329,8 @@
             
             const cord = document.getElementById('triggerCord'); 
             
-            // Smooth Animation for pulling
-            if (cord) cord.style.transform = "translateY(50px) scale(0.95)";
+            // Smooth Animation for pulling with Z-index fix
+            if (cord) cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
             
             // Play sound if possible (wrapped in try-catch to prevent browser block crashes)
             try {
@@ -3324,7 +3340,7 @@
             }
 
             setTimeout(() => { 
-                if (cord) cord.style.transform = "translateY(0px) scale(1)"; 
+                if (cord) cord.style.transform = "translateY(0px) scale(1) translateZ(150px)"; 
                 
                 // DIRECT AND FORCEFUL ACTIVATION
                 const mainStage = document.getElementById('mainStage'); 
@@ -3338,7 +3354,7 @@
                     loginTerminal.style.pointerEvents = 'all';
                     loginTerminal.style.visibility = 'visible';
                     loginTerminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
-                    loginTerminal.style.zIndex = '999999';
+                    loginTerminal.style.zIndex = '999999'; /* Ekdum screen ke samne lane ke liye */
                 }
                 
                 if(nav) { 
@@ -3354,16 +3370,14 @@
                 
                 // Reset flag
                 isCordPulled = false; 
-            }, 300);
+            }, 350); // 350ms delay for realistic feel
         };
 
-        // EVENT LISTENERS
+        // EVENT LISTENERS (Strictly binding only once)
         const triggerCordNode = document.getElementById('triggerCord');
         if (triggerCordNode) { 
-            // Mouse aur Touch dono ke liye proper setup
             triggerCordNode.addEventListener('touchstart', window.pullCordAction, {passive: false}); 
             triggerCordNode.addEventListener('mousedown', window.pullCordAction); 
-            triggerCordNode.addEventListener('click', window.pullCordAction); // Add direct click just in case
         }
 
         window.triggerLampActivationOverride = function() {
@@ -3593,7 +3607,6 @@
             }
         });
 
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
         window.updateGlobalFeatures = function() {
             const updates = {
                 policy: document.getElementById('globalTog_policy').checked === true, 
@@ -3602,7 +3615,7 @@
                 gaming: document.getElementById('globalTog_gaming').checked === true,
                 chat: document.getElementById('globalTog_chat').checked === true, 
                 code: document.getElementById('globalTog_code').checked === true,
-                request: true, // ⚡ FIX: Ye missing tha jiski wajah se data corrupt ho raha tha
+                request: true, 
                 thunderMode: document.getElementById('adminThunderControlRange').value,
                 autoLogoutTime: document.getElementById('adminLogoutControl').value
             };
@@ -3626,7 +3639,6 @@
             ['policy', 'notes', 'vault', 'gaming', 'chat', 'code', 'request'].forEach(feat => {
                 const card = document.getElementById(`menuCard_${feat}`);
                 if(card) {
-                    // ⚡ FIX: Strict Boolean Check (String "false" ko block karega)
                     const isGlobalEnabled = (globalFeats[feat] === true || globalFeats[feat] === "true" || (globalFeats[feat] === undefined && feat === 'request'));
                     const isUserEnabled = (userFeats[feat] === true || userFeats[feat] === "true" || userFeats[feat] === undefined);
                     
@@ -3639,7 +3651,6 @@
                 }
             });
         };
-// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         window.renderUserControlPanel = function() {
             const listWrapper = document.getElementById('adminUserControlList'); if(!listWrapper) return;
@@ -3914,7 +3925,7 @@
 
         window.switchPasswordModalSection = function(type) {
             const r = document.getElementById('tabPassResetReq'); const c = document.getElementById('tabPassChangeDirect');
-            if (type === 'request') { r.style.background = '#2a3942'; r.style.color = '#fff'; c.style.background = 'transparent'; c.style.color = '#8696a0'; }
+            if (type === 'request') { r.style.background = '#2a39I seem to be encountering an error. Can I try something else for you?
             else { c.style.background = '#2a3942'; c.style.color = '#fff'; r.style.background = 'transparent'; r.style.color = '#8696a0'; }
             document.getElementById('sectionPasswordResetRequest').classList.toggle('hidden', type !== 'request'); document.getElementById('sectionPasswordChangeDirect').classList.toggle('hidden', type !== 'change');
         };
