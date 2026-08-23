@@ -4774,22 +4774,34 @@
                 }); }; reader.readAsDataURL(file); }
         };
 
-        window.executeClusterLogin = function(event) {
+        // ⚡ FIXED: Direct Database Async Login (No login failure due to empty local cache array)
+        window.executeClusterLogin = async function(event) {
             if(event) { event.preventDefault(); event.stopPropagation(); }
             const u = document.getElementById('accessNodeUser').value.trim(); 
             const p = document.getElementById('accessNodePass').value.trim(); 
             if(!u || p === "") return;
 
             let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            let isSuccess = false; let loggedInId = ""; let mode = MatrixSystemState.get('currentMode');
+            let isSuccess = false; let loggedInId = ""; let mode = 'user';
 
             if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
                 isSuccess = true; loggedInId = "MainframeAdmin"; mode = 'admin';
             } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
-                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                    isSuccess = true; loggedInId = userMatch.id; mode = 'user';
+                try {
+                    const userSnap = await get(ref(db, 'users/' + u));
+                    if(userSnap.exists()) {
+                        let userMatch = userSnap.val();
+                        if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                            if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                            isSuccess = true; loggedInId = userMatch.id; mode = 'user';
+                        }
+                    }
+                } catch(e) {
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
+                    if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                        if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                        isSuccess = true; loggedInId = userMatch.id; mode = 'user';
+                    }
                 }
             }
 
@@ -4798,13 +4810,10 @@
                 overlay.classList.add('active');
                 MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                 
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
-                // ⚡ FIX: Lamp aur login screen ko turant hide karo taaki flash na ho
                 document.getElementById('loginTerminal').style.display = 'none';
                 document.getElementById('mainStage').style.display = 'none';
                 document.getElementById('shashiBrandTitle').style.display = 'none';
 
-                // Dashboard ko background mein turant load kardo
                 MatrixSystemState.set('loggedInCustomerID', loggedInId);
                 MatrixSystemState.set('currentMode', mode);
                 localStorage.setItem('nexus_logged_in_uid', loggedInId);
@@ -4821,14 +4830,12 @@
                     document.getElementById('customerDashboard').classList.remove('hidden');
                     document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel('menu');
-                    window.enforceCustomerPermissions(); // ⚡ FIX 1: Login hone ke turant baad hide/show permissions lag jayengi
+                    window.enforceCustomerPermissions();
                 }
 
-                // Animation poora hone ke baad overlay ko hata do
                 setTimeout(() => {
                     overlay.classList.remove('active');
                 }, 2500); 
-// ================= YAHAN TAK REPLACE KARNA HAI =================
 
             } else {
                 let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
@@ -4838,70 +4845,14 @@
                 set(push(ref(db, 'incident_alerts')), { lockedUID: u, attemptedPassword: p, type: 'failed_login', epoch: Date.now() });
 
                 if (fails >= 3) {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
-                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id, p); return; }
+                    window.triggerLockoutTerminalUI(u, p);
+                    return;
                 }
                 
                 alert("❌ ACCESS DENIED: Invalid System ID or Password.");
                 if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
             }
         };
-
-        window.verifyInputIdentityProgress = function() {
-            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
-            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
-                document.getElementById('accessNodePass').focus();
-            } else { 
-                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
-                if(userMatch) document.getElementById('accessNodePass').focus(); 
-            }
-        };
-
-        window.processBinaryAttachment = function(event, type) {
-            const fileInput = event.target;
-            if(fileInput && fileInput.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
-                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
-
-        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
-        
-        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
-
-        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
-
-        window.logoutEngine = function() {
-            MatrixSystemState.set('loggedInCustomerID', "");
-            localStorage.removeItem('nexus_logged_in_uid');
-            localStorage.removeItem('nexus_system_session_mode');
-            window.location.reload();
-        };
-
-        window.createNewCustomerNode = function() {
-            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
-            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
-            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
-            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
-                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
-                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
-                window.loadAdminSubmissions(); 
-            }).catch((error) => {
-                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
-            });
-        };
-
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
-        // ⚡ FIX 2: Emojis aur GIFs ko page load hote hi draw karne ka command
-        setTimeout(() => { 
-            window.renderInteractiveDrawersContent(); 
-            checkActiveStateSessionRetentionOnLaunch(); 
-        }, 500);
-// ================= YAHAN TAK REPLACE KARNA HAI =================
 
     </script>
 
@@ -4915,46 +4866,39 @@
         }, 2000); 
     </script>
 
-<!-- ⚡ ROPE STUCK PROBLEM FIX ⚡ -->
-<script>
-    setTimeout(() => {
-        const cord = document.getElementById('triggerCord');
-        if(cord) {
-            // Rassi kheenchne ka direct function
-            cord.onclick = function(e) {
-                e.preventDefault();
-                // 1. Rassi ko neeche kheenchne ka animation
-                cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
-                
-                setTimeout(() => {
-                    // 2. Rassi wapas upar jayegi
-                    cord.style.transform = "translateY(0px) scale(1) translateZ(150px)";
+    <!-- ⚡ ROPE STUCK PROBLEM FIX ⚡ -->
+    <script>
+        setTimeout(() => {
+            const cord = document.getElementById('triggerCord');
+            if(cord) {
+                cord.onclick = function(e) {
+                    e.preventDefault();
+                    cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
                     
-                    // 3. Forcefully Login Screen ko aage lana
-                    const stage = document.getElementById('mainStage');
-                    const terminal = document.getElementById('loginTerminal');
-                    const nav = document.getElementById('mainCyberNavbar');
-                    
-                    if(stage) stage.classList.add('activated');
-                    if(terminal) {
-                        terminal.style.opacity = '1';
-                        terminal.style.pointerEvents = 'auto';
-                        terminal.style.visibility = 'visible';
-                        terminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
-                        terminal.style.zIndex = '999999'; /* Ekdum screen ke samne lane ke liye */
-                    }
-                    if(nav) {
-                        nav.style.opacity = '1';
-                        nav.style.pointerEvents = 'all';
-                    }
-                }, 350); // 350ms ka delay realistic feel ke liye
-            };
-            
-            // Mobile touch support ke liye
-            cord.ontouchstart = cord.onclick;
-        }
-    }, 1000); // Page load hone ke 1 second baad trigger activate hoga
-</script>
+                    setTimeout(() => {
+                        cord.style.transform = "translateY(0px) scale(1) translateZ(150px)";
+                        const stage = document.getElementById('mainStage');
+                        const terminal = document.getElementById('loginTerminal');
+                        const nav = document.getElementById('mainCyberNavbar');
+                        
+                        if(stage) stage.classList.add('activated');
+                        if(terminal) {
+                            terminal.style.opacity = '1';
+                            terminal.style.pointerEvents = 'auto';
+                            terminal.style.visibility = 'visible';
+                            terminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
+                            terminal.style.zIndex = '999999';
+                        }
+                        if(nav) {
+                            nav.style.opacity = '1';
+                            nav.style.pointerEvents = 'all';
+                        }
+                    }, 350);
+                };
+                cord.ontouchstart = cord.onclick;
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
