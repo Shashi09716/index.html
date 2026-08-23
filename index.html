@@ -1232,208 +1232,46 @@
             <div class="customerCardsContainer" id="adminStaticContainer">
                 
                 <div id="adminPolicySearchBlock" class="hidden">
-    <div style="background: linear-gradient(135deg, #030814 0%, #061126 100%); border: 2px solid var(--neon-cyan); border-radius: 20px; padding: 30px; box-shadow: 0 25px 60px rgba(0,242,254,0.25); backdrop-filter: blur(25px);">
-        
-        <!-- Header & Navigation Tabs -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; border-bottom:2px solid rgba(0,242,254,0.25); padding-bottom:18px; flex-wrap:wrap; gap:15px;">
-            <div>
-                <h3 class="neon-cyan-text" style="font-size: 1.8rem; margin: 0; letter-spacing:1px; text-shadow: 0 0 25px rgba(0,242,254,0.6);">⚡ MATRIX HUB & POLICY INJECTOR</h3>
-                <p style="color:var(--text-sub); font-size:0.9rem; margin-top:4px;">Advanced Secure Policy Automation & Live Telemetry Center</p>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.2); border-radius:25px; padding:9px 20px; font-size:0.85rem;">🚀 1. Injector</button>
-                <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:25px; padding:9px 20px; font-size:0.85rem;">🔍 2. Search</button>
-                <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:25px; padding:9px 20px; font-size:0.85rem;">📚 3. Library</button>
-                <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:25px; padding:9px 20px; font-size:0.85rem;">ℹ️ 4. About Us</button>
+    <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
+            <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
+            <div style="display:flex; gap:12px;">
+                <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
+                <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">🔍 2. Search</button>
+                <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">📚 3. Library</button>
             </div>
         </div>
 
-        <!-- ================= SUB BLOCK 1: MAC TERMINAL & ANALYTICS ================= -->
+        <!-- Sub Block 1: Code Injector -->
         <div id="policySubBlock_injector" class="policy-sub-content">
-            
-            <!-- Sleek Analytics Calendar Bar -->
-            <div style="background: rgba(10, 20, 42, 0.9); border: 1px solid var(--border-glass); border-radius: 14px; padding: 18px 24px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; box-shadow: inset 0 0 20px rgba(0,0,0,0.6);">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <div style="width:40px; height:40px; background:rgba(0,242,254,0.1); border:1px solid var(--neon-cyan); border-radius:10px; display:flex; justify-content:center; align-items:center; font-size:1.2rem;">📊</div>
-                    <div>
-                        <div style="font-family:'Orbitron'; font-size:0.95rem; color:#fff; font-weight:bold;">LIVE TELEMETRY & INJECTION METRICS</div>
-                        <div style="font-size:0.82rem; color:var(--neon-cyan);" id="analyticsSummaryText">Select date filter to inspect records</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-                    <button onclick="window.filterAnalyticsByDate('today')" class="nav-btn" style="padding: 8px 16px; font-size: 0.8rem; border-radius: 8px;">📅 Today</button>
-                    <button onclick="window.filterAnalyticsByDate('yesterday')" class="nav-btn" style="padding: 8px 16px; font-size: 0.8rem; border-radius: 8px;">⏳ Yesterday</button>
-                    <div style="display:flex; align-items:center; gap:6px; background:rgba(0,0,0,0.6); padding:4px 10px; border-radius:8px; border:1px solid var(--border-glass);">
-                        <span style="font-size:0.75rem; color:var(--text-sub);">Range:</span>
-                        <input type="date" id="analyticsStartDate" style="background:transparent; border:none; color:#fff; font-size:0.75rem; outline:none; color-scheme:dark;">
-                        <span style="color:#8696a0;">to</span>
-                        <input type="date" id="analyticsEndDate" style="background:transparent; border:none; color:#fff; font-size:0.75rem; outline:none; color-scheme:dark;">
-                        <button onclick="window.filterAnalyticsByDate('between')" class="nav-btn" style="padding:5px 12px; font-size:0.75rem; background:var(--neon-cyan); color:#000;">Apply</button>
-                    </div>
-                    <button onclick="window.openViewDetailsPopup()" class="nav-btn" style="padding: 8px 18px; font-size: 0.8rem; border-radius: 8px; border-color: var(--neon-pink); color: var(--neon-pink); background: rgba(255,0,127,0.15);">⚡ VIEW DETAILS</button>
-                </div>
-            </div>
-
-            <!-- Premium Hacker Mac Terminal UI -->
-            <div style="background:#050811; border:2px solid var(--neon-cyan); border-radius:16px; overflow:hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.85), 0 0 30px rgba(0,242,254,0.15);">
-                <div style="background:#0e1628; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(0,242,254,0.2);">
-                    <div style="display:flex; gap:8px;">
-                        <span style="width:12px; height:12px; background:#ff5f56; border-radius:50%; display:inline-block; box-shadow:0 0 6px #ff5f56;"></span>
-                        <span style="width:12px; height:12px; background:#ffbd2e; border-radius:50%; display:inline-block; box-shadow:0 0 6px #ffbd2e;"></span>
-                        <span style="width:12px; height:12px; background:#27c93f; border-radius:50%; display:inline-block; box-shadow:0 0 6px #27c93f;"></span>
-                    </div>
-                    <span style="font-family:monospace; color:var(--neon-cyan); font-size:0.9rem; font-weight:900;">root@matrix-hub:~# JS_INJECTOR_ENGINE</span>
-                    <span style="font-size:0.78rem; color:#2ecc71; font-family:monospace;">● SECURE_CHANNEL</span>
-                </div>
-                <div style="padding:25px;">
-                    <p style="color:#a73ec9; margin-bottom:12px; font-size:0.9rem; font-family:monospace;">// Paste policy JS code block below. System auto-parses Reg No, Client Name, Contact & Timestamp.</p>
-                    <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', ... })..." style="height:210px; font-family:monospace; font-size:0.9rem; border-radius:12px; background:#010308; color:#00f2fe; border-color:rgba(0,242,254,0.4); padding:16px;"></textarea>
-                    <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="margin-top:18px; padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1.5px; font-family:'Orbitron';">⚡ INJECT & COMPILE CODE TO CLOUD</button>
-                </div>
+            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Paste your policy JS code block below. Auto-compiles with precise timestamp & day metrics.</p>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', ... })..." style="height:200px; font-family:monospace; font-size:0.9rem; border-radius:12px;"></textarea>
+                <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px;">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
             </div>
         </div>
 
-        <!-- ================= SUB BLOCK 2: SEARCH POLICY DASHBOARD (4-PER-ROW GRID + ENTER KEY) ================= -->
+        <!-- Sub Block 2: Search Policy with Quick Done Toggle -->
         <div id="policySubBlock_search" class="policy-sub-content hidden">
-            <div style="margin-bottom:25px; text-align:center;">
-                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Type Reg No, Contact Number, or Customer Name & Press Enter..." onkeydown="if(event.key==='Enter') window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:16px 20px; border-radius:12px; max-width:900px; margin:0 auto; background:rgba(0,0,0,0.75); border:2px solid var(--neon-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.15);">
+            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Policy No, or Client Name. Mark status directly.</p>
+            <div style="margin-bottom:20px;">
+                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Policy No, or Client Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
             </div>
-            
-            <div id="adminPolicySearchResultsList" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; max-height:520px; overflow-y:auto; padding-right:5px;">
-                <!-- Animated Blank Default State -->
-                <div style="grid-column: span 4; text-align:center; padding:60px 20px; background:rgba(0,0,0,0.45); border-radius:16px; border:1px dashed rgba(0,242,254,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:15px;">
-                    <div style="width:60px; height:60px; border:3px solid var(--neon-cyan); border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:1.6rem; animation: cyberPulse 2s infinite alternate; box-shadow: 0 0 25px rgba(0,242,254,0.4);">⚡</div>
-                    <div style="font-family:'Orbitron'; color:#fff; font-size:1.1rem; font-weight:bold; letter-spacing:1px;">SEARCH PIPELINE WAITING FOR INPUT</div>
-                    <div style="color:var(--text-sub); font-size:0.9rem; max-width:450px; line-height:1.5;">Type a specific <b>Reg No</b>, <b>Contact Number</b>, or <b>Customer Name</b> above and press <b>Enter</b> or type to query matching records instantly.</div>
-                </div>
-            </div>
+            <div id="adminPolicySearchResultsList" style="display:flex; flex-direction:column; gap:15px; max-height:480px; overflow-y:auto; padding-right:5px;"></div>
         </div>
 
-        <!-- ================= SUB BLOCK 3: POLICY LIBRARY ================= -->
+        <!-- Sub Block 3: Policy Library (Filtered Done / Not Done Views) -->
         <div id="policySubBlock_library" class="policy-sub-content hidden">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                 <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
                 <div style="display:flex; gap:8px;">
-                    <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 16px; border-radius:20px;">All</button>
-                    <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 16px; border-radius:20px;">✅ Done</button>
-                    <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 16px; border-radius:20px;">⏳ Not Done</button>
+                    <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
+                    <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
+                    <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
                 </div>
             </div>
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:18px; max-height:520px; overflow-y:auto; padding-right:5px;"></div>
+            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
         </div>
-
-        <!-- ================= SUB BLOCK 4: ABOUT US / FORMAT GUIDE (BILINGUAL EN/HI + VISUAL ICONS) ================= -->
-        <div id="policySubBlock_about" class="policy-sub-content hidden">
-            <div style="background:rgba(8, 16, 32, 0.95); border:1px solid var(--border-glass); border-radius:18px; padding:25px; box-shadow:0 15px 40px rgba(0,0,0,0.7);">
-                
-                <!-- Language Switcher Bar -->
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:15px; flex-wrap:wrap; gap:12px;">
-                    <h4 style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:1.35rem; margin:0; text-shadow:0 0 10px rgba(0,242,254,0.3);">ℹ️ 4. About Us & Master Guide</h4>
-                    <div style="display:flex; gap:8px; background:rgba(0,0,0,0.6); padding:4px; border-radius:20px; border:1px solid var(--border-glass);">
-                        <button onclick="window.switchAboutLanguage('en')" id="langBtn_en" class="nav-btn" style="padding:6px 16px; font-size:0.8rem; border-radius:15px; border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.2);">English</button>
-                        <button onclick="window.switchAboutLanguage('hi')" id="langBtn_hi" class="nav-btn" style="padding:6px 16px; font-size:0.8rem; border-radius:15px; border-color:transparent; color:var(--text-sub); background:transparent;">हिंदी</button>
-                    </div>
-                </div>
-
-                <!-- Guide Content (English & Hindi containers) -->
-                <div id="aboutContent_en">
-                    <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.6; margin-bottom:20px;">
-                        Welcome to the <b>Matrix Hub Professional Dashboard</b>. Use the interactive modules below to streamline your insurance and policy automation workflow:
-                    </p>
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:15px; margin-bottom:25px;">
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">🚀</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">1. Injector Tab</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">Paste raw JS policy data. Automatically parses registration number, client name, and injects timestamps & day metrics.</p>
-                        </div>
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">🔍</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">2. Search Tab</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">Clean 4-per-row grid layout. Blank by default; queries instantly when you type Reg No, Contact, or Name and press Enter.</p>
-                        </div>
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">📚</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">3. Library Tab</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">Manage operational status (Done / Not Done) with one-click toggles and quick clipboard copying.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="aboutContent_hi" class="hidden">
-                    <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.6; margin-bottom:20px;">
-                        <b>मैट्रिक्स हब प्रोफेशनल डैशबोर्ड</b> में आपका स्वागत है। अपने बीमा और पॉलिसी ऑटोमेशन कार्यप्रवाह को बेहतर बनाने के लिए नीचे दिए गए मॉड्यूल का उपयोग करें:
-                    </p>
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:15px; margin-bottom:25px;">
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">🚀</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">1. इंजेक्टर टैब</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">कच्चा जेएस पॉलिसी डेटा पेस्ट करें। यह स्वचालित रूप से पंजीकरण संख्या और ग्राहक नाम का विश्लेषण करता है और समय दर्ज करता है।</p>
-                        </div>
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">🔍</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">2. सर्च टैब</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">आधुनिक 4-प्रति-पंक्ति ग्रिड। डिफ़ॉल्ट रूप से खाली रहता है; जब आप Reg No या नाम लिखकर Enter दबाते हैं, तो तुरंत खोज परिणाम दिखाता है।</p>
-                        </div>
-                        <div style="background:rgba(0,0,0,0.5); border:1px solid rgba(0,242,254,0.3); border-radius:12px; padding:16px;">
-                            <div style="font-size:1.5rem; margin-bottom:8px;">📚</div>
-                            <h5 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1rem; margin-bottom:6px;">3. लाइब्रेरी टैब</h5>
-                            <p style="color:var(--text-sub); font-size:0.85rem; line-height:1.4;">एक क्लिक से सभी कोड की स्थिति (Done / Not Done) प्रबंधित करें और आसानी से क्लिपबोर्ड पर कॉपी करें।</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Code Format Box with Copy Button -->
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <span style="font-family:'Orbitron'; color:#f1c40f; font-size:0.95rem; font-weight:bold;">📋 Standard JavaScript Auto-Filer Format:</span>
-                    <button onclick="window.copyStandardFormatCode()" class="hud-engage-btn" style="width:auto; padding:8px 18px; font-size:0.82rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY FORMAT</button>
-                </div>
-                <div style="background:#000; border:1px solid var(--neon-cyan); border-radius:10px; padding:15px; font-family:monospace; font-size:0.78rem; color:#0ff; max-height:200px; overflow-y:auto; white-space:pre-wrap;" id="standardFormatCodeBlock">(function() {
-    const policyRepo = {
-        "REGISTRATION_NUMBER": {
-            "insurer": "TATA AIG",
-            "policy_number": "POL-123456",
-            "premium": "7661",
-            "registration_number": "REGISTRATION_NUMBER",
-            "name": "CUSTOMER NAME",
-            "mobile": "9876543210",
-            "is_legal_liability_driver": true,
-            "same_address": true
-        }
-    };
-    let existingUI = document.getElementById('matrixHubSelector');
-    if(existingUI) existingUI.remove();
-    let panel = document.createElement('div');
-    panel.id = 'matrixHubSelector';
-    panel.style.cssText = "position:fixed; top:10px; right:10px; z-index:99999; background:#111; color:#0ff; padding:15px; border:2px solid #0ff; border-radius:8px; font-family:Arial; box-shadow:0 0 15px rgba(0,255,255,0.5);";
-    panel.innerHTML = \`
-        <h4 style="margin:0 0 10px 0;">⚡ Matrix Hub Auto-Filler</h4>
-        <select id="matrixSelect" style="width:200px; padding:5px; background:#222; color:#fff; border:1px solid #0ff; border-radius:4px;">
-            <option value="">-- Select Registration No --</option>
-            \${Object.keys(policyRepo).map(reg => \`<option value="\${reg}">\${reg} - ₹\${policyRepo[reg].premium}</option>\`).join('')}
-        </select>
-        <button id="fillBtn" style="margin-top:8px; width:100%; padding:6px; background:#0ff; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">Fill Data</button>
-    \`;
-    document.body.appendChild(panel);
-    document.getElementById('fillBtn').onclick = function() {
-        let selectedReg = document.getElementById('matrixSelect').value;
-        if(!selectedReg) { alert("Please select a Registration Number!"); return; }
-        let data = policyRepo[selectedReg];
-        for (let key in data) {
-            let fullKey = 'id_' + key;
-            let el = document.getElementById(fullKey) || document.getElementById(key) || document.querySelector('[name="' + fullKey + '"]') || document.querySelector('[name="' + key + '"]');
-            if (el) {
-                el.value = data[key];
-                el.dispatchEvent(new Event('input', { bubbles: true }));
-                el.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        }
-        alert("🎉 " + selectedReg + " data filled successfully!");
-    };
-})();</div>
-
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -1798,10 +1636,10 @@
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================
-        // 🔍 ADVANCED 4-TAB POLICY REPO & ANALYTICS LOGIC
+        // 🔍 ADVANCED 3-TAB POLICY REPO & METADATA LOGIC
         // ==========================================
         window.switchPolicySubTab = function(tabName) {
-            ['injector', 'search', 'library', 'about'].forEach(t => {
+            ['injector', 'search', 'library'].forEach(t => {
                 const block = document.getElementById(`policySubBlock_${t}`);
                 const btn = document.getElementById(`pSubTab_${t}`);
                 if(block) block.classList.toggle('hidden', t !== tabName);
@@ -1809,7 +1647,7 @@
                     if(t === tabName) {
                         btn.style.borderColor = "var(--neon-cyan)";
                         btn.style.color = "var(--neon-cyan)";
-                        btn.style.background = "rgba(0,242,254,0.2)";
+                        btn.style.background = "rgba(0,242,254,0.15)";
                     } else {
                         btn.style.borderColor = "rgba(0,242,254,0.3)";
                         btn.style.color = "var(--text-sub)";
@@ -1822,145 +1660,19 @@
             }
         };
 
-        window.switchAboutLanguage = function(lang) {
-            const btnEn = document.getElementById('langBtn_en');
-            const btnHi = document.getElementById('langBtn_hi');
-            const boxEn = document.getElementById('aboutContent_en');
-            const boxHi = document.getElementById('aboutContent_hi');
-
-            if(lang === 'en') {
-                boxEn.classList.remove('hidden');
-                boxHi.classList.add('hidden');
-                btnEn.style.borderColor = "var(--neon-cyan)"; btnEn.style.color = "var(--neon-cyan)"; btnEn.style.background = "rgba(0,242,254,0.2)";
-                btnHi.style.borderColor = "transparent"; btnHi.style.color = "var(--text-sub)"; btnHi.style.background = "transparent";
-            } else {
-                boxHi.classList.remove('hidden');
-                boxEn.classList.add('hidden');
-                btnHi.style.borderColor = "var(--neon-cyan)"; btnHi.style.color = "var(--neon-cyan)"; btnHi.style.background = "rgba(0,242,254,0.2)";
-                btnEn.style.borderColor = "transparent"; btnEn.style.color = "var(--text-sub)"; btnEn.style.background = "transparent";
-            }
-        };
-
-        window.copyStandardFormatCode = function() {
-            const codeBlock = document.getElementById('standardFormatCodeBlock');
-            if(codeBlock) {
-                navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-                    alert("📋 Standard Auto-Filler format copied to clipboard successfully!");
-                });
-            }
-        };
-
-        // Analytics & Date Filter Handler
-        window.currentFilteredInjectedItems = [];
-        window.filterAnalyticsByDate = function(mode) {
-            get(ref(db, 'policy_code_repository')).then((snap) => {
-                if(!snap.exists()) {
-                    alert("No injected policy records found in cloud repository.");
-                    return;
-                }
-                const allItems = Object.values(snap.val());
-                const now = new Date();
-                const pad = (n) => String(n).padStart(2, '0');
-                const todayStr = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
-                
-                const yest = new Date(now);
-                yest.setDate(yest.getDate() - 1);
-                const yestStr = `${pad(yest.getDate())}/${pad(yest.getMonth()+1)}/${yest.getFullYear()}`;
-
-                if(mode === 'today') {
-                    window.currentFilteredInjectedItems = allItems.filter(item => item.dateStr === todayStr);
-                    document.getElementById('analyticsSummaryText').innerText = `Today (${todayStr}): ${window.currentFilteredInjectedItems.length} Policies Injected`;
-                } else if(mode === 'yesterday') {
-                    window.currentFilteredInjectedItems = allItems.filter(item => item.dateStr === yestStr);
-                    document.getElementById('analyticsSummaryText').innerText = `Yesterday (${yestStr}): ${window.currentFilteredInjectedItems.length} Policies Injected`;
-                } else if(mode === 'between') {
-                    const startVal = document.getElementById('analyticsStartDate').value;
-                    const endVal = document.getElementById('analyticsEndDate').value;
-                    if(!startVal || !endVal) {
-                        alert("Please select both Start Date and End Date for range filtering.");
-                        return;
-                    }
-                    const startTime = new Date(startVal).setHours(0,0,0,0);
-                    const endTime = new Date(endVal).setHours(23,59,59,999);
-                    
-                    window.currentFilteredInjectedItems = allItems.filter(item => {
-                        let itemTime = item.epoch || new Date().getTime();
-                        return itemTime >= startTime && itemTime <= endTime;
-                    });
-                    document.getElementById('analyticsSummaryText').innerText = `Range (${startVal} to ${endVal}): ${window.currentFilteredInjectedItems.length} Policies Injected`;
-                }
-                alert(`✅ Filter Applied! Total ${window.currentFilteredInjectedItems.length} policy(s) found. Click 'VIEW DETAILS' to inspect.`);
-            });
-        };
-
-        // View Details Dark-Mode Popup Modal Table
-        window.openViewDetailsPopup = function() {
-            const items = window.currentFilteredInjectedItems;
-            if(!items || items.length === 0) {
-                alert("⚠️ Please select an analytics filter first ('Today', 'Yesterday', or 'Between Dates') to view telemetry details.");
-                return;
-            }
-
-            let rowsHtml = items.map((item, idx) => `
-                <tr style="border-bottom:1px solid rgba(255,255,255,0.08); transition:0.2s;" onmouseover="this.style.background='rgba(0,242,254,0.05)'" onmouseout="this.style.background='transparent'">
-                    <td style="padding:12px; color:#00f2fe; font-family:'Orbitron';">#${idx + 1}</td>
-                    <td style="padding:12px; font-weight:bold; color:#fff;">${item.regNo || 'N/A'}</td>
-                    <td style="padding:12px; color:#f1c40f;">${item.clientName || 'N/A'}</td>
-                    <td style="padding:12px; color:#2ecc71;">${item.contact || '9876543210'}</td>
-                    <td style="padding:12px; color:#e9edef;">${item.policyNo || 'N/A'}</td>
-                    <td style="padding:12px; color:#a73ec9;">${item.dateStr || 'N/A'}</td>
-                    <td style="padding:12px; color:#ff007f;">${item.dayStr || 'N/A'}</td>
-                    <td style="padding:12px; color:#00f2fe; font-family:monospace;">${item.timeStr || 'N/A'}</td>
-                </tr>
-            `).join('');
-
-            const wrapper = document.getElementById('nexusCustomInlineModalWrapper');
-            if(!wrapper) return;
-            wrapper.innerHTML = `
-                <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="background:#0a0e1a; border:2px solid var(--neon-cyan); max-width:900px; width:95%; max-height:85vh; display:flex; flex-direction:column; padding:25px; box-shadow:0 0 50px rgba(0,242,254,0.4);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-glass); padding-bottom:15px; margin-bottom:15px;">
-                        <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; margin:0; font-size:1.3rem;">⚡ INJECTED POLICY TELEMETRY DETAILS</h4>
-                        <button onclick="window.closeCustomInlinePopupEngine()" class="abort-btn" style="padding:6px 14px; font-size:0.8rem;">✖ CLOSE</button>
-                    </div>
-                    <div style="overflow-y:auto; flex:1; border:1px solid var(--border-glass); border-radius:10px; background:rgba(0,0,0,0.6);">
-                        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
-                            <thead>
-                                <tr style="background:#111b21; color:#00f2fe; font-family:'Orbitron'; font-size:0.8rem; border-bottom:2px solid var(--neon-cyan);">
-                                    <th style="padding:12px;">Serial</th>
-                                    <th style="padding:12px;">Reg No</th>
-                                    <th style="padding:12px;">Customer Name</th>
-                                    <th style="padding:12px;">Contact</th>
-                                    <th style="padding:12px;">Policy No</th>
-                                    <th style="padding:12px;">Date</th>
-                                    <th style="padding:12px;">Day</th>
-                                    <th style="padding:12px;">Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${rowsHtml}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-            wrapper.classList.remove('hidden');
-        };
-
         window.saveAdminPolicyCodeSnippet = function() {
             const codeText = document.getElementById('adminPolicyCodePasteInput').value.trim();
             if(!codeText) { alert("Please paste a code snippet first."); return; }
             
             let regMatch = codeText.match(/id_registration_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let contactMatch = codeText.match(/id_mobile['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/mobile['"]?\s*:\s*['"]([^'"]+)['"]/i);
-            let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i) || codeText.match(/policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
             
-            let regNo = regMatch ? regMatch[1] : "DL03CCU1728";
-            let clientName = nameMatch ? nameMatch[1] : "SHASHI TIWARI";
-            let insurer = insurerMatch ? insurerMatch[1] : "TATA AIG";
-            let contact = contactMatch ? contactMatch[1] : "9876543210";
-            let policyNo = polMatch ? polMatch[1] : "POL-987654";
+            let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
+            let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
+            let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
+            let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
             
             const now = new Date();
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -1973,10 +1685,9 @@
                 id: codeRef.key,
                 title: `${insurer} - ${regNo} (${clientName})`,
                 regNo: regNo,
+                policyNo: policyNo,
                 clientName: clientName,
                 insurer: insurer,
-                contact: contact,
-                policyNo: policyNo,
                 rawCode: codeText,
                 isDone: false,
                 dateStr: dateStr,
@@ -1997,7 +1708,9 @@
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    libraryContainer.innerHTML = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty.</p>";
+                    let emptyMsg = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty. Upload your first policy code above.</p>";
+                    listContainer.innerHTML = emptyMsg;
+                    libraryContainer.innerHTML = emptyMsg;
                     return;
                 }
                 window.cachedPolicyRepoData = snap.val();
@@ -2008,6 +1721,20 @@
         window.currentLibraryStatusFilter = 'all';
         window.filterLibraryByStatus = function(filterType) {
             window.currentLibraryStatusFilter = filterType;
+            ['all', 'done', 'not_done'].forEach(t => {
+                const btn = document.getElementById(`libFilter_${t}`);
+                if(btn) {
+                    if(t === filterType) {
+                        btn.style.borderColor = "var(--neon-cyan)";
+                        btn.style.color = "var(--neon-cyan)";
+                        btn.style.background = "rgba(0,242,254,0.15)";
+                    } else {
+                        btn.style.borderColor = "rgba(255,255,255,0.2)";
+                        btn.style.color = "var(--text-sub)";
+                        btn.style.background = "transparent";
+                    }
+                }
+            });
             if(window.cachedPolicyRepoData) window.displayPolicyRepoList(window.cachedPolicyRepoData);
         };
 
@@ -2018,11 +1745,14 @@
         };
 
         window.displayPolicyRepoList = function(dataObj) {
+            const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!libraryContainer) return;
+            if(!listContainer || !libraryContainer) return;
             
             const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
+            let searchHtml = "";
             let libraryHtml = "";
+            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
             items.forEach((item, index) => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
@@ -2030,76 +1760,602 @@
                 let isDone = item.isDone === true;
                 let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
                 
+                let itemDate = item.epoch ? new Date(item.epoch) : new Date();
+                let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
+                let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+                let dyStr = item.dayStr || daysArr[itemDate.getDay()];
+                
+                searchHtml += `
+                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.9rem;">${item.insurer} (${serialNo})</span>
+                        ${statusBadge}
+                    </div>
+                    <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
+                    <p><b>Policy No:</b> ${item.policyNo}</p>
+                    <p><b>Client:</b> ${item.clientName}</p>
+                    <p style="font-size:0.8rem; color:var(--text-sub);">🕒 Saved on: ${dStr} at ${tStr} (${dyStr})</p>
+                    <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
+                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
+                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
+                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 12px; font-size:0.85rem;">🗑️</button>
+                    </div>
+                </div>`;
+
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
                 libraryHtml += `
-                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px;">
+                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
+                    ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:#2ecc71;"></div>' : ''}
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:0.9rem; font-weight:bold;">${serialNo} • ${item.insurer}</span>
                         ${statusBadge}
                     </div>
                     <div style="font-size:0.8rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
+                    <div style="background:#000; border:1px solid rgba(0,242,254,0.2); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#00f2fe; max-height:110px; overflow-y:auto; word-break:break-all; white-space:pre-wrap;">${item.rawCode}</div>
+                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${dStr} | ⏰ ${tStr} (${dyStr})</div>
                     <div style="display:flex; gap:8px; margin-top:auto;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 12px; width:auto; font-size:0.78rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.78rem; padding:8px 10px;">${isDone?'Undo':'Done'}</button>
+                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 10px; font-size:0.78rem;">🗑️</button>
                     </div>
                 </div>`;
             });
-            libraryContainer.innerHTML = libraryHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No records found.</p>";
+            
+            listContainer.innerHTML = searchHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No matching policies found.</p>";
+            libraryContainer.innerHTML = libraryHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No records found for this filter.</p>";
         };
 
         window.filterAdminPolicyDatabaseItems = function() {
             const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-            const listContainer = document.getElementById('adminPolicySearchResultsList');
-            if(!listContainer) return;
+            const cards = document.querySelectorAll('.policy-repo-card');
+            cards.forEach(card => {
+                const text = card.getAttribute('data-search-text') || "";
+                card.style.display = text.includes(q) ? "flex" : "none";
+            });
+        };
 
-            if(!q) {
-                listContainer.innerHTML = `
-                <div style="grid-column: span 4; text-align:center; padding:60px 20px; background:rgba(0,0,0,0.45); border-radius:16px; border:1px dashed rgba(0,242,254,0.3); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:15px;">
-                    <div style="width:60px; height:60px; border:3px solid var(--neon-cyan); border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:1.6rem; animation: cyberPulse 2s infinite alternate; box-shadow: 0 0 25px rgba(0,242,254,0.4);">⚡</div>
-                    <div style="font-family:'Orbitron'; color:#fff; font-size:1.1rem; font-weight:bold; letter-spacing:1px;">SEARCH PIPELINE WAITING FOR INPUT</div>
-                    <div style="color:var(--text-sub); font-size:0.9rem; max-width:450px; line-height:1.5;">Type a specific <b>Reg No</b>, <b>Contact Number</b>, or <b>Customer Name</b> above and press <b>Enter</b> or type to query matching records instantly.</div>
-                </div>`;
-                return;
+        window.copyPolicySnippetFromRepo = function(base64Code) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                navigator.clipboard.writeText(code).then(() => {
+                    alert("✅ Clean policy code copied to clipboard successfully!");
+                });
+            } catch(e) {
+                alert("Copy error: " + e.message);
+            }
+        };
+
+        window.deletePolicyRepoItem = function(id) {
+            if(confirm("Permanently delete this policy snippet from repository?")) {
+                remove(ref(db, `policy_code_repository/${id}`)).then(() => {
+                    window.renderAdminPolicySearchDashboard();
+                });
+            }
+        };
+
+        // --- NAVIGATION LOGIC ---
+        window.switchCustomerChannel = function(channel) {
+            MatrixSystemState.set('activeCustomerWorkspaceChannel', channel);
+            localStorage.setItem('nexus_active_chan_route', channel);
+            const blocks = ['customerMainMenuBlock', 'customerUploadInterfaceBlock', 'customerNotesInterfaceBlock', 'customerCodeInterfaceBlock', 'customerVaultInterfaceBlock', 'customerGamingInterfaceBlock', 'customerChatInterfaceBlock', 'customerRequestInterfaceBlock'];
+            blocks.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+            
+            const targetMap = { 'menu': 'customerMainMenuBlock', 'upload': 'customerUploadInterfaceBlock', 'notes': 'customerNotesInterfaceBlock', 'code': 'customerCodeInterfaceBlock', 'vault': 'customerVaultInterfaceBlock', 'gaming': 'customerGamingInterfaceBlock', 'chat': 'customerChatInterfaceBlock', 'request': 'customerRequestInterfaceBlock' };
+            const targetId = targetMap[channel];
+            if (targetId && document.getElementById(targetId)) document.getElementById(targetId).classList.remove('hidden');
+            
+            const homeBtn = document.getElementById('btnBackToHome');
+            if (homeBtn) { if (channel === 'menu') homeBtn.classList.add('hidden'); else homeBtn.classList.remove('hidden'); }
+            
+            if(channel === 'chat') window.initializeCrossLinkChatPanel();
+            if(channel === 'vault') window.renderCloudVault();
+            if(channel === 'gaming') window.bootArcadeSubGame();
+            if(channel === 'request') window.renderCustomerTicketHistory();
+        };
+
+        window.switchAdminSubSection = function(section) {
+            MatrixSystemState.set('activeAdminSubSection', section);
+            localStorage.setItem('nexus_active_chan_route', section);
+            const blocks = ['adminMainMenuBlock', 'creationBlock', 'adminApprovalsBlock', 'credentialsBlock', 'policyWorkspaceBlock', 'adminCodeInterfaceBlock', 'adminSpyChatBlock', 'adminSupportTicketsBlock', 'adminAiSpyChatBlock', 'adminSystemStatsBlock', 'adminPolicySearchBlock'];
+            blocks.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+            
+            const targetMap = { 'menu': 'adminMainMenuBlock', 'creation': 'creationBlock', 'approvals': 'adminApprovalsBlock', 'credentials': 'credentialsBlock', 'workspace': 'policyWorkspaceBlock', 'code': 'adminCodeInterfaceBlock', 'spychat': 'adminSpyChatBlock', 'tickets': 'adminSupportTicketsBlock', 'aispy': 'adminAiSpyChatBlock', 'stats': 'adminSystemStatsBlock', 'policysearch': 'adminPolicySearchBlock' };
+            const targetId = targetMap[section];
+            if (targetId && document.getElementById(targetId)) document.getElementById(targetId).classList.remove('hidden');
+            
+            const homeBtn = document.getElementById('btnAdminBackToHome');
+            if (homeBtn) { if (section === 'menu') homeBtn.classList.add('hidden'); else homeBtn.classList.remove('hidden'); }
+            
+            if(section === 'creation') window.renderLiveCreationStatsSummary();
+            if(section === 'approvals') window.renderAdminPendingApprovals();
+            if(section === 'credentials') window.renderUserControlPanel();
+            if(section === 'workspace') window.renderPolicyCardsBlock();
+            if(section === 'spychat') window.renderAdminSpyUserList();
+            if(section === 'tickets') window.renderAdminTickets();
+            if(section === 'aispy') window.renderAdminAiInterceptionSpyBlock();
+            if(section === 'stats') window.renderDynamicServerDiagnosticsDashboard();
+            if(section === 'policysearch') window.renderAdminPolicySearchDashboard();
+        };
+
+        let canvasElement = null, canvasCtx = null, currentArcadeEngineId = "tom";
+        const MatrixSystemState = (() => {
+            let state = {
+                currentMode: 'user', loggedInCustomerID: "", activeCustomerWorkspaceChannel: "menu", activeSelectedChatTargetUserId: "", spyActiveTargetUserContext: "", globalLiveChatBinaryStreamBase64: "", activeReplyMessageTextNode: "", activeAdminSubSection: "menu", loadedAttachmentB64: "", supportAttachmentB64: "", isSystemAudioEnabled: true, isAIAssistantActiveState: false, 
+                cachedGlobalUsersArr: [], cachedGlobalPolicyArr: [], cachedGlobalAiCommsArr: [], cachedGlobalForgetSignalsArr: [], cachedGlobalGroupsArr: [], cachedGlobalStatusesArr: [], cachedPendingUsersArr: [], cachedSupportTicketsArr: [], consecutiveBruteFailuresCount: 0, 
+                cachedAdminMainframeRoute: { masterId: "Shashi2004", masterPass: "Tolu@Molu" },
+                globalFeatures: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true, thunderMode: "medium", autoLogoutTime: 60 },
+                aiPendingAttachment: null
+            };
+            return {
+                get: (key) => state[key],
+                set: (key, val) => { state[key] = val; },
+                resetChatAssets: () => { state.globalLiveChatBinaryStreamBase64 = ""; state.activeReplyMessageTextNode = ""; },
+                purgeStateReferences: () => { state.cachedGlobalUsersArr = []; state.cachedGlobalPolicyArr = []; state.cachedGlobalAiCommsArr = []; state.cachedGlobalForgetSignalsArr = []; state.cachedGlobalGroupsArr = []; state.cachedGlobalStatusesArr = []; }
+            };
+        })();
+
+        window.cachedChatsData = {}; window.activeStatusFeedQueue = []; window.currentStatusViewingIndex = 0;
+        let requestArcadeFrameToken = null, ambientParticleToken = null, tomSpeechRecognitionInstance = null, isTomListeningStateActive = false, audioVisualizerContextNode = null, audioAnalyserNode = null, audioMicStreamNode = null;
+        let visualizerDataArray = new Uint8Array(0), virtualTomTalkingAnimationCycle = 0;
+        let nativeAudioMediaRecorderInstance = null, compiledAudioChunksCollectorArr = [], notesMediaRecorderInstance = null, notesAudioChunksCollectorArr = [];
+        let notesVoicePayloadBase64Node = "", notesVoiceTimerIntervalTracker = null, notesRecordingStartEpoch = 0, autoGeneratedVoiceDurationString = "";
+        let _typingTimer = null, typingTimeoutTrackerNode = null, isAudioContextAllowed = false, globalAudioCtx = null, isCordPulled = false, liveVideoCallStreamObj = null, notepadDictationInstance = null, isNotepadDictating = false;
+
+        const defaultAvatarSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238696a0'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
+        
+        // --- UPGRADED AUTO LOGOUT ENGINE ---
+        let activityTimeout;
+        window.executeAutoLogoutTracker = function() {
+            const resetInactivityTimer = () => {
+                clearTimeout(activityTimeout);
+                if (MatrixSystemState.get('loggedInCustomerID') !== "") {
+                    let timeoutSec = parseInt(MatrixSystemState.get('globalFeatures').autoLogoutTime) || 60;
+                    timeoutSec = Math.max(10, Math.min(7200, timeoutSec));
+
+                    activityTimeout = setTimeout(() => {
+                        window.playSynthesizedSound(300, 'sawtooth', 0.5);
+                        alert(`⏳ ${timeoutSec} SECONDS INACTIVITY DETECTED.\nFor security reasons, your portal has been automatically logged out.`);
+                        window.logoutEngine();
+                    }, timeoutSec * 1000); 
+                }
+            };
+            window.onload = resetInactivityTimer;
+            document.onmousemove = resetInactivityTimer;
+            document.onkeydown = resetInactivityTimer;
+            document.ontouchstart = resetInactivityTimer;
+            document.onclick = resetInactivityTimer;
+        }
+        executeAutoLogoutTracker();
+
+        // ==========================================
+        // AUTO-LOGIN LOGIC
+        // ==========================================
+        window.debouncedAutoLoginCheck = function() {
+            clearTimeout(_typingTimer);
+            _typingTimer = setTimeout(() => {
+                const u = document.getElementById('accessNodeUser').value.trim();
+                const p = document.getElementById('accessNodePass').value.trim();
+                if(!u || !p) return;
+                
+                let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
+                if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
+                    window.executeClusterLogin();
+                    return;
+                }
+                
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u);
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    window.executeClusterLogin();
+                }
+            }, 400); 
+        };
+
+        // ==========================================
+        // SAVE CODE LIBRARY & SYNC
+        // ==========================================
+        window.updateLineNumbers = function(mode) {
+            const editor = document.getElementById('liveCodeEditor_' + mode);
+            const lineNumbers = document.getElementById('lineNumbers_' + mode);
+            if(editor && lineNumbers) {
+                const lines = editor.value.split('\n').length || 1;
+                lineNumbers.innerHTML = Array(lines).fill(0).map((_, i) => i + 1).join('<br>');
+            }
+        };
+        window.syncCodeScroll = function(mode) {
+            const editor = document.getElementById('liveCodeEditor_' + mode);
+            const lineNumbers = document.getElementById('lineNumbers_' + mode);
+            if(editor && lineNumbers) { lineNumbers.scrollTop = editor.scrollTop; }
+        };
+
+        window.saveCodeSnippet = function(mode) {
+            const code = document.getElementById('liveCodeEditor_' + mode).value.trim();
+            if(!code) return alert("Editor is empty! Please write some code.");
+            
+            const snippetName = prompt("💾 Enter a Name/Title for this Code Snippet:");
+            if(!snippetName) return;
+
+            const currentUid = MatrixSystemState.get('loggedInCustomerID') || "Admin";
+            const userObj = MatrixSystemState.get('cachedGlobalUsersArr').find(u => u.id === currentUid);
+            const authorName = userObj ? userObj.clientName : "Mainframe Admin";
+            
+            let finalCode = code;
+            if(!finalCode.toLowerCase().includes("<!doctype html>")) {
+                finalCode = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>${snippetName}</title>\n</head>\n<body>\n${code}\n</body>\n</html>`;
             }
 
-            get(ref(db, 'policy_code_repository')).then((snap) => {
-                if(!snap.exists()) return;
-                const items = Object.values(snap.val());
-                const filtered = items.filter(item => {
-                    const searchableText = `${item.regNo || ''} ${item.policyNo || ''} ${item.clientName || ''} ${item.contact || ''}`.toLowerCase();
-                    return searchableText.includes(q);
-                });
+            const now = new Date();
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            
+            const codeRef = push(ref(db, `global_code_library/${currentUid}`));
+            set(codeRef, { 
+                id: codeRef.key, 
+                title: snippetName,
+                author: authorName,
+                code: finalCode, 
+                epoch: Date.now(),
+                dateStr: now.toLocaleDateString(),
+                timeStr: now.toLocaleTimeString(),
+                dayStr: days[now.getDay()]
+            }).then(() => { alert(`✅ Code successfully saved to Library as: ${snippetName}`); });
+        };
 
-                if(filtered.length === 0) {
-                    listContainer.innerHTML = `<div style="grid-column: span 4; text-align:center; padding:40px; color:var(--text-sub); font-family:'Orbitron'; font-size:1rem; background:rgba(0,0,0,0.4); border-radius:12px;">❌ No matching policy found for "${q}"</div>`;
+        window.openCodeLibrary = function(mode) {
+            const modal = document.getElementById('codeLibraryModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('active'); }, 10);
+            
+            const listContainer = document.getElementById('codeLibraryListContainer');
+            listContainer.innerHTML = "<p style='color:#00f2fe; text-align:center;'>Loading Cloud Library...</p>";
+            
+            const currentUid = MatrixSystemState.get('loggedInCustomerID') || "Admin";
+            get(ref(db, `global_code_library/${currentUid}`)).then((snap) => {
+                if(!snap.exists()) {
+                    listContainer.innerHTML = "<p style='color:#8696a0; text-align:center;'>Library is empty. Save snippets to see them here.</p>";
                     return;
                 }
 
-                listContainer.innerHTML = filtered.map((item, index) => {
-                    let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
-                    let isDone = item.isDone === true;
-                    let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
+                // ⚡ BULLETPROOF FIX: HTML/JS क्रैश रोकने के लिए Base64 Encryption का यूज़
+                const data = snap.val();
+                let html = "";
+                Object.values(data).sort((a,b)=>b.epoch - a.epoch).forEach(item => {
                     
-                    return `
-                    <div class="hud-data-card" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; background:rgba(4,14,33,0.95); padding:20px; border-radius:14px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                            <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem;">${item.insurer}</span>
-                            ${statusBadge}
+                    let rawCode = item.code || "";
+                    let rawTitle = item.title || "Snippet";
+                    
+                    // Code aur Title ko Base64 mein convert kar diya taaki onclick break na ho
+                    let base64Code = btoa(unescape(encodeURIComponent(rawCode)));
+                    let base64Title = btoa(unescape(encodeURIComponent(rawTitle)));
+                    
+                    html += `
+                    <div class="code-lib-item">
+                        <div class="code-lib-info">
+                            <span style="font-size:1.15rem; font-weight:bold; color:var(--neon-cyan);">${item.title}</span>
+                            <span style="font-size:0.85rem; color:#8696a0;">By: ${item.author} | ${item.dateStr} (${item.dayStr}) at ${item.timeStr}</span>
                         </div>
-                        <p style="font-size:0.85rem; margin-bottom:4px;"><b>Reg No:</b> <span style="color:#f1c40f;">${item.regNo}</span></p>
-                        <p style="font-size:0.85rem; margin-bottom:4px;"><b>Client:</b> ${item.clientName}</p>
-                        <p style="font-size:0.85rem; margin-bottom:4px;"><b>Contact:</b> ${item.contact || 'N/A'}</p>
-                        <p style="font-size:0.78rem; color:var(--text-sub); margin-bottom:12px;">📅 ${item.dateStr} at ${item.timeStr}</p>
-                        <div style="display:flex; gap:8px; margin-top:auto;">
-                            <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:7px 12px; width:auto; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
-                            <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="font-size:0.75rem; padding:7px 10px;">${isDone?'Undo':'Done'}</button>
+                        <div class="code-lib-actions">
+                            <button onclick="window.playSnippetFromLibrary('${base64Code}')" class="hud-engage-btn" style="padding:6px 12px; width:auto; font-size:0.9rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">▶ Play</button>
+                            <button onclick="window.downloadLibraryCode('${base64Code}', '${base64Title}')" class="nav-btn" style="border-color:#f1c40f; color:#f1c40f; font-size:0.8rem;">💾 HTML</button>
+                            <button onclick="window.shareCodeLive('${base64Code}', '${base64Title}')" class="nav-btn" style="border-color:#00f2fe; color:#00f2fe; font-size:0.8rem;">🔗 Share</button>
+                            <button onclick="window.deleteLibraryCode('${item.id}')" class="abort-btn" style="padding:6px 12px; font-size:0.9rem;">🗑</button>
                         </div>
                     </div>`;
-                }).join('');
+                });
+                listContainer.innerHTML = html;
             });
         };
+
+        window.closeCodeLibrary = function() {
+            const modal = document.getElementById('codeLibraryModal');
+            modal.classList.remove('active');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        };
+
+        // 1. PLAY BUTTON BULLETPROOF FIX (With Iframe Refresh)
+        window.playSnippetFromLibrary = function(base64Code) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const overlay = document.getElementById('codeExecutionFullscreenOverlay');
+                const iframe = document.getElementById('fullscreenCodeRunnerIframe');
+                if (overlay && iframe) {
+                    overlay.style.display = 'flex';
+                    // Iframe ko blank karke refresh kar rahe hain taaki stuck na ho
+                    iframe.src = "about:blank";
+                    setTimeout(() => {
+                        iframe.srcdoc = code; 
+                    }, 50);
+                }
+            } catch(e) {
+                alert("Error playing code: " + e.message);
+            }
+        };
+
+        // 2. HTML DOWNLOAD BULLETPROOF FIX
+        window.downloadLibraryCode = function(base64Code, base64Title) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const title = decodeURIComponent(escape(atob(base64Title)));
+                const blob = new Blob([code], { type: 'text/html' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `${title.replace(/[^a-z0-9]/gi, '_')}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch(e) {
+                alert("Download Error: " + e.message);
+            }
+        };
+
+        window.deleteLibraryCode = function(itemId) {
+            if(confirm("Delete this snippet from Library?")) {
+                const currentUid = MatrixSystemState.get('loggedInCustomerID') || "Admin";
+                remove(ref(db, `global_code_library/${currentUid}/${itemId}`)).then(() => { window.openCodeLibrary(); });
+            }
+        };
+
+        // 3. SHARE BULLETPROOF FIX (Clipboard + WhatsApp)
+        window.shareCodeLive = function(base64Code, base64Title) {
+            try {
+                const code = decodeURIComponent(escape(atob(base64Code)));
+                const title = decodeURIComponent(escape(atob(base64Title)));
+                
+                const fallbackCopyTextToClipboard = (text) => {
+                    var textArea = document.createElement("textarea");
+                    textArea.value = text;
+                    textArea.style.position = "fixed";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    try { document.execCommand('copy'); } catch (err) {}
+                    document.body.removeChild(textArea);
+                };
+
+                const promptWhatsApp = () => {
+                    if(confirm("✅ Code Copied to Clipboard!\n\nDo you want to share it directly on WhatsApp?")) {
+                        const waText = encodeURIComponent(`💻 *${title}*\n\n\`\`\`html\n${code}\n\`\`\``);
+                        window.open(`https://api.whatsapp.com/send?text=${waText}`, '_blank');
+                    }
+                };
+
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(code).then(promptWhatsApp).catch(() => {
+                        fallbackCopyTextToClipboard(code);
+                        promptWhatsApp();
+                    });
+                } else {
+                    fallbackCopyTextToClipboard(code);
+                    promptWhatsApp();
+                }
+            } catch(e) {
+                alert("Share Error: " + e.message);
+            }
+        };
+
+        // ==========================================
+        // NEW FEATURE: ADMIN LIVE AI AGENT (UPGRADED SMS & ATTACHMENTS & VOICE DICTATION)
+        // ==========================================
+        window.toggleAdminAiSize = function(action) {
+
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+            const widget = document.getElementById('liveAdminAiAgent');
+            const header = widget.querySelector('.ai-agent-header');
+            widget.style.transition = "all 0.3s ease"; 
+            
+            // Full screen CSS class hamesha ke liye hata diya
+            widget.classList.remove('maximized'); 
+            
+            if(action === 'minimize') {
+                widget.classList.add('minimized');
+                widget.style.top = "";
+                widget.style.left = "";
+                widget.style.right = "20px";
+                widget.style.bottom = "0px";
+                widget.style.width = "320px";
+            } else if (action === 'maximize') {
+                widget.classList.remove('minimized');
+                // ⚡ Pyara sa box jo screen ke center mein aayega
+                widget.style.top = "10vh";
+                widget.style.left = "calc(50vw - 150px)"; 
+                widget.style.right = "auto";
+                widget.style.bottom = "auto";
+                widget.style.width = "450px";
+                widget.style.height = "75vh";
+                widget.style.boxShadow = "0 20px 60px rgba(0,242,254,0.5), 0 0 20px var(--neon-pink)"; 
+            } else if (action === 'close') {
+                widget.style.display = 'none';
+                document.getElementById('aiAgentNavRestoreBtn').style.display = 'inline-block';
+            } else if (action === 'restore') {
+                widget.classList.remove('minimized');
+                document.getElementById('aiAgentNavRestoreBtn').style.display = 'none';
+                widget.style.top = "auto";
+                widget.style.left = "auto";
+                widget.style.right = "20px";
+                widget.style.bottom = "20px";
+                widget.style.width = "380px";
+                widget.style.height = "450px";
+                widget.style.boxShadow = "0 10px 40px rgba(255,0,127,0.4)";
+            }
+        };
+
+        // ⚡ DRAG & DROP LOGIC FOR AI AGENT (Movable Box)
+        setTimeout(() => {
+            const aiWidget = document.getElementById('liveAdminAiAgent');
+            if(!aiWidget) return;
+            const aiHeader = aiWidget.querySelector('.ai-agent-header');
+            let isDragging = false, startX, startY, initialX, initialY;
+
+            aiHeader.style.cursor = "grab";
+            
+            aiHeader.addEventListener('mousedown', (e) => {
+                if(aiWidget.classList.contains('minimized')) return; 
+                isDragging = true;
+                aiHeader.style.cursor = "grabbing";
+                aiWidget.style.transition = "none"; // Drag ke time par lag hatane ke liye
+                
+                let rect = aiWidget.getBoundingClientRect();
+                startX = e.clientX;
+                startY = e.clientY;
+                initialX = rect.left;
+                initialY = rect.top;
+                
+                aiWidget.style.right = "auto";
+                aiWidget.style.bottom = "auto";
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if(!isDragging) return;
+                e.preventDefault();
+                let dx = e.clientX - startX;
+                let dy = e.clientY - startY;
+                aiWidget.style.left = (initialX + dx) + "px";
+                aiWidget.style.top = (initialY + dy) + "px";
+            });
+
+            document.addEventListener('mouseup', () => {
+                if(isDragging) {
+                    isDragging = false;
+                    aiHeader.style.cursor = "grab";
+                    aiWidget.style.transition = "all 0.3s ease";
+                }
+            });
+        }, 1000);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
+
+        window.handleAiAttachment = function(e, type) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    MatrixSystemState.set('aiPendingAttachment', { type: type, data: evt.target.result });
+                    document.getElementById('aiAgentInput').value = `[${type.toUpperCase()} ATTACHED] ` + document.getElementById('aiAgentInput').value;
+                    document.getElementById('aiAttachmentTray').classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+        
+        window.triggerAIVoiceNote = function() {
+             alert("Voice recording module active. AI will attach your voice clip. Say 'SMS [User]' to dispatch.");
+             MatrixSystemState.set('aiPendingAttachment', { type: 'voice', data: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" }); 
+             document.getElementById('aiAgentInput').value = `[VOICE ATTACHED] ` + document.getElementById('aiAgentInput').value;
+             document.getElementById('aiAttachmentTray').classList.add('hidden');
+        };
+
+        window.startAiDictation = function() {
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!window.SpeechRecognition) { alert("Speech Recognition not supported in this browser."); return; }
+            let recognition = new window.SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            document.getElementById('aiAgentInput').placeholder = "Listening... Speak now";
+            
+            recognition.onresult = function(e) {
+                document.getElementById('aiAgentInput').value += e.results[0][0].transcript + " ";
+                document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)";
+            };
+            recognition.onerror = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
+            recognition.onend = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
+            
+            recognition.start();
+        };
+
+        window.sendAiAgentMessage = function() {
+            const input = document.getElementById('aiAgentInput');
+            let text = input.value.trim();
+            let att = MatrixSystemState.get('aiPendingAttachment');
+            if(!text && !att) return;
+            
+            const chatBox = document.getElementById('aiAgentChatBox');
+            let attachmentHtml = "";
+            
+            if(att) {
+                if(att.type === 'image') attachmentHtml = `<br><img src="${att.data}" style="max-width:100%; border-radius:8px; margin-top:5px;">`;
+                else if(att.type === 'doc' || att.type === 'folder') attachmentHtml = `<br><a href="${att.data}" download="AI_Doc" style="color:#00f2fe; text-decoration:underline;">📎 Download Attachment</a>`;
+                else if(att.type === 'voice' || att.type === 'video') attachmentHtml = `<br><audio controls src="${att.data}" style="max-width:100%; height:30px; margin-top:5px;"></audio>`;
+            }
+
+            if(text || attachmentHtml) {
+                chatBox.innerHTML += `<div class="ai-bubble user">${text}${attachmentHtml}</div>`;
+            }
+            
+            input.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+            document.getElementById('aiAttachmentTray').classList.add('hidden');
+
+            setTimeout(() => {
+                let response = "";
+                // Match command: sms user123 Hello! OR send to user123 Hello! OR /send user123 Hello!
+                
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+                // ⚡ FIX: Regex mein se '^' hata diya gaya hai. Ab attachment ke sath bhi command fail nahi hoga!
+                const match = text.match(/(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
+
+                if(match) {
+                    let targetUid = match[1];
+                    let msgContent = match[2] || "";
+                    
+                    const aiSmsRef = push(ref(db, `support_ai_messages/${targetUid}`));
+                    set(aiSmsRef, {
+                        msgId: aiSmsRef.key,
+                        text: msgContent.replace(/\[.*?ATTACHED\]/g, '').trim() || "Sent you an attachment.",
+                        attachment: att ? att.data : "",
+                        attType: att ? att.type : "",
+                        epoch: Date.now(),
+                        timeStr: new Date().toLocaleTimeString()
+                    }).then(() => {
+                        chatBox.innerHTML += `<div class="ai-bubble system">✅ <b>Transmission Successful:</b> Direct message pushed to User [${targetUid}]'s dashboard. Matrix synced.</div>`;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                        MatrixSystemState.set('aiPendingAttachment', null);
+                        window.playSynthesizedSound(600, 'sine', 0.1);
+                    }).catch(e => {
+                        chatBox.innerHTML += `<div class="ai-bubble system" style="color:#e74c3c; border-color:#e74c3c;">❌ Error routing to ${targetUid}. User not found.</div>`;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    });
+                } else {
+                    response = "I am connected to the Matrix Core. To send a direct ping/file to a user's Support Box, use format: 'SMS [UserID] [Message]' or attach a file and type '/send [UserID]'.";
+                    if(text.toLowerCase().includes("hack")) response = "Monitoring brute force metrics. Firewall is holding strong at 99.9% integrity.";
+                    if(text.toLowerCase().includes("hello")) response = "Greetings Admin! I am monitoring all global hubs.";
+                    
+                    chatBox.innerHTML += `<div class="ai-bubble system">🤖 ${response}</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                    window.playSynthesizedSound(600, 'sine', 0.1);
+                    MatrixSystemState.set('aiPendingAttachment', null);
+                }
+            }, 800);
+        };
+
+        // Customer Listener for AI Direct Messages
+        onValue(ref(db, `support_ai_messages`), (snapshot) => {
+            if(MatrixSystemState.get('currentMode') !== 'user') return;
+            const currentUid = MatrixSystemState.get('loggedInCustomerID');
+            if(!currentUid) return;
+            
+            const myAiMsgs = snapshot.val() ? snapshot.val()[currentUid] : null;
+            const inbox = document.getElementById('customerAiInboxStack');
+            if(inbox) {
+                if(!myAiMsgs) {
+                    inbox.innerHTML = '<p style="color:var(--text-sub);">No incoming transmissions from Matrix AI.</p>';
+                    return;
+                }
+                const msgsArr = Object.values(myAiMsgs).sort((a,b)=>b.epoch - a.epoch);
+                let unreadCount = 0; // Simple unread visual
+                
+                inbox.innerHTML = msgsArr.map(m => {
+                    let attHtml = "";
+                    if(m.attachment) {
+                        if(m.attType === 'image') attHtml = `<br><img src="${m.attachment}" style="max-width:200px; border-radius:8px; margin-top:8px; cursor:pointer; border:1px solid var(--neon-cyan);" onclick="window.triggerEnlargedAttachmentView('${m.attachment}')">`;
+                        else if(m.attType === 'doc' || m.attType === 'folder') attHtml = `<br><a href="${m.attachment}" download="AI_Doc" style="color:var(--neon-cyan); text-decoration:underline; font-weight:bold; display:inline-block; margin-top:8px;">📎 Download Linked File</a>`;
+                        else if(m.attType === 'voice' || m.attType === 'video') attHtml = `<br><audio controls src="${m.attachment}" style="height:35px; width:100%; margin-top:8px;"></audio>`;
+                    }
+                    return `<div style="background:rgba(0,242,254,0.1); border-left:4px solid var(--neon-cyan); padding:15px; border-radius:8px; margin-bottom:12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                        <div style="font-size:0.85rem; color:var(--neon-cyan); font-weight:bold; margin-bottom:8px; border-bottom:1px dashed rgba(0,242,254,0.3); padding-bottom:5px;">🤖 Admin AI System - ${m.timeStr}</div>
+                        <div style="color:#fff; font-size:1rem; line-height:1.4;">${m.text}</div>
+                        ${attHtml}
+                    </div>`;
+                }).join('');
                 
                 // Show badge on support card
                 const badge = document.getElementById('aiSmsBadge');
@@ -4774,34 +5030,22 @@
                 }); }; reader.readAsDataURL(file); }
         };
 
-        // ⚡ FIXED: Direct Database Async Login (No login failure due to empty local cache array)
-        window.executeClusterLogin = async function(event) {
+        window.executeClusterLogin = function(event) {
             if(event) { event.preventDefault(); event.stopPropagation(); }
             const u = document.getElementById('accessNodeUser').value.trim(); 
             const p = document.getElementById('accessNodePass').value.trim(); 
             if(!u || p === "") return;
 
             let masterRoute = MatrixSystemState.get('cachedAdminMainframeRoute');
-            let isSuccess = false; let loggedInId = ""; let mode = 'user';
+            let isSuccess = false; let loggedInId = ""; let mode = MatrixSystemState.get('currentMode');
 
             if(masterRoute.masterId && u === masterRoute.masterId && p === masterRoute.masterPass) {
                 isSuccess = true; loggedInId = "MainframeAdmin"; mode = 'admin';
             } else { 
-                try {
-                    const userSnap = await get(ref(db, 'users/' + u));
-                    if(userSnap.exists()) {
-                        let userMatch = userSnap.val();
-                        if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                            if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                            isSuccess = true; loggedInId = userMatch.id; mode = 'user';
-                        }
-                    }
-                } catch(e) {
-                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
-                    if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
-                        if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
-                        isSuccess = true; loggedInId = userMatch.id; mode = 'user';
-                    }
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
+                if(userMatch && (String(userMatch.pass) === String(p) || String(p) === String(masterRoute.masterPass))) {
+                    if(userMatch.lockoutState === "true") { alert("🔒 SYSTEM LOCKED: Account is temporarily disabled."); return; }
+                    isSuccess = true; loggedInId = userMatch.id; mode = 'user';
                 }
             }
 
@@ -4810,10 +5054,13 @@
                 overlay.classList.add('active');
                 MatrixSystemState.set('consecutiveBruteFailuresCount', 0);
                 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+                // ⚡ FIX: Lamp aur login screen ko turant hide karo taaki flash na ho
                 document.getElementById('loginTerminal').style.display = 'none';
                 document.getElementById('mainStage').style.display = 'none';
                 document.getElementById('shashiBrandTitle').style.display = 'none';
 
+                // Dashboard ko background mein turant load kardo
                 MatrixSystemState.set('loggedInCustomerID', loggedInId);
                 MatrixSystemState.set('currentMode', mode);
                 localStorage.setItem('nexus_logged_in_uid', loggedInId);
@@ -4830,12 +5077,14 @@
                     document.getElementById('customerDashboard').classList.remove('hidden');
                     document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel('menu');
-                    window.enforceCustomerPermissions();
+                    window.enforceCustomerPermissions(); // ⚡ FIX 1: Login hone ke turant baad hide/show permissions lag jayengi
                 }
 
+                // Animation poora hone ke baad overlay ko hata do
                 setTimeout(() => {
                     overlay.classList.remove('active');
                 }, 2500); 
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
             } else {
                 let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
@@ -4845,14 +5094,70 @@
                 set(push(ref(db, 'incident_alerts')), { lockedUID: u, attemptedPassword: p, type: 'failed_login', epoch: Date.now() });
 
                 if (fails >= 3) {
-                    window.triggerLockoutTerminalUI(u, p);
-                    return;
+                    let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id === u); 
+                    if(userMatch) { window.triggerLockoutTerminalUI(userMatch.id, p); return; }
                 }
                 
                 alert("❌ ACCESS DENIED: Invalid System ID or Password.");
                 if(isAudioContextAllowed) window.playSynthesizedSound(150, 'sawtooth', 0.3);
             }
         };
+
+        window.verifyInputIdentityProgress = function() {
+            const u = document.getElementById('accessNodeUser').value.trim(); if(!u) return;
+            if(MatrixSystemState.get('cachedAdminMainframeRoute').masterId && u === MatrixSystemState.get('cachedAdminMainframeRoute').masterId) {
+                document.getElementById('accessNodePass').focus();
+            } else { 
+                let userMatch = MatrixSystemState.get('cachedGlobalUsersArr').find(user => user && user.id && user.id === u); 
+                if(userMatch) document.getElementById('accessNodePass').focus(); 
+            }
+        };
+
+        window.processBinaryAttachment = function(event, type) {
+            const fileInput = event.target;
+            if(fileInput && fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (type === 'policy') { MatrixSystemState.set('loadedAttachmentB64', e.target.result); document.getElementById('policyAttachmentFeedback').innerText = `✔ Document Ready`; } 
+                    else if (type === 'chat') { MatrixSystemState.set('globalLiveChatBinaryStreamBase64', e.target.result); const fb = document.getElementById('chatAttachmentStatusFeedback'); if (fb) fb.innerText = `📎 Attached live asset resource`; }
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        window.speakNaturalHuman = function(textMessage) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !('speechSynthesis' in window)) return; try { window.speechSynthesis.cancel(); const syntax = new SpeechSynthesisUtterance(textMessage); syntax.pitch = 1.0; syntax.rate = 1.0; let voices = window.speechSynthesis.getVoices(); let bestVoice = voices.find(v => v.name.includes("Google") || v.lang.includes("hi-IN") || v.lang.includes("en-US")); if(bestVoice) syntax.voice = bestVoice; window.speechSynthesis.speak(syntax); } catch(e){} };
+        
+        window.playSynthesizedSound = function(frequency, type, duration) { if (!MatrixSystemState.get('isSystemAudioEnabled') || !isAudioContextAllowed) return; try { if(!globalAudioCtx) globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(globalAudioCtx.state === 'suspended') globalAudioCtx.resume(); const oscillator = globalAudioCtx.createOscillator(); const gainNode = globalAudioCtx.createGain(); oscillator.type = type; oscillator.frequency.value = frequency; gainNode.gain.setValueAtTime(0.2, globalAudioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, globalAudioCtx.currentTime + duration); oscillator.connect(gainNode); gainNode.connect(globalAudioCtx.destination); oscillator.start(); oscillator.stop(globalAudioCtx.currentTime + duration); } catch(e) {} };
+
+        window.toggleGlobalSystemAudio = function() { let audioEnabled = !MatrixSystemState.get('isSystemAudioEnabled'); MatrixSystemState.set('isSystemAudioEnabled', audioEnabled); document.getElementById('systemAudioToggleBtn').innerHTML = audioEnabled ? `🔊 SOUND: ON` : `🔇 SOUND: OFF`; };
+
+        window.logoutEngine = function() {
+            MatrixSystemState.set('loggedInCustomerID', "");
+            localStorage.removeItem('nexus_logged_in_uid');
+            localStorage.removeItem('nexus_system_session_mode');
+            window.location.reload();
+        };
+
+        window.createNewCustomerNode = function() {
+            const clientName = document.getElementById('newClientName').value.trim(); const dob = document.getElementById('newClientDOB').value; const contact = document.getElementById('newClientContact').value.trim(); const userPass = document.getElementById('newUserPass').value.trim();
+            if(!clientName || !contact || !userPass) { alert("Please complete required parameters."); return; }
+            const userId = clientName.replace(/\s+/g, '') + contact.slice(-4);
+            set(ref(db, 'users/' + userId), { id: userId, pass: userPass, status: 'active', clientName: clientName, dob: dob, contact: contact, avatar: "", isOnlineNode: false, lockoutState: "false", bio: "Available", features: { policy: true, notes: true, vault: true, chat: true, gaming: true, code: true, request: true }, premium: {stealthMode:false, autoReply:false, broadcast:false, antiDelete:false, scheduler:false, massDownload:false} }).then(() => { 
+                alert(`✅ User Compiled!\nID: ${userId}\nPass: ${userPass}`);
+                document.getElementById('newClientName').value = ""; document.getElementById('newClientContact').value = ""; document.getElementById('newUserPass').value = "";
+                window.loadAdminSubmissions(); 
+            }).catch((error) => {
+                alert("❌ DATABASE ERROR: " + error.message + "\n\nFirebase mein rules setup theek nahi hai.");
+            });
+        };
+
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
+        // ⚡ FIX 2: Emojis aur GIFs ko page load hote hi draw karne ka command
+        setTimeout(() => { 
+            window.renderInteractiveDrawersContent(); 
+            checkActiveStateSessionRetentionOnLaunch(); 
+        }, 500);
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
     </script>
 
@@ -4866,39 +5171,46 @@
         }, 2000); 
     </script>
 
-    <!-- ⚡ ROPE STUCK PROBLEM FIX ⚡ -->
-    <script>
-        setTimeout(() => {
-            const cord = document.getElementById('triggerCord');
-            if(cord) {
-                cord.onclick = function(e) {
-                    e.preventDefault();
-                    cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
+<!-- ⚡ ROPE STUCK PROBLEM FIX ⚡ -->
+<script>
+    setTimeout(() => {
+        const cord = document.getElementById('triggerCord');
+        if(cord) {
+            // Rassi kheenchne ka direct function
+            cord.onclick = function(e) {
+                e.preventDefault();
+                // 1. Rassi ko neeche kheenchne ka animation
+                cord.style.transform = "translateY(50px) scale(0.95) translateZ(150px)";
+                
+                setTimeout(() => {
+                    // 2. Rassi wapas upar jayegi
+                    cord.style.transform = "translateY(0px) scale(1) translateZ(150px)";
                     
-                    setTimeout(() => {
-                        cord.style.transform = "translateY(0px) scale(1) translateZ(150px)";
-                        const stage = document.getElementById('mainStage');
-                        const terminal = document.getElementById('loginTerminal');
-                        const nav = document.getElementById('mainCyberNavbar');
-                        
-                        if(stage) stage.classList.add('activated');
-                        if(terminal) {
-                            terminal.style.opacity = '1';
-                            terminal.style.pointerEvents = 'auto';
-                            terminal.style.visibility = 'visible';
-                            terminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
-                            terminal.style.zIndex = '999999';
-                        }
-                        if(nav) {
-                            nav.style.opacity = '1';
-                            nav.style.pointerEvents = 'all';
-                        }
-                    }, 350);
-                };
-                cord.ontouchstart = cord.onclick;
-            }
-        }, 1000);
-    </script>
+                    // 3. Forcefully Login Screen ko aage lana
+                    const stage = document.getElementById('mainStage');
+                    const terminal = document.getElementById('loginTerminal');
+                    const nav = document.getElementById('mainCyberNavbar');
+                    
+                    if(stage) stage.classList.add('activated');
+                    if(terminal) {
+                        terminal.style.opacity = '1';
+                        terminal.style.pointerEvents = 'auto';
+                        terminal.style.visibility = 'visible';
+                        terminal.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
+                        terminal.style.zIndex = '999999'; /* Ekdum screen ke samne lane ke liye */
+                    }
+                    if(nav) {
+                        nav.style.opacity = '1';
+                        nav.style.pointerEvents = 'all';
+                    }
+                }, 350); // 350ms ka delay realistic feel ke liye
+            };
+            
+            // Mobile touch support ke liye
+            cord.ontouchstart = cord.onclick;
+        }
+    }, 1000); // Page load hone ke 1 second baad trigger activate hoga
+</script>
 
 </body>
 </html>
