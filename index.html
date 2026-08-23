@@ -497,50 +497,43 @@
         }
 
         /* ========================================================================== */
-        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, COMPACT INSPECTOR & WARP LOGIN      */
+        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, BATCH DELETE & 0.5S SNAP LOGIN      */
         /* ========================================================================== */
         
-        /* --- NEXT-GEN CYBER HUD LOGIN ANIMATION --- */
+        /* --- 0.5s ULTRA-FAST QUANTUM SNAP LOGIN ANIMATION --- */
         #loginSuccessOverlay {
             position: fixed; inset: 0; background: radial-gradient(circle at center, #06172e 0%, #01040a 90%);
             z-index: 9999999; display: flex; justify-content: center; align-items: center; flex-direction: column;
-            opacity: 0; visibility: hidden; transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); perspective: 1200px;
+            opacity: 0; visibility: hidden; pointer-events: none; perspective: 1200px;
         }
         #loginSuccessOverlay.active {
-            opacity: 1; visibility: visible; animation: cyberHoloFadeOut 2.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            opacity: 1; visibility: visible; animation: cyberQuantumSnap 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
         .cyber-hud-scanner-gate {
-            position: relative; width: 140px; height: 140px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px;
+            position: relative; width: 110px; height: 110px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;
         }
         .hud-outer-hex {
             position: absolute; width: 100%; height: 100%; border: 3px solid rgba(0, 242, 254, 0.4);
             border-top-color: var(--neon-cyan); border-bottom-color: var(--neon-pink); border-radius: 50%;
-            animation: spinRingFast 1.5s linear infinite; box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+            animation: spinRingFast 0.5s linear infinite; box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
         }
         .hud-inner-core {
-            width: 70px; height: 70px; background: rgba(0, 242, 254, 0.15); border: 2px solid var(--neon-cyan);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem;
-            animation: pulseCoreGlow 0.8s alternate infinite; box-shadow: 0 0 20px var(--neon-cyan), inset 0 0 15px var(--neon-cyan);
-        }
-        .hud-scan-beam {
-            position: absolute; width: 120%; height: 4px; background: linear-gradient(90deg, transparent, #fff, transparent);
-            box-shadow: 0 0 15px #00f2fe; animation: scanBeamSweep 1.2s infinite ease-in-out;
+            width: 55px; height: 55px; background: rgba(0, 242, 254, 0.2); border: 2px solid var(--neon-cyan);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.6rem;
+            box-shadow: 0 0 25px var(--neon-cyan), inset 0 0 15px var(--neon-cyan);
         }
         .warp-text-cyber {
-            font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; letter-spacing: 8px;
-            color: #fff; text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
-            animation: glitchWarpEntrance 2.2s forwards; text-align: center;
+            font-family: 'Orbitron', sans-serif; font-size: 2.2rem; font-weight: 900; letter-spacing: 6px;
+            color: #fff; text-shadow: 0 0 25px var(--neon-cyan), 0 0 45px var(--neon-cyan);
+            text-align: center;
         }
         @keyframes spinRingFast { 100% { transform: rotate(360deg); } }
-        @keyframes pulseCoreGlow { 0% { transform: scale(0.95); opacity: 0.8; } 100% { transform: scale(1.08); opacity: 1; box-shadow: 0 0 35px var(--neon-cyan); } }
-        @keyframes scanBeamSweep { 0% { top: 0%; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
-        @keyframes glitchWarpEntrance {
-            0% { opacity: 0; transform: scale(0.85) translateZ(-100px); filter: blur(12px); letter-spacing: 2px; }
-            25% { opacity: 1; transform: scale(1) translateZ(0); filter: blur(0); letter-spacing: 8px; }
-            80% { opacity: 1; transform: scale(1.02); filter: blur(0); }
-            100% { opacity: 0; transform: scale(1.3) translateZ(100px); filter: blur(20px); }
+        @keyframes cyberQuantumSnap {
+            0% { opacity: 0; transform: scale(0.9); filter: blur(8px); }
+            30% { opacity: 1; transform: scale(1); filter: blur(0); }
+            70% { opacity: 1; transform: scale(1.02); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.15); filter: blur(15px); visibility: hidden; }
         }
-        @keyframes cyberHoloFadeOut { 0% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
 
         /* --- CONTROL BAR & ANALYTICS --- */
         .analytics-control-bar {
@@ -621,6 +614,20 @@
             font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900;
             color: #f1c40f; text-shadow: 0 0 10px rgba(241,196,15,0.4);
         }
+
+        /* --- BATCH DELETE TOOLBAR & CHECKBOXES --- */
+        .library-batch-bar {
+            display: none; align-items: center; justify-content: space-between;
+            background: rgba(231, 76, 60, 0.15); border: 1px solid #e74c3c; padding: 10px 16px;
+            border-radius: 10px; margin-bottom: 15px; box-shadow: 0 0 15px rgba(231,76,60,0.25);
+        }
+        .library-batch-bar.active { display: flex; animation: slideDown 0.3s ease; }
+        .policy-batch-checkbox {
+            position: absolute; top: 12px; left: 12px; transform: scale(1.3); cursor: pointer;
+            z-index: 10; accent-color: #e74c3c; display: none;
+        }
+        .batch-mode-active .policy-batch-checkbox { display: block; }
+        .batch-mode-active .fullspec-policy-card { padding-top: 36px; }
 
         /* --- COMPACT & SLEEK 360° INSPECTOR STYLES --- */
         .inspector-badge-row {
@@ -1496,16 +1503,32 @@ const policyRepo = {
                                 <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- ================= TAB 3: POLICY LIBRARY ================= -->
+                            <!-- ================= TAB 3: POLICY LIBRARY (WITH 3-IN-1 BATCH DELETE) ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                                    <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">Complete indexed repository with 360° Inspector view & 1-Click Code Copy.</p>
-                                    <div style="display:flex; gap:8px;">
+                                    <div style="display:flex; gap:8px; align-items:center;">
                                         <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
                                         <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
                                         <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
                                     </div>
+                                    <div>
+                                        <button onclick="window.toggleLibraryManageMode()" id="btnToggleLibraryManage" class="abort-btn" style="padding:6px 14px; font-size:0.82rem; border-radius:20px; background:rgba(231,76,60,0.2); border:1px solid #e74c3c;">🗑️ Manage / Delete</button>
+                                    </div>
                                 </div>
+
+                                <!-- 3-in-1 Batch Action Floating Bar -->
+                                <div id="libraryBatchBarNode" class="library-batch-bar">
+                                    <div style="display:flex; align-items:center; gap:12px;">
+                                        <button onclick="window.selectAllLibraryPolicies(true)" class="nav-btn" style="border-color:#fff; color:#fff; padding:6px 12px; font-size:0.8rem;">☑ Select All</button>
+                                        <button onclick="window.selectAllLibraryPolicies(false)" class="nav-btn" style="border-color:rgba(255,255,255,0.4); color:var(--text-sub); padding:6px 12px; font-size:0.8rem;">☐ Deselect All</button>
+                                        <span id="batchSelectedCountLabel" style="color:#f1c40f; font-weight:bold; font-size:0.9rem; margin-left:10px;">0 Selected</span>
+                                    </div>
+                                    <div style="display:flex; gap:10px;">
+                                        <button onclick="window.deleteSelectedLibraryPolicies()" class="abort-btn" style="padding:6px 16px; font-size:0.85rem; font-weight:bold; background:#e74c3c; color:#fff;">🗑️ Delete Selected</button>
+                                        <button onclick="window.cancelLibraryManageMode()" class="nav-btn" style="border-color:rgba(255,255,255,0.4); color:#fff; padding:6px 12px; font-size:0.8rem;">Cancel</button>
+                                    </div>
+                                </div>
+
                                 <div id="adminPolicyLibraryGridList" class="policy-4col-grid"></div>
                             </div>
 
@@ -1538,8 +1561,8 @@ const policyRepo = {
                                         <div style="font-size:2rem; margin-bottom:8px;">📚</div>
                                         <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">3. Cloud Library</h4>
                                         <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">3. क्लाउड लाइब्रेरी</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done), 360° Inspector, and 1-Click copy.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी, 360° इंस्पेक्टर और स्टेटस ट्रैक कर सकते हैं।</p>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done), 360° Inspector, and Batch Deletion.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी, 360° इंस्पेक्टर और बैच डिलीट कर सकते हैं।</p>
                                     </div>
                                 </div>
 
@@ -1979,7 +2002,7 @@ const policyRepo = {
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
         // ==========================================================================
-        // 🔍 ADVANCED FULL-SPEC POLICY REPO, PARSER, ANALYTICS & 360° INSPECTOR
+        // 🔍 ADVANCED FULL-SPEC POLICY REPO, BATCH DELETE & REAL-TIME SEARCH ENGINE
         // ==========================================================================
         window.activeAnalyticsPolicyRecords = [];
 
@@ -2003,6 +2026,7 @@ const policyRepo = {
             if(tabName === 'injector') {
                 window.filterPolicyAnalytics('today');
             } else if(tabName === 'library') {
+                window.cancelLibraryManageMode();
                 window.renderAdminPolicySearchDashboard();
             }
         };
@@ -2300,6 +2324,78 @@ const policyRepo = {
             document.getElementById('policyHistoryDetailsModal').classList.add('hidden');
         };
 
+        // ==========================================
+        // 🗑️ 3-IN-1 LIBRARY BATCH DELETE ENGINE
+        // ==========================================
+        window.isLibraryBatchModeActive = false;
+
+        window.toggleLibraryManageMode = function() {
+            window.isLibraryBatchModeActive = !window.isLibraryBatchModeActive;
+            const bar = document.getElementById('libraryBatchBarNode');
+            const grid = document.getElementById('adminPolicyLibraryGridList');
+            const btn = document.getElementById('btnToggleLibraryManage');
+
+            if(window.isLibraryBatchModeActive) {
+                bar.classList.add('active');
+                grid.classList.add('batch-mode-active');
+                btn.innerText = "✖ Close Manage";
+                btn.style.background = "#e74c3c";
+                btn.style.color = "#fff";
+            } else {
+                window.cancelLibraryManageMode();
+            }
+        };
+
+        window.cancelLibraryManageMode = function() {
+            window.isLibraryBatchModeActive = false;
+            const bar = document.getElementById('libraryBatchBarNode');
+            const grid = document.getElementById('adminPolicyLibraryGridList');
+            const btn = document.getElementById('btnToggleLibraryManage');
+
+            if(bar) bar.classList.remove('active');
+            if(grid) grid.classList.remove('batch-mode-active');
+            if(btn) {
+                btn.innerText = "🗑️ Manage / Delete";
+                btn.style.background = "rgba(231,76,60,0.2)";
+                btn.style.color = "#e74c3c";
+            }
+            window.selectAllLibraryPolicies(false);
+        };
+
+        window.selectAllLibraryPolicies = function(checkState) {
+            const boxes = document.querySelectorAll('.policy-batch-checkbox');
+            boxes.forEach(cb => cb.checked = checkState);
+            window.updateBatchCountLabel();
+        };
+
+        window.updateBatchCountLabel = function() {
+            const checkedCount = document.querySelectorAll('.policy-batch-checkbox:checked').length;
+            const label = document.getElementById('batchSelectedCountLabel');
+            if(label) label.innerText = `${checkedCount} Selected`;
+        };
+
+        window.deleteSelectedLibraryPolicies = function() {
+            const checkedBoxes = document.querySelectorAll('.policy-batch-checkbox:checked');
+            if(checkedBoxes.length === 0) {
+                alert("Please select at least 1 policy to delete.");
+                return;
+            }
+
+            if(confirm(`⚠️ Permanently delete ${checkedBoxes.length} selected policies from Cloud Library?`)) {
+                let deletePromises = Array.from(checkedBoxes).map(cb => {
+                    const itemId = cb.getAttribute('data-id');
+                    return remove(ref(db, `policy_code_repository/${itemId}`));
+                });
+
+                Promise.all(deletePromises).then(() => {
+                    alert(`✅ ${checkedBoxes.length} Policies permanently removed.`);
+                    window.cancelLibraryManageMode();
+                    window.renderAdminPolicySearchDashboard();
+                    window.filterPolicyAnalytics('today');
+                });
+            }
+        };
+
         // Compact & Sleek 360° Policy Data Inspector Modal
         window.open360PolicyInspector = function(itemId) {
             get(ref(db, `policy_code_repository/${itemId}`)).then(snap => {
@@ -2439,6 +2535,7 @@ const policyRepo = {
 
             return `
             <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
+                <input type="checkbox" class="policy-batch-checkbox" data-id="${item.id}" onchange="window.updateBatchCountLabel()">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
                     <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
@@ -2544,6 +2641,9 @@ const policyRepo = {
             });
             
             libraryContainer.innerHTML = libraryHtml || "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>No records found for this filter.</p>";
+            if(window.isLibraryBatchModeActive) {
+                libraryContainer.classList.add('batch-mode-active');
+            }
         };
 
         window.copyPolicySnippetFromRepo = function(base64Code) {
@@ -5811,14 +5911,12 @@ const policyRepo = {
                     document.getElementById('customerDashboard').classList.remove('hidden');
                     document.getElementById('customerDashboard').style.display = 'flex';
                     window.switchCustomerChannel('menu');
-                    window.enforceCustomerPermissions(); // ⚡ FIX 1: Login hone ke turant baad hide/show permissions lag jayengi
+                    window.enforceCustomerPermissions();
                 }
 
-                // Animation poora hone ke baad overlay ko hata do
                 setTimeout(() => {
                     overlay.classList.remove('active');
-                }, 2500); 
-// ================= YAHAN TAK REPLACE KARNA HAI =================
+                }, 500);
 
             } else {
                 let fails = MatrixSystemState.get('consecutiveBruteFailuresCount') || 0;
