@@ -1421,20 +1421,20 @@
                     <div id="adminPolicySearchBlock" class="hidden">
                         <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
                             
-                            <!-- ⚡ SUB-TABS NAVIGATION (5 TABS INCLUDING CODE CONVERTER) -->
+                            <!-- ⚡ SUB-TABS NAVIGATION (4 TABS) -->
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
                                 <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-                                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 16px; font-size:0.8rem;">🚀 1. Injector</button>
-                                    <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 16px; font-size:0.8rem;">🔍 2. Search</button>
-                                    <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 16px; font-size:0.8rem;">📚 3. Library</button>
-                                    <button onclick="window.switchPolicySubTab('converter')" class="nav-btn policy-sub-tab-btn" id="pSubTab_converter" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; border-radius:30px; padding:8px 16px; font-size:0.8rem;">🔄 4. Code Converter</button>
-                                    <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:30px; padding:8px 16px; font-size:0.8rem;">ℹ️ 5. About Us</button>
+                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 18px;">🚀 1. Injector</button>
+                                    <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">🔍 2. Search</button>
+                                    <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">📚 3. Library</button>
+                                    <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:30px; padding:8px 18px;">ℹ️ 4. About Us</button>
                                 </div>
                             </div>
 
                             <!-- ================= TAB 1: MAC TERMINAL & ANALYTICS INJECTOR ================= -->
                             <div id="policySubBlock_injector" class="policy-sub-content">
+                                <!-- Calendar & Analytics Control Bar -->
                                 <div class="analytics-control-bar">
                                     <div class="analytics-filters-flex">
                                         <button class="analytics-pill-btn active" id="filterBtn_today" onclick="window.filterPolicyAnalytics('today')">📅 Today</button>
@@ -1452,35 +1452,52 @@
                                     </div>
                                 </div>
 
+                                <!-- Mac Terminal Window Frame -->
                                 <div class="mac-terminal-container">
                                     <div class="mac-terminal-topbar">
                                         <div class="mac-window-dots">
-                                            <span class="mac-dot dot-red"></span>
-                                            <span class="mac-dot dot-yellow"></span>
-                                            <span class="mac-dot dot-green"></span>
+                                            <span class="mac-dot dot-red" title="Close"></span>
+                                            <span class="mac-dot dot-yellow" title="Minimize"></span>
+                                            <span class="mac-dot dot-green" title="Maximize"></span>
                                         </div>
                                         <div class="mac-terminal-prompt-title">root@matrix-hub:~# JS INJECTOR ⚡</div>
                                     </div>
-                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste bulk policy object (10+ vehicles) or single policy payload here..."></textarea>
+                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste bulk policy object (10+ vehicles) or single policy payload here...
+const policyRepo = {
+    'TS13EX3718': { ... },
+    'TS08JD2508': { ... }
+};"></textarea>
                                 </div>
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & CONVERT TO STANDALONE SCRIPTS</button>
                             </div>
 
-                            <!-- ================= TAB 2: SEARCH POLICY ================= -->
+                            <!-- ================= TAB 2: SEARCH POLICY (4-PER-ROW GRID) ================= -->
                             <div id="policySubBlock_search" class="policy-sub-content hidden">
                                 <div style="display:flex; gap:10px; margin-bottom:20px;">
-                                    <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name..." onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()" oninput="window.executeAdminPolicySearch()" style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;">
+                                    <input 
+                                        type="text" 
+                                        id="adminPolicySearchInput" 
+                                        class="search-terminal-input" 
+                                        placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name..." 
+                                        onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
+                                        oninput="window.executeAdminPolicySearch()"
+                                        style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
+                                    >
                                     <button onclick="window.executeAdminPolicySearch()" class="hud-engage-btn" style="width:auto; padding:0 25px; border-radius:12px;">SEARCH</button>
                                 </div>
+
+                                <!-- Blank Default State (Glowing Beacon) -->
                                 <div id="policySearchEmptyState" class="search-blank-pulse-box">
                                     <div style="font-size:3.5rem; margin-bottom:10px; text-shadow:0 0 25px var(--neon-cyan);">📡</div>
                                     <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:8px;">Waiting for Input...</h4>
                                     <p style="color:var(--text-sub); font-size:0.95rem; max-width:550px; line-height:1.5;">Type specific Registration Number, Customer Name, or Mobile Number above to filter policies instantly in 4-Per-Row Grid layout.</p>
                                 </div>
+
+                                <!-- 4-Col Grid Results Container -->
                                 <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- ================= TAB 3: POLICY LIBRARY ================= -->
+                            <!-- ================= TAB 3: POLICY LIBRARY (WITH 3-IN-1 BATCH DELETE) ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <div style="display:flex; gap:8px; align-items:center;">
@@ -1493,6 +1510,7 @@
                                     </div>
                                 </div>
 
+                                <!-- 3-in-1 Batch Action Floating Bar -->
                                 <div id="libraryBatchBarNode" class="library-batch-bar">
                                     <div style="display:flex; align-items:center; gap:12px;">
                                         <button onclick="window.selectAllLibraryPolicies(true)" class="nav-btn" style="border-color:#fff; color:#fff; padding:6px 12px; font-size:0.8rem;">☑ Select All</button>
@@ -1508,30 +1526,7 @@
                                 <div id="adminPolicyLibraryGridList" class="policy-4col-grid"></div>
                             </div>
 
-                            <!-- ================= TAB 4: CODE CONVERTER ENGINE (NEW) ================= -->
-                            <div id="policySubBlock_converter" class="policy-sub-content hidden">
-                                <div style="margin-bottom:15px;">
-                                    <h4 style="color:#2ecc71; font-family:'Orbitron'; font-size:1.3rem; margin-bottom:5px;">🔄 1-CLICK BULK POLICY & CONTACT MAPPER</h4>
-                                    <p style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste your bulk policy documents/texts on the left, and your Registration No & Contact list on the right. The engine will automatically match numbers, set email to <b>abc@gmail.com</b>, apply TATA/ICICI rules, and compile standalone scripts!</p>
-                                </div>
-
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
-                                    <div>
-                                        <label style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.82rem; display:block; margin-bottom:6px; font-weight:bold;">1. PASTE BULK POLICY TEXTS (ICICI / TATA):</label>
-                                        <textarea id="converterBulkPolicyInput" class="mac-terminal-editor" style="height:220px;" placeholder="Paste raw text of multiple policy documents here..."></textarea>
-                                    </div>
-                                    <div>
-                                        <label style="color:#2ecc71; font-family:'Orbitron'; font-size:0.82rem; display:block; margin-bottom:6px; font-weight:bold;">2. PASTE REG NO & CONTACT MAPPING LIST:</label>
-                                        <textarea id="converterMappingListInput" class="mac-terminal-editor" style="height:220px;" placeholder="RJ45CD9597 - 9001193100&#10;PB08EC0768 - 9980756925&#10;KA41MB7982 - 9811599824"></textarea>
-                                    </div>
-                                </div>
-
-                                <button onclick="window.executeBulkCodeConverterHub()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #2ecc71, #27ae60); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%; color:#000;">🔄 EXECUTE BULK CONVERTER & SYNC WITH LIBRARY</button>
-                                
-                                <div id="converterResultsContainer" class="policy-4col-grid" style="display:none; margin-top:20px;"></div>
-                            </div>
-
-                            <!-- ================= TAB 5: ABOUT US / FORMAT GUIDE ================= -->
+                            <!-- ================= TAB 4: ABOUT US / FORMAT GUIDE (BILINGUAL) ================= -->
                             <div id="policySubBlock_about" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <h4 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin:0;">📖 NEXUS SYSTEM & FORMAT GUIDE</h4>
@@ -1540,14 +1535,58 @@
                                     </button>
                                 </div>
 
+                                <!-- Visual Guides -->
                                 <div class="guide-tri-grid">
                                     <div class="guide-box">
-                                        <div style="font-size:2rem; margin-bottom:8px;">🔄</div>
-                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">4. Code Converter</h4>
-                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">4. कोड कन्वर्टर</h4>
-                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Bulk map policies with mobile contact lists, set abc@gmail.com email, and auto-generate standalone scripts.</p>
-                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बल्क पॉलिसी और मोबाइल नंबर लिस्ट को एक साथ मैच करके स्टैंडअलोन स्क्रिप्ट्स बनाएं।</p>
+                                        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">1. Mac Injector</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">1. मैक इंजेक्टर</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste multi-policy payloads in hacker macOS terminal. Auto-extracts 40+ fields with real-time analytics.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">macOS टर्मिनल में बल्क पॉलिसी कोड पेस्ट करें। 40+ फील्ड्स अपने आप अलग-अलग एक्सट्रैक्ट होकर सिंक हो जाएंगे।</p>
                                     </div>
+                                    <div class="guide-box">
+                                        <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">2. Search Dashboard</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">2. सर्च डैशबोर्ड</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Zero lag default state with glowing radar. Search instantly across 1000+ policies in 4-column cards.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बिना लैग वाली डिफ़ॉल्ट स्क्रीन। 4-कॉलम ग्रिड में तुरंत 1000+ पॉलिसीज में से सर्च करें।</p>
+                                    </div>
+                                    <div class="guide-box">
+                                        <div style="font-size:2rem; margin-bottom:8px;">📚</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">3. Cloud Library</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">3. क्लाउड लाइब्रेरी</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done), 360° Inspector, and Batch Deletion.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी, 360° इंस्पेक्टर और बैच डिलीट कर सकते हैं।</p>
+                                    </div>
+                                </div>
+
+                                <!-- One Click Auto-Filler Template Box -->
+                                <div class="template-copy-terminal">
+                                    <div class="template-copy-topbar">
+                                        <span style="color:#fff; font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">📋 AUTO-FILLER JAVASCRIPT TEMPLATE</span>
+                                        <button onclick="window.copyPolicyAutoFillerTemplate()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #ff007f, #7f00ff); color:#fff;">📋 COPY FORMAT</button>
+                                    </div>
+                                    <pre style="margin:0; padding:16px; background:#050508; color:#a5f3fc; font-family:'Fira Code', monospace; font-size:0.85rem; overflow-x:auto;"><code id="policyTemplateCodeString">(function() {
+    const policyRepo = {
+        "RJ45CD9597": {
+            "business_type": "RENEW", "sales_channel": "Webapp", "coverage_type": "Comprehensive", "insurer": "TATA AIG",
+            "issue_date": "24-07-2026", "policy_start_date": "10-08-2026", "policy_end_date": "09-08-2027", "product_type": "Car",
+            "vehicle_category": "Private", "policy_number": "6205029417 01 00", "tp_premium": "3416", "od_premium": "2143.31",
+            "pa_amount": "0", "service_tax": "1010", "premium": "6619", "ncb": "0", "insurer_declared_idv": "319801",
+            "electrical_value": "0", "non_electrical_value": "0", "cng_kit_value": "0", "voluntary_deductible": "0",
+            "previous_policy_insurer": "Tata AIG", "previous_policy_number": "6205029417", "previous_policy_expiry_date": "09-08-2026",
+            "previous_ncb": "50", "financier": "NA", "registration_number": "RJ45CD9597", "manufacturing_date": "01-01-2018",
+            "registration_date": "10-08-2018", "engine_number": "K12MN4437317", "chassis_number": "MA3EWB22SJG525241",
+            "name": "MANOJ KUMAR MEENA", "email": "abc@gmail.com", "mobile": "9001193100", "marital_status": "Married",
+            "nominee_name": "NA", "nominee_age": "0", "nominee_relationship": "NA",
+            "address": "192,, ASHOK, VIHAR, JAGATPURA,, JAIPUR, JAIPUR-RAJASTHAN, 302017",
+            "state": "RAJASTHAN", "city": "JAIPUR", "pincode": "302017",
+            "is_legal_liability_driver": true, "is_depreciation_waiver": false, "is_key_replacement": false,
+            "is_road_side_assistance": false, "is_engine_protector": false, "is_consumables_cover": false, "same_address": true
+        }
+    };
+    console.log("Matrix Auto-Filler Payload Active:", policyRepo);
+})();</code></pre>
                                 </div>
                             </div>
 
