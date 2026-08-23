@@ -1235,10 +1235,11 @@
     <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
             <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-            <div style="display:flex; gap:12px;">
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
                 <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
                 <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">🔍 2. Search</button>
                 <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">📚 3. Library</button>
+                <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">ℹ️ 4. About Us</button>
             </div>
         </div>
 
@@ -1281,9 +1282,7 @@
             </div>
             <button onclick="window.saveAdminPolicyCodeSnippet(); setTimeout(window.updateInjectorAnalytics, 1000);" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width: 100%; box-shadow: 0 10px 30px rgba(0,242,254,0.3);">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
             
-            <!-- Script to handle dynamic actions for the new UI -->
             <script>
-                // Auto-refresh analytics in background
                 setInterval(() => {
                     if(document.getElementById('policySubBlock_injector') && !document.getElementById('policySubBlock_injector').classList.contains('hidden')) {
                         if(window.updateInjectorAnalytics) window.updateInjectorAnalytics();
@@ -1408,16 +1407,98 @@
                     `;
                     wrapper.classList.remove('hidden');
                 };
+
+                // Updated Search Filter with blank default & 4-per-row grid
+                window.filterAdminPolicyDatabaseItems = function() {
+                    const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
+                    const listContainer = document.getElementById('adminPolicySearchResultsList');
+                    if(!listContainer) return;
+
+                    if(!q) {
+                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:30px; grid-column: 1 / -1; font-size:1rem;">Type Reg No, Contact, or Customer Name above to search specific policies...</p>`;
+                        return;
+                    }
+
+                    if(!window.cachedPolicyRepoData) {
+                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:20px; grid-column: 1 / -1;">No records available.</p>`;
+                        return;
+                    }
+
+                    const items = Object.values(window.cachedPolicyRepoData).filter(item => {
+                        const text = (item.regNo + ' ' + (item.policyNo||'') + ' ' + (item.clientName||'') + ' ' + (item.insurer||'')).toLowerCase();
+                        return text.includes(q);
+                    }).sort((a,b) => b.epoch - a.epoch);
+
+                    if(items.length === 0) {
+                        listContainer.innerHTML = `<p style="color:var(--text-sub); text-align:center; padding:20px; grid-column: 1 / -1;">No matching policies found.</p>`;
+                        return;
+                    }
+
+                    let searchHtml = "";
+                    items.forEach((item, index) => {
+                        let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+                        let serialNo = `#${index + 1}`;
+                        let isDone = item.isDone === true;
+                        let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
+                        
+                        searchHtml += `
+                        <div class="hud-data-card policy-repo-card" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; padding:15px; gap:8px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.85rem;">${item.insurer} (${serialNo})</span>
+                                ${statusBadge}
+                            </div>
+                            <p style="margin-top:3px; font-size:0.85rem;"><b>Reg:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
+                            <p style="font-size:0.85rem;"><b>Client:</b> ${item.clientName}</p>
+                            <div style="display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap;">
+                                <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:6px 10px; width:auto; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
+                                <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
+                            </div>
+                        </div>`;
+                    });
+                    listContainer.innerHTML = searchHtml;
+                };
+
+                window.copyFormatTemplate = function() {
+                    const code = document.getElementById('formatTemplateCode').innerText;
+                    navigator.clipboard.writeText(code).then(() => {
+                        alert("✅ Format template copied to clipboard!");
+                    });
+                };
+
+                // Updated SubTab switcher to include 'about' tab
+                window.switchPolicySubTab = function(tabName) {
+                    ['injector', 'search', 'library', 'about'].forEach(t => {
+                        const block = document.getElementById(`policySubBlock_${t}`);
+                        const btn = document.getElementById(`pSubTab_${t}`);
+                        if(block) block.classList.toggle('hidden', t !== tabName);
+                        if(btn) {
+                            if(t === tabName) {
+                                btn.style.borderColor = "var(--neon-cyan)";
+                                btn.style.color = "var(--neon-cyan)";
+                                btn.style.background = "rgba(0,242,254,0.15)";
+                            } else {
+                                btn.style.borderColor = "rgba(0,242,254,0.3)";
+                                btn.style.color = "var(--text-sub)";
+                                btn.style.background = "transparent";
+                            }
+                        }
+                    });
+                    if(tabName === 'search' || tabName === 'library') {
+                        window.renderAdminPolicySearchDashboard();
+                    }
+                };
             </script>
         </div>
 
-        <!-- Sub Block 2: Search Policy with Quick Done Toggle -->
+        <!-- Sub Block 2: Search Policy (4 per row grid & blank default) -->
         <div id="policySubBlock_search" class="policy-sub-content hidden">
-            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Policy No, or Client Name. Mark status directly.</p>
+            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Policy No, or Client Name. Type below to query records.</p>
             <div style="margin-bottom:20px;">
-                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Policy No, or Client Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
+                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Contact No, or Customer Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
             </div>
-            <div id="adminPolicySearchResultsList" style="display:flex; flex-direction:column; gap:15px; max-height:480px; overflow-y:auto; padding-right:5px;"></div>
+            <div id="adminPolicySearchResultsList" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-height: 420px; overflow-y: auto; padding-right:5px;">
+                <p style="color:var(--text-sub); text-align:center; padding:30px; grid-column: 1 / -1; font-size:1rem;">Type Reg No, Contact, or Customer Name above to search specific policies...</p>
+            </div>
         </div>
 
         <!-- Sub Block 3: Policy Library (Filtered Done / Not Done Views) -->
@@ -1432,6 +1513,35 @@
             </div>
             <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
         </div>
+
+        <!-- Sub Block 4: About Us / Format Guide -->
+        <div id="policySubBlock_about" class="policy-sub-content hidden">
+            <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--border-glass); border-radius: 14px; padding: 25px; color: #fff; font-family: 'Segoe UI', sans-serif;">
+                <h3 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 15px; font-size: 1.3rem;">ℹ️ System Format & About Us Guide</h3>
+                <p style="color: var(--text-sub); margin-bottom: 15px; line-height: 1.6;">The Cyber Policy Injector engine supports structured JavaScript object formats containing registration numbers, policy numbers, customer contact information, and insurer metadata.</p>
+                <div style="background: #000; border: 1px solid rgba(0,242,254,0.3); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.85rem; color: #00f2fe; margin-bottom: 15px; position: relative;">
+                    <button onclick="window.copyFormatTemplate()" style="position: absolute; top: 10px; right: 10px; background: var(--neon-cyan); color: #000; border: none; padding: 4px 10px; border-radius: 4px; font-family: Orbitron; font-weight: bold; cursor: pointer; font-size: 0.75rem;">📋 COPY</button>
+                    <pre id="formatTemplateCode">var data = {
+    id_registration_number: "DL03CCU1728",
+    id_policy_number: "POL-99887766",
+    id_name: "Shashi Tiwari",
+    id_contact: "9835187726",
+    id_insurer: "HDFC ERGO"
+};</pre>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.95rem;">
+                    <div style="background: rgba(0,242,254,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,242,254,0.2);">
+                        <b style="color: var(--neon-cyan); display: block; margin-bottom: 5px;">🚀 Max Capacity & Performance</b>
+                        <p style="color: var(--text-sub); font-size: 0.85rem;">Supports 10,000+ active policy nodes with instant real-time cloud synchronization via Firebase RTDB.</p>
+                    </div>
+                    <div style="background: rgba(46,204,113,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(46,204,113,0.2);">
+                        <b style="color: #2ecc71; display: block; margin-bottom: 5px;">🔒 Security & Encryption</b>
+                        <p style="color: var(--text-sub); font-size: 0.85rem;">End-to-end encrypted packet transmission with auto-timestamping and day metrics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
