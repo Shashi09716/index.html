@@ -495,6 +495,203 @@
             .chat-stream-message-container { display: flex !important; }
             .mobile-back-btn { display: none !important; }
         }
+
+        /* ========================================================================== */
+        /* ⚡ ULTRA-PRO CYBER REPO, MAC TERMINAL, 4-COL GRID & ANALYTICS STYLES */
+        /* ========================================================================== */
+        .analytics-control-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(4, 14, 33, 0.9);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.08);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .analytics-filters-flex { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .analytics-pill-btn {
+            background: rgba(10, 20, 40, 0.8);
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            color: var(--text-sub);
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .analytics-pill-btn.active, .analytics-pill-btn:hover {
+            background: rgba(0, 242, 254, 0.2);
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+        }
+        .analytics-date-input {
+            background: #02050e;
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .analytics-count-badge {
+            background: rgba(46, 204, 113, 0.15);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        /* macOS Hacker Terminal UI */
+        .mac-terminal-container {
+            background: #000000;
+            border-radius: 12px;
+            border: 2px solid var(--border-glass);
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 242, 254, 0.2);
+            margin-bottom: 20px;
+        }
+        .mac-terminal-topbar {
+            background: #111827;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mac-window-dots { display: flex; gap: 8px; z-index: 2; }
+        .mac-dot { width: 13px; height: 13px; border-radius: 50%; display: inline-block; }
+        .mac-dot.dot-red { background: #ff5f56; box-shadow: 0 0 6px #ff5f56; }
+        .mac-dot.dot-yellow { background: #ffbd2e; box-shadow: 0 0 6px #ffbd2e; }
+        .mac-dot.dot-green { background: #27c93f; box-shadow: 0 0 6px #27c93f; }
+        .mac-terminal-prompt-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Courier New', monospace;
+            font-weight: 800;
+            font-size: 0.88rem;
+            color: var(--neon-cyan);
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+            white-space: nowrap;
+        }
+        .mac-terminal-editor {
+            width: 100%;
+            height: 230px;
+            background: #030712;
+            color: #38bdf8;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding: 18px;
+            border: none;
+            outline: none;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        /* 4-Per-Row Grid Format */
+        .policy-4col-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-height: 520px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+        @media (max-width: 1200px) { .policy-4col-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .policy-4col-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .policy-4col-grid { grid-template-columns: 1fr; } }
+
+        .compact-policy-card {
+            background: rgba(4, 14, 33, 0.92);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .compact-policy-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 12px 25px rgba(0, 242, 254, 0.25);
+        }
+
+        /* Blank Default Waiting Pulse State */
+        .search-blank-pulse-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            background: rgba(2, 5, 14, 0.6);
+            border: 2px dashed rgba(0, 242, 254, 0.3);
+            border-radius: 16px;
+            text-align: center;
+            animation: cyberBeaconGlow 2.5s infinite ease-in-out;
+        }
+        @keyframes cyberBeaconGlow {
+            0%, 100% { border-color: rgba(0, 242, 254, 0.2); box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.05); }
+            50% { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 254, 0.3), inset 0 0 20px rgba(0, 242, 254, 0.15); }
+        }
+
+        /* Bilingual Guide & One-Click Copy */
+        .guide-tri-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 20px 0; }
+        .guide-box { background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); border-radius: 12px; padding: 18px; }
+        .template-copy-terminal {
+            background: #010409;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .template-copy-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #161b22;
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Details Modal Table */
+        .details-modal-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            text-align: left;
+        }
+        .details-modal-table th {
+            background: #111827;
+            padding: 12px;
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--border-glass);
+        }
+        .details-modal-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -1225,55 +1422,186 @@
                     <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">🤖</div><h3 style="color: #2ecc71;">AI Monitor</h3><p>Intercept & review AI comms.</p>
                 </div>
                 <div class="menu-card" onclick="window.switchAdminSubSection('stats')" style="border-color:#2ecc71;">
-                    <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">📊</div><h3 style="color: #2ecc71;">System Status</h3><p>Server diagnostics & wipe controls.</p>
+                        <div class="icon" style="text-shadow: 0 0 20px #2ecc71;">📊</div><h3 style="color: #2ecc71;">System Status</h3><p>Server diagnostics & wipe controls.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="customerCardsContainer" id="adminStaticContainer">
-                
-                <div id="adminPolicySearchBlock" class="hidden">
-    <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
-            <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
-            <div style="display:flex; gap:12px;">
-                <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 20px;">🚀 1. Injector</button>
-                <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">🔍 2. Search</button>
-                <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 20px;">📚 3. Library</button>
-            </div>
-        </div>
+                <div class="customerCardsContainer" id="adminStaticContainer">
+                    
+                    <div id="adminPolicySearchBlock" class="hidden">
+                        <div class="modern-glass-panel" style="border-color: var(--neon-cyan); box-shadow: var(--cyber-glow); background: linear-gradient(135deg, rgba(6,17,38,0.95), rgba(2,5,14,0.98));">
+                            
+                            <!-- ⚡ SUB-TABS NAVIGATION (4 TABS) -->
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:15px; flex-wrap:wrap; gap:10px;">
+                                <h3 class="neon-cyan-text" style="font-size: 1.6rem; margin: 0; letter-spacing:1px;">⚡ CYBER POLICY REPO & MATRIX HUB</h3>
+                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                    <button onclick="window.switchPolicySubTab('injector')" class="nav-btn policy-sub-tab-btn" id="pSubTab_injector" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); border-radius:30px; padding:8px 18px;">🚀 1. Injector</button>
+                                    <button onclick="window.switchPolicySubTab('search')" class="nav-btn policy-sub-tab-btn" id="pSubTab_search" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">🔍 2. Search</button>
+                                    <button onclick="window.switchPolicySubTab('library')" class="nav-btn policy-sub-tab-btn" id="pSubTab_library" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:30px; padding:8px 18px;">📚 3. Library</button>
+                                    <button onclick="window.switchPolicySubTab('about')" class="nav-btn policy-sub-tab-btn" id="pSubTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:30px; padding:8px 18px;">ℹ️ 4. About Us</button>
+                                </div>
+                            </div>
 
-        <!-- Sub Block 1: Code Injector -->
-        <div id="policySubBlock_injector" class="policy-sub-content">
-            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Paste your policy JS code block below. Auto-compiles with precise timestamp & day metrics.</p>
-            <div style="display:flex; flex-direction:column; gap:15px;">
-                <textarea id="adminPolicyCodePasteInput" class="giant-compiler-input" placeholder="Paste policy JS code block here (e.g. var data = { id_registration_number: 'DL03CCU1728', ... })..." style="height:200px; font-family:monospace; font-size:0.9rem; border-radius:12px;"></textarea>
-                <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px;">💾 SAVE POLICY CODE TO CLOUD VAULT</button>
-            </div>
-        </div>
+                            <!-- ================= TAB 1: MAC TERMINAL & ANALYTICS INJECTOR ================= -->
+                            <div id="policySubBlock_injector" class="policy-sub-content">
+                                <!-- Analytics Bar -->
+                                <div class="analytics-control-bar">
+                                    <div class="analytics-filters-flex">
+                                        <button class="analytics-pill-btn active" id="filterBtn_today" onclick="window.filterPolicyAnalytics('today')">Today</button>
+                                        <button class="analytics-pill-btn" id="filterBtn_yesterday" onclick="window.filterPolicyAnalytics('yesterday')">Yesterday</button>
+                                        <div style="display:flex; align-items:center; gap:6px;">
+                                            <input type="date" id="analyticsStartDate" class="analytics-date-input">
+                                            <span style="color:var(--text-sub); font-size:0.85rem;">to</span>
+                                            <input type="date" id="analyticsEndDate" class="analytics-date-input">
+                                            <button onclick="window.filterPolicyAnalytics('custom')" class="analytics-pill-btn" style="padding:6px 12px;">Apply</button>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; align-items:center; gap:12px;">
+                                        <div class="analytics-count-badge">Injected: <span id="policyAnalyticsLiveCount">0</span></div>
+                                        <button onclick="window.openPolicyDetailsModal()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:6px 14px; font-size:0.82rem; border-radius:20px;">📊 View Details</button>
+                                    </div>
+                                </div>
 
-        <!-- Sub Block 2: Search Policy with Quick Done Toggle -->
-        <div id="policySubBlock_search" class="policy-sub-content hidden">
-            <p style="color:var(--text-sub); margin-bottom:15px; font-size:0.95rem;">Search instantly using Reg No, Policy No, or Client Name. Mark status directly.</p>
-            <div style="margin-bottom:20px;">
-                <input type="text" id="adminPolicySearchInput" class="search-terminal-input" placeholder="🔍 Search by Reg No, Policy No, or Client Name..." oninput="window.filterAdminPolicyDatabaseItems()" style="font-size: 1.05rem; padding:15px; border-radius:12px;">
-            </div>
-            <div id="adminPolicySearchResultsList" style="display:flex; flex-direction:column; gap:15px; max-height:480px; overflow-y:auto; padding-right:5px;"></div>
-        </div>
+                                <!-- Mac Terminal Window Frame -->
+                                <div class="mac-terminal-container">
+                                    <div class="mac-terminal-topbar">
+                                        <div class="mac-window-dots">
+                                            <span class="mac-dot dot-red"></span>
+                                            <span class="mac-dot dot-yellow"></span>
+                                            <span class="mac-dot dot-green"></span>
+                                        </div>
+                                        <div class="mac-terminal-prompt-title">root@matrix-hub:~# JS INJECTOR ⚡</div>
+                                    </div>
+                                    <textarea id="adminPolicyCodePasteInput" class="mac-terminal-editor" placeholder="// Paste your JavaScript payload or auto-filler code block here...
+var data = {
+  id_registration_number: 'DL01AB1234',
+  id_policy_number: 'POL-99281-X',
+  id_name: 'Rahul Sharma',
+  id_insurer: 'ICICI LOMBARD'
+};"></textarea>
+                                </div>
+                                <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:16px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & SAVE TO CLOUD VAULT</button>
+                            </div>
 
-        <!-- Sub Block 3: Policy Library (Filtered Done / Not Done Views) -->
-        <div id="policySubBlock_library" class="policy-sub-content hidden">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
-                <div style="display:flex; gap:8px;">
-                    <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
-                    <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
-                    <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
-                </div>
-            </div>
-            <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
-        </div>
-    </div>
-</div>
+                            <!-- ================= TAB 2: SEARCH POLICY (COMPACT & 4-PER-ROW GRID) ================= -->
+                            <div id="policySubBlock_search" class="policy-sub-content hidden">
+                                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                                    <input 
+                                        type="text" 
+                                        id="adminPolicySearchInput" 
+                                        class="search-terminal-input" 
+                                        placeholder="🔍 Type Reg No, Contact Number, or Customer Name and press Enter..." 
+                                        onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
+                                        style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
+                                    >
+                                    <button onclick="window.executeAdminPolicySearch()" class="hud-engage-btn" style="width:auto; padding:0 25px; border-radius:12px;">SEARCH</button>
+                                </div>
+
+                                <!-- Blank Default State (Glowing Beacon) -->
+                                <div id="policySearchEmptyState" class="search-blank-pulse-box">
+                                    <div style="font-size:3rem; margin-bottom:10px; text-shadow:0 0 20px var(--neon-cyan);">📡</div>
+                                    <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:8px;">Waiting for Input...</h4>
+                                    <p style="color:var(--text-sub); font-size:0.95rem; max-width:500px; line-height:1.5;">Type specific Registration Number, Mobile Number, or Client Name above and press Search/Enter to load results in 4-Card Grid format.</p>
+                                </div>
+
+                                <!-- 4-Col Grid Results Container -->
+                                <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
+                            </div>
+
+                            <!-- ================= TAB 3: POLICY LIBRARY (FILTERED VIEWS) ================= -->
+                            <div id="policySubBlock_library" class="policy-sub-content hidden">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                                    <p style="color:var(--text-sub); font-size:0.95rem; margin:0;">All compiled policy blocks in library view with serial indexing & status filters.</p>
+                                    <div style="display:flex; gap:8px;">
+                                        <button onclick="window.filterLibraryByStatus('all')" class="nav-btn lib-filter-btn" id="libFilter_all" style="border-color:var(--neon-cyan); color:var(--neon-cyan); background:rgba(0,242,254,0.15); font-size:0.8rem; padding:6px 14px; border-radius:20px;">All</button>
+                                        <button onclick="window.filterLibraryByStatus('done')" class="nav-btn lib-filter-btn" id="libFilter_done" style="border-color:rgba(46,204,113,0.4); color:#2ecc71; font-size:0.8rem; padding:6px 14px; border-radius:20px;">✅ Done</button>
+                                        <button onclick="window.filterLibraryByStatus('not_done')" class="nav-btn lib-filter-btn" id="libFilter_not_done" style="border-color:rgba(231,76,60,0.4); color:#e74c3c; font-size:0.8rem; padding:6px 14px; border-radius:20px;">⏳ Not Done</button>
+                                    </div>
+                                </div>
+                                <div id="adminPolicyLibraryGridList" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap:18px; max-height:500px; overflow-y:auto; padding-right:5px;"></div>
+                            </div>
+
+                            <!-- ================= TAB 4: ABOUT US / FORMAT GUIDE (BILINGUAL) ================= -->
+                            <div id="policySubBlock_about" class="policy-sub-content hidden">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                                    <h4 style="color:#ff007f; font-family:'Orbitron'; font-size:1.3rem; margin:0;">📖 NEXUS SYSTEM & FORMAT GUIDE</h4>
+                                    <button onclick="window.toggleAboutLanguage()" class="nav-btn" style="border-color:var(--neon-cyan); color:var(--neon-cyan); font-size:0.9rem; padding:8px 18px;">
+                                        🌐 Switch to: <b id="lblAboutLangSwitcher">हिंदी</b>
+                                    </button>
+                                </div>
+
+                                <!-- Visual Guides -->
+                                <div class="guide-tri-grid">
+                                    <div class="guide-box">
+                                        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">1. Mac Injector</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">1. मैक इंजेक्टर</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Paste your JavaScript policy payloads. System auto-extracts Reg No, Insurer, and Policy No.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">अपना जावास्क्रिप्ट पेलोड पेस्ट करें। सिस्टम अपने आप रजिस्ट्रेशन और पॉलिसी डिटेल्स कंपाइल कर लेगा।</p>
+                                    </div>
+                                    <div class="guide-box">
+                                        <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">2. Search Dashboard</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">2. सर्च डैशबोर्ड</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Zero lag default state. Instant 4-cards-per-row grid search for 1000+ policies.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">बिना लैग वाली डिफ़ॉल्ट स्क्रीन। 4-कॉलम ग्रिड में तुरंत 1000+ पॉलिसीज में से सर्च करें।</p>
+                                    </div>
+                                    <div class="guide-box">
+                                        <div style="font-size:2rem; margin-bottom:8px;">📚</div>
+                                        <h4 class="guide-en" style="color:var(--neon-cyan); margin-bottom:5px;">3. Cloud Library</h4>
+                                        <h4 class="guide-hi hidden" style="color:var(--neon-cyan); margin-bottom:5px;">3. क्लाउड लाइब्रेरी</h4>
+                                        <p class="guide-en" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">Indexed archive with instant status tracking (Done / Not Done) and 1-Click copy.</p>
+                                        <p class="guide-hi hidden" style="color:var(--text-sub); font-size:0.9rem; line-height:1.4;">इंडेक्स किया हुआ सुरक्षित रिकॉर्ड जहाँ से 1-क्लिक में कोड कॉपी और स्टेटस ट्रैक कर सकते हैं।</p>
+                                    </div>
+                                </div>
+
+                                <!-- One Click Template Box -->
+                                <div class="template-copy-terminal">
+                                    <div class="template-copy-topbar">
+                                        <span style="color:#fff; font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">📋 AUTO-FILLER JAVASCRIPT TEMPLATE</span>
+                                        <button onclick="window.copyPolicyAutoFillerTemplate()" class="hud-engage-btn" style="width:auto; padding:6px 14px; font-size:0.8rem; background:linear-gradient(135deg, #ff007f, #7f00ff); color:#fff;">📋 COPY FORMAT</button>
+                                    </div>
+                                    <pre style="margin:0; padding:18px; background:#050508; color:#a5f3fc; font-family:'Fira Code', monospace; font-size:0.88rem; overflow-x:auto;"><code id="policyTemplateCodeString">// === NEXUS MATRIX AUTO-FILLER TEMPLATE ===
+var policyPayload = {
+    id_registration_number: "DL01AB1234",
+    id_policy_number: "POL-99281-X",
+    id_name: "Rahul Sharma",
+    id_insurer: "ICICI LOMBARD",
+    id_mobile_number: "9876543210",
+    id_timestamp: new Date().toISOString()
+};
+console.log("Nexus Auto-Filler Ready:", policyPayload);</code></pre>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ================= VIEW DETAILS MODAL ================= -->
+                    <div id="policyHistoryDetailsModal" class="nexus-custom-popup-overlay hidden" onclick="window.closePolicyDetailsModal()">
+                        <div class="nexus-popup-card-box" onclick="event.stopPropagation()" style="max-width:900px; width:95%; max-height:85vh; padding:25px; text-align:left;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border-bottom:1px solid var(--border-glass); padding-bottom:12px;">
+                                <h3 class="neon-cyan-text" style="font-size:1.4rem; margin:0;">📊 INJECTED POLICY ANALYTICS HISTORY</h3>
+                                <button onclick="window.closePolicyDetailsModal()" class="abort-btn" style="padding:6px 14px; font-size:0.9rem;">✖ CLOSE</button>
+                            </div>
+                            <div style="overflow-x:auto; max-height:60vh;">
+                                <table class="details-modal-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Reg No</th>
+                                            <th>Customer Name</th>
+                                            <th>Contact</th>
+                                            <th>Policy No</th>
+                                            <th>Date</th>
+                                            <th>Day</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="policyDetailsModalTbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
 <div id="creationBlock" class="hidden">
                     <div class="modern-glass-panel" style="border-color: rgba(0, 242, 254, 0.6); box-shadow: var(--cyber-glow);">
@@ -1635,27 +1963,31 @@
         window.purgePoliciesDB = function() { if(confirm('Wipe Policies?')) { remove(ref(db, 'policies')).then(() => alert('Vault DB Purged.')); } };
         window.purgeChatsDB = function() { if(confirm('Wipe Chats?')) { remove(ref(db, 'chats')).then(() => alert('Chat History Purged.')); } };
 
-        // ==========================================
-        // 🔍 ADVANCED 3-TAB POLICY REPO & METADATA LOGIC
-        // ==========================================
+        // ==========================================================================
+        // 🔍 ADVANCED 4-TAB POLICY REPO, ANALYTICS & 4-COL SEARCH ENGINE
+        // ==========================================================================
+        window.activeAnalyticsPolicyRecords = [];
+
         window.switchPolicySubTab = function(tabName) {
-            ['injector', 'search', 'library'].forEach(t => {
+            ['injector', 'search', 'library', 'about'].forEach(t => {
                 const block = document.getElementById(`policySubBlock_${t}`);
                 const btn = document.getElementById(`pSubTab_${t}`);
                 if(block) block.classList.toggle('hidden', t !== tabName);
                 if(btn) {
                     if(t === tabName) {
-                        btn.style.borderColor = "var(--neon-cyan)";
-                        btn.style.color = "var(--neon-cyan)";
-                        btn.style.background = "rgba(0,242,254,0.15)";
+                        btn.style.borderColor = (t === 'about') ? "var(--neon-pink)" : "var(--neon-cyan)";
+                        btn.style.color = (t === 'about') ? "#ff007f" : "var(--neon-cyan)";
+                        btn.style.background = (t === 'about') ? "rgba(255,0,127,0.15)" : "rgba(0,242,254,0.15)";
                     } else {
-                        btn.style.borderColor = "rgba(0,242,254,0.3)";
+                        btn.style.borderColor = "rgba(255,255,255,0.2)";
                         btn.style.color = "var(--text-sub)";
                         btn.style.background = "transparent";
                     }
                 }
             });
-            if(tabName === 'search' || tabName === 'library') {
+            if(tabName === 'injector') {
+                window.filterPolicyAnalytics('today');
+            } else if(tabName === 'library') {
                 window.renderAdminPolicySearchDashboard();
             }
         };
@@ -1668,14 +2000,17 @@
             let polMatch = codeText.match(/id_policy_number['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let nameMatch = codeText.match(/id_name['"]?\s*:\s*['"]([^'"]+)['"]/i);
             let insurerMatch = codeText.match(/id_insurer['"]?\s*:\s*['"]([^'"]+)['"]/i);
+            let phoneMatch = codeText.match(/(?:id_mobile_number|id_phone|contact)['"]?\s*:\s*['"]([^'"]+)['"]/i);
             
             let regNo = regMatch ? regMatch[1] : "UNKNOWN_REG";
             let policyNo = polMatch ? polMatch[1] : "UNKNOWN_POL";
             let clientName = nameMatch ? nameMatch[1] : "UNKNOWN_CLIENT";
             let insurer = insurerMatch ? insurerMatch[1] : "INSURER";
+            let phone = phoneMatch ? phoneMatch[1] : "N/A";
             
             const now = new Date();
             const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const isoDate = now.toISOString().split('T')[0];
             const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`;
             const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
             const dayStr = daysArr[now.getDay()];
@@ -1688,29 +2023,169 @@
                 policyNo: policyNo,
                 clientName: clientName,
                 insurer: insurer,
+                contact: phone,
                 rawCode: codeText,
                 isDone: false,
+                isoDate: isoDate,
                 dateStr: dateStr,
                 timeStr: timeStr,
                 dayStr: dayStr,
                 epoch: Date.now()
             }).then(() => {
                 document.getElementById('adminPolicyCodePasteInput').value = "";
-                alert("✅ Policy code compiled with timestamp & saved to cloud!");
-                window.switchPolicySubTab('library');
+                alert("⚡ Policy Injected & Synced into Cloud Matrix!");
+                window.filterPolicyAnalytics('today');
+            });
+        };
+
+        // Analytics Filters (Today / Yesterday / Custom Range)
+        window.filterPolicyAnalytics = function(type) {
+            ['today', 'yesterday'].forEach(id => {
+                const btn = document.getElementById(`filterBtn_${id}`);
+                if(btn) btn.classList.toggle('active', id === type);
+            });
+
+            get(ref(db, 'policy_code_repository')).then(snap => {
+                if(!snap.exists()) {
+                    document.getElementById('policyAnalyticsLiveCount').innerText = "0";
+                    window.activeAnalyticsPolicyRecords = [];
+                    return;
+                }
+                const allData = Object.values(snap.val());
+                const now = new Date();
+                const todayIso = now.toISOString().split('T')[0];
+                
+                const yestDate = new Date();
+                yestDate.setDate(yestDate.getDate() - 1);
+                const yestIso = yestDate.toISOString().split('T')[0];
+
+                let filtered = [];
+                if(type === 'today') {
+                    filtered = allData.filter(item => (item.isoDate === todayIso || new Date(item.epoch).toISOString().split('T')[0] === todayIso));
+                } else if(type === 'yesterday') {
+                    filtered = allData.filter(item => (item.isoDate === yestIso || new Date(item.epoch).toISOString().split('T')[0] === yestIso));
+                } else if(type === 'custom') {
+                    const start = document.getElementById('analyticsStartDate').value;
+                    const end = document.getElementById('analyticsEndDate').value;
+                    if(!start || !end) { alert("Please select both Start and End dates."); return; }
+                    filtered = allData.filter(item => {
+                        const itemDate = item.isoDate || new Date(item.epoch).toISOString().split('T')[0];
+                        return itemDate >= start && itemDate <= end;
+                    });
+                }
+
+                window.activeAnalyticsPolicyRecords = filtered;
+                document.getElementById('policyAnalyticsLiveCount').innerText = filtered.length;
+            });
+        };
+
+        // View Details Modal Popup
+        window.openPolicyDetailsModal = function() {
+            const tbody = document.getElementById('policyDetailsModalTbody');
+            const data = window.activeAnalyticsPolicyRecords || [];
+            
+            if(data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-sub); padding:20px;">No policy injections recorded for this selected range.</td></tr>`;
+            } else {
+                tbody.innerHTML = data.map(item => `
+                    <tr>
+                        <td style="color:var(--neon-cyan);">${item.regNo}</td>
+                        <td>${item.clientName}</td>
+                        <td style="color:#2ecc71;">${item.contact || 'N/A'}</td>
+                        <td>${item.policyNo}</td>
+                        <td>${item.dateStr}</td>
+                        <td style="color:#f1c40f;">${item.dayStr}</td>
+                        <td>${item.timeStr}</td>
+                    </tr>
+                `).join('');
+            }
+            document.getElementById('policyHistoryDetailsModal').classList.remove('hidden');
+        };
+
+        window.closePolicyDetailsModal = function() {
+            document.getElementById('policyHistoryDetailsModal').classList.add('hidden');
+        };
+
+        // Search Execution (4 Cards Per Row Grid)
+        window.executeAdminPolicySearch = function() {
+            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
+            const emptyState = document.getElementById('policySearchEmptyState');
+            const gridContainer = document.getElementById('adminPolicySearchResultsList');
+
+            if(!q) {
+                emptyState.style.display = "flex";
+                gridContainer.style.display = "none";
+                return;
+            }
+
+            get(ref(db, 'policy_code_repository')).then(snap => {
+                if(!snap.exists()) {
+                    emptyState.style.display = "none";
+                    gridContainer.style.display = "grid";
+                    gridContainer.innerHTML = `<p style="grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;">Repository is currently empty.</p>`;
+                    return;
+                }
+
+                const allItems = Object.values(snap.val()).sort((a,b) => b.epoch - a.epoch);
+                const matched = allItems.filter(item => {
+                    const searchStr = `${item.regNo} ${item.policyNo} ${item.clientName} ${item.insurer} ${item.contact || ''}`.toLowerCase();
+                    return searchStr.includes(q);
+                });
+
+                emptyState.style.display = "none";
+                gridContainer.style.display = "grid";
+
+                if(matched.length === 0) {
+                    gridContainer.innerHTML = `<p style="grid-column: 1/-1; color:#e74c3c; text-align:center; padding:30px; font-weight:bold; font-size:1.1rem;">❌ No policies found matching "${q}"</p>`;
+                    return;
+                }
+
+                gridContainer.innerHTML = matched.map((item, idx) => {
+                    let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
+                    let isDone = item.isDone === true;
+                    return `
+                    <div class="compact-policy-card" style="border-left: 4px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'};">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${item.insurer}</span>
+                            <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
+                        </div>
+                        <div style="font-size:0.95rem; font-weight:bold; color:#fff; margin-top:4px;">Reg: <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></div>
+                        <div style="font-size:0.85rem; color:var(--text-sub);"><b>Name:</b> ${item.clientName}</div>
+                        <div style="font-size:0.85rem; color:var(--text-sub);"><b>Pol No:</b> ${item.policyNo}</div>
+                        <div style="font-size:0.8rem; color:#8696a0; margin-top:2px;">🕒 ${item.dateStr} (${item.dayStr})</div>
+                        <div style="display:flex; gap:6px; margin-top:auto; padding-top:8px;">
+                            <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="flex:1; padding:6px 10px; font-size:0.75rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
+                            <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:6px 8px; font-size:0.75rem;">${isDone?'Undo':'Done'}</button>
+                            <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:6px 8px; font-size:0.75rem;">🗑️</button>
+                        </div>
+                    </div>`;
+                }).join('');
+            });
+        };
+
+        // Bilingual Toggle & Template Copy
+        let isAboutHindiActive = false;
+        window.toggleAboutLanguage = function() {
+            isAboutHindiActive = !isAboutHindiActive;
+            document.getElementById('lblAboutLangSwitcher').innerText = isAboutHindiActive ? "English" : "हिंदी";
+            document.querySelectorAll('.guide-en').forEach(el => el.classList.toggle('hidden', isAboutHindiActive));
+            document.querySelectorAll('.guide-hi').forEach(el => el.classList.toggle('hidden', !isAboutHindiActive));
+        };
+
+        window.copyPolicyAutoFillerTemplate = function() {
+            const templateText = document.getElementById('policyTemplateCodeString').innerText;
+            navigator.clipboard.writeText(templateText).then(() => {
+                alert("📋 JavaScript Auto-Filler Format Template copied to clipboard!");
             });
         };
 
         window.renderAdminPolicySearchDashboard = function() {
-            const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!listContainer || !libraryContainer) return;
+            if(!libraryContainer) return;
             
             get(ref(db, 'policy_code_repository')).then((snap) => {
                 if(!snap.exists()) {
-                    let emptyMsg = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty. Upload your first policy code above.</p>";
-                    listContainer.innerHTML = emptyMsg;
-                    libraryContainer.innerHTML = emptyMsg;
+                    libraryContainer.innerHTML = "<p style='color:var(--text-sub); text-align:center; padding:20px;'>Repository is empty.</p>";
                     return;
                 }
                 window.cachedPolicyRepoData = snap.val();
@@ -1740,61 +2215,40 @@
 
         window.togglePolicyDoneStatus = function(id, newState) {
             update(ref(db, `policy_code_repository/${id}`), { isDone: newState }).then(() => {
-                window.renderAdminPolicySearchDashboard();
+                if(!document.getElementById('policySubBlock_search').classList.contains('hidden')) {
+                    window.executeAdminPolicySearch();
+                } else {
+                    window.renderAdminPolicySearchDashboard();
+                }
             });
         };
 
         window.displayPolicyRepoList = function(dataObj) {
-            const listContainer = document.getElementById('adminPolicySearchResultsList');
             const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!listContainer || !libraryContainer) return;
+            if(!libraryContainer) return;
             
             const items = Object.values(dataObj).sort((a,b) => b.epoch - a.epoch);
-            let searchHtml = "";
             let libraryHtml = "";
-            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             
             items.forEach((item, index) => {
                 let encodedCode = btoa(unescape(encodeURIComponent(item.rawCode)));
                 let serialNo = `#${index + 1}`;
                 let isDone = item.isDone === true;
                 let statusBadge = isDone ? `<span style="background:rgba(46,204,113,0.2); color:#2ecc71; border:1px solid #2ecc71; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">DONE</span>` : `<span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:bold;">NOT DONE</span>`;
-                
-                let itemDate = item.epoch ? new Date(item.epoch) : new Date();
-                let dStr = item.dateStr || `${String(itemDate.getDate()).padStart(2,'0')}/${String(itemDate.getMonth()+1).padStart(2,'0')}/${itemDate.getFullYear()}`;
-                let tStr = item.timeStr || itemDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-                let dyStr = item.dayStr || daysArr[itemDate.getDay()];
-                
-                searchHtml += `
-                <div class="hud-data-card policy-repo-card" data-search-text="${(item.regNo + ' ' + item.policyNo + ' ' + item.clientName + ' ' + item.insurer).toLowerCase()}" style="border-left-color: ${isDone?'#2ecc71':'var(--neon-cyan)'}; margin-bottom:10px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-weight:bold; font-size:0.9rem;">${item.insurer} (${serialNo})</span>
-                        ${statusBadge}
-                    </div>
-                    <p style="margin-top:5px;"><b>Reg No:</b> <span class="admin-clickable-badge" onclick="window.executeAdminContextClipboardCopy(this, '${item.regNo}')">${item.regNo}</span></p>
-                    <p><b>Policy No:</b> ${item.policyNo}</p>
-                    <p><b>Client:</b> ${item.clientName}</p>
-                    <p style="font-size:0.8rem; color:var(--text-sub);">🕒 Saved on: ${dStr} at ${tStr} (${dyStr})</p>
-                    <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
-                        <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 15px; width:auto; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY CODE</button>
-                        <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; padding:8px 12px; font-size:0.85rem;">${isDone?'↩️ Mark Undone':'✔ Mark Done'}</button>
-                        <button onclick="window.deletePolicyRepoItem('${item.id}')" class="abort-btn" style="padding:8px 12px; font-size:0.85rem;">🗑️</button>
-                    </div>
-                </div>`;
 
                 if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
                 if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
 
                 libraryHtml += `
-                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
+                <div style="background:rgba(2,5,14,0.95); border:1px solid ${isDone?'rgba(46,204,113,0.5)':'var(--border-glass)'}; border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:10px; box-shadow:0 8px 25px rgba(0,0,0,0.6); position:relative; overflow:hidden;">
                     ${isDone ? '<div style="position:absolute; top:0; left:0; width:100%; height:4px; background:#2ecc71;"></div>' : ''}
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <span style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:0.9rem; font-weight:bold;">${serialNo} • ${item.insurer}</span>
                         ${statusBadge}
                     </div>
-                    <div style="font-size:0.8rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
+                    <div style="font-size:0.85rem; color:#f1c40f; font-family:monospace;"><b>Reg:</b> ${item.regNo} | <b>Client:</b> ${item.clientName}</div>
                     <div style="background:#000; border:1px solid rgba(0,242,254,0.2); border-radius:8px; padding:12px; font-family:monospace; font-size:0.78rem; color:#00f2fe; max-height:110px; overflow-y:auto; word-break:break-all; white-space:pre-wrap;">${item.rawCode}</div>
-                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${dStr} | ⏰ ${tStr} (${dyStr})</div>
+                    <div style="font-size:0.75rem; color:var(--text-sub);">📅 ${item.dateStr} | ⏰ ${item.timeStr} (${item.dayStr})</div>
                     <div style="display:flex; gap:8px; margin-top:auto;">
                         <button onclick="window.copyPolicySnippetFromRepo('${encodedCode}')" class="hud-engage-btn" style="padding:8px 12px; width:auto; font-size:0.78rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">📋 COPY</button>
                         <button onclick="window.togglePolicyDoneStatus('${item.id}', ${!isDone})" class="nav-btn" style="border-color:${isDone?'#e74c3c':'#2ecc71'}; color:${isDone?'#e74c3c':'#2ecc71'}; font-size:0.78rem; padding:8px 10px;">${isDone?'Undo':'Done'}</button>
@@ -1803,17 +2257,7 @@
                 </div>`;
             });
             
-            listContainer.innerHTML = searchHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No matching policies found.</p>";
             libraryContainer.innerHTML = libraryHtml || "<p style='color:var(--text-sub); text-align:center; padding:20px;'>No records found for this filter.</p>";
-        };
-
-        window.filterAdminPolicyDatabaseItems = function() {
-            const q = document.getElementById('adminPolicySearchInput').value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.policy-repo-card');
-            cards.forEach(card => {
-                const text = card.getAttribute('data-search-text') || "";
-                card.style.display = text.includes(q) ? "flex" : "none";
-            });
         };
 
         window.copyPolicySnippetFromRepo = function(base64Code) {
@@ -1830,7 +2274,11 @@
         window.deletePolicyRepoItem = function(id) {
             if(confirm("Permanently delete this policy snippet from repository?")) {
                 remove(ref(db, `policy_code_repository/${id}`)).then(() => {
-                    window.renderAdminPolicySearchDashboard();
+                    if(!document.getElementById('policySubBlock_search').classList.contains('hidden')) {
+                        window.executeAdminPolicySearch();
+                    } else {
+                        window.renderAdminPolicySearchDashboard();
+                    }
                 });
             }
         };
