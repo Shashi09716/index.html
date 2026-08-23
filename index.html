@@ -1461,7 +1461,7 @@
                 window.copyFormatTemplate = function() {
                     const code = document.getElementById('formatTemplateCode').innerText;
                     navigator.clipboard.writeText(code).then(() => {
-                        alert("✅ Format template copied to clipboard!");
+                        alert("✅ Exact Auto-Filler Code Format copied to clipboard!");
                     });
                 };
 
@@ -1520,28 +1520,29 @@
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                     <div style="background: rgba(0,242,254,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,242,254,0.2);">
-                        <b style="color: var(--neon-cyan); display: block; margin-bottom: 5px;">🚀 1. Kahan Code Inject Hoga? (Injector Tab)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'1. Injector' tab mein jaakar aapko apna JavaScript format paste karna hai aur 'Save Policy Code' par click karna hai taaki yeh Cloud Vault mein save ho jaye.</p>
+                        <b style="color: var(--neon-cyan); display: block; margin-bottom: 5px;">🚀 1. Kahan Code Inject Hoga? (1. Injector Tab)</b>
+                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'1. Injector' tab mein jakar Mac Terminal style box mein apna JavaScript code paste karna hai aur 'Save Policy Code' button dabana hai taaki yeh Cloud Vault mein save ho jaye.</p>
                     </div>
                     <div style="background: rgba(46,204,113,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(46,204,113,0.2);">
-                        <b style="color: #2ecc71; display: block; margin-bottom: 5px;">🔍 2. Kahan Search Karein? (Search Tab)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'2. Search' tab mein screen default blank rahegi. Yahan aap Reg No, Contact No, ya Customer Name daal kar specific policy check kar sakte hain (4 cards per row grid format mein).</p>
+                        <b style="color: #2ecc71; display: block; margin-bottom: 5px;">🔍 2. Kahan Search Karein? (2. Search Tab)</b>
+                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'2. Search' tab mein screen by-default blank rahegi. Yahan aap Reg No, Contact No, ya Customer Name type karke specific policy check kar sakte hain (4 cards per row grid format mein).</p>
                     </div>
                     <div style="background: rgba(241,196,15,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(241,196,15,0.2);">
-                        <b style="color: #f1c40f; display: block; margin-bottom: 5px;">📊 3. Date & Policy Status Check (Injector & Library)</b>
-                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">Injector ke andar calendar bar se aap check kar sakte hain ki kis date ko policy hui hai ('Today', 'Yesterday', 'Between Dates'). 'View Details' se poori table khulti hai.</p>
+                        <b style="color: #f1c40f; display: block; margin-bottom: 5px;">📊 3. Date & Policy Status Check (Injector Bar)</b>
+                        <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">Injector ke upar calendar bar diya gaya hai jisse aap 'Today', 'Yesterday', ya 'Between Dates' select karke check kar sakte hain ki kis date ko policy hui hai. 'View Details' se poori table khulti hai.</p>
                     </div>
                     <div style="background: rgba(255,0,127,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,0,127,0.2);">
-                        <b style="color: var(--neon-pink); display: block; margin-bottom: 5px;">📚 4. Library & Done Status</b>
+                        <b style="color: var(--neon-pink); display: block; margin-bottom: 5px;">📚 4. Library & Status Management (3. Library Tab)</b>
                         <p style="color: var(--text-sub); font-size: 0.85rem; line-height: 1.5;">'3. Library' tab mein aap saari saved policies ko dekh sakte hain, unhe 'Done' ya 'Not Done' mark kar sakte hain, aur clean code copy kar sakte hain.</p>
                     </div>
                 </div>
 
-                <h4 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 10px; font-size: 1.1rem;">📋 Required Code Format (Auto-Filler Script)</h4>
-                <p style="color: var(--text-sub); margin-bottom: 10px; font-size: 0.9rem;">Yahi exact format aapko use karna hai:</p>
-                <div style="background: #000; border: 1px solid rgba(0,242,254,0.3); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.78rem; color: #00f2fe; margin-bottom: 15px; position: relative; max-height: 200px; overflow-y: auto;">
+                <h4 style="color: var(--neon-cyan); font-family: 'Orbitron'; margin-bottom: 10px; font-size: 1.1rem;">📋 Exact Auto-Filler Code Format</h4>
+                <p style="color: var(--text-sub); margin-bottom: 10px; font-size: 0.9rem;">Yahi exact JavaScript format aapko Injector mein paste karna hai:</p>
+                <div style="background: #000; border: 1px solid rgba(0,242,254,0.3); border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.78rem; color: #00f2fe; margin-bottom: 15px; position: relative; max-height: 220px; overflow-y: auto;">
                     <button onclick="window.copyFormatTemplate()" style="position: absolute; top: 10px; right: 10px; background: var(--neon-cyan); color: #000; border: none; padding: 4px 10px; border-radius: 4px; font-family: Orbitron; font-weight: bold; cursor: pointer; font-size: 0.75rem;">📋 COPY FORMAT</button>
                     <pre id="formatTemplateCode">(function() {
+    // Policy Database for KA05NA0342
     const policyRepo = {
         "KA05NA0342": {
             "business_type": "RENEW", "sales_channel": "Webapp", "coverage_type": "Comprehensive", "insurer": "TATA AIG",
@@ -1556,6 +1557,7 @@
             "nominee_name": "B Y Shilpa", "nominee_age": "36", "nominee_relationship": "Spouse",
             "address": "S/O MOHAN RAO DIXIT, #404, METROPOLIS ELECTRA R4,, 4TH FLOOR, DIKATHOGURU RODD RE PRAGATHI NAGAR,, BANGALORE SOUTH, BENGALURU, KARNATAKA 560100, BANGALORE-KARNATAKA, 560011",
             "state": "KARNATAKA", "city": "BANGALORE", "pincode": "560011", 
+            // Add-on & Mandatory Flags
             "is_legal_liability_driver": true,
             "is_depreciation_waiver": false,
             "is_key_replacement": true,
@@ -1564,6 +1566,88 @@
             "is_consumables_cover": false,
             "same_address": true
         }
+    };
+
+    // UI Selector Injection on page
+    let existingUI = document.getElementById('matrixHubSelector');
+    if(existingUI) existingUI.remove();
+
+    let panel = document.createElement('div');
+    panel.id = 'matrixHubSelector';
+    panel.style.cssText = "position:fixed; top:10px; right:10px; z-index:99999; background:#111; color:#0ff; padding:15px; border:2px solid #0ff; border-radius:8px; font-family:Arial; box-shadow:0 0 15px rgba(0,255,255,0.5);";
+    panel.innerHTML = `
+        <h4 style="margin:0 0 10px 0;">⚡ Matrix Hub Auto-Filler</h4>
+        <select id="matrixSelect" style="width:200px; padding:5px; background:#222; color:#fff; border:1px solid #0ff; border-radius:4px;">
+            <option value="">-- Select Registration No --</option>
+            ${Object.keys(policyRepo).map(reg => `<option value="${reg}">${reg} - ₹${policyRepo[reg].premium}</option>`).join('')}
+        </select>
+        <button id="fillBtn" style="margin-top:8px; width:100%; padding:6px; background:#0ff; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">Fill Data</button>
+    `;
+    document.body.appendChild(panel);
+
+    document.getElementById('fillBtn').onclick = function() {
+        let selectedReg = document.getElementById('matrixSelect').value;
+        if(!selectedReg) { alert("Please select a Registration Number!"); return; }
+        let data = policyRepo[selectedReg];
+
+        for (let key in data) {
+            let fullKey = 'id_' + key;
+            let el = document.getElementById(fullKey) || document.getElementById(key) || document.querySelector('[name="' + fullKey + '"]') || document.querySelector('[name="' + key + '"]');
+            if (el) {
+                if (el.tagName === 'SELECT') {
+                    let matched = false;
+                    for (let i = 0; i < el.options.length; i++) {
+                        if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || el.options[i].text.toLowerCase().includes('tata')) {
+                            el.selectedIndex = i; matched = true; break;
+                        }
+                    }
+                    if(!matched) el.value = data[key];
+                } else { 
+                    el.value = data[key]; 
+                }
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+
+        let financerEl = document.getElementById('id_financier') || document.getElementById('financier') || document.querySelector('[name="id_financier"]') || document.querySelector('[name="financier"]');
+        if (financierEl) {
+            financierEl.value = data.financier;
+            financierEl.dispatchEvent(new Event('input', { bubbles: true }));
+            financierEl.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        const checkboxMappings = {
+            "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
+            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+            "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
+            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+            "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
+            "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+            "same_address": ["id_same_address", "same_address"]
+        };
+
+        for (let prop in checkboxMappings) {
+            if (data.hasOwnProperty(prop)) {
+                let selectors = checkboxMappings[prop];
+                for (let sel of selectors) {
+                    let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
+                    if (chk && chk.type === 'checkbox') {
+                        chk.checked = data[prop];
+                        chk.dispatchEvent(new Event('change', { bubbles: true }));
+                        chk.dispatchEvent(new Event('click', { bubbles: true }));
+                    }
+                }
+            }
+        }
+
+        if (window.jQuery) { 
+            jQuery('select').trigger('change'); 
+            jQuery('input[type="checkbox"]').trigger('change');
+        }
+        
+        console.log("🎉 " + selectedReg + " data filled successfully via Matrix Hub!");
+        alert("🎉 " + selectedReg + " data filled successfully!");
     };
 })();</pre>
                 </div>
