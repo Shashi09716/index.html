@@ -1480,33 +1480,37 @@ const policyRepo = {
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & CONVERT TO STANDALONE SCRIPTS</button>
                             </div>
 
-                            <!-- ================= TAB 2: SEARCH POLICY (4-PER-ROW GRID) ================= -->
+                            <!-- ================= TAB 2: BULK REG NO SEARCH & CODE GENERATOR ================= -->
                             <div id="policySubBlock_search" class="policy-sub-content hidden">
-                                <div style="display:flex; gap:10px; margin-bottom:20px;">
-                                    <input 
-                                        type="text" 
-                                        id="adminPolicySearchInput" 
-                                        class="search-terminal-input" 
-                                        placeholder="🔍 Type Reg No, Mobile, Insurer, or Client Name..." 
-                                        onkeydown="if(event.key==='Enter') window.executeAdminPolicySearch()"
-                                        oninput="window.executeAdminPolicySearch()"
-                                        style="font-size: 1.05rem; padding:15px; border-radius:12px; flex:1;"
-                                    >
-                                    <button onclick="window.executeAdminPolicySearch()" class="hud-engage-btn" style="width:auto; padding:0 25px; border-radius:12px;">SEARCH</button>
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
+                                    <div>
+                                        <label style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:6px; font-weight:bold;">
+                                            1. PASTE REG NO / MOBILE LIST (1 PER LINE):
+                                        </label>
+                                        <textarea id="bulkSearchRegInput" class="mac-terminal-editor" style="height:150px;" placeholder="RJ45CD9597&#10;9001193100&#10;KA41MB7982&#10;MH12QY0258"></textarea>
+                                    </div>
+                                    <div>
+                                        <label style="color:#2ecc71; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:6px; font-weight:bold;">
+                                            2. COMBINED BULK CODE OUTPUT:
+                                        </label>
+                                        <textarea id="bulkExportCodeOutput" class="mac-terminal-editor" style="height:150px; color:#2ecc71;" placeholder="// Combined bulk policyRepo code will appear here..." readonly></textarea>
+                                    </div>
                                 </div>
 
-                                <!-- Blank Default State (Glowing Beacon) -->
-                                <div id="policySearchEmptyState" class="search-blank-pulse-box">
-                                    <div style="font-size:3.5rem; margin-bottom:10px; text-shadow:0 0 25px var(--neon-cyan);">📡</div>
-                                    <h4 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.3rem; margin-bottom:8px;">Waiting for Input...</h4>
-                                    <p style="color:var(--text-sub); font-size:0.95rem; max-width:550px; line-height:1.5;">Type specific Registration Number, Customer Name, or Mobile Number above to filter policies instantly in 4-Per-Row Grid layout.</p>
+                                <div style="display:flex; gap:10px; margin-bottom:15px;">
+                                    <button onclick="window.executeBulkRegSearchAndExport()" class="hud-engage-btn" style="flex:2; padding:12px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:8px; font-weight:900;">
+                                        ⚡ FETCH ALL & GENERATE BULK CODE
+                                    </button>
+                                    <button onclick="window.copyBulkExportedCode()" class="hud-engage-btn" style="flex:1; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60); border-radius:8px; font-weight:900; color:#000;">
+                                        📋 COPY BULK PAYLOAD
+                                    </button>
                                 </div>
 
-                                <!-- 4-Col Grid Results Container -->
+                                <div id="bulkSearchStatusBadge" style="font-family:'Orbitron'; font-size:0.9rem; font-weight:bold; margin-bottom:10px; display:none;"></div>
                                 <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- ================= TAB 3: POLICY LIBRARY (WITH 3-IN-1 BATCH DELETE) ================= -->
+                            <!-- ================= TAB 3: POLICY LIBRARY ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <div style="display:flex; gap:8px; align-items:center;">
@@ -2598,95 +2602,88 @@ const policyRepo = {
             </div>`;
         };
 
-        let isAboutHindiActive = false;
-        window.toggleAboutLanguage = function() {
-            isAboutHindiActive = !isAboutHindiActive;
-            document.getElementById('lblAboutLangSwitcher').innerText = isAboutHindiActive ? "English" : "हिंदी";
-            document.querySelectorAll('.guide-en').forEach(el => el.classList.toggle('hidden', isAboutHindiActive));
-            document.querySelectorAll('.guide-hi').forEach(el => el.classList.toggle('hidden', !isAboutHindiActive));
-        };
+        // ==========================================================================
+        // 🔍 UNIVERSAL MULTI-IDENTIFIER BULK SEARCH & GENERATOR ENGINE
+        // ==========================================================================
+        window.executeBulkRegSearchAndExport = function() {
+            const rawList = document.getElementById('bulkSearchRegInput').value.trim();
+            const statusBadge = document.getElementById('bulkSearchStatusBadge');
+            const outputArea = document.getElementById('bulkExportCodeOutput');
+            const gridContainer = document.getElementById('adminPolicySearchResultsList');
 
-        window.copyPolicyAutoFillerTemplate = function() {
-            const templateText = document.getElementById('policyTemplateCodeString').innerText;
-            navigator.clipboard.writeText(templateText).then(() => {
-                alert("📋 Full Auto-Filler Format Template copied to clipboard!");
-            });
-        };
+            if (!rawList) {
+                alert("Please paste at least one Registration Number or Contact Number.");
+                return;
+            }
 
-        window.renderAdminPolicySearchDashboard = function() {
-            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!libraryContainer) return;
-            
-            get(ref(db, 'policy_code_repository')).then((snap) => {
-                if(!snap.exists()) {
-                    libraryContainer.innerHTML = "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>Repository is empty.</p>";
+            const queryList = rawList.split('\n').map(q => q.trim().toUpperCase().replace(/[\s-]/g, '')).filter(q => q.length >= 3);
+            if (queryList.length === 0) { alert("No valid search parameters detected."); return; }
+
+            statusBadge.style.display = "block";
+            statusBadge.style.color = "#f1c40f";
+            statusBadge.innerText = `⏳ Searching database for ${queryList.length} queries...`;
+
+            get(ref(db, 'policy_code_repository')).then(snap => {
+                if (!snap.exists()) {
+                    statusBadge.style.color = "#e74c3c";
+                    statusBadge.innerText = "❌ Repository is empty.";
+                    outputArea.value = "";
                     return;
                 }
-                let allItems = [];
-                snap.forEach(child => {
-                    let val = child.val();
-                    val.id = child.key;
-                    allItems.push(val);
-                });
-                window.displayPolicyRepoList(allItems);
-            });
-        };
 
-        window.currentLibraryStatusFilter = 'all';
-        window.filterLibraryByStatus = function(filterType) {
-            window.currentLibraryStatusFilter = filterType;
-            ['all', 'done', 'not_done'].forEach(t => {
-                const btn = document.getElementById(`libFilter_${t}`);
-                if(btn) {
-                    if(t === filterType) {
-                        btn.style.borderColor = "var(--neon-cyan)";
-                        btn.style.color = "var(--neon-cyan)";
-                        btn.style.background = "rgba(0,242,254,0.15)";
+                let allRecords = [];
+                snap.forEach(child => { let val = child.val(); val.id = child.key; allRecords.push(val); });
+
+                let combinedRepo = {};
+                let matchedCards = [];
+                let notFoundQueries = [];
+
+                queryList.forEach(query => {
+                    let matchedRecord = allRecords.find(item => {
+                        const s = item.fullSpec || {};
+                        const reg = (item.regNo || s.registration_number || "").toUpperCase().replace(/[\s-]/g, '');
+                        const mobile = (item.contact || s.mobile || "").replace(/[\s-]/g, '');
+                        const chassis = (s.chassis_number || "").toUpperCase().replace(/[\s-]/g, '');
+                        const engine = (s.engine_number || "").toUpperCase().replace(/[\s-]/g, '');
+                        const policyNo = (item.policyNo || s.policy_number || "").toUpperCase().replace(/[\s-]/g, '');
+                        const name = (item.clientName || s.name || "").toUpperCase().replace(/[\s-]/g, '');
+
+                        return (reg === query || mobile === query || chassis.includes(query) || engine.includes(query) || policyNo.includes(query) || name.includes(query));
+                    });
+
+                    if (matchedRecord && matchedRecord.fullSpec) {
+                        const regKey = matchedRecord.fullSpec.registration_number || matchedRecord.regNo;
+                        combinedRepo[regKey] = matchedRecord.fullSpec;
+                        if (!matchedCards.some(c => c.id === matchedRecord.id)) matchedCards.push(matchedRecord);
                     } else {
-                        btn.style.borderColor = "rgba(255,255,255,0.2)";
-                        btn.style.color = "var(--text-sub)";
-                        btn.style.background = "transparent";
+                        notFoundQueries.push(query);
                     }
+                });
+
+                const foundCount = Object.keys(combinedRepo).length;
+                if (foundCount === 0) {
+                    statusBadge.style.color = "#e74c3c"; statusBadge.innerText = `❌ No matching policies found.`; outputArea.value = ""; gridContainer.style.display = "none"; return;
                 }
+
+                outputArea.value = `const policyRepo = ${JSON.stringify(combinedRepo, null, 4)};`;
+                statusBadge.style.color = "#2ecc71";
+                statusBadge.innerHTML = `✅ Found: <b>${foundCount}</b> Policies | ❌ Missing: <b>${notFoundQueries.length}</b> ${notFoundQueries.length > 0 ? `(${notFoundQueries.join(', ')})` : ''}`;
+                
+                gridContainer.style.display = "grid";
+                gridContainer.innerHTML = matchedCards.map(item => window.generatePolicyCardMarkup(item)).join('');
             });
-            window.renderAdminPolicySearchDashboard();
         };
 
-        window.togglePolicyDoneStatus = function(id, newState) {
-            update(ref(db, `policy_code_repository/${id}`), { isDone: newState }).then(() => {
-                if(!document.getElementById('policySubBlock_search').classList.contains('hidden')) {
-                    window.executeAdminPolicySearch();
-                } else {
-                    window.renderAdminPolicySearchDashboard();
-                }
-            });
-        };
-
-        window.displayPolicyRepoList = function(itemsArray) {
-            const libraryContainer = document.getElementById('adminPolicyLibraryGridList');
-            if(!libraryContainer) return;
-            
-            const items = itemsArray.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
-            let libraryHtml = "";
-            
-            items.forEach((item) => {
-                let isDone = item.isDone === true;
-                if (window.currentLibraryStatusFilter === 'done' && !isDone) return;
-                if (window.currentLibraryStatusFilter === 'not_done' && isDone) return;
-                libraryHtml += window.generatePolicyCardMarkup(item);
-            });
-            
-            libraryContainer.innerHTML = libraryHtml || "<p style='grid-column: 1/-1; color:var(--text-sub); text-align:center; padding:30px;'>No records found for this filter.</p>";
-            if(window.isLibraryBatchModeActive) {
-                libraryContainer.classList.add('batch-mode-active');
-            }
+        window.copyBulkExportedCode = function() {
+            const outputArea = document.getElementById('bulkExportCodeOutput');
+            if (!outputArea.value.trim()) { alert("Please generate the bulk code first by clicking 'FETCH ALL'."); return; }
+            navigator.clipboard.writeText(outputArea.value).then(() => { alert("✅ Combined Bulk Code copied to clipboard! Ready to use."); });
         };
 
         window.copyPolicySnippetFromRepo = function(base64Code) {
             try {
                 const code = decodeURIComponent(escape(atob(base64Code)));
-                navigator.clipboard.writeText(code).then(() => {
-                    alert("✅ Clean Auto-Filler script copied to clipboard!");
+                navigator.clipboard.writeText(code).then(() => alert("✅ Clean Auto-Filler script copied to clipboard!"));
                 });
             } catch(e) {
                 alert("Copy error: " + e.message);
