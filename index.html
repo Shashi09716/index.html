@@ -2723,17 +2723,19 @@ const policyRepo = {
                     }
                 });
 
-<!-- ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= -->
                 const foundCount = Object.keys(combinedRepo).length;
                 if (foundCount === 0) {
-                    statusBadge.style.color = "#e74c3c"; statusBadge.innerText = `❌ No matching policies found.`; outputArea.value = ""; gridContainer.style.display = "none"; return;
+                    statusBadge.style.color = "#e74c3c";
+                    statusBadge.innerText = "❌ No matching policies found.";
+                    outputArea.value = "";
+                    gridContainer.style.display = "none";
+                    return;
                 }
 
                 const repoString = JSON.stringify(combinedRepo, null, 4);
                 let finalScriptOutput = "";
 
                 if (foundCount === 1) {
-                    // SINGLE FORMAT LOGIC
                     const singleRegKey = Object.keys(combinedRepo)[0];
                     finalScriptOutput = `(function () {
     const policyRepo = ${repoString};
@@ -2824,7 +2826,6 @@ const policyRepo = {
     console.log("✅ Data Auto-filled for: " + regNo);
 })();`;
                 } else {
-                    // BULK FORMAT LOGIC
                     finalScriptOutput = `(function () {
     const policyRepo = ${repoString};
 
@@ -2926,11 +2927,10 @@ const policyRepo = {
                 outputArea.value = finalScriptOutput;
                 statusBadge.style.color = "#2ecc71";
                 statusBadge.style.borderColor = "#2ecc71";
-                statusBadge.innerHTML = `✅ Compiled <b>${foundCount}</b> Policies in 0ms! | ❌ Missing: <b>${notFoundQueries.length}</b> ${notFoundQueries.length > 0 ? \`(\${notFoundQueries.join(', ')})\` : ''}`;
-                
+                statusBadge.innerHTML = `✅ Compiled <b>${foundCount}</b> Policies in 0ms! | ❌ Missing: <b>${notFoundQueries.length}</b> ${notFoundQueries.length > 0 ? `(${notFoundQueries.join(', ')})` : ''}`;
+
                 gridContainer.style.display = "grid";
                 gridContainer.innerHTML = matchedCards.map(item => window.generatePolicyCardMarkup(item)).join('');
-// ================= YAHAN TAK REPLACE KARNA HAI =================
             });
         };
 
