@@ -1480,35 +1480,38 @@ const policyRepo = {
                                 <button onclick="window.saveAdminPolicyCodeSnippet()" class="hud-engage-btn" style="padding:15px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:12px; font-weight:900; letter-spacing:1px; width:100%;">⚡ RUN INJECTION & CONVERT TO STANDALONE SCRIPTS</button>
                             </div>
 
+<!-- ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= -->
                             <!-- ================= TAB 2: BULK REG NO SEARCH & CODE GENERATOR ================= -->
                             <div id="policySubBlock_search" class="policy-sub-content hidden">
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:15px;">
-                                    <div>
-                                        <label style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:6px; font-weight:bold;">
-                                            1. REG_NO:
-                                        </label>
-                                        <textarea id="bulkSearchRegInput" class="mac-terminal-editor" style="height:150px;" placeholder="RJ45CD9597&#10;9001193100&#10;KA41MB7982&#10;MH12QY0258"></textarea>
+                                <div style="background: rgba(0,0,0,0.6); padding: 25px; border-radius: 12px; border: 1px solid var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 242, 254, 0.1); margin-bottom: 20px;">
+                                    <h3 style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:1.6rem; margin-bottom:20px; text-shadow:0 0 10px rgba(0,242,254,0.5);">⚡ SUPERFAST POLICY SEARCH ENGINE</h3>
+                                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin-bottom:15px;">
+                                        <div style="position:relative;">
+                                            <label style="color:#f1c40f; font-family:'Orbitron'; font-size:0.9rem; display:block; margin-bottom:8px; font-weight:900;">
+                                                <span style="background:rgba(241,196,15,0.2); padding:4px 8px; border-radius:4px; border:1px solid #f1c40f;">1</span> REG_NO / MOBILE LIST:
+                                            </label>
+                                            <textarea id="bulkSearchRegInput" class="mac-terminal-editor" style="height:160px; font-size:1rem; border:2px dashed #f1c40f; background:#02050e; border-radius:8px; box-shadow:inset 0 0 10px rgba(0,0,0,0.8); transition:0.3s;" placeholder="RJ45CD9597&#10;9001193100" onfocus="this.style.borderColor='var(--neon-cyan)'; this.style.boxShadow='0 0 15px rgba(0,242,254,0.3)'" onblur="this.style.borderColor='#f1c40f'; this.style.boxShadow='inset 0 0 10px rgba(0,0,0,0.8)'"></textarea>
+                                        </div>
+                                        <div style="position:relative;">
+                                            <label style="color:#2ecc71; font-family:'Orbitron'; font-size:0.9rem; display:block; margin-bottom:8px; font-weight:900;">
+                                                <span style="background:rgba(46,204,113,0.2); padding:4px 8px; border-radius:4px; border:1px solid #2ecc71;">2</span> COMPILED AUTO-FILLER SCRIPT:
+                                            </label>
+                                            <textarea id="bulkExportCodeOutput" class="mac-terminal-editor" style="height:160px; color:#2ecc71; font-size:0.9rem; border:2px solid #2ecc71; background:#02050e; border-radius:8px; box-shadow:inset 0 0 10px rgba(0,0,0,0.8); transition:0.3s;" placeholder="// Instantly compiled script will appear here..." onfocus="this.style.boxShadow='0 0 15px rgba(46,204,113,0.3)'" onblur="this.style.boxShadow='inset 0 0 10px rgba(0,0,0,0.8)'"></textarea>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label style="color:#2ecc71; font-family:'Orbitron'; font-size:0.85rem; display:block; margin-bottom:6px; font-weight:bold;">
-                                            2. COMBINED BULK CODE OUTPUT:
-                                        </label>
-                                        <textarea id="bulkExportCodeOutput" class="mac-terminal-editor" style="height:150px; color:#2ecc71;" placeholder="// Combined bulk policyRepo code will appear here..."></textarea>
+                                    <div style="display:flex; gap:15px;">
+                                        <button onclick="window.executeBulkRegSearchAndExport()" class="hud-engage-btn" style="flex:2; padding:15px; font-size:1rem; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:8px; font-weight:900; letter-spacing:1px; box-shadow:0 5px 15px rgba(0,242,254,0.4);">
+                                            ⚡ EXECUTE SUPERFAST SEARCH (0s)
+                                        </button>
+                                        <button onclick="window.copyBulkExportedCode()" class="hud-engage-btn" style="flex:1; padding:15px; font-size:1rem; background:linear-gradient(135deg, #2ecc71, #27ae60); border-radius:8px; font-weight:900; color:#000; box-shadow:0 5px 15px rgba(46,204,113,0.4);">
+                                            📋 COPY SCRIPT
+                                        </button>
                                     </div>
                                 </div>
-
-                                <div style="display:flex; gap:10px; margin-bottom:15px;">
-                                    <button onclick="window.executeBulkRegSearchAndExport()" class="hud-engage-btn" style="flex:2; padding:12px; background:linear-gradient(135deg, #00f2fe, #4facfe); border-radius:8px; font-weight:900;">
-                                        ⚡ FETCH ALL & GENERATE BULK CODE
-                                    </button>
-                                    <button onclick="window.copyBulkExportedCode()" class="hud-engage-btn" style="flex:1; padding:12px; background:linear-gradient(135deg, #2ecc71, #27ae60); border-radius:8px; font-weight:900; color:#000;">
-                                        📋 COPY BULK PAYLOAD
-                                    </button>
-                                </div>
-
-                                <div id="bulkSearchStatusBadge" style="font-family:'Orbitron'; font-size:0.9rem; font-weight:bold; margin-bottom:10px; display:none;"></div>
-                                <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none;"></div>
+                                <div id="bulkSearchStatusBadge" style="font-family:'Orbitron'; font-size:1rem; font-weight:900; margin-bottom:15px; display:none; padding:10px; border-radius:8px; text-align:center; background:rgba(0,0,0,0.4); border:1px solid transparent;"></div>
+                                <div id="adminPolicySearchResultsList" class="policy-4col-grid" style="display:none; animation: popupEntrance3D 0.4s ease-out;"></div>
                             </div>
+<!-- ================= YAHAN TAK REPLACE KARNA HAI ================= -->
 
                             <!-- ================= TAB 3: POLICY LIBRARY ================= -->
                             <div id="policySubBlock_library" class="policy-sub-content hidden">
@@ -2035,95 +2038,99 @@ const policyRepo = {
             }
         };
 
+// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
         function generateStandaloneAutoFillerScript(regNo, data) {
             const dataString = JSON.stringify({ [regNo]: data }, null, 4);
-            return `(function() {
-    // Policy Database for ${regNo}
+            return `(function () {
     const policyRepo = ${dataString};
 
-    // UI Selector Injection on page
-    let existingUI = document.getElementById('matrixHubSelector');
-    if(existingUI) existingUI.remove();
+    let regField = document.getElementById('id_registration_number') || 
+                   document.getElementById('registration_number') || 
+                   document.querySelector('[name="id_registration_number"]') || 
+                   document.querySelector('[name="registration_number"]');
+                   
+    let detectedReg = regField ? regField.value.trim().replace(/[\\s-]/g, '').toUpperCase() : "";
 
-    let panel = document.createElement('div');
-    panel.id = 'matrixHubSelector';
-    panel.style.cssText = "position:fixed; top:10px; right:10px; z-index:99999; background:#111; color:#0ff; padding:15px; border:2px solid #0ff; border-radius:8px; font-family:Arial; box-shadow:0 0 15px rgba(0,255,255,0.5);";
-    panel.innerHTML = \`
-        <h4 style="margin:0 0 10px 0;">⚡ Matrix Hub Auto-Filler</h4>
-        <select id="matrixSelect" style="width:200px; padding:5px; background:#222; color:#fff; border:1px solid #0ff; border-radius:4px;">
-            <option value="">-- Select Registration No --</option>
-            \${Object.keys(policyRepo).map(reg => \`<option value="\${reg}">\${reg} - ₹\${policyRepo[reg].premium || '0'}</option>\`).join('')}
-        </select>
-        <button id="fillBtn" style="margin-top:8px; width:100%; padding:6px; background:#0ff; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">Fill Data</button>
-    \`;
-    document.body.appendChild(panel);
+    if (!detectedReg || !policyRepo[detectedReg]) {
+        detectedReg = "${regNo}";
+    }
 
-    document.getElementById('fillBtn').onclick = function() {
-        let selectedReg = document.getElementById('matrixSelect').value;
-        if(!selectedReg) { alert("Please select a Registration Number!"); return; }
-        let data = policyRepo[selectedReg];
+    let data = policyRepo[detectedReg];
+    if (!data) return;
 
-        for (let key in data) {
-            let fullKey = 'id_' + key;
-            let el = document.getElementById(fullKey) || document.getElementById(key) || document.querySelector('[name="' + fullKey + '"]') || document.querySelector('[name="' + key + '"]');
-            if (el) {
-                if (el.tagName === 'SELECT') {
-                    let matched = false;
-                    for (let i = 0; i < el.options.length; i++) {
-                        if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || el.options[i].text.toLowerCase().includes('tata')) {
-                            el.selectedIndex = i; matched = true; break;
-                        }
-                    }
-                    if(!matched) el.value = data[key];
-                } else { 
-                    el.value = data[key]; 
-                }
-                el.dispatchEvent(new Event('input', { bubbles: true }));
-                el.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        }
-
-        let financerEl = document.getElementById('id_financier') || document.getElementById('financier') || document.querySelector('[name="id_financier"]') || document.querySelector('[name="financier"]');
-        if (financierEl) {
-            financierEl.value = data.financier;
-            financierEl.dispatchEvent(new Event('input', { bubbles: true }));
-            financierEl.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-
-        const checkboxMappings = {
-            "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
-            "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
-            "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
-            "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
-            "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
-            "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
-            "same_address": ["id_same_address", "same_address"]
-        };
-
-        for (let prop in checkboxMappings) {
-            if (data.hasOwnProperty(prop)) {
-                let selectors = checkboxMappings[prop];
-                for (let sel of selectors) {
-                    let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
-                    if (chk && chk.type === 'checkbox') {
-                        chk.checked = data[prop];
-                        chk.dispatchEvent(new Event('change', { bubbles: true }));
-                        chk.dispatchEvent(new Event('click', { bubbles: true }));
+    for (let key in data) {
+        let fullKey = 'id_' + key;
+        let el = document.getElementById(fullKey) || 
+                 document.getElementById(key) || 
+                 document.querySelector('[name="' + fullKey + '"]') || 
+                 document.querySelector('[name="' + key + '"]');
+                 
+        if (el) {
+            if (el.tagName === 'SELECT') {
+                let matched = false;
+                for (let i = 0; i < el.options.length; i++) {
+                    if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || 
+                        el.options[i].text.toLowerCase().includes(data['insurer'].toLowerCase())) {
+                        el.selectedIndex = i;
+                        matched = true;
+                        break;
                     }
                 }
+                if (!matched) el.value = data[key];
+            } else {
+                el.value = data[key];
             }
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+            el.dispatchEvent(new Event('blur', { bubbles: true }));
         }
+    }
 
-        if (window.jQuery) { 
-            jQuery('select').trigger('change'); 
-            jQuery('input[type="checkbox"]').trigger('change');
-        }
-        
-        console.log("🎉 " + selectedReg + " data filled successfully via Matrix Hub!");
-        alert("🎉 " + selectedReg + " data filled successfully!");
+    let financierEl = document.getElementById('id_financier') || 
+                      document.getElementById('financier') || 
+                      document.querySelector('[name="id_financier"]') || 
+                      document.querySelector('[name="financier"]');
+                      
+    if (financierEl) {
+        financierEl.value = data.financier;
+        financierEl.dispatchEvent(new Event('input', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('change', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('blur', { bubbles: true }));
+    }
+
+    const checkboxMappings = {
+        "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
+        "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+        "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
+        "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+        "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
+        "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+        "same_address": ["id_same_address", "same_address"]
     };
+
+    for (let prop in checkboxMappings) {
+        if (data.hasOwnProperty(prop)) {
+            let selectors = checkboxMappings[prop];
+            for (let sel of selectors) {
+                let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
+                if (chk && chk.type === 'checkbox') {
+                    chk.checked = data[prop];
+                    chk.dispatchEvent(new Event('change', { bubbles: true }));
+                    chk.dispatchEvent(new Event('click', { bubbles: true }));
+                }
+            }
+        }
+    }
+
+    if (window.jQuery) {
+        jQuery('select').trigger('change');
+        jQuery('input[type="checkbox"]').trigger('change');
+    }
+
+    console.log("✅ Data Auto-filled for: " + detectedReg);
 })();`;
         }
+// ================= YAHAN TAK REPLACE KARNA HAI =================
 
         function extractObjectByKeyword(text, keyword) {
             let idx = text.indexOf(keyword);
@@ -2716,17 +2723,214 @@ const policyRepo = {
                     }
                 });
 
+<!-- ================= YAHAN SE NAYA CODE REPLACE KARNA HAI ================= -->
                 const foundCount = Object.keys(combinedRepo).length;
                 if (foundCount === 0) {
                     statusBadge.style.color = "#e74c3c"; statusBadge.innerText = `❌ No matching policies found.`; outputArea.value = ""; gridContainer.style.display = "none"; return;
                 }
 
-                outputArea.value = `const policyRepo = ${JSON.stringify(combinedRepo, null, 4)};`;
+                const repoString = JSON.stringify(combinedRepo, null, 4);
+                let finalScriptOutput = "";
+
+                if (foundCount === 1) {
+                    // SINGLE FORMAT LOGIC
+                    const singleRegKey = Object.keys(combinedRepo)[0];
+                    finalScriptOutput = `(function () {
+    const policyRepo = ${repoString};
+
+    let regField = document.getElementById('id_registration_number') || 
+                   document.getElementById('registration_number') || 
+                   document.querySelector('[name="id_registration_number"]') || 
+                   document.querySelector('[name="registration_number"]');
+                   
+    let regNo = regField ? regField.value.trim().replace(/[\\s-]/g, '').toUpperCase() : "";
+
+    if (!regNo || !policyRepo[regNo]) {
+        regNo = "${singleRegKey}";
+    }
+
+    let data = policyRepo[regNo];
+    if (!data) return;
+
+    for (let key in data) {
+        let fullKey = 'id_' + key;
+        let el = document.getElementById(fullKey) || 
+                 document.getElementById(key) || 
+                 document.querySelector('[name="' + fullKey + '"]') || 
+                 document.querySelector('[name="' + key + '"]');
+                 
+        if (el) {
+            if (el.tagName === 'SELECT') {
+                let matched = false;
+                for (let i = 0; i < el.options.length; i++) {
+                    if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || 
+                        el.options[i].text.toLowerCase().includes(data['insurer'].toLowerCase())) {
+                        el.selectedIndex = i;
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched) el.value = data[key];
+            } else {
+                el.value = data[key];
+            }
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+            el.dispatchEvent(new Event('blur', { bubbles: true }));
+        }
+    }
+
+    let financierEl = document.getElementById('id_financier') || 
+                      document.getElementById('financier') || 
+                      document.querySelector('[name="id_financier"]') || 
+                      document.querySelector('[name="financier"]');
+                      
+    if (financierEl) {
+        financierEl.value = data.financier;
+        financierEl.dispatchEvent(new Event('input', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('change', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('blur', { bubbles: true }));
+    }
+
+    const checkboxMappings = {
+        "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
+        "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+        "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
+        "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+        "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
+        "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+        "same_address": ["id_same_address", "same_address"]
+    };
+
+    for (let prop in checkboxMappings) {
+        if (data.hasOwnProperty(prop)) {
+            let selectors = checkboxMappings[prop];
+            for (let sel of selectors) {
+                let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
+                if (chk && chk.type === 'checkbox') {
+                    chk.checked = data[prop];
+                    chk.dispatchEvent(new Event('change', { bubbles: true }));
+                    chk.dispatchEvent(new Event('click', { bubbles: true }));
+                }
+            }
+        }
+    }
+
+    if (window.jQuery) {
+        jQuery('select').trigger('change');
+        jQuery('input[type="checkbox"]').trigger('change');
+    }
+
+    console.log("✅ Data Auto-filled for: " + regNo);
+})();`;
+                } else {
+                    // BULK FORMAT LOGIC
+                    finalScriptOutput = `(function () {
+    const policyRepo = ${repoString};
+
+    let regField = document.getElementById('id_registration_number') || 
+                   document.getElementById('registration_number') || 
+                   document.querySelector('[name="id_registration_number"]') || 
+                   document.querySelector('[name="registration_number"]');
+                   
+    let detectedReg = regField ? regField.value.trim().replace(/[\\s-]/g, '').toUpperCase() : "";
+
+    if (!detectedReg) {
+        for (let r in policyRepo) {
+            if (document.body.innerText.includes(r)) {
+                detectedReg = r;
+                break;
+            }
+        }
+    }
+
+    let data = policyRepo[detectedReg];
+    if (!data) {
+        console.warn("⚠️ Matching Registration Number not detected on the page.");
+        return;
+    }
+
+    for (let key in data) {
+        let fullKey = 'id_' + key;
+        let el = document.getElementById(fullKey) || 
+                 document.getElementById(key) || 
+                 document.querySelector('[name="' + fullKey + '"]') || 
+                 document.querySelector('[name="' + key + '"]');
+                 
+        if (el) {
+            if (el.tagName === 'SELECT') {
+                let matched = false;
+                for (let i = 0; i < el.options.length; i++) {
+                    if (el.options[i].text.toLowerCase().includes(data[key].toString().toLowerCase()) || 
+                        el.options[i].text.toLowerCase().includes(data['insurer'].toLowerCase())) {
+                        el.selectedIndex = i;
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched) el.value = data[key];
+            } else {
+                el.value = data[key];
+            }
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+            el.dispatchEvent(new Event('blur', { bubbles: true }));
+        }
+    }
+
+    let financierEl = document.getElementById('id_financier') || 
+                      document.getElementById('financier') || 
+                      document.querySelector('[name="id_financier"]') || 
+                      document.querySelector('[name="financier"]');
+                      
+    if (financierEl) {
+        financierEl.value = data.financier;
+        financierEl.dispatchEvent(new Event('input', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('change', { bubbles: true }));
+        financierEl.dispatchEvent(new Event('blur', { bubbles: true }));
+    }
+
+    const checkboxMappings = {
+        "is_legal_liability_driver": ["id_is_legal_liability_driver", "is_legal_liability_driver", "legal_liability_driver"],
+        "is_depreciation_waiver": ["id_is_depreciation_waiver", "is_depreciation_waiver", "depreciation_waiver", "depreciation_reimbursement"],
+        "is_key_replacement": ["id_is_key_replacement", "is_key_replacement", "key_replacement"],
+        "is_road_side_assistance": ["id_is_road_side_assistance", "is_road_side_assistance", "road_side_assistance", "rsa"],
+        "is_engine_protector": ["id_is_engine_protector", "is_engine_protector", "engine_protector"],
+        "is_consumables_cover": ["id_is_consumables_cover", "is_consumables_cover", "consumables_cover"],
+        "same_address": ["id_same_address", "same_address"]
+    };
+
+    for (let prop in checkboxMappings) {
+        if (data.hasOwnProperty(prop)) {
+            let selectors = checkboxMappings[prop];
+            for (let sel of selectors) {
+                let chk = document.getElementById(sel) || document.querySelector('[name="' + sel + '"]');
+                if (chk && chk.type === 'checkbox') {
+                    chk.checked = data[prop];
+                    chk.dispatchEvent(new Event('change', { bubbles: true }));
+                    chk.dispatchEvent(new Event('click', { bubbles: true }));
+                }
+            }
+        }
+    }
+
+    if (window.jQuery) {
+        jQuery('select').trigger('change');
+        jQuery('input[type="checkbox"]').trigger('change');
+    }
+
+    console.log("✅ Bulk Data Auto-filled for: " + detectedReg);
+})();`;
+                }
+
+                outputArea.value = finalScriptOutput;
                 statusBadge.style.color = "#2ecc71";
-                statusBadge.innerHTML = `✅ Found: <b>${foundCount}</b> Policies | ❌ Missing: <b>${notFoundQueries.length}</b> ${notFoundQueries.length > 0 ? `(${notFoundQueries.join(', ')})` : ''}`;
+                statusBadge.style.borderColor = "#2ecc71";
+                statusBadge.innerHTML = `✅ Compiled <b>${foundCount}</b> Policies in 0ms! | ❌ Missing: <b>${notFoundQueries.length}</b> ${notFoundQueries.length > 0 ? \`(\${notFoundQueries.join(', ')})\` : ''}`;
                 
                 gridContainer.style.display = "grid";
                 gridContainer.innerHTML = matchedCards.map(item => window.generatePolicyCardMarkup(item)).join('');
+// ================= YAHAN TAK REPLACE KARNA HAI =================
             });
         };
 
