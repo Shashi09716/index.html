@@ -3896,11 +3896,14 @@
                 document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)";
             };
             recognition.onerror = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
-            recognition.onend = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
-            
-            recognition.start();
-        };
+                recognition.onend = function() { document.getElementById('aiAgentInput').placeholder = "Command AI... (/send UserID MSG)"; }
+                
+                recognition.start();
+            };
 
+        // ==========================================================================
+        // 🤖 ADVANCED PORTAL COPILOT, DATA ORACLE & 1-CLICK ACTION NAVIGATOR
+        // ==========================================================================
         window.sendAiAgentMessage = function() {
             const input = document.getElementById('aiAgentInput');
             let text = input.value.trim();
@@ -3911,7 +3914,7 @@
             let attachmentHtml = "";
             
             if(att) {
-                if(att.type === 'image') attachmentHtml = `<br><img src="${att.data}" style="max-width:100%; border-radius:8px; margin-top:5px;">`;
+                if(att.type === 'image') attachmentHtml = `<br><img src="${att.data}" style="max-width:100%; border-radius:8px; margin-top:5px; border:1px solid var(--neon-cyan);">`;
                 else if(att.type === 'doc' || att.type === 'folder') attachmentHtml = `<br><a href="${att.data}" download="AI_Doc" style="color:#00f2fe; text-decoration:underline;">📎 Download Attachment</a>`;
                 else if(att.type === 'voice' || att.type === 'video') attachmentHtml = `<br><audio controls src="${att.data}" style="max-width:100%; height:30px; margin-top:5px;"></audio>`;
             }
@@ -3924,47 +3927,165 @@
             chatBox.scrollTop = chatBox.scrollHeight;
             document.getElementById('aiAttachmentTray').classList.add('hidden');
 
-            setTimeout(() => {
-                let response = "";
-                // Match command: sms user123 Hello! OR send to user123 Hello! OR /send user123 Hello!
+            // 1. Direct SMS / Support Routing Command
+            const matchSms = text.match(/(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
+            if(matchSms) {
+                let targetUid = matchSms[1];
+                let msgContent = matchSms[2] || "";
                 
-// ================= YAHAN SE NAYA CODE REPLACE KARNA HAI =================
-                // ⚡ FIX: Regex mein se '^' hata diya gaya hai. Ab attachment ke sath bhi command fail nahi hoga!
-                const match = text.match(/(?:sms|\/send|send to|message)\s+([a-zA-Z0-9_]+)(?:\s+(.*))?/i);
-// ================= YAHAN TAK REPLACE KARNA HAI =================
-
-                if(match) {
-                    let targetUid = match[1];
-                    let msgContent = match[2] || "";
-                    
-                    const aiSmsRef = push(ref(db, `support_ai_messages/${targetUid}`));
-                    set(aiSmsRef, {
-                        msgId: aiSmsRef.key,
-                        text: msgContent.replace(/\[.*?ATTACHED\]/g, '').trim() || "Sent you an attachment.",
-                        attachment: att ? att.data : "",
-                        attType: att ? att.type : "",
-                        epoch: Date.now(),
-                        timeStr: new Date().toLocaleTimeString()
-                    }).then(() => {
-                        chatBox.innerHTML += `<div class="ai-bubble system">✅ <b>Transmission Successful:</b> Direct message pushed to User [${targetUid}]'s dashboard. Matrix synced.</div>`;
-                        chatBox.scrollTop = chatBox.scrollHeight;
-                        MatrixSystemState.set('aiPendingAttachment', null);
-                        window.playSynthesizedSound(600, 'sine', 0.1);
-                    }).catch(e => {
-                        chatBox.innerHTML += `<div class="ai-bubble system" style="color:#e74c3c; border-color:#e74c3c;">❌ Error routing to ${targetUid}. User not found.</div>`;
-                        chatBox.scrollTop = chatBox.scrollHeight;
-                    });
-                } else {
-                    response = "I am connected to the Matrix Core. To send a direct ping/file to a user's Support Box, use format: 'SMS [UserID] [Message]' or attach a file and type '/send [UserID]'.";
-                    if(text.toLowerCase().includes("hack")) response = "Monitoring brute force metrics. Firewall is holding strong at 99.9% integrity.";
-                    if(text.toLowerCase().includes("hello")) response = "Greetings Admin! I am monitoring all global hubs.";
-                    
-                    chatBox.innerHTML += `<div class="ai-bubble system">🤖 ${response}</div>`;
+                const aiSmsRef = push(ref(db, `support_ai_messages/${targetUid}`));
+                set(aiSmsRef, {
+                    msgId: aiSmsRef.key,
+                    text: msgContent.replace(/\[.*?ATTACHED\]/g, '').trim() || "Sent you an attachment.",
+                    attachment: att ? att.data : "",
+                    attType: att ? att.type : "",
+                    epoch: Date.now(),
+                    timeStr: new Date().toLocaleTimeString()
+                }).then(() => {
+                    chatBox.innerHTML += `<div class="ai-bubble system">✅ <b>Transmission Delivered:</b> Direct alert pushed to User [${targetUid}]'s dashboard.</div>`;
                     chatBox.scrollTop = chatBox.scrollHeight;
-                    window.playSynthesizedSound(600, 'sine', 0.1);
                     MatrixSystemState.set('aiPendingAttachment', null);
+                    window.playSynthesizedSound(600, 'sine', 0.1);
+                }).catch(e => {
+                    chatBox.innerHTML += `<div class="ai-bubble system" style="color:#e74c3c;">❌ Error sending message to ${targetUid}.</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                });
+                return;
+            }
+
+            // 2. Data Context Extraction
+            const lower = text.toLowerCase().trim();
+            const cleanQuery = text.replace(/search|find|policy|vehicle|gadi|check|nikalo|batao|kaise|kare/gi, '').trim().toUpperCase().replace(/[\s-]/g, '');
+            let response = "";
+
+            const activePolicies = window.activePolicyMemoryStore || [];
+            const deletedPolicies = window.activeRecycleBinMemoryStore || [];
+            const usersList = MatrixSystemState.get('cachedGlobalUsersArr') || [];
+            const allHistory = [...activePolicies, ...deletedPolicies];
+
+            // ----------------------------------------------------------------------
+            // A. USER & ID MANAGEMENT QUERIES (User Count, List Names & IDs)
+            // ----------------------------------------------------------------------
+            if(lower.includes("kitne user") || lower.includes("kitne log") || lower.includes("kitni id") || lower.includes("total user") || lower.includes("total id") || lower.includes("user count") || lower.includes("users count")) {
+                const activeCount = usersList.filter(u => u.status !== 'deactivated').length;
+                response = `👥 <b>Portal User Base Statistics:</b><br>
+                • Total Accounts Registered: <b>${usersList.length}</b><br>
+                • Active Accounts: <b style="color:#2ecc71;">${activeCount}</b><br>
+                • Deactivated Accounts: <b style="color:#e74c3c;">${usersList.length - activeCount}</b><br><br>
+                💡 <i>Type "User list" to view all User IDs and Names.</i><br>
+                <button onclick="window.switchAdminSubSection('credentials')" class="nav-btn" style="margin-top:8px; padding:5px 12px; font-size:0.8rem; border-color:#00f2fe; color:#00f2fe;">⚙️ Manage Users & Permissions</button>`;
+            }
+            else if(lower.includes("user list") || lower.includes("all user") || lower.includes("name and id") || lower.includes("name aur id") || lower.includes("id batao") || lower.includes("users list") || lower.includes("sabka id")) {
+                if(usersList.length === 0) {
+                    response = `⚠️ No registered user accounts found in the database.`;
+                } else {
+                    let userRows = usersList.map((u, i) => `<b>${i+1}.</b> <b>${u.clientName || 'Client'}</b> — ID: <code style="color:#00f2fe;">${u.id}</code> (📞 ${u.contact || 'N/A'}) [${u.status === 'deactivated' ? '<span style="color:#e74c3c;">Deactive</span>' : '<span style="color:#2ecc71;">Active</span>'}]`).join('<br>');
+                    response = `📋 <b>Registered Portal Accounts (${usersList.length}):</b><br><br>${userRows}<br><br>
+                    <button onclick="window.switchAdminSubSection('credentials')" class="nav-btn" style="padding:6px 14px; font-size:0.8rem; border-color:#00f2fe; color:#00f2fe;">⚙️ Open User Control Panel</button>`;
                 }
-            }, 800);
+            }
+
+            // ----------------------------------------------------------------------
+            // B. STEP-BY-STEP GUIDES & 1-CLICK SHORTCUT NAVIGATORS
+            // ----------------------------------------------------------------------
+            else if(lower.includes("recover") || lower.includes("delete policy wapas") || lower.includes("restore") || lower.includes("recycle")) {
+                response = `♻️ <b>Deleted Policy Recovery Guide:</b><br><br>
+                <b>Step 1:</b> Go to the <b>Recovery Vault</b> panel in the dashboard.<br>
+                <b>Step 2:</b> Search using vehicle number, contact, or click <b>"Deleted Today"</b> / <b>"Yesterday"</b>.<br>
+                <b>Step 3:</b> Click on the green <b>"⚡ RESTORE"</b> button on the policy card.<br>
+                <b>Step 4:</b> The policy will instantly move back to your active <b>Warehouse</b>.<br><br>
+                👇 <b>Direct 1-Click Shortcut:</b><br>
+                <button onclick="window.switchAdminSubSection('policysearch'); window.switchPolicyTab('recovery');" class="hud-engage-btn" style="width:100%; margin-top:6px; padding:10px; font-size:0.85rem; background:linear-gradient(135deg, #f1c40f, #e67e22); color:#000;">🚀 GO TO RECOVERY VAULT (1-CLICK)</button>`;
+            }
+            else if(lower.includes("inject") || lower.includes("add policy") || lower.includes("payload") || lower.includes("paste code")) {
+                response = `🚀 <b>How to Inject Policies:</b><br><br>
+                <b>Step 1:</b> Copy your single or bulk JavaScript policy payload.<br>
+                <b>Step 2:</b> Open the <b>Injector</b> terminal.<br>
+                <b>Step 3:</b> Paste the code into the macOS terminal box.<br>
+                <b>Step 4:</b> Click <b>"EXECUTE 3-STAGE PARSER & INJECT"</b>.<br><br>
+                👇 <b>Direct 1-Click Shortcut:</b><br>
+                <button onclick="window.switchAdminSubSection('policysearch'); window.switchPolicyTab('injector');" class="hud-engage-btn" style="width:100%; margin-top:6px; padding:10px; font-size:0.85rem; background:linear-gradient(135deg, #00f2fe, #4facfe);">🚀 OPEN INJECTOR TERMINAL</button>`;
+            }
+            else if(lower.includes("compiler") || lower.includes("0ms") || lower.includes("batch search") || lower.includes("bulk script")) {
+                response = `⚡ <b>How to Compile Auto-Filler Scripts:</b><br><br>
+                <b>Step 1:</b> Open the <b>0ms Compiler</b> tab.<br>
+                <b>Step 2:</b> Paste multiple Registration Numbers or Phone Numbers (1 per line).<br>
+                <b>Step 3:</b> Click <b>"COMPILE SCRIPT"</b>.<br>
+                <b>Step 4:</b> Click <b>"COPY COMPILED SCRIPT"</b> and paste it into portal console.<br><br>
+                👇 <b>Direct 1-Click Shortcut:</b><br>
+                <button onclick="window.switchAdminSubSection('policysearch'); window.switchPolicyTab('compiler');" class="hud-engage-btn" style="width:100%; margin-top:6px; padding:10px; font-size:0.85rem; background:linear-gradient(135deg, #2ecc71, #27ae60);">⚡ OPEN 0ms BATCH COMPILER</button>`;
+            }
+            else if(lower.includes("create id") || lower.includes("naya id") || lower.includes("new user")) {
+                response = `🆔 <b>How to Create a New User ID:</b><br><br>
+                <b>Step 1:</b> Go to <b>ID Create</b> section.<br>
+                <b>Step 2:</b> Enter client full name, date of birth, and 10-digit mobile number.<br>
+                <b>Step 3:</b> Set a password (or click random generate).<br>
+                <b>Step 4:</b> Click <b>"COMPILE IDENTITY NODE"</b>.<br><br>
+                👇 <b>Direct 1-Click Shortcut:</b><br>
+                <button onclick="window.switchAdminSubSection('creation');" class="hud-engage-btn" style="width:100%; margin-top:6px; padding:10px; font-size:0.85rem; background:linear-gradient(135deg, #1abc9c, #16a085);">🆔 OPEN ID CREATION PANEL</button>`;
+            }
+
+            // ----------------------------------------------------------------------
+            // C. VEHICLE / POLICY DEEP SEARCH
+            // ----------------------------------------------------------------------
+            else if(cleanQuery.length >= 3) {
+                const foundPolicy = allHistory.find(p => {
+                    const s = p.fullSpec || {};
+                    const reg = (p.regNo || s.registration_number || "").toUpperCase().replace(/[\s-]/g, '');
+                    const mob = (p.contact || s.mobile || "").replace(/[\s-]/g, '');
+                    const pol = (p.policyNo || s.policy_number || "").toUpperCase().replace(/[\s-]/g, '');
+                    const chs = (s.chassis_number || "").toUpperCase().replace(/[\s-]/g, '');
+                    const nam = (p.clientName || s.name || "").toUpperCase().replace(/[\s-]/g, '');
+                    return reg.includes(cleanQuery) || mob.includes(cleanQuery) || pol.includes(cleanQuery) || chs.includes(cleanQuery) || nam.includes(cleanQuery);
+                });
+
+                if(foundPolicy) {
+                    const s = foundPolicy.fullSpec || {};
+                    const isDel = !!foundPolicy.deletedLog;
+                    response = `🔍 <b>Matched Record [${foundPolicy.regNo}]:</b><br>
+                    • <b>Client:</b> ${foundPolicy.clientName}<br>
+                    • <b>Insurer:</b> ${foundPolicy.insurer}<br>
+                    • <b>Net Premium:</b> ₹${foundPolicy.premium}<br>
+                    • <b>Policy No:</b> ${foundPolicy.policyNo}<br>
+                    • <b>Contact:</b> ${foundPolicy.contact || 'N/A'}<br>
+                    • <b>Location:</b> ${isDel ? '<span style="color:#f1c40f;">IN RECOVERY VAULT (Deleted)</span>' : (foundPolicy.isDone ? '<span style="color:#2ecc71;">WAREHOUSE (Done)</span>' : '<span style="color:#00f2fe;">WAREHOUSE (Pending)</span>')}<br><br>
+                    <div style="display:flex; gap:6px;">
+                        <button onclick="window.open360Modal('${foundPolicy.id}')" class="nav-btn" style="flex:1; padding:6px; font-size:0.75rem;">👁 View 360°</button>
+                        ${isDel ? `<button onclick="window.recoverPolicy('${foundPolicy.id}')" class="hud-engage-btn" style="flex:1; padding:6px; font-size:0.75rem; background:#2ecc71; color:#000;">⚡ Restore</button>` : ''}
+                    </div>`;
+                } else {
+                    response = `❌ No active or deleted record found matching query: <b>${cleanQuery}</b>.`;
+                }
+            }
+
+            // ----------------------------------------------------------------------
+            // D. GENERAL STATS & HELPER
+            // ----------------------------------------------------------------------
+            else if(lower.includes("policy") || lower.includes("count") || lower.includes("stats") || lower.includes("total")) {
+                let totalNet = activePolicies.reduce((acc, p) => acc + (parseFloat(p.premium) || 0), 0);
+                let doneCount = activePolicies.filter(p => p.isDone).length;
+                response = `📊 <b>Realtime Portal Analytics:</b><br>
+                • Active Policies: <b>${activePolicies.length}</b> (✅ Done: ${doneCount} | ⏳ Pending: ${activePolicies.length - doneCount})<br>
+                • Deleted In Vault: <b>${deletedPolicies.length}</b><br>
+                • Total Gross Portfolio: <b>₹${totalNet.toLocaleString('en-IN')}</b><br>
+                • Total Users Registered: <b>${usersList.length}</b><br><br>
+                <button onclick="window.switchAdminSubSection('policysearch'); window.switchPolicyTab('warehouse');" class="nav-btn" style="padding:6px 12px; font-size:0.8rem; border-color:#00f2fe; color:#00f2fe;">📚 Open Warehouse Grid</button>`;
+            }
+            else {
+                response = `🤖 <b>Matrix Copilot Online!</b> Ask me anything about your portal:<br><br>
+                • <i>"Kitne users hain?"</i> or <i>"User list"</i><br>
+                • <i>"Policy recover kaise kare?"</i> (Provides 1-Click Button)<br>
+                • <i>"Total policy count"</i> or vehicle search <i>"MH04FR6704"</i><br>
+                • <code>SMS [UserID] [Message]</code> to ping customer`;
+            }
+
+            // Output Display
+            setTimeout(() => {
+                chatBox.innerHTML += `<div class="ai-bubble system">🤖 ${response}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+                window.playSynthesizedSound(600, 'sine', 0.1);
+                MatrixSystemState.set('aiPendingAttachment', null);
+            }, 300);
         };
 
         // Customer Listener for AI Direct Messages
