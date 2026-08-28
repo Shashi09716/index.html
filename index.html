@@ -1445,7 +1445,7 @@
                                     <button onclick="window.switchPolicyTab('compiler')" class="nav-btn policy-hub-tab-btn" id="pTab_compiler" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:20px; padding:7px 16px; font-size:0.85rem;">⚡ 4. 0ms Compiler</button>
                                     <button onclick="window.switchPolicyTab('warehouse')" class="nav-btn policy-hub-tab-btn" id="pTab_warehouse" style="border-color:rgba(0,242,254,0.3); color:var(--text-sub); border-radius:20px; padding:7px 16px; font-size:0.85rem;">📚 5. Warehouse</button>
                                     <button onclick="window.switchPolicyTab('recovery')" class="nav-btn policy-hub-tab-btn" id="pTab_recovery" style="border-color:rgba(241,196,15,0.4); color:#f1c40f; border-radius:20px; padding:7px 16px; font-size:0.85rem;">♻️ 6. Recovery</button>
-                                    <button onclick="window.switchPolicyTab('about')" class="nav-btn policy-hub-tab-btn" id="pTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:20px; padding:7px 16px; font-size:0.85rem;">ℹ️ 7. Guide</button>
+                                    <button onclick="window.switchPolicyTab('about')" class="nav-btn policy-hub-tab-btn" id="pTab_about" style="border-color:rgba(255,0,127,0.4); color:#ff007f; border-radius:20px; padding:7px 16px; font-size:0.85rem;">ℹ️ 7. Guide & Notes</button>
                                 </div>
                             </div>
 
@@ -1479,7 +1479,7 @@
                                 </div>
                             </div>
 
-                            <!-- PANEL 2: DYNAMIC TIMELINE & DATE-GAP TRACKER (1-Year Preserved History) -->
+                            <!-- PANEL 2: DYNAMIC TIMELINE & DATE-GAP TRACKER -->
                             <div id="policyPanel_timeline" class="policy-panel-block hidden">
                                 <div class="analytics-control-bar" style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.6); padding:14px 18px; border-radius:12px; border:1px solid var(--border-glass); margin-bottom:20px; flex-wrap:wrap; gap:12px;">
                                     <div class="analytics-filters-flex" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
@@ -1548,7 +1548,7 @@
                                 <div id="compilerResultsGrid" class="policy-4col-grid" style="display:none;"></div>
                             </div>
 
-                            <!-- PANEL 5: CLOUD WAREHOUSE & MULTI-FILTER REPOSITORY -->
+                            <!-- PANEL 5: CLOUD WAREHOUSE (DYNAMIC LIVE COUNTS ON ALL FILTERS) -->
                             <div id="policyPanel_warehouse" class="policy-panel-block hidden">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
                                     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
@@ -1556,13 +1556,16 @@
                                         <select id="warehouseInsurerFilter" onchange="window.renderWarehouseView()" style="padding:8px 12px; background:#030712; border:1px solid var(--border-glass); color:var(--neon-cyan); border-radius:20px; font-family:'Orbitron'; font-size:0.8rem; font-weight:bold; outline:none;">
                                             <option value="all">🏢 All Insurers</option>
                                         </select>
-                                        <button onclick="window.setWarehouseStatusFilter('all')" class="nav-btn wh-status-pill active" id="whFilter_all" style="border-radius:20px; padding:6px 14px; font-size:0.8rem;">All</button>
-                                        <button onclick="window.setWarehouseStatusFilter('done')" class="nav-btn wh-status-pill" id="whFilter_done" style="border-radius:20px; padding:6px 14px; font-size:0.8rem; color:#2ecc71;">✅ Done</button>
-                                        <button onclick="window.setWarehouseStatusFilter('pending')" class="nav-btn wh-status-pill" id="whFilter_pending" style="border-radius:20px; padding:6px 14px; font-size:0.8rem; color:#e74c3c;">⏳ Pending</button>
+                                        <button onclick="window.setWarehouseStatusFilter('all')" class="nav-btn wh-status-pill active" id="whFilter_all" style="border-radius:20px; padding:6px 14px; font-size:0.8rem;">All <span id="whCount_all">(0)</span></button>
+                                        <button onclick="window.setWarehouseStatusFilter('done')" class="nav-btn wh-status-pill" id="whFilter_done" style="border-radius:20px; padding:6px 14px; font-size:0.8rem; color:#2ecc71;">✅ Done <span id="whCount_done">(0)</span></button>
+                                        <button onclick="window.setWarehouseStatusFilter('pending')" class="nav-btn wh-status-pill" id="whFilter_pending" style="border-radius:20px; padding:6px 14px; font-size:0.8rem; color:#e74c3c;">⏳ Pending <span id="whCount_pending">(0)</span></button>
                                     </div>
                                     <div style="display:flex; gap:10px; align-items:center;">
-                                        <div id="warehouseLiveSelectionBanner" style="font-family:'Orbitron'; font-size:0.85rem; color:#00f2fe; background:rgba(0,242,254,0.1); padding:6px 14px; border-radius:20px; border:1px solid rgba(0,242,254,0.3); font-weight:bold;">
-                                            Selected: <span id="whSelectedCountDisplay" style="color:#f1c40f;">0</span> | Net: <span id="whSelectedPremiumDisplay" style="color:#2ecc71;">₹0</span>
+                                        <div id="warehouseActiveFilterCountBadge" style="background:rgba(0,242,254,0.15); border:1px solid var(--neon-cyan); color:var(--neon-cyan); padding:6px 14px; border-radius:20px; font-family:'Orbitron'; font-size:0.82rem; font-weight:bold;">
+                                            Showing: <span id="whActiveFilteredCountNode" style="color:#fff;">0</span> Policies
+                                        </div>
+                                        <div id="warehouseLiveSelectionBanner" style="font-family:'Orbitron'; font-size:0.82rem; color:#f1c40f; background:rgba(241,196,15,0.1); padding:6px 14px; border-radius:20px; border:1px solid rgba(241,196,15,0.3); font-weight:bold;">
+                                            Selected: <span id="whSelectedCountDisplay">0</span> | Net: <span id="whSelectedPremiumDisplay" style="color:#2ecc71;">₹0</span>
                                         </div>
                                         <button onclick="window.toggleBatchMode()" id="btnToggleBatchMode" class="abort-btn" style="padding:7px 16px; font-size:0.85rem; border-radius:20px; background:rgba(231,76,60,0.2); border:1px solid #e74c3c;">🗑️ Batch Operations</button>
                                     </div>
@@ -1585,13 +1588,13 @@
                                 <div id="warehouseCardsGridDeck" class="policy-4col-grid"></div>
                             </div>
 
-                            <!-- PANEL 6: 1-YEAR CLOUD RECOVERY VAULT -->
+                            <!-- PANEL 6: 1-YEAR CLOUD RECOVERY VAULT (WITH RECOVERY TIMES TRACKER) -->
                             <div id="policyPanel_recovery" class="policy-panel-block hidden">
                                 <div style="background:rgba(241,196,15,0.06); padding:20px; border-radius:12px; border:1px solid rgba(241,196,15,0.3); margin-bottom:20px;">
                                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:15px;">
                                         <div>
                                             <h4 style="color:#f1c40f; font-family:'Orbitron'; font-size:1.3rem; margin:0;">♻️ 1-YEAR CLOUD RECOVERY VAULT</h4>
-                                            <span style="color:var(--text-sub); font-size:0.85rem;">Search, view deletion stamps (Date, Day & Time) and restore deleted policies instantly</span>
+                                            <span style="color:var(--text-sub); font-size:0.85rem;">Search, view deletion audit logs (Date, Day, Time & Recovery Times) and restore back to Warehouse</span>
                                         </div>
                                         <div style="display:flex; gap:8px; align-items:center;">
                                             <button onclick="window.recoverSelectedBatch()" class="nav-btn" style="border-color:#2ecc71; color:#2ecc71; padding:7px 16px; font-size:0.85rem; border-radius:20px; font-weight:bold;">⚡ Recover Selected</button>
@@ -1619,27 +1622,46 @@
                                 <div id="recoveryCardsGridDeck" class="policy-4col-grid"></div>
                             </div>
 
-                            <!-- PANEL 7: SYSTEM GUIDE & AUTONOMOUS ARCHITECTURE -->
+                            <!-- PANEL 7: SYSTEM GUIDE, DOCUMENTATION & BUILT-IN AUTO-SAVING NOTEPAD -->
                             <div id="policyPanel_about" class="policy-panel-block hidden">
-                                <div style="background:rgba(0,0,0,0.6); padding:25px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow:0 0 25px rgba(0,242,254,0.15);">
-                                    <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.6rem; margin-bottom:15px;">🚀 1000+ POLICY MATRIX ENGINE SPECIFICATION</h3>
-                                    <p style="color:var(--text-sub); font-size:1rem; line-height:1.6; margin-bottom:20px;">
-                                        Enterprise Autonomous Policy Extraction, 0ms Multi-Identifier Compiling, 3-Stage Parsing Sandbox, 1-Year Recovery Vault, and Realtime Cloud Warehousing Architecture.
-                                    </p>
-                                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:15px;">
-                                        <div style="background:#030712; padding:16px; border-radius:8px; border:1px solid rgba(0,242,254,0.2);">
-                                            <h4 style="color:var(--neon-cyan); margin-bottom:8px;">⚡ 3-Stage Parsing Engine</h4>
-                                            <p style="color:#8696a0; font-size:0.9rem; line-height:1.4;">Sanitizes non-breaking spaces (\u00A0), executes sandboxed AST extraction, and regex fallbacks without parsing errors.</p>
-                                        </div>
-                                        <div style="background:#030712; padding:16px; border-radius:8px; border:1px solid rgba(46,204,113,0.2);">
-                                            <h4 style="color:#2ecc71; margin-bottom:8px;">🏢 Insurer Portfolio Matrix</h4>
-                                            <p style="color:#8696a0; font-size:0.9rem; line-height:1.4;">Automated grouping by Tata AIG, ICICI Lombard, Zurich Kotak, Digit with Done vs Pending analytics.</p>
-                                        </div>
-                                        <div style="background:#030712; padding:16px; border-radius:8px; border:1px solid rgba(241,196,15,0.2);">
-                                            <h4 style="color:#f1c40f; margin-bottom:8px;">♻️ 1-Year Recovery Vault</h4>
-                                            <p style="color:#8696a0; font-size:0.9rem; line-height:1.4;">Every deleted policy is preserved with deletion date, day, and time stamps. Restore in 1-click at any time.</p>
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:start;">
+                                    
+                                    <!-- Section A: Policy Search & System Guidelines -->
+                                    <div style="background:rgba(0,0,0,0.6); padding:22px; border-radius:12px; border:1px solid var(--neon-cyan); box-shadow:0 0 25px rgba(0,242,254,0.15);">
+                                        <h3 style="color:#ff007f; font-family:'Orbitron'; font-size:1.4rem; margin-bottom:12px;">📖 POLICY SEARCH & SYSTEM GUIDELINES</h3>
+                                        <p style="color:var(--text-sub); font-size:0.95rem; line-height:1.5; margin-bottom:15px;">
+                                            Complete operating reference for Autonomous Extraction, Filtering, 0ms Compiler and 1-Year Recovery Vault.
+                                        </p>
+                                        <div style="display:flex; flex-direction:column; gap:12px;">
+                                            <div style="background:#030712; padding:12px; border-radius:8px; border-left:4px solid var(--neon-cyan);">
+                                                <b style="color:var(--neon-cyan); display:block; margin-bottom:4px;">1. 0ms Batch Compiler Search:</b>
+                                                <span style="color:#8696a0; font-size:0.85rem; line-height:1.4;">Paste vehicle registration numbers, phone numbers, or chassis numbers (1 per line). The engine compiles a standalone self-executing script matching the active database in 0ms.</span>
+                                            </div>
+                                            <div style="background:#030712; padding:12px; border-radius:8px; border-left:4px solid #2ecc71;">
+                                                <b style="color:#2ecc71; display:block; margin-bottom:4px;">2. Dynamic Live Warehouse Counts:</b>
+                                                <span style="color:#8696a0; font-size:0.85rem; line-height:1.4;">Clicking 'All', 'Done', 'Pending' or selecting any Insurer updates the counter instantly showing exact matches and gross premium totals.</span>
+                                            </div>
+                                            <div style="background:#030712; padding:12px; border-radius:8px; border-left:4px solid #f1c40f;">
+                                                <b style="color:#f1c40f; display:block; margin-bottom:4px;">3. 1-Year Recovery & Retention:</b>
+                                                <span style="color:#8696a0; font-size:0.85rem; line-height:1.4;">Deleted policies move safely into the Recovery Vault with deletion date, day, time, and track how many times a policy is restored via <i>Recovery Times</i>.</span>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <!-- Section B: Built-in Policy Admin Scratchpad / Notepad -->
+                                    <div style="background:rgba(0,0,0,0.6); padding:22px; border-radius:12px; border:1px solid #f1c40f; box-shadow:0 0 25px rgba(241,196,15,0.15); display:flex; flex-direction:column;">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                                            <h3 style="color:#f1c40f; font-family:'Orbitron'; font-size:1.4rem; margin:0;">📝 POLICY ADMIN NOTEPAD</h3>
+                                            <span id="policyGuideNoteSaveBadge" style="color:#2ecc71; font-family:'Orbitron'; font-size:0.75rem; font-weight:bold;">✅ Auto-Saved</span>
+                                        </div>
+                                        <span style="color:var(--text-sub); font-size:0.85rem; margin-bottom:10px;">Quick workspace to write memos, vehicle notes, customer details, or checklist items.</span>
+                                        <textarea id="policyGuideScratchpadInput" oninput="window.savePolicyGuideNote()" class="mac-terminal-editor" style="height:250px; font-size:0.95rem; color:#fff; border:1px solid rgba(241,196,15,0.3); border-radius:8px; background:#02050e; padding:14px; line-height:1.5;" placeholder="// Type your quick policy notes, reminders or tasks here..."></textarea>
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                                            <span id="policyGuideNoteCharCount" style="color:var(--text-sub); font-size:0.8rem; font-family:monospace;">Chars: 0 | Words: 0</span>
+                                            <button onclick="document.getElementById('policyGuideScratchpadInput').value=''; window.savePolicyGuideNote();" class="nav-btn" style="padding:4px 10px; font-size:0.75rem; border-color:#e74c3c; color:#e74c3c;">Clear Note</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -2098,6 +2120,7 @@
             else if (panelId === 'insurers') window.renderInsurerBreakdown();
             else if (panelId === 'warehouse') window.renderWarehouseView();
             else if (panelId === 'recovery') window.filterRecoveryByPreset('today');
+            else if (panelId === 'about') window.loadPolicyGuideNote();
         };
 
         // 3. One-Click Clipboard Utility
@@ -2389,6 +2412,7 @@
                     fullSpec: item,
                     isDone: false,
                     doneLog: null,
+                    recoveryCount: 0,
                     isoDate: isoDate,
                     dateStr: dateStr,
                     timeStr: timeStr,
@@ -2443,7 +2467,6 @@
             yestDate.setDate(yestDate.getDate() - 1);
             const yestIso = yestDate.toISOString().split('T')[0];
 
-            // Combined Active + Recycle Bin items for 1-Year History Count
             const fullHistoryCombined = [...window.activePolicyMemoryStore, ...window.activeRecycleBinMemoryStore];
 
             let filtered = [];
@@ -2512,7 +2535,7 @@
                 window.showToast("⚠️ No records to export.", "error");
                 return;
             }
-            let csv = "Registration No,Client Name,Contact,Insurer,Gross Premium,Policy No,Status,Archive State,Injected Date,Day,Time,Done Date,Day,Time,Deleted Date,Day,Time\n";
+            let csv = "Registration No,Client Name,Contact,Insurer,Gross Premium,Policy No,Status,Archive State,Injected Date,Day,Time,Done Date,Day,Time,Deleted Date,Day,Time,Recovery Times\n";
             data.forEach(p => {
                 const doneDate = p.doneLog ? p.doneLog.dateStr : "N/A";
                 const doneDay = p.doneLog ? p.doneLog.dayStr : "N/A";
@@ -2520,7 +2543,7 @@
                 const delDate = p.deletedLog ? p.deletedLog.dateStr : "Active";
                 const delDay = p.deletedLog ? p.deletedLog.dayStr : "Active";
                 const delTime = p.deletedLog ? p.deletedLog.timeStr : "Active";
-                csv += `"${p.regNo}","${p.clientName}","${p.contact}","${p.insurer}","${p.premium}","${p.policyNo}","${p.isDone?'DONE':'PENDING'}","${p.deletedLog?'IN RECYCLE BIN':'ACTIVE'}","${p.dateStr}","${p.dayStr}","${p.timeStr}","${doneDate}","${doneDay}","${doneTime}","${delDate}","${delDay}","${delTime}"\n`;
+                csv += `"${p.regNo}","${p.clientName}","${p.contact}","${p.insurer}","${p.premium}","${p.policyNo}","${p.isDone?'DONE':'PENDING'}","${p.deletedLog?'IN RECOVERY BIN':'ACTIVE'}","${p.dateStr}","${p.dayStr}","${p.timeStr}","${doneDate}","${doneDay}","${doneTime}","${delDate}","${delDay}","${delTime}",${p.recoveryCount || 0}\n`;
             });
             window.downloadCsvFile(csv, `Nexus_Timeline_Preserved_${Date.now()}.csv`);
         };
@@ -2882,7 +2905,7 @@
             window.copyText(out.value, "Executable script copied to clipboard!");
         };
 
-        // 21. Warehouse Master Renderer
+        // 21. Warehouse Master Renderer (With Dynamic Filter Counts)
         window.renderWarehouseView = function() {
             const container = document.getElementById('warehouseCardsGridDeck');
             if (!container) return;
@@ -2891,11 +2914,26 @@
             const insFilter = document.getElementById('warehouseInsurerFilter')?.value || 'all';
             const statusFilter = window.warehouseCurrentStatusFilter || 'all';
 
-            let list = [...window.activePolicyMemoryStore];
+            let allActive = [...window.activePolicyMemoryStore];
 
-            if (insFilter !== 'all') {
-                list = list.filter(p => (p.insurer || "Other") === insFilter);
-            }
+            // Filter by Insurer first to compute dynamic status counts for this insurer
+            let insurerScopedList = (insFilter !== 'all') 
+                ? allActive.filter(p => (p.insurer || "Other") === insFilter) 
+                : allActive;
+
+            const totalAllCount = insurerScopedList.length;
+            const totalDoneCount = insurerScopedList.filter(p => p.isDone === true).length;
+            const totalPendingCount = totalAllCount - totalDoneCount;
+
+            // Update Filter Button Count Labels Live
+            const cAll = document.getElementById('whCount_all');
+            const cDone = document.getElementById('whCount_done');
+            const cPend = document.getElementById('whCount_pending');
+            if (cAll) cAll.innerText = `(${totalAllCount})`;
+            if (cDone) cDone.innerText = `(${totalDoneCount})`;
+            if (cPend) cPend.innerText = `(${totalPendingCount})`;
+
+            let list = [...insurerScopedList];
 
             if (statusFilter === 'done') {
                 list = list.filter(p => p.isDone === true);
@@ -2913,8 +2951,12 @@
 
             list.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
 
+            // Update Active Showing Badge
+            const activeCountNode = document.getElementById('whActiveFilteredCountNode');
+            if (activeCountNode) activeCountNode.innerText = `${list.length} (of ${totalAllCount})`;
+
             if (list.length === 0) {
-                container.innerHTML = "<p style='grid-column:1/-1; color:var(--text-sub); text-align:center; padding:35px;'>No matching warehouse records found.</p>";
+                container.innerHTML = "<p style='grid-column:1/-1; color:var(--text-sub); text-align:center; padding:35px;'>No matching warehouse records found for active filters.</p>";
                 window.updateBatchCounter();
                 return;
             }
@@ -2934,18 +2976,22 @@
             window.renderWarehouseView();
         };
 
-        // 23. Single Policy Card Markup Generator
+        // 23. Single Policy Card Markup Generator (With Recovery Times Badge)
         window.renderSingleCard = function(item) {
             const isDone = item.isDone === true;
             const s = item.fullSpec || {};
             const base64Code = btoa(unescape(encodeURIComponent(item.rawCode || '')));
+            const recCount = item.recoveryCount || 0;
 
             return `
             <div class="fullspec-policy-card" style="border-left: 5px solid ${isDone ? '#2ecc71' : 'var(--neon-cyan)'}; position:relative;">
                 <input type="checkbox" class="policy-batch-checkbox" data-id="${item.id}" data-premium="${item.premium || 0}" onchange="window.updateBatchCounter()" style="${window.isBatchModeActive ? 'display:block;' : 'display:none;'}">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span style="color:var(--neon-cyan); font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
-                    <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
+                    <div style="display:flex; gap:6px; align-items:center;">
+                        ${recCount > 0 ? `<span style="background:rgba(241,196,15,0.2); color:#f1c40f; border:1px solid #f1c40f; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:bold;">♻️ Rec: ${recCount}x</span>` : ''}
+                        <span style="background:${isDone?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.2)'}; color:${isDone?'#2ecc71':'#e74c3c'}; border:1px solid ${isDone?'#2ecc71':'#e74c3c'}; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${isDone?'DONE':'PENDING'}</span>
+                    </div>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
                     <div>
@@ -3249,9 +3295,9 @@
             modal.classList.remove('hidden');
         };
 
-        // ==========================================
-        // ♻️ 1-YEAR CLOUD RECOVERY VAULT FUNCTIONS
-        // ==========================================
+        // ==========================================================================
+        // ♻️ 1-YEAR CLOUD RECOVERY VAULT (WITH RECOVERY TIMES TRACKER)
+        // ==========================================================================
 
         window.filterRecoveryByPreset = function(presetType) {
             ['today', 'yesterday', 'all'].forEach(id => {
@@ -3281,8 +3327,8 @@
             }
 
             window.activeRecoveryFilteredList = filtered.sort((a,b) => {
-                const epA = p.deletedLog ? p.deletedLog.epoch : p.epoch;
-                const epB = p.deletedLog ? p.deletedLog.epoch : p.epoch;
+                const epA = a.deletedLog ? a.deletedLog.epoch : a.epoch;
+                const epB = b.deletedLog ? b.deletedLog.epoch : b.epoch;
                 return (epB || 0) - (epA || 0);
             });
 
@@ -3313,7 +3359,7 @@
             if (!container) return;
             const q = (document.getElementById('recoveryLiveSearchInput')?.value || '').toLowerCase().trim();
 
-            let list = window.activeRecoveryFilteredList.length > 0 || (document.getElementById('recPreset_today')?.classList.contains('active') && !q) 
+            let list = (window.activeRecoveryFilteredList.length > 0 || (document.getElementById('recPreset_today')?.classList.contains('active') && !q)) 
                 ? [...window.activeRecoveryFilteredList] 
                 : [...window.activeRecycleBinMemoryStore];
 
@@ -3335,13 +3381,17 @@
             container.innerHTML = list.map(item => {
                 const s = item.fullSpec || {};
                 const delInfo = item.deletedLog ? `${item.deletedLog.dateStr} (${item.deletedLog.dayStr}) at ${item.deletedLog.timeStr}` : 'Archived';
+                const recTimes = item.recoveryCount || 0;
 
                 return `
                 <div class="fullspec-policy-card" style="border-left: 5px solid #f1c40f; position:relative; background:linear-gradient(145deg, rgba(20,15,5,0.95), rgba(8,6,2,0.95));">
                     <input type="checkbox" class="recovery-batch-checkbox" data-id="${item.id}" style="position:absolute; top:12px; left:12px; transform:scale(1.2); accent-color:#f1c40f; cursor:pointer;">
                     <div style="display:flex; justify-content:space-between; align-items:center; padding-left:22px;">
                         <span style="color:#f1c40f; font-family:'Orbitron'; font-size:0.85rem; font-weight:bold;">${s.insurer || item.insurer}</span>
-                        <span style="background:rgba(241,196,15,0.2); color:#f1c40f; border:1px solid #f1c40f; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">DELETED</span>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            <span style="background:rgba(241,196,15,0.2); color:#f1c40f; border:1px solid #f1c40f; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:bold;">♻️ Rec: ${recTimes}x</span>
+                            <span style="background:rgba(231,76,60,0.2); color:#e74c3c; border:1px solid #e74c3c; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">DELETED</span>
+                        </div>
                     </div>
                     <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:4px;">
                         <div>
@@ -3365,20 +3415,42 @@
             }).join('');
         };
 
+        // 33. Restore Policy back to Active Warehouse (Keeps Copy in Bin & Increments Recovery Times)
         window.recoverPolicy = function(id) {
             const item = window.activeRecycleBinMemoryStore.find(p => p.id === id);
             if (!item) return;
 
-            const cleanItem = { ...item };
-            delete cleanItem.deletedLog;
+            const now = new Date();
+            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const recoveryCountUpdated = (item.recoveryCount || 0) + 1;
 
-            set(ref(db, `policy_code_repository/${id}`), cleanItem).then(() => {
-                remove(ref(db, `policy_recycle_bin/${id}`)).then(() => {
-                    window.showToast(`✅ Restored Policy ${item.regNo} back to Cloud Warehouse!`, 'success');
+            const lastRecoveredLog = {
+                dateStr: `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`,
+                timeStr: now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'}),
+                dayStr: daysArr[now.getDay()],
+                epoch: Date.now()
+            };
+
+            const restoredCleanItem = { 
+                ...item, 
+                recoveryCount: recoveryCountUpdated,
+                lastRecoveredLog: lastRecoveredLog
+            };
+            delete restoredCleanItem.deletedLog;
+
+            // 1. Save restored policy in Active Warehouse with incremented recovery count
+            set(ref(db, `policy_code_repository/${id}`), restoredCleanItem).then(() => {
+                // 2. Also keep preserved entry updated with latest recovery count in Recovery Vault
+                update(ref(db, `policy_recycle_bin/${id}`), { 
+                    recoveryCount: recoveryCountUpdated,
+                    lastRecoveredLog: lastRecoveredLog
+                }).then(() => {
+                    window.showToast(`✅ Restored ${item.regNo}! (Recovered ${recoveryCountUpdated} Times)`, 'success');
                 });
             });
         };
 
+        // 34. Bulk Restore Selected Policies
         window.recoverSelectedBatch = function() {
             const selected = document.querySelectorAll('.recovery-batch-checkbox:checked');
             if (selected.length === 0) {
@@ -3386,20 +3458,39 @@
                 return;
             }
 
+            const now = new Date();
+            const daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
             let restorePromises = Array.from(selected).map(cb => {
                 const id = cb.getAttribute('data-id');
                 const item = window.activeRecycleBinMemoryStore.find(p => p.id === id);
                 if (item) {
-                    const cleanItem = { ...item };
-                    delete cleanItem.deletedLog;
-                    return set(ref(db, `policy_code_repository/${id}`), cleanItem).then(() => {
-                        return remove(ref(db, `policy_recycle_bin/${id}`));
+                    const recoveryCountUpdated = (item.recoveryCount || 0) + 1;
+                    const lastRecoveredLog = {
+                        dateStr: `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2,'0')}/${now.getFullYear()}`,
+                        timeStr: now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'}),
+                        dayStr: daysArr[now.getDay()],
+                        epoch: Date.now()
+                    };
+
+                    const restoredCleanItem = { 
+                        ...item, 
+                        recoveryCount: recoveryCountUpdated,
+                        lastRecoveredLog: lastRecoveredLog
+                    };
+                    delete restoredCleanItem.deletedLog;
+
+                    return set(ref(db, `policy_code_repository/${id}`), restoredCleanItem).then(() => {
+                        return update(ref(db, `policy_recycle_bin/${id}`), { 
+                            recoveryCount: recoveryCountUpdated,
+                            lastRecoveredLog: lastRecoveredLog
+                        });
                     });
                 }
             });
 
             Promise.all(restorePromises).then(() => {
-                window.showToast(`🎉 ${selected.length} Policies successfully restored!`, 'success');
+                window.showToast(`🎉 ${selected.length} Policies restored back to Warehouse!`, 'success');
             });
         };
 
@@ -3421,6 +3512,40 @@
                     window.showToast("Recovery bin purged completely.", "info");
                 });
             }
+        };
+
+        // 35. Built-in Policy Admin Scratchpad / Notepad Helper
+        window.savePolicyGuideNote = function() {
+            const input = document.getElementById('policyGuideScratchpadInput');
+            const badge = document.getElementById('policyGuideNoteSaveBadge');
+            const counter = document.getElementById('policyGuideNoteCharCount');
+            if (!input) return;
+
+            const val = input.value;
+            localStorage.setItem('nexus_policy_guide_scratchpad', val);
+
+            const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+            if (counter) counter.innerText = `Chars: ${val.length} | Words: ${words}`;
+
+            if (badge) {
+                badge.innerText = "⏳ Saving...";
+                badge.style.color = "#f1c40f";
+                clearTimeout(window._policyNoteTimer);
+                window._policyNoteTimer = setTimeout(() => {
+                    badge.innerText = "✅ Auto-Saved";
+                    badge.style.color = "#2ecc71";
+                }, 400);
+            }
+        };
+
+        window.loadPolicyGuideNote = function() {
+            const input = document.getElementById('policyGuideScratchpadInput');
+            const counter = document.getElementById('policyGuideNoteCharCount');
+            if (!input) return;
+            const saved = localStorage.getItem('nexus_policy_guide_scratchpad') || "";
+            input.value = saved;
+            const words = saved.trim() ? saved.trim().split(/\s+/).length : 0;
+            if (counter) counter.innerText = `Chars: ${saved.length} | Words: ${words}`;
         };
 
         // Modal Close Helper
