@@ -2901,7 +2901,6 @@
 
             let allActive = [...window.activePolicyMemoryStore];
 
-            // Filter by Insurer first to compute dynamic status counts for this insurer
             let insurerScopedList = (insFilter !== 'all') 
                 ? allActive.filter(p => (p.insurer || "Other") === insFilter) 
                 : allActive;
@@ -2910,7 +2909,6 @@
             const totalDoneCount = insurerScopedList.filter(p => p.isDone === true).length;
             const totalPendingCount = totalAllCount - totalDoneCount;
 
-            // Update Filter Button Count Labels Live
             const cAll = document.getElementById('whCount_all');
             const cDone = document.getElementById('whCount_done');
             const cPend = document.getElementById('whCount_pending');
@@ -2936,7 +2934,6 @@
 
             list.sort((a,b) => (b.epoch || 0) - (a.epoch || 0));
 
-            // Update Active Showing Badge
             const activeCountNode = document.getElementById('whActiveFilteredCountNode');
             if (activeCountNode) activeCountNode.innerText = `${list.length} (of ${totalAllCount})`;
 
